@@ -11,10 +11,23 @@
                 </div>
 
                 <!-- Navigation Links -->
+                <?php
+                $navItems = [
+                    ["label" => 'Dashboard', 'icon' => 'fas-home', 'route' => 'dashboard'],
+                    ["label" => 'Wallets', 'icon' => 'fas-wallet', 'route' => 'wallet'],
+                    ["label" => 'Portfolio', 'icon' => 'fas-suitcase', 'route' => 'portfolio'],
+                    ["label" => 'Taxes', 'icon' => 'fas-clipboard-list', 'route' => 'taxes'],
+                    ["label" => 'Advisor', 'icon' => 'fas-user-nurse', 'route' => 'advisor'],
+                    ["label" => 'Services', 'icon' => 'fas-file-invoice-dollar', 'route' => 'services']
+                ];
+                ?>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
+                    @foreach($navItems as $navItem)
+                        <x-jet-nav-link href="{{ route($navItem['route']) }}" :active="request()->routeIs($navItem['route'])">
+                            <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/>
+                            {{ __($navItem["label"]) }}
+                        </x-jet-nav-link>
+                    @endforeach
                 </div>
             </div>
 
