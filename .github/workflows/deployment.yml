@@ -17,4 +17,11 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull
+          script: |
+            cd ${{ secrets.PROJECT_PATH }}
+            git pull
+            composer install
+            php artisan optimize:clear
+            php artisan migrate --force
+            npm install
+            npm run prod
