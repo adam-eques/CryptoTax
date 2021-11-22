@@ -30,17 +30,11 @@
                     </button>
 
                     {{-- Notification --}}
-                    <button type="button" title="Notification"
-                            class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none relative">
-                        <span class="sr-only">View notifications</span>
-                        <x-icon name="fas-bell" class="w-6 h-6 mr-2"/>
-                        <span
-                            class="rounded-full bg-white text-color px-1 inline-flex text-xs absolute -top-1 -right-1">2</span>
-                    </button>
+                    @include("livewire.partials.notifications")
                 </div>
 
-                {{-- Profile dropdown --}}
-                @include("livewire.partials.main-navi-dropdown")
+                {{-- User dropdown --}}
+                @include("livewire.partials.main-navi-user-dropdown")
             </div>
 
             <div class="flex lg:hidden">

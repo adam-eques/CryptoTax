@@ -25,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     // TODO routes
     Route::view('/todo', 'errors.todo')->name('todo');
-    Route::view('/wallet', 'errors.todo')->name('wallet');
+    Route::view('/wallet', 'pages.wallets')->name('wallet');
     Route::view('/portfolio', 'errors.todo')->name('portfolio');
     Route::view('/taxes', 'errors.todo')->name('taxes');
     Route::view('/advisor', 'errors.todo')->name('advisor');
