@@ -1,4 +1,4 @@
-<div class="relative hidden lg:block" x-data="{open:false}">
+<div class="relative  lg:block" x-data="{open:false}">
     <button type="button" title="Notification"
             class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none relative"
             @click="open = true">
