@@ -20,10 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('pages.dashboard');
     })->name('dashboard');
 
     // TODO routes
+    Route::view('/todo', 'errors.todo')->name('todo');
     Route::view('/wallet', 'errors.todo')->name('wallet');
     Route::view('/portfolio', 'errors.todo')->name('portfolio');
     Route::view('/taxes', 'errors.todo')->name('taxes');

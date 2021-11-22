@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10d92c6b4fffcedde652ee304e131042",
+    "content-hash": "793c3c1dc13f89b603038d978b34db36",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -255,6 +255,70 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "codeat3/blade-cryptocurrency-icons",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-cryptocurrency-icons.git",
+                "reference": "b70f20593118ce94e7fdb1a14f55e10f5db8954b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-cryptocurrency-icons/zipball/b70f20593118ce94e7fdb1a14f55e10f5db8954b",
+                "reference": "b70f20593118ce94e7fdb1a14f55e10f5db8954b",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/phpcs-styles": "dev-main",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeCryptocurrencyIcons\\BladeCryptocurrencyIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeCryptocurrencyIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of Cryptocurrency Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-cryptocurrency-icons",
+            "keywords": [
+                "blade",
+                "laravel",
+                "unicons"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-cryptocurrency-icons/issues",
+                "source": "https://github.com/codeat3/blade-cryptocurrency-icons/tree/1.3.3"
+            },
+            "time": "2021-05-14T16:54:41+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -8711,7 +8775,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.4|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

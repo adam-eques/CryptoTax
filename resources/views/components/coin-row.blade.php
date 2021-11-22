@@ -1,0 +1,24 @@
+<div class="flex justify-between p-3 md:p-6 items-center">
+    <div class="flex gap-2 sm:gap-4 items-center">
+        <x-icon :name="$icon" class="w-9 sm:w-12 xl:w-14" :style="'color: #' . $color "></x-icon>
+        <div class="space-y-1">
+            <h3 class="text-sm sm:text-base xl:text-xl font-semibold text-gray-700 ">{{ $label }}</h3>
+            <p class="text-gray-400 text-xs xl:text-md">{{ number_format($transactions, 0) }} {{ __("Transactions") }}</p>
+        </div>
+    </div>
+    <div class="flex gap-2 sm:gap-4 items-center text-right">
+        <!-- Coin Price -->
+        <div class="space-y-1">
+            <p class="text-sm sm:text-base xl:text-xl text-gray-700 font-semibold">${{ number_format($price, 2) }}</p>
+            <p class="text-gray-400 text-xs xl:text-md">{{ number_format($amount, 5) }} {{ $short }}</p>
+        </div>
+        <!-- View Transaction button -->
+        <button type="button" class="inline-flex items-center justify-center gap-2 p-1 sm:p-2 xl:px-4 font-medium tracking-wide text-blue-400 hover:text-white rounded-full hover:bg-color-1  focus:outline-none outline-none border border-blue-400 hover:border-color-1 text-sm">
+            <span class="hidden xl:inline-flex">{{ __("View Transactions") }}</span>
+            <svg class="h-6 w-6 xl:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+        </button>
+    </div>
+</div>
