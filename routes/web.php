@@ -30,4 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::view('/taxes', 'errors.todo')->name('taxes');
     Route::view('/advisor', 'errors.todo')->name('advisor');
     Route::view('/services', 'errors.todo')->name('services');
+
+    // Specials
+    Route::view('/wallet/new', 'pages.wallets.new')->name('wallet.new');
 });
