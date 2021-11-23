@@ -7,14 +7,16 @@
             <div class="px-2 lg:px-5 md:w-2/5">
                 <x-card :title="__('Add Wallet')">
                     <div class="p-6">
-
+                        <livewire:wallet-new></livewire:wallet-new>
                     </div>
                 </x-card>
             </div>
 
             <!-- Right Panel -->
-            <div class="px-2 lg:px-5 md:w-3/5">
-                Right
+            <div class="px-4 lg:px-5 md:w-3/5 pt-4">
+                <p class="font-bold mb-4">How to add your account:</p>
+                <p class="mb-2">01. Choose an exchange, wallet, or address type from the list on the left</p>
+                <p>02. Follow the instructions</p>
             </div>
         </div>
     </x-page>

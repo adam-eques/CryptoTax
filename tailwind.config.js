@@ -10,6 +10,7 @@ module.exports = {
             './vendor/laravel/jetstream/**/*.blade.php',
             './storage/framework/views/*.php',
             './resources/views/**/*.blade.php',
+            './vendor/filament/forms/resources/views/**/*.blade.php',
         ],
         safelist: [
             'bg-color-1',
@@ -28,6 +29,8 @@ module.exports = {
                     '1': '#06b67d', // Green
                     '2': '#f6f7fb', // Light Background color
                     '3': '#1a1f33', // Dark Blue
+                    danger: colors.rose,
+                    primary: colors.blue,
                 },
             },
             boxShadow: {

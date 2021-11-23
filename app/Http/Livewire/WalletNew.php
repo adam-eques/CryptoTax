@@ -3,10 +3,54 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Filament\Forms;
 
-class WalletNew extends Component
+
+class WalletNew extends Component implements Forms\Contracts\HasForms
 {
-    public $model;
+    use Forms\Concerns\InteractsWithForms;
+
+    public $wallet;
+
+    public $walletType;
+    public $cryptoCurrency;
+    public $address;
+
+
+    protected function getFormSchema(): array
+    {
+        return [
+            Forms\Components\Select::make('walletType')
+                ->label(__("Wallet type"))
+                ->options([
+                    "Option 1",
+                    "Option 2",
+                    "Option 3"
+                ])
+                ->searchable()
+                ->placeholder(__("Choose your wallet/exchange")),
+            Forms\Components\Select::make('walletType')
+                ->label(__("Cryptocurrency"))
+                ->options([
+                    "BTC",
+                    "ETC",
+                    "XRP",
+                    "DOGE",
+                ])
+                ->searchable()
+                ->placeholder(__("Choose your cryptocurrency")),
+            Forms\Components\TextInput::make('address')
+                ->label(__("Address"))
+                ->placeholder(__("Type your address")),
+        ];
+    }
+
+
+    public function submit()
+    {
+
+    }
+
 
     public function render()
     {
