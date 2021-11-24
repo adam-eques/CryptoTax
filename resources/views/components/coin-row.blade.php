@@ -1,16 +1,10 @@
 <div class="flex justify-between p-3 md:p-6 items-center">
-    <div class="flex gap-2 sm:gap-4 items-center">
-        <x-icon :name="$icon" class="w-9 sm:w-12 xl:w-14" :style="'color: #' . $color "></x-icon>
-        <div class="space-y-1">
-            <h3 class="text-sm sm:text-base xl:text-xl font-semibold text-gray-700 ">{{ $label }}</h3>
-            <p class="text-gray-400 text-xs xl:text-md">{{ number_format($transactions, 0) }} {{ __("Transactions") }}</p>
-        </div>
-    </div>
+    <x-coin :name="$name" />
     <div class="flex gap-2 sm:gap-4 items-center text-right">
         <!-- Coin Price -->
         <div class="space-y-1">
-            <p class="text-sm sm:text-base xl:text-xl text-gray-700 font-semibold">${{ number_format($price, 2) }}</p>
-            <p class="text-gray-400 text-xs xl:text-md">{{ number_format($amount, 5) }} {{ $short }}</p>
+            <p class="text-sm sm:text-base xl:text-xl text-gray-700 font-semibold">${{ money($price, 2) }}</p>
+            <p class="text-gray-400 text-xs xl:text-md">{{ money($amount, 5) }} {{ strtoupper($name) }}</p>
         </div>
         <!-- View Transaction button -->
         <button type="button" class="inline-flex items-center justify-center gap-2 p-1 sm:p-2 xl:px-4 font-medium tracking-wide text-blue-400 hover:text-white rounded-full hover:bg-color-1  focus:outline-none outline-none border border-blue-400 hover:border-color-1 text-sm">

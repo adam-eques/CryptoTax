@@ -23,12 +23,12 @@ module.exports = {
                 sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'blue-gray': colors.blueGray,
                 'color': {
                     DEFAULT: '#7a6cff', // Blue text color
                     '1': '#06b67d', // Green
                     '2': '#f6f7fb', // Light Background color
                     '3': '#1a1f33', // Dark Blue
+                    lime: '#65a30d',
                     danger: colors.rose,
                     primary: colors.blue,
                 },

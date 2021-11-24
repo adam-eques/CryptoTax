@@ -6,11 +6,7 @@ use Illuminate\View\Component;
 
 class CoinRow extends Component
 {
-    public string $name = "";
-    public string $label = "";
-    public string $icon = "";
-    public string $color = "";
-    public string $short = "";
+    public string $name;
     public ?int $transactions;
     public ?float $price;
     public ?float $amount;
@@ -30,56 +26,10 @@ class CoinRow extends Component
         $this->transactions = $transactions;
         $this->price = $price;
         $this->amount = $amount;
-
-        // Default set
-        $this->initItem($this->name);
     }
 
     public function render()
     {
         return view("components.coin-row");
-    }
-
-    private function initItem($name)
-    {
-        $this->short = $name;
-
-        switch ($name) {
-            case "BTC":
-                $this->label = "Bitcoin";
-                $this->icon = "cri-btc";
-                $this->color = "e79934";
-                break;
-            case "LTC":
-                $this->label = "Lite Coin";
-                $this->icon = "cri-ltc";
-                $this->color = "c0c0c0";
-                break;
-            case "XRP":
-                $this->label = "Ripple";
-                $this->icon = "cri-xrp";
-                $this->color = "000";
-                break;
-            case "MIOTA":
-                $this->label = "Miota";
-                $this->icon = "cri-miota";
-                $this->color = "000";
-                break;
-            case "DASH":
-                $this->label = "Dash";
-                $this->icon = "cri-dash";
-                $this->color = "3a90db";
-                break;
-            case "ETH":
-                $this->label = "Ethereum";
-                $this->icon = "cri-eth";
-                $this->color = "545454";
-                break;
-            default:
-                $this->label = $name;
-                $this->icon = "fas-question-circle";
-                $this->color = "CCC";
-                break;
-        }
     }
 }

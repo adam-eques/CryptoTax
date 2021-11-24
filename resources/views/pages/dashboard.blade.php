@@ -5,7 +5,7 @@
             <li><a href="{{ route("wallet") }}" class="text-color">{{ __("Wallets") }}</a></li>
             <li><a href="{{ route("wallet.new") }}" class="text-color">{{ __("Wallets Add") }}</a></li>
             <li><a href="{{ route("taxes.tax-loss-harvesting") }}" class="text-color">{{ __("Tax-Loss Harvesting") }}</a></li>
-{{--            <li><a href="{{ route("taxes") }}" class="text-color">{{ __("Taxes") }}</a></li>--}}
+            <li><a href="{{ route("taxes.tax-saving-opportunities") }}" class="text-color">{{ __("Tax-Saving Opportunities") }}</a></li>
         </ul>
     </x-page>
 </x-app-layout>
