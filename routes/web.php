@@ -33,4 +33,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     // Specials
     Route::view('/wallet/new', 'pages.wallets.new')->name('wallet.new');
+    Route::view('/taxes/tax-loss-harvesting', 'pages.taxes.tax-loss-harvesting')->name('taxes.tax-loss-harvesting');
 });
