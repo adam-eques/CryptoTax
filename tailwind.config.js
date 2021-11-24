@@ -28,7 +28,7 @@ module.exports = {
                     '1': '#06b67d', // Green
                     '2': '#f6f7fb', // Light Background color
                     '3': '#1a1f33', // Dark Blue
-                    lime: '#65a30d',
+                    green: '#33c15f',
                     danger: colors.rose,
                     primary: colors.blue,
                 },

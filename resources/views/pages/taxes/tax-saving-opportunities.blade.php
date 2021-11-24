@@ -47,11 +47,11 @@
                                 <p>$ {{ money($row["cost_basis"]) }}</p>
                                 <p class="text-xs text-gray-500">$ {{ money($row["cost_basis_per_unit"]) }} per BTC</p>
                             </td>
-                            <td class="px-6 py-4 text-color-lime">
+                            <td class="px-6 py-4 text-color-green">
                                 +$ {{ money($row["unrealized_gains"]) }}
                             </td>
                             <td class="px-6 py-4 text-center font-bold">
-                                <x-jet-button class="bg-color-lime">$ {{ money($row["potential_savings"]) }} USD</x-jet-button>
+                                <x-jet-button class="bg-color-green">$ {{ money($row["potential_savings"]) }} USD</x-jet-button>
                             </td>
                         </tr>
                     @endforeach
