@@ -3,7 +3,7 @@
         <div class="pb-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
             <!-- Left Panel -->
             <div class="px-2 lg:px-5 md:w-3/5">
-                <img src="/storage/examples/tax-loss-harvesting.jpg" alt="Dummy" class="w-full">
+                <img src="/examples/tax-loss-harvesting.jpg" alt="Dummy" class="w-full">
             </div>
 
             <!-- Right Panel -->
