@@ -4,7 +4,7 @@
             <div class="flex items-baseline text-sm space-x-2 lg:space-x-4 -ml-2 lg:-ml-4">
                 @foreach($navItems as $navItem)
                     <a href="{{ route($navItem['route']) }}"
-                       class="lg:px-4 p-2 gap-2 text-blue-800 hover:text-blue-500 font-semibold inline-flex">
+                       class="lg:px-4 p-2 gap-2 hover:text-blue-500 inline-flex">
                         <x-icon :name="$navItem['icon']" class="w-5"/>
                         <span class="hidden sm:inline">{{ __($navItem["label"]) }}</span>
                     </a>
