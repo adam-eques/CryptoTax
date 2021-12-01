@@ -29,25 +29,33 @@ class CryptoExchangeController extends Controller
          * @var \App\CryptoExchangeDrivers\Driver $driverClass
          */
         $exchangeAccount = $this->getAccount($exchange);
-        $driverClass = $exchangeAccount->cryptoExchange->driver;
-        $driver = $driverClass::make($exchangeAccount)->connect();
+        $data = [];
+        $error = "";
 
-        if($data = $driver->account()->getAll()) {
-            $data =  $data["data"];
+        if($exchangeAccount->credentials) {
+            $driverClass = $exchangeAccount->cryptoExchange->driver;
+            try {
+                $driver = $driverClass::make($exchangeAccount)->connect();
+
+                if($data = $driver->account()->getAll()) {
+                    $data =  $data["data"];
+                }
+            }
+            catch (\Exception $e) {
+                $error = json_decode($e->getMessage())->msg;
+            }
         }
 
         return view("pages.customer.crypto-exchange.show", [
-            "data" => $data
+            "exchangeAccount" => $exchangeAccount,
+            "data" => $data,
+            "error" => $error
         ]);
     }
 
     public function edit(CryptoExchange $exchange)
     {
-        $exchangeAccount = $this->getAccount($exchange);
 
-        return view("pages.customer.crypto-exchange.edit", [
-            "exchangeAccount" => $exchangeAccount
-        ]);
     }
 
     public function update(Request $request, $id)
@@ -67,6 +75,17 @@ class CryptoExchangeController extends Controller
      */
     private function getAccount(CryptoExchange $exchange): ?CryptoExchangeAccount
     {
-        return request()->user()->cryptoExchangeAccounts()->whereBelongsTo($exchange)->first();
+        $user = request()->user();
+        $account = $user->cryptoExchangeAccounts()->whereBelongsTo($exchange)->first();
+
+        if(!$account) {
+            $account = new CryptoExchangeAccount();
+            $account->crypto_exchange_id = $exchange->id;
+            $account->user_id = $user->id;
+            $account->credentials = [];
+            $account->save();
+        }
+
+        return $account;
     }
 }

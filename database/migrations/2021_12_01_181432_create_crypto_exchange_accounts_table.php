@@ -12,7 +12,7 @@ class CreateCryptoExchangeAccountsTable extends Migration
             $table->bigIncrements('id');
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\CryptoExchange::class);
-            $table->json("credentials");
+            $table->json("credentials")->nullable();
             $table->timestamp("fetched_at")->nullable(true);
             $table->timestamps();
         });

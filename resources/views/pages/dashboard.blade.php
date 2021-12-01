@@ -8,14 +8,10 @@
                 <li><a href="{{ route("customer.taxes.tax-loss-harvesting") }}" class="text-color">{{ __("Tax-Loss Harvesting") }}</a></li>
                 <li><a href="{{ route("customer.taxes.tax-saving-opportunities") }}" class="text-color">{{ __("Tax-Saving Opportunities") }}</a></li>
             </ul>
-            <p class="block">Working data:</p>
+            <p class="block">Exchanges:</p>
             <ul class="list-disc block mb-8 p-5">
                 <li>
-                    Kucoin
-                    <ul class="list-disc block mb-4 px-6 p-3">
-                        <li><a href="{{ route("customer.crypto-exchange.edit", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Credentials</a></li>
-                        <li><a href="{{ route("customer.crypto-exchange.show", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Data</a></li>
-                    </ul>
+                    <a href="{{ route("customer.crypto-exchange.show", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Kucoin</a>
                 </li>
             </ul>
         </x-page>
