@@ -76,6 +76,15 @@ class User extends Authenticatable
 
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cryptoExchangeAccounts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CryptoExchangeAccount::class);
+    }
+
+
+    /**
      * @return bool
      */
     public function isAdminAccount(): bool

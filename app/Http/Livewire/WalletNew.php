@@ -11,7 +11,6 @@ class WalletNew extends Component implements Forms\Contracts\HasForms
     use Forms\Concerns\InteractsWithForms;
 
     public $wallet;
-
     public $walletType;
     public $cryptoCurrency;
     public $address;

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-previous-page href="{{ route('wallet') }}"></x-previous-page>
+    <x-previous-page href="{{ route('customer.wallet') }}"></x-previous-page>
 
     <x-page icon="fas-wallet" :title="__('New Wallet')">
         <div class="pb-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">

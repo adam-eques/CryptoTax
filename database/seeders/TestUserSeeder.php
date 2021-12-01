@@ -28,11 +28,11 @@ class TestUserSeeder extends Seeder
                 'name' => "Tax Advisor Test",
                 'email' => "tax-advisor@example.com",
             ]
-        ])->each(function($item){
-            if(!User::query()->where("email", $item["email"])->exists()) {
-                $item["password"] = bcrypt(isset($item["password"]) && $item["password"] ? $item["password"] : $item["email"]);
-                $item["created_at"] = now();
-                DB::table('users')->insert($item);
+        ])->each(function($data){
+            if(!User::query()->where("email", $data["email"])->exists()) {
+                $data["password"] = bcrypt(isset($data["password"]) && $data["password"] ? $data["password"] : $data["email"]);
+                $data["created_at"] = now();
+                DB::table('users')->insert($data);
             }
         });
     }
