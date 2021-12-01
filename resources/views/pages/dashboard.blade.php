@@ -13,8 +13,8 @@
                 <li>
                     Kucoin
                     <ul class="list-disc block mb-4 px-6 p-3">
-                        <li><a href="{{ route("customer.crypto-exchange.edit", ["exchangeAccount" => 1]) }}" class="text-color">Credentials</a></li>
-                        <li><a href="{{ route("customer.crypto-exchange.show", ["exchangeAccount" => 1]) }}" class="text-color">Data</a></li>
+                        <li><a href="{{ route("customer.crypto-exchange.edit", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Credentials</a></li>
+                        <li><a href="{{ route("customer.crypto-exchange.show", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Data</a></li>
                     </ul>
                 </li>
             </ul>

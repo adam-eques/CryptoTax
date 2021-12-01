@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,12 @@ class CryptoExchangeController extends Controller
         //
     }
 
-    public function show(CryptoExchangeAccount $exchangeAccount)
+    public function show(CryptoExchange $exchange)
     {
         /**
          * @var \App\CryptoExchangeDrivers\Driver $driverClass
          */
+        $exchangeAccount = $this->getAccount($exchange);
         $driverClass = $exchangeAccount->cryptoExchange->driver;
         $driver = $driverClass::make($exchangeAccount)->connect();
 
@@ -39,8 +41,10 @@ class CryptoExchangeController extends Controller
         ]);
     }
 
-    public function edit(CryptoExchangeAccount $exchangeAccount)
+    public function edit(CryptoExchange $exchange)
     {
+        $exchangeAccount = $this->getAccount($exchange);
+
         return view("pages.customer.crypto-exchange.edit", [
             "exchangeAccount" => $exchangeAccount
         ]);
@@ -54,5 +58,15 @@ class CryptoExchangeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * @param \App\Models\CryptoExchange $exchange
+     * @return \App\Models\CryptoExchangeAccount|null
+     */
+    private function getAccount(CryptoExchange $exchange): ?CryptoExchangeAccount
+    {
+        return request()->user()->cryptoExchangeAccounts()->whereBelongsTo($exchange)->first();
     }
 }

@@ -30,11 +30,9 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/services', 'errors.todo')->name('services');
 
     // Dev
-    Route::get('/crypto-exchange/edit/{exchangeAccount}', [\App\Http\Controllers\CryptoExchangeController::class, "edit"])
-        ->can("update", "exchangeAccount")
+    Route::get('/crypto-exchange/edit/{exchange}', [\App\Http\Controllers\CryptoExchangeController::class, "edit"])
         ->name("crypto-exchange.edit");
-    Route::get('/crypto-exchange/show/{exchangeAccount}', [\App\Http\Controllers\CryptoExchangeController::class, "show"])
-        ->can("view", "exchangeAccount")
+    Route::get('/crypto-exchange/show/{exchange}', [\App\Http\Controllers\CryptoExchangeController::class, "show"])
         ->name("crypto-exchange.show");
 
     // Specials
