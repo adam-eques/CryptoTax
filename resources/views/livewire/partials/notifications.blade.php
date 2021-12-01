@@ -12,14 +12,14 @@
         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
         x-show="open" @click.away="open=false"
         x-transition:enter-start="transition ease-in duration-3000">
-        <x-jet-dropdown-link href="{{ route('taxes') }}">
+        <x-jet-dropdown-link href="{{ route('customer.taxes') }}">
             <x-icon name="fas-file-alt"  class="w-3 sm:inline mr-2" />
             New tax report available
             <small class="sm:block text-2xs mt-1 ml-6 text-gray-400">2021-11-30 03:04 pm</small>
         </x-jet-dropdown-link>
         <div class="border-t border-gray-100"></div>
 
-        <x-jet-dropdown-link href="{{ route('wallet') }}">
+        <x-jet-dropdown-link href="{{ route('customer.wallet') }}">
             <x-icon name="fas-plus-square" class="w-3 sm:inline mr-2" />
             New wallet added
             <small class="sm:block text-2xs mt-1 ml-6 text-gray-400">2021-11-30 03:04 pm</small>

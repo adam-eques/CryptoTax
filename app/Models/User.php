@@ -10,6 +10,13 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Class User
+ *
+ * @package App\Models
+ *
+ * @property int $user_account_type_id
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -58,4 +65,39 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function userAccountType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(UserAccountType::class);
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isAdminAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_ADMIN;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isCustomerAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_CUSTOMER;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isTaxAdvisorAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;
+    }
 }

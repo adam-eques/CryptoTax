@@ -6,6 +6,9 @@ use Laravel\Jetstream\Http\Livewire\NavigationMenu;
 
 class MainNavi extends NavigationMenu
 {
+    /**
+     * @var array|array[]
+     */
     public array $navItems = [];
 
     /**
@@ -13,14 +16,26 @@ class MainNavi extends NavigationMenu
      */
     public function __construct()
     {
-        $this->navItems = [
-            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
-            ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'wallet'],
-            ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'portfolio'],
-            ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'taxes'],
-            ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'advisor'],
-            ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'services'],
-        ];
+        $user = \Auth::user();
+
+        if($user->isAdminAccount()) {
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ];
+        }
+        else if($user->isCustomerAccount()) {
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+                ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'customer.wallet'],
+                ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'customer.portfolio'],
+                ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'customer.taxes'],
+                ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'customer.advisor'],
+                ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'customer.services'],
+            ];
+        }
+        else if($user->isTaxAdvisorAccount()) {
+            // TODO: MainNavi TYPE_TAX_ADVISOR
+        }
     }
 
     public function render()
