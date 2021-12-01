@@ -38,9 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
 
 // Only for UserAccountType::TYPE_TAX_ADVISOR
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:tax-advisor")->name("tax-advisor.")->group(function(){
-    Route::get('/tax-advisor/dashboard', function () {
-        return view('pages.dashboard');
-    })->name('dashboard');
+
 });
 
 

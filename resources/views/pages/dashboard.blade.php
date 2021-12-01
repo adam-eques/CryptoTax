@@ -13,5 +13,9 @@
         <x-page icon="fas-home" :title="__('Admin Dashboard')">
             <p class="block mb-8">Hier entsteht das Admin-Dashboard.</p>
         </x-page>
+    @elseif(auth()->user()->isTaxAdvisorAccount())
+        <x-page icon="fas-home" :title="__('Tax Advisor Dashboard')">
+            <p class="block mb-8">Hier entsteht das Tax Advisor-Dashboard.</p>
+        </x-page>
     @endif
 </x-app-layout>

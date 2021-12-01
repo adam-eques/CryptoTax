@@ -34,7 +34,9 @@ class MainNavi extends NavigationMenu
             ];
         }
         else if($user->isTaxAdvisorAccount()) {
-            // TODO: MainNavi TYPE_TAX_ADVISOR
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ];
         }
     }
 
