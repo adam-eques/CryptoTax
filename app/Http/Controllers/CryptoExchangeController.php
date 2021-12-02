@@ -78,6 +78,7 @@ class CryptoExchangeController extends Controller
         $user = request()->user();
         $account = $user->cryptoExchangeAccounts()->whereBelongsTo($exchange)->first();
 
+        // Just for presentation purpose
         if(!$account) {
             $account = new CryptoExchangeAccount();
             $account->crypto_exchange_id = $exchange->id;
