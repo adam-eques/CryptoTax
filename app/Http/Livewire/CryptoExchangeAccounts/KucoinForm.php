@@ -54,7 +54,7 @@ class KucoinForm extends Component implements Forms\Contracts\HasForms
         $this->account->credentials = $this->form->getState();
         $this->account->save();
 
-        return $this->redirect(route("customer.crypto-exchange.show", [
+        return $this->redirect(route("customer.crypto-exchange.edit", [
             "exchange" => $this->account->cryptoExchange->id
         ]));
     }

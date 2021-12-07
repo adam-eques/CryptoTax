@@ -11,7 +11,14 @@
             <p class="block">Exchanges:</p>
             <ul class="list-disc block mb-8 p-5">
                 <li>
-                    <a href="{{ route("customer.crypto-exchange.show", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Kucoin</a>
+                    Kucoin:
+                    <a href="{{ route("customer.crypto-exchange.show", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Transactions</a> /
+                    <a href="{{ route("customer.crypto-exchange.edit", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_KUCOIN]) }}" class="text-color">Credentials</a>
+                </li>
+                <li>
+                    HitBTC:
+                    <a href="{{ route("customer.crypto-exchange.show", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_HITBTC]) }}" class="text-color">Transactions</a> /
+                    <a href="{{ route("customer.crypto-exchange.edit", ["exchange" => \App\Models\CryptoExchange::EXCHANGE_HITBTC]) }}" class="text-color">Credentials</a>
                 </li>
             </ul>
         </x-page>

@@ -2,17 +2,25 @@
 
 namespace App\Models;
 
+use App\CryptoExchangeDrivers\Driver;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CryptoExchangeAccount extends Model
 {
+    /**
+     * @var \App\CryptoExchangeDrivers\Driver
+     */
+    protected Driver $api;
+
     /**
      * The attributes that should be cast.
      *
      * @var array
      */
     protected $casts = [
-        'credentials' => 'json'
+        'credentials' => 'json',
+        'fetched_at' => 'datetime',
     ];
 
     /**
@@ -23,7 +31,6 @@ class CryptoExchangeAccount extends Model
         return $this->belongsTo(User::class);
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
@@ -32,4 +39,25 @@ class CryptoExchangeAccount extends Model
         return $this->belongsTo(CryptoExchange::class);
     }
 
+    /**
+     * @return HasMany
+     */
+    public function exchangeTransactions(): HasMany
+    {
+        return $this->hasMany(CryptoExchangeTransaction::class);
+    }
+
+    /**
+     * @param bool $forceReload
+     * @return \App\CryptoExchangeDrivers\Driver
+     */
+    public function getApi(bool $forceReload = false): Driver
+    {
+        if (! $this->api || $forceReload) {
+            $driverClass = $this->cryptoExchange->driver;
+            $this->api = $driverClass::make($this->credentials);
+        }
+
+        return $this->api;
+    }
 }

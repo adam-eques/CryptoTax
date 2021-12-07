@@ -3,18 +3,15 @@
 namespace App\CryptoExchangeDrivers;
 
 
-use KuCoin\SDK\Auth;
-use KuCoin\SDK\KuCoinApi;
-use KuCoin\SDK\PrivateApi\Account;
-use KuCoin\SDK\PrivateApi\Fill;
-use KuCoin\SDK\PrivateApi\Order;
+
+use Carbon\Carbon;
 
 /**
  * Class KucoinDriver
  *
  * @package App\CryptoExchangeDrivers
  *
- * @property Auth $connection
+ * @property \ccxt\kucoin $api
  */
 class KucoinDriver extends Driver
 {
@@ -23,80 +20,84 @@ class KucoinDriver extends Driver
      * @return $this
      * @throws \Exception
      */
-    public function connect(): self
+    protected function connect(): self
     {
         $credentials = $this->getCredentials();
-        if(!$credentials || !isset($credentials["key"])) {
-            throw new \Exception("Missing credentials for KucoinDriver");
-        }
-
-        // Set Prod or Sandbox
-        KuCoinApi::setBaseUri(config("crypto-exchanges.kucoin.url"));
-
-        // Debug mode
-        //KuCoinApi::setDebugMode(true);
-        //KuCoinApi::setLogPath(__DIR__ . "/kucoin.log");
-
-        // Auth version v2 (recommend)
-        $this->connection = new Auth(
-            \Arr::get($credentials, "key"),
-            \Arr::get($credentials, "secret"),
-            \Arr::get($credentials, "passphrase"),
-            Auth::API_KEY_VERSION_V2
-        );
+        $this->api = new \ccxt\kucoin([
+            "apiKey" => \Arr::get($credentials, "key"),
+            "secret" => \Arr::get($credentials, "secret"),
+            "password" => \Arr::get($credentials, "passphrase"),
+        ]);
 
         return $this;
     }
 
     /**
-     * @return \KuCoin\SDK\PrivateApi\Account
+     * @return $this
+     * @throws \ccxt\ExchangeError
      */
-    public function queryAccount()
+    public function updateTransactions(): self
     {
-        return new Account($this->connection);
+        // Kucoin API used: https://docs.kucoin.com/#list-fills
+        // "The system allows you to retrieve data up to one week (start from the last day by default)"
+        $account = $this->exchangeAccount;
+
+        // Get date: Kucoin max. prev date = 2019-02-18
+        $since = $this->exchangeAccount->fetched_at ? $this->exchangeAccount->fetched_at : Carbon::create(2019, 2, 18);
+        $now = now();
+
+        \DB::transaction(function() use ($account, $since, $now) {
+            $counter = 0;
+
+            while($since->isPast()) {
+                $data = $this->fetchTransactions(null, $since);
+                $this->saveTransactions($data, $now);
+
+                // Sleep because of Request Limit of 9 times/3s
+                if($counter % 8 === 0) { // Modulo 8 instead of 9, just to make sure
+                    sleep(3);
+                }
+
+                // Add a week aka 7 days and increment counter
+                $since->addDays(7);
+                $counter++;
+            }
+        });
+
+
+        return $this;
     }
 
-    /**
-     * @return \KuCoin\SDK\PrivateApi\Order
-     */
-    protected function queryOrder()
-    {
-        return new Order($this->connection);
-    }
-
-    /**
-     * @return array
-     * @throws \KuCoin\SDK\Exceptions\BusinessException
-     * @throws \KuCoin\SDK\Exceptions\HttpException
-     * @throws \KuCoin\SDK\Exceptions\InvalidApiUriException
-     */
-    public function getHoldings(): array
-    {
-        return $this->queryAccount()->getList();
-    }
-
-    /**
-     * @return array
-     * @throws \KuCoin\SDK\Exceptions\BusinessException
-     * @throws \KuCoin\SDK\Exceptions\HttpException
-     * @throws \KuCoin\SDK\Exceptions\InvalidApiUriException
-     */
-    public function getOrders()
-    {
-        return $this->getHoldings();
-
-        return (new Transaction($this->connection))->getDetail();
-
-
-        return (new Fill($this->connection))->getList([
-                "startAt" => mktime(0, 0, 0, 1, 1, 2010),
-                "endAt" => mktime(23, 59, 59, 12, 31, 2021),
-            ]
-
-        );
-        return $this->queryOrder()->getV1List([
-            "startAt" => mktime(0, 0, 0, 1, 1, 2010),
-            "endAt" => mktime(23, 59, 59, 12, 31, 2099),
-        ]);
-    }
+    ///**
+    // * @param string|null $symbol
+    // * @param \Carbon\Carbon|null $since
+    // * @return array
+    // * @throws \ccxt\ExchangeError
+    // */
+    //public function fetchTransactions(?string $symbol = null, ?Carbon $since = null): array
+    //{
+    //    // Kucoin API used: https://docs.kucoin.com/#list-fills
+    //    // "The system allows you to retrieve data up to one week (start from the last day by default)"
+    //    $data = [];
+    //    $counter = 0;
+    //
+    //    for($i = 0; $i < 30; $i = $i + 7) {
+    //        // Date
+    //        $date = now()->subDays($i);
+    //
+    //        // Data
+    //        $newData = $this->api->fetch_my_trades($symbol, null, null, [
+    //            "endAt" => $date->timestamp * 1000
+    //        ]);
+    //        $data = array_merge($data, $newData);
+    //
+    //        // Sleep because of Request Limit of 9 times/3s
+    //        if($counter % 8 === 0) { // Modulo 8 instead of 9, just to make sure
+    //            sleep(3);
+    //        }
+    //        $counter++;
+    //    }
+    //
+    //    return $data;
+    //}
 }

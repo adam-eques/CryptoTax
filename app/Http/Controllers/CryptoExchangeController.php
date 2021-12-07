@@ -31,59 +31,48 @@ class CryptoExchangeController extends Controller
         $exchangeAccount = $this->getAccount($exchange);
         $data = [];
         $error = "";
+        $driverClass = $exchangeAccount->cryptoExchange->driver;
+        $driver = $driverClass::make($exchangeAccount);
 
-        if($exchangeAccount->credentials) {
-            $driverClass = $exchangeAccount->cryptoExchange->driver;
-            try {
-                $driver = $driverClass::make($exchangeAccount)->connect();
 
-                //if($data = $driver->account()->getAll()) {
-                //    $data =  $data["data"];
-                //}
-            }
-            catch (\Exception $e) {
-                $error = json_decode($e->getMessage())->msg;
-            }
+        // Check for credentials
+        if(!$driver->checkRequiredCredentials()) {
+            return redirect(route("customer.crypto-exchange.edit", [
+                "exchange" => $exchange
+            ]))->with("error", __("Please provide all credentials"));
         }
 
-        /**
-         * @var \App\CryptoExchangeDrivers\KucoinDriver $driver
-         */
-        $con = $driver->queryAccount();
-        //->getList(['type' => 'trade']);
 
-
-        for($i = 0; $i < 30; $i++) {
-            $time = now()->subDays($i);
-            $res = $con->getLedgersV2([
-                "endAt" => $time->timestamp * 1000
-            ]);
-
-            if($res && $res["items"]) {
-                echo "<h2>" . $time->format("Y-m-d") . "</h2><pre>";
-                print_r($res);
-                echo "</pre>";
-            }
-
-            if($i % 15 == 0) {
-                sleep(4);
-            }
-        }
-
+        $driver->updateTransactions();
         exit;
-        print_r($con);exit;
+
+        //dd(
+        //    $driver->fetchTransactions()
+        //);
 
 
         return view("pages.customer.crypto-exchange.show", [
+            "name" => $exchangeAccount->cryptoExchange->name,
             "exchangeAccount" => $exchangeAccount,
             "data" => $data,
             "error" => $error
         ]);
     }
 
+    /**
+     * @param \App\Models\CryptoExchange $exchange
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit(CryptoExchange $exchange)
     {
+        $exchangeAccount = $this->getAccount($exchange);
+        $error = "";
 
+        return view("pages.customer.crypto-exchange.edit", [
+            "name" => $exchangeAccount->cryptoExchange->name,
+            "exchangeAccount" => $exchangeAccount,
+            "error" => $error
+        ]);
     }
 
     public function update(Request $request, $id)
