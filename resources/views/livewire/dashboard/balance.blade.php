@@ -2,8 +2,8 @@
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-3">
-            <img src="assets/img/icon/coin.png" class="w-8 h-9"/>
-            <h5>My Balance</h5>
+            <img src="assets/img/icon/coin.png" class="w-8 h-8"/>
+            <h1 class="text-lg text-black font-extrabold">My Balance</h1>
         </div>
         <div class="flex items-center space-x-3">
             <button class="hover:bg-color p-3 rounded-md">

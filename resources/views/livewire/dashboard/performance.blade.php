@@ -2,7 +2,7 @@
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-2 gap-0">
         <div class="flex items-center space-x-2">
-            <x-icon name="fas-chart-pie" class="w-8 h-8 text-color"/>
+            <img src="assets/img/icon/donut.png" class="w-8 h-8"/>
             <h1 class="text-lg text-black font-extrabold">My Performance</h1>
         </div>
         <div class="px-4 py-2 border rounded-sm">
