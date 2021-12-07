@@ -1,4 +1,4 @@
-<div class="bg-white shadow-sm rounded-md py-4 px-8">
+<div class="bg-white shadow-sm rounded-md py-4 px-8 h-full">
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
@@ -9,7 +9,7 @@
             <button class="bg-color text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
         </div>
     </div>
-    <div class=" overflow-auto">
+    <div class=" overflow-auto  mt-5">
         <table class="min-w-table w-full border my-5 px-5" style="min-width: 500px">
             <thead class="shadow-md">
                 <tr class="py-5">

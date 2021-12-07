@@ -32,6 +32,7 @@
                 </div>
                 <div class="col-span-5">
                     @livewire('dashboard.transaction')
+                    @livewire('dashboard.news')
                 </div>
             </div>
         </div>
