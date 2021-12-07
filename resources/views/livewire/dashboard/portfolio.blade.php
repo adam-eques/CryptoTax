@@ -13,7 +13,7 @@
         <table class="min-w-table w-full border my-5 px-5" style="min-width: 500px">
             <thead class="shadow-md">
                 <tr class="py-5">
-                    <th class="py-5 text-center">Name</th>
+                    <th class="py-5 text-left pl-5">Name</th>
                     <th class="py-5 text-right">Holdings</th>
                     <th class="py-5 text-right">Price</th>
                     <th class="py-5 text-center">All time unrealized return</th>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <tr class="px-5">
-                    <td class="p-3 flex items-center space-x-4">
+                    <td class="p-3 flex items-left space-x-4">
                         <img src="assets/img/icon/eth2.png" class="w-16 h-16"/>
                         <div class="text-left">
                             <p class=" font-extrabold text-black">Ethereum 2</p>
@@ -43,16 +43,16 @@
                 </tr>
                 <tr class="px-5">
                     <td class="p-3 flex items-center space-x-4 text-left">
-                        <img src="assets/img/icon/eth2.png" class="w-16 h-16"/>
+                        <img src="assets/img/icon/kucoin.png" class="w-16 h-16"/>
                         <div class="text-left">
-                            <p class=" font-extrabold text-black">Ethereum 2</p>
-                            <p class="text-gray-300">ETH2</p>
+                            <p class=" font-extrabold text-black">KuCoin Token</p>
+                            <p class="text-gray-300">KCS</p>
                         </div>
                     </td>
                     <td class="py-5 text-right">
                         <p>$1663</p>
                         <p class="text-gray-300">0.2261929</p>
-                        <p>ETH2</p>
+                        <p>KCS</p>
                     </td>
                     <td class="py-5 text-right">
                         <p>$3156.85</p>
@@ -63,16 +63,16 @@
                 </tr>
                 <tr class="px-5">
                     <td class="p-3 flex items-center space-x-4">
-                        <img src="assets/img/icon/eth2.png" class="w-16 h-16"/>
+                        <img src="assets/img/icon/dashcoin.png" class="w-16 h-16"/>
                         <div class="text-left">
-                            <p class=" font-extrabold text-black">Ethereum 2</p>
-                            <p class="text-gray-300">ETH2</p>
+                            <p class=" font-extrabold text-black">Dash Coin</p>
+                            <p class="text-gray-300">GZIL</p>
                         </div>
                     </td>
                     <td class="py-3 text-right">
                         <p>$1663</p>
                         <p class="text-gray-300">0.2261929</p>
-                        <p>ETH2</p>
+                        <p>GZIL</p>
                     </td>
                     <td class="py-3 text-right">
                         <p>$3156.85</p>
@@ -84,9 +84,9 @@
                 </tr>
                 <tr class="px-5">
                     <td class="p-3 flex items-center space-x-4">
-                        <img src="assets/img/icon/eth2.png" class="w-16 h-16"/>
+                        <img src="assets/img/icon/bitecoin.png" class="w-16 h-16"/>
                         <div class="text-left">
-                            <p class=" font-extrabold text-black">Ethereum 2</p>
+                            <p class=" font-extrabold text-black">Bitecoin</p>
                             <p class="text-gray-300">ETH2</p>
                         </div>
                     </td>

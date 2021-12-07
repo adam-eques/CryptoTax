@@ -30,7 +30,9 @@
                 <div class="col-span-7">
                     @livewire('dashboard.portfolio')
                 </div>
-                <div class="col-span-5"></div>
+                <div class="col-span-5">
+                    @livewire('dashboard.transaction')
+                </div>
             </div>
         </div>
     @elseif(auth()->user()->isAdminAccount())
