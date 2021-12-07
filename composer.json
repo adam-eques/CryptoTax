@@ -11,11 +11,11 @@
         "filament/forms": "^2.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kucoin/kucoin-php-sdk": "~1.1.0",
         "laravel/framework": "^8.65",
         "laravel/jetstream": "^2.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "linwj/kucoin": "^1.0",
         "livewire/livewire": "^2.5",
         "owenvoke/blade-fontawesome": "^1.10"
     },

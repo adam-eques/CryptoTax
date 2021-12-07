@@ -21,18 +21,13 @@ abstract class Driver
         return $obj;
     }
 
-
+    /**
+     * @return array
+     */
     protected function getCredentials() : array
     {
         return $this->exchangeAccount->credentials ?: [];
     }
-
-
-    public function query()
-    {
-        return $this->connection;
-    }
-
 
     /**
      * @return $this

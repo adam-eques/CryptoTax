@@ -37,14 +37,42 @@ class CryptoExchangeController extends Controller
             try {
                 $driver = $driverClass::make($exchangeAccount)->connect();
 
-                if($data = $driver->account()->getAll()) {
-                    $data =  $data["data"];
-                }
+                //if($data = $driver->account()->getAll()) {
+                //    $data =  $data["data"];
+                //}
             }
             catch (\Exception $e) {
                 $error = json_decode($e->getMessage())->msg;
             }
         }
+
+        /**
+         * @var \App\CryptoExchangeDrivers\KucoinDriver $driver
+         */
+        $con = $driver->queryAccount();
+        //->getList(['type' => 'trade']);
+
+
+        for($i = 0; $i < 30; $i++) {
+            $time = now()->subDays($i);
+            $res = $con->getLedgersV2([
+                "endAt" => $time->timestamp * 1000
+            ]);
+
+            if($res && $res["items"]) {
+                echo "<h2>" . $time->format("Y-m-d") . "</h2><pre>";
+                print_r($res);
+                echo "</pre>";
+            }
+
+            if($i % 15 == 0) {
+                sleep(4);
+            }
+        }
+
+        exit;
+        print_r($con);exit;
+
 
         return view("pages.customer.crypto-exchange.show", [
             "exchangeAccount" => $exchangeAccount,
