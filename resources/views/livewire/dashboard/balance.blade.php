@@ -20,14 +20,14 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4 mt-4">
         <div>
             <p class="text-md text-indigo-500">Total Balance</p>
-            <h2 class="text-black font-extrabold text-xl">$ 124, 563, 000</h2>
+            <h2 class="text-black font-extrabold text-2xl">$ 124, 563, 000</h2>
             <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 mt-5 mb-7">
                 <div class="bg-color h-1.5 rounded-full" style="width: 86%"></div>
             </div>            
         </div>
         <div>
             <p class="text-md text-indigo-500">Your Tax</p>
-            <h2 class="text-black font-extrabold text-xl">$ 124, 563, 000</h2>
+            <h2 class="text-black font-extrabold text-2xl">$ 124, 563, 000</h2>
             <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 mt-5 mb-7">
                 <div class="bg-color h-1.5 rounded-full" style="width: 96%"></div>
             </div>

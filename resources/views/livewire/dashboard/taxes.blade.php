@@ -20,17 +20,17 @@
            </thead>
            <tbody class="border">
                 <tr class="border">
-                    <td class="py-5">2021</td>
+                    <td class="py-5 flex items-center space-x-6 justify-center">2021 <img src="assets/img/icon/noti.png" class="w-4 h-4 ml-3"/></td>
                     <td class="py-5">+ $2,456.00</td>
                     <td class="py-5">$1659.00</td>
                 </tr>
                 <tr class="border py-5">
-                    <td class="py-5">2020</td>
+                    <td class="py-5 flex items-center space-x-6 justify-center">2020 <img src="assets/img/icon/noti.png" class="w-4 h-4 ml-3"/></td>
                     <td class="py-5">+ $2,456.00</td>
                     <td class="py-5">$1659.00</td>
                 </tr>
                 <tr class="border py-5">
-                    <td class="py-5">2019</td>
+                    <td class="py-5 flex items-center space-x-6 justify-center">2019 <img src="assets/img/icon/noti.png" class="w-4 h-4 ml-3"/></td>
                     <td class="py-5">+ $2,456.00</td>
                     <td class="py-5">$1659.00</td>
                 </tr>

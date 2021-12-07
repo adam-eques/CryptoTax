@@ -93,6 +93,9 @@ module.exports = {
                 '5.5xl': '3.5rem',
                 '6.5xl': ['4rem', '1.10'],
                 '7.5xl': '5rem',
+            },
+            minWidth: {
+                table: '700px'
             }
         },
     },

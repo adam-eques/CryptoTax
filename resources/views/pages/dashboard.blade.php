@@ -27,7 +27,9 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 md:gap-4 gap-0">
-                <div class="col-span-7"></div>
+                <div class="col-span-7">
+                    @livewire('dashboard.portfolio')
+                </div>
                 <div class="col-span-5"></div>
             </div>
         </div>
