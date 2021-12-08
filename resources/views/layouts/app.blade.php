@@ -16,7 +16,7 @@
         <script src="{{ mix('mix/js/app.js') }}" defer></script>
     </head>
     <body>
-        <x-jet-banner />
+{{--        <x-jet-banner />--}}
 
         <div class="overflow-hidden">
             <header>
@@ -26,12 +26,13 @@
 
             <main>
                 {{ $slot }}
+
             </main>
 
             @include("layouts.app.footer")
         </div>
 
-        @stack('modals')
         @livewireScripts
+        @livewire('livewire-toast')
     </body>
 </html>

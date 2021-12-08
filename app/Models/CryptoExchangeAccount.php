@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CryptoExchangeAccount extends Model
 {
     /**
-     * @var \App\CryptoExchangeDrivers\Driver
+     * @var \App\CryptoExchangeDrivers\Driver|null
      */
-    protected Driver $api;
+    protected ?Driver $api = null;
 
     /**
      * The attributes that should be cast.
@@ -55,7 +55,7 @@ class CryptoExchangeAccount extends Model
     {
         if (! $this->api || $forceReload) {
             $driverClass = $this->cryptoExchange->driver;
-            $this->api = $driverClass::make($this->credentials);
+            $this->api = $driverClass::make($this);
         }
 
         return $this->api;

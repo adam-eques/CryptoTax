@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -79,11 +81,19 @@ class User extends Authenticatable
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function cryptoExchangeAccounts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function cryptoExchangeAccounts(): HasMany
     {
         return $this->hasMany(CryptoExchangeAccount::class);
+    }
+
+    /**
+     * @return HasManyThrough
+     */
+    public function cryptoExchangeTransactions(): HasManyThrough
+    {
+        return $this->hasManyThrough(CryptoExchangeTransaction::class, CryptoExchangeAccount::class);
     }
 
 

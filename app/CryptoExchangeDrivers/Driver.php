@@ -24,7 +24,6 @@ abstract class Driver
         return $obj;
     }
 
-
     /**
      * @return $this
      */
@@ -36,6 +35,14 @@ abstract class Driver
     public function checkRequiredCredentials(): bool
     {
         return $this->api->check_required_credentials();
+    }
+
+    /**
+     * @return array
+     */
+    public function getRequiredCredentials(): array
+    {
+        return $this->api->requiredCredentials;
     }
 
     /**

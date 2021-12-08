@@ -14,7 +14,7 @@ class CryptoExchangeTransaction extends Model
     /**
      * @return BelongsTo
      */
-    public function exchangeAccount(): BelongsTo
+    public function cryptoExchangeAccount(): BelongsTo
     {
         return $this->belongsTo(CryptoExchangeAccount::class);
     }

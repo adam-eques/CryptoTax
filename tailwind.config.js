@@ -11,9 +11,11 @@ module.exports = {
             './storage/framework/views/*.php',
             './resources/views/**/*.blade.php',
             './vendor/filament/forms/resources/views/**/*.blade.php',
+            './vendor/filament/tables/resources/views/**/*.blade.php',
         ],
         safelist: [
             'bg-color-1',
+            'bottom-4','right-4',
         ]
     },
 
@@ -31,6 +33,8 @@ module.exports = {
                     green: '#33c15f',
                     danger: colors.rose,
                     primary: colors.blue,
+                    success: colors.green,
+                    warning: colors.yellow,
                 },
             },
             boxShadow: {
