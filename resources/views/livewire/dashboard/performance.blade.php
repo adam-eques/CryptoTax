@@ -47,10 +47,10 @@
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-4 mt-4 mb-8">
         <div class="col-span-3 p-4">
-            <canvas id="doughnutChart" class="w-full h-full"></canvas>
+           
         </div>
         <div class="col-span-5">
-            <canvas id="lineChart" class="w-auto h-full"></canvas>
+            
         </div>
     </div>
 </div>
