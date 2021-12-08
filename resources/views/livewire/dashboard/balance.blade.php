@@ -34,14 +34,14 @@
            
         </div>
         <div class="bg-color p-3 rounded-lg flex items-center space-x-5 my-2">
-            <div class="p-5 bg-white rounded-lg">
-
+            <div class="px-3 py-2 bg-white rounded-lg">
+                <img src="{{asset('assets/img/icon/wallet_icon.png')}}" class="w-8 h-8"/>
             </div>
             <h4 class="text-lg font-extrabold text-white">Add Wallet</h4>
         </div>
         <div class="bg-color-1 p-3 rounded-lg flex items-center space-x-5 my-2">
-            <div class="p-5 bg-white rounded-lg">
-
+            <div class="px-3 py-2 bg-white rounded-lg">
+                <img src="{{asset('assets/img/icon/tax_icon.png')}}" class="w-8 h-8"/>
             </div>
             <h4 class="text-lg font-extrabold text-white">Tax Optimizion</h4>
         </div>

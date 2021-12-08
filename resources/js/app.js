@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./myChart')
 
 import Alpine from 'alpinejs';
 import FormsAlpinePlugin from '../../vendor/filament/forms/dist/module.esm'

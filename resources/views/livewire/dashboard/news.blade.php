@@ -2,7 +2,7 @@
     {{-- Success is as dangerous as failure. --}}
     <div class="flex justify-between items-center py-3">
         <div class="flex items-center space-x-2">
-            <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-8 h-6"/>
+            <img src="{{asset('assets/img/icon/news.png')}}" class="w-8 h-8"/>
             <h1 class="text-lg text-black font-extrabold">Crypto News</h1>
         </div>
         <div class="flex items-center space-x-6">
