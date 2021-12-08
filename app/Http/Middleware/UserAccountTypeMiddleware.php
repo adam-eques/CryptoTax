@@ -16,7 +16,7 @@ class UserAccountTypeMiddleware
         ];
         $method = $types[$typeSlug];
 
-        if(!$request->user()->$method()) {
+        if(!$request->user() || !$request->user()->$method()) {
             abort(403);
         }
 
