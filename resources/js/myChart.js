@@ -74,7 +74,7 @@ let myChart1 = new Chart(ctx1, {
         responsive: true,
         plugins: {
             legend: {
-                display: true	
+                display: false	
             },
             title: {
                 display: false
