@@ -38,20 +38,20 @@
                                 <x-coin :name="$row['coin']" />
                             </td>
                             <td class="px-6 py-4">
-                                {{ money($row["holdings"]) }} USD
+                                {{ moneyFormat($row["holdings"]) }} USD
                             </td>
                             <td class="px-6 py-4">
-                                $ {{ money($row["market_value"]) }}
+                                $ {{ moneyFormat($row["market_value"]) }}
                             </td>
                             <td class="px-6 py-4">
-                                <p>$ {{ money($row["cost_basis"]) }}</p>
-                                <p class="text-xs text-gray-500">$ {{ money($row["cost_basis_per_unit"]) }} per BTC</p>
+                                <p>$ {{ moneyFormat($row["cost_basis"]) }}</p>
+                                <p class="text-xs text-gray-500">$ {{ moneyFormat($row["cost_basis_per_unit"]) }} per BTC</p>
                             </td>
                             <td class="px-6 py-4 text-color-green">
-                                +$ {{ money($row["unrealized_gains"]) }}
+                                +$ {{ moneyFormat($row["unrealized_gains"]) }}
                             </td>
                             <td class="px-6 py-4 text-center font-bold">
-                                <x-jet-button class="bg-color-green">$ {{ money($row["potential_savings"]) }} USD</x-jet-button>
+                                <x-jet-button class="bg-color-green">$ {{ moneyFormat($row["potential_savings"]) }} USD</x-jet-button>
                             </td>
                         </tr>
                     @endforeach

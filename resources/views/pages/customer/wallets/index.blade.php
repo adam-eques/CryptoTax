@@ -21,7 +21,7 @@
                                             <h3 class="xl:text-xl font-semibold text-gray-700">{{ $item["name"] }}</h3>
                                             <p class="text-gray-400 text-xs xl:text-md">Updating...</p>
                                         </div>
-                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ money($item["price"], 2) }}</p>
+                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
                                     </div>
                                 @endforeach
                             </div>
