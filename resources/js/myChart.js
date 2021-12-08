@@ -31,19 +31,9 @@ let myChart = new Chart(ctx, {
         }]
     },
     options: {
-        cutout: 95,
+        cutout: 80,
         scales: {
-            yAxes: [{
-                gridLines: {
-                    drawBorder: false,
-                },
-            }]
-        },
-        pieceLabel: {
-            render: 'label',
-            fontColor: '#000',
-            position: 'outside',
-            segment: true
+           
         },
         responsive: true,
         plugins: {
@@ -64,10 +54,10 @@ let ctx1 = document.getElementById('lineChart').getContext('2d');
 let myChart1 = new Chart(ctx1, {
     type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Sep11', 'Sep12', 'Sep13', 'Sep14', 'Sep15', 'Sep16', 'Sep17'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '#',
+            data: [12, 19, 3, 5, 2, 3, 10],
             backgroundColor: [
                 '#7a6cff',
             ],
@@ -79,20 +69,15 @@ let myChart1 = new Chart(ctx1, {
     },
     options: {
         scales: {
-            yAxes: [{
-                gridLines: {
-                    drawBorder: false,
-                },
-            }]
+            
         },
         responsive: true,
         plugins: {
             legend: {
-                display: false	
+                display: true	
             },
             title: {
-                display: false,
-                text: 'Chart.js Doughnut Chart'
+                display: false
             }
         }
     }
