@@ -16,6 +16,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @package App\Models
  *
  * @property int $user_account_type_id
+ *
+ *
+ * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
  */
 class User extends Authenticatable
 {
