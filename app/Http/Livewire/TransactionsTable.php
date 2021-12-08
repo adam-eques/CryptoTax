@@ -58,7 +58,7 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make('executed_at')
                 ->formatStateUsing(fn ( $state): string => (new Carbon($state / 1000))->format("Y-m-d H:i:s"))
                 ->sortable(),
-            TextColumn::make('cryptoExchangeAccount.cryptoExchange.name')->label('Exchange')->sortable()->searchable(),
+            TextColumn::make('cryptoExchangeAccount.cryptoExchange.name')->label('Exchange')->searchable(),
             TextColumn::make('external_id')->sortable()->searchable(),
             TextColumn::make('order')->sortable()->searchable(),
             TextColumn::make('symbol')->sortable()->searchable(),
