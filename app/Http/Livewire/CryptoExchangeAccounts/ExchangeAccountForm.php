@@ -20,10 +20,14 @@ class ExchangeAccountForm extends Component implements Forms\Contracts\HasForms
     protected CryptoExchangeAccount $account;
 
 
+    public function hydrate()
+    {
+        $this->initAccount();
+    }
+
     public function mount(): void
     {
-        $this->cryptoExchange = CryptoExchange::query()->where("id", $this->cryptoExchangeId)->first();
-        $this->account = $this->getOrCreateAccount();
+        $this->initAccount();
         $cred = $this->account->credentials ?: [];
 
         if($cred) {
@@ -35,12 +39,10 @@ class ExchangeAccountForm extends Component implements Forms\Contracts\HasForms
         }
     }
 
-    /**
-     * @return \App\Models\CryptoExchangeAccount
-     */
-    private function getOrCreateAccount(): CryptoExchangeAccount
+    private function initAccount()
     {
         $user = request()->user();
+        $this->cryptoExchange = CryptoExchange::query()->where("id", $this->cryptoExchangeId)->first();
         $account = $user->cryptoExchangeAccounts()->whereBelongsTo($this->cryptoExchange)->first();
 
         // Just for presentation purpose
@@ -52,7 +54,7 @@ class ExchangeAccountForm extends Component implements Forms\Contracts\HasForms
             $account->save();
         }
 
-        return $account;
+        $this->account = $account;
     }
 
 
@@ -87,10 +89,19 @@ class ExchangeAccountForm extends Component implements Forms\Contracts\HasForms
 
     public function submit()
     {
-        $this->cryptoExchange = CryptoExchange::query()->where("id", $this->cryptoExchangeId)->first();
-        $this->account = $this->getOrCreateAccount();
+        // Save credentials
         $this->account->credentials = $this->form->getState();
         $this->account->save();
+
+        // Test
+        try {
+            $api = $this->account->getApi(true);
+            $api->fetchBalance();
+        }
+        catch(\Exception $e) {
+            $this->emitTo('livewire-toast', 'showError', 'Exchange credentials are wrong: ' . $e->getMessage());
+            return;
+        }
 
         // Add job
         CryptoExchangeFetchJob::dispatch($this->account);

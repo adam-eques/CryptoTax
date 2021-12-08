@@ -60,6 +60,11 @@ abstract class Driver
         return $this;
     }
 
+    public function getApi()
+    {
+        return $this->api;
+    }
+
     /**
      * @param array $data
      * @param \Carbon\Carbon $timestamp
@@ -109,6 +114,14 @@ abstract class Driver
             "fee_currency" => \Arr::get($data, "fee.currency"),
             "data" => $info ? json_encode($info) : null,
         ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function fetchBalance()
+    {
+        return $this->api->fetch_balance();
     }
 
     /**

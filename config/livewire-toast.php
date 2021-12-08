@@ -8,7 +8,7 @@ return [
     //bottom-right, bottom-left, top-right, top-left
     'position' => 'bottom-right', //default is bottom-right; Needed to be added to tailwind.config.js
     //duration in ms for which the Toast is visible. Specify 0 if you do not want to hide it.
-    'duration' => 1000000, //default is 3000
+    'duration' => 4000, //default is 3000
     //Whether to show icon next to message.
     'show_icon' => true, //default is true
     //Whether to hide message on click.
