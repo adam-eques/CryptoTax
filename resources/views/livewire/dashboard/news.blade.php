@@ -2,7 +2,7 @@
     {{-- Success is as dangerous as failure. --}}
     <div class="flex justify-between items-center py-3">
         <div class="flex items-center space-x-2">
-            <img src="assets/img/icon/portfolio.png" class="w-8 h-6"/>
+            <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-8 h-6"/>
             <h1 class="text-lg text-black font-extrabold">Crypto News</h1>
         </div>
         <div class="flex items-center space-x-6">
@@ -16,7 +16,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 items-center">
         <div>
-            <img src="assets/img/png/news_img.png" class="w-full h-full object-cover"/>
+            <img src="{{asset('assets/img/png/news_img.png')}}" class="w-full h-full object-cover"/>
         </div>
         <div>
             <h5 class="font-bold">Cryptocurrency exchanges start blocking account</h5>

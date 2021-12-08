@@ -6,7 +6,7 @@
             <p class="py-3 text-sm md:text-md lg:text-lg">Lerem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aloqua ut enim ad minim venam, quis nostrud exerctation ullamco alboris nisi</p>
         </div>
         <div class="md:block hidden">
-            <img src="assets/img/png/about.png" class="xl:w-96 lg:w-80 w-70 absolute top-2"/>
+            <img src="{{asset('assets/img/png/about.png')}}" class="xl:w-96 lg:w-80 w-70 absolute top-2"/>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-3">
-            <img src="assets/img/icon/coin.png" class="w-8 h-8"/>
+            <img src="{{asset('assets/img/icon/coin.png')}}" class="w-8 h-8"/>
             <h1 class="text-lg text-black font-extrabold">My Balance</h1>
         </div>
         <div class="flex items-center space-x-3">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="py-5">
-        <img src="assets/img/svg/credit_card.svg" class=" w-9/12 mx-auto"/>
+        <img src="{{asset('assets/img/svg/credit_card.svg')}}" class=" w-9/12 mx-auto"/>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-4">
         <div>
