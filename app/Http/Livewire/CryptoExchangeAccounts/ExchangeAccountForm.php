@@ -16,8 +16,8 @@ class ExchangeAccountForm extends Component implements Forms\Contracts\HasForms
     public ?string $key = null;
     public ?string $passphrase = null;
     public ?string $secret = null;
-    protected CryptoExchange $cryptoExchange;
-    protected CryptoExchangeAccount $account;
+    public CryptoExchange $cryptoExchange;
+    public CryptoExchangeAccount $account;
 
 
     public function hydrate()
