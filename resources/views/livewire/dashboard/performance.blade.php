@@ -1,6 +1,6 @@
 <div class="my-8 bg-white shadow-sm rounded-md py-4 px-8">
     {{-- Because she competes with no one, no one can compete with her. --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-2 gap-0">
+    <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 md:gap-2 gap-0">
         <div class="flex items-center space-x-2 py-5">
             <img src="assets/img/icon/donut.png" class="w-8 h-8"/>
             <h1 class="text-lg text-black font-extrabold">My Performance</h1>

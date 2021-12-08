@@ -16,7 +16,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 items-center">
         <div>
-            <img src="assets/img/png/news_img.png" class="w-full h-full"/>
+            <img src="assets/img/png/news_img.png" class="w-full h-full object-cover"/>
         </div>
         <div>
             <h5 class="font-bold">Cryptocurrency exchanges start blocking account</h5>

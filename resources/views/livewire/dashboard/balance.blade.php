@@ -17,7 +17,7 @@
     <div class="py-5">
         <img src="assets/img/svg/credit_card.svg" class=" w-9/12 mx-auto"/>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4 mt-4">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-4">
         <div>
             <p class="text-md text-indigo-500">Total Balance</p>
             <h2 class="text-black font-extrabold text-2xl">$ 124, 563, 000</h2>

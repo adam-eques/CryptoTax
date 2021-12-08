@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class=" overflow-auto  mt-5">
-        <table class="min-w-table w-full border my-5 px-5" style="min-width: 500px">
+        <table class="min-w-clg w-full border my-5 px-5" style="min-width: 500px">
             <thead class="shadow-md">
                 <tr class="py-5">
                     <th class="py-5 text-left pl-5">Name</th>

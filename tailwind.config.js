@@ -95,7 +95,8 @@ module.exports = {
                 '7.5xl': '5rem',
             },
             minWidth: {
-                table: '700px'
+                clg: '800px',
+                cmd: '400px'
             }
         },
     },
