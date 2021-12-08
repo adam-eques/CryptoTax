@@ -1,4 +1,4 @@
-<div class="my-8 bg-white shadow-sm rounded-md py-4 px-8">
+<div class="my-14 bg-white shadow-sm rounded-md py-4 px-8">
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 md:gap-2 gap-0">
         <div class="flex items-center space-x-2 py-5">
@@ -31,8 +31,12 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-7">
-        <div class="col-span-3">2</div>
-        <div class="col-span-4">1</div>
+    <div class="grid grid-cols-1 md:grid-cols-8 gap-0 md:gap-4 mt-16 mb-8">
+        <div class="col-span-3">
+            <canvas id="doughnutChart" class="w-full h-full"></canvas>
+        </div>
+        <div class="col-span-5">
+            <canvas id="lineChart" class="w-auto h-full"></canvas>
+        </div>
     </div>
 </div>
