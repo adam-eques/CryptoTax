@@ -4,6 +4,9 @@
         <div>
             @livewire('portfolio.header')
         </div>
+        <div>
+            @livewire('portfolio.situation')
+        </div>
     </div>
     @endif
 </x-app-layout>
