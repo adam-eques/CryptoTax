@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 md:gap-4 py-5">
     {{-- Because she competes with no one, no one can compete with her. --}}
-    <div class="shadow-md p-4 rounded-md bg-color-1 bg-opacity-10">
+    <div class="shadow-md p-4 rounded-md bg-color-1 bg-opacity-10 my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div class="rounded-full w-6 h-6 bg-color-green relative">
                 <x-icon name='fas-arrow-up' class="text-white w-4 h-4 absolute top-1 left-1" />
@@ -16,7 +16,7 @@
             <span class=" text-5xl font-extrabold">20,806</span>
         </div>
     </div>
-    <div class="shadow-md p-4 rounded-md bg-color-danger-500 bg-opacity-10">
+    <div class="shadow-md p-4 rounded-md bg-color-danger-500 bg-opacity-10 my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div class="rounded-full w-6 h-6 bg-color-danger-500 relative">
                 <x-icon name='fas-arrow-down' class="text-white w-4 h-4 absolute top-1 left-1" />
@@ -32,7 +32,7 @@
             <span class=" text-5xl font-extrabold">1,025</span>
         </div>
     </div>
-    <div class="shadow-md p-4 rounded-md bg-color-primary-500 bg-opacity-10">
+    <div class="shadow-md p-4 rounded-md bg-color-primary-500 bg-opacity-10 my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
                 <img src="{{asset('assets/img/icon/net_deposits.png')}}" class="text-white w-8 h-8" />
@@ -45,7 +45,7 @@
             <span class=" text-5xl font-extrabold">12,259</span>
         </div>
     </div>
-    <div class="shadow-md p-4 rounded-md bg-color-warning-500 bg-opacity-10">
+    <div class="shadow-md p-4 rounded-md bg-color-warning-500 bg-opacity-10 my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
                 <img src="{{asset('assets/img/icon/net_proceeds.png')}}" class="text-white w-8 h-8" />

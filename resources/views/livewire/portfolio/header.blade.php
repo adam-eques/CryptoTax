@@ -1,19 +1,19 @@
 <div>
     {{-- Do your work, then step back. --}}
-    <div class="w-full border-b py-5">
+    <div class="w-full border-b py-2">
         <div class="grid grid-cols-1 md:grid-cols-5">
-            <div class="flex items-center justify-start space-x-6 col-span-3">
+            <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
                 <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-10 h-8"/>
                 <h4 class="text-2xl font-extrabold">Portfolio</h4>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2">
-                <div>
+                <div class="py-2">
                     <button class="border border-color rounded-lg w-full h-full py-3 text-color">Today</button>
                 </div>
-                <div>
+                <div class="py-2">
                     <button class="border border-color rounded-lg w-full h-full py-3 text-color">Past day</button>
                 </div>
-                <div  x-data="{ isOpen: false}" class="relative">
+                <div  x-data="{ isOpen: false}" class="relative py-2">
                     <button 
                         class="border rounded-lg w-full h-full bg-color text-white font-bold py-3"
                         @click="isOpen = !isOpen" 
