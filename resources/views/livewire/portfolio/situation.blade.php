@@ -11,9 +11,17 @@
             </div>
             <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
         </div>
-        <div class="flex justify-start items-start px-5 pt-4">
-            <span class="text-xl font-bold">$</span>
-            <span class=" text-5xl font-extrabold">20,806</span>
+        <div class="flex items-center justify-between">
+            <div class="flex justify-start items-start px-5 pt-4">
+                <span class="text-xl font-bold">$</span>
+                <span class=" text-5xl font-extrabold">20,806</span>
+            </div>
+            <div class="h-16">
+                <livewire:livewire-line-chart
+                    key="{{ $lineChartModel->reactiveKey() }}"
+                    :line-chart-model="$lineChartModel"
+                />
+            </div>
         </div>
     </div>
     <div class="shadow-md p-4 rounded-md bg-color-danger-500 bg-opacity-10 my-2">
@@ -27,9 +35,17 @@
             </div>
             <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
         </div>
-        <div class="flex justify-start items-start px-5 pt-4">
-            <span class="text-xl font-bold">$</span>
-            <span class=" text-5xl font-extrabold">1,025</span>
+        <div class="flex items-center justify-between">
+            <div class="flex justify-start items-start px-5 pt-4">
+                <span class="text-xl font-bold">$</span>
+                <span class=" text-5xl font-extrabold">1,025</span>
+            </div>
+            <div class="h-16">
+                <livewire:livewire-line-chart
+                    key="{{ $lineChartModel->reactiveKey() }}"
+                    :line-chart-model="$lineChartModel"
+                />
+            </div>
         </div>
     </div>
     <div class="shadow-md p-4 rounded-md bg-color-primary-500 bg-opacity-10 my-2">
