@@ -2,7 +2,7 @@
     {{-- The Master doesn't talk, he acts. --}}
     <div class="p-5 flex items-center justify-between">
         <div>
-            <p>Total Income</p>
+            <p class="py-2">Total Income</p>
             <div class="flex items-start space-x-2">
                 <p class="text-lg font-bold">$</p>
                 <h2 class="text-5xl font-extrabold">36,806</h2>
