@@ -34,5 +34,6 @@
 
         @livewireScripts
         @livewire('livewire-toast')
+        @livewireChartsScripts
     </body>
 </html>
