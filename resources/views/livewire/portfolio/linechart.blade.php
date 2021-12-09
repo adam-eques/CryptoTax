@@ -17,7 +17,7 @@
             <button class="font-bold">ALL</button>
         </div>
     </div>
-    <div class="p-4 h-90">
+    <div class="px-4 h-90">
         <livewire:livewire-line-chart
             key="{{ $lineChartModel->reactiveKey() }}"
             :line-chart-model="$lineChartModel"

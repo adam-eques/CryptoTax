@@ -9,32 +9,12 @@ use Livewire\Component;
 
 class Linechart extends Component
 {
-    public $types = ['Sep 11', 'Sep 12', 'Sep 13', 'Sep 14', 'Sep 15'];
+    public $types = ['Sep11', 'Sep12', 'Sep13', 'Sep14', 'Sep15'];
 
     public $firstRun = true;
 
     public $showDataLabels = false;
-
-    protected $listeners = [
-        'onPointClick' => 'handleOnPointClick',
-        'onSliceClick' => 'handleOnSliceClick',
-        'onColumnClick' => 'handleOnColumnClick',
-    ];
-
-    public function handleOnPointClick($point)
-    {
-        dd($point);
-    }
-
-    public function handleOnSliceClick($slice)
-    {
-        dd($slice);
-    }
-
-    public function handleOnColumnClick($column)
-    {
-        dd($column);
-    }
+    
     public function render()
     {
         $expenses = Expense::whereIn('type', $this->types)->get();
@@ -54,13 +34,10 @@ class Linechart extends Component
 
             return $lineChartModel->addPoint($index, $data->amount, ['id' => $data->id]);
         }, LivewireCharts::lineChartModel()
-            //->setTitle('Expenses Evolution')
             ->setAnimated($this->firstRun)
-            ->withOnPointClickEvent('onPointClick')
             ->setSmoothCurve()
             ->setXAxisVisible(true)
             ->setDataLabelsEnabled($this->showDataLabels)
-            ->sparklined()
             ->withGrid()
         );
 
