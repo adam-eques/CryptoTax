@@ -11,7 +11,7 @@
     </div>
     <div class=" overflow-auto  mt-5">
         <table class="min-w-clg w-full border my-5 px-5" style="min-width: 500px">
-            <thead class="shadow-md">
+            <thead class="border bg-gray-100">
                 <tr class="py-5">
                     <th class="py-5 text-left pl-5">Name</th>
                     <th class="py-5 text-right">Holdings</th>
