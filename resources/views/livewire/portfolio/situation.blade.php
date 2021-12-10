@@ -12,12 +12,12 @@
             <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
         </div>
         <div class="flex items-center justify-between">
-            <div class="flex justify-start items-start px-5 pt-4">
+            <div class="flex justify-start items-start px-5">
                 <span class="text-xl font-bold">$</span>
                 <span class=" text-5xl font-extrabold">20,806</span>
             </div>
             <div class="h-16">
-               
+                <div id="situation-line-1"></div>
             </div>
         </div>
     </div>
@@ -33,12 +33,12 @@
             <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
         </div>
         <div class="flex items-center justify-between">
-            <div class="flex justify-start items-start px-5 pt-4">
+            <div class="flex justify-start items-start px-5">
                 <span class="text-xl font-bold">$</span>
                 <span class=" text-5xl font-extrabold">1,025</span>
             </div>
             <div class="h-16">
-              
+                <div id="situation-line-2"></div>
             </div>
         </div>
     </div>
@@ -69,3 +69,85 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        (function () {
+            var options = {
+                chart: {
+                    type: 'line',
+                    toolbar: {
+                        show: false,
+                    },
+                    height: '100%'
+                },
+                series: [{
+                    name: 'sales',
+                    data: [30,50,35,50,49,20,70,30,50]
+                }],
+                grid: {
+                    show: false
+                },
+                xaxis: {
+                    labels: {
+                        show: false,
+                    },
+                    axisBorder: {
+                        show: false
+                    }
+                },
+                yaxis: {
+                    show: false
+                },
+                legend: {
+                    show: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                colors: ["#ee8f8d"],              
+            }
+            const chart = new ApexCharts(document.getElementById(`situation-line-2`), options);
+            chart.render();
+
+            var options_1 = {
+                chart: {
+                    type: 'line',
+                    toolbar: {
+                        show: false,
+                    },
+                    height: '100%'
+                },
+                series: [{
+                    name: 'sales',
+                    data: [30,50,35,50,49,20,70,30,50]
+                }],
+                grid: {
+                    show: false
+                },
+                xaxis: {
+                    labels: {
+                        show: false,
+                    },
+                    axisBorder: {
+                        show: false
+                    }
+                },
+                yaxis: {
+                    show: false
+                },
+                legend: {
+                    show: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                colors: ["#73e26c"],              
+            }
+            const chart_1 = new ApexCharts(document.getElementById(`situation-line-1`), options_1);
+            chart_1.render();
+        }());
+    </script>
+@endpush

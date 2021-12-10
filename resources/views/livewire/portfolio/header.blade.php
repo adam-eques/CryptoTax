@@ -8,7 +8,10 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2">
                 <div class="py-2">
-                    <button class="border border-color rounded-lg w-full h-full py-3 text-color">Today</button>
+                    <button class="flex items-center justify-center space-x-6 border border-color rounded-lg w-full h-full py-3 text-color">
+                        <x-icon name="fas-calendar" class="text-color w-6 h-6"></x-icon>
+                        <p>Today</p>
+                    </button>
                 </div>
                 <div class="py-2">
                     <button class="border border-color rounded-lg w-full h-full py-3 text-color">Past day</button>

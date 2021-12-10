@@ -1,8 +1,11 @@
 <div>
     {{-- The whole world belongs to you. --}}
-    <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
-        <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-10 h-8"/>
-        <h4 class="text-2xl font-extrabold">My Crypto Portfolio</h4>
+    <div class="flex justify-between items-center">
+        <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
+            <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-10 h-8"/>
+            <h4 class="text-2xl font-extrabold">My Crypto Portfolio</h4>
+        </div>
+        <button class="bg-color px-4 py-2 rounded-md text-white font-bold">See all assets</button>
     </div>
     <div class="overflow-auto">
         <table class="min-w-clg w-full border my-5 px-5" style="min-width: 500px">
@@ -15,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="px-5">
+                <tr class="px-5 bg-gray-100">
                     <td class="p-3 flex items-left space-x-4">
                         <img src="{{asset('assets/img/icon/eth2.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
@@ -56,7 +59,7 @@
                         <p>$699.12</p>
                     </td>
                 </tr>
-                <tr class="px-5">
+                <tr class="px-5 bg-gray-100">
                     <td class="p-3 flex items-center space-x-4">
                         <img src="{{asset('assets/img/icon/dashcoin.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
