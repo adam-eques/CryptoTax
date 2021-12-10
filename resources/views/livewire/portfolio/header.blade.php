@@ -8,17 +8,17 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2">
                 <div class="py-2">
-                    <button class="flex items-center justify-center space-x-6 border border-color rounded-lg w-full h-full py-3 text-color">
+                    <button class="flex items-center justify-center space-x-6 border border-color hover:bg-indigo-700 rounded-lg w-full h-full py-3 text-color hover:text-white">
                         <x-icon name="fas-calendar" class="text-color w-6 h-6"></x-icon>
                         <p>Today</p>
                     </button>
                 </div>
                 <div class="py-2">
-                    <button class="border border-color rounded-lg w-full h-full py-3 text-color">Past day</button>
+                    <button class="border border-color hover:bg-indigo-700 rounded-lg w-full h-full py-3 text-color hover:text-white">Past day</button>
                 </div>
                 <div  x-data="{ isOpen: false}" class="relative py-2">
                     <button 
-                        class="border rounded-lg w-full h-full bg-color text-white font-bold py-3"
+                        class="border rounded-lg w-full h-full bg-color hover:bg-indigo-700 text-white font-bold py-3"
                         @click="isOpen = !isOpen" 
                         @keydown.escape="isOpen = false" 
                     >
