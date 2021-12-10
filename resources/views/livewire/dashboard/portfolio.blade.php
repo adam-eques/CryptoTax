@@ -25,12 +25,12 @@
                         <img src="{{asset('assets/img/icon/eth2.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
                             <p class=" font-extrabold text-black">Ethereum 2</p>
-                            <p class="text-gray-300">ETH2</p>
+                            <p class="text-gray-400">ETH2</p>
                         </div>
                     </td>
                     <td class="py-5 text-right">
                         <p>$1663</p>
-                        <p class="text-gray-300">0.2261929</p>
+                        <p class="text-gray-400">0.2261929</p>
                         <p>ETH2</p>
                     </td>
                     <td class="py-5 text-right">
@@ -46,12 +46,12 @@
                         <img src="{{asset('assets/img/icon/kucoin.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
                             <p class=" font-extrabold text-black">KuCoin Token</p>
-                            <p class="text-gray-300">KCS</p>
+                            <p class="text-gray-400">KCS</p>
                         </div>
                     </td>
                     <td class="py-5 text-right">
                         <p>$1663</p>
-                        <p class="text-gray-300">0.2261929</p>
+                        <p class="text-gray-400">0.2261929</p>
                         <p>KCS</p>
                     </td>
                     <td class="py-5 text-right">
@@ -66,12 +66,12 @@
                         <img src="{{asset('assets/img/icon/dashcoin.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
                             <p class=" font-extrabold text-black">Dash Coin</p>
-                            <p class="text-gray-300">GZIL</p>
+                            <p class="text-gray-400">GZIL</p>
                         </div>
                     </td>
                     <td class="py-3 text-right">
                         <p>$1663</p>
-                        <p class="text-gray-300">0.2261929</p>
+                        <p class="text-gray-400">0.2261929</p>
                         <p>GZIL</p>
                     </td>
                     <td class="py-3 text-right">
@@ -87,12 +87,12 @@
                         <img src="{{asset('assets/img/icon/bitecoin.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
                             <p class=" font-extrabold text-black">Bitecoin</p>
-                            <p class="text-gray-300">ETH2</p>
+                            <p class="text-gray-400">ETH2</p>
                         </div>
                     </td>
                     <td class="py-5 text-right">
                         <p>$1663</p>
-                        <p class="text-gray-300">0.2261929</p>
+                        <p class="text-gray-400">0.2261929</p>
                         <p>ETH2</p>
                     </td>
                     <td class="py-5 text-right">
