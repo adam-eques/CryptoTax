@@ -17,10 +17,7 @@
                 <span class=" text-5xl font-extrabold">20,806</span>
             </div>
             <div class="h-16">
-                <livewire:livewire-line-chart
-                    key="{{ $lineChartModel->reactiveKey() }}"
-                    :line-chart-model="$lineChartModel"
-                />
+               
             </div>
         </div>
     </div>
@@ -41,10 +38,7 @@
                 <span class=" text-5xl font-extrabold">1,025</span>
             </div>
             <div class="h-16">
-                <livewire:livewire-line-chart
-                    key="{{ $lineChartModel->reactiveKey() }}"
-                    :line-chart-model="$lineChartModel"
-                />
+              
             </div>
         </div>
     </div>
