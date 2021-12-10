@@ -9,7 +9,7 @@
         </div>
         <div>
             <button class="bg-color flex justify-center items-center space-x-2 px-6 py-3 rounded-lg">
-                <img src={{asset('assets/img/icon/account_icon.png')}} class="w-8 h-8"/>
+                <img src={{asset('assets/img/icon/tax_icon_1.png')}} class="w-10 h-10"/>
                 <p class="text-white font-bold">Add tax professional</p>
             </button>
         </div>

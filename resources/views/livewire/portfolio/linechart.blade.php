@@ -9,12 +9,12 @@
             </div>
         </div>
         <div class="flex items-center space-x-2">
-            <button class="font-bold hover:bg-color p-3 rounded-lg">1D</button>
-            <button class="font-bold hover:bg-color p-3 rounded-lg">1W</button>
-            <button class="font-bold hover:bg-color p-3 rounded-lg">1M</button>
-            <button class="font-bold hover:bg-color p-3 rounded-lg">3M</button>
-            <button class="font-bold hover:bg-color p-3 rounded-lg">1Y</button>
-            <button class="font-bold hover:bg-color p-3 rounded-lg">ALL</button>
+            <button class="font-bold hover:bg-color">1D</button>
+            <button class="font-bold hover:bg-color">1W</button>
+            <button class="font-bold hover:bg-color">1M</button>
+            <button class="font-bold hover:bg-color">3M</button>
+            <button class="font-bold hover:bg-color">1Y</button>
+            <button class="font-bold hover:bg-color">ALL</button>
         </div>
     </div>
     <div class="px-4 h-90">
