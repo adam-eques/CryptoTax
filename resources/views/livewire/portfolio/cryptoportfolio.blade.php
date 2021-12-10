@@ -8,8 +8,8 @@
         <button class="bg-color hover:bg-indigo-700 text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
     </div>
     <div class="overflow-auto">
-        <table class="min-w-clg w-full border my-5 px-5" style="min-width: 500px">
-            <thead class="shadow-md">
+        <table class="min-w-clg w-full border my-5 px-5">
+            <thead class="border bg-gray-100">
                 <tr class="py-5">
                     <th class="py-5 text-left pl-5">Name</th>
                     <th class="py-5 text-right">Holdings</th>
@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="px-5 bg-gray-100">
+                <tr class="px-5">
                     <td class="p-3 flex items-left space-x-4">
                         <img src="{{asset('assets/img/icon/eth2.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
@@ -59,7 +59,7 @@
                         <p>$699.12</p>
                     </td>
                 </tr>
-                <tr class="px-5 bg-gray-100">
+                <tr class="px-5">
                     <td class="p-3 flex items-center space-x-4">
                         <img src="{{asset('assets/img/icon/dashcoin.png')}}" class="w-16 h-16"/>
                         <div class="text-left">
