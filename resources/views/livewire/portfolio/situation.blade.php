@@ -94,6 +94,9 @@
                     },
                     axisBorder: {
                         show: false
+                    },
+                    axisTicks: {
+                        show: false
                     }
                 },
                 yaxis: {
@@ -131,6 +134,9 @@
                         show: false,
                     },
                     axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
                         show: false
                     }
                 },

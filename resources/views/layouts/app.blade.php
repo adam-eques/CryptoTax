@@ -35,8 +35,7 @@
         </div>
 
         @livewireScripts
-        @livewire('livewire-toast')
-        @livewireChartsScripts     
+        @livewire('livewire-toast') 
         @stack('scripts')
     </body>
 </html>
