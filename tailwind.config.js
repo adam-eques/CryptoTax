@@ -35,6 +35,9 @@ module.exports = {
                     primary: colors.blue,
                     success: colors.green,
                     warning: colors.yellow,
+                    lightgreen: '#edfeec',
+                    lightpink: '#fff5f4',
+                    lightblue: '#f7f6fe'
                 },
             },
             boxShadow: {

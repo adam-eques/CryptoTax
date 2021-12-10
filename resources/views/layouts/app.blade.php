@@ -14,6 +14,8 @@
 
         <!-- Scripts -->
         <script src="{{ mix('mix/js/app.js') }}" defer></script>
+        {{-- Push ApexCharts to the top of the scripts stack --}}
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     </head>
     <body>
 {{--        <x-jet-banner />--}}
@@ -34,6 +36,7 @@
 
         @livewireScripts
         @livewire('livewire-toast')
-        @livewireChartsScripts
+        @livewireChartsScripts     
+        @stack('scripts')
     </body>
 </html>
