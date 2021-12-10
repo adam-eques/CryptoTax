@@ -6,7 +6,7 @@
             <h1 class="text-lg text-black font-extrabold">Crypto Taxes</h1>
         </div>
         <div>
-            <button class="bg-color text-white rounded-lg py-2 px-5 text-sm">See Details</button>
+            <button class="bg-color hover:bg-indigo-700 text-white rounded-lg py-2 px-5 text-sm">See Details</button>
         </div>
     </div>
     <div class="py-5">

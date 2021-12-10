@@ -6,7 +6,7 @@
             <h1 class="text-lg text-black font-extrabold">My Crypto Portfolio</h1>
         </div>
         <div>
-            <button class="bg-color text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
+            <button class="bg-color hover:bg-indigo-700 text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
         </div>
     </div>
     <div class=" overflow-auto  mt-5">

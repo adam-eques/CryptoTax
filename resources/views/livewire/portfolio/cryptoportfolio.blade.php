@@ -5,7 +5,7 @@
             <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-10 h-8"/>
             <h4 class="text-2xl font-extrabold">My Crypto Portfolio</h4>
         </div>
-        <button class="bg-color px-4 py-2 rounded-md text-white font-bold">See all assets</button>
+        <button class="bg-color hover:bg-indigo-700 text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
     </div>
     <div class="overflow-auto">
         <table class="min-w-clg w-full border my-5 px-5" style="min-width: 500px">
