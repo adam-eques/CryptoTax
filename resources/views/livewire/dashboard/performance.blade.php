@@ -31,26 +31,72 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-end mt-14 space-x-2">
-        <div class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color">
+    <div class="flex justify-end mt-10 space-x-2">
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
             <p>24H</p>
-        </div>
-        <div class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color">
+        </button>
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
             <p>7D</p>
-        </div>
-        <div class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color">
+        </button>
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
             <p>1M</p>
-        </div>
-        <div class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color">
+        </button>
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
             <p>1Y</p>
-        </div>
+        </button>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-4 mt-4 mb-8">
         <div class="col-span-3 p-4">
-           
+            <div id="line-chart_1"></div>
         </div>
-        <div class="col-span-5">
-            
+        <div class="col-span-5 h-full">
+            <div id="line-chart"></div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+
+    (function () {
+        var options = {
+            chart: {
+                type: 'line',
+                toolbar: {
+                    show: false
+                },
+                height: "250",
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            },
+            colors: ["#7a6cff"],
+            series: [{
+                name: 'sales',
+                data: [30,40,35,50,49,60,70,91,125]
+            }],
+            xaxis: {
+                categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+            }
+        }
+        const chart = new ApexCharts(document.getElementById(`line-chart`), options);
+        chart.render();
+
+
+        var options_1 = {
+            chart: {
+                type: 'donut'
+            },
+            series: [44, 55, 13, 33],
+            labels: ['Bitcoin', 'Ethereum', 'Ripple', 'Litecoin'],
+            legend: {
+                show: false,
+                position: 'bottom'
+            }
+        }
+        const chart_1 = new ApexCharts(document.getElementById(`line-chart_1`), options_1);
+        chart_1.render();
+    }());
+</script>
+@endpush

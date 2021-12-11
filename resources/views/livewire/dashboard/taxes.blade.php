@@ -1,4 +1,4 @@
-<div class="bg-white shadow-sm rounded-md px-8 py-4 my-5">
+<div class="bg-white shadow-sm rounded-md px-8 py-4 mt-5">
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-3">
