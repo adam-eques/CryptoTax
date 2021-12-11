@@ -7,7 +7,7 @@
             <img src="{{asset('assets/img/icon/pdf.png')}}" class="w-16 h-16"/>
             <p class="text-lg ml-4 font-bold text-gray-400">Transaction History CSV</p>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-2 py-2">
             <button class="bg-color hover:bg-indigo-700 text-white px-10 py-5 font-bold rounded-sm">Download</button>
         </div>
     </div>
@@ -16,7 +16,7 @@
             <img src="{{asset('assets/img/icon/pdf.png')}}" class="w-16 h-16"/>
             <p class="text-lg ml-4 font-bold text-gray-400">Transaction History CSV</p>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-2 py-2">
             <button class="bg-color hover:bg-indigo-700 text-white px-10 py-5 font-bold rounded-sm">Download</button>
         </div>
     </div>
