@@ -4,7 +4,7 @@
             @click="open = true">
         <span class="sr-only">{{ __("View notifications") }}</span>
         <x-icon name="fas-bell" class="w-6 h-6 mr-2 mt-1"/>
-        <span class="rounded-full bg-white text-color px-1 inline-flex text-xs absolute -top-1 -right-1">2</span>
+        <span class="rounded-full bg-white text-primary px-1 inline-flex text-xs absolute -top-1 -right-1">2</span>
     </button>
 
     <div

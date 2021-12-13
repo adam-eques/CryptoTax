@@ -1,4 +1,4 @@
-<div class="bg-white shadow-sm rounded-md px-8 py-4 mt-5">
+<div class="bg-white shadow-md rounded-md px-8 py-4 mt-5">
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-3">
@@ -6,7 +6,7 @@
             <h1 class="text-lg text-black font-extrabold">Crypto Taxes</h1>
         </div>
         <div>
-            <button class="bg-color hover:bg-indigo-700 text-white rounded-lg py-2 px-5 text-sm">See Details</button>
+            <button class="bg-primary hover:bg-secondary text-white rounded-lg py-2 px-5 text-sm">See Details</button>
         </div>
     </div>
     <div class="py-5">

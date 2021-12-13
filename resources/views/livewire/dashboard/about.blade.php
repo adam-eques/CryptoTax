@@ -1,4 +1,4 @@
-<div class=" bg-color p-4 lg:p-16 md:p-8 sm:p-5 rounded-md text-white relative">
+<div class=" bg-primary p-4 lg:p-16 md:p-8 sm:p-5 rounded-md text-white relative">
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     <div class="grid grid-cols-1 md:grid-cols-2">
         <div>

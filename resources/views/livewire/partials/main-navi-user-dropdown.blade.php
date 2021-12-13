@@ -10,7 +10,10 @@
                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                  alt=""/>
         </span>
-        <span class="xl:inline-flex hidden">{{ Auth::user()->name }}</span>
+        <span class="xl:inline-flex hidden">
+            {{ Auth::user()->name }}
+            <x-icon name="fas-chevron-down" class="w-2 ml-2 inline text-white"/>
+        </span>
     </button>
 
     <!--

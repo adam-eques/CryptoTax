@@ -1,4 +1,4 @@
-<div class="bg-white shadow-sm rounded-md py-4 px-8">
+<div class="bg-white shadow-md rounded-md py-4 px-8">
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="flex items-center space-x-2 py-5">
         <img src="{{asset('assets/img/icon/transaction.png')}}" class="w-8 h-6"/>

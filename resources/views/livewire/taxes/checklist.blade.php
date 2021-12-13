@@ -7,7 +7,7 @@
             <p class="text-gray-400">America, USD base currency, FIFO cost basis method, universal tracking</p>
         </div>
         <div class="col-span-2">
-            <button class="px-10 py-5 border rounded-sm w-full hover:bg-color hover:text-white">
+            <button class="px-10 py-5 border rounded-sm w-full hover:bg-primary hover:text-white">
                 Settings
             </button>
         </div>
@@ -18,7 +18,7 @@
             <p class="text-gray-400">0 exchanges</p>
         </div>
         <div class="col-span-2">
-            <button class="px-10 py-5 border rounded-sm w-full hover:bg-color hover:text-white">
+            <button class="px-10 py-5 border rounded-sm w-full hover:bg-primary hover:text-white">
                 Review
             </button>
         </div>
@@ -29,7 +29,7 @@
             <p class="text-gray-400">0 crypto wallets, 0 imported wallets</p>
         </div>
         <div class="col-span-2">
-            <button class="px-10 py-5 border rounded-sm w-full hover:bg-color hover:text-white">
+            <button class="px-10 py-5 border rounded-sm w-full hover:bg-primary hover:text-white">
                 Review
             </button>
         </div>
@@ -40,7 +40,7 @@
             <p class="text-gray-400">Review your transaction history for completeness or accuracy</p>
         </div>
         <div class="col-span-2">
-            <button class="px-10 py-5 border rounded-sm w-full hover:bg-color hover:text-white">
+            <button class="px-10 py-5 border rounded-sm w-full hover:bg-primary hover:text-white">
                 Review
             </button>
         </div>

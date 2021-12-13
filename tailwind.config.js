@@ -14,7 +14,7 @@ module.exports = {
             './vendor/filament/tables/resources/views/**/*.blade.php',
         ],
         safelist: [
-            'bg-color-1',
+            'bg-primary-1',
             'bottom-4','right-4',
         ]
     },
@@ -25,20 +25,122 @@ module.exports = {
                 sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'color': {
-                    DEFAULT: '#7a6cff', // Blue text color
-                    '1': '#06b67d', // Green
-                    '2': '#f6f7fb', // Light Background color
-                    '3': '#1a1f33', // Dark Blue
-                    green: '#33c15f',
-                    danger: colors.rose,
-                    primary: colors.blue,
-                    success: colors.green,
-                    warning: colors.yellow,
-                    lightgreen: '#edfeec',
-                    lightpink: '#fff5f4',
-                    lightblue: '#f7f6fe'
+                primary: {
+                    DEFAULT: "#181C3A",
+                    '50': '#525EB7',
+                    '100': '#4854AD',
+                    '200': '#3C4691',
+                    '300': '#303874',
+                    '400': '#242A57',
+                    '500': '#181C3A',
+                    '600': '#080912',
+                    '700': '#000000',
+                    '800': '#000000',
+                    '900': '#000000'
                 },
+                secondary: {
+                    DEFAULT: '#7A6CFF',
+                    '50': '#FFFFFF',
+                    '100': '#FFFFFF',
+                    '200': '#E9E6FF',
+                    '300': '#C4BEFF',
+                    '400': '#9F95FF',
+                    '500': '#7A6CFF',
+                    '600': '#4734FF',
+                    '700': '#1800FB',
+                    '800': '#1300C3',
+                },
+                third: {
+                    DEFAULT: '#EF7B45',
+                    '50': '#FEF3EE',
+                    '100': '#FCE6DB',
+                    '200': '#F9CBB6',
+                    '300': '#F5B090',
+                    '400': '#F2966B',
+                    '500': '#EF7B45',
+                    '600': '#E85714',
+                    '700': '#B44410',
+                    '800': '#81300B',
+                    '900': '#4D1D07'
+                },
+                danger: {
+                    DEFAULT: '#EF4444',
+                    '50': '#FDEDED',
+                    '100': '#FCDADA',
+                    '200': '#F9B5B5',
+                    '300': '#F58F8F',
+                    '400': '#F26A6A',
+                    '500': '#EF4444',
+                    '600': '#E71414',
+                    '700': '#B30F0F',
+                    '800': '#800B0B',
+                    '900': '#4C0707'
+                },
+                success: {
+                    DEFAULT: '#06B67D',
+                    '50': '#79FBD1',
+                    '100': '#65FACA',
+                    '200': '#3EF9BC',
+                    '300': '#16F7AE',
+                    '400': '#07DD98',
+                    '500': '#06B67D',
+                    '600': '#048058',
+                    '700': '#024932',
+                    '800': '#01130D',
+                    '900': '#000000'
+                },
+                warning: {
+                    DEFAULT: '#F59E0B',
+                    '50': '#FCE4BB',
+                    '100': '#FBDCA8',
+                    '200': '#FACD81',
+                    '300': '#F8BD59',
+                    '400': '#F7AE32',
+                    '500': '#F59E0B',
+                    '600': '#C07C08',
+                    '700': '#8A5906',
+                    '800': '#543603',
+                    '900': '#1E1401'
+                },
+                lightgreen: {
+                    DEFAULT: '#EDFEEC',
+                    '50': '#FFFFFF',
+                    '100': '#FFFFFF',
+                    '200': '#FFFFFF',
+                    '300': '#FFFFFF',
+                    '400': '#FFFFFF',
+                    '500': '#EDFEEC',
+                    '600': '#BBFBB7',
+                    '700': '#88F881',
+                    '800': '#56F64C',
+                    '900': '#23F317'
+                },
+                lightpink: {
+                    DEFAULT: '#FFF5F4',
+                    '50': '#FFFFFF',
+                    '100': '#FFFFFF',
+                    '200': '#FFFFFF',
+                    '300': '#FFFFFF',
+                    '400': '#FFFFFF',
+                    '500': '#FFF5F4',
+                    '600': '#FFC2BC',
+                    '700': '#FF8F84',
+                    '800': '#FF5C4C',
+                    '900': '#FF2914'
+                },
+                lightblue: {
+                    DEFAULT: '#F7F6FE',
+                    '50': '#FFFFFF',
+                    '100': '#FFFFFF',
+                    '200': '#FFFFFF',
+                    '300': '#FFFFFF',
+                    '400': '#FFFFFF',
+                    '500': '#F7F6FE',
+                    '600': '#CAC4F8',
+                    '700': '#9D91F3',
+                    '800': '#705FED',
+                    '900': '#432CE8'
+                }
             },
             boxShadow: {
                 '1': '0 0 21px 5px rgba(254, 218, 17, 0.58)',

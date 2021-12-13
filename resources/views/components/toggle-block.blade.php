@@ -2,7 +2,7 @@
 <div class="border border-gray-300 rounded" x-data="{opened:{{ $opened ? 'true' : 'false' }}}">
     <button aria-current="true"
             type="button"
-            class="border-0 text-left py-3 lg:py-5 px-4 lg:px-6 font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl bg-color-2  w-full uppercase text-gray-700  focus:outline-none cursor-pointer flex justify-between items-center"
+            class="border-0 text-left py-3 lg:py-5 px-4 lg:px-6 font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl bg-primary-2  w-full uppercase text-gray-700  focus:outline-none cursor-pointer flex justify-between items-center"
             @click="opened = !opened">
         <span>{{ $label }}</span>
         <svg class="w-4 trnstsn transform " fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': opened}">
