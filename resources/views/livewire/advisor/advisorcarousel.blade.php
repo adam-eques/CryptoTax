@@ -1,7 +1,7 @@
 <div class="py-10">
     <p class="text-2xl font-bold text-center">Other recommended financial advisor with reviews </p>
-    <div class="main-carousel mx-16 py-10">
-        <div class="carousel-cell px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
+    <div class="main-carousel mx-6 sm:mx-16 py-10">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
             <div class="border rounded-md bg-white pt-5 mt-18">
                 <div class="flex justify-center -mt-20 z-50">
                     <div class="w-32 h-32 rounded-full relative">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-cell px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
             <div class="border rounded-md bg-white pt-5 mt-18">
                 <div class="flex justify-center -mt-20 z-50">
                     <div class="w-32 h-32 rounded-full relative">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-cell px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
             <div class="border rounded-md bg-white pt-5 mt-18">
                 <div class="flex justify-center -mt-20 z-50">
                     <div class="w-32 h-32 rounded-full relative">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-cell px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
             <div class="border rounded-md bg-white pt-5 mt-18">
                 <div class="flex justify-center -mt-20 z-50">
                     <div class="w-32 h-32 rounded-full relative">
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-cell px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
             <div class="border rounded-md bg-white pt-5 mt-18">
                 <div class="flex justify-center -mt-20 z-50">
                     <div class="w-32 h-32 rounded-full relative">
@@ -101,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-cell px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5">
             <div class="border rounded-md bg-white pt-5 mt-18">
                 <div class="flex justify-center -mt-20 z-50">
                     <div class="w-32 h-32 rounded-full relative">
