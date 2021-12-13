@@ -11,7 +11,7 @@
                 </div>
                 <div class="border rounded-lg p-5 bg-gray-100 relative">
                     @livewire('portfolio.invite')
-                    <img src="{{asset('assets/img/png/portfolio_invite.png')}}" class=" absolute bottom-0 right-0 w-40 h-22"/>
+                    <img src="{{asset('assets/img/svg/portfolio_invite.svg')}}" class="absolute bottom-0 right-0 w-40 h-22"/>
                 </div>
             </div>
             <div class="col-span-2 border rounded-lg p-5">

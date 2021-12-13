@@ -1,4 +1,4 @@
-<div class="bg-white shadow-sm rounded-md py-4 px-8 h-full">
+<div class="bg-white shadow-md rounded-md py-4 px-8 h-full">
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
@@ -6,7 +6,7 @@
             <h1 class="text-lg text-black font-extrabold">My Crypto Portfolio</h1>
         </div>
         <div>
-            <button class="bg-color hover:bg-indigo-700 text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
+            <button class="bg-primary hover:bg-secondary text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
         </div>
     </div>
     <div class=" overflow-auto  mt-5">
@@ -38,7 +38,7 @@
                     </td>
                     <td class="py-5 text-center">
                         <p>$699.12</p>
-                        <span class="inline-flex items-center justify-center px-5 py-3 text-xs font-bold leading-none text-white bg-red-500 rounded">-27.54%</span>
+                        <span class="inline-flex items-center justify-center px-5 py-3 text-xs font-bold leading-none text-white bg-danger-500 rounded">-27.54%</span>
                     </td>
                 </tr>
                 <tr class="px-5">
@@ -79,7 +79,7 @@
                     </td>
                     <td class="py-5 text-center">
                         <p>$699.12</p>
-                        <span class="inline-flex items-center justify-center px-5 py-3 text-xs font-bold leading-none text-white bg-green-500 rounded">+27.54%</span>
+                        <span class="inline-flex items-center justify-center px-5 py-3 text-xs font-bold leading-none text-white bg-success-500 rounded">+27.54%</span>
                     </td>
                 </tr>
                 <tr class="px-5">

@@ -8,7 +8,7 @@
             <p class="py-3">January 1 2021 to December 31 2021</p>
         </div>
         <div>
-            <button class="bg-color hover:bg-indigo-700 flex justify-center items-center space-x-2 px-6 py-5 rounded-lg">
+            <button class="bg-primary hover:bg-secondary flex justify-center items-center space-x-2 px-6 py-5 rounded-lg">
                 <img src={{asset('assets/img/icon/account_icon.png')}} class="w-6 h-6"/>
                 <p class="text-white font-bold">Add tax professional</p>
             </button>
