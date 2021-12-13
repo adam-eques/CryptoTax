@@ -4,7 +4,7 @@
             <div class="relative shadow-xl sm:overflow-hidden">
                 <div class="absolute inset-0">
                     <img class="h-full w-full object-cover" src="{{asset('assets/img/jpg/advisor.jpg')}}" alt="People working on laptops">
-                    <div class="absolute inset-0 bg-gray-600 mix-blend-multiply"></div>
+                    <div class="absolute inset-0 bg-gray-500 mix-blend-multiply"></div>
                 </div>
                 <div class="relative px-4 py-8 sm:px-12 sm:py-18 lg:py-22 lg:px-8">
                     <h1 class="text-center text-3xl font-extrabold tracking-tight sm:text-3xl lg:text-5xl">
