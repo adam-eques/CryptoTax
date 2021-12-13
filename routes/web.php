@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/wallet', 'pages.customer.wallets.index')->name('wallet');
     Route::view('/portfolio', 'pages.customer.portfolio.portfolio')->name('portfolio');
     Route::view('/taxes', 'pages.customer.taxes.taxes')->name('taxes');
-    Route::view('/advisor', 'errors.todo')->name('advisor');
+    Route::view('/advisor', 'pages.customer.advisor.advisor')->name('advisor');
     Route::view('/services', 'errors.todo')->name('services');
 
     // Transactions
