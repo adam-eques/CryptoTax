@@ -1,4 +1,4 @@
-<nav class="bg-color" x-data="{mobile:false}">
+<nav class="bg-primary" x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">
             {{-- Site Logo --}}
@@ -40,7 +40,7 @@
             <div class="flex lg:hidden">
                 {{-- Mobile menu button --}}
                 <button type="button" class="bg-white inline-flex items-center justify-center p-2 rounded-md
-                         text-color-3 hover:bg-color-2 focus:outline-none outline-none" aria-controls="mobile-menu"
+                         text-primary-3 hover:bg-primary-2 focus:outline-none outline-none" aria-controls="mobile-menu"
                         aria-expanded="false" @click="mobile = true">
                     <span class="sr-only">Open main menu</span>
                     {{--

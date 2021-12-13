@@ -8,7 +8,7 @@
             <p class="text-lg ml-4 font-bold text-gray-400">Transaction History CSV</p>
         </div>
         <div class="col-span-2 py-2">
-            <button class="bg-color hover:bg-indigo-700 text-white px-10 py-5 font-bold rounded-sm">Download</button>
+            <button class="bg-primary hover:bg-secondary text-white px-10 py-5 font-bold rounded-sm">Download</button>
         </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-5 my-2">
@@ -17,7 +17,7 @@
             <p class="text-lg ml-4 font-bold text-gray-400">Transaction History CSV</p>
         </div>
         <div class="col-span-2 py-2">
-            <button class="bg-color hover:bg-indigo-700 text-white px-10 py-5 font-bold rounded-sm">Download</button>
+            <button class="bg-primary hover:bg-secondary text-white px-10 py-5 font-bold rounded-sm">Download</button>
         </div>
     </div>
 </div>

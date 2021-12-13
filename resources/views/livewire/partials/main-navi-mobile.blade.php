@@ -25,11 +25,11 @@
         </div>
         <!-- Dropdown -->
         <div class="mt-3 md:mt-0 px-2 space-y-1 md:space-y-0 flex flex-col md:flex-row md:gap-2">
-            <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-color hover:bg-white">
+            <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">
                 Your Profile
             </a>
-            <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-color hover:bg-white">Settings</a>
-            <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-color hover:bg-white">Sign out</a>
+            <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">Settings</a>
+            <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">Sign out</a>
         </div>
     </div>
 </div>

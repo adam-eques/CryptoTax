@@ -20,7 +20,7 @@
                             <input type="text" class="px-5 py-5 text-xl rounded-sm" placeholder="All Consulting Topics">
                             <input type="text" class="px-5 py-5 text-xl rounded-sm" placeholder="Financial Advisor">
                             <div class="w-full">
-                                <button class="px-5 py-5 text-xl rounded-sm bg-color hover:bg-indigo-700 text-white font-bold w-full">Find a Advisor</button>
+                                <button class="px-5 py-5 text-xl rounded-sm bg-primary hover:bg-secondary text-white font-bold w-full">Find a Advisor</button>
                             </div>
                         </div>
                     </div>

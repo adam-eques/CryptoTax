@@ -8,23 +8,23 @@
 
             <!-- Right Panel -->
             <div class="px-4 lg:px-5 md:w-2/5 pt-4">
-                <h2 class="font-bold mb-4 text-xl">Save up to <span class="text-color">2536.00USD</span> in taxes</h2>
-                <p class="mb-2 font-bold">Get a Pro portfolio subscription to unlock <span class="text-color">tax-loss harvesting</span>.</p>
+                <h2 class="font-bold mb-4 text-xl">Save up to <span class="text-primary">2536.00USD</span> in taxes</h2>
+                <p class="mb-2 font-bold">Get a Pro portfolio subscription to unlock <span class="text-primary">tax-loss harvesting</span>.</p>
                 <ul class="my-6">
                     <li>
-                        <x-icon name="fas-check-circle" class="w-4 text-color inline absolute mt-1" />
+                        <x-icon name="fas-check-circle" class="w-4 text-primary inline absolute mt-1" />
                         <p class="ml-6 mb-4">Optimize your 2021 taxes by claming lossess</p>
                     </li>
                     <li>
-                        <x-icon name="fas-check-circle" class="w-4 text-color inline absolute mt-1" />
+                        <x-icon name="fas-check-circle" class="w-4 text-primary inline absolute mt-1" />
                         <p class="ml-6 mb-4">Offset non-crypto capital gains</p>
                     </li>
                     <li>
-                        <x-icon name="fas-check-circle" class="w-4 text-color inline absolute mt-1" />
+                        <x-icon name="fas-check-circle" class="w-4 text-primary inline absolute mt-1" />
                         <p class="ml-6 mb-4">Rollover capital lossess to future years</p>
                     </li>
                     <li>
-                        <x-icon name="fas-check-circle" class="w-4 text-color inline absolute mt-1" />
+                        <x-icon name="fas-check-circle" class="w-4 text-primary inline absolute mt-1" />
                         <p class="ml-6 mb-4">Maximize performance & build wealth</p>
                     </li>
                 </ul>

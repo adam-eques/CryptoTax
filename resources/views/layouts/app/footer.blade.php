@@ -1,4 +1,4 @@
-<footer class="bg-color-3 pt-10 md:pt-20">
+<footer class="bg-primary pt-10 md:pt-20">
 
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">

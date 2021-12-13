@@ -1,4 +1,4 @@
-<div class="mt-14 bg-white shadow-sm rounded-md py-12 px-8">
+<div class="mt-14 bg-white shadow-md rounded-md py-12 px-8">
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 md:gap-2 gap-0">
         <div class="flex items-center space-x-2 py-5">
@@ -9,7 +9,7 @@
             <p class="text-sm text-gray-400">24h Portfolio Change</p>
             <div class="flex items-center space-x-2 mt-3">
                 <h1 class="text-2xl text-black font-extrabold">$1,254</h1>
-                <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-green-500 rounded-full">+2.5%</span>
+                <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-success-500 rounded-full">+2.5%</span>
             </div>
         </div>
         <div class="px-4 py-2 border rounded-sm">
@@ -17,7 +17,7 @@
             <div class="flex items-center space-x-2 mt-3">
                 <h1 class="text-2xl text-black font-extrabold">$95,432</h1>
                 <div>
-                    <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-green-500 rounded-full">+13.5%</span>
+                    <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-success-500 rounded-full">+13.5%</span>
                 </div>
             </div>
         </div>
@@ -32,16 +32,16 @@
         </div>
     </div>
     <div class="flex justify-end mt-10 space-x-2">
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
             <p>24H</p>
         </button>
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
             <p>7D</p>
         </button>
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
             <p>1M</p>
         </button>
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-color focus:bg-color hover:text-white focus:text-white">
+        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
             <p>1Y</p>
         </button>
     </div>
@@ -71,7 +71,7 @@
                 curve: 'smooth',
                 width: 3
             },
-            colors: ["#7a6cff"],
+            colors: ["#181C3A"],
             series: [{
                 name: 'sales',
                 data: [30,40,35,50,49,60,70,91,125]

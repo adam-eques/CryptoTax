@@ -17,7 +17,7 @@
                     <img src="{{asset('assets/img/icon/quote.svg')}}" class="h-10 flex justify-center w-full"/>
                     <p class="text-xl font-bold py-2">Investment: Annual date</p>
                     <p class="text-gray-400 pb-4">Very good advice on insurance and investments for 25 years</p>
-                    <button class="w-full bg-color hover:bg-indigo-700 rounded-b-md text-white font-bold py-3">View Profile</button>
+                    <button class="w-full bg-primary hover:bg-secondary rounded-b-md text-white font-bold py-3">View Profile</button>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <img src="{{asset('assets/img/icon/quote.svg')}}" class="h-10 flex justify-center w-full"/>
                     <p class="text-xl font-bold py-2">Investment: Annual date</p>
                     <p class="text-gray-400 pb-4">Very good advice on insurance and investments for 25 years</p>
-                    <button class="w-full bg-color hover:bg-indigo-700 rounded-b-md text-white font-bold py-3">View Profile</button>
+                    <button class="w-full bg-primary hover:bg-secondary rounded-b-md text-white font-bold py-3">View Profile</button>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
                     <img src="{{asset('assets/img/icon/quote.svg')}}" class="h-10 flex justify-center w-full"/>
                     <p class="text-xl font-bold py-2">Investment: Annual date</p>
                     <p class="text-gray-400 pb-4">Very good advice on insurance and investments for 25 years</p>
-                    <button class="w-full bg-color hover:bg-indigo-700 rounded-b-md text-white font-bold py-3">View Profile</button>
+                    <button class="w-full bg-primary hover:bg-secondary rounded-b-md text-white font-bold py-3">View Profile</button>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                     <img src="{{asset('assets/img/icon/quote.svg')}}" class="h-10 flex justify-center w-full"/>
                     <p class="text-xl font-bold py-2">Investment: Annual date</p>
                     <p class="text-gray-400 pb-4">Very good advice on insurance and investments for 25 years</p>
-                    <button class="w-full bg-color hover:bg-indigo-700 rounded-b-md text-white font-bold py-3">View Profile</button>
+                    <button class="w-full bg-primary hover:bg-secondary rounded-b-md text-white font-bold py-3">View Profile</button>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                     <img src="{{asset('assets/img/icon/quote.svg')}}" class="h-10 flex justify-center w-full"/>
                     <p class="text-xl font-bold py-2">Investment: Annual date</p>
                     <p class="text-gray-400 pb-4">Very good advice on insurance and investments for 25 years</p>
-                    <button class="w-full bg-color hover:bg-indigo-700 rounded-b-md text-white font-bold py-3">View Profile</button>
+                    <button class="w-full bg-primary hover:bg-secondary rounded-b-md text-white font-bold py-3">View Profile</button>
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
                     <img src="{{asset('assets/img/icon/quote.svg')}}" class="h-10 flex justify-center w-full"/>
                     <p class="text-xl font-bold py-2">Investment: Annual date</p>
                     <p class="text-gray-400 pb-4">Very good advice on insurance and investments for 25 years</p>
-                    <button class="w-full bg-color hover:bg-indigo-700 rounded-b-md text-white font-bold py-3">View Profile</button>
+                    <button class="w-full bg-primary hover:bg-secondary rounded-b-md text-white font-bold py-3">View Profile</button>
                 </div>
             </div>
         </div>

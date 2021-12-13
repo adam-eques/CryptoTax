@@ -37,6 +37,9 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/wallet/new', 'pages.customer.wallets.new')->name('wallet.new');
     Route::view('/taxes/tax-loss-harvesting', 'pages.customer.taxes.tax-loss-harvesting')->name('taxes.tax-loss-harvesting');
     Route::view('/taxes/tax-saving-opportunities', 'pages.customer.taxes.tax-saving-opportunities')->name('taxes.tax-saving-opportunities');
+
+    //Advisor
+    Route::view('/advisor/detail', 'pages.customer.advisor.advisor-detail')->name('advisor.detail');
 });
 
 
