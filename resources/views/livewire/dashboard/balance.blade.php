@@ -39,7 +39,7 @@
             </div>
             <h4 class="text-lg font-extrabold text-white">Add Wallet</h4>
         </button>
-        <button class="bg-success hover:bg-secondary p-3 rounded-lg flex items-center space-x-5 my-2">
+        <button class="bg-third hover:bg-secondary p-3 rounded-lg flex items-center space-x-5 my-2">
             <div class="px-3 py-2 bg-white rounded-lg">
                 <img src="{{asset('assets/img/icon/tax_icon.png')}}" class="w-8 h-8"/>
             </div>
