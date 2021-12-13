@@ -21,6 +21,7 @@ class MainNavi extends NavigationMenu
         if($user->isAdminAccount()) {
             $this->navItems = [
                 ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+                ["label" => __('User'), 'icon' => 'fas-users', 'route' => 'admin.users.index'],
             ];
         }
         else if($user->isCustomerAccount()) {
