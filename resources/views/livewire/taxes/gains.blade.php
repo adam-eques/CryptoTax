@@ -1,7 +1,7 @@
 <div class="border rounded-md p-5">
     <h2 class="text-xl font-bold py-4">Capital gains</h2>
     <table class="w-full">
-        <thead class="text-left bg-gray-300">
+        <thead class="text-left border bg-gray-100">
             <tr>
                 <th class="py-5 px-4">Value</th>
                 <th class="py-5">Short Term</th>

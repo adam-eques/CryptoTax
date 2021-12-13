@@ -16,6 +16,10 @@
         <script src="{{ mix('mix/js/app.js') }}" defer></script>
         {{-- Push ApexCharts to the top of the scripts stack --}}
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     </head>
     <body>
 {{--        <x-jet-banner />--}}

@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4">
         <div>
             <table class="w-full">
-                <thead class="text-left bg-gray-300">
+                <thead class="text-left border bg-gray-100">
                     <tr>
                         <th class="py-5 px-4">Taxable Income</th>
                         <th class="py-5">Amount</th>
@@ -44,7 +44,7 @@
         </div>
         <div>
             <table class="w-full">
-                <thead class="text-left bg-gray-300">
+                <thead class="text-left border bg-gray-100">
                     <tr>
                         <th class="py-5 px-4">Other Transaction</th>
                         <th class="py-5">Amount</th>
