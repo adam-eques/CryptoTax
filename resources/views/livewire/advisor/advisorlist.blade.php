@@ -40,10 +40,10 @@
                             </p>
                         </div>
                         <div class="space-y-4">
-                            <div class="bg-indigo-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
+                            <div class="bg-secondary-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
                                 <x-icon name="fas-chevron-up" class="w-3 mr-2 inline text-white absolute top-2 left-2"/>
                             </div>
-                            <div class="bg-indigo-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
+                            <div class="bg-secondary-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
                                 <x-icon name="fas-chevron-down" class="w-3 mr-2 inline text-white absolute top-2 left-2"/>
                             </div>
                         </div>
@@ -116,10 +116,10 @@
                             </p>
                         </div>
                         <div class="space-y-4">
-                            <div class="bg-indigo-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
+                            <div class="bg-secondary-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
                                 <x-icon name="fas-chevron-up" class="w-3 mr-2 inline text-white absolute top-2 left-2"/>
                             </div>
-                            <div class="bg-indigo-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
+                            <div class="bg-secondary-200 hover:bg-primary rounded-full w-7 h-7 cursor-pointer relative">
                                 <x-icon name="fas-chevron-down" class="w-3 mr-2 inline text-white absolute top-2 left-2"/>
                             </div>
                         </div>
@@ -162,19 +162,19 @@
                 </span>
             </li>
             <li>
-                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">1</span>
+                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-secondary-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">1</span>
             </li>
             <li>
-                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">2</span>
+                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-secondary-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">2</span>
             </li>
             <li>
-                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-indigo-600 hover:text-white rounded transition duration-150 ease-in-out text-base leading-tight font-bold shadow px-3 py-2 focus:outline-none">...</span>
+                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-secondary-600 hover:text-white rounded transition duration-150 ease-in-out text-base leading-tight font-bold shadow px-3 py-2 focus:outline-none">...</span>
             </li>
             <li>
-                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer transition shadow duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">6</span>
+                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-secondary-600 hover:text-white text-base leading-tight font-bold cursor-pointer transition shadow duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">6</span>
             </li>
             <li>
-                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer transition shadow duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">7</span>
+                <span tabindex="0" class="focus:bg-primary focus:text-white flex text-primary bg-white hover:bg-secondary-600 hover:text-white text-base leading-tight font-bold cursor-pointer transition shadow duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">7</span>
             </li>
             <li>
                 <span tabindex="0" aria-label="forward" role="button" class="focus:ring-2 focus:ring-offset-2 focus:ring-color  flex rounded transition duration-150 ease-in-out text-base leading-tight font-bold text-gray-500 hover:text-primary p-1 focus:outline-none ml-1 sm:ml-3">
