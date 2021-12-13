@@ -8,13 +8,13 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2">
                 <div class="py-2">
-                    <button class="flex items-center justify-center space-x-6 border border-color hover:bg-secondary rounded-lg w-full h-full py-3 text-primary hover:text-white">
-                        <x-icon name="fas-calendar" class="text-primary w-6 h-6"></x-icon>
-                        <p>Today</p>
+                    <button class="lg:px-4 p-2 gap-5 hover:text-white hover:bg-primary-500 inline-flex justify-center py-4 border border-primary rounded-lg w-full">
+                        <x-icon name="fas-calendar" class="w-5"/>
+                        <span class="hidden sm:inline">Today</span>
                     </button>
                 </div>
                 <div class="py-2">
-                    <button class="border border-color hover:bg-secondary rounded-lg w-full h-full py-3 text-primary hover:text-white">Past day</button>
+                    <button class="border border-color hover:bg-primary rounded-lg w-full h-full py-3 text-primary hover:text-white">Past day</button>
                 </div>
                 <div  x-data="{ isOpen: false}" class="relative py-2">
                     <button 

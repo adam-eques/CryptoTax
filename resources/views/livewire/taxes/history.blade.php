@@ -9,7 +9,7 @@
             </div>
             <p class="text-white text-xl font-bold">56 Sent</p>
         </button>
-        <button class="bg-success hover:bg-secondary flex justify-center items-center px-5 py-3 rounded-lg space-x-5">
+        <button class="bg-third hover:bg-secondary flex justify-center items-center px-5 py-3 rounded-lg space-x-5">
             <div class="bg-white px-3 py-1 rounded-lg">
                 <img src="{{asset('assets/img/icon/receive.png')}}" class="w-10 h-10"/>
             </div>

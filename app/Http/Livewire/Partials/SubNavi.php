@@ -33,7 +33,7 @@ class SubNavi extends NavigationMenu
                 ["label" => __('Invite a Friend'), 'icon' => 'fas-user-plus', 'route' => 'customer.taxes'],
             ];
             $this->actions = [
-                ["label" => __('Share'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-blue-800 bg-primary-2'],
+                ["label" => __('Share'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-blue-800 bg-third'],
                 ["label" => __('Settings'), 'icon' => 'fas-cogs', 'route' => 'todo', 'color' => 'text-white bg-primary'],
             ];
         }
