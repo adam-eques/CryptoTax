@@ -14,12 +14,14 @@
                         The top financial advisors in Germany with ratings
                     </p>
                     <div class="mt-8 max-w-xs mx-auto sm:max-w-full sm:mx-16 sm:flex sm:justify-center">
-                        <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 sm:gap-5 gap-0">
+                        <div class="space-y-1 sm:space-y-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 sm:gap-1 gap-0">
                             <input type="text" class="px-5 py-5 text-xl rounded-sm" placeholder="Advisor Name">
                             <input type="text" class="px-5 py-5 text-xl rounded-sm" placeholder="Zip or City">
                             <input type="text" class="px-5 py-5 text-xl rounded-sm" placeholder="All Consulting Topics">
                             <input type="text" class="px-5 py-5 text-xl rounded-sm" placeholder="Financial Advisor">
-                            <button class="px-5 py-6 text-xl rounded-sm bg-color text-white font-bold">Find a Advisor</button>
+                            <div class="w-full">
+                                <button class="px-5 py-5 text-xl rounded-sm bg-color hover:bg-indigo-700 text-white font-bold w-full">Find a Advisor</button>
+                            </div>
                         </div>
                     </div>
                 </div>
