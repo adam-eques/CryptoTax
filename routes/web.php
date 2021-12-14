@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->group(function(){
     Route::get("/test", [\App\Http\Controllers\TestController::class, "index"]);
     Route::resource("users", \App\Http\Controllers\Admin\UserController::class);
+    Route::resource("api", \App\Http\Controllers\Admin\ApiController::class);
 });
 
 
