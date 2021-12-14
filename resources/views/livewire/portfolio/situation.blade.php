@@ -23,7 +23,7 @@
     </div>
     <div class="shadow-md p-4 rounded-md bg-lightpink my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
-            <div class="rounded-full w-6 h-6 bg-primary-danger-500 relative">
+            <div class="rounded-full w-6 h-6 bg-danger-500 relative">
                 <x-icon name='fas-arrow-down' class="text-white w-4 h-4 absolute top-1 left-1" />
             </div>
             <p class="font-bold">Past Day</p>

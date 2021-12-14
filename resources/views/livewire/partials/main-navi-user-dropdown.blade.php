@@ -5,7 +5,7 @@
             aria-haspopup="true"
             @click="open = true">
         <span class="sr-only">{{ __("Open user menu") }}</span>
-        <span class="w-[50px] bg-gray-800 rounded-full overflow-hidden ring-4 ring-white">
+        <span class="w-[50px] bg-primary-600 rounded-full overflow-hidden ring-4 ring-white">
             <img class="h-[50px] w-[50px] rounded-full"
                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                  alt=""/>

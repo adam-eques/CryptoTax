@@ -62,7 +62,7 @@ module.exports = {
                     '700': '#B44410',
                     '800': '#81300B',
                     '900': '#4D1D07'
-                },
+                  },
                 danger: {
                     DEFAULT: '#EF4444',
                     '50': '#FDEDED',
@@ -140,7 +140,8 @@ module.exports = {
                     '700': '#9D91F3',
                     '800': '#705FED',
                     '900': '#432CE8'
-                }
+                },
+                'bgcolor': "#f6f7fb",
             },
             boxShadow: {
                 '1': '0 0 21px 5px rgba(254, 218, 17, 0.58)',
@@ -216,7 +217,7 @@ module.exports = {
         plugin(function({ addBase, components, theme }) {
             addBase({
                 'body': {
-                    backgroundColor: theme('colors.color.2'),
+                    backgroundColor: theme('colors.bgcolor'),
                 },
                 '.trnstsn, a, button, input, textarea, select': {
                     transition: 'all 0.35s ease-in-out',
