@@ -9,6 +9,8 @@ class UserAccountType extends Model
     const TYPE_ADMIN = 1;
     const TYPE_CUSTOMER = 2;
     const TYPE_TAX_ADVISOR = 3;
+    const TYPE_SUPPORT = 4;
+    const TYPE_EDITOR = 5;
 
 
     /**

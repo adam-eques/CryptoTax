@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Only for UserAccountType::TYPE_ADMIN
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->group(function(){
     Route::get("/test", [\App\Http\Controllers\TestController::class, "index"]);
+    Route::resource("users", \App\Http\Controllers\Admin\UserController::class);
 });
 
 

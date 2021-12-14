@@ -118,6 +118,24 @@ class User extends Authenticatable
     /**
      * @return bool
      */
+    public function isSupportAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_SUPPORT;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isEditorAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_EDITOR;
+    }
+
+
+    /**
+     * @return bool
+     */
     public function isTaxAdvisorAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;

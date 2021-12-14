@@ -10,7 +10,7 @@
             </div>
 
             <div class="hidden lg:flex items-center flex-1 justify-center px-5 2xl:px-20">
-                <div class="flex items-baseline flex-1 justify-between">
+                <div class="flex items-baseline flex-1 justify-start gap-3">
                     @foreach($navItems as $navItem)
                         <x-jet-nav-link href="{{ route($navItem['route']) }}" :active="request()->routeIs($navItem['route'])">
                             <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/>

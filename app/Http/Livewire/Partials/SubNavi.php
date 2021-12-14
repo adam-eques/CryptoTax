@@ -38,10 +38,19 @@ class SubNavi extends NavigationMenu
             ];
         }
         else if($user->isTaxAdvisorAccount()) {
-            // TODO: MainNavi TYPE_TAX_ADVISOR
+            // No subnavi currently
+        }
+        else if($user->isSupportAccount()) {
+            // No subnavi currently
+        }
+        else if($user->isEditorAccount()) {
+            // No subnavi currently
         }
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function render()
     {
         return view('livewire.partials.sub-navi');

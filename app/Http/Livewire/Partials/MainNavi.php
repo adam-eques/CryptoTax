@@ -21,6 +21,7 @@ class MainNavi extends NavigationMenu
         if($user->isAdminAccount()) {
             $this->navItems = [
                 ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+                ["label" => __('User'), 'icon' => 'fas-users', 'route' => 'admin.users.index'],
             ];
         }
         else if($user->isCustomerAccount()) {
@@ -34,6 +35,16 @@ class MainNavi extends NavigationMenu
             ];
         }
         else if($user->isTaxAdvisorAccount()) {
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ];
+        }
+        else if($user->isSupportAccount()) {
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ];
+        }
+        else if($user->isEditorAccount()) {
             $this->navItems = [
                 ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
             ];

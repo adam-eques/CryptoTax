@@ -1,5 +1,4 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
@@ -15,7 +14,8 @@ module.exports = {
         ],
         safelist: [
             'bg-primary-1',
-            'bottom-4','right-4',
+            'bottom-4',
+            'right-4',
         ]
     },
 
