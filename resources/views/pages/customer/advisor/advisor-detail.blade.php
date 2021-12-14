@@ -5,4 +5,5 @@
             @livewire('advisor-detail.about')
         </div>
     </div>
+    @livewire('advisor-detail.review')
 </x-app-layout>
