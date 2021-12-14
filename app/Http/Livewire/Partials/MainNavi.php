@@ -39,6 +39,16 @@ class MainNavi extends NavigationMenu
                 ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
             ];
         }
+        else if($user->isSupportAccount()) {
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ];
+        }
+        else if($user->isEditorAccount()) {
+            $this->navItems = [
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ];
+        }
     }
 
     public function render()

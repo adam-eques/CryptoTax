@@ -13,6 +13,8 @@ class UserAccountTypeMiddleware
             "admin" => "isAdminAccount",
             "customer" => "isCustomerAccount",
             "tax-advisor" => "isTaxAdvisorAccount",
+            "support" => "isSupportAccount",
+            "editor" => "isEditorAccount",
         ];
         $method = $types[$typeSlug];
 

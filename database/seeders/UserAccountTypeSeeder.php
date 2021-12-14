@@ -34,13 +34,29 @@ class UserAccountTypeSeeder extends Seeder
                     'tax-advisor@example.com',
                 ],
             ],
+            [
+                'id' => UserAccountType::TYPE_SUPPORT,
+                'name' => "Support",
+                'users' => [
+                    'support@example.com',
+                ],
+            ],
+            [
+                'id' => UserAccountType::TYPE_EDITOR,
+                'name' => "Editor",
+                'users' => [
+                    'editor@example.com',
+                ],
+            ],
         ])->each(function ($data) {
-            // Create Type
-            $type = new UserAccountType([
-                "id" => $data["id"],
-                "name" => $data["name"],
-            ]);
-            $type->save();
+            if(!$type = UserAccountType::find($data["id"])) {
+                // Create Type
+                $type = new UserAccountType([
+                    "id" => $data["id"],
+                    "name" => $data["name"],
+                ]);
+                $type->save();
+            }
 
             // Loop over users
             User::query()->whereIn("email", $data["users"])->get()->each(function ($user) use ($type) {
