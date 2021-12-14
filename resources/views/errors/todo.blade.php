@@ -28,7 +28,7 @@
                     <x-button size="xs">{{ __("Save") }}</x-button>
                     <x-button size="xs" variant="secondary">{{ __("Save") }}</x-button>
                     <x-button size="xs" variant="secondary" type="button">{{ __("Save") }}</x-button>
-                    <x-button size="xs" variant="secondary" tag="a">{{ __("Save") }}</x-button>
+                    <x-button size="xs" variant="secondary" tag="a" icon="fas-users" iconRight="true">{{ __("Save") }}</x-button>
                     <x-button icon="fas-users">Test</x-button>
                     <x-button icon="fas-users" iconRight="true">Test</x-button>
                     <x-button tag="a" class="italic" target="_blank" href="https://www.google.com">
