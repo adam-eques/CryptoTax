@@ -1,4 +1,4 @@
-<div class="bg-white shadow-lg rounded-md py-4 px-8 mt-5">
+<div class="bg-white shadow-lg rounded-md py-4 px-8 h-full">
     {{-- Success is as dangerous as failure. --}}
     <div class="flex justify-between items-center py-1">
         <div class="flex items-center space-x-2">
