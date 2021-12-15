@@ -6,7 +6,6 @@ use App\Http\Livewire\LivewirePage;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Filament\Forms;
-use Spatie\Permission\Models\Role;
 
 class UserEdit extends Component implements Forms\Contracts\HasForms
 {
@@ -69,7 +68,7 @@ class UserEdit extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         return view("livewire.model.form", [
-            "cancel" => route('admin.clients.index')
+            "cancel" => route('admin.' . $this->model->getRouteSlug() .'.index')
         ]);
     }
 }

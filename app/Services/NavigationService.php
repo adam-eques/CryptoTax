@@ -22,8 +22,9 @@ class NavigationService
             $this->addItems([
                 ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
                 ["label" => __('User'), 'children' => [
-                    ["label" => "Clients", "icon" => "fas-users", "route" => "admin.clients.index"],
+                    ["label" => "Clients", "icon" => "fas-users", "route" => "admin.customers.index"],
                     ["label" => "Advisors", "icon" => "fas-user-nurse", "route" => "admin.tax-advisors.index"],
+                    ["label" => "Backend-User", "icon" => "fas-user-cog", "route" => "admin.backenduser.index"],
                 ]],
                 ["label" => __('Advertising'), 'children' => [
                     ["label" => "Advertising", "icon" => "fas-ad", "route" => "todo"],

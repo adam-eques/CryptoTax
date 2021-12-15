@@ -70,13 +70,6 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    //
-    //
-    //public function resolveRouteBinding($value, $field = null)
-    //{
-    //
-    //    return $this->where('name', $value)->firstOrFail();
-    //}
 
 
     /**
@@ -147,5 +140,23 @@ class User extends Authenticatable
     public function isTaxAdvisorAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRouteSlug(): string
+    {
+        switch($this->user_account_type_id) {
+            case UserAccountType::TYPE_ADMIN:
+            case UserAccountType::TYPE_SUPPORT:
+            case UserAccountType::TYPE_EDITOR:
+                return 'backenduser';
+            case UserAccountType::TYPE_TAX_ADVISOR:
+                return 'tax-advisors';
+            default:
+            case UserAccountType::TYPE_CUSTOMER:
+                return 'customers';
+        }
     }
 }
