@@ -1,7 +1,3 @@
-<x-app-layout>
-    <x-page title="Users">
-        <div class="mb-6">
-            <livewire:admin.user-table />
-        </div>
-    </x-page>
+<x-app-layout :title="__('Clients')">
+    <livewire:admin.user-table />
 </x-app-layout>

@@ -33,7 +33,7 @@ class UserTable extends Component implements Tables\Contracts\HasTable
     protected function getTableColumns(): array
     {
         return [
-            Tables\Columns\TextColumn::make("name"),
+            Tables\Columns\TextColumn::make("name")->sortable()->searchable(),
             Tables\Columns\TextColumn::make("email")->label("E-Mail"),
             Tables\Columns\TextColumn::make("userAccountType.name")->label("Type"),
         ];
@@ -48,7 +48,7 @@ class UserTable extends Component implements Tables\Contracts\HasTable
             Tables\Actions\ButtonAction::make('edit')
                 ->color("primary")
                 ->icon('heroicon-o-pencil')
-                ->url(fn (CurrentModel $record): string => route('admin.users.edit', $record))
+                //->url(fn (CurrentModel $record): string => route('admin.users.edit', $record))
         ];
     }
 }

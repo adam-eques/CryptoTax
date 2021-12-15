@@ -1,0 +1,150 @@
+<?php
+
+namespace App\Services;
+
+class NavigationService
+{
+    /**
+     * @var $this
+     */
+    protected static self $instance;
+
+    /**
+     * @var array
+     */
+    protected array $items = [];
+
+    public function __construct()
+    {
+        $user = \Auth::user();
+
+        if($user->isAdminAccount()) {
+            $this->addItems([
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+                ["label" => __('User'), 'icon' => 'fas-users', 'route' => 'admin.users.index'],
+                ["label" => __('API'), 'icon' => 'fas-network-wired', 'route' => 'admin.api.index'],
+            ]);
+        }
+        else if($user->isCustomerAccount()) {
+            $this->addItems([
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+                ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'customer.wallet',
+                    "children" => [
+                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('News'), 'icon' => 'fas-newspaper', 'route' => 'customer.portfolio'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-user-plus', 'route' => 'customer.taxes'],
+                    ],
+                    "actions" => [
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                    ]
+                ],
+                ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'customer.portfolio'],
+                ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'customer.taxes'],
+                ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'customer.advisor'],
+                ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'customer.services'],
+            ]);
+        }
+        else if($user->isTaxAdvisorAccount()) {
+            $this->addItems([
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ]);
+        }
+        else if($user->isSupportAccount()) {
+            $this->addItems([
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ]);
+        }
+        else if($user->isEditorAccount()) {
+            $this->addItems([
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ]);
+        }
+    }
+
+    /**
+     * @return static
+     */
+    public static function instance(): self
+    {
+        return static::$instance ?? (static::$instance = new self());
+    }
+
+    /**
+     * @return array
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTopItems(): array
+    {
+        return array_map(function($row){
+            unset($row["actions"], $row["children"]);
+            return $row;
+        }, $this->items);
+    }
+
+    /**
+     * @return array
+     */
+    public function getRouteItem(): array
+    {
+        $result = array_filter($this->items, function ($row) {
+            return request()->routeIs($row["route"]);
+        });
+
+        return $result ? current($result) : [];
+    }
+
+    /**
+     * @param string $topItemLabel
+     * @return array
+     */
+    public function getItem(string $topItemLabel): array
+    {
+        $result = array_filter($this->items, function ($row) use ($topItemLabel) {
+            return $row["label"] == $topItemLabel;
+        });
+
+        return current($result);
+    }
+
+    /**
+     * @param array $array
+     * @return $this
+     */
+    protected function addItems(array $array): self
+    {
+        foreach($array AS $row) {
+            $this->addItem($row["label"], $row["icon"] ?? null, $row["route"] ?? null, $row["children"] ?? [], $row["actions"] ?? []);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $label
+     * @param string $icon
+     * @param string $route
+     * @param array $children
+     * @param array $actions
+     * @return $this
+     */
+    protected function addItem(string $label, string $icon, string $route, array $children = [], array $actions = []): self
+    {
+        $this->items[] = [
+            'label' => $label,
+            'icon' => $icon,
+            'route' => $route,
+            'children' => $children,
+            'actions' => $actions,
+        ];
+
+        return $this;
+    }
+}
