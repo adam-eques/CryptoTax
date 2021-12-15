@@ -14,10 +14,10 @@
         case 'warning': $variantClasses = 'bg-warning'; break;
     }
     switch($size) {
-        case 'sm': $sizeClass = 'px-5 py-2 text-xs font-bold'; break;
-        case 'md': $sizeClass = 'px-7 py-3 text-lg font-bold'; break;
-        case 'lg': $sizeClass = 'px-9 py-4 text-xl font-bold'; break;
-        case 'xl': $sizeClass = 'px-10 py-5 text-2xl font-bold'; break;
+        case 'sm': $sizeClass = 'px-3 py-2 text-xs font-bold'; break;
+        case 'md': $sizeClass = 'px-5 py-3 text-lg font-bold'; break;
+        case 'lg': $sizeClass = 'px-7 py-4 text-xl font-bold'; break;
+        case 'xl': $sizeClass = 'px-9 py-5 text-2xl font-bold'; break;
     }
     switch($type) {
         case 'rounded': $typeClasses = 'rounded-full'; break;
