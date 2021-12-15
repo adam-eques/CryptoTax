@@ -1,7 +1,7 @@
 <x-app-layout>
     @if(auth()->user()->isCustomerAccount())
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5">
-            <div class="grid grid-cols-1 md:grid-cols-12 md:gap-x-5 gap-x-0 gap-y-5 md:gap-y-0">
+        <div class="mx-auto xl:max-w-screen-2xl px-3 xs:px-4 lg:px-5 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-0 md:gap-x-6 gap-y-6 md:gap-y-0">
                 <div class="col-span-7 h-full">
                     @livewire('dashboard.about')
                     @livewire('dashboard.performance')
@@ -11,7 +11,7 @@
                     @livewire('dashboard.taxes')
                 </div>
             </div>
-            <div class="my-5">
+            <div class="my-6">
                 @livewire('dashboard.portfolio')
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 md:gap-x-5 gap-x-0 gap-y-5 md:gap-y-0">

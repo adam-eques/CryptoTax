@@ -3,7 +3,8 @@
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col md:flex-row gap-3 md:gap-0 md:justify-between">
         @foreach($navItems as $navItem)
             <x-jet-nav-link href="{{ route($navItem['route']) }}" :active="request()->routeIs($navItem['route'])">
-                <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/>
+                {{-- <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/> --}}
+                <img src="{{ asset("assets/img/icon/nav/" . $navItem['icon'] . "_primary.svg") }}" class="w-6 h-6 mr-2"/>
                 {{ __($navItem["label"]) }}
             </x-jet-nav-link>
         @endforeach
@@ -20,8 +21,6 @@
                 <div class="text-base font-medium leading-none text-white">John Doe</div>
                 <div class="text-sm font-light leading-none text-gray-200 hidden">tom@example.com</div>
             </div>
-
-
         </div>
         <!-- Dropdown -->
         <div class="mt-3 md:mt-0 px-2 space-y-1 md:space-y-0 flex flex-col md:flex-row md:gap-2">

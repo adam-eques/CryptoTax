@@ -1,8 +1,8 @@
 <div class="bg-white p-5 rounded-md shadow-md">
     <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-            <img src="{{asset('assets/img/icon/coin.png')}}" class="w-8 h-8"/>
-            <x-typography size="lg" variant="primary">{{ __('My balance') }}</x-typography>
+        <div class="flex items-center space-x-2 py-5">
+            <img src="{{asset('assets/img/icon/dashboard/balance.svg')}}" class="w-8 h-8"/>
+            <x-typography size="lg" class="mr-3 font-extrabold">My Balance</x-typography>
         </div>
         <div class="flex items-center space-x-3">
             <x-button variant="primary">
@@ -30,13 +30,13 @@
         </div>
         <x-button variant="primary" class="flex items-center space-x-5 my-2">
             <div class="px-3 py-2 bg-white rounded-lg">
-                <img src="{{asset('assets/img/icon/wallet_icon.png')}}" class="w-8 h-8"/>
+                <img src="{{asset('assets/img/icon/dashboard/wallet.svg')}}" class="w-8 h-8"/>
             </div>
             <span>{{ __('Add Wallet') }}</span>
         </x-button>
         <x-button variant="third" class="p-3 rounded-lg flex items-center space-x-5 my-2">
             <div class="px-3 py-2 bg-white rounded-lg">
-                <img src="{{asset('assets/img/icon/tax_icon.png')}}" class="w-8 h-8"/>
+                <img src="{{asset('assets/img/icon/dashboard/tax.svg')}}" class="w-8 h-8"/>
             </div>
             <span>{{ __('Tax Optimizion') }}</span>
             {{-- <x-typography variant="white" size="md"></x-typography> --}}

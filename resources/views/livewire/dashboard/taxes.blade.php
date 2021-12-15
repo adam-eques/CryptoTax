@@ -1,8 +1,8 @@
-<div class="bg-white shadow-md rounded-md p-5 mt-5">
+<div class="bg-white shadow-md rounded-md p-5 mt-6">
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-3">
-            <img src="{{asset('assets/img/icon/taxes.png')}}" class="w-6 h-8"/>
+            <img src="{{asset('assets/img/icon/nav/tax_primary.svg')}}" class="w-6 h-8"/>
             <h1 class="text-lg text-black font-extrabold">Crypto Taxes</h1>
         </div>
         <div>
