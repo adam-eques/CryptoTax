@@ -1,4 +1,4 @@
-<div class="mt-14 bg-white shadow-md rounded-md py-12 px-8">
+<div class="bg-white shadow-md rounded-md p-5 w-full mt-5 sm:mt-18">
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 md:gap-2 gap-0">
         <div class="flex items-center space-x-2 py-5">
@@ -9,41 +9,37 @@
             <p class="text-sm text-gray-400">24h Portfolio Change</p>
             <div class="flex items-center space-x-2 mt-3">
                 <h1 class="text-2xl text-black font-extrabold">$1,254</h1>
-                <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-success-500 rounded-full">+2.5%</span>
+                <x-badge variant="success" size='sm' type='rounded'>{{ __('+2.5')}}</x-badge>
             </div>
         </div>
         <div class="px-4 py-2 border rounded-sm">
             <p class="text-sm text-gray-400">Total Profit loss</p>
             <div class="flex items-center space-x-2 mt-3">
                 <h1 class="text-2xl text-black font-extrabold">$95,432</h1>
-                <div>
-                    <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-success-500 rounded-full">+13.5%</span>
-                </div>
+                <x-badge variant="success" size='sm' type='rounded'>{{ __('+12.5')}}</x-badge>
             </div>
         </div>
         <div class="px-4 py-2 border rounded-sm">
             <p class="text-sm text-gray-400">Total Balance</p>
             <div class="flex items-center space-x-2 mt-3">
                 <h1 class="text-2xl text-black font-extrabold">$35,569</h1>
-                <div>
-                    <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-green-500 rounded-full">+7.5%</span>
-                </div>
+                <x-badge variant="success" size='sm' type='rounded'>{{ __('+1.5')}}</x-badge>
             </div>
         </div>
     </div>
     <div class="flex justify-end mt-10 space-x-2">
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
+        <x-button>
             <p>24H</p>
-        </button>
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
+        </x-button>
+        <x-button>
             <p>7D</p>
-        </button>
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
+        </x-button>
+        <x-button>
             <p>1M</p>
-        </button>
-        <button class="px-4 py-2 border rounded-sm cursor-pointer hover:bg-primary focus:bg-primary hover:text-white focus:text-white">
+        </x-button>
+        <x-button>
             <p>1Y</p>
-        </button>
+        </x-button>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-4 mt-4 mb-8">
         <div class="col-span-3 p-4">

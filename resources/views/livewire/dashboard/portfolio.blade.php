@@ -1,4 +1,4 @@
-<div class="bg-white shadow-md rounded-md py-4 px-8 h-full">
+<div class="bg-white shadow-md rounded-md p-5 h-full">
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
@@ -6,11 +6,11 @@
             <h1 class="text-lg text-black font-extrabold">My Crypto Portfolio</h1>
         </div>
         <div>
-            <button class="bg-primary hover:bg-secondary text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
+            <x-button variant="primary">See all assets</x-button>
         </div>
     </div>
-    <div class=" overflow-auto  mt-5">
-        <table class="min-w-clg w-full border my-5 px-5" style="min-width: 500px">
+    <div class="overflow-auto mt-5">
+        <table class="min-w-clg w-full border px-5" style="min-width: 500px">
             <thead class="border bg-gray-100">
                 <tr class="py-5">
                     <th class="py-5 text-left pl-5">Name</th>

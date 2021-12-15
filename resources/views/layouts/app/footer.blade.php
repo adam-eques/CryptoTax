@@ -11,8 +11,6 @@
                         <span class="ml-2 text-xl font-bold">myCrypto Tax</span>
                     </a>
                 </div>
-
-
                 <p class="text-white text-opacity-30 text-sm sm:text-base leading-loose">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quos!
                 </p>
@@ -43,9 +41,6 @@
                                     Media
                                 </a>
                             </li>
-
-
-
                         </ul>
                     </div>
                     <div class="mt-12 md:mt-0">
