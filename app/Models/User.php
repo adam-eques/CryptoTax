@@ -70,6 +70,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    //
+    //
+    //public function resolveRouteBinding($value, $field = null)
+    //{
+    //
+    //    return $this->where('name', $value)->firstOrFail();
+    //}
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

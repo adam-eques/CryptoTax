@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\UserAccountType;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -36,6 +37,16 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+
+        //Route::bind('user', function ($value) {
+        //    $type = request()->segment(1);
+        //    switch($type) {
+        //        case 'customer': $typeId = UserAccountType::TYPE_CUSTOMER; break;
+        //        case 'admin': $typeId = UserAccountType::TYPE_ADMIN; break;
+        //    }
+        //
+        //    return \App\Models\User::query()->where("user_account_type_id",$typeId )->firstOrFail();
+        //});
 
         $this->routes(function () {
             Route::prefix('api')

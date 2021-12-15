@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 // Only for UserAccountType::TYPE_ADMIN
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->group(function(){
     Route::get("/test", [\App\Http\Controllers\TestController::class, "index"]);
-    Route::resource("users", \App\Http\Controllers\Admin\UserController::class);
+    //Route::get("clients", [\App\Http\Controllers\Admin\UserController::class, "index"])->name("clients.index");
+    //Route::get("clients/{user}/edit", [\App\Http\Controllers\Admin\UserController::class, "edit"])->name("clients.edit");
+    Route::resource("clients", \App\Http\Controllers\Admin\UserController::class);
+    Route::resource("tax-advisors", \App\Http\Controllers\Admin\UserController::class);
     Route::resource("api", \App\Http\Controllers\Admin\ApiController::class);
 });
 

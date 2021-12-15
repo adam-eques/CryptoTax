@@ -12,12 +12,12 @@ $items = [
             [
                 "label" => "Clients",
                 "icon" => "fas-users",
-                "route" => route("admin.users.index")
+                "route" => route("admin.clients.index")
             ],
             [
                 "label" => "Advisors",
                 "icon" => "fas-user-nurse",
-                "route" => route("todo")
+                "route" => route("admin.tax-advisors.index")
             ],
         ]
     ],
@@ -82,7 +82,7 @@ $items = [
             <li>
                 <ul class="text-sm space-y-1 -mx-3">
                     <li>
-                        <a href="http://deskly.local/admin" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition hover:bg-gray-200/5 focus:bg-gray-500/5">
+                        <a href="{{ $item["route"] }}" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition hover:bg-gray-200/5 focus:bg-gray-500/5">
                             <x-icon :name="$item['icon']" class="w-5" /> {{ $item["label"] }}
                         </a>
                     </li>

@@ -44,4 +44,10 @@ class UserController extends Controller
     {
         //
     }
+
+
+    protected function getSlug(): string
+    {
+        return request()->segment(1);
+    }
 }

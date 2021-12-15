@@ -69,7 +69,7 @@ class UserEdit extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         return view("livewire.model.form", [
-            "cancel" => route('admin.users.index')
+            "cancel" => route('admin.clients.index')
         ]);
     }
 }

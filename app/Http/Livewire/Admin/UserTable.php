@@ -48,7 +48,7 @@ class UserTable extends Component implements Tables\Contracts\HasTable
             Tables\Actions\ButtonAction::make('edit')
                 ->color("primary")
                 ->icon('heroicon-o-pencil')
-                ->url(fn (CurrentModel $record): string => route('admin.users.edit', $record))
+                //->url(fn (CurrentModel $record): string => route('admin.users.edit', $record))
         ];
     }
 }

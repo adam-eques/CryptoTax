@@ -1,3 +1,3 @@
-<x-layouts.admin-layout>
+<x-app-layout :title="__('Clients')">
     <livewire:admin.user-table />
-</x-layouts.admin-layout>
+</x-app-layout>

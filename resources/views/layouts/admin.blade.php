@@ -43,7 +43,7 @@
             </a>
 
             {{-- Nav --}}
-            <x-layouts.admin-layout.sidebar />
+            @include("layouts.admin.sidebar-navi")
 
 
             <form method="POST" action="{{ route('logout') }}" class="absolute bottom-0 left-0 p-4 w-full" href="{{ route("logout") }}">
@@ -59,6 +59,10 @@
 
         {{-- Content --}}
         <div class="flex-1 p-10">
+            @if(!empty($title))
+                <h1 class="font-bold text-2xl text-gray-700 mb-4">{{ $title }}</h1>
+            @endif
+
             {{ $slot }}
         </div>
     </div>
