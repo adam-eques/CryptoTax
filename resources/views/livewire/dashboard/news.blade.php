@@ -1,6 +1,6 @@
-<div class="bg-white shadow-lg rounded-md py-4 px-8 h-full">
+<div class="bg-white shadow-lg rounded-md p-5 h-full">
     {{-- Success is as dangerous as failure. --}}
-    <div class="flex justify-between items-center py-1">
+    <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <img src="{{asset('assets/img/icon/news.png')}}" class="w-8 h-8"/>
             <h1 class="text-lg text-black font-extrabold py-2">Crypto News</h1>
@@ -14,7 +14,7 @@
             </button>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 items-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 items-center mt-5">
         <div>
             <img src="{{asset('assets/img/png/news_img.png')}}" class="w-full h-full object-cover"/>
         </div>
