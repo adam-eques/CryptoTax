@@ -28,9 +28,7 @@ class SubNavi extends NavigationMenu
         else if($user->isCustomerAccount()) {
             $this->navItems = [
                 ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
-                ["label" => __('News'), 'icon' => 'fas-newspaper', 'route' => 'customer.portfolio'],
-                ["label" => __('Invite a Friend'), 'icon' => 'fas-user-plus', 'route' => 'customer.taxes'],
+                ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet']
             ];
             $this->actions = [
                 ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],

@@ -26,12 +26,12 @@ class MainNavi extends NavigationMenu
         }
         else if($user->isCustomerAccount()) {
             $this->navItems = [
-                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
-                ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'customer.wallet'],
-                ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'customer.portfolio'],
-                ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'customer.taxes'],
-                ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'customer.advisor'],
-                ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'customer.services'],
+                ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard'],
+                ["label" => __('Wallets'), 'icon' => 'wallet', 'route' => 'customer.wallet'],
+                ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio'],
+                ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes'],
+                ["label" => __('Advisor'), 'icon' => 'advisor', 'route' => 'customer.advisor'],
+                ["label" => __('Services'), 'icon' => 'services', 'route' => 'customer.services'],
             ];
         }
         else if($user->isTaxAdvisorAccount()) {

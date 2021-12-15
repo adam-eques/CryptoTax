@@ -4,8 +4,7 @@
             {{-- Site Logo --}}
             <div class="flex-shrink-0">
                 <a href="{{ route("dashboard") }}" class="flex items-center text-white group">
-                    <img src="{{asset('/assets/img/logo.jpg')}}" alt="Logo" class="w-9">
-                    <span class="ml-2 text-sm xl:text-xl font-bold">myCrypto Tax</span>
+                    <img src="{{asset('assets/img/primary_logo.svg')}}" alt="Logo" class="w-50">
                 </a>
             </div>
 
@@ -13,7 +12,8 @@
                 <div class="flex items-baseline flex-1 justify-start gap-3">
                     @foreach($navItems as $navItem)
                         <x-jet-nav-link href="{{ route($navItem['route']) }}" :active="request()->routeIs($navItem['route'])">
-                            <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/>
+                            {{-- <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/> --}}
+                            <img src="{{ asset("assets/img/icon/nav/" . $navItem['icon'] . "_primary.svg") }}" class="w-6 h-6 mr-1"/>
                             {{ __($navItem["label"]) }}
                         </x-jet-nav-link>
                     @endforeach
