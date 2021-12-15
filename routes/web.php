@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 // Only for UserAccountType::TYPE_ADMIN
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->group(function(){
-    Route::get("/test", [\App\Http\Controllers\TestController::class, "index"]);
-    //Route::get("clients", [\App\Http\Controllers\Admin\UserController::class, "index"])->name("clients.index");
-    //Route::get("clients/{user}/edit", [\App\Http\Controllers\Admin\UserController::class, "edit"])->name("clients.edit");
-    Route::resource("clients", \App\Http\Controllers\Admin\UserController::class);
-    Route::resource("tax-advisors", \App\Http\Controllers\Admin\UserController::class);
-    Route::resource("api", \App\Http\Controllers\Admin\ApiController::class);
+    // Resources
+    Route::resource("clients", Controllers\Admin\UserController::class);
+    Route::resource("tax-advisors", Controllers\Admin\UserController::class);
+    Route::resource("api", Controllers\Admin\ApiController::class);
+
+    // Just for testing/dev
+    Route::get("/test", [Controllers\TestController::class, "index"]);
 });
 
 
@@ -35,7 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/services', 'errors.todo')->name('services');
 
     // Transactions
-    Route::get('/transactions', [\App\Http\Controllers\TransactionController::class, 'index'])
+    Route::get('/transactions', [Controllers\TransactionController::class, 'index'])
         ->name('transactions');
 
     // Specials

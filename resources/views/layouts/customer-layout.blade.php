@@ -22,8 +22,7 @@
 <body>
 <div class="overflow-hidden">
     <header>
-        @livewire('partials.main-navi')
-        @livewire('partials.sub-navi')
+        <x-customers.navi />
     </header>
 
     <main>
