@@ -9,9 +9,9 @@
 ])
 @php
     switch($variant) {
-        case 'primary': $variantClasses = 'text-white bg-primary hover:bg-primary active:bg-gray-900'; break;
+        case 'primary': $variantClasses = 'text-white bg-primary hover:bg-secondary active:bg-gray-900'; break;
         case 'secondary': $variantClasses = 'text-white bg-secondary hover:bg-primary active:bg-gray-900'; break;
-        case 'third': $variantClasses = 'text-white bg-third hover:bg-primary active:bg-gray-900'; break;
+        case 'third': $variantClasses = 'text-white bg-third hover:bg-secondary active:bg-gray-900'; break;
         case 'success': $variantClasses = 'text-white bg-success hover:bg-primary active:bg-gray-900'; break;
         case 'danger': $variantClasses = 'text-white bg-danger hover:bg-primary active:bg-gray-900'; break;
         case 'warning': $variantClasses = 'text-white bg-warning hover:bg-primary active:bg-gray-900'; break;
