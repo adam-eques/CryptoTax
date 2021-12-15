@@ -264,10 +264,10 @@
         var options_4 = {
             series: [
                 {
-                    name: 'Inflation',
-                    data: [2.3, 3.1, 4.0, 10.1, 4.0],
+                    data: [213.3, 123.1, 154.0, 234.1, 312.0],
                 }
             ],
+            colors: ['#2ee394', '#fb6801', '#5b65a3', '#9d8eed', '#5cc5fe'],
             chart: {
                 height: 300,
                 type: 'bar',
@@ -284,17 +284,18 @@
                     dataLabels: {
                         position: 'top',
                     },
+                    distributed: true
                 }
             },
             dataLabels: {
                 enabled: true,
                 formatter: function (val) {
-                    return val + "$";
+                    return "$"+val;
                 },
                 offsetY: -20,
                 style: {
                     fontSize: '16px',
-                    colors: ["#304758"]
+                    colors: ["#000"],
                 }
             },        
             xaxis: {
@@ -313,6 +314,9 @@
             yaxis: {
                 show: false,       
             },
+            legend: {
+                show: false
+            }
         };
 
         var chart_4 = new ApexCharts(document.getElementById(`column_chart`), options_4);
