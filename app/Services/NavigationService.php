@@ -21,8 +21,19 @@ class NavigationService
         if($user->isAdminAccount()) {
             $this->addItems([
                 ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
-                ["label" => __('User'), 'icon' => 'fas-users', 'route' => 'admin.users.index'],
-                ["label" => __('API'), 'icon' => 'fas-network-wired', 'route' => 'admin.api.index'],
+                ["label" => __('User'), 'children' => [
+                    ["label" => "Clients", "icon" => "fas-users", "route" => "admin.clients.index"],
+                    ["label" => "Advisors", "icon" => "fas-user-nurse", "route" => "admin.tax-advisors.index"],
+                ]],
+                ["label" => __('Advertising'), 'children' => [
+                    ["label" => "Advertising", "icon" => "fas-ad", "route" => "todo"],
+                ]],
+                ["label" => __('Finance'), 'children' => [
+                    ["label" => "Finance", "icon" => "fas-coins", "route" => "todo"],
+                ]],
+                ["label" => __('API\'s'), 'children' => [
+                    ["label" => "API's", "icon" => "fas-network-wired", "route" => "todo"],
+                ]],
             ]);
         }
         else if($user->isCustomerAccount()) {
@@ -129,13 +140,13 @@ class NavigationService
 
     /**
      * @param string $label
-     * @param string $icon
-     * @param string $route
+     * @param string|null $icon
+     * @param string|null $route
      * @param array $children
      * @param array $actions
      * @return $this
      */
-    protected function addItem(string $label, string $icon, string $route, array $children = [], array $actions = []): self
+    protected function addItem(string $label, ?string $icon = null, ?string $route = null, array $children = [], array $actions = []): self
     {
         $this->items[] = [
             'label' => $label,

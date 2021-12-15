@@ -6,7 +6,7 @@ use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
-    public string $type = "app";
+    public $title;
 
     /**
      * Get the view / contents that represents the component.
@@ -15,6 +15,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.' . $this->type);
+        return view('layouts.app');
     }
 }
