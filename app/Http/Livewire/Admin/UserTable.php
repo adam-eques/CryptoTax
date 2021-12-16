@@ -10,6 +10,7 @@ use Livewire\Component;
 class UserTable extends Component implements Tables\Contracts\HasTable
 {
     use Tables\Concerns\InteractsWithTable;
+    public array $accountTypeIds = [];
 
     /**
      * @return string
@@ -24,7 +25,14 @@ class UserTable extends Component implements Tables\Contracts\HasTable
      */
     protected function getTableQuery(): Builder
     {
-        return CurrentModel::query()->with("userAccountType");
+        $query = CurrentModel::query()
+            ->with("userAccountType");
+
+        if($this->accountTypeIds) {
+            $query->whereIn("user_account_type_id", $this->accountTypeIds);
+        }
+
+        return $query;
     }
 
     /**
@@ -48,7 +56,7 @@ class UserTable extends Component implements Tables\Contracts\HasTable
             Tables\Actions\ButtonAction::make('edit')
                 ->color("primary")
                 ->icon('heroicon-o-pencil')
-                //->url(fn (CurrentModel $record): string => route('admin.users.edit', $record))
+                ->url(fn (CurrentModel $record): string => route('admin.' . $record->getRouteSlug() . '.edit', $record))
         ];
     }
 }

@@ -21,7 +21,7 @@
     ]);
 @endphp
 
-<x-button :tag="$tag" :variant="$color" :type="$type" :size="$size">
+<x-button :tag="$tag" :variant="$color" :type="$type" :size="$size" {{ $attributes->merge([]) }}>
     @if ($icon && $iconPosition === 'before')
         <x-dynamic-component :component="$icon" :class="$iconClasses" />
     @endif

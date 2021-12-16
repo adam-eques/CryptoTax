@@ -17,9 +17,18 @@ use \App\Http\Controllers;
 
 // Only for UserAccountType::TYPE_ADMIN
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->group(function(){
-    // Resources
-    Route::resource("clients", Controllers\Admin\UserController::class);
-    Route::resource("tax-advisors", Controllers\Admin\UserController::class);
+    // Resources: User
+    Route::resource("customers", Controllers\Admin\CustomerController::class)->parameters([
+        'customers' => 'user'
+    ]);
+    Route::resource("backenduser", Controllers\Admin\BackendUserController::class)->parameters([
+        'backenduser' => 'user'
+    ]);
+    Route::resource("tax-advisors", Controllers\Admin\TaxAdvisorsController::class)->parameters([
+        'tax-advisors' => 'user'
+    ]);
+
+    // Other resoureces
     Route::resource("api", Controllers\Admin\ApiController::class);
 
     // Just for testing/dev

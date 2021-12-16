@@ -1,7 +1,7 @@
 <x-app-layout>
-    <x-page title="User edit">
-        <div class="mb-6">
+    <x-card :title='__(":name edit", ["name" => $label])'>
+        <div class="p-4">
             <livewire:admin.user-edit :model="$user" />
         </div>
-    </x-page>
+    </x-card>
 </x-app-layout>
