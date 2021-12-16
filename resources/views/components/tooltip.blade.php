@@ -1,7 +1,12 @@
-<div class="relative flex flex-col items-center group mx-3">
-    <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
-    <div class="absolute bottom-0  flex-col items-center hidden mb-6 group-hover:flex">
-        <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-primary shadow-lg">{{ $slot }}</span>
-        <div class="w-3 h-3 -mt-2 rotate-45 bg-primary"></div>
+@props(['content' => ""])
+<div class="relative flex flex-col items-center group">
+    {{-- <img src="{{asset('assets/img/icon/dashboard/tooltip.svg')}}" class="w-4 h-4"/> --}}
+    {{ $slot }}
+    <div class="absolute top-12 -left-14 flex-col items-center hidden group-hover:flex">
+        <div class="z-50 bg-secondary shadow-sm rounded-full flex items-center px-2 py-3 space-x-2 w-50">
+            <x-icon name="bag" class="w-6 h-6 text-white hidden xl:block"></x-icon>
+            <p class="text-md text-white">{{ $content }}</p>
+        </div>
+        <img src="{{asset('assets/img/icon/dashboard/arrow.svg')}}" alt="" class="w-15 h-15 -mt-18">
     </div>
 </div>

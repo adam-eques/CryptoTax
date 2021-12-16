@@ -1,17 +1,16 @@
 <div class="bg-white shadow-md rounded-md p-5">
-    {{-- Because she competes with no one, no one can compete with her. --}}
-    <div class="flex items-center space-x-2 py-5">
-        <img src="{{asset('assets/img/icon/transaction.png')}}" class="w-8 h-6"/>
-        <h1 class="text-lg text-black font-extrabold">Recent Transaction</h1>
+    <div class="flex items-center space-x-2">
+        <img src="{{asset('assets/img/icon/dashboard/transaction.svg')}}" class="w-8 h-8"/>
+        <x-typography size="lg" class="mr-3 font-extrabold">Recent Transaction</x-typography>
     </div>
-    <div class="overflow-auto">
+    <div class="overflow-auto mt-5">
         <div class="space-y-1 min-w-cmd">
             <div class="flex items-center justify-between hover:bg-gray-100 border p-4 rounded-lg">
                 <div class="flex items-center justify-between space-x-6">
-                    <img src="{{ asset('assets/img/icon/binancecoin.png') }}" class="h-16 w-16"/>
+                    <img src="{{ asset('assets/img/icon/coin/binance.svg') }}" class="h-16 w-16"/>
                     <div>
-                        <p>Binance Coin </p>
-                        <p>Buy</p>
+                        <p class="text-xl font-bold">Binance Coin </p>
+                        <p class="text-gray-400">Buy</p>
                     </div>
                 </div>
                 <div>
@@ -21,10 +20,10 @@
             </div>
             <div class="flex items-center justify-between hover:bg-gray-100 border p-4 rounded-lg">
                 <div class="flex items-center justify-between space-x-6">
-                    <img src="{{asset('assets/img/icon/litecoin.png')}}" class="h-16 w-16"/>
+                    <img src="{{asset('assets/img/icon/coin/litecoin.svg')}}" class="h-16 w-16"/>
                     <div>
-                        <p>Lite Coin</p>
-                        <p>Buy</p>
+                        <p class="text-xl font-bold">Lite Coin</p>
+                        <p class="text-gray-400">Buy</p>
                     </div>
                 </div>
                 <div>
@@ -34,10 +33,10 @@
             </div>
             <div class="flex items-center justify-between hover:bg-gray-100 border p-4 rounded-lg">
                 <div class="flex items-center justify-between space-x-6">
-                    <img src="{{asset('assets/img/icon/cardano.png')}}" class="h-16 w-16"/>
+                    <img src="{{asset('assets/img/icon/coin/cardano.svg')}}" class="h-16 w-16"/>
                     <div>
-                        <p>Cardano Coin </p>
-                        <p>Buy</p>
+                        <p class="text-xl font-bold">Cardano Coin </p>
+                        <p class="text-gray-400">Buy</p>
                     </div>
                 </div>
                 <div>

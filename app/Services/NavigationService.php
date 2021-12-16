@@ -39,22 +39,60 @@ class NavigationService
         }
         else if($user->isCustomerAccount()) {
             $this->addItems([
-                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
-                ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'customer.wallet',
+                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard',
                     "children" => [
                         ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
                         ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
-                        ["label" => __('News'), 'icon' => 'fas-newspaper', 'route' => 'customer.portfolio'],
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-user-plus', 'route' => 'customer.taxes'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'customer.portfolio'],
-                ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'customer.taxes'],
-                ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'customer.advisor'],
-                ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'customer.services'],
+                ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'customer.wallet',
+                    "children" => [
+                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                    ],
+                    "actions" => [
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                    ]
+                ],
+                ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'customer.portfolio',
+                    "children" => [
+                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                    ],
+                    "actions" => [
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                    ]
+                ],
+                ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'customer.taxes',
+                    "children" => [
+                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                    ],
+                    "actions" => [
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                    ]
+                ],
+                ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'customer.advisor',
+                    "children" => [
+                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                    ],
+                    "actions" => [
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                    ]
+                ],
+                ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'customer.services',
+                    "children" => [
+                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                    ],
+                    "actions" => [
+                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                    ]
+                ],
             ]);
         }
         else if($user->isTaxAdvisorAccount()) {
