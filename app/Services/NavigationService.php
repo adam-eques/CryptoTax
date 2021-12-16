@@ -38,58 +38,58 @@ class NavigationService
         }
         else if($user->isCustomerAccount()) {
             $this->addItems([
-                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard',
+                ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Wallets'), 'icon' => 'fas-wallet', 'route' => 'customer.wallet',
+                ["label" => __('Wallets'), 'icon' => 'wallet', 'route' => 'customer.wallet',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Portfolio'), 'icon' => 'fas-suitcase', 'route' => 'customer.portfolio',
+                ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Taxes'), 'icon' => 'fas-clipboard-list', 'route' => 'customer.taxes',
+                ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Advisor'), 'icon' => 'fas-user-nurse', 'route' => 'customer.advisor',
+                ["label" => __('Advisor'), 'icon' => 'advisor', 'route' => 'customer.advisor',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Services'), 'icon' => 'fas-file-invoice-dollar', 'route' => 'customer.services',
+                ["label" => __('Services'), 'icon' => 'service', 'route' => 'customer.services',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'fas-shopping-cart', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'fas-binoculars', 'route' => 'customer.wallet'],
+                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'fas-share-alt', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
                     ]
                 ],
             ]);
