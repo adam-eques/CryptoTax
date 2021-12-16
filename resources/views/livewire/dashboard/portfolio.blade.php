@@ -8,23 +8,9 @@
             <x-button variant="primary">See all assets</x-button>
         </div>
     </div>
-    <div class="mt-10 overflow-x-auto" x-data="{selected:1}">
-        <div class="bg-primary py-6 rounded-md grid grid-cols-9 min-w-clg">
-            <div class="col-span-1"></div>
-            <div class="flex items-center space-x-2 justify-left col-span-2">
-                <p class="text-md font-bold text-white">Name</p>
-                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
-            </div>
-            <div class="flex items-center space-x-2 justify-left col-span-2">
-                <p class="text-md font-bold text-white">Holdings</p>
-                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
-            </div>
-            <div class="flex items-center space-x-2 justify-left col-span-2">
-                <p class="text-md font-bold text-white">Price</p>
-                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
-            </div>
-            <div class="flex items-center space-x-2 justify-left col-span-2">
-                <p class="text-md font-bold text-white">PNL</p>
+    <div class="mt-6 overflow-x-auto" x-data="{selected:1}">
+        <div class="border rounded-md bg-gray-100 grid grid-cols-11 py-6">
+            <div class="col-span-1">
                 <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
             </div>
         </div>
