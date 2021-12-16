@@ -27,7 +27,7 @@
                     <button type="button" title="Message"
                             class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none ">
                         <span class="sr-only">Message</span>
-                        <x-icon name="fas-comment" class="w-6 h-6 mr-2"/>
+                        <x-icon name="message" class="w-6 h-6 mr-2"/>
                     </button>
 
                     {{-- Notification --}}
@@ -36,7 +36,7 @@
                                 class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none relative"
                                 @click="open = true">
                             <span class="sr-only">{{ __("View notifications") }}</span>
-                            <x-icon name="fas-bell" class="w-6 h-6 mr-2 mt-1"/>
+                            <x-icon name="bell" class="w-6 h-6 mr-2 mt-1"/>
                             <span class="rounded-full bg-white text-primary px-1 inline-flex text-xs absolute -top-1 -right-1">2</span>
                         </button>
 
