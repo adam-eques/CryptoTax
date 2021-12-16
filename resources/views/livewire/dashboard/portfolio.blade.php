@@ -1,108 +1,35 @@
 <div class="bg-white shadow-md rounded-md p-5 h-full">
-    {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
-            <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-8 h-6"/>
-            <h1 class="text-lg text-black font-extrabold">My Crypto Portfolio</h1>
+            <img src="{{asset('assets/img/icon/nav/portfolio_primary.svg')}}" class="w-8 h-8"/>
+            <x-typography size="lg" class="mr-3 font-extrabold">My Cripto Portfolio</x-typography>
         </div>
         <div>
             <x-button variant="primary">See all assets</x-button>
         </div>
     </div>
-    <div class="overflow-auto mt-5">
-        <table class="min-w-clg w-full border px-5" style="min-width: 500px">
-            <thead class="border bg-gray-100">
-                <tr class="py-5">
-                    <th class="py-5 text-left pl-5">Name</th>
-                    <th class="py-5 text-right">Holdings</th>
-                    <th class="py-5 text-right">Price</th>
-                    <th class="py-5 text-center">All time unrealized return</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="px-5">
-                    <td class="p-3 flex items-left space-x-4">
-                        <img src="{{asset('assets/img/icon/eth2.png')}}" class="w-16 h-16"/>
-                        <div class="text-left">
-                            <p class=" font-extrabold text-black">Ethereum 2</p>
-                            <p class="text-gray-400">ETH2</p>
-                        </div>
-                    </td>
-                    <td class="py-5 text-right">
-                        <p>$1663</p>
-                        <p class="text-gray-400">0.2261929</p>
-                        <p>ETH2</p>
-                    </td>
-                    <td class="py-5 text-right">
-                        <p>$3156.85</p>
-                    </td>
-                    <td class="py-5 text-center">
-                        <p>$699.12</p>
-                        <span class="inline-flex items-center justify-center px-5 py-3 text-xs font-bold leading-none text-white bg-danger-500 rounded">-27.54%</span>
-                    </td>
-                </tr>
-                <tr class="px-5">
-                    <td class="p-3 flex items-center space-x-4 text-left">
-                        <img src="{{asset('assets/img/icon/kucoin.png')}}" class="w-16 h-16"/>
-                        <div class="text-left">
-                            <p class=" font-extrabold text-black">KuCoin Token</p>
-                            <p class="text-gray-400">KCS</p>
-                        </div>
-                    </td>
-                    <td class="py-5 text-right">
-                        <p>$1663</p>
-                        <p class="text-gray-400">0.2261929</p>
-                        <p>KCS</p>
-                    </td>
-                    <td class="py-5 text-right">
-                        <p>$3156.85</p>
-                    </td>
-                    <td class="py-5 text-center">
-                        <p>$699.12</p>
-                    </td>
-                </tr>
-                <tr class="px-5">
-                    <td class="p-3 flex items-center space-x-4">
-                        <img src="{{asset('assets/img/icon/dashcoin.png')}}" class="w-16 h-16"/>
-                        <div class="text-left">
-                            <p class=" font-extrabold text-black">Dash Coin</p>
-                            <p class="text-gray-400">GZIL</p>
-                        </div>
-                    </td>
-                    <td class="py-3 text-right">
-                        <p>$1663</p>
-                        <p class="text-gray-400">0.2261929</p>
-                        <p>GZIL</p>
-                    </td>
-                    <td class="py-3 text-right">
-                        <p>$3156.85</p>
-                    </td>
-                    <td class="py-5 text-center">
-                        <p>$699.12</p>
-                        <span class="inline-flex items-center justify-center px-5 py-3 text-xs font-bold leading-none text-white bg-success-500 rounded">+27.54%</span>
-                    </td>
-                </tr>
-                <tr class="px-5">
-                    <td class="p-3 flex items-center space-x-4">
-                        <img src="{{asset('assets/img/icon/bitecoin.png')}}" class="w-16 h-16"/>
-                        <div class="text-left">
-                            <p class=" font-extrabold text-black">Bitecoin</p>
-                            <p class="text-gray-400">ETH2</p>
-                        </div>
-                    </td>
-                    <td class="py-5 text-right">
-                        <p>$1663</p>
-                        <p class="text-gray-400">0.2261929</p>
-                        <p>ETH2</p>
-                    </td>
-                    <td class="py-5 text-right">
-                        <p>$3156.85</p>
-                    </td>
-                    <td class="py-5 text-center">
-                        <p>$699.12</p>
-                    </td>
-                </tr>                
-            </tbody>
-        </table>
+    <div class="mt-10 overflow-x-auto" x-data="{selected:1}">
+        <div class="bg-primary py-6 rounded-md grid grid-cols-9 min-w-clg">
+            <div class="col-span-1"></div>
+            <div class="flex items-center space-x-2 justify-left col-span-2">
+                <p class="text-md font-bold text-white">Name</p>
+                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
+            </div>
+            <div class="flex items-center space-x-2 justify-left col-span-2">
+                <p class="text-md font-bold text-white">Holdings</p>
+                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
+            </div>
+            <div class="flex items-center space-x-2 justify-left col-span-2">
+                <p class="text-md font-bold text-white">Price</p>
+                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
+            </div>
+            <div class="flex items-center space-x-2 justify-left col-span-2">
+                <p class="text-md font-bold text-white">PNL</p>
+                <img src="{{asset('assets/img/icon/dashboard/updownarrow.svg')}}" class="w-2.5 h-2.5"/>
+            </div>
+        </div>
+        <x-portfolio-list-item :id="1"></x-portfolio-list-item>   
+        <x-portfolio-list-item :id="2"></x-portfolio-list-item>       
+        <x-portfolio-list-item :id="3"></x-portfolio-list-item>   
     </div>
 </div>
