@@ -142,7 +142,7 @@ module.exports = {
                     '900': '#432CE8'
                 },
                 'bgcolor': "#F5F7FB",
-                'bgcolor1': "#A0A2AE"
+                'bgcolor1': "#E1DFF9"
             },
             boxShadow: {
                 '1': '0 0 21px 5px rgba(254, 218, 17, 0.58)',
