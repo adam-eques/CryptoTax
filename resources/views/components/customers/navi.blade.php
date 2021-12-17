@@ -5,7 +5,7 @@
             {{-- Site Logo --}}
             <div class="flex-shrink-0">
                 <a href="{{ route("dashboard") }}" class="flex items-center text-white group">
-                    <img src="{{asset('/assets/img/logo.jpg')}}" alt="Logo" class="w-9">
+                    <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
                     <span class="ml-2 text-sm xl:text-xl font-bold">myCrypto Tax</span>
                 </a>
             </div>

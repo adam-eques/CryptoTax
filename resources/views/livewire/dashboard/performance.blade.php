@@ -1,18 +1,18 @@
 <div class="bg-white shadow-md rounded-md p-5 w-full mt-5 sm:mt-10">
     {{-- Because she competes with no one, no one can compete with her. --}}
-    <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-2">
+    <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-x-6 md:gap-y-5">
         <div class="flex items-center space-x-2 py-5">
-            <img src="{{asset('assets/img/icon/dashboard/performance.svg')}}" class="w-8 h-8"/>
-            <x-typography size="lg" class="mr-3 font-extrabold">My Performance</x-typography>
+            <x-icon name="donut" class="w-8 h-8 text-primary"/>
+            <p class="mr-3 text-lg font-extrabold">My Performance</p>
         </div>
         <x-status-card-dashboard id="status_1" title="24h Portfolio Change" amount="1,254" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
         <x-status-card-dashboard id="status_2" title="Total profit loss" amount="95,422" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
         <x-status-card-dashboard id="status_3" title="24h Portfolio Change" amount="3,566" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
     </div>
-    <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-4 mt-10">
+    <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-6 mt-14">
         <div class="col-span-3">
             <div class="col-span-4">
-                <select class="px-10 py-2 border-gray-300 border">
+                <select class="px-7 py-2 border-gray-300 border">
                     <option>Top 5 Coins</option>
                     <option>Top 10 Coins</option>
                 </select>
@@ -267,7 +267,7 @@
                     data: [213.3, 123.1, 154.0, 234.1, 312.0],
                 }
             ],
-            colors: ['#2ee394', '#fb6801', '#5b65a3', '#9d8eed', '#5cc5fe'],
+            colors: ['#181C3A', '#7A6CFF', '#7A6CFF', '#181C3A', '#7A6CFF'],
             chart: {
                 height: 300,
                 type: 'bar',
@@ -280,7 +280,7 @@
             },
             plotOptions: {
                 bar: {
-                    borderRadius: 10,
+                    borderRadius: 5,
                     dataLabels: {
                         position: 'top',
                     },
@@ -312,11 +312,18 @@
                 }
             },
             yaxis: {
-                show: false,       
+                show: false,
+                axisBorder: {
+                    show: false,
+                }       
             },
             legend: {
                 show: false
+            },
+            grid: {
+                show: false
             }
+
         };
 
         var chart_4 = new ApexCharts(document.getElementById(`column_chart`), options_4);
