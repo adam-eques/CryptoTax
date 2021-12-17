@@ -45,10 +45,10 @@
     <div class="shadow-md p-4 rounded-md bg-lightblue my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
-                <img src="{{asset('assets/img/icon/net_deposits.png')}}" class="text-white w-6 h-6" />
+                <x-icon name="deposit" class="text-secondary w-6 h-6" />
             </div>
             <p class="font-bold">Net Deposits</p>
-            <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
+            <x-icon name="info" class="w-4 h-4"/>
         </div>
         <div class="flex justify-start items-start px-5 pt-4">
             <span class="text-xl font-bold">$</span>
@@ -58,10 +58,10 @@
     <div class="shadow-md p-4 rounded-md bg-lightblue my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
-                <img src="{{asset('assets/img/icon/net_proceeds.png')}}" class="text-white w-6 h-6" />
+                <x-icon name="coin_1" class="text-secondary w-6 h-6" />
             </div>
             <p class="font-bold">Net Proceeds</p>
-            <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
+            <x-icon name="info" class="w-4 h-4"/>
         </div>
         <div class="flex justify-start items-start px-5 pt-4">
             <span class="text-xl font-bold">$</span>
