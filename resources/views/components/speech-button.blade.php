@@ -9,6 +9,6 @@ $classes = ($active ?? false)
 <button {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
     @if ($active)        
-        <img src="{{ asset('assets/img/icon/dashboard/arrow.png') }}" class="w-7 h-5 absolute top-7 left-3"/>
+        <x-icon name="triangle" class="text-primary absolute rotate-45 w-8 h-8 top-6 left-1 z-0"/>
     @endif
 </button>

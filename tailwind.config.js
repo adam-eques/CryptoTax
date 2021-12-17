@@ -206,7 +206,7 @@ module.exports = {
                 '7.5xl': '5rem',
             },
             minWidth: {
-                clg: '800px',
+                clg: '1200px',
                 cmd: '400px'
             }
         },

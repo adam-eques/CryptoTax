@@ -1,16 +1,16 @@
 <div class="bg-white p-5 rounded-md shadow-md">
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2 py-5">
-            <img src="{{asset('assets/img/icon/dashboard/balance.svg')}}" class="w-8 h-8"/>
+            <x-icon name="coin" class="w-8 h-8"/>
             <x-typography size="lg" class="mr-3 font-extrabold">My Balance</x-typography>
         </div>
         <div class="flex items-center space-x-3">
-            <x-button variant="primary">
-                <x-icon name="fas-th-large" class="w-6 h-6"/>
-            </x-button>
-            <x-button variant="primary">
-                <x-icon name="fas-list" class="w-6 h-6"/>
-            </x-button>
+            <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">
+                <x-icon name="tile" class="w-6 h-6"/>
+            </button>
+            <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">
+                <x-icon name="list" class="w-6 h-6"/>
+            </button>
         </div>
     </div>
     <div class=" lg:px-8 sm:px-6 px-5 py-4">
@@ -28,15 +28,15 @@
             <x-typography size="2xl" variant="primary">{{ __('$ 124, 563, 000') }}</x-typography>
             <x-progressbar height="sm" variant="primary" progress="45"></x-progressbar>
         </div>
-        <x-button variant="primary" class="flex items-center space-x-5 my-2">
-            <div class="px-3 py-2 bg-white rounded-lg">
-                <img src="{{asset('assets/img/icon/dashboard/wallet.svg')}}" class="w-8 h-8"/>
+        <x-button variant="primary" class="flex items-center space-x-5 mt-8">
+            <div class="px-3 py-2 rounded-lg bg-white">
+                <x-icon name="wallet-1" class="w-8 h-8 text-primary"/>
             </div>
             <span>{{ __('Add Wallet') }}</span>
         </x-button>
-        <x-button variant="third" class="p-3 rounded-lg flex items-center space-x-5 my-2">
+        <x-button variant="third" class="p-3 flex items-center space-x-5 mt-8">
             <div class="px-3 py-2 bg-white rounded-lg">
-                <img src="{{asset('assets/img/icon/dashboard/tax.svg')}}" class="w-8 h-8"/>
+                <x-icon name="tax-1" class="w-8 h-8 text-third"/>
             </div>
             <span>{{ __('Tax Optimizion') }}</span>
             {{-- <x-typography variant="white" size="md"></x-typography> --}}

@@ -1,8 +1,8 @@
 <div class="bg-white shadow-lg rounded-md p-5 h-full">
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
-            <img src="{{asset('assets/img/icon/dashboard/transaction.svg')}}" class="w-8 h-8"/>
-            <x-typography size="lg" class="mr-3 font-extrabold">Crypto News</x-typography>
+            <x-icon name="news" class="w-8 h-8"/>
+            <p class="mr-3 text-lg font-extrabold">Crypto News</p>
         </div>
         <div class="flex items-center space-x-6">
             <button class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white">
@@ -13,7 +13,32 @@
             </button>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 items-center mt-5">
-      
+    <div class="main-carousel pt-5 h-full">
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2">
+            <div class="h-full w-full">
+                <img src="{{asset('assets/img/svg/news_1.svg')}}" class="w-full"/>
+                <p class="text-lg text-primary font-bold">Cryptocurrency exchanges start blocking accounts </p>
+                <p class="text-gray-400">Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and</p>
+            </div>
+        </div>
+        <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2">
+            <div class="h-full w-full">
+                <img src="{{asset('assets/img/svg/news_2.svg')}}" class="w-full"/>
+                <p class="text-lg text-primary font-bold">Cryptocurrency exchanges start blocking accounts </p>
+                <p class="text-gray-400">Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and</p>
+            </div>
+        </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+   var elem = document.querySelector('.main-carousel');
+    var flkty = new Flickity( elem, {
+        prevNextButtons: false,
+        cellAlign: 'left',
+        contain: true,
+        pageDots: false
+    });
+</script>
+@endpush
