@@ -1,7 +1,7 @@
 <div class="mt-2">
     <div class="grid grid-cols-11 min-w-clg py-6 border bg-gray-100 rounded-md">
         <div class="col-span-1 flex justify-center items-center">
-            <button class="w-8 h-8 bg-white shadow-md rounded-full flex justify-center items-center" @click="selected !== 1 ? selected = 1 : selected = null">
+            <button class="w-8 h-8 bg-white shadow-md rounded-full flex justify-center items-center" @click="selected !== {{ $id }} ? selected = {{ $id }} : selected = null">
                 <x-icon name="fas-chevron-down" class="text-secondary w-12 h-5"/>
             </button>
         </div>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div x-show="selected == 1">
+    <div x-show="selected == {{ $id }}">
         <div class="grid grid-cols-11 min-w-clg py-6 border bg-white rounded-md">
             <div class="col-span-1 flex justify-center items-center"> </div>
             <div class="col-span-2 flex justify-start items-center space-x-2 px-5">
