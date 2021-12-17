@@ -2,13 +2,13 @@
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <x-icon name="portfolio" class="w-8 h-8 text-primary"/>
-            <p class="mr-3 text-lg font-extrabold">My Cripto Portfolio</p>
+            <p class="mr-3 text-xl font-extrabold">My Crypto Portfolio</p>
         </div>
         <div>
             <x-button variant="primary">See all assets</x-button>
         </div>
     </div>
-    <div class="mt-6 overflow-x-auto" x-data="{selected:1}">
+    <div class="mt-6 overflow-x-auto" x-data="{selected:null}">
         <div class="border rounded-md bg-gray-100 text-primary grid grid-cols-11 py-6 min-w-clg">
             <div class="col-span-1 flex justify-center items-center">
                 <x-icon name="biarrow" class="w-2 h-3"/>
@@ -39,5 +39,8 @@
             </div>
         </div>
         <x-portfolio-list-item :id="1"></x-portfolio-list-item>   
+        <x-portfolio-list-item :id="2"></x-portfolio-list-item>   
+        <x-portfolio-list-item :id="3"></x-portfolio-list-item>   
+        <x-portfolio-list-item :id="4"></x-portfolio-list-item>   
     </div>
 </div>

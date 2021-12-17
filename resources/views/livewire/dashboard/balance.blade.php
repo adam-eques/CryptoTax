@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="coin" class="w-8 h-8"/>
-            <p class="mr-3 font-extrabold text-lg">My Balance</p>
+            <p class="mr-3 font-extrabold text-xl">My Balance</p>
         </div>
         <div class="flex items-center space-x-3">
             <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">

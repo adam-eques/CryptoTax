@@ -7,6 +7,6 @@
             <x-icon name="wallet" class="w-6 h-6 text-white hidden xl:block"></x-icon>
             <p class="text-md text-white">{{ $content }}</p>
         </div>
-        <x-icon name="triangle_1" class="w-15 h-15 -mt-18 -rotate-45 text-secondary"></x-icon>
+        <x-icon name="triangle_1" class="w-10 h-10 -mt-18 -rotate-45 text-secondary"></x-icon>
     </div>
 </div>
