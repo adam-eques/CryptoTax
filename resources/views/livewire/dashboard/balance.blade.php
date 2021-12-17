@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="coin" class="w-8 h-8"/>
-            <x-typography size="lg" class="mr-3 font-extrabold">My Balance</x-typography>
+            <p class="mr-3 font-extrabold text-xl">My Balance</p>
         </div>
         <div class="flex items-center space-x-3">
             <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">
@@ -13,8 +13,8 @@
             </button>
         </div>
     </div>
-    <div class=" lg:px-8 sm:px-6 px-5 py-4">
-        <img src="{{asset('assets/img/svg/credit_card.svg')}}" class=" w-9/12 mx-auto"/>
+    <div class=" lg:px-4 sm:px-3 px-2 py-4">
+        <img src="{{asset('assets/img/svg/Credit Card.svg')}}" class=" w-9/12 mx-auto"/>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-3">
         <div>

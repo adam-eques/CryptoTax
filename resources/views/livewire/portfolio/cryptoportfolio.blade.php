@@ -8,7 +8,7 @@
         <button class="bg-primary hover:bg-secondary text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
     </div>
     <div class="overflow-auto">
-        <table class="min-w-clg w-full border my-5 px-5">
+        <table class="min-w-cmd w-full border my-5 px-5">
             <thead class="border bg-gray-100">
                 <tr class="py-5">
                     <th class="py-5 text-left pl-5">Name</th>
