@@ -38,9 +38,41 @@
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
         </div>
-        <x-portfolio-list-item :id="1"></x-portfolio-list-item>   
-        <x-portfolio-list-item :id="2"></x-portfolio-list-item>   
-        <x-portfolio-list-item :id="3"></x-portfolio-list-item>   
-        <x-portfolio-list-item :id="4"></x-portfolio-list-item>   
+        <x-portfolio-list-item 
+            :selectedId="1" 
+            id="portfolio-1" 
+            icon="bitcoin"
+            name="Bitcoin"
+            type="BIT"
+            lingColor="#FF0303"
+        >
+        </x-portfolio-list-item>   
+        <x-portfolio-list-item 
+            :selectedId="2" 
+            id="portfolio-2" 
+            icon="bitcoin"
+            name="Lite Coin"
+            type="BIT"
+            lingColor="#1DB737"
+        >
+        </x-portfolio-list-item>   
+        <x-portfolio-list-item 
+            :selectedId="3" 
+            id="portfolio-3" 
+            icon="bitcoin"
+            name="Tether"
+            type="USDT"
+            lingColor="#FF0303"
+        >
+        </x-portfolio-list-item>   
+        <x-portfolio-list-item 
+            :selectedId="4" 
+            id="portfolio-4" 
+            icon="bitcoin"
+            name="Ethereum"
+            type="BIT"
+            lingColor="#1DB737"
+        >
+        </x-portfolio-list-item>   
     </div>
 </div>

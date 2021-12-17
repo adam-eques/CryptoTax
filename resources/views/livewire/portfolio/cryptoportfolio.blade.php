@@ -2,7 +2,7 @@
     {{-- The whole world belongs to you. --}}
     <div class="flex justify-between items-center">
         <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
-            <img src="{{asset('assets/img/icon/portfolio.png')}}" class="w-10 h-8"/>
+            <x-icon name="portfolio" class="w-10 h-8"/>
             <h4 class="text-2xl font-extrabold">My Crypto Portfolio</h4>
         </div>
         <button class="bg-primary hover:bg-secondary text-white rounded-lg py-2 px-5 text-sm">See all assets</button>
