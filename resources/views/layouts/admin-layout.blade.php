@@ -23,7 +23,7 @@
     <div class="relative min-h-screen md:flex" x-data="{ mobileSidebar: false }">
         {{-- Mobile menu bar --}}
         <div class="bg-primary text-gray-100 flex justify-between md:hidden">
-            <a href="#" class="block p-4 text-white font-bold flex">
+            <a href="#" class="p-4 text-white font-bold flex">
                 <img src="{{ asset("assets/img/logo.jpg") }}" alt="Logo" class="rounded-2xl mr-2 h-8">
                 <span class="mt-1">myCrypto Tax</span>
             </a>

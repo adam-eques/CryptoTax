@@ -38,41 +38,44 @@
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
         </div>
-        <x-portfolio-list-item 
-            :selectedId="1" 
-            id="portfolio-1" 
-            icon="bitcoin"
-            name="Bitcoin"
-            type="BIT"
-            lingColor="#FF0303"
-        >
-        </x-portfolio-list-item>   
-        <x-portfolio-list-item 
-            :selectedId="2" 
-            id="portfolio-2" 
-            icon="bitcoin"
-            name="Lite Coin"
-            type="BIT"
-            lingColor="#1DB737"
-        >
-        </x-portfolio-list-item>   
-        <x-portfolio-list-item 
-            :selectedId="3" 
-            id="portfolio-3" 
-            icon="bitcoin"
-            name="Tether"
-            type="USDT"
-            lingColor="#FF0303"
-        >
-        </x-portfolio-list-item>   
-        <x-portfolio-list-item 
-            :selectedId="4" 
-            id="portfolio-4" 
-            icon="bitcoin"
-            name="Ethereum"
-            type="BIT"
-            lingColor="#1DB737"
-        >
-        </x-portfolio-list-item>   
+        @foreach ($portfolio ?? [] as $item)  
+            <div class="mt-2" 
+                x-bind:class="selected == {{ $item['id'] }} ? 'rounded-l-lg border-l-6 border-primary' : ''" 
+                @click="selected !== {{ $item['id'] }} ? selected = {{ $item['id'] }} : selected = null"
+            >
+                <x-portfolio-list-item 
+                    id="{{ $item['id'] }}" 
+                    icon="bitcoin"
+                    name="{{ $item['name'] }}"
+                    type="{{ $item['type'] }}"
+                    lingColor="#FF0303"
+                    price="{{ $item['price'] }}"
+                    holdingBtc="{{ $item['holding']['btc'] }}"
+                    holdingUsd="{{ $item['holding']['usd'] }}"
+                    percent="{{ $item['percentage'] }}"
+                    pnlPrice="{{ $item['pnl']['price'] }}"
+                    pnlPercent="{{ $item['pnl']['percent'] }}"
+                    node="parent"
+                />
+                <div x-show="selected == {{ $item['id'] }}">
+                    @foreach ($item['child'] ?? [] as $child)
+                        <x-portfolio-list-item 
+                            id="{{ $child['id'] }}" 
+                            icon="bitcoin"
+                            name="{{ $child['name'] }}"
+                            type="{{ $child['type'] }}"
+                            lingColor="#FF0303"
+                            price="{{ $child['price'] }}"
+                            holdingBtc="{{ $child['holding']['btc'] }}"
+                            holdingUsd="{{ $child['holding']['usd'] }}"
+                            percent="{{ $child['percentage'] }}"
+                            pnlPrice="{{ $item['pnl']['price'] }}"
+                            pnlPercent="{{ $item['pnl']['percent'] }}"
+                            node="child"
+                        />
+                    @endforeach
+                </div>
+            </div>          
+        @endforeach
     </div>
 </div>
