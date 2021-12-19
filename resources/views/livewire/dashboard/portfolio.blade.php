@@ -58,7 +58,7 @@
                     iconColor="{{ $item['icon']['color'] }} "
                     node="parent"
                 />
-                <div x-show="selected == {{ $item['id'] }}">
+                <div x-show="selected == {{ $item['id'] }}" x-transition.duration.500ms>
                     @foreach ($item['child'] ?? [] as $child)
                         <x-portfolio-list-item 
                             id="{{ $child['id'] }}" 
