@@ -4,7 +4,7 @@
     <p class="text-lg font-bold py-5">CSV reports</p>
     <div class="grid grid-cols-1 md:grid-cols-5 my-2">
         <div class="col-span-3 flex justify-start items-center">
-            <img src="{{asset('assets/img/icon/pdf.png')}}" class="w-16 h-16"/>
+            <x-icon name="pdf" class="w-16 h-16"/>
             <p class="text-lg ml-4 font-bold text-gray-400">Transaction History CSV</p>
         </div>
         <div class="col-span-2 py-2">
@@ -13,7 +13,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-5 my-2">
         <div class="col-span-3 flex justify-start items-center">
-            <img src="{{asset('assets/img/icon/pdf.png')}}" class="w-16 h-16"/>
+            <x-icon name="pdf" class="w-16 h-16"/>
             <p class="text-lg ml-4 font-bold text-gray-400">Transaction History CSV</p>
         </div>
         <div class="col-span-2 py-2">
