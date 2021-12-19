@@ -55,6 +55,7 @@
                     percent="{{ $item['percentage'] }}"
                     pnlPrice="{{ $item['pnl']['price'] }}"
                     pnlPercent="{{ $item['pnl']['percent'] }}"
+                    iconColor="{{ $item['icon']['color'] }} "
                     node="parent"
                 />
                 <div x-show="selected == {{ $item['id'] }}">
@@ -69,8 +70,9 @@
                             holdingBtc="{{ $child['holding']['btc'] }}"
                             holdingUsd="{{ $child['holding']['usd'] }}"
                             percent="{{ $child['percentage'] }}"
-                            pnlPrice="{{ $item['pnl']['price'] }}"
-                            pnlPercent="{{ $item['pnl']['percent'] }}"
+                            pnlPrice="{{ $child['pnl']['price'] }}"
+                            pnlPercent="{{ $child['pnl']['percent'] }}"
+                            iconColor="{{ $child['icon']['color'] }}"
                             node="child"
                         />
                     @endforeach
