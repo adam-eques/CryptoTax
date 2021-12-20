@@ -1,14 +1,14 @@
 <div class=" bg-bgcolor1 rounded-md text-white w-full xl:px-20 md:px-12 xl:py-22 md:py-10 px-5 py-5 relative">
     <img src="{{asset('assets/img/svg/about.svg')}}" class="xl:w-106 lg:w-80 w-70 absolute top-0 md:top-8 right-3 z-0"/>
     <div>
-        <p class="text-primary font-extrabold text-xl sm:text-2xl lg:text-4xl xl:text-5xl">Hello John Doe</p>
+        <p class="text-primary font-extrabold text-xl sm:text-2xl lg:text-3xl xl:text-3xl">Hello John Doe</p>
         <div class="pt-3">
-            <p class="text-xl font-bold text-primary">Thanks for signing up.</p>
+            <p class="text-lg font-bold text-primary">Thanks for signing up.</p>
         </div>
         <div class="py-10">
             <nav aria-label="Progress">
                 <ol class="flex items-center">
-                    <li class="relative pr-8 lg:pr-14">
+                    <li class="relative pr-8 lg:pr-16">
                         <div class="absolute inset-0 flex items-center" aria-hidden="true">
                             <div class="h-2 w-full bg-secondary"></div>
                         </div>
@@ -20,7 +20,7 @@
                         </x-tooltip>
                     </li>
             
-                    <li class="relative pr-8 lg:pr-14">
+                    <li class="relative pr-8 lg:pr-16">
                         <div class="absolute inset-0 flex items-center" aria-hidden="true">
                             <div class="h-2 w-full bg-secondary"></div>
                         </div>
@@ -32,7 +32,7 @@
                         </x-tooltip>
                     </li>
             
-                    <li class="relative pr-8 lg:pr-14">
+                    <li class="relative pr-8 lg:pr-16">
                         <div class="absolute inset-0 flex items-center" aria-hidden="true">
                             <div class="h-2 w-full bg-primary"></div>
                         </div>
@@ -44,7 +44,7 @@
                         </x-tooltip>
                     </li>
                 
-                    <li class="relative pr-8 lg:pr-14">
+                    <li class="relative pr-8 lg:pr-16">
                         <!-- Upcoming Step -->
                         <div class="absolute inset-0 flex items-center" aria-hidden="true">
                             <div class="h-2 w-full bg-primary"></div>

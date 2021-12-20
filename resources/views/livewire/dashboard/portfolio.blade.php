@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <x-icon name="portfolio" class="w-8 h-8 text-primary"/>
-            <p class="mr-3 text-xl font-extrabold">My Crypto Portfolio</p>
+            <p class="mr-3 text-lg font-extrabold">My Crypto Portfolio</p>
         </div>
         <div>
             <x-button variant="primary">See all assets</x-button>

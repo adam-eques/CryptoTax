@@ -11,20 +11,20 @@
             <x-icon name="{{ $icon }}" class="w-10 h-10 text-white"></x-icon>
         </div>
         <div>
-            <p class="text-xl font-semibold ">{{ $name }}</p>
-            <p class="text-gray-400">{{ $type }}</p>
+            <p class="text-lg font-semibold ">{{ $name }}</p>
+            <p class="text-gray-400 text-sm">{{ $type }}</p>
         </div>
     </div>
     <div class="col-span-1 flex justify-end items-center space-x-2">
-        <p class="text-xl font-semibold ">{{ $price }}</p>
+        <p class="text-lg">{{ $price }}</p>
     </div>
     <div class="col-span-3 flex justify-center items-center space-x-2">
         <div id="{{ $id }}" class="-my-5"></div>
     </div>
     <div class="col-span-1 flex justify-start items-center space-x-2">
         <div>
-            <p class="text-basic font-semibold text-primary">{{ $holdingBtc }}</p>
-            <p class="text-primary">{{ $holdingUsd }}</p>
+            <p class="text-lg text-primary">{{ $holdingBtc }}</p>
+            <p class="text-lg text-primary">{{ $holdingUsd }}</p>
         </div>
     </div>
     <div class="col-span-1 flex justify-end items-center space-x-2">
@@ -32,7 +32,7 @@
     </div>
     <div class="col-span-2 flex justify-center items-center space-x-2">
         <div>
-            <p>{{ $pnlPrice }}</p>
+            <p class="text-lg pb-2">{{ $pnlPrice }}</p>
             <x-badge >+{{ $pnlPercent }}%</x-badge>
         </div>
     </div>
