@@ -45,7 +45,7 @@ class NavigationService
                         ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
                 ["label" => __('Wallets'), 'icon' => 'wallet', 'route' => 'customer.wallet',
@@ -54,7 +54,7 @@ class NavigationService
                         ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
                 ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio',
@@ -63,7 +63,7 @@ class NavigationService
                         ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
                 ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes',
@@ -72,7 +72,7 @@ class NavigationService
                         ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
                 ["label" => __('Advisor'), 'icon' => 'advisor', 'route' => 'customer.advisor',
@@ -81,7 +81,7 @@ class NavigationService
                         ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
                 ["label" => __('Services'), 'icon' => 'service', 'route' => 'customer.services',
@@ -90,7 +90,7 @@ class NavigationService
                         ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
                     ],
                     "actions" => [
-                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'todo', 'color' => 'text-white bg-primary'],
+                        ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
             ]);

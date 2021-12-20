@@ -56,6 +56,9 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
 
     //Advisor
     Route::view('/advisor/detail', 'pages.customer.advisor.advisor-detail')->name('advisor.detail');
+
+    //Invite Friends
+    Route::view('/invite', 'pages.customer.invite.invite')->name('invite');
 });
 
 
