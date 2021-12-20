@@ -3,18 +3,18 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             <x-icon name="tax" class="w-8 h-7"/>
-            <p class="text-xl mr-3 font-extrabold">Crypto Taxes</p>
+            <p class="text-lg mr-3 font-extrabold">Crypto Taxes</p>
         </div>
         <div>
             <x-button variant="primary">{{__('See Details')}}</x-button>
         </div>
     </div>
-    <table class="w-full text-center mt-5 text-primary">
+    <table class="w-full text-center mt-5 text-primary text-base">
         <thead class="border bg-gray-100">
             <tr>
-                <th class="py-5">Tax year</th>
-                <th class="py-5">Gains</th>
-                <th class="py-5">Income</th>
+                <th class="py-5 font-bold">Tax year</th>
+                <th class="py-5 font-bold">Gains</th>
+                <th class="py-5 font-bold">Income</th>
             </tr>
         </thead>
         <tbody class="border">

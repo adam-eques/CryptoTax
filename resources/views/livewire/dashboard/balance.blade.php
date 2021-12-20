@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="coin" class="w-8 h-8"/>
-            <p class="mr-3 font-extrabold text-xl">My Balance</p>
+            <p class="mr-3 font-extrabold text-lg">My Balance</p>
         </div>
         <div class="flex items-center space-x-3">
             <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">
@@ -19,13 +19,13 @@
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-3">
         <div>
             {{-- <p class="text-md text-secondary-500">Total Balance</p> --}}
-            <x-typography variant="secondary" size="md">{{ __('Total Balance') }}</x-typography>
-            <x-typography size="2xl" variant="primary">{{ __('$ 124, 563, 000') }}</x-typography>
+            <p class="text-sm text-secondary">{{ __('Total Balance') }}</p>
+            <p class="text-2xl text-primary font-semibold pt-2">{{ __('$ 124, 563, 000') }}</p>
             <x-progressbar height="sm" variant="primary" progress="30"></x-progressbar>
         </div>
         <div>            
-            <x-typography variant="secondary" size="md">{{ __('Your Tax') }}</x-typography>
-            <x-typography size="2xl" variant="primary">{{ __('$ 124, 563, 000') }}</x-typography>
+            <p class="text-sm text-secondary">{{ __('Your Tax') }}</p>
+            <p class="text-2xl text-primary font-semibold pt-2">{{ __('$ 124, 563, 000') }}</p>
             <x-progressbar height="sm" variant="primary" progress="45"></x-progressbar>
         </div>
         <x-button variant="primary" class="flex items-center space-x-5 mt-8">
