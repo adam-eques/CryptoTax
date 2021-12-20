@@ -19,7 +19,7 @@
         <p class="text-lg">{{ $price }}</p>
     </div>
     <div class="col-span-3 flex justify-center items-center space-x-2">
-        <div id="{{ $id }}" class="-my-5"></div>
+        <div id="{{ $id }}" class="-my-10"></div>
     </div>
     <div class="col-span-1 flex justify-start items-center space-x-2">
         <div>
@@ -47,19 +47,19 @@
                     toolbar: {
                         show: false,
                     },
-                    height: 80,
+                    height: 100,
                     dropShadow: {
                         enabled: true,
-                        top: 3,
+                        top: 2,
                         left: 0,
-                        blur: 2,
+                        blur: 1,
                         color: '#000',
-                        opacity: 0.75
+                        opacity: 0.5
                     }
                 },
                 series: [{
                     name: 'sales',
-                    data: [30,50,35,50,49,20,70,30,50,90,89,70,120,110,50]
+                    data: [10,30,25, 35,10,15,70,30,50,123,89,70,231,110,50]
                 }],
                 grid: {
                     show: false,
