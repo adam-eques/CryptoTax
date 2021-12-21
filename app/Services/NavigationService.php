@@ -20,11 +20,11 @@ class NavigationService
 
         if($user->isAdminAccount()) {
             $this->addItems([
-                ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+                ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard'],
                 ["label" => __('User'), 'children' => [
-                    ["label" => "Clients", "icon" => "fas-users", "route" => "admin.customers.index"],
-                    ["label" => "Advisors", "icon" => "fas-user-nurse", "route" => "admin.tax-advisors.index"],
-                    ["label" => "Backend-User", "icon" => "fas-user-cog", "route" => "admin.backenduser.index"],
+                    ["label" => __("Clients"), "icon" => "fas-users", "route" => "admin.customers.index"],
+                    ["label" => __("Advisors"), "icon" => "advisor", "route" => "admin.tax-advisors.index"],
+                    ["label" => __("Backend-User"), "icon" => "fas-user-cog", "route" => "admin.backenduser.index"],
                 ]],
                 ["label" => __('Advertising'), 'children' => [
                     ["label" => "Advertising", "icon" => "fas-ad", "route" => "todo"],

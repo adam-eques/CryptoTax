@@ -38,7 +38,7 @@
         <div class="sidebar bg-primary text-blue-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out z-40"
              x-bind:class="!mobileSidebar ? '-translate-x-full' : ''">
             {{-- Logo --}}
-            <a href="#" class="text-white flex items-center space-x-2 px-4 text-lg font-bold">
+            <a href="{{ route("dashboard") }}" class="text-white flex items-center space-x-2 px-4 text-lg font-bold">
                 <img src="{{ asset("assets/img/logo.jpg") }}" alt="Logo" class="rounded-2xl mr-2 h-8"> myCrypto Tax
             </a>
 
@@ -50,8 +50,8 @@
                             <div class="border-t -mr-8 -ml-8 border-gray-700"></div>
                         </li>
                     @endif
-{{debug($item)}}
-                    @if(isset($item["children"]))
+
+                    @if(isset($item["children"]) && $item["children"])
                         <li>
                             <p class="font-bold uppercase text-gray-500 text-sm tracking-wider mb-2">{{ $item["label"] }}</p>
                             <ul class="text-sm space-y-1 -mx-3 mt-2">
