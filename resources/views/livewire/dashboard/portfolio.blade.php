@@ -45,7 +45,7 @@
             >
                 <x-portfolio-list-item 
                     id="{{ $item['id'] }}" 
-                    icon="bitcoin"
+                    icon="{{ $item['icon'] }}"
                     name="{{ $item['name'] }}"
                     type="{{ $item['type'] }}"
                     lingColor="#FF0303"
@@ -55,14 +55,13 @@
                     percent="{{ $item['percentage'] }}"
                     pnlPrice="{{ $item['pnl']['price'] }}"
                     pnlPercent="{{ $item['pnl']['percent'] }}"
-                    iconColor="{{ $item['icon']['color'] }} "
                     node="parent"
                 />
                 <div x-show="selected == {{ $item['id'] }}" x-transition.duration.500ms>
                     @foreach ($item['child'] ?? [] as $child)
                         <x-portfolio-list-item 
                             id="{{ $child['id'] }}" 
-                            icon="bitcoin"
+                            icon="{{ $child['icon'] }}"
                             name="{{ $child['name'] }}"
                             type="{{ $child['type'] }}"
                             lingColor="#FF0303"
@@ -72,7 +71,6 @@
                             percent="{{ $child['percentage'] }}"
                             pnlPrice="{{ $child['pnl']['price'] }}"
                             pnlPercent="{{ $child['pnl']['percent'] }}"
-                            iconColor="{{ $child['icon']['color'] }}"
                             node="child"
                         />
                     @endforeach

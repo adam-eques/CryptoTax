@@ -1,15 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
   <defs>
-    <clipPath id="clip-SPRK_default_preset_name_custom_1">
-      <rect width="100" height="100"/>
+    <clipPath id="clip-Ethereum">
+      <rect width="300" height="300"/>
     </clipPath>
   </defs>
-  <g id="SPRK_default_preset_name_custom_1" data-name="SPRK_default_preset_name_custom – 1" clip-path="url(#clip-SPRK_default_preset_name_custom_1)">
-    <rect width="100" height="100" fill="currentColor"/>
-    <g id="ethereum" transform="translate(-92.821 513.101)">
-      <path id="Path_538" data-name="Path 538" d="M143.154-490.9c-6.594,11.472-11.973,20.919-11.954,21.016.039.077,5.341-2.371,11.8-5.437,6.459-3.085,11.9-5.63,12.089-5.688.193-.077,5.148,2.179,12.339,5.572,6.613,3.124,12.05,5.649,12.089,5.63.1-.1-23.985-41.838-24.177-41.9C155.242-511.719,149.767-502.368,143.154-490.9Z" transform="translate(-12.158 0)" fill="currentColor"/>
-      <path id="Path_539" data-name="Path 539" d="M153.377-315.652c-5.938,2.834-10.8,5.225-10.778,5.341.019.309,21.729,10.508,22.153,10.392.848-.232,21.69-10.238,21.71-10.411.019-.212-21.555-10.488-22-10.469C164.309-320.8,159.316-318.487,153.377-315.652Z" transform="translate(-21.36 -154.094)" fill="currentColor"/>
-      <path id="Path_540" data-name="Path 540" d="M116.149-245.52c.116.578,26.857,47.16,27.031,47.1.212-.077,27.185-47.16,27.089-47.256-.039-.039-6.17,2.815-13.593,6.362l-13.535,6.42L129.8-239.234c-7.327-3.509-13.419-6.42-13.535-6.478C116.169-245.79,116.111-245.693,116.149-245.52Z" transform="translate(0 -214.683)" fill="currentColor"/>
+  <g id="Ethereum" clip-path="url(#clip-Ethereum)">
+    <rect width="300" height="300" fill="rgba(255,255,255,0)"/>
+    <g id="Group_2" data-name="Group 2">
+      <g id="Group_1" data-name="Group 1">
+        <g id="Ethereum-Icon-Purple-Logo.wine_1_" data-name="Ethereum-Icon-Purple-Logo.wine(1)" transform="translate(64.8 8.446)">
+          <path id="Path_1" data-name="Path 1" d="M87.068,104.91V0L0,144.484Z" fill="#8a92b2"/>
+          <path id="Path_2" data-name="Path 2" d="M87.068,195.963V104.91L0,144.484Zm0-91.052,87.084,39.573L87.068,0Z" fill="#62688f"/>
+          <path id="Path_3" data-name="Path 3" d="M539.7,650.3v91.052l87.084-51.479Z" transform="translate(-452.632 -545.39)" fill="#454a75"/>
+          <path id="Path_4" data-name="Path 4" d="M87.068,1049.45,0,998l87.068,122.7Z" transform="translate(0 -836.997)" fill="#8a92b2"/>
+          <path id="Path_5" data-name="Path 5" d="M626.832,998,539.7,1049.45v71.25Z" transform="translate(-452.632 -836.997)" fill="#62688f"/>
+        </g>
+      </g>
     </g>
   </g>
 </svg>
