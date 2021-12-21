@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
 
     // Other resoureces
     Route::resource("api", Controllers\Admin\ApiController::class);
-
-    // Just for testing/dev
-    Route::get("/test", [Controllers\TestController::class, "index"]);
 });
 
 
@@ -46,7 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/services', 'errors.todo')->name('services');
 
     // Transactions
-    Route::get('/transactions', [Controllers\TransactionController::class, 'index'])
+    Route::get('/transactions', [Controllers\Customer\TransactionController::class, 'index'])
         ->name('transactions');
 
     // Specials
@@ -79,4 +76,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     // Specials
     Route::view('/todo', 'errors.todo')->name('todo');
+
+    // Just for testing/dev
+    Route::prefix("dev")->name("dev.")->group(function(){
+        Route::get("index", [Controllers\Admin\DevController::class, "index"])->name("index");
+        Route::get("icons", [Controllers\Admin\DevController::class, "icons"])->name("icons");
+    });
 });
