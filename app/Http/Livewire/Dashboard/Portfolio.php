@@ -18,7 +18,7 @@ class Portfolio extends Component
                 'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '$ 4,886.64' ],
                 'percentage' => 56,
                 'pnl' => [ 'price' => '$ 89,402.19', 'percent' => 10 ],
-                'icon' => [ 'color' => '#F4942D' ],
+                'icon' => 'bitcoin',
                 'child' => [
                     [
                         'id' => 'kraken',
@@ -29,7 +29,7 @@ class Portfolio extends Component
                         'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '$ 4,886.64' ],
                         'percentage' => 26,
                         'pnl' => [ 'price' => '$ 9,402.19', 'percent' => 10 ],
-                        'icon' => [ 'color' => '#5841D8' ]
+                        'icon' => 'karaken',
                     ],
                     [
                         'id' => 'binance',
@@ -40,7 +40,7 @@ class Portfolio extends Component
                         'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '$ 4,886.64' ],
                         'percentage' => 56,
                         'pnl' => [ 'price' => '$ 9,402.19', 'percent' => 10 ],
-                        'icon' => [ 'color' => '#E79934' ],
+                        'icon' => 'binance',
                     ],
 
                 ]
@@ -54,7 +54,7 @@ class Portfolio extends Component
                 'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '$ 4,886.64' ],
                 'percentage' => 56,
                 'pnl' => [ 'price' => '$ 89,402.19', 'percent' => 10 ],
-                'icon' => [ 'color' => '#C1C1C1' ],
+                'icon' => 'litecoin',
                 'child' => [
                   
                 ]
@@ -68,7 +68,7 @@ class Portfolio extends Component
                 'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '$ 4,886.64' ],
                 'percentage' => 56,
                 'pnl' => [ 'price' => '$ 89,402.19', 'percent' => 10 ],
-                'icon' => [ 'color' => '#3DA479' ],
+                'icon' => 'tether',
                 'child' => [
                   
                 ]
@@ -82,7 +82,7 @@ class Portfolio extends Component
                 'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '$ 4,886.64' ],
                 'percentage' => 56,
                 'pnl' => [ 'price' => '$ 89,402.19', 'percent' => 10 ],
-                'icon' => [ 'color' => '#F4942D' ],
+                'icon' => 'ethereum',
                 'child' => [
                     
                 ]
