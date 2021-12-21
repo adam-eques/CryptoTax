@@ -1,9 +1,9 @@
 @php
     $lastweek= [
         'first_row' => [
-            [ 'icon' => 'level_1', 'amount' => '10', 'category' => 'First-level Invite' ],
-            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level Invite' ],
-            [ 'icon' => 'level_top', 'amount' => '0', 'category' => 'Total - Invite' ]
+            [ 'icon' => 'level_1', 'amount' => '10', 'category' => 'First-level Invitee' ],
+            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
+            [ 'icon' => 'level_top', 'amount' => '0', 'category' => 'Total - Invitee' ]
         ],
         'second_row' => [
             [ 'icon' => 'level_1', 'amount' => '1.29', 'category' => 'First-level commission' ],
@@ -14,9 +14,9 @@
 
     $total= [
         'first_row' => [
-            [ 'icon' => 'level_1', 'amount' => '122', 'category' => 'First-level Invite' ],
-            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level Invite' ],
-            [ 'icon' => 'level_top', 'amount' => '122', 'category' => 'Total - Invite' ]
+            [ 'icon' => 'level_1', 'amount' => '122', 'category' => 'First-level Invitee' ],
+            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
+            [ 'icon' => 'level_top', 'amount' => '122', 'category' => 'Total - Invitee' ]
         ],
         'second_row' => [
             [ 'icon' => 'level_1', 'amount' => '1.29', 'category' => 'First-level commission' ],

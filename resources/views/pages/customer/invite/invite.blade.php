@@ -18,5 +18,8 @@
                 @livewire('invite.overview')
             </div>
         </div>
+        <div class="mx-auto xl:max-w-screen-2xl px-3 xs:px-4 lg:px-5 py-6">
+            @livewire('invite.referral')
+        </div>
     </div>
 </x-app-layout>

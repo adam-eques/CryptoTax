@@ -24,7 +24,7 @@
         case 'xl': $sizeClass = 'text-xl'; break;
     }
     $att = $attributes->merge([
-        'class' => 'inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold tracking-widest focus:ring focus:ring-gray-300 disabled:opacity-25 transition focus:border-gray-900 focus:outline-none ' .
+        'class' => 'inline-flex items-center px-4 py-2 border border-transparent rounded-md tracking-widest focus:ring focus:ring-gray-300 disabled:opacity-25 transition focus:border-gray-900 focus:outline-none ' .
            trim($sizeClass . ' ' . $variantClasses),
         'type'  => $type
     ]);

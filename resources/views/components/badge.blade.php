@@ -24,7 +24,7 @@
         case 'square': $typeClasses = 'rounded-md'; break;
     }
     $att = $attributes->merge([
-        'class' => 'inline-flex items-center justify-center leading-none text-white bg-success-500  ' 
+        'class' => 'inline-flex items-center justify-center leading-none text-white ' 
             . trim($sizeClass . ' ' . $variantClasses. ' ' . $typeClasses)
     ]); 
 @endphp
