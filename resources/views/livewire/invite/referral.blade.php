@@ -1,4 +1,4 @@
-<div>
+<div x-data="{'isModalOpen': false}">
     <p class="text-3xl font-semibold">Referral Link</p>
     <div class="mt-10 border py-5 px-10 bg-secondary-200 grid grid-cols-1 md:grid-cols-2 gap-x-0 md:gap-x-6">
         <div>
@@ -38,10 +38,11 @@
                     </div>
                     <p class="text-sm mt-2">Friend's fee discount</p>
                 </div>
-                <button class="bg-primary hover:bg-secondary border rounded-lg h-full flex items-center space-x-3 py-2 px-6">
+                <button class="bg-primary hover:bg-secondary border rounded-lg h-full flex items-center space-x-3 py-2 px-6" x-on:click="isModalOpen = true">
                     <x-icon name="share" class="w-10 h-10 text-white"></x-icon>
                     <p class="font-bold text-basic text-white">SHARE NOW</p>
                 </button>
+                @livewire('invite.sharemodal')
             </div>
         </div>
     </div>
