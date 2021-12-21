@@ -6,7 +6,7 @@
             <p class="text-lg mr-3 font-extrabold">Crypto Taxes</p>
         </div>
         <div>
-            <x-button variant="primary">{{__('See Details')}}</x-button>
+            <x-button variant="primary" class="font-normal">{{__('See Details')}}</x-button>
         </div>
     </div>
     <table class="w-full text-center mt-5 text-primary text-base">
