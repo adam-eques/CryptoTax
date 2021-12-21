@@ -15,6 +15,7 @@
         case 'success': $variantClasses = 'text-white bg-success hover:bg-primary active:bg-gray-900'; break;
         case 'danger': $variantClasses = 'text-white bg-danger hover:bg-primary active:bg-gray-900'; break;
         case 'warning': $variantClasses = 'text-white bg-warning hover:bg-primary active:bg-gray-900'; break;
+        case 'white': $variantClasses = 'text-primary hover:text-white bg-white hover:bg-primary active:bg-gray-900'; break;
     }
     switch($size) {
         case 'xs': $sizeClass = 'text-xs'; break;
@@ -24,7 +25,7 @@
         case 'xl': $sizeClass = 'text-xl'; break;
     }
     $att = $attributes->merge([
-        'class' => 'inline-flex items-center px-4 py-2 border border-transparent rounded-md tracking-widest focus:ring focus:ring-gray-300 disabled:opacity-25 transition focus:border-gray-900 focus:outline-none ' .
+        'class' => 'inline-flex items-center px-4 py-2 border rounded-md tracking-widest focus:ring focus:ring-gray-300 disabled:opacity-25 transition focus:border-gray-900 focus:outline-none ' .
            trim($sizeClass . ' ' . $variantClasses),
         'type'  => $type
     ]);
