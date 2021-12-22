@@ -2,8 +2,8 @@
     <div class="flex py-5 justify-between items-center">
         <div>
             <div class="flex justify-start items-center space-x-3">
-                <x-icon name="tax-1" class="w-12 h-12"/>
-                <h2 class="text-4xl font-extrabold">2021 Taxes</h2>
+                <x-icon name="tax-1" class="w-8 h-8"/>
+                <h2 class="font-bold sm:text-xl lg:text-2xl text-primary">2021 Taxes</h2>
             </div>
             <p class="py-3">January 1 2021 to December 31 2021</p>
         </div>
