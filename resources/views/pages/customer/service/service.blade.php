@@ -25,7 +25,7 @@
                         <img src="{{ asset('assets/img/svg/zalando.svg') }}" class="w-52 h-14"/>
                         <x-icon name="scissors" class="text-gray-400 w-6 h-6 absolute -right-3 top-8"/>
                     </div>
-                    <div class="col-span-3 pl-10">
+                    <div class="col-span-3 xl:pl-10">
                         <div class="flex justify-between items-end">
                             <p class="text-secondary text-5xl font-bold">80% <span class="text-2xl">offer</span></p>
                             <div>
@@ -46,7 +46,7 @@
                         <img src="{{ asset('assets/img/svg/zalando.svg') }}" class="w-52 h-14"/>
                         <x-icon name="scissors" class="text-gray-400 w-6 h-6 absolute -right-3 top-8"/>
                     </div>
-                    <div class="col-span-3 pl-10">
+                    <div class="col-span-3 xl:pl-10">
                         <div class="flex justify-between items-end">
                             <p class="text-secondary text-5xl font-bold">80% <span class="text-2xl">offer</span></p>
                             <div>
