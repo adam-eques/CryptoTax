@@ -3,18 +3,18 @@
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-x-6 md:gap-y-5">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="donut" class="w-8 h-8 text-primary"/>
-            <p class="mr-3 text-lg font-extrabold">My Performance</p>
+            <p class="mr-3 text-lg font-extrabold">{{ __('My Performance') }}</p>
         </div>
         <x-status-card-dashboard id="status_1" title="24h Portfolio Change" amount="1,254" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
         <x-status-card-dashboard id="status_2" title="Total profit loss" amount="95,422" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
-        <x-status-card-dashboard id="status_3" title="24h Portfolio Change" amount="3,566" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
+        <x-status-card-dashboard id="status_3" title="24h Portfolio Change" amount="3,566" :increase="false" incdecamount="2.5"></x-status-card-dashboard>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-6 mt-14">
         <div class="col-span-3">
             <div class="col-span-4">
                 <select class="px-7 py-2 border-gray-300 border">
-                    <option>Top 5 Coins</option>
-                    <option>Top 10 Coins</option>
+                    <option>{{ __('Top 5 Coins') }}</option>
+                    <option>{{ __('Top 5 Coins') }}</option>
                 </select>
             </div>
             <div class="mt-8">
@@ -23,10 +23,10 @@
         </div>
         <div class="col-span-5 h-full">
             <div class="flex justify-end space-x-2 col-span-8">
-                <x-speech-button :active="false"> 24H </x-speech-button>
-                <x-speech-button :active="true"> 7D </x-speech-button>
-                <x-speech-button :active="false"> IM </x-speech-button>
-                <x-speech-button :active="false"> IY </x-speech-button>
+                <x-speech-button :active="false"> {{ __('24H') }} </x-speech-button>
+                <x-speech-button :active="true"> {{ __('7D') }} </x-speech-button>
+                <x-speech-button :active="false"> {{ __('1M') }} </x-speech-button>
+                <x-speech-button :active="false"> {{ __('1Y') }} </x-speech-button>
             </div>
             <div class="mt-8">
                 <div id="line-chart" class="-my-5"></div>
@@ -78,193 +78,7 @@
         const chart = new ApexCharts(document.getElementById(`line-chart`), options);
         chart.render();
 
-        var options_status_1 = {
-            chart: {
-                type: 'area',
-                toolbar: {
-                    show: false
-                },
-                height: 50
-            },
-            colors: ['#7A6CFF'],
-            series: [{
-                name: 'sales',
-                data: [143,24,34,123,23,25,100,91,23]
-            }],
-            legend: {
-                show: false,
-                position: 'bottom'
-            },
-            grid: {
-                show: false,
-                padding: {
-                    left: -5,
-                    right: -5,
-                    top: -10,
-                    bottom: -10
-                },
-            },
-            stroke: {
-                width: 2
-            },
-            dataLabels: {
-                enabled: false
-            },
-            xaxis: {
-                labels: {
-                    show: false,
-                },
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false
-                }
-            },
-            yaxis: {
-                floating: true,
-                axisTicks: {
-                    show: false
-                },
-                axisBorder: {
-                    show: false
-                },
-                labels: {
-                    show: false
-                },
-            },
-            fill: {
-                type: 'gradient'
-            }
-        }
-        const chart_status_1 = new ApexCharts(document.getElementById(`status_1`), options_status_1);
-        chart_status_1.render();
-
-        var options_status_2 = {
-            chart: {
-                type: 'area',
-                toolbar: {
-                    show: false
-                },
-                height: 50
-            },
-            colors: ['#7A6CFF'],
-            series: [{
-                name: 'sales',
-                data: [143,24,34,123,23,25,100,91,23]
-            }],
-            legend: {
-                show: false,
-                position: 'bottom'
-            },
-            grid: {
-                show: false,
-                padding: {
-                    left: -5,
-                    right: -5,
-                    top: -10,
-                    bottom: -10
-                },
-            },
-            stroke: {
-                width: 2
-            },
-            dataLabels: {
-                enabled: false
-            },
-            xaxis: {
-                labels: {
-                    show: false,
-                },
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false
-                }
-            },
-            yaxis: {
-                floating: true,
-                axisTicks: {
-                    show: false
-                },
-                axisBorder: {
-                    show: false
-                },
-                labels: {
-                    show: false
-                },
-            },
-            fill: {
-                type: 'gradient'
-            }
-        }
-        const chart_status_2 = new ApexCharts(document.getElementById(`status_2`), options_status_2);
-        chart_status_2.render();
-
-        var options_status_3 = {
-            chart: {
-                type: 'area',
-                toolbar: {
-                    show: false
-                },
-                height: 50
-            },
-            colors: ['#7A6CFF'],
-            series: [{
-                name: 'sales',
-                data: [143,24,34,123,23,25,100,91,23]
-            }],
-            legend: {
-                show: false,
-                position: 'bottom'
-            },
-            grid: {
-                show: false,
-                padding: {
-                    left: -5,
-                    right: -5,
-                    top: -10,
-                    bottom: -10
-                },
-            },
-            stroke: {
-                width: 2
-            },
-            dataLabels: {
-                enabled: false
-            },
-            xaxis: {
-                labels: {
-                    show: false,
-                },
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false
-                }
-            },
-            yaxis: {
-                floating: true,
-                axisTicks: {
-                    show: false
-                },
-                axisBorder: {
-                    show: false
-                },
-                labels: {
-                    show: false
-                },
-            },
-            fill: {
-                type: 'gradient'
-            }
-        }
-        const chart_status_3 = new ApexCharts(document.getElementById(`status_3`), options_status_3);
-        chart_status_3.render();
-
-        var options_4 = {
+        var options_bar = {
             series: [
                 {
                     data: [213.3, 123.1, 154.0, 234.1, 312.0],
@@ -329,8 +143,8 @@
 
         };
 
-        var chart_4 = new ApexCharts(document.getElementById(`column_chart`), options_4);
-        chart_4.render();
+        var chart_bar = new ApexCharts(document.getElementById(`column_chart`), options_bar);
+        chart_bar.render();
     }());
 </script>
 @endpush

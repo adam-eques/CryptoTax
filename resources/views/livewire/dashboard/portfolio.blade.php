@@ -2,10 +2,10 @@
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <x-icon name="portfolio" class="w-8 h-8 text-primary"/>
-            <p class="mr-3 text-lg font-extrabold">My Crypto Portfolio</p>
+            <p class="mr-3 text-lg font-extrabold">{{ __('My Crypto Portfolio') }}</p>
         </div>
         <div>
-            <x-button variant="primary" class="font-normal">See all assets</x-button>
+            <x-button variant="primary" class="font-normal">{{  __('See all assets')}}</x-button>
         </div>
     </div>
     <div class="mt-6 overflow-x-auto" x-data="{selected:null}">
@@ -14,27 +14,27 @@
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-2 flex justify-start items-center space-x-2 px-5">
-                <p class="text-lg">Coin</p>
+                <p class="text-lg">{{ _('Coin') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-end items-center space-x-2">
-                <p class="text-lg">Price</p>
+                <p class="text-lg">{{ __('Price') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-3 flex justify-center items-center space-x-2">
-                <p class="text-lg">Last 7 Days</p>
+                <p class="text-lg">{{ __('Last 7 Days') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-start items-center space-x-2">
-                <p class="text-lg">Holdings</p>
+                <p class="text-lg">{{ __('Holdings') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-end items-center space-x-2">
-                <p class="text-lg">Percentage</p>
+                <p class="text-lg">{{ __('Percentage') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-2 flex justify-center items-center space-x-2">
-                <p class="text-lg">PNL</p>
+                <p class="text-lg">{{ __('PNL') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
         </div>

@@ -13,8 +13,8 @@
 @endphp
 <div class="bg-white shadow-md rounded-md p-5 h-full">
     <div class="flex items-center space-x-2">
-        <x-icon name="transaction" class="w-8 h-8"/>
-        <p class="mr-3 text-lg font-extrabold">Recent Transaction</p>
+        <x-icon name="transaction" class="w-10 h-10"/>
+        <p class="mr-3 text-lg font-extrabold">{{ __('Recent Transaction') }}</p>
     </div>
     <div class="overflow-auto mt-5">
         <div class="space-y-1 min-w-cmd">
