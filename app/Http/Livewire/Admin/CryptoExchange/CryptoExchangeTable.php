@@ -13,6 +13,9 @@ class CryptoExchangeTable extends ResourceTable
             Tables\Columns\TextColumn::make("name")
                 ->sortable()
                 ->searchable(),
+            Tables\Columns\BooleanColumn::make("active")
+                ->label(__("Status"))
+                ->sortable()
         ];
     }
 }

@@ -11,7 +11,7 @@ class CryptoExchange extends Model
     const EXCHANGE_KUCOIN = 1;
     const EXCHANGE_HITBTC = 2;
     protected $fillable = [
-        "name"
+        "name", "active"
     ];
 
     /**
