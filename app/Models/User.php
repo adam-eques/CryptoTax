@@ -42,7 +42,6 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -54,7 +53,6 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
-
     /**
      * The attributes that should be cast.
      *
@@ -63,7 +61,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     /**
      * The accessors to append to the model's array form.
      *
@@ -73,6 +70,15 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public static function boot() {
+        parent::boot();
+
+        static::creating(function (self $item) {
+            if(!$item->user_account_type_id) {
+                $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER;
+            }
+        });
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -90,6 +96,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(CryptoExchangeAccount::class);
     }
+
 
     /**
      * @return HasManyThrough
@@ -142,23 +149,5 @@ class User extends Authenticatable
     public function isTaxAdvisorAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRouteSlug(): string
-    {
-        switch($this->user_account_type_id) {
-            case UserAccountType::TYPE_ADMIN:
-            case UserAccountType::TYPE_SUPPORT:
-            case UserAccountType::TYPE_EDITOR:
-                return 'backenduser';
-            case UserAccountType::TYPE_TAX_ADVISOR:
-                return 'tax-advisors';
-            default:
-            case UserAccountType::TYPE_CUSTOMER:
-                return 'customers';
-        }
     }
 }
