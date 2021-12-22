@@ -17,15 +17,12 @@ abstract class ResourceForm extends Component implements Forms\Contracts\HasForm
     public Model $model;
 
 
-    protected function getFormSchema(): array
-    {
-        return ($this->resource)->getFormSchema();
-    }
+    abstract protected function getFormSchema(): array;
 
 
     public function booted(): void
     {
-        if(!isset($this->resource)) {
+        if (! isset($this->resource)) {
             $this->resource = ($this->resourceClass)::make();
         }
     }
@@ -33,7 +30,7 @@ abstract class ResourceForm extends Component implements Forms\Contracts\HasForm
 
     public function mount(): void
     {
-        if(!isset($this->resource)) {
+        if (! isset($this->resource)) {
             $this->resource = ($this->resourceClass)::make();
         }
 

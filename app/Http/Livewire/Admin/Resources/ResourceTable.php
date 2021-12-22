@@ -20,10 +20,7 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
     protected Resource $resource;
 
 
-    public function booted(): void
-    {
-        $this->resource = ($this->resourceClass)::make();
-    }
+    abstract protected function getTableColumns(): array;
 
 
     protected function getTableQuery(): Builder
@@ -32,9 +29,19 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
     }
 
 
-    protected function getTableColumns(): array
+    public function booted(): void
     {
-        return ($this->resource)->getTableColumns();
+        if (! isset($this->resource)) {
+            $this->resource = ($this->resourceClass)::make();
+        }
+    }
+
+
+    public function mount(): void
+    {
+        if (! isset($this->resource)) {
+            $this->resource = ($this->resourceClass)::make();
+        }
     }
 
 
@@ -58,9 +65,10 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
                             __("Successfully deleted"),
                             __("\":name\" deleted", ["name" => $record->getName()])
                         );
+
                     return $record->delete();
                 })
-            ->requiresConfirmation()
+                ->requiresConfirmation(),
         ];
     }
 
@@ -80,10 +88,11 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
                                 ? __(":count entries deleted", ["count" => $records->count()])
                                 : __("One entry deleted")
                         );
+
                     return $records->each->delete();
                 })
                 ->requiresConfirmation()
-                ->deselectRecordsAfterCompletion()
+                ->deselectRecordsAfterCompletion(),
         ];
     }
 
@@ -91,7 +100,7 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
     public function render(): \Illuminate\View\View
     {
         return view('livewire.admin.resource.table', [
-            "createRoute" => !$this->disableAdd ? $this->resource->getRoute('create') : null
+            "createRoute" => ! $this->disableAdd ? $this->resource->getRoute('create') : null,
         ]);
     }
 }

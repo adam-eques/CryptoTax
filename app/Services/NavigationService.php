@@ -2,7 +2,10 @@
 
 namespace App\Services;
 
+use App\Http\Livewire\Admin\BackendUser\BackendUserResource;
 use App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource;
+use App\Http\Livewire\Admin\Customer\CustomerResource;
+use App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource;
 
 class NavigationService
 {
@@ -24,9 +27,9 @@ class NavigationService
             $this->addItems([
                 ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard'],
                 ["label" => __('User'), 'children' => [
-                    ["label" => __("Clients"), "icon" => "fas-users", "route" => "admin.customers.index"],
-                    ["label" => __("Advisors"), "icon" => "advisor", "route" => "admin.tax-advisors.index"],
-                    ["label" => __("Backend-User"), "icon" => "fas-user-cog", "route" => "admin.backenduser.index"],
+                    CustomerResource::make()->sidebar(),
+                    TaxAdvisorResource::make()->sidebar(),
+                    BackendUserResource::make()->sidebar()
                 ]],
                 ["label" => __('Advertising'), 'children' => [
                     ["label" => "Advertising", "icon" => "fas-ad", "route" => "todo"],

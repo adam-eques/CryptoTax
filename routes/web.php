@@ -17,19 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 // Only for UserAccountType::TYPE_ADMIN
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->prefix("admin")->group(function(){
-    // Resources: User
-    Route::resource("customers", Controllers\Admin\CustomerController::class)->parameters([
-        'customers' => 'user'
-    ]);
-    Route::resource("backenduser", Controllers\Admin\BackendUserController::class)->parameters([
-        'backenduser' => 'user'
-    ]);
-    Route::resource("tax-advisors", Controllers\Admin\TaxAdvisorsController::class)->parameters([
-        'tax-advisors' => 'user'
-    ]);
+    // Users
+    \App\Http\Livewire\Admin\Customer\CustomerResource::routes();
+    \App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource::routes();
+    \App\Http\Livewire\Admin\BackendUser\BackendUserResource::routes();
 
-    //// Other resoureces
-    //Route::resource("api", Controllers\Admin\ApiController::class);
+    // Other resoureces
     \App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource::routes();
 });
 

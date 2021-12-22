@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Admin\CryptoExchange;
+namespace App\Http\Livewire\Admin\Customer;
 
 use App\Forms\SidebarLayout;
 use App\Http\Livewire\Admin\Resources\ResourceForm;
 use Filament\Forms;
 
-class CryptoExchangeForm extends ResourceForm
+class CustomerForm extends ResourceForm
 {
-
-
-    public function getFormSchema(): array
+    protected function getFormSchema(): array
     {
         return SidebarLayout::make()
             ->addTab([
                 Forms\Components\TextInput::make('name')
                     ->label(__("Name"))
                     ->required(),
+                Forms\Components\TextInput::make('email')
+                    ->required()
+                    ->email(),
             ])
             ->toArray();
     }
