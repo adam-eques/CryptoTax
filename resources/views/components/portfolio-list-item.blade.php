@@ -7,8 +7,8 @@
         @endif
     </div>
     <div class="col-span-2 flex justify-start items-center space-x-2 px-5">
-        <div class="w-14 h-14 flex justify-center items-center rounded-lg" style="background-color: {{ $iconColor }}">
-            <x-icon name="{{ $icon }}" class="w-10 h-10 text-white"></x-icon>
+        <div class="w-14 h-14 flex justify-center items-center rounded-lg">
+            <x-icon name="{{ $icon }}" class="w-full h-full"></x-icon>
         </div>
         <div>
             <p class="text-lg font-semibold ">{{ $name }}</p>
