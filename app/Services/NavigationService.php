@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Resources\CryptoExchangeResource;
+
 class NavigationService
 {
     /**
@@ -33,7 +35,8 @@ class NavigationService
                     ["label" => "Finance", "icon" => "fas-coins", "route" => "todo"],
                 ]],
                 ["label" => __('API\'s'), 'children' => [
-                    ["label" => "API's", "icon" => "fas-network-wired", "route" => "admin.api.index"],
+                    //["label" => "API's", "icon" => "fas-network-wired", "route" => "admin.api.index"],
+                    CryptoExchangeResource::make()->sidebar(),
                 ]],
             ]);
         }

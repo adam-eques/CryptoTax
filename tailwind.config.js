@@ -3,6 +3,9 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
     mode: 'jit',
+    presets: [
+        require('./vendor/wireui/wireui/tailwind.config.js')
+    ],
     purge: {
         content: [
             './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -11,6 +14,9 @@ module.exports = {
             './resources/views/**/*.blade.php',
             './vendor/filament/forms/resources/views/**/*.blade.php',
             './vendor/filament/tables/resources/views/**/*.blade.php',
+            './vendor/wireui/wireui/resources/**/*.blade.php',
+            './vendor/wireui/wireui/ts/**/*.ts',
+            './vendor/wireui/wireui/src/View/**/*.php'
         ],
         safelist: [
             'bg-primary-1',
@@ -18,7 +24,6 @@ module.exports = {
             'right-4',
         ]
     },
-
     theme: {
         extend: {
             fontFamily: {

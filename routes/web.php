@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Only for UserAccountType::TYPE_ADMIN
-Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->group(function(){
+Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->prefix("admin")->group(function(){
     // Resources: User
     Route::resource("customers", Controllers\Admin\CustomerController::class)->parameters([
         'customers' => 'user'
@@ -28,8 +28,9 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
         'tax-advisors' => 'user'
     ]);
 
-    // Other resoureces
-    Route::resource("api", Controllers\Admin\ApiController::class);
+    //// Other resoureces
+    //Route::resource("api", Controllers\Admin\ApiController::class);
+    \App\Resources\CryptoExchangeResource::routes();
 });
 
 
