@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Resources\CryptoExchangeResource;
+use App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource;
 
 class NavigationService
 {

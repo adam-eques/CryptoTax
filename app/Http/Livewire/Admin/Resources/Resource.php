@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Resources;
+namespace App\Http\Livewire\Admin\Resources;
 
+use App\Http\Controllers\Admin\ResourceController;
 use Illuminate\Support\Facades\Route;
 use ReflectionClass;
 
@@ -22,8 +23,7 @@ abstract class Resource
     {
         $obj = new static();
         $name = $obj->modelKebabCase();
-        #$class = "\\App\\Http\\Controllers\\" . $obj->getResourceShortName() . "Controller";
-        $class = "\\App\\Http\\Controllers\\Admin\\ResourceController";
+        $class = ResourceController::class;
 
         Route::resource($name, $class)->parameters([
             $name => 'modelId',
@@ -38,7 +38,14 @@ abstract class Resource
     public static function makeByModel($model): ?self
     {
         $reflect = new ReflectionClass($model);
-        $class = "\\App\\Resources\\".$reflect->getShortName()."Resource";
+
+        return static::makeByShortName($reflect->getShortName());
+    }
+
+
+    public static function makeByShortName(string $shortName): ?self
+    {
+        $class = "\\App\\Http\\Livewire\\Admin\\".$shortName.'\\'.$shortName.'Resource';
 
         return $class ? ($class)::make() : null;
     }
@@ -76,6 +83,14 @@ abstract class Resource
     }
 
 
+    public function getNamespace(): string
+    {
+        $reflect = new ReflectionClass($this);
+
+        return $reflect->getNamespaceName();
+    }
+
+
     public function modelKebabCase(): string
     {
         return \Str::kebab($this->getResourceShortName());
@@ -96,7 +111,9 @@ abstract class Resource
 
     public function livewire(string $component)
     {
-        return "admin.".$this->modelKebabCase().'-'.$component;
+        $kebab = $this->modelKebabCase();
+
+        return "admin.".$kebab.".".$kebab.'-'.$component;
     }
 
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Resources;
-
+namespace App\Http\Livewire\Admin\CryptoExchange;
 
 use App\Forms\SidebarLayout;
+use App\Http\Livewire\Admin\Resources\Resource;
 use App\Models\CryptoExchange;
 use Filament\Forms;
 use Filament\Tables;

@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Admin\Resources;
 
-use App\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\ButtonAction;

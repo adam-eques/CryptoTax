@@ -2,10 +2,9 @@
 
 namespace App\Http\Livewire\Admin\Resources;
 
-use App\Resources\Resource;
+use Filament\Forms;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
-use Filament\Forms;
 use WireUi\Traits\Actions;
 
 abstract class ResourceForm extends Component implements Forms\Contracts\HasForms

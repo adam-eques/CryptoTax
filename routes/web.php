@@ -30,7 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
 
     //// Other resoureces
     //Route::resource("api", Controllers\Admin\ApiController::class);
-    \App\Resources\CryptoExchangeResource::routes();
+    \App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource::routes();
 });
 
 

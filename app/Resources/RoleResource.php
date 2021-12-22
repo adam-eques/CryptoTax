@@ -3,6 +3,7 @@
 namespace App\Resources;
 
 
+use App\Http\Livewire\Admin\Resources\Resource;
 use App\Models\Role;
 
 class RoleResource extends Resource

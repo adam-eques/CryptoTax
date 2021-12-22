@@ -3,7 +3,6 @@
 namespace App\Forms;
 
 use App\Forms\Components\RelationTableField;
-use App\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Tabs;

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\CryptoExchange;
 
 use App\Http\Livewire\Admin\Resources\ResourceTable;
-use App\Resources\CryptoExchangeResource;
 
 class CryptoExchangeTable extends ResourceTable
 {

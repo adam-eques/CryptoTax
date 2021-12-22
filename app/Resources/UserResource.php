@@ -2,6 +2,7 @@
 
 namespace App\Resources;
 
+use App\Http\Livewire\Admin\Resources\Resource;
 use App\Models\User;
 
 class UserResource extends Resource
