@@ -5,25 +5,35 @@
     ]
 @endphp
 
-<div class="bg-white p-5 rounded-md shadow-md">
+<div class="bg-white p-5 rounded-md shadow-md" x-data="{ view: 'tile' }" >
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="coin" class="w-8 h-8"/>
             <p class="mr-3 font-extrabold text-lg">{{ __("My Balance") }}</p>
         </div>
         <div class="flex items-center space-x-3">
-            <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">
+            <button 
+                class="border rounded-lg px-3 py-2 hover:text-white bg-white hover:bg-primary" 
+                x-bind:class="view === 'tile' ? 'bg-primary text-white' : 'bg-white text-primary'" 
+                x-on:click="view = 'tile'"
+            >
                 <x-icon name="tile" class="w-6 h-6"/>
             </button>
-            <button class="border rounded-lg px-3 py-2 text-primary hover:text-white bg-white hover:bg-primary">
+            <button 
+                class="border rounded-lg px-3 py-2 hover:text-white  hover:bg-primary" 
+                x-bind:class="view === 'list' ? 'bg-primary text-white' : 'bg-white text-primary'" 
+                x-on:click="view = 'list'"
+            >
                 <x-icon name="list" class="w-6 h-6"/>
             </button>
         </div>
     </div>
+
     <div class=" lg:px-4 sm:px-3 px-2 py-4">
         <img src="{{asset('assets/img/svg/Credit Card.svg')}}" class=" w-9/12 mx-auto"/>
     </div>
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-3">
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-3" x-show="view == 'tile'" x-transition>
         
         @foreach ($situation as $item)            
             <div>
@@ -45,5 +55,22 @@
             </div>
             <span>{{ __('Tax Optimizion') }}</span>
         </x-button>
+    </div>
+
+    <div class="mt-4 space-y-5" x-show="view == 'list'" x-transition>
+        <div class="flex items-center justify-between px-6 py-4 bg-primary rounded-xl">
+            <img src="{{ asset('assets/img/svg/mastercard.svg') }}"/>
+            <div class="text-right text-white">
+                <p class="text-sm">****    ****   *****   1569</p>
+                <p class="mt-2">Balance <span class="ml-5 text-lg font-bold">$ 673, 146.369</span></p>
+            </div>
+        </div>
+        <div class="flex items-center justify-between px-6 py-4 bg-success rounded-xl">
+            <img src="{{ asset('assets/img/svg/visa.svg') }}"/>
+            <div class="text-right text-white">
+                <p class="text-sm">****    ****   *****   1569</p>
+                <p class="mt-2">Balance <span class="ml-5 text-lg font-bold">$ 673, 146.369</span></p>
+            </div>
+        </div>
     </div>
 </div>

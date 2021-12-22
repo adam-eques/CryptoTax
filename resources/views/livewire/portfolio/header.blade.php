@@ -3,8 +3,8 @@
     <div class="w-full border-b py-2">
         <div class="grid grid-cols-1 md:grid-cols-5">
             <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
-                <x-icon name="portfolio" class="w-10 h-8"/>
-                <h4 class="text-2xl font-extrabold">Portfolio</h4>
+                <x-icon name="portfolio" class="w-8 h-8"/>
+                <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">Portfolio</h1>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2">
                 <div class="py-2">

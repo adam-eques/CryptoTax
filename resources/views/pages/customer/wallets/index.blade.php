@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-page icon="fas-wallet" :title="__('Wallets')">
+    <x-page icon="wallet" :title="__('Wallets')">
         <div class="pb-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
             <!-- Left Panel -->
             <div class="px-2 lg:px-5 md:w-2/5">
