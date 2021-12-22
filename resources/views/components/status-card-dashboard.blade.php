@@ -59,6 +59,9 @@
                         show: false
                     }
                 },
+                tooltip: {
+                    enabled: false
+                },
                 yaxis: {
                     floating: true,
                     axisTicks: {

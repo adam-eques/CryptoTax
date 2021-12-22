@@ -78,9 +78,9 @@
                     axisTicks: {
                         show: false
                     },
-                    tooltip: {
-                        enabled: false
-                    }
+                },
+                tooltip: {
+                    enabled: false
                 },
                 yaxis: {
                     show: false
