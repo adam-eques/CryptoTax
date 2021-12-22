@@ -5,14 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ ($title ? strip_tags($title) . " - " : "") . config('app.name', 'Laravel') }}</title>
 
     {{-- Styles --}}
+    <style>[x-cloak] { display: none !important; }</style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ mix('mix/css/app.css') }}">
     @livewireStyles
 
     {{-- Scripts --}}
+    <wireui:scripts />
     <script src="{{ mix('mix/js/app.js') }}" defer></script>
 {{--    --}}{{-- Push ApexCharts to the top of the scripts stack --}}
 {{--    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>--}}
@@ -90,16 +92,59 @@
         </div>
 
         {{-- Content --}}
-        <div class="flex-1 p-10">
+        <div class="flex-1">
             @if(!empty($title))
-                <h1 class="font-bold text-2xl text-gray-700 mb-4">{{ $title }}</h1>
+                <header class="bg-white border-b border-gray-200">
+                    <div class="py-3 px-10">
+                        {{-- Title --}}
+                        <h1 class="text-2xl font-light text-blue-gray-800">
+                            {!! $title !!}
+                        </h1>
+
+                        {{-- Breadcrumb --}}
+                        @if($breadcrumbs)
+                            <ol class="inline-flex items-center space-x-1 md:space-x-3 text-xs pt-1">
+                                <li class="inline-flex items-center">
+                                    <a href="{{ route("dashboard") }}" class="text-secondary-500 hover:text-gray-900 inline-flex items-center">
+                                        {{ __("Home") }}
+                                    </a>
+                                </li>
+                                @foreach($breadcrumbs AS $crumb)
+                                    <li class="inline-flex items-center gap-1 md:gap-3">
+                                        <span>/</span>
+                                        @if(!empty($crumb["route"]))
+                                            <a href="{{ $crumb["route"] }}" class="text-secondary-500 hover:text-gray-900 inline-flex items-center">
+                                                {{ $crumb["label"] }}
+                                            </a>
+                                        @else
+                                            {{ $crumb["label"] }}
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ol>
+                        @endif
+                    </div>
+                </header>
             @endif
 
-            {{ $slot }}
+            <div class="px-10 py-8">
+                {{ $slot }}
+            </div>
         </div>
     </div>
     @livewireScripts
-    @livewire('livewire-toast')
     @stack('scripts')
+
+    {{-- WireUi: Notifications --}}
+    <x-wire-notifications />
+    @if($toasts = session()->pull("wireui.notify", []))
+        <script>
+            Wireui.hook('notifications:load', () => {
+                setTimeout(function (){
+                    @foreach($toasts AS $toast) window.$wireui.notify({!! json_encode($toast) !!}); @endforeach
+                }, 200);
+            })
+        </script>
+    @endif
 </body>
 </html>

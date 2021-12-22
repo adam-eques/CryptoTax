@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "ascsoftw/livewire-toast": "^1.0",
         "aws/aws-sdk-php": "^3.208",
         "blade-ui-kit/blade-icons": "^1.1",
@@ -21,7 +21,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
-        "owenvoke/blade-fontawesome": "^1.10"
+        "owenvoke/blade-fontawesome": "^1.10",
+        "wireui/wireui": "^0.15.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

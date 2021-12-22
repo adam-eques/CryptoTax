@@ -6,7 +6,25 @@ if (! function_exists('moneyFormat')) {
      * @param int $decimals
      * @return string
      */
-    function moneyFormat($value, int $decimals = 2) {
+    function moneyFormat($value, int $decimals = 2): string
+    {
         return number_format($value, $decimals, ".", ",");
+    }
+}
+
+if (! function_exists('notify')) {
+    /**
+     * @param string $title
+     * @param string $msg
+     * @param string $type
+     * @return void
+     */
+    function notify(string $title, string $msg = "", string $type = "success"): void
+    {
+        session()->push("wireui.notify", [
+            "title" => $title,
+            "description" => $msg,
+            "icon" => $type,
+        ]);
     }
 }
