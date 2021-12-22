@@ -14,27 +14,27 @@
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-2 flex justify-start items-center space-x-2 px-5">
-                <p class="text-lg">{{ _('Coin') }}</p>
+                <p class="text-basic">{{ _('Coin') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-end items-center space-x-2">
-                <p class="text-lg">{{ __('Price') }}</p>
+                <p class="text-basic">{{ __('Price') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-3 flex justify-center items-center space-x-2">
-                <p class="text-lg">{{ __('Last 7 Days') }}</p>
+                <p class="text-basic">{{ __('Last 7 Days') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-start items-center space-x-2">
-                <p class="text-lg">{{ __('Holdings') }}</p>
+                <p class="text-md">{{ __('Holdings') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-end items-center space-x-2">
-                <p class="text-lg">{{ __('Percentage') }}</p>
+                <p class="text-basic">{{ __('Percentage') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-2 flex justify-center items-center space-x-2">
-                <p class="text-lg">{{ __('PNL') }}</p>
+                <p class="text-basic">{{ __('PNL') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
         </div>
