@@ -1,11 +1,3 @@
-@props([
-    'id',
-    'amount',
-    'title',
-    'increase',
-    'incdecamount'
-])
-
 <div class="border rounded-lg my-3 sm:my-0">
     <div class="w-full px-3 py-2">
         <div class="flex items-center space-x-2 justify-between">
@@ -20,3 +12,71 @@
     </div>
     <div id="{{ $id }}" class="-mt-4 -mb-5"></div>
 </div>
+
+@push('scripts')
+    <script>
+        (function () {
+            var options_status = {
+                chart: {
+                    type: 'area',
+                    toolbar: {
+                        show: false
+                    },
+                    height: 50
+                },
+                colors: ['#7A6CFF'],
+                series: [{
+                    name: 'sales',
+                    data: [143,24,34,123,23,25,100,91,23]
+                }],
+                legend: {
+                    show: false,
+                    position: 'bottom'
+                },
+                grid: {
+                    show: false,
+                    padding: {
+                        left: -5,
+                        right: -5,
+                        top: -10,
+                        bottom: -10
+                    },
+                },
+                stroke: {
+                    width: 2
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    labels: {
+                        show: false,
+                    },
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false
+                    }
+                },
+                yaxis: {
+                    floating: true,
+                    axisTicks: {
+                        show: false
+                    },
+                    axisBorder: {
+                        show: false
+                    },
+                    labels: {
+                        show: false
+                    },
+                },
+                fill: {
+                    type: 'gradient'
+                }
+            }
+            const chart_status = new ApexCharts(document.getElementById(`{{ $id }}`), options_status);
+            chart_status.render();
+        }());
+    </script>
+@endpush
