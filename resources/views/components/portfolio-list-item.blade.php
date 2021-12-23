@@ -19,7 +19,7 @@
         <p class="text-lg">{{ $price }}</p>
     </div>
     <div class="col-span-3 flex justify-center items-center space-x-2">
-        <div id="{{ $id }}" class="-my-10"></div>
+        <div id="{{ $id }}" class="-my-10 mx-16"></div>
     </div>
     <div class="col-span-1 flex justify-start items-center space-x-2">
         <div>
