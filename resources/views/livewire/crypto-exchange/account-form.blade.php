@@ -50,15 +50,19 @@
         @if($account)
             <div class="px-4 lg:px-5 md:w-1/2">
                 <x-card :title="$account->getName()">
-                    <form wire:submit.prevent="save">
-                        <div class="p-4">
-                            {{ $this->form }}
+                    @if($account->fetching_scheduled_at)
+                        <p class="p-4">{{ __("Fetching is currently scheduled. You can't modify credentials until fetching is finished.") }}</p>
+                    @else
+                        <form wire:submit.prevent="save">
+                            <div class="p-4">
+                                {{ $this->form }}
 
-                            <div class="text-center mt-4">
-                                <x-button type="submit">{{ __("Save") }}</x-button>
+                                <div class="text-center mt-4">
+                                    <x-button type="submit">{{ __("Save") }}</x-button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    @endif
                 </x-card>
             </div>
         @endif
