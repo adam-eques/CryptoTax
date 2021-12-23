@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\CryptoExchangeTransaction;
 use Carbon\Carbon;
 use Filament\Tables\Columns\TextColumn;
 use Livewire\Component;
@@ -17,17 +18,22 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return auth()
-            ->user()
-            ->cryptoExchangeTransactions()
-            ->with('cryptoExchangeAccount.cryptoExchange')
-            ->getQuery();
+        return CryptoExchangeTransaction::query()
+            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoExchangeAccounts->pluck("id"));
     }
 
 
     protected function getTableFilters(): array
     {
+        $accountOptions = auth()->user()->cryptoExchangeAccounts->pluck("cryptoExchange.name", "id");
+
         return [
+            SelectFilter::make('crypto_exchange_account_id')
+                ->label(__("Exchange"))
+                ->query(function (Builder $query, array $data): Builder {
+                    return !empty($data["value"]) ? $query->where("crypto_exchange_account_id", $data["value"]) : $query;
+                })
+                ->options($accountOptions),
             SelectFilter::make('side')
                 ->options([
                     'sell' => 'Sell',
