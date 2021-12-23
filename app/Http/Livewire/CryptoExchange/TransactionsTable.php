@@ -9,13 +9,19 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
+use WireUi\Traits\Actions;
 use function __;
 use function auth;
 use function view;
 
 class TransactionsTable extends Component implements Tables\Contracts\HasTable
 {
+    use Actions;
     use Tables\Concerns\InteractsWithTable;
+
+    protected $listeners = [ 'transactionTable.updateTable' => '$refresh'];
+    public ?int $updated_at = null;
+
 
     protected function getTableQuery(): Builder
     {
@@ -80,6 +86,13 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make('fee_currency')->sortable()->searchable(),
         ];
     }
+
+    public function updateTable()
+    {
+        $this->notification()->success("Refresh");
+        $this->updated_at = now();
+    }
+
 
     public function render()
     {

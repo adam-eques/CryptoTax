@@ -62,8 +62,12 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
         }
         $account->delete();
 
+        // Update table
+        $this->emit("transactionTable.updateTable");
+
+        // Notify
         $this->notification()->success(
-            $title = 'Successfully deleted',
+            $title = __('Successfully deleted'),
             $description = ''
         );
     }
@@ -85,7 +89,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     }
 
 
-    public function isRequiredField(string $fieldName)
+    public function isRequiredField(string $fieldName): bool
     {
         if ($this->account) {
             $api = $this->account->getApi();
