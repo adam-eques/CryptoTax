@@ -9,6 +9,7 @@ use ReflectionClass;
 abstract class Resource
 {
     public static $routePrefix = "admin";
+    public static $classPrefix = "admin";
     protected string $model;
     protected string $icon = "fas-file";
 
@@ -16,6 +17,27 @@ abstract class Resource
     public static function make(): static
     {
         return new static();
+    }
+
+
+    public static function makeByModel($model): ?self
+    {
+        $reflect = new ReflectionClass($model);
+
+        return static::makeByShortName($reflect->getShortName());
+    }
+
+
+    public static function makeByShortName(string $shortName): ?self
+    {
+        $studly = \Str::studly($shortName);
+        $class = "\\App\\Http\\Livewire\\";
+        if(static::$classPrefix) {
+            $class.= \Str::studly(static::$classPrefix)."\\";
+        }
+        $class.= $studly.'\\'.$studly.'Resource';
+
+        return $class ? ($class)::make() : null;
     }
 
 
@@ -32,22 +54,6 @@ abstract class Resource
             "create",
             "edit",
         ]);
-    }
-
-
-    public static function makeByModel($model): ?self
-    {
-        $reflect = new ReflectionClass($model);
-
-        return static::makeByShortName($reflect->getShortName());
-    }
-
-
-    public static function makeByShortName(string $shortName): ?self
-    {
-        $class = "\\App\\Http\\Livewire\\Admin\\".$shortName.'\\'.$shortName.'Resource';
-
-        return $class ? ($class)::make() : null;
     }
 
 
@@ -82,18 +88,18 @@ abstract class Resource
         );
     }
 
+    public function modelKebabCase(): string
+    {
+        return \Str::kebab($this->getResourceShortName());
+    }
+
+
 
     public function getNamespace(): string
     {
         $reflect = new ReflectionClass($this);
 
         return $reflect->getNamespaceName();
-    }
-
-
-    public function modelKebabCase(): string
-    {
-        return \Str::kebab($this->getResourceShortName());
     }
 
 
@@ -105,7 +111,9 @@ abstract class Resource
 
     public function getRouteName(string $action = "index"): string
     {
-        return static::$routePrefix.".".$this->modelKebabCase().".".$action;
+        $route = static::$routePrefix ? static::$routePrefix."." : "";
+
+        return $route.$this->modelKebabCase().".".$action;
     }
 
 
@@ -113,7 +121,7 @@ abstract class Resource
     {
         $kebab = $this->modelKebabCase();
 
-        return "admin.".$kebab.".".$kebab.'-'.$component;
+        return (static::$classPrefix ? static::$classPrefix."." : "" ).$kebab.".".$kebab.'-'.$component;
     }
 
 

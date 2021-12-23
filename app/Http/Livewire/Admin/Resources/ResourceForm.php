@@ -79,7 +79,7 @@ abstract class ResourceForm extends Component implements Forms\Contracts\HasForm
 
     public function render()
     {
-        return view('livewire.admin.resource.form', [
+        return view('livewire.' . (Resource::$classPrefix ? Resource::$classPrefix."." : "") . 'resource.form', [
             "resource" => $this->resource,
         ]);
     }

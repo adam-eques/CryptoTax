@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Livewire\Admin\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
-use function request;
-use function view;
 
 class ResourceController extends Controller
 {
@@ -17,9 +15,8 @@ class ResourceController extends Controller
     public function callAction($method, $parameters)
     {
         $shortName = $this->getResourceNameShort();
-        $studly = \Str::studly(\Str::singular($shortName));
-        $this->resourceClass = "\\App\\Http\\Livewire\\Admin\\".$studly.'\\'.$studly.'Resource';
-        $this->resource = ($this->resourceClass)::make();
+        $this->resource = Resource::makeByShortName($shortName);
+        $this->resourceClass = ($this->resource)::class;
 
         return parent::callAction($method, $parameters);
     }
@@ -33,7 +30,7 @@ class ResourceController extends Controller
 
     public function create()
     {
-        return view("pages.admin.resourcesform", $this->getViewVariables([
+        return view("pages.admin.resources.form", $this->getViewVariables([
             "model" => new ($this->resource->model())(),
         ]));
     }
