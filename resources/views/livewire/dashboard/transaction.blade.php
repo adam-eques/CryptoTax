@@ -21,7 +21,7 @@
             @foreach ($transactios as $item)                
                 <div class="flex items-center justify-between border p-4 rounded-lg {{ $item['type'] == 'Buy'?'bg-lightgreen':' bg-lightpink' }}">
                     <div class="flex items-center justify-between space-x-6">
-                        <div class="w-14 h-14 rounded-lg">
+                        <div class="w-12 h-12 rounded-lg">
                             <x-icon name="{{ $item['icon'] }}" class="h-full w-full"/>
                         </div>
                         <div>

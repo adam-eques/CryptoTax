@@ -22,7 +22,7 @@
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-3 flex justify-center items-center space-x-2">
-                <p class="text-basic">{{ __('Last 7 Days') }}</p>
+                <p class="text-basic">{{ __('Last 7 days') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
             <div class="col-span-1 flex justify-start items-center space-x-2">
