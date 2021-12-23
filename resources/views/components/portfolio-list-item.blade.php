@@ -7,7 +7,7 @@
         @endif
     </div>
     <div class="col-span-2 flex justify-start items-center space-x-2 px-5">
-        <div class="w-14 h-14 flex justify-center items-center rounded-lg">
+        <div class="w-12 h-12 flex justify-center items-center rounded-lg">
             <x-icon name="{{ $icon }}" class="w-full h-full"></x-icon>
         </div>
         <div>
@@ -78,9 +78,9 @@
                     axisTicks: {
                         show: false
                     },
-                    tooltip: {
-                        enabled: false
-                    }
+                },
+                tooltip: {
+                    enabled: false
                 },
                 yaxis: {
                     show: false
