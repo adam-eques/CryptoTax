@@ -12,40 +12,32 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
 {
     use Actions;
     use Forms\Concerns\InteractsWithForms;
+
     public ?CryptoExchangeAccount $account = null;
     public ?int $newAccountId = null;
 
 
     protected function getFormSchema(): array
     {
-        $schema = [];
-
-        if($this->account) {
-            $api = $this->account->getApi();
-            $requiredCredentials = $api->getRequiredCredentials();
-
-            if($requiredCredentials["apiKey"]) {
-                $schema[] = Forms\Components\TextInput::make('key')
-                    ->label(__("Key"))
-                    ->required()
-                    ->placeholder(__("Your API key"));
-            }
-            if($requiredCredentials["secret"]) {
-                $schema[] = Forms\Components\TextInput::make('secret')
-                    ->label(__("Secret"))
-                    ->required()
-                    ->placeholder(__("Your API secret"));
-            }
-            if($requiredCredentials["password"]) {
-                $schema[] = Forms\Components\TextInput::make('passphrase')
-                    ->label(__("Passphrase"))
-                    ->required()
-                    ->placeholder(__("Your API passphrase"));
-            }
-        }
-
-        return $schema;
+        return [
+            Forms\Components\TextInput::make('key')
+                ->visible(fn ($livewire) => $livewire->isRequiredField('apiKey'))
+                ->label(__("Key"))
+                ->required()
+                ->placeholder(__("Your API key")),
+            Forms\Components\TextInput::make('secret')
+                ->visible(fn ($livewire) => $livewire->isRequiredField('secret'))
+                ->label(__("Secret"))
+                ->required()
+                ->placeholder(__("Your API secret")),
+            Forms\Components\TextInput::make('passphrase')
+                ->visible(fn ($livewire) => $livewire->isRequiredField('password'))
+                ->label(__("Passphrase"))
+                ->required()
+                ->placeholder(__("Your API passphrase"))
+        ];
     }
+
 
     public function render()
     {
@@ -55,16 +47,16 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
             ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
             ->get();
 
-        return view('livewire.crypto-exchange-form',[
+        return view('livewire.crypto-exchange-form', [
             "exchanges" => $exchanges,
-            "cryptoExchangeAccounts" => $cryptoExchangeAccounts
+            "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
         ]);
     }
 
 
     public function delete(CryptoExchangeAccount $account)
     {
-        if($this->account && $this->account->id == $account->id) {
+        if ($this->account && $this->account->id == $account->id) {
             $this->account = null;
         }
         $account->delete();
@@ -90,17 +82,30 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
         $this->form->fill($account->credentials);
     }
 
+    public function isRequiredField(string $fieldName)
+    {
+        if ($this->account) {
+            $api = $this->account->getApi();
+            $requiredCredentials = $api->getRequiredCredentials();
+
+            return $requiredCredentials[$fieldName];
+        }
+
+        return false;
+    }
+
 
     public function add()
     {
         $user = auth()->user();
 
-        if(!$this->newAccountId) {
+        if (! $this->newAccountId) {
             $this->notification()->info(__("Please select an exchange"));
+
             return;
         }
 
-        if(!$user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
+        if (! $user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
             $account = new CryptoExchangeAccount();
             $account->crypto_exchange_id = $this->newAccountId;
             $account->user_id = $user->id;
