@@ -11,8 +11,8 @@
                                     {{ $row->getName() }}
                                     <div class="float-right">
                                         @if($row->hasAllCredentials())<x-button :disabled="$row->fetching_scheduled_at" size="sm" wire:click="fetch({{ $row->id }})">{{ __("Fetch") }}</x-button>@endif
-                                        <x-button size="sm" wire:click="edit({{ $row->id }})">{{ __("Edit") }}</x-button>
-                                        <x-button variant="danger" size="sm" wire:click="delete({{ $row->id }})">{{ __("Delete") }}</x-button>
+                                        <x-button size="sm" wire:click="edit({{ $row->id }})" :disabled="$row->fetching_scheduled_at">{{ __("Edit") }}</x-button>
+                                        <x-button variant="danger" :disabled="$row->fetching_scheduled_at" size="sm" wire:click="delete({{ $row->id }})">{{ __("Delete") }}</x-button>
                                     </div>
                                     <p class="text-xs">
                                         @if($row->hasAllCredentials())
