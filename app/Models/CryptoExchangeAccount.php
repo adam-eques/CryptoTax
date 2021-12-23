@@ -12,7 +12,6 @@ class CryptoExchangeAccount extends Model
      * @var \App\CryptoExchangeDrivers\Driver|null
      */
     protected ?Driver $api = null;
-
     /**
      * The attributes that should be cast.
      *
@@ -23,6 +22,16 @@ class CryptoExchangeAccount extends Model
         'fetched_at' => 'datetime',
     ];
 
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function (self $item) {
+            $item->exchangeTransactions()->delete();
+        });
+    }
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
@@ -30,6 +39,7 @@ class CryptoExchangeAccount extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
@@ -39,12 +49,19 @@ class CryptoExchangeAccount extends Model
         return $this->belongsTo(CryptoExchange::class);
     }
 
+
     /**
      * @return HasMany
      */
     public function exchangeTransactions(): HasMany
     {
         return $this->hasMany(CryptoExchangeTransaction::class);
+    }
+
+
+    public function getName(): string
+    {
+        return $this->cryptoExchange->getName();
     }
 
     /**

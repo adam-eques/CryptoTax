@@ -10,9 +10,10 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ mix('mix/css/app.css') }}">
-@livewireStyles
+    @livewireStyles
 
-<!-- Scripts -->
+    <!-- Scripts -->
+    <wireui:scripts />
     <script src="{{ mix('mix/js/app.js') }}" defer></script>
     {{-- Push ApexCharts to the top of the scripts stack --}}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -171,7 +172,17 @@
 </div>
 
 @livewireScripts
-@livewire('livewire-toast')
 @stack('scripts')
+{{-- WireUi: Notifications --}}
+<x-wire-notifications />
+@if($toasts = session()->pull("wireui.notify", []))
+    <script>
+        Wireui.hook('notifications:load', () => {
+            setTimeout(function (){
+                @foreach($toasts AS $toast) window.$wireui.notify({!! json_encode($toast) !!}); @endforeach
+            }, 200);
+        })
+    </script>
+@endif
 </body>
 </html>

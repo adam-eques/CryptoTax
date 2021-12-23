@@ -70,15 +70,18 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public static function boot() {
+
+    public static function boot()
+    {
         parent::boot();
 
         static::creating(function (self $item) {
-            if(!$item->user_account_type_id) {
+            if (! $item->user_account_type_id) {
                 $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER;
             }
         });
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f661083367b5698fa08e7fd5d0bccc5",
+    "content-hash": "cc6ee6590fbf8a9094f392a6ee823232",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -70,61 +70,6 @@
                 "source": "https://github.com/akaunting/laravel-money/tree/1.2.3"
             },
             "time": "2021-09-28T06:19:54+00:00"
-        },
-        {
-            "name": "ascsoftw/livewire-toast",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ascsoftw/livewire-toast.git",
-                "reference": "8f88eb937e618ef8d34c89e9dbc19dfa6a2396af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ascsoftw/livewire-toast/zipball/8f88eb937e618ef8d34c89e9dbc19dfa6a2396af",
-                "reference": "8f88eb937e618ef8d34c89e9dbc19dfa6a2396af",
-                "shasum": ""
-            },
-            "require-dev": {
-                "livewire/livewire": "^2.4",
-                "orchestra/testbench": "^6.17"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Ascsoftw\\LivewireToast\\LivewireToastServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ascsoftw\\LivewireToast\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "AscSoftwares",
-                    "email": "support@ascsoftwares.com"
-                }
-            ],
-            "description": "Livewire Package to display Toast Notifications",
-            "keywords": [
-                "LivewireToast",
-                "laravel",
-                "livewire",
-                "notifications",
-                "toast"
-            ],
-            "support": {
-                "issues": "https://github.com/ascsoftw/livewire-toast/issues",
-                "source": "https://github.com/ascsoftw/livewire-toast/tree/1.0.1"
-            },
-            "time": "2021-05-25T11:07:52+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -234,16 +179,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.208.6",
+            "version": "3.208.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6154edd0a34db103c69ec15e258ea73e4e45d471"
+                "reference": "41a800dd7cf5c4ac0ef9bf8db01e838ab6a3698c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6154edd0a34db103c69ec15e258ea73e4e45d471",
-                "reference": "6154edd0a34db103c69ec15e258ea73e4e45d471",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41a800dd7cf5c4ac0ef9bf8db01e838ab6a3698c",
+                "reference": "41a800dd7cf5c4ac0ef9bf8db01e838ab6a3698c",
                 "shasum": ""
             },
             "require": {
@@ -319,9 +264,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.7"
             },
-            "time": "2021-12-20T19:17:52+00:00"
+            "time": "2021-12-21T19:16:39+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -588,16 +533,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.64.49",
+            "version": "1.64.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "19dcf477eacacdf56fce6fac8b14aa1b099c8fe4"
+                "reference": "d3a29a6b6a4f10e86f1b173ad805faca21b872bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/19dcf477eacacdf56fce6fac8b14aa1b099c8fe4",
-                "reference": "19dcf477eacacdf56fce6fac8b14aa1b099c8fe4",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/d3a29a6b6a4f10e86f1b173ad805faca21b872bf",
+                "reference": "d3a29a6b6a4f10e86f1b173ad805faca21b872bf",
                 "shasum": ""
             },
             "require": {
@@ -860,7 +805,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.64.49"
+                "source": "https://github.com/ccxt/ccxt/tree/1.64.64"
             },
             "funding": [
                 {
@@ -868,7 +813,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-12-21T12:12:54+00:00"
+            "time": "2021-12-22T22:57:16+00:00"
         },
         {
             "name": "codeat3/blade-cryptocurrency-icons",
@@ -1746,16 +1691,16 @@
         },
         {
             "name": "filament/forms",
-            "version": "v2.6.3",
+            "version": "v2.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "4720c8059a629196753d40affa3f6813991a35db"
+                "reference": "c73f0bf91c691111021e4fd9d42f2d551135be4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/4720c8059a629196753d40affa3f6813991a35db",
-                "reference": "4720c8059a629196753d40affa3f6813991a35db",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/c73f0bf91c691111021e4fd9d42f2d551135be4b",
+                "reference": "c73f0bf91c691111021e4fd9d42f2d551135be4b",
                 "shasum": ""
             },
             "require": {
@@ -1795,20 +1740,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2021-12-19T23:13:17+00:00"
+            "time": "2021-12-23T00:09:38+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.6.3",
+            "version": "v2.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "01bf87ac6be6de102fba581b41f9f1fcf66ea4df"
+                "reference": "bfd0eeb13831eb3227b37c781603ab1d072615e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/01bf87ac6be6de102fba581b41f9f1fcf66ea4df",
-                "reference": "01bf87ac6be6de102fba581b41f9f1fcf66ea4df",
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/bfd0eeb13831eb3227b37c781603ab1d072615e3",
+                "reference": "bfd0eeb13831eb3227b37c781603ab1d072615e3",
                 "shasum": ""
             },
             "require": {
@@ -1848,7 +1793,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2021-12-20T01:18:51+00:00"
+            "time": "2021-12-23T00:09:42+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -2591,16 +2536,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.8.5",
+            "version": "v1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "f2059ba020557cb19c73fdd3083d7218d25fa62c"
+                "reference": "fb2b7884bb28fb04fafbea7440933ef5877714df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/f2059ba020557cb19c73fdd3083d7218d25fa62c",
-                "reference": "f2059ba020557cb19c73fdd3083d7218d25fa62c",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/fb2b7884bb28fb04fafbea7440933ef5877714df",
+                "reference": "fb2b7884bb28fb04fafbea7440933ef5877714df",
                 "shasum": ""
             },
             "require": {
@@ -2650,20 +2595,20 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2021-12-07T15:58:41+00:00"
+            "time": "2021-12-22T10:03:31+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v8.76.2",
+            "version": "v8.77.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c67acfdc968f487b6235435080eef62a7e2ed055"
+                "reference": "994dbac5c6da856c77c81a411cff5b7d31519ca8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c67acfdc968f487b6235435080eef62a7e2ed055",
-                "reference": "c67acfdc968f487b6235435080eef62a7e2ed055",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/994dbac5c6da856c77c81a411cff5b7d31519ca8",
+                "reference": "994dbac5c6da856c77c81a411cff5b7d31519ca8",
                 "shasum": ""
             },
             "require": {
@@ -2681,7 +2626,7 @@
                 "opis/closure": "^3.6",
                 "php": "^7.3|^8.0",
                 "psr/container": "^1.0",
-                "psr/log": "^1.0 || ^2.0",
+                "psr/log": "^1.0|^2.0",
                 "psr/simple-cache": "^1.0",
                 "ramsey/uuid": "^4.2.2",
                 "swiftmailer/swiftmailer": "^6.3",
@@ -2822,7 +2767,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-12-15T14:02:14+00:00"
+            "time": "2021-12-21T20:22:29+00:00"
         },
         {
             "name": "laravel/jetstream",
@@ -11357,7 +11302,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4|^8.0"
+        "php": "^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
