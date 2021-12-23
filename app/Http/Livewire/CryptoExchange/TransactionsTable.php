@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CryptoExchange;
 
 use App\Models\CryptoExchangeTransaction;
 use Carbon\Carbon;
-use Filament\Tables\Columns\TextColumn;
-use Livewire\Component;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-
-
+use Illuminate\Database\Eloquent\Builder;
+use Livewire\Component;
+use function __;
+use function auth;
+use function view;
 
 class TransactionsTable extends Component implements Tables\Contracts\HasTable
 {
@@ -82,6 +83,6 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
 
     public function render()
     {
-        return view('livewire.transactions-table');
+        return view('livewire.crypto-exchange.transaction-table');
     }
 }

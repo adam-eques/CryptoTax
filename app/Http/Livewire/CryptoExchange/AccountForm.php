@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CryptoExchange;
 
 use App\Jobs\CryptoExchangeFetchJob;
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
-use Livewire\Component;
 use Filament\Forms;
+use Livewire\Component;
 use WireUi\Traits\Actions;
 
-class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
+class AccountForm extends Component implements Forms\Contracts\HasForms
 {
     use Actions;
     use Forms\Concerns\InteractsWithForms;
@@ -48,7 +48,7 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
             ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
             ->get();
 
-        return view('livewire.crypto-exchange-form', [
+        return view('livewire.crypto-exchange.account-form', [
             "exchanges" => $exchanges,
             "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
         ]);

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-page icon="fas-wallet" :title="__('Exchanges')">
-        <livewire:crypto-exchange-form />
+        <livewire:crypto-exchange.account-form />
     </x-page>
 
     <x-page icon="fas-wallet" :title="__('Transactions')">
         <div class="mb-6">
-            <livewire:transactions-table />
+            <livewire:crypto-exchange.transactions-table />
         </div>
     </x-page>
 </x-app-layout>
