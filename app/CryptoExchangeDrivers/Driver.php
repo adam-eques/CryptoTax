@@ -83,6 +83,7 @@ abstract class Driver
 
             // Update fetched_at
             $account->fetched_at = $timestamp;
+            $account->fetching_scheduled_at = null;
             $account->save();
         });
 

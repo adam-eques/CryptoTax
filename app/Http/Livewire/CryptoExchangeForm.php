@@ -101,6 +101,8 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
     public function fetch(CryptoExchangeAccount $account)
     {
         try {
+            $account->fetching_scheduled_at = now();
+            $account->save();
             CryptoExchangeFetchJob::dispatch($account);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $account->getName()]),
