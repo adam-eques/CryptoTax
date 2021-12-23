@@ -24,9 +24,9 @@ class KucoinDriver extends Driver
     {
         $credentials = $this->getCredentials();
         $this->api = new \ccxt\kucoin([
-            "apiKey" => \Arr::get($credentials, "key"),
+            "apiKey" => \Arr::get($credentials, "apiKey"),
             "secret" => \Arr::get($credentials, "secret"),
-            "password" => \Arr::get($credentials, "passphrase"),
+            "password" => \Arr::get($credentials, "password"),
         ]);
 
         return $this;

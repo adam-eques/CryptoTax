@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Jobs\CryptoExchangeFetchJob;
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
 use Livewire\Component;
@@ -20,21 +21,21 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
     protected function getFormSchema(): array
     {
         return [
-            Forms\Components\TextInput::make('key')
-                ->visible(fn ($livewire) => $livewire->isRequiredField('apiKey'))
+            Forms\Components\TextInput::make('apiKey')
+                ->visible(fn($livewire) => $livewire->isRequiredField('apiKey'))
                 ->label(__("Key"))
                 ->required()
                 ->placeholder(__("Your API key")),
             Forms\Components\TextInput::make('secret')
-                ->visible(fn ($livewire) => $livewire->isRequiredField('secret'))
+                ->visible(fn($livewire) => $livewire->isRequiredField('secret'))
                 ->label(__("Secret"))
                 ->required()
                 ->placeholder(__("Your API secret")),
-            Forms\Components\TextInput::make('passphrase')
-                ->visible(fn ($livewire) => $livewire->isRequiredField('password'))
+            Forms\Components\TextInput::make('password')
+                ->visible(fn($livewire) => $livewire->isRequiredField('password'))
                 ->label(__("Passphrase"))
                 ->required()
-                ->placeholder(__("Your API passphrase"))
+                ->placeholder(__("Your API passphrase")),
         ];
     }
 
@@ -73,6 +74,7 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
         $data = $this->form->getState();
         $this->account->credentials = $data;
         $this->account->save();
+        $this->fetch($this->account);
     }
 
 
@@ -81,6 +83,7 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
         $this->account = $account;
         $this->form->fill($account->credentials);
     }
+
 
     public function isRequiredField(string $fieldName)
     {
@@ -92,6 +95,21 @@ class CryptoExchangeForm extends Component implements Forms\Contracts\HasForms
         }
 
         return false;
+    }
+
+
+    public function fetch(CryptoExchangeAccount $account)
+    {
+        try {
+            CryptoExchangeFetchJob::dispatch($account);
+            $this->notification()->info(
+                __("Fetching :name is now scheduled", ["name" => $account->getName()]),
+                "Please check transactions in a couple of minutes"
+            );
+        }
+        catch (\Exception $e) {
+            $this->notification()->error(__("An error occured"), $e->getMessage());
+        }
     }
 
 

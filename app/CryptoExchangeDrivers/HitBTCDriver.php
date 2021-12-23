@@ -22,7 +22,7 @@ class HitBTCDriver extends Driver
     {
         $credentials = $this->getCredentials();
         $this->api = new \ccxt\hitbtc3([
-            "apiKey" => \Arr::get($credentials, "key"),
+            "apiKey" => \Arr::get($credentials, "apiKey"),
             "secret" => \Arr::get($credentials, "secret"),
         ]);
 

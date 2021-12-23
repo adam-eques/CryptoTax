@@ -61,8 +61,24 @@ class CryptoExchangeAccount extends Model
 
     public function getName(): string
     {
-        return $this->cryptoExchange->getName();
+        return $this->cryptoExchange ? $this->cryptoExchange->getName() : "";
     }
+
+
+    public function hasAllCredentials(): bool
+    {
+        $api = $this->getApi();
+        $requiredCredentials = $api->getRequiredCredentials();
+
+        foreach($requiredCredentials AS $cred => $required) {
+            if($required && empty($this->credentials[$cred])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     /**
      * @param bool $forceReload

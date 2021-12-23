@@ -10,10 +10,17 @@
                                 <li class="@if(!$loop->last)mb-8 @endif">
                                     {{ $row->getName() }}
                                     <div class="float-right">
+                                        @if($row->hasAllCredentials())<x-button size="sm" wire:click="fetch({{ $row->id }})">{{ __("Fetch") }}</x-button>@endif
                                         <x-button size="sm" wire:click="edit({{ $row->id }})">{{ __("Edit") }}</x-button>
                                         <x-button variant="danger" size="sm" wire:click="delete({{ $row->id }})">{{ __("Delete") }}</x-button>
                                     </div>
-                                    <p class="text-xs">Last fetched: {{ $row->fetched_at ? $row->fetched_at->format("Y-m-d H:i") : "never" }}</p>
+                                    <p class="text-xs">
+                                        @if($row->hasAllCredentials())
+                                            {{ __("Last fetched") }}: {{ $row->fetched_at ? $row->fetched_at->format("Y-m-d H:i") : __("never") }}
+                                        @else
+                                            {{ __("Missing credentials") }}
+                                        @endif
+                                    </p>
                                 </li>
                             @endforeach
                         </ul>
