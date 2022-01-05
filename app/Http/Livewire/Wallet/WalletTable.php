@@ -21,9 +21,11 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return WalletTransaction::query();
-        // TODO: Only current user
-            // ->whereIn("wallet_asset_id", auth()->user()->wallets()->pluck("id"));
+        return WalletTransaction::whereIn("wallet_asset_id", function(\Illuminate\Database\Query\Builder $query){
+            $query->select("id")
+                ->from("wallet_assets")
+                ->whereIn("wallet_id", auth()->user()->wallets->pluck("id"));
+        });
     }
 
 
