@@ -2,7 +2,7 @@
     <div class="pb-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0 ">
         <!-- Left Panel -->
         <div class="px-2 lg:px-5 md:w-1/2">
-            <x-card title="Exchanges">
+            <x-card :title="__('Exchanges')">
                 @if($cryptoExchangeAccounts->count())
                     <div class="p-4">
                         <ul>
@@ -33,7 +33,7 @@
                 @if($exchanges->count())
                     <div class="p-4">
                         <h2 class="text-lg mb-2"> {{ __("Add new exchange") }}</h2>
-                        <select wire:model.defer="newAccountId">
+                        <select wire:model.defer="newAccountId" class="rounded-lg">
                             <option></option>
                             @foreach($exchanges as $exchange)
                                 <option value="{{ $exchange->id }}">{{ $exchange->getName() }}</option>
@@ -44,6 +44,10 @@
                     </div>
                 @endif
             </x-card>
+
+            <div class="mt-5">
+                <livewire:wallet.wallet-form />
+            </div>
         </div>
 
         <!-- Right Panel -->

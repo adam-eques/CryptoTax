@@ -22,6 +22,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  *
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
+ * @property \Illuminate\Support\Collection<Wallet> $wallets
  */
 class User extends Authenticatable
 {
@@ -80,6 +81,11 @@ class User extends Authenticatable
                 $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER;
             }
         });
+
+        static::deleting(function (self $item) {
+            $item->wallets()->delete();
+            $item->cryptoExchangeAccounts()->delete();
+        });
     }
 
 
@@ -98,6 +104,15 @@ class User extends Authenticatable
     public function cryptoExchangeAccounts(): HasMany
     {
         return $this->hasMany(CryptoExchangeAccount::class);
+    }
+
+
+    /**
+     * @return HasMany
+     */
+    public function wallets(): HasMany
+    {
+        return $this->hasMany(Wallet::class);
     }
 
 

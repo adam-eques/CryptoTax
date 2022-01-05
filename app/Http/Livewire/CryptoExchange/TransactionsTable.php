@@ -10,16 +10,13 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use WireUi\Traits\Actions;
-use function __;
-use function auth;
-use function view;
 
 class TransactionsTable extends Component implements Tables\Contracts\HasTable
 {
     use Actions;
     use Tables\Concerns\InteractsWithTable;
 
-    protected $listeners = [ 'transactionTable.updateTable' => '$refresh'];
+    protected $listeners = ['transactionTable.updateTable' => '$refresh'];
     public ?int $updated_at = null;
 
 
@@ -38,7 +35,7 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
             SelectFilter::make('crypto_exchange_account_id')
                 ->label(__("Exchange"))
                 ->query(function (Builder $query, array $data): Builder {
-                    return !empty($data["value"]) ? $query->where("crypto_exchange_account_id", $data["value"]) : $query;
+                    return ! empty($data["value"]) ? $query->where("crypto_exchange_account_id", $data["value"]) : $query;
                 })
                 ->options($accountOptions),
             SelectFilter::make('side')
@@ -69,7 +66,7 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
     {
         return [
             TextColumn::make('executed_at')
-                ->formatStateUsing(fn ( $state): string => (new Carbon($state / 1000))->format("Y-m-d H:i:s"))
+                ->formatStateUsing(fn($state): string => (new Carbon($state / 1000))->format("Y-m-d H:i:s"))
                 ->sortable(),
             TextColumn::make('cryptoExchangeAccount.cryptoExchange.name')->label('Exchange')->sortable()->searchable(),
             TextColumn::make('external_id')->sortable()->searchable(),
@@ -86,6 +83,7 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make('fee_currency')->sortable()->searchable(),
         ];
     }
+
 
     public function updateTable()
     {

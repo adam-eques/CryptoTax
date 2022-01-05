@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\CryptoExchangeDrivers\Driver;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CryptoExchangeAccount extends Model
@@ -20,6 +21,7 @@ class CryptoExchangeAccount extends Model
     protected $casts = [
         'credentials' => 'json',
         'fetched_at' => 'datetime',
+        'fetching_scheduled_at' => 'datetime',
     ];
 
 
@@ -33,18 +35,18 @@ class CryptoExchangeAccount extends Model
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     * @return BelongsTo
      */
-    public function users(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    public function users(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     * @return BelongsTo
      */
-    public function cryptoExchange(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    public function cryptoExchange(): BelongsTo
     {
         return $this->belongsTo(CryptoExchange::class);
     }
