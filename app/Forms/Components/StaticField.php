@@ -7,7 +7,7 @@ use Filament\Forms\Components\Component;
 class StaticField extends Component
 {
     protected string $view = 'forms.components.static-field';
-    public $label;
+    protected string|\Closure|null $label = null;
     public $valueOrCallback;
 
 
