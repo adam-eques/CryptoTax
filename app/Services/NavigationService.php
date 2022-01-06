@@ -40,6 +40,9 @@ class NavigationService
                 ["label" => __('API\'s'), 'children' => [
                     CryptoExchangeResource::make()->sidebar(),
                 ]],
+                ["label" => __('Administration'), 'children' => [
+                    ["label" => "Telescope", "icon" => "fas-binoculars", "route" => "telescope", "target" => "_blank"],
+                ]],
             ]);
         }
         else if($user->isCustomerAccount()) {

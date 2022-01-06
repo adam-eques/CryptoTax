@@ -59,7 +59,7 @@
                             <ul class="text-sm space-y-1 -mx-3 mt-2">
                                 @foreach($item["children"] AS $row)
                                     <li>
-                                        <a href="{{ route($row['route']) }}" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition hover:bg-gray-200/5 focus:bg-gray-500/5">
+                                        <a href="{{ route($row['route']) }}" {{ !empty($row['target']) ? 'target="' . $row['target'] . '"' : '' }} class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition hover:bg-gray-200/5 focus:bg-gray-500/5">
                                             <x-icon :name="$row['icon']" class="w-5" /> {{ $row["label"] }}
                                         </a>
                                     </li>
