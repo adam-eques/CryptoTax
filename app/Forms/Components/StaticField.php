@@ -44,7 +44,7 @@ class StaticField extends Component
     public function setModelValue(string $name): self
     {
         $this->valueOrCallback = function($record) use ($name) {
-            return $record->$name;
+            return $record && is_object($record) ? $record->$name : null;
         };
 
         return $this;
@@ -54,7 +54,7 @@ class StaticField extends Component
     public function getValue(): ?string
     {
         if(is_callable($this->valueOrCallback)) {
-            return call_user_func($this->valueOrCallback, $this->getModel());
+            return call_user_func($this->valueOrCallback, $this->getRecord());
         }
         else {
             return $this->valueOrCallback;
