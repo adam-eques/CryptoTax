@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Wallet;
 
 use App\Models\WalletTransaction;
-use Carbon\Carbon;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -31,8 +31,22 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
 
     protected function getTableFilters(): array
     {
+        $walletOptions = auth()->user()->wallets->pluck("address", "id");
         return [
+            SelectFilter::make('wallet_asset_id')
+                ->label(__("Wallet"))
+                ->query(function (Builder $query, array $data): Builder {
+                    if(! empty($data["value"])) {
+                        $id = $data["value"];
+                        $query->whereIn(
+                            "wallet_asset_id",
+                            auth()->user()->walletAssets()->where("wallet_id", $id)->get()->pluck("id")
+                        );
+                    }
 
+                    return $query;
+                })
+                ->options($walletOptions),
         ];
     }
 

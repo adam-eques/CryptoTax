@@ -116,6 +116,16 @@ class User extends Authenticatable
     }
 
 
+
+    /**
+     * @return HasManyThrough
+     */
+    public function walletAssets(): HasManyThrough
+    {
+        return $this->hasManyThrough(WalletAsset::class, Wallet::class);
+    }
+
+
     /**
      * @return HasManyThrough
      */
