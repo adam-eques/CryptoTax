@@ -65,7 +65,7 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make("hash")->sortable(true),
             TextColumn::make("is_error")->sortable(true),
             TextColumn::make("nonce")->sortable(true),
-            TextColumn::make("time_stamp")->sortable(true),
+            TextColumn::make("time_stamp")->sortable(true)->date("Y-m-d H:i:s"),
             TextColumn::make("to")->sortable(true),
             TextColumn::make("transaction_index")->sortable(true),
             TextColumn::make("txreceipt_status")->sortable(true),
