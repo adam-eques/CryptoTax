@@ -1,6 +1,18 @@
 @php
     $transactions = [
-        
+        [
+            'icon' => '',
+            'name' => 'Bitpanda BTC wallet',
+            'amount' => '- 0.003321456 BTC',
+            'balance' => '0.001311 BTC'
+        ],
+        [
+            'icon' => '',
+            'name' => 'Bitpanda BTC wallet',
+            'amount' => '- 0.003321456 BTC',
+            'balance' => '0.001311 BTC'
+        ],
+
     ]
 @endphp
 
@@ -11,7 +23,9 @@
                 <div class="flex items-center justify-between">
                     <input class="border-0 outline-none" placeholder="Filter transactions">
                     <div class="pl-4  border-l-2">
-                        <x-icon name="fas-search" class="w-4 h-4"></x-icon>
+                        <button>
+                            <x-icon name="fas-search" class="w-4 h-4"></x-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -45,6 +59,41 @@
         </div>
     </div>
     <div class="mt-10 border rounded-sm p-9">
-        This is the list
+        @foreach ($transactions as $item)            
+            <div class="grid grid-cols-1 md:grid-cols-3 p-4">
+                <div class="flex justify-start items-center">
+                    <input type="checkbox">
+                    <x-icon name="kucoin-token" class="w-16 h-16 ml-7"/>
+                    <div class="w-full ml-7 space-y-1">
+                        <p>{{ $item['name'] }} </p>
+                        <p class="font-bold text-lg">{{ $item['amount'] }} </p>
+                        <p>View Transactions</p>
+                        <p>{{ $item['balance'] }} </p>
+                    </div>
+                </div>
+                <div class="flex justify-start items-center">
+                    <button class="p-3 bg-gray-100 border rounded-lg">
+                        <x-icon name="fas-arrow-right" class="w-8 h-5 text-primary"/>
+                    </button>
+                    <div class="w-full ml-7 space-y-1">
+                        <p class="font-bold text-lg">FEB 26, 2009  00:12.39</p>
+                        <p>UTC Transfer</p>
+                        <p>{{ $item['balance'] }} </p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <x-icon name="kucoin-token" class="w-16 h-16 ml-7"/>
+                    <div class="w-full ml-7 space-y-1">
+                        <p>{{ $item['name'] }} </p>
+                        <p class="font-bold text-lg">{{ $item['amount'] }} </p>
+                    </div>
+                    <div>
+                        <button class="rounded-full w-6 h-6 bg-gray-100 border flex justify-center items-center">
+                            <x-icon name="fas-chevron-down" class="w-4 h-4"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
