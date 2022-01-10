@@ -29,7 +29,7 @@ $overview_data = [
 @endphp
 
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 sm:gap-x-2 gap-y-2 sm:gap-y-0">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 sm:gap-x-4 gap-y-4 sm:gap-y-0">
     @foreach ($overview_data as $item)
         <div class="w-full border rounded-lg p-8 flex justify-between items-start">
             <div>

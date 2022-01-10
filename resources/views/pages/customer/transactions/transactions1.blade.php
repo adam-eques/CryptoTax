@@ -7,7 +7,7 @@
                     <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Transactions') }}</h1>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2 py-2">
-                    <button class="lg:px-4 p-2 gap-5 text-primary hover:text-white bg-white hover:bg-primary inline-flex justify-center py-4 border border-primary rounded-lg w-full">
+                    <button class="px-2 lg:px-4  py-3 text-primary hover:text-white bg-white hover:bg-primary inline-flex justify-center border border-primary rounded-lg w-full">
                         {{ __('Download CSV') }}
                     </button>
                     <button class="border border-primary hover:bg-primary rounded-lg w-full h-full py-3 text-primary hover:text-white">{{ __('Add transaction') }}</button>
