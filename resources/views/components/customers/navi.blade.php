@@ -14,7 +14,7 @@
                 <div class="flex items-baseline flex-1 justify-start gap-3">
                     @foreach($navItems as $navItem)
                         <x-jet-nav-link href="{{ route($navItem['route']) }}" :active="request()->routeIs($navItem['route'])">
-                            <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-2"/>
+                            <x-icon :name="$navItem['icon']" class="w-6 h-6 mr-1"/>
                             {{ $navItem["label"] }}
                         </x-jet-nav-link>
                     @endforeach
