@@ -58,8 +58,7 @@ class NavigationService
                 ],
                 ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.wallet',
                     "children" => [
-                        ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
+                        ["label" => __('Transactions'), 'icon' => 'market', 'route' => 'dashboard'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
