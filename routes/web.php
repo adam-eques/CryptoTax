@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     // Transactions
     Route::get('/transactions', [Controllers\Customer\TransactionController::class, 'index'])
         ->name('transactions');
+    Route::view('/transactions1', 'pages.customer.transactions.transactions1')->name('transactions1');
 
     // Specials
     Route::view('/wallet/new', 'pages.customer.wallets.new')->name('wallet.new');

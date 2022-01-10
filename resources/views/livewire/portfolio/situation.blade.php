@@ -58,7 +58,7 @@
     <div class="shadow-md p-4 rounded-md bg-lightblue my-2">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
-                <x-icon name="coin_1" class="text-secondary w-6 h-6" />
+                <x-icon name="coin-1" class="text-secondary w-6 h-6" />
             </div>
             <p class="font-bold">Net Proceeds</p>
             <x-icon name="info" class="w-4 h-4"/>

@@ -1,27 +1,27 @@
 @php
     $lastweek= [
         'first_row' => [
-            [ 'icon' => 'level_1', 'amount' => '10', 'category' => 'First-level Invitee' ],
-            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
-            [ 'icon' => 'level_top', 'amount' => '0', 'category' => 'Total - Invitee' ]
+            [ 'icon' => 'level-1', 'amount' => '10', 'category' => 'First-level Invitee' ],
+            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
+            [ 'icon' => 'level-top', 'amount' => '0', 'category' => 'Total - Invitee' ]
         ],
         'second_row' => [
-            [ 'icon' => 'level_1', 'amount' => '1.29', 'category' => 'First-level commission' ],
-            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level commission' ],
-            [ 'icon' => 'money_2', 'amount' => '1.29', 'category' => 'Total commission' ]
+            [ 'icon' => 'level-1', 'amount' => '1.29', 'category' => 'First-level commission' ],
+            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level commission' ],
+            [ 'icon' => 'money-2', 'amount' => '1.29', 'category' => 'Total commission' ]
         ]
     ];
 
     $total= [
         'first_row' => [
-            [ 'icon' => 'level_1', 'amount' => '122', 'category' => 'First-level Invitee' ],
-            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
-            [ 'icon' => 'level_top', 'amount' => '122', 'category' => 'Total - Invitee' ]
+            [ 'icon' => 'level-1', 'amount' => '122', 'category' => 'First-level Invitee' ],
+            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
+            [ 'icon' => 'level-top', 'amount' => '122', 'category' => 'Total - Invitee' ]
         ],
         'second_row' => [
-            [ 'icon' => 'level_1', 'amount' => '1.29', 'category' => 'First-level commission' ],
-            [ 'icon' => 'level_2', 'amount' => '10', 'category' => 'Second-level commission' ],
-            [ 'icon' => 'money_2', 'amount' => '1.29', 'category' => 'Total commission' ]
+            [ 'icon' => 'level-1', 'amount' => '1.29', 'category' => 'First-level commission' ],
+            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level commission' ],
+            [ 'icon' => 'money-2', 'amount' => '1.29', 'category' => 'Total commission' ]
         ]
     ];
 @endphp
