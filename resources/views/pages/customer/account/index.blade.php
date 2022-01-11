@@ -1,6 +1,24 @@
 <x-app-layout>
-    <x-page icon="wallet" :title="__('Accounts')">
-        <div class="pb-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
+    <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
+        <div class="w-full border-b py-2">
+            <div class="grid grid-cols-1 md:grid-cols-8">
+                <div class="flex items-center justify-start space-x-3 col-span-6 py-6">
+                    <x-icon name="wallet" class="w-8 h-8"/>
+                    <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Accounts') }}</h1>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-0 lg:gap-x-3 col-span-2 py-2">
+                    <x-button variant="white" class="border-primary col-span-1">
+                        <x-icon name="sync" class="w-8 mr-2"/>
+                        {{ __('Sync ') }}
+                    </x-button>
+                    <x-button class="col-span-2 justify-center">
+                        <x-icon name="wallet-1" class="w-8 mr-2"/>
+                        {{ __('Add New Account') }}
+                    </x-button>
+                </div>
+            </div>
+        </div>
+        <div class="p-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
             <!-- Left Panel -->
             <div class="px-2 lg:px-5 md:w-2/5">
                 @php
@@ -18,7 +36,7 @@
                                 @foreach($row["items"] as $item)
                                     <div class="flex justify-between py-2 lg:py-4 px-4 lg:px-6 items-center">
                                         <div class="space-y-1">
-                                            <h3 class="xl:text-xl font-semibold text-gray-700">{{ $item["name"] }}</h3>
+                                            <h3 class="xl:text-lg font-semibold text-gray-700">{{ $item["name"] }}</h3>
                                             <p class="text-gray-400 text-xs xl:text-md">Updating...</p>
                                         </div>
                                         <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
@@ -49,5 +67,5 @@
                 </x-card>
             </div>
         </div>
-    </x-page>
+    </div>
 </x-app-layout>
