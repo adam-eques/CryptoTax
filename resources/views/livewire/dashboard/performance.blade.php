@@ -9,7 +9,7 @@
         <x-status-card-dashboard id="status_2" title="Total profit loss" amount="95,422" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
         <x-status-card-dashboard id="status_3" title="24h Portfolio Change" amount="3,566" :increase="false" incdecamount="2.5"></x-status-card-dashboard>
     </div>
-    <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-6 mt-14">
+    <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-6 mt-8">
         <div class="col-span-3">
             <div class="col-span-4">
                 <select class="px-7 py-2 border-gray-300 border">

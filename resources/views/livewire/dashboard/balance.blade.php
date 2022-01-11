@@ -33,28 +33,38 @@
         <img src="{{asset('assets/img/svg/Credit Card.svg')}}" class=" w-9/12 mx-auto"/>
     </div>
 
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4 mt-3" x-show="view == 'tile'" x-transition>
-        
-        @foreach ($situation as $item)            
-            <div>
-                <p class="text-sm text-secondary">{{ __( $item['category'] ) }}</p>
-                <p class="text-2xl text-primary font-semibold pt-2">{{ __( $item['amount'] ) }}</p>
-                <x-progressbar height="sm" variant="primary" progress="{{ $item['percent'] }}"></x-progressbar>
-            </div>
-        @endforeach
-
-        <x-button variant="primary" class="flex items-center space-x-5 mt-8">
-            <div class="px-3 py-2 rounded-lg bg-white">
-                <x-icon name="wallet-1" class="w-8 h-8 text-primary"/>
-            </div>
-            <span>{{ __('Add Wallet') }}</span>
-        </x-button>
-        <x-button variant="third" class="p-3 flex items-center space-x-5 mt-8">
-            <div class="px-3 py-2 bg-white rounded-lg">
-                <x-icon name="tax-1" class="w-8 h-8 text-third"/>
-            </div>
-            <span>{{ __('Tax Optimizion') }}</span>
-        </x-button>
+    <div x-show="view == 'tile'" x-transition class="mt-3">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-0 md:gap-4">
+            
+            @foreach ($situation as $item)            
+                <div>
+                    <p class="text-sm text-secondary">{{ __( $item['category'] ) }}</p>
+                    <p class="text-2xl text-primary font-semibold pt-2">{{ __( $item['amount'] ) }}</p>
+                    <x-progressbar height="sm" variant="primary" progress="{{ $item['percent'] }}"></x-progressbar>
+                </div>
+            @endforeach
+    
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-3 mt-8">
+            <x-button variant="primary" class="p-2 flex items-center space-x-5">
+                <div class="px-2 py-2 rounded-lg bg-white">
+                    <x-icon name="wallet-1" class="w-5 h-5 text-primary"/>
+                </div>
+                <span class="text-sm">{{ __('Add Account') }}</span>
+            </x-button>
+            <x-button variant="third" class="p-2 flex items-center space-x-5">
+                <div class="px-2 py-2 bg-white rounded-lg">
+                    <x-icon name="tax-1" class="w-5 h-5 text-third"/>
+                </div>
+                <span class="text-sm">{{ __('Tax Calculation') }}</span>
+            </x-button>
+            <x-button variant="secondary" class="p-2 flex items-center space-x-5">
+                <div class="px-2 py-2 bg-white rounded-lg">
+                    <x-icon name="professional" class="w-5 h-5 text-secondary"/>
+                </div>
+                <span class="text-sm">{{ __('Get Tax Pro') }}</span>
+            </x-button>
+        </div>
     </div>
 
     <div class="mt-4 space-y-5" x-show="view == 'list'" x-transition>
