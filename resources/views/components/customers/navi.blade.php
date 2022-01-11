@@ -52,7 +52,7 @@
                             </x-jet-dropdown-link>
                             <div class="border-t border-gray-100"></div>
 
-                            <x-jet-dropdown-link href="{{ route('customer.wallet') }}">
+                            <x-jet-dropdown-link href="{{ route('customer.account') }}">
                                 <x-icon name="fas-plus-square" class="w-3 sm:inline mr-2" />
                                 New wallet added
                                 <small class="sm:block text-2xs mt-1 ml-6 text-gray-400">2021-11-30 03:04 pm</small>

@@ -10,8 +10,8 @@
                     <x-button variant="white" class="border-primary">{{ __('Download CSV') }}</x-button>
                     <x-button variant="white" class="border-primary">{{ __('Add transaction') }}</x-button>
                     <x-button>
-                        <x-icon name="wallet-1" class="w-8 mr-3"/>
-                        {{ __('Add wallet') }}
+                        <x-icon name="wallet-1" class="w-8 mr-2"/>
+                        {{ __('Add Account') }}
                     </x-button>
                 </div>
             </div>
