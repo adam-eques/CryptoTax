@@ -1,4 +1,4 @@
-@php($navItems = \App\Services\NavigationService::instance()->getTopItems())
+@php($navItems = \App\Services\NavigationService::instance()->getTopLevelItems())
 <nav class="bg-primary" x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">

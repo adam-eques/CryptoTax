@@ -1,4 +1,4 @@
-@php($subnavi = \App\Services\NavigationService::instance()->getRouteItem())
+@php($subnavi = \App\Services\NavigationService::instance()->getSubnavi())
 @if($subnavi && ($subnavi["children"] || $subnavi["actions"]))
     <div class="bg-white border-b border-gray-200">
         <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-3">
