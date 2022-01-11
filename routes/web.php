@@ -30,7 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
 // Only for UserAccountType::TYPE_CUSTOMER
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:customer")->name("customer.")->group(function(){
     // TODO routes
-    Route::view('/wallet', 'pages.customer.wallets.index')->name('wallet');
+    Route::view('/account', 'pages.customer.account.index')->name('account');
     Route::view('/portfolio', 'pages.customer.portfolio.portfolio')->name('portfolio');
     Route::view('/taxes', 'pages.customer.taxes.taxes')->name('taxes');
     Route::view('/advisor', 'pages.customer.advisor.advisor')->name('advisor');
@@ -42,7 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/transactions1', 'pages.customer.transactions.transactions1')->name('transactions1');
 
     // Specials
-    Route::view('/wallet/new', 'pages.customer.wallets.new')->name('wallet.new');
+    Route::view('/account/new', 'pages.customer.account.new')->name('account.new');
     Route::view('/taxes/tax-loss-harvesting', 'pages.customer.taxes.tax-loss-harvesting')->name('taxes.tax-loss-harvesting');
     Route::view('/taxes/tax-saving-opportunities', 'pages.customer.taxes.tax-saving-opportunities')->name('taxes.tax-saving-opportunities');
 
