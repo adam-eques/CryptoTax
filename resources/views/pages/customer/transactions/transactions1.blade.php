@@ -1,3 +1,9 @@
+@php(\App\Services\NavigationService::instance()->overwriteSubnavi([
+    ["label" => "Transactions", "icon" => "market", "route" => "transactions1"],
+], [
+    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+]))
+
 <x-app-layout>
     <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
         <div class="w-full border-b py-2">
