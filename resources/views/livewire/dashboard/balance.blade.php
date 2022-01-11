@@ -45,24 +45,24 @@
             @endforeach
     
         </div>
-        <div class="grid grid-cols-1 xl:grid-cols-3 mt-8">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-0 xl:gap-2 mt-8 mb-5">
             <x-button variant="primary" class="p-2 flex items-center space-x-5">
-                <div class="px-2 py-2 rounded-lg bg-white">
+                <div class="p-2 rounded-lg bg-white">
                     <x-icon name="wallet-1" class="w-5 h-5 text-primary"/>
                 </div>
-                <span class="text-sm">{{ __('Add Account') }}</span>
+                <span class="text-xs font-extrabold tracking-tighter">{{ __('Add Account') }}</span>
             </x-button>
             <x-button variant="third" class="p-2 flex items-center space-x-5">
-                <div class="px-2 py-2 bg-white rounded-lg">
+                <div class="p-2 bg-white rounded-lg">
                     <x-icon name="tax-1" class="w-5 h-5 text-third"/>
                 </div>
-                <span class="text-sm">{{ __('Tax Calculation') }}</span>
+                <span class="text-xs font-extrabold tracking-tighter">{{ __('Tax Calculation') }}</span>
             </x-button>
             <x-button variant="secondary" class="p-2 flex items-center space-x-5">
-                <div class="px-2 py-2 bg-white rounded-lg">
+                <div class="p-2 bg-white rounded-lg">
                     <x-icon name="professional" class="w-5 h-5 text-secondary"/>
                 </div>
-                <span class="text-sm">{{ __('Get Tax Pro') }}</span>
+                <span class="text-xs font-extrabold tracking-tighter">{{ __('Get Tax Pro') }}</span>
             </x-button>
         </div>
     </div>
