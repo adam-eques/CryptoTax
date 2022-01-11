@@ -23,10 +23,10 @@
             <div class="px-2 lg:px-5 md:w-2/5">
                 @php
                     $rows = [
-                        ["label" => "Exchange", "items" => [["name" => "Coinbase", "price" => 2013.00], ["name" => "Binance US", "price" => 2.189], ["name" => "Coinbase Pro", "price" => 25.189], ["name" => "Gemini", "price" => 569.189]]],
-                        ["label" => "Crypto Wallet", "items" => [["name" => "Binance US", "price" => 2.189], ["name" => "Coinbase Pro", "price" => 25.189]]],
-                        ["label" => "Imported Wallet", "items" => [["name" => "Coinbase Pro", "price" => 25.189], ["name" => "Gemini", "price" => 569.189]]],
-                        ["label" => "Other Transactions", "items" => [["name" => "Coinbase", "price" => 2013.00]]],
+                        ["label" => "Exchanges", "items" => [["name" => "Coinbase", "price" => 2013.00], ["name" => "Binance US", "price" => 2.189], ["name" => "Coinbase Pro", "price" => 25.189], ["name" => "Gemini", "price" => 569.189]]],
+                        ["label" => "Wallets", "items" => [["name" => "Binance US", "price" => 2.189], ["name" => "Coinbase Pro", "price" => 25.189]]],
+                        ["label" => "Blockchain", "items" => [["name" => "Coinbase Pro", "price" => 25.189], ["name" => "Gemini", "price" => 569.189]]],
+                        ["label" => "Others", "items" => [["name" => "Coinbase", "price" => 2013.00]]],
                     ];
                 @endphp
                 <div class="flex flex-col gap-5 text-gray-900 font-medium">
