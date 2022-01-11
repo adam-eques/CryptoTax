@@ -50,13 +50,13 @@ class NavigationService
                 ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard',
                     "children" => [
                         ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                     ]
                 ],
-                ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.wallet',
+                ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.account',
                     "children" => [
                         ["label" => __('Transactions'), 'icon' => 'market', 'route' => 'transactions1'],
                     ],
@@ -67,7 +67,7 @@ class NavigationService
                 ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio',
                     "children" => [
                         ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
@@ -76,7 +76,7 @@ class NavigationService
                 ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes',
                     "children" => [
                         ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
@@ -85,7 +85,7 @@ class NavigationService
                 ["label" => __('Advisor'), 'icon' => 'advisor', 'route' => 'customer.advisor',
                     "children" => [
                         ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
@@ -94,7 +94,7 @@ class NavigationService
                 ["label" => __('Services'), 'icon' => 'service', 'route' => 'customer.services',
                     "children" => [
                         ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
-                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.wallet'],
+                        ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                     ],
                     "actions" => [
                         ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
