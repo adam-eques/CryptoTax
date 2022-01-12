@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Wallets;
+namespace App\Blockchains;
 
 class CronosBlockChainApi extends BlockChainApi
 {
@@ -8,6 +8,6 @@ class CronosBlockChainApi extends BlockChainApi
 
     public function __construct()
     {
-        $this->baseUrl = config("wallets.blockchains.cronos.url");
+        $this->baseUrl = config("crypto.blockchains.cronos.url");
     }
 }

@@ -10,7 +10,7 @@ class WalletNew extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    public $wallet;
+    public $blockchain;
     public $walletType;
     public $cryptoCurrency;
     public $address;
@@ -19,8 +19,8 @@ class WalletNew extends Component implements Forms\Contracts\HasForms
     protected function getFormSchema(): array
     {
         return [
-            Forms\Components\Select::make('walletType')
-                ->label(__("Wallet type"))
+            Forms\Components\Select::make('blockchainType')
+                ->label(__("Blockchain type"))
                 ->options([
                     "Option 1",
                     "Option 2",
@@ -28,7 +28,7 @@ class WalletNew extends Component implements Forms\Contracts\HasForms
                 ])
                 ->searchable()
                 ->placeholder(__("Choose your wallet/exchange")),
-            Forms\Components\Select::make('walletType')
+            Forms\Components\Select::make('blockchainType')
                 ->label(__("Cryptocurrency"))
                 ->options([
                     "BTC",

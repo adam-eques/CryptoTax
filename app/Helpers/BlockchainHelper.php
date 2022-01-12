@@ -6,7 +6,7 @@ class BlockchainHelper
 {
     public static function loopOverChains(callable $callback): void
     {
-        collect(config("wallets.blockchains"))->each(function (array $item, string $name) use ($callback) {
+        collect(config("crypto.blockchains"))->each(function (array $item, string $name) use ($callback) {
             // Only enabled
             if(!$item["enabled"]) return;
 

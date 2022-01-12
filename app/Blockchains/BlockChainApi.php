@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Wallets;
+namespace App\Blockchains;
 
 use GuzzleHttp\Client;
 

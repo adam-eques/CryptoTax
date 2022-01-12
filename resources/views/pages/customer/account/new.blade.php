@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-previous-page href="{{ route('customer.account') }}"></x-previous-page>
 
-    <x-page icon="fas-wallet" :title="__('New Wallet')">
+    <x-page icon="fas-wallet" :title="__('New Blockchain')">
         <div class="pb-8 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
             <!-- Left Panel -->
             <div class="px-2 lg:px-5 md:w-2/5">
-                <x-card :title="__('Add Wallet')">
+                <x-card :title="__('Add Blockchain')">
                     <div class="p-6">
                         <livewire:wallet-new></livewire:wallet-new>
                     </div>

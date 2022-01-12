@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property \Illuminate\Support\Collection<WalletAsset> $walletAssets
+ * @property \Illuminate\Support\Collection<BlockchainAsset> $blockchainAssets
  * @property \Illuminate\Support\Collection<User> $users
  */
-class Wallet extends Model
+class Blockchain extends Model
 {
     protected $casts = [
         'fetched_at' => 'datetime',
@@ -23,7 +23,7 @@ class Wallet extends Model
         parent::boot();
 
         static::deleting(function (self $item) {
-            $item->walletAssets()->delete();
+            $item->blockchainAssets()->delete();
         });
     }
 
@@ -37,9 +37,9 @@ class Wallet extends Model
     }
 
 
-    public function walletAssets(): HasMany
+    public function blockchainAssets(): HasMany
     {
-        return $this->hasMany(WalletAsset::class);
+        return $this->hasMany(BlockchainAsset::class);
     }
 
 

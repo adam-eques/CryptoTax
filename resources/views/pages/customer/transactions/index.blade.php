@@ -9,9 +9,9 @@
         </div>
     </x-page>
 
-    <x-page icon="fas-wallet" :title="__('Wallet Transactions')">
+    <x-page icon="fas-wallet" :title="__('Blockchain Transactions')">
         <div class="mb-6">
-            <livewire:wallet.wallet-table />
+            <livewire:blockchain.blockchain-table />
         </div>
     </x-page>
 </x-app-layout>

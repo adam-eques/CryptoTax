@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Wallet;
+namespace App\Http\Livewire\Blockchain;
 
-use App\Jobs\WalletFetchJob;
-use App\Models\Wallet;
+use App\Jobs\BlockchainFetchJob;
+use App\Models\Blockchain;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
-class WalletForm extends Component
+class BlockchainForm extends Component
 {
     use Actions;
 
-    public ?Wallet $wallet = null;
+    public ?Blockchain $blockchain = null;
     public ?string $newWalletAddress = null;
 
 
@@ -19,18 +19,18 @@ class WalletForm extends Component
     {
         $wallets = auth()->user()->wallets;
 
-        return view('livewire.wallet.wallet-form', [
+        return view('livewire.blockchain.blockchain-form', [
             "wallets" => $wallets,
         ]);
     }
 
 
-    public function delete(Wallet $wallet)
+    public function delete(Blockchain $blockchain)
     {
-        if ($this->wallet && $this->wallet->id == $wallet->id) {
+        if ($this->wallet && $this->wallet->id == $blockchain->id) {
             $this->wallet = null;
         }
-        $wallet->delete();
+        $blockchain->delete();
 
         // Update table
         $this->emit("transactionTable.updateTable");
@@ -43,14 +43,14 @@ class WalletForm extends Component
     }
 
 
-    public function fetch(Wallet $wallet)
+    public function fetch(Blockchain $blockchain)
     {
         try {
-            $wallet->fetching_scheduled_at = now();
-            $wallet->save();
-            WalletFetchJob::dispatch($wallet);
+            $blockchain->fetching_scheduled_at = now();
+            $blockchain->save();
+            BlockchainFetchJob::dispatch($blockchain);
             $this->notification()->info(
-                __("Fetching :name is now scheduled", ["name" => $wallet->getName()]),
+                __("Fetching :name is now scheduled", ["name" => $blockchain->getName()]),
                 "Please check wallet transactions in a couple of minutes"
             );
         }
@@ -71,15 +71,15 @@ class WalletForm extends Component
         }
 
         if (! $user->wallets()->where("address", $this->newWalletAddress)->first()) {
-            $wallet = new Wallet();
-            $wallet->address = $this->newWalletAddress;
-            $wallet->user_id = $user->id;
-            $wallet->save();
+            $blockchain = new Blockchain();
+            $blockchain->address = $this->newWalletAddress;
+            $blockchain->user_id = $user->id;
+            $blockchain->save();
 
-            $this->fetch($wallet);
+            $this->fetch($blockchain);
         }
         else {
-            $this->notification()->info(__("Wallet address already exists"));
+            $this->notification()->info(__("Blockchain address already exists"));
             return;
         }
     }

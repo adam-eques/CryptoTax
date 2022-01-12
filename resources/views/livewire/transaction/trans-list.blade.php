@@ -55,7 +55,7 @@
             <div class="col-span-1 md:col-span-3">
                 <div class="grid grid-cols-7 h-full gap-x-3">
                     <select class="col-span-3 h-full w-full bg-white rounded-md">
-                        <option value="" disabled selected hidden>{{ __('Wallet') }}</option>
+                        <option value="" disabled selected hidden>{{ __('Blockchain') }}</option>
                     </select>
                     <select class="col-span-4 h-full w-full bg-white rounded-md">
                         <option value="" disabled selected hidden>{{ __('Exchange') }}</option>
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="mt-10 rounded-sm overflow-auto">
-        @foreach ($transactions as $item)            
+        @foreach ($transactions as $item)
             <div class="grid grid-cols-3 p-9 border min-w-max">
                 <div class="flex justify-start items-center">
                     <input type="checkbox">

@@ -10,6 +10,7 @@
         "blade-ui-kit/blade-icons": "^1.1",
         "ccxt/ccxt": "^1.63",
         "codeat3/blade-cryptocurrency-icons": "^1.3",
+        "doctrine/dbal": "^3.2",
         "filament/forms": "^2.4",
         "filament/tables": "^2.0",
         "fruitcake/laravel-cors": "^2.0",

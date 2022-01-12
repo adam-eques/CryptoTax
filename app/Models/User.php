@@ -22,7 +22,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  *
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
- * @property \Illuminate\Support\Collection<Wallet> $wallets
+ * @property \Illuminate\Support\Collection<Blockchain> $wallets
  */
 class User extends Authenticatable
 {
@@ -112,7 +112,7 @@ class User extends Authenticatable
      */
     public function wallets(): HasMany
     {
-        return $this->hasMany(Wallet::class);
+        return $this->hasMany(Blockchain::class);
     }
 
 
@@ -120,9 +120,9 @@ class User extends Authenticatable
     /**
      * @return HasManyThrough
      */
-    public function walletAssets(): HasManyThrough
+    public function blockchainAssets(): HasManyThrough
     {
-        return $this->hasManyThrough(WalletAsset::class, Wallet::class);
+        return $this->hasManyThrough(BlockchainAsset::class, Blockchain::class);
     }
 
 

@@ -3,16 +3,16 @@
 namespace App\Models;
 
 use App\Helpers\BlockchainHelper;
-use App\Wallets\BlockChainApi;
+use App\Blockchains\BlockChainApi;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property Collection<\App\Models\WalletTransaction> $walletTransactions
- * @property \App\Models\Wallet $wallet
+ * @property Collection<\App\Models\BlockchainTransaction> $walletTransactions
+ * @property \App\Models\Blockchain $blockchain
  */
-class WalletAsset extends Model
+class BlockchainAsset extends Model
 {
     protected $guarded = [];
 
@@ -28,13 +28,13 @@ class WalletAsset extends Model
 
     public function wallet(): BelongsTo
     {
-        return $this->belongsTo(Wallet::class);
+        return $this->belongsTo(Blockchain::class);
     }
 
 
     public function walletTransactions(): HasMany
     {
-        return $this->hasMany(WalletTransaction::class);
+        return $this->hasMany(BlockchainTransaction::class);
     }
 
 
@@ -50,7 +50,7 @@ class WalletAsset extends Model
         $transactions = $api->getTransactionsSince($lastTimeStamp + 1);
         $data = collect($transactions)->map(function($item) use ($assetId) {
             return [
-                "wallet_asset_id" => $assetId,
+                "blockchain_asset_id" => $assetId,
                 "block_hash" => $item["blockHash"],
                 "block_number" => $item["blockNumber"],
                 "confirmations" => $item["confirmations"],
@@ -72,7 +72,7 @@ class WalletAsset extends Model
             ];
         });
 
-        WalletTransaction::insert($data->toArray());
+        BlockchainTransaction::insert($data->toArray());
 
         return $this;
     }

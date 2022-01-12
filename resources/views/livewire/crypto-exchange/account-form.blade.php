@@ -46,7 +46,7 @@
             </x-card>
 
             <div class="mt-5">
-                <livewire:wallet.wallet-form />
+                <livewire:blockchain.blockchain-form />
             </div>
         </div>
 

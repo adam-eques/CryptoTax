@@ -3,16 +3,16 @@
 namespace App\Jobs;
 
 use App\Helpers\BlockchainHelper;
-use App\Models\Wallet;
-use App\Models\WalletAsset;
-use App\Wallets\BlockChainApi;
+use App\Models\Blockchain;
+use App\Models\BlockchainAsset;
+use App\Blockchains\BlockChainApi;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class WalletFetchJob implements ShouldQueue
+class BlockchainFetchJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -22,32 +22,32 @@ class WalletFetchJob implements ShouldQueue
      * @var int
      */
     public $timeout = 240;
-    public Wallet $wallet;
+    public Blockchain $blockchain;
 
 
-    public function __construct(Wallet $wallet)
+    public function __construct(Blockchain $blockchain)
     {
-        $this->wallet = $wallet;
+        $this->blockchain = $blockchain;
     }
 
 
     public function handle()
     {
-        // Wallet update
-        $wallet = $this->wallet;
-        BlockchainHelper::loopOverChains(function(BlockChainApi $api, string $chainName) use ($wallet) {
+        // Blockchain update
+        $blockchain = $this->blockchain;
+        BlockchainHelper::loopOverChains(function(BlockChainApi $api, string $chainName) use ($blockchain) {
             // set address
-            $api->setAddress($wallet->address);
+            $api->setAddress($blockchain->address);
 
             // Get balance
             $balance = $api->getBalance(true);
 
             // Upsert Asset
             /**
-             * @var WalletAsset $asset
+             * @var BlockchainAsset $asset
              */
-            $asset = WalletAsset::updateOrCreate(
-                ["wallet_id" => $wallet->id, "blockchain_name" => $chainName],
+            $asset = BlockchainAsset::updateOrCreate(
+                ["blockchain_id" => $blockchain->id, "blockchain_name" => $chainName],
                 ["balance" => $balance]
             );
 
@@ -56,8 +56,8 @@ class WalletFetchJob implements ShouldQueue
         });
 
         // Update timestamps
-        $wallet->fetching_scheduled_at = null;
-        $wallet->fetched_at = now();
-        $wallet->save();
+        $blockchain->fetching_scheduled_at = null;
+        $blockchain->fetched_at = now();
+        $blockchain->save();
     }
 }

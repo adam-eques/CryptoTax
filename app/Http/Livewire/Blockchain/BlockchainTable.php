@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Wallet;
+namespace App\Http\Livewire\Blockchain;
 
-use App\Models\WalletTransaction;
+use App\Models\BlockchainTransaction;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
-class WalletTable extends Component implements Tables\Contracts\HasTable
+class BlockchainTable extends Component implements Tables\Contracts\HasTable
 {
     use Actions;
     use Tables\Concerns\InteractsWithTable;
@@ -21,10 +21,10 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return WalletTransaction::whereIn("wallet_asset_id", function(\Illuminate\Database\Query\Builder $query){
+        return BlockchainTransaction::whereIn("blockchain_asset_id", function(\Illuminate\Database\Query\Builder $query){
             $query->select("id")
-                ->from("wallet_assets")
-                ->whereIn("wallet_id", auth()->user()->wallets->pluck("id"));
+                ->from("blockchain_assets")
+                ->whereIn("blockchain_id", auth()->user()->wallets->pluck("id"));
         });
     }
 
@@ -33,14 +33,14 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
     {
         $walletOptions = auth()->user()->wallets->pluck("address", "id");
         return [
-            SelectFilter::make('wallet_asset_id')
-                ->label(__("Wallet"))
+            SelectFilter::make('blockchain_asset_id')
+                ->label(__("Blockchain"))
                 ->query(function (Builder $query, array $data): Builder {
                     if(! empty($data["value"])) {
                         $id = $data["value"];
                         $query->whereIn(
-                            "wallet_asset_id",
-                            auth()->user()->walletAssets()->where("wallet_id", $id)->get()->pluck("id")
+                            "blockchain_asset_id",
+                            auth()->user()->blockchainAssets()->where("blockchain_id", $id)->get()->pluck("id")
                         );
                     }
 
@@ -69,7 +69,7 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make("to")->sortable(true),
             TextColumn::make("transaction_index")->sortable(true),
             TextColumn::make("txreceipt_status")->sortable(true),
-            TextColumn::make("walletAsset.wallet.address")->sortable(true),
+            TextColumn::make("blockchainAssets.blockchain.address")->sortable(true),
             TextColumn::make("block_hash")->sortable(true),
             TextColumn::make("block_number")->searchable(true),
             TextColumn::make("input")->sortable(true),
@@ -86,6 +86,6 @@ class WalletTable extends Component implements Tables\Contracts\HasTable
 
     public function render()
     {
-        return view('livewire.wallet.wallet-table');
+        return view('livewire.blockchain.blockchain-table');
     }
 }

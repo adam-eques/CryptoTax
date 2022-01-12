@@ -10,7 +10,7 @@ class CreateWalletTransactionsTable extends Migration
     {
         Schema::create('wallet_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(\App\Models\WalletAsset::class);
+            $table->foreignIdFor(\App\Models\BlockchainAsset::class);
             $table->string("block_hash", 70);
             $table->unsignedInteger("block_number");
             $table->unsignedInteger("confirmations");
