@@ -1,5 +1,10 @@
 <div class=" bg-bgcolor1 rounded-md text-white w-full px-5 md:px-8 xl:px-11 py-5 md:py-8 xl:py-12 relative">
     <img src="{{asset('assets/img/svg/about.svg')}}" class="xl:w-106 lg:w-80 w-70 absolute top-0 md:top-8 right-3 z-0 hidden md:block"/>
+    <div class="absolute top-4 right-4">
+        <button>
+            <x-icon name="fas-times" class="w-5 h-5 text-primary"/>
+        </button>
+    </div>
     <div class="max-w-lg z-10">
         <h2 class="text-primary text-3xl font-extrabold">{{ __('Hello John Doe') }}</h2>
         <p class="text-primary text-base">Thanks for signing up.</p>
