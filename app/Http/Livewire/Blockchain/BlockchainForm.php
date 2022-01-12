@@ -12,7 +12,7 @@ class BlockchainForm extends Component
     use Actions;
 
     public ?Blockchain $blockchain = null;
-    public ?string $newWalletAddress = null;
+    public ?string $newBlockchainAddress = null;
 
 
     public function render()
@@ -27,8 +27,8 @@ class BlockchainForm extends Component
 
     public function delete(Blockchain $blockchain)
     {
-        if ($this->wallet && $this->wallet->id == $blockchain->id) {
-            $this->wallet = null;
+        if ($this->blockchain && $this->blockchain->id == $blockchain->id) {
+            $this->blockchain = null;
         }
         $blockchain->delete();
 
@@ -51,7 +51,7 @@ class BlockchainForm extends Component
             BlockchainFetchJob::dispatch($blockchain);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $blockchain->getName()]),
-                "Please check wallet transactions in a couple of minutes"
+                "Please check blockchain transactions in a couple of minutes"
             );
         }
         catch (\Exception $e) {
@@ -64,15 +64,15 @@ class BlockchainForm extends Component
     {
         $user = auth()->user();
 
-        if (! $this->newWalletAddress) {
-            $this->notification()->info(__("Please enter a wallet address"));
+        if (! $this->newBlockchainAddress) {
+            $this->notification()->info(__("Please enter a blockchain address"));
 
             return;
         }
 
-        if (! $user->wallets()->where("address", $this->newWalletAddress)->first()) {
+        if (! $user->blockchains()->where("address", $this->newBlockchainAddress)->first()) {
             $blockchain = new Blockchain();
-            $blockchain->address = $this->newWalletAddress;
+            $blockchain->address = $this->newBlockchainAddress;
             $blockchain->user_id = $user->id;
             $blockchain->save();
 
