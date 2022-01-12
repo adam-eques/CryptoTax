@@ -29,14 +29,14 @@
             </button>
         </div>
     </div>
-    <div class="main-carousel pt-5 h-full">
+    <div class="main-carousel mt-9 h-full">
 
         @foreach ($news as $item)          
             <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2">
                 <div class="h-full w-full">
                     <img src="{{asset('assets/img/jpg/news_1.jpg')}}" class="w-full h-full object-cover"/>
-                    <p class="text-base text-primary font-bold"> {{ __( $item['title'] ) }}</p>
-                    <p class="text-gray-400 text-sm"> {{ __( $item['content'] ) }} </p>
+                    <p class="text-base text-primary font-bold mt-6"> {{ __( $item['title'] ) }}</p>
+                    <p class="text-gray-400 text-sm mt-2"> {{ __( $item['content'] ) }} </p>
                 </div>
             </div>
         @endforeach

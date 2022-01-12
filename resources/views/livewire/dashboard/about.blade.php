@@ -1,14 +1,14 @@
-<div class=" bg-bgcolor1 rounded-md text-white w-full xl:px-11 md:px-8 xl:py-12 md:py-8 px-5 py-5 relative">
+<div class=" bg-bgcolor1 rounded-md text-white w-full px-5 md:px-8 xl:px-11 py-5 md:py-8 xl:py-12 relative">
     <img src="{{asset('assets/img/svg/about.svg')}}" class="xl:w-106 lg:w-80 w-70 absolute top-0 md:top-8 right-3 z-0 hidden md:block"/>
-    <div class="max-w-lg">
+    <div class="max-w-lg z-10">
         <h2 class="text-primary text-3xl font-extrabold">{{ __('Hello John Doe') }}</h2>
         <p class="text-primary text-base">Thanks for signing up.</p>
         <div class="flex flex-wrap items-center space-x-3 mt-8">
             <div class="bg-white rounded-xl p-3">
                 <x-icon name="wallet-1" class="w-8 h-8 text-secondary"></x-icon>
             </div>
-            <h5 class="text-xl font-bold text-primary">1. Add Wallets & Exchanges</h5>
-            <x-button variant="primary" class="font-bold text-sm">{{ __('ADD WALLET') }}</x-button>
+            <h5 class="text-lg font-bold text-primary">1. Add Wallets & Exchanges</h5>
+            <button class="font-bold text-sm bg-primary hover:bg-secondary rounded py-2 px-3">{{ __('ADD WALLET') }}</button>
         </div>
         <p class="text-primary mt-6">Add your wallets and exchanges for api sync, csv import or manually upload your transactions</p>
        

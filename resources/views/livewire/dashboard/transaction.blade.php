@@ -16,17 +16,17 @@
         <x-icon name="transaction" class="w-10 h-10"/>
         <p class="mr-3 text-lg font-extrabold">{{ __('Recent Transaction') }}</p>
     </div>
-    <div class="overflow-auto mt-5">
-        <div class="space-y-1 min-w-cmd">
+    <div class="overflow-auto mt-7">
+        <div class="space-y-4 min-w-cmd">
             @foreach ($transactios as $item)                
-                <div class="flex items-center justify-between border p-4 rounded-lg {{ $item['type'] == 'Buy'?'bg-lightgreen':' bg-lightpink' }}">
+                <div class="flex items-center justify-between border p-5 rounded-lg {{ $item['type'] == 'Buy'?'bg-lightgreen':' bg-lightpink' }}">
                     <div class="flex items-center justify-between space-x-6">
                         <div class="w-12 h-12 rounded-lg">
                             <x-icon name="{{ $item['icon'] }}" class="h-full w-full"/>
                         </div>
                         <div>
-                            <p class="text-xl font-bold">{{ $item['name'] }} </p>
-                            <p class="text-gray-400">{{ $item['type'] }}</p>
+                            <p class="text-lg font-bold">{{ $item['name'] }} </p>
+                            <x-badge type="square" class="mt-2">{{ $item['type'] }}</x-badge>
                         </div>
                     </div>
                     <div>

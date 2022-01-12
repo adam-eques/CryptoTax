@@ -1,8 +1,8 @@
 <div class="grid grid-cols-11 min-w-clg py-6 rounded-md  cursor-pointer bg-white hover:bg-gray-100 border">
     <div class="col-span-1 flex justify-center items-center">
         @if ( $node == "parent")                
-            <div class="w-8 h-8 bg-white shadow-md rounded-full flex justify-center items-center">
-                <x-icon name="fas-chevron-down" class="text-secondary w-12 h-5"/>
+            <div class="w-6 h-6 bg-white shadow-md rounded-full flex justify-center items-center">
+                <x-icon name="fas-chevron-down" class="text-secondary w-4 h-4"/>
             </div>
         @endif
     </div>
