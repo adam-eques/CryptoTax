@@ -41,7 +41,8 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
         ->name('transactions');
     Route::view('/transactions1', 'pages.customer.transactions.transactions1')->name('transactions1');
 
-    // Specials
+    // Specials]
+    Route::view('/account/new', 'pages.customer.account.new')->name('account.new');
     Route::view('/taxes/tax-loss-harvesting', 'pages.customer.taxes.tax-loss-harvesting')->name('taxes.tax-loss-harvesting');
     Route::view('/taxes/tax-saving-opportunities', 'pages.customer.taxes.tax-saving-opportunities')->name('taxes.tax-saving-opportunities');
 

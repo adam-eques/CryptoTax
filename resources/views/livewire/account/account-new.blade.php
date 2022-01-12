@@ -1,11 +1,3 @@
-{{-- <form wire:submit.prevent="submit">
-    {{ $this->form }}
-
-    <div class="grid justify-items-center mt-5">
-        <x-jet-button type="submit">{{ __("Add Wallet") }}</x-jet-button>
-    </div>
-</form> --}}
-
 <div class="grid grid-cols-1 md:grid-cols-6 gap-0 md:gap-6">
     <div class="col-span-1 py-8 space-y-5">
         @php
@@ -48,3 +40,4 @@
         </div>
     </div>
 </div>
+

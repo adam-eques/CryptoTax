@@ -67,7 +67,7 @@
         </div>
 
         <div class="mt-9 px-3">
-            <livewire:wallet-new></livewire:wallet-new>
+            <@livewire('account.account-new')
         </div>
 
     </div>
