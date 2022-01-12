@@ -1,9 +1,9 @@
 <div class="w-full">
     <x-card :title="__('Blockchains')">
-        @if($wallets->count())
+        @if($blockchains->count())
             <div class="p-4">
                 <ul>
-                    @foreach($wallets as $row)
+                    @foreach($blockchains as $row)
                         <li class="@if(!$loop->last)mb-8 @endif">
                             {{ $row->getName() }}
 

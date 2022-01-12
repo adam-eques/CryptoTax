@@ -17,10 +17,10 @@ class BlockchainForm extends Component
 
     public function render()
     {
-        $wallets = auth()->user()->wallets;
+        $blockchains = auth()->user()->blockchains;
 
         return view('livewire.blockchain.blockchain-form', [
-            "wallets" => $wallets,
+            "blockchains" => $blockchains,
         ]);
     }
 

@@ -15,7 +15,7 @@ class BlockchainTable extends Component implements Tables\Contracts\HasTable
     use Actions;
     use Tables\Concerns\InteractsWithTable;
 
-    protected $listeners = ['walletTable.updateTable' => '$refresh'];
+    protected $listeners = ['blockchainTable.updateTable' => '$refresh'];
     public ?int $updated_at = null;
 
 
@@ -24,14 +24,14 @@ class BlockchainTable extends Component implements Tables\Contracts\HasTable
         return BlockchainTransaction::whereIn("blockchain_asset_id", function(\Illuminate\Database\Query\Builder $query){
             $query->select("id")
                 ->from("blockchain_assets")
-                ->whereIn("blockchain_id", auth()->user()->wallets->pluck("id"));
+                ->whereIn("blockchain_id", auth()->user()->blockchains->pluck("id"));
         });
     }
 
 
     protected function getTableFilters(): array
     {
-        $walletOptions = auth()->user()->wallets->pluck("address", "id");
+        $blockchainOptions = auth()->user()->blockchains->pluck("address", "id");
         return [
             SelectFilter::make('blockchain_asset_id')
                 ->label(__("Blockchain"))
@@ -46,7 +46,7 @@ class BlockchainTable extends Component implements Tables\Contracts\HasTable
 
                     return $query;
                 })
-                ->options($walletOptions),
+                ->options($blockchainOptions),
         ];
     }
 
