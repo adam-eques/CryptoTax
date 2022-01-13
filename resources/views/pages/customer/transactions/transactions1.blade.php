@@ -15,7 +15,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-0 lg:gap-x-3 col-span-2 py-2">
                     <x-button variant="white" class="border-primary">{{ __('Download CSV') }}</x-button>
                     <x-button variant="white" class="border-primary">{{ __('Add transaction') }}</x-button>
-                    <x-button>
+                    <x-button tag="a" href="{{ route('customer.account.new') }}">
                         <x-icon name="wallet-1" class="w-8 mr-2"/>
                         {{ __('Add Account') }}
                     </x-button>
