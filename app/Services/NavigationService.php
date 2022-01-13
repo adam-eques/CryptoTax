@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Livewire\Admin\AccountType\AccountTypeResource;
 use App\Http\Livewire\Admin\BackendUser\BackendUserResource;
 use App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource;
 use App\Http\Livewire\Admin\Customer\CustomerResource;
@@ -164,7 +165,8 @@ class NavigationService
             ["label" => __('User'), 'children' => [
                 CustomerResource::make()->sidebar(),
                 TaxAdvisorResource::make()->sidebar(),
-                BackendUserResource::make()->sidebar()
+                BackendUserResource::make()->sidebar(),
+                AccountTypeResource::make()->sidebar()
             ]],
             ["label" => __('Advertising'), 'children' => [
                 ["label" => "Advertising", "icon" => "fas-ad", "route" => "todo"],
