@@ -22,17 +22,17 @@ class BlockchainAsset extends Model
         parent::boot();
 
         static::deleting(function (self $item) {
-            $item->walletTransactions()->delete();
+            $item->blockchainTransactions()->delete();
         });
     }
 
-    public function wallet(): BelongsTo
+    public function blockchain(): BelongsTo
     {
         return $this->belongsTo(Blockchain::class);
     }
 
 
-    public function walletTransactions(): HasMany
+    public function blockchainTransactions(): HasMany
     {
         return $this->hasMany(BlockchainTransaction::class);
     }
@@ -41,7 +41,7 @@ class BlockchainAsset extends Model
     public function updateTransactions(BlockChainApi $api): self
     {
         $assetId = $this->id;
-        $lastEntry = $this->walletTransactions()
+        $lastEntry = $this->blockchainTransactions()
             ->orderBy("time_stamp", "desc")
             ->first();
         $lastTimeStamp = $lastEntry?->time_stamp; // 1639314121
