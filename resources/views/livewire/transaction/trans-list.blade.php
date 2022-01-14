@@ -1,4 +1,8 @@
-@php
+<div>
+    {{ $this->table }}
+</div>
+
+{{-- @php
     $transactions = [
         [
             'icon' => '',
@@ -171,4 +175,4 @@
             </ul>
         </div>
     </div>
-</div>
+</div> --}}

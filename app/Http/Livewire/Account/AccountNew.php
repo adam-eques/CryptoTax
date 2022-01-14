@@ -47,18 +47,14 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
-
         $exchanges = CryptoExchange::query()
             ->where("active", true)
             ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
             ->get();
 
-        $blockchains = auth()->user()->blockchains;
-
         return view('livewire.account.account-new', [
             "exchanges" => $exchanges,
-            "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
-            "blockchains" => $blockchains
+            "cryptoExchangeAccounts" => $cryptoExchangeAccounts
         ]);
     }
 
@@ -75,57 +71,20 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     }
 
     //Functions for Exchange
-    public function fetch_excahange(CryptoExchangeAccount $account)
-    {
-        try {
-            $account->fetching_scheduled_at = now();
-            $account->save();
-            CryptoExchangeFetchJob::dispatch($account);
-            $this->notification()->info(
-                __("Fetching :name is now scheduled", ["name" => $account->getName()]),
-                "Please check transactions in a couple of minutes"
-            );
-        }
-        catch (\Exception $e) {
-            $this->notification()->error(__("An error occured"), $e->getMessage());
-        }
-    }
-
-    public function delete_exchange(CryptoExchangeAccount $account)
-    {
-        if ($this->account && $this->account->id == $account->id) {
-            $this->account = null;
-        }
-        $account->delete();
-
-        // Update table
-        $this->emit("transactionTable.updateTable");
-
-        // Notify
-        $this->notification()->success(
-            $title = __('Successfully deleted'),
-            $description = ''
-        );
-    }
 
     public function save_exchange()
     {
         $data = $this->form->getState();
         $this->account->credentials = $data;
         $this->account->save();
-        $this->fetch_excahange($this->account);
+        $this->notification()->info(__("Exchange Account is added successfully"));
     }
 
-    public function add_exchange( int $selected )
+
+    public function get_new_account_id( int $id )
     {
         $user = auth()->user();
-        $this->newAccountId = $selected;
-
-        if (! $this->newAccountId) {
-            $this->notification()->info(__("Please select an exchange"));
-
-            return;
-        }
+        $this->newAccountId = $id;
 
         if (! $user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
             $account = new CryptoExchangeAccount();
@@ -134,11 +93,10 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $account->credentials = [];
             $account->save();
         }
-
         $this->edit_exchange($account);
     }
 
-    public function edit_exchange(CryptoExchangeAccount $account)
+    public function edit_exchange( CryptoExchangeAccount $account )
     {
         $this->account = $account;
         $this->form->fill($account->credentials);
@@ -160,45 +118,11 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $blockchain->address = $this->newBlockchainAddress;
             $blockchain->user_id = $user->id;
             $blockchain->save();
-
-            $this->fetch_blockchain($blockchain);
+            $this->notification()->info(__("Blockchain address is added successfully"));
         }
         else {
             $this->notification()->info(__("Blockchain address already exists"));
             return;
-        }
-    }
-    public function delete_blockchain(Blockchain $blockchain)
-    {
-        if ($this->blockchain && $this->blockchain->id == $blockchain->id) {
-            $this->blockchain = null;
-        }
-        $blockchain->delete();
-
-        // Update table
-        $this->emit("transactionTable.updateTable");
-
-        // Notify
-        $this->notification()->success(
-            $title = __('Successfully deleted'),
-            $description = ''
-        );
-    }
-
-
-    public function fetch_blockchain(Blockchain $blockchain)
-    {
-        try {
-            $blockchain->fetching_scheduled_at = now();
-            $blockchain->save();
-            BlockchainFetchJob::dispatch($blockchain);
-            $this->notification()->info(
-                __("Fetching :name is now scheduled", ["name" => $blockchain->getName()]),
-                "Please check blockchain transactions in a couple of minutes"
-            );
-        }
-        catch (\Exception $e) {
-            $this->notification()->error(__("An error occured"), $e->getMessage());
         }
     }
 }
