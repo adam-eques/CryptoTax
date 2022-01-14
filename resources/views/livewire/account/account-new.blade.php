@@ -77,7 +77,7 @@
                         @foreach ($blockchains as $row)
                             <div class="grid grid-cols-5 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100">
                                 <p class="col-span-3 break-all">{{ __($row->getName()) }}</p>
-                                <div class="col-span-2">
+                                <div class="col-span-2 justify-end flex">
                                     <x-button :disabled="$row->fetching_scheduled_at" size="sm" wire:click="fetch_blockchain({{ $row->id }})">{{ __("Fetch") }}</x-button>
                                     <x-button variant="danger" :disabled="$row->fetching_scheduled_at" size="sm" wire:click="delete_blockchain({{ $row->id }})">{{ __("Delete") }}</x-button>
                                 </div>
