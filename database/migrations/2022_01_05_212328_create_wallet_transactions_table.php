@@ -4,13 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalletTransactionsTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
         Schema::create('wallet_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(\App\Models\BlockchainAsset::class);
+            $table->foreignId("wallet_asset_id");
             $table->string("block_hash", 70);
             $table->unsignedInteger("block_number");
             $table->unsignedInteger("confirmations");
@@ -38,4 +38,4 @@ class CreateWalletTransactionsTable extends Migration
     {
         Schema::dropIfExists('wallet_transactions');
     }
-}
+};
