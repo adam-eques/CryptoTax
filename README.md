@@ -1,5 +1,18 @@
 # CryptoTax Repository
 
+## Update your local installation
+
+On each pull, run the following commands:
+
+```bash
+git pull
+composer install
+php artisan migrate
+php artisan optimize:clear
+npm install
+npm run watch
+```
+
 ## Queues
 
 Queues are run (on Prod) with supervisor. For this see https://laravel.com/docs/8.x/queues
