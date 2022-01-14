@@ -78,14 +78,24 @@ class User extends Authenticatable
 
         static::creating(function (self $item) {
             if (! $item->user_account_type_id) {
-                $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER;
+                $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER_FREE;
             }
         });
 
         static::deleting(function (self $item) {
-            $item->wallets()->delete();
+            $item->blockchains()->delete();
             $item->cryptoExchangeAccounts()->delete();
         });
+    }
+
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCustomersOnly(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
+    {
+        return $query->whereIn('user_account_type_id', UserAccountType::customerTypes());
     }
 
 
@@ -114,7 +124,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Blockchain::class);
     }
-
 
 
     /**
@@ -149,7 +158,7 @@ class User extends Authenticatable
      */
     public function isCustomerAccount(): bool
     {
-        return $this->user_account_type_id === UserAccountType::TYPE_CUSTOMER;
+        return $this->userAccountType->is_customer;
     }
 
 

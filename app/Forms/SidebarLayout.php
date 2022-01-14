@@ -30,10 +30,11 @@ class SidebarLayout
     }
 
 
-    public function addTab(array $schema, string $label = "Allgemeines"): self
+    public function addTab(array $schema, string $label = "Allgemeines", int $columns = 1): self
     {
         $this->tabs[] = Tab::make($label)
-            ->schema($schema);
+            ->schema($schema)
+            ->columns($columns);
 
         return $this;
     }

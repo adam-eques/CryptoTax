@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Customer;
 use App\Http\Livewire\Admin\Resources\ResourceTable;
 use App\Models\User;
 use App\Models\UserAccountType;
+use App\Tables\Columns\BelongsToColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables;
 
@@ -15,7 +16,7 @@ class CustomerTable extends ResourceTable
 
     protected function getTableQuery(): Builder
     {
-        return User::query()->where("user_account_type_id", UserAccountType::TYPE_CUSTOMER);
+        return User::query()->customersOnly();
     }
 
 
@@ -25,6 +26,8 @@ class CustomerTable extends ResourceTable
             Tables\Columns\TextColumn::make("name")
                 ->sortable()
                 ->searchable(),
+            BelongsToColumn::make("userAccountType.name")
+                ->resource($this->resourceClass),
             Tables\Columns\TextColumn::make("email")
                 ->label("E-Mail")
                 ->searchable()

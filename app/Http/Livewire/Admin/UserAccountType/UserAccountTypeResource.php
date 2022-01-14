@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Admin\AccountType;
+namespace App\Http\Livewire\Admin\UserAccountType;
 
 use App\Http\Livewire\Admin\Resources\Resource;
-use App\Models\AccountType;
-use App\Models\CryptoExchange;
+use App\Models\UserAccountType;
 
-class AccountTypeResource extends Resource
+class UserAccountTypeResource extends Resource
 {
-    protected string $model = AccountType::class;
+    protected string $model = UserAccountType::class;
     protected string $icon = "fas-user-circle";
 
 

@@ -24,11 +24,11 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
 
     // Other resoureces
     \App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource::routes();
-    \App\Http\Livewire\Admin\AccountType\AccountTypeResource::routes();
+    \App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource::routes();
 });
 
 
-// Only for UserAccountType::TYPE_CUSTOMER
+// Only for customers
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:customer")->name("customer.")->group(function(){
     // TODO routes
     Route::view('/account', 'pages.customer.account.index')->name('account');
