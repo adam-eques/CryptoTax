@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property Collection<\App\Models\BlockchainTransaction> $walletTransactions
+ * @property Collection<\App\Models\BlockchainTransaction> $blockchainTransactions
  * @property \App\Models\Blockchain $blockchain
  */
 class BlockchainAsset extends Model
