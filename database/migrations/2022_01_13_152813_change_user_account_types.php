@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::table('user_account_types', function (Blueprint $table) {
             $table->unsignedInteger("duration_in_months")->nullable(true)->after("name");
-            $table->unsignedSmallInteger("included_credits")->nullable(true)->after("name");
             $table->smallInteger("max_csv_upload")->nullable(true)->after("name");
             $table->smallInteger("max_backups")->nullable(true)->after("name");
             $table->unsignedDecimal("price_per_year", 6, 2)->nullable(true)->after("name");

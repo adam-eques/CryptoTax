@@ -22,11 +22,6 @@ class UserAccountTypeTable extends ResourceTable
                         "-";
                 })
                 ->label("Duration"),
-            Tables\Columns\TextColumn::make("included_credits")
-                ->formatStateUsing(function($record) {
-                    return number_format($record->included_credits);
-                })
-                ->label("Included credits"),
             Tables\Columns\BooleanColumn::make("is_customer")
                 ->label(__("Customers"))
                 ->sortable(),

@@ -28,6 +28,8 @@ class CustomerTable extends ResourceTable
                 ->searchable(),
             BelongsToColumn::make("userAccountType.name")
                 ->resource($this->resourceClass),
+            Tables\Columns\TextColumn::make("credits")
+                ->sortable(),
             Tables\Columns\TextColumn::make("email")
                 ->label("E-Mail")
                 ->searchable()

@@ -22,11 +22,12 @@ class CustomerForm extends ResourceForm
             ])
             ->addCard([
                 StaticField::make(__("ID"), modelValue: "id"),
-                //StaticField::make(__("Created at"), callback: function($record){
-                //    return $record->created_at
-                //        ? __(":date at :time" , ["date" => $record->created_at->format("Y-m-d"), "time" => $record->created_at->format("H:i")])
-                //        : "";
-                //}),
+                StaticField::make(__("Credits"), modelValue: "credits"),
+                StaticField::make(__("Registered at"), callback: function($record){
+                    return $record->created_at
+                        ? __(":date at :time" , ["date" => $record->created_at->format("Y-m-d"), "time" => $record->created_at->format("H:i")])
+                        : "";
+                }),
             ])
             ->toArray();
     }

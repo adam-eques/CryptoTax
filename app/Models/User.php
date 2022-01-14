@@ -187,4 +187,27 @@ class User extends Authenticatable
     {
         return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;
     }
+
+
+    public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): self
+    {
+        // Get action and value
+        if(is_string($actionOrActionCode)) {
+            $action = UserCreditAction::query()
+                ->where("user_account_type_id", $this->user_account_type_id)
+                ->where("action_code", $actionOrActionCode)
+                ->first();
+        }
+        else {
+            $action = $actionOrActionCode;
+        }
+        $value = !is_null($value) ? $value : $action->value;
+
+        // Log it and add it to user table
+        UserCreditLog::log($this->id, $action->action_code, $value);
+        $this->credits += $value;
+        $this->save();
+
+        return $this;
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\UserAccountType;
+namespace App\Http\Livewire\Admin\UserCreditAction;
 
 use App\Forms\SidebarLayout;
 use App\Http\Livewire\Admin\Resources\ResourceForm;
@@ -8,7 +8,7 @@ use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class UserAccountTypeForm extends ResourceForm
+class UserCreditActionForm extends ResourceForm
 {
     public function getFormSchema(): array
     {

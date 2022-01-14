@@ -22,9 +22,10 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
     \App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource::routes();
     \App\Http\Livewire\Admin\BackendUser\BackendUserResource::routes();
 
-    // Other resoureces
+    // Other resources
     \App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource::routes();
     \App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource::routes();
+    \App\Http\Livewire\Admin\UserCreditAction\UserCreditActionResource::routes();
 });
 
 

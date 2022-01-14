@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TestUserSeeder::class,
+            UserCreditActionSeeder::class,
             UserAccountTypeSeeder::class,
             CryptoExchangeSeeder::class,
-            CryptoExchangeAccountSeeder::class
+            CryptoExchangeAccountSeeder::class,
         ]);
     }
 }

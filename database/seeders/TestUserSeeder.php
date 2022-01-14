@@ -36,6 +36,14 @@ class TestUserSeeder extends Seeder
                 'name' => "Support Test",
                 'email' => "support@example.com",
             ],
+            [
+                'name' => "Premium User Test",
+                'email' => "premium-customer@example.com",
+            ],
+            [
+                'name' => "Free User Test",
+                'email' => "free-customer@example.com",
+            ],
         ])->each(function($data){
             if(!User::query()->where("email", $data["email"])->exists()) {
                 $data["password"] = bcrypt(isset($data["password"]) && $data["password"] ? $data["password"] : $data["email"]);

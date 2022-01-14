@@ -11,9 +11,12 @@ return new class extends Migration
         Schema::create('user_credit_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignIdFor(\App\Models\User::class);
+            $table->char("action_code")->index();
             $table->decimal("value", 8, 2);
-            $table->string("description", 100);
             $table->timestamp("created_at")->useCurrent();
+
+            // Index
+            $table->index(["user_id", "action_code"]);
         });
 
         Schema::table("users", function (Blueprint $table) {

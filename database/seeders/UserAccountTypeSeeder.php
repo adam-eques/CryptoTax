@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\UserAccountType;
+use App\Models\UserCreditAction;
+use App\Services\CreditCodeService;
 use Illuminate\Database\Seeder;
 
 class UserAccountTypeSeeder extends Seeder
@@ -18,7 +20,6 @@ class UserAccountTypeSeeder extends Seeder
                 'data' => [
                     'name' => "Administrator",
                     'duration_in_months' => null,
-                    'included_credits' => null,
                     'max_csv_upload' => null,
                     'max_backups' => null,
                     'price_per_year' => null,
@@ -34,7 +35,6 @@ class UserAccountTypeSeeder extends Seeder
                 'data' => [
                     'name' => "Customer Premium",
                     'duration_in_months' => 12,
-                    'included_credits' => 1000,
                     'max_csv_upload' => 20,
                     'max_backups' => 5,
                     'price_per_year' => 10.99 * 12,
@@ -45,13 +45,16 @@ class UserAccountTypeSeeder extends Seeder
                     'customer@example.com',
                     'premium-customer@example.com',
                 ],
+                'creditActions' => [
+                    CreditCodeService::ACTION_REGISTER,
+                    CreditCodeService::ACTION_SUBSCRIBE_ACCOUNT_TYPE,
+                ]
             ],
             [
                 'id' => UserAccountType::TYPE_CUSTOMER_FREE,
                 'data' => [
                     'name' => "Customer Free",
                     'duration_in_months' => null,
-                    'included_credits' => 100,
                     'max_csv_upload' => 5,
                     'max_backups' => 2,
                     'price_per_year' => null,
@@ -61,13 +64,15 @@ class UserAccountTypeSeeder extends Seeder
                 'users' => [
                     'free-customer@example.com',
                 ],
+                'creditActions' => [
+                    CreditCodeService::ACTION_REGISTER,
+                ]
             ],
             [
                 'id' => UserAccountType::TYPE_TAX_ADVISOR,
                 'data' => [
                     'name' => "Tax Advisor",
                     'duration_in_months' => null,
-                    'included_credits' => null,
                     'max_csv_upload' => null,
                     'max_backups' => null,
                     'price_per_year' => null,
@@ -83,7 +88,6 @@ class UserAccountTypeSeeder extends Seeder
                 'data' => [
                     'name' => "Support",
                     'duration_in_months' => null,
-                    'included_credits' => null,
                     'max_csv_upload' => null,
                     'max_backups' => null,
                     'price_per_year' => null,
@@ -99,7 +103,6 @@ class UserAccountTypeSeeder extends Seeder
                 'data' => [
                     'name' => "Editor",
                     'duration_in_months' => null,
-                    'included_credits' => null,
                     'max_csv_upload' => null,
                     'max_backups' => null,
                     'price_per_year' => null,
@@ -120,8 +123,19 @@ class UserAccountTypeSeeder extends Seeder
             }
 
             // Loop over users
-            User::query()->whereIn("email", $data["users"])->get()->each(function ($user) use ($type) {
+            User::query()->whereIn("email", $data["users"])->get()->each(function ($user) use ($type, $data) {
                 $type->users()->save($user);
+
+                // Credit action
+                if(!empty($data["creditActions"])) {
+                    foreach($data["creditActions"] AS $action) {
+                        $creditAction = UserCreditAction::query()
+                            ->where("user_account_type_id", $data["id"])
+                            ->where("action_code", $action)
+                            ->first();
+                        $user->creditAction($creditAction);
+                    }
+                }
             });
         });
     }
