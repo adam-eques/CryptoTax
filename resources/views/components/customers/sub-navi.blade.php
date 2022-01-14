@@ -5,7 +5,7 @@
             <div class="flex items-center justify-between ">
                 <div class="flex items-baseline text-sm space-x-2 lg:space-x-4 -ml-2 lg:-ml-4">
                     @foreach($subnavi["children"] as $navItem)
-                        <a href="{{ $navItem['route'] }}"
+                        <a href="{{ route($navItem['route']) }}"
                            class="lg:px-4 p-2 gap-2 hover:text-secondary inline-flex items-center">
                             <x-icon :name="$navItem['icon']" class="w-5"/>
                             <span class="hidden sm:inline">{{ $navItem["label"] }}</span>
