@@ -17,7 +17,7 @@
             <x-icon name="transaction" class="w-10 h-10"/>
             <p class="mr-3 text-lg font-extrabold">{{ __('Recent Transaction') }}</p>
         </div>
-        <x-button variant="primary">{{ __('View all') }}</x-button>
+        <x-button variant="primary" tag="a" href="{{ route('customer.transactions1') }}">{{ __('View all') }}</x-button>
     </div>
     <div class="overflow-auto mt-7">
         <div class="space-y-4 min-w-cmd">
