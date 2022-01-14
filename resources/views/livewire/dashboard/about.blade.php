@@ -13,7 +13,7 @@
                 <x-icon name="wallet-1" class="w-8 h-8 text-secondary"></x-icon>
             </div>
             <h5 class="text-lg font-bold text-primary">1. Add Wallets & Exchanges</h5>
-            <button class="font-bold text-sm bg-primary hover:bg-secondary rounded py-2 px-3">{{ __('ADD WALLET') }}</button>
+            <a href="{{ route('customer.account.new') }}" class="font-bold text-sm bg-primary hover:bg-secondary rounded py-2 px-3">{{ __('ADD WALLET') }}</a>
         </div>
         <p class="text-primary mt-6">Add your wallets and exchanges for api sync, csv import or manually upload your transactions</p>
        

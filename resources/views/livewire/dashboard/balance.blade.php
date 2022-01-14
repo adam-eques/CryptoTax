@@ -46,19 +46,19 @@
     
         </div>
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-0 xl:gap-2 mt-8 mb-5">
-            <x-button variant="primary" class="p-2 flex items-center space-x-5">
+            <x-button variant="primary" class="p-2 flex items-center space-x-5" tag="a" href="{{ route('customer.account.new') }}">
                 <div class="p-1 rounded-lg bg-white">
                     <x-icon name="wallet-1" class="w-5 h-5 text-primary"/>
                 </div>
                 <span class="text-sm font-extrabold tracking-tighter">{{ __('Add Account') }}</span>
             </x-button>
-            <x-button variant="third" class="p-2 flex items-center space-x-5">
+            <x-button variant="third" class="p-2 flex items-center space-x-5" tag="a" href="{{ route('customer.taxes') }}">
                 <div class="p-1 bg-white rounded-lg">
                     <x-icon name="tax-1" class="w-5 h-5 text-third"/>
                 </div>
                 <span class="text-sm font-extrabold tracking-tighter">{{ __('Tax Calculation') }}</span>
             </x-button>
-            <x-button variant="secondary" class="p-2 flex items-center space-x-5">
+            <x-button variant="secondary" class="p-2 flex items-center space-x-5" tag="a" href="{{ route('customer.taxes') }}">
                 <div class="p-1 bg-white rounded-lg">
                     <x-icon name="professional" class="w-5 h-5 text-secondary"/>
                 </div>

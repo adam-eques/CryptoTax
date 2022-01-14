@@ -18,7 +18,33 @@
             'zone' => 'UTC Transfer',
             'type' => 'send'
         ],
-
+        [
+            'icon' => '',
+            'name' => 'Bitpanda BTC wallet',
+            'amount' => '- 0.003321456 BTC',
+            'balance' => '0.001311 BTC',
+            'date' => 'FEB 26, 2009  00:12.39',
+            'zone' => 'UTC Transfer',
+            'type' => 'send'
+        ],
+        [
+            'icon' => '',
+            'name' => 'Bitpanda BTC wallet',
+            'amount' => '- 0.003321456 BTC',
+            'balance' => '0.001311 BTC',
+            'date' => 'FEB 26, 2009  00:12.39',
+            'zone' => 'UTC Transfer',
+            'type' => 'send'
+        ],
+        [
+            'icon' => '',
+            'name' => 'Bitpanda BTC wallet',
+            'amount' => '- 0.003321456 BTC',
+            'balance' => '0.001311 BTC',
+            'date' => 'FEB 26, 2009  00:12.39',
+            'zone' => 'UTC Transfer',
+            'type' => 'send'
+        ],
     ]
 @endphp
 
@@ -45,20 +71,26 @@
                     <div class="col-span-4 w-full h-full">
                         <select class="w-full h-full bg-white rounded-md">
                             <option value="" disabled selected hidden>{{ __('Order By') }}</option>
+                            <option>{{ __('date') }}</option>
                         </select>
                     </div>
                 </div>
             </div>
             <select class="h-full bg-white rounded-md col-span-1 md:col-span-2">
-                <option value="" disabled selected hidden>{{ __('Transaction type') }}</option>
+                <option value="" disabled selected hidden class="text-gray-100">{{ __('Transaction type') }}</option>
+                <option value="">{{ __('Sell') }}</option>
+                <option value="">{{ __('Buy') }}</option>
             </select>
             <div class="col-span-1 md:col-span-3">
                 <div class="grid grid-cols-7 h-full gap-x-3">
                     <select class="col-span-3 h-full w-full bg-white rounded-md">
-                        <option value="" disabled selected hidden>{{ __('Blockchain') }}</option>
+                        <option value="" disabled selected hidden>{{ __('') }}</option>
+                        <option>{{ __('') }}</option>
                     </select>
                     <select class="col-span-4 h-full w-full bg-white rounded-md">
-                        <option value="" disabled selected hidden>{{ __('Exchange') }}</option>
+                        <option value="" disabled selected hidden>{{ __('Category') }}</option>
+                        <option value="">{{ __('Exchange') }}</option>
+                        <option value="">{{ __('Blockchains') }}</option>
                     </select>
                 </div>
             </div>

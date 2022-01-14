@@ -119,7 +119,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     }
 
 
-    public function add()
+    public function add_blockchain()
     {
         $user = auth()->user();
 

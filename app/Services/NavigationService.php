@@ -198,7 +198,7 @@ class NavigationService
             ],
             ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.account',
                 "children" => [
-                    ["label" => __('Transactions'), 'icon' => 'transaction-2', 'route' => 'transactions1'],
+                    ["label" => __('Transactions'), 'icon' => 'transaction-2', 'route' => 'customer.transactions1'],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
