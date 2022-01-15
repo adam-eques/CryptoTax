@@ -32,10 +32,10 @@ abstract class Resource
     {
         $studly = \Str::studly($shortName);
         $class = "\\App\\Http\\Livewire\\";
-        if(static::$classPrefix) {
-            $class.= \Str::studly(static::$classPrefix)."\\";
+        if (static::$classPrefix) {
+            $class .= \Str::studly(static::$classPrefix)."\\";
         }
-        $class.= $studly.'\\'.$studly.'Resource';
+        $class .= $studly.'\\'.$studly.'Resource';
 
         return $class ? ($class)::make() : null;
     }
@@ -88,11 +88,11 @@ abstract class Resource
         );
     }
 
+
     public function modelKebabCase(): string
     {
         return \Str::kebab($this->getResourceShortName());
     }
-
 
 
     public function getNamespace(): string
@@ -121,7 +121,7 @@ abstract class Resource
     {
         $kebab = $this->modelKebabCase();
 
-        return (static::$classPrefix ? static::$classPrefix."." : "" ).$kebab.".".$kebab.'-'.$component;
+        return (static::$classPrefix ? static::$classPrefix."." : "").$kebab.".".$kebab.'-'.$component;
     }
 
 

@@ -26,6 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
     \App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource::routes();
     \App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource::routes();
     \App\Http\Livewire\Admin\UserCreditAction\UserCreditActionResource::routes();
+    \App\Http\Livewire\Admin\UserCreditLog\UserCreditLogResource::routes();
 });
 
 

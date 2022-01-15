@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Customer;
 
 use App\Http\Livewire\Admin\Resources\ResourceTable;
+use App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource;
 use App\Models\User;
 use App\Models\UserAccountType;
 use App\Tables\Columns\BelongsToColumn;
@@ -27,7 +28,7 @@ class CustomerTable extends ResourceTable
                 ->sortable()
                 ->searchable(),
             BelongsToColumn::make("userAccountType.name")
-                ->resource($this->resourceClass),
+                ->resource(UserAccountTypeResource::class),
             Tables\Columns\TextColumn::make("credits")
                 ->sortable(),
             Tables\Columns\TextColumn::make("email")

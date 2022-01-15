@@ -25,9 +25,17 @@ class CreditCodeService
     {
         $array = array_flip(static::allActions());
         array_walk($array, function(&$val, $key) {
-            $val = substr($val, 7);
+            $val = str_replace("_", " ", \Str::title(substr($val, 7)));
         });
 
         return $array;
+    }
+
+
+    public static function getLabel(string $action_code)
+    {
+        $array = static::allActionsForSelect();
+
+        return $array[$action_code];
     }
 }
