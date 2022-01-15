@@ -17,7 +17,9 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
     use Actions;
     use Forms\Concerns\InteractsWithForms;
-
+    
+    // public ?string $search_string = null;
+    
     public ?CryptoExchangeAccount $account = null;
     public ?int $newAccountId = null;
     public ?Blockchain $blockchain = null;

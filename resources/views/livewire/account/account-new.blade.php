@@ -42,7 +42,7 @@
                                     x-bind:class = "item == `{{ $row->getName() }}`? 'bg-gray-100' : '' "
                                     wire:click = "edit_exchange({{ $row->id }})"
                                 >
-                                    <x-icon name="maker" class="w-auto h-8 col-span-2"></x-icon>
+                                    <x-icon name="{{ $row->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
                                     <p class="col-span-2">{{ __($row->getName()) }}</p>
                                     <div class="w-full flex justify-end">
                                         <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $row->getName() }}`"/>
@@ -59,7 +59,7 @@
                                     x-bind:class = "item == `{{ $exchange->getName() }}`? 'bg-gray-100' : '' "
                                     wire:click = "get_new_account_id({{ $exchange->id }})"
                                 >
-                                    <x-icon name="maker" class="w-auto h-8 col-span-2"></x-icon>
+                                    <x-icon name="{{ $row->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
                                     <p class="col-span-2">{{ __($exchange->getName()) }}</p>
                                     <div class="w-full flex justify-end">
                                         <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $exchange->getName() }}`"/>
@@ -84,7 +84,7 @@
 
             {{-- Right panel --}}
             <div class="border border-dashed rounded-md">
-                <div class="flex justify-center items-center h-full w-full">
+                <div class="h-full w-full p-5">
                     <div x-show="category=='Exchange'">
                         <div x-show="item">
                             @if ($account)
