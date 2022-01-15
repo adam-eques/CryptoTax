@@ -84,7 +84,7 @@
 
             {{-- Right panel --}}
             <div class="border border-dashed rounded-md">
-                <div class="flex justify-center items-center h-full w-full">
+                <div class="h-full w-full p-5">
                     <div x-show="category=='Exchange'">
                         <div x-show="item">
                             @if ($account)
