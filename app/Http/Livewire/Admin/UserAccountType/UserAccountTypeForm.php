@@ -21,7 +21,13 @@ class UserAccountTypeForm extends ResourceForm
                 TextInput::make('price_per_year')
                     ->label(__("Price per year"))
                     ->placeholder("Price per year")
-                    ->placeholder("Leave empty for free")
+                    ->placeholder("Leave empty if its for free")
+                    ->postfix("$")
+                    ->numeric(),
+                TextInput::make('price_per_month')
+                    ->label(__("Price per month"))
+                    ->placeholder("Price per month")
+                    ->placeholder("Leave empty if its for free")
                     ->postfix("$")
                     ->numeric(),
                 TextInput::make('max_backups')
