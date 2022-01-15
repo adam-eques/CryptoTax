@@ -17,12 +17,10 @@ class UserCreditActionForm extends ResourceForm
             ->addTab([
                 TextInput::make('name')
                     ->label(__("Name"))
-                    ->required()
-                    ->columnSpan(2),
+                    ->required(),
                 TextInput::make('name_public')
                     ->label(__("Name Public"))
-                    ->required()
-                    ->columnSpan(2),
+                    ->required(),
                 Forms\Components\Select::make("action_code")
                     ->options(CreditCodeService::allActionsForSelect())
                     ->label("Action"),

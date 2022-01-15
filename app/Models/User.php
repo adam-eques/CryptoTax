@@ -195,7 +195,7 @@ class User extends Authenticatable
         if(is_string($actionOrActionCode)) {
             $action = UserCreditAction::query()
                 ->where("action_code", $actionOrActionCode)
-                ->first();
+                ->firstOrFail();
         }
         else {
             $action = $actionOrActionCode;
@@ -203,7 +203,7 @@ class User extends Authenticatable
         $value = !is_null($value) ? $value : $action->value;
 
         // Log it and add it to user table
-        UserCreditLog::log($this->id, $action->action_code, $value);
+        UserCreditLog::log($this->id, $value, $action->action_code, $action->id);
         $this->credits += $value;
         $this->save();
 
