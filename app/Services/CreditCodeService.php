@@ -7,7 +7,7 @@ use ReflectionClass;
 class CreditCodeService
 {
     const ACTION_REGISTER = "REGI";
-    const ACTION_SUBSCRIBE_ACCOUNT_TYPE = "SUBA";
+    const ACTION_ADD_PREMIUM = "PREM";
 
 
     public static function allActions(): array
@@ -18,5 +18,16 @@ class CreditCodeService
         return array_filter($array, function ($val) {
             return str_starts_with($val, "ACTION_");
         }, ARRAY_FILTER_USE_KEY);
+    }
+
+
+    public static function allActionsForSelect(): array
+    {
+        $array = array_flip(static::allActions());
+        array_walk($array, function(&$val, $key) {
+            $val = substr($val, 7);
+        });
+
+        return $array;
     }
 }

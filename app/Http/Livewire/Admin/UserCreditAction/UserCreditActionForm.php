@@ -4,9 +4,10 @@ namespace App\Http\Livewire\Admin\UserCreditAction;
 
 use App\Forms\SidebarLayout;
 use App\Http\Livewire\Admin\Resources\ResourceForm;
+use App\Services\CreditCodeService;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 
 class UserCreditActionForm extends ResourceForm
 {
@@ -18,33 +19,24 @@ class UserCreditActionForm extends ResourceForm
                     ->label(__("Name"))
                     ->required()
                     ->columnSpan(2),
-                TextInput::make('price_per_year')
-                    ->label(__("Price per year"))
-                    ->placeholder("Price per year")
-                    ->placeholder("Leave empty for free")
-                    ->postfix("$")
+                TextInput::make('name_public')
+                    ->label(__("Name Public"))
+                    ->required()
+                    ->columnSpan(2),
+                Forms\Components\Select::make("action_code")
+                    ->options(CreditCodeService::allActionsForSelect())
+                    ->label("Action"),
+                TextInput::make('value')
+                    ->label(__("Credits (negativ = cost; positiv = reward)"))
+                    ->postfix("Credits")
+                    ->nullable(true)
                     ->numeric(),
-                TextInput::make('max_backups')
-                    ->label(__("Max. backups"))
-                    ->placeholder("Leave empty for unlimited")
-                    ->numeric()
+                DateTimePicker::make('valid_from')
                     ->nullable(true),
-                TextInput::make('duration_in_months')
-                    ->label(__("Duration"))
-                    ->placeholder("Leave empty for unlimited")
-                    ->postfix("months")
-                    ->numeric()
+                DateTimePicker::make('valid_till')
+                    ->placeholder('Leave empty if it has no end (yet)')
                     ->nullable(true),
-                TextInput::make('max_csv_upload')
-                    ->label(__("Max. CSV Uploads"))
-                    ->numeric()
-                    ->placeholder("Leave empty for unlimited")
-                    ->postfix("MB")
-                    ->nullable(true),
-                Toggle::make("is_customer")
-                    ->label(__("Is customer")),
-                Toggle::make("active")
-                    ->label(__("Active")),
+
             ], columns: 2)
             ->toArray();
     }

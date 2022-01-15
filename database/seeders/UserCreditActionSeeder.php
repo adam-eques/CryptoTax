@@ -17,24 +17,16 @@ class UserCreditActionSeeder extends Seeder
         collect([
             [
                 'action_code' => CreditCodeService::ACTION_REGISTER,
-                'user_account_type_id' => UserAccountType::TYPE_CUSTOMER_FREE,
-                'name' => "Register",
-                'value' => 200,
+                'name' => "Register as Free User",
+                'name_public' => "Register",
+                'value' => 0,
                 'valid_from' => $now,
                 'valid_till' => null,
             ],
             [
-                'action_code' => CreditCodeService::ACTION_REGISTER,
-                'user_account_type_id' => UserAccountType::TYPE_CUSTOMER_PREMIUM,
-                'name' => "Register",
-                'value' => 200,
-                'valid_from' => $now,
-                'valid_till' => null,
-            ],
-            [
-                'action_code' => CreditCodeService::ACTION_SUBSCRIBE_ACCOUNT_TYPE,
-                'user_account_type_id' => UserAccountType::TYPE_CUSTOMER_PREMIUM,
-                'name' => "Premium account",
+                'action_code' => CreditCodeService::ACTION_ADD_PREMIUM,
+                'name' => "Add Premium",
+                "name_public" => "Become premium member",
                 'value' => 2500,
                 'valid_from' => $now,
                 'valid_till' => null,
@@ -42,7 +34,6 @@ class UserCreditActionSeeder extends Seeder
         ])->each(function($data){
             $exists = UserCreditAction::query()
                 ->where("action_code", $data["action_code"])
-                ->where("user_account_type_id", $data["user_account_type_id"])
                 ->exists();
 
             if(!$exists) {

@@ -49,7 +49,7 @@ class UserAccountTypeSeeder extends Seeder
                 ],
                 'creditActions' => [
                     CreditCodeService::ACTION_REGISTER,
-                    CreditCodeService::ACTION_SUBSCRIBE_ACCOUNT_TYPE,
+                    CreditCodeService::ACTION_ADD_PREMIUM,
                 ]
             ],
             [
@@ -136,7 +136,6 @@ class UserAccountTypeSeeder extends Seeder
                 if(!empty($data["creditActions"])) {
                     foreach($data["creditActions"] AS $action) {
                         $creditAction = UserCreditAction::query()
-                            ->where("user_account_type_id", $data["id"])
                             ->where("action_code", $action)
                             ->first();
                         $user->creditAction($creditAction);

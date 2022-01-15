@@ -194,7 +194,6 @@ class User extends Authenticatable
         // Get action and value
         if(is_string($actionOrActionCode)) {
             $action = UserCreditAction::query()
-                ->where("user_account_type_id", $this->user_account_type_id)
                 ->where("action_code", $actionOrActionCode)
                 ->first();
         }

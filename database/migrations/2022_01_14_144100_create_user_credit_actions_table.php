@@ -10,16 +10,13 @@ class CreateUserCreditActionsTable extends Migration
     {
         Schema::create('user_credit_actions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(\App\Models\UserAccountType::class)->nullable(true);
-            $table->char("action_code", 4);
+            $table->char("action_code", 4)->index();
             $table->string("name");
-            $table->decimal("value", 8, 2);
+            $table->string("name_public");
+            $table->decimal("value", 8, 2)->nullable();
             $table->timestamp("valid_from")->nullable();
             $table->timestamp("valid_till")->nullable();
             $table->timestamp("created_at")->useCurrent();
-
-            // Index
-            $table->index(["user_account_type_id", "action_code"]);
         });
     }
 

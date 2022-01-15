@@ -3,18 +3,27 @@
 namespace App\Http\Livewire\Admin\UserCreditAction;
 
 use App\Http\Livewire\Admin\Resources\ResourceTable;
-use Facade\Ignition\Tabs\Tab;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Columns\TextColumn;
 
 class UserCreditActionTable extends ResourceTable
 {
     protected function getTableColumns(): array
     {
         return [
-            Tables\Columns\TextColumn::make("name")
+            TextColumn::make("name")
                 ->sortable()
                 ->searchable(),
+            TextColumn::make("value")
+                ->label("Credits")
+                ->sortable(),
+            TextColumn::make('valid_from')
+                ->dateTime()
+                ->sortable(),
+            TextColumn::make('valid_till')
+                ->dateTime()
+                ->sortable()
+
         ];
     }
 
@@ -22,9 +31,7 @@ class UserCreditActionTable extends ResourceTable
     protected function getTableFilters(): array
     {
         return [
-            Tables\Filters\Filter::make("is_customer")
-                ->label("Only Customers")
-                ->query(fn (Builder $query): Builder => $query->where('is_customer', true))
+
         ];
     }
 }
