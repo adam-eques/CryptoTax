@@ -2,7 +2,6 @@
 
 namespace App\Forms;
 
-use App\Forms\Components\RelationTableField;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Tabs;
@@ -30,10 +29,11 @@ class SidebarLayout
     }
 
 
-    public function addTab(array $schema, string $label = "Allgemeines"): self
+    public function addTab(array $schema, string $label = "General", int $columns = 1): self
     {
         $this->tabs[] = Tab::make($label)
-            ->schema($schema);
+            ->schema($schema)
+            ->columns($columns);
 
         return $this;
     }
@@ -42,7 +42,7 @@ class SidebarLayout
     public function addCard(array $schema): self
     {
         $this->cards[] = Card::make($schema)
-            ->visible($this->sidebarOnlyOnEdit ? fn (Model $record): bool => $record->exists : true);
+            ->visible($this->sidebarOnlyOnEdit ? fn(Model $record): bool => $record->exists : true);
 
         return $this;
     }
@@ -51,10 +51,10 @@ class SidebarLayout
     public function toArray(): array
     {
         $tabs = Tabs::make("Main Tabs")
-                ->tabs($this->tabs)
-                ->columnSpan(1);
+            ->tabs($this->tabs)
+            ->columnSpan(1);
 
-        if($this->cards) {
+        if ($this->cards) {
             $cards = Grid::make(1)
                 ->schema($this->cards)
                 ->columnSpan($this->cardSpan);
@@ -64,21 +64,12 @@ class SidebarLayout
                     ->visible()
                     ->schema([
                         $tabs->columnSpan($this->tabSpan),
-                        $cards
+                        $cards,
                     ])
-                    ->columns($this->tabSpan + $this->cardSpan)
+                    ->columns($this->tabSpan + $this->cardSpan),
             ];
-        }
-        else {
+        } else {
             return [$tabs];
         }
-    }
-
-    public function addRelation(string $relationName, string $label)
-    {
-        return $this->addTab([
-            RelationTableField::make($relationName)
-                ->disableAdd()
-        ], $label);
     }
 }

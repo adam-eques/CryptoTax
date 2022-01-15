@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameWalletToBlockchain extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -33,4 +33,4 @@ class RenameWalletToBlockchain extends Migration
             $table->renameColumn("blockchain_asset_id", "wallet_asset_id");
         });
     }
-}
+};

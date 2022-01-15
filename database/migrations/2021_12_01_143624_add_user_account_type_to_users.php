@@ -10,7 +10,7 @@ class AddUserAccountTypeToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignIdFor(\App\Models\UserAccountType::class)
-                ->default(\App\Models\UserAccountType::TYPE_CUSTOMER)
+                ->default(\App\Models\UserAccountType::TYPE_CUSTOMER_FREE)
                 ->after('id');
         });
     }

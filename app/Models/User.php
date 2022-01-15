@@ -23,6 +23,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
  * @property \Illuminate\Support\Collection<Blockchain> $blockchains
+ * @property \Illuminate\Support\Collection<UserCreditLog> $creditLogs
  */
 class User extends Authenticatable
 {
@@ -78,14 +79,24 @@ class User extends Authenticatable
 
         static::creating(function (self $item) {
             if (! $item->user_account_type_id) {
-                $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER;
+                $item->user_account_type_id = UserAccountType::TYPE_CUSTOMER_FREE;
             }
         });
 
         static::deleting(function (self $item) {
-            $item->wallets()->delete();
+            $item->blockchains()->delete();
             $item->cryptoExchangeAccounts()->delete();
         });
+    }
+
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCustomersOnly(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
+    {
+        return $query->whereIn('user_account_type_id', UserAccountType::customerTypes());
     }
 
 
@@ -95,6 +106,15 @@ class User extends Authenticatable
     public function userAccountType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(UserAccountType::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function creditLogs(): HasMany
+    {
+        return $this->hasMany(UserCreditLog::class);
     }
 
 
@@ -114,7 +134,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Blockchain::class);
     }
-
 
 
     /**
@@ -149,7 +168,7 @@ class User extends Authenticatable
      */
     public function isCustomerAccount(): bool
     {
-        return $this->user_account_type_id === UserAccountType::TYPE_CUSTOMER;
+        return $this->userAccountType->is_customer;
     }
 
 
@@ -177,5 +196,27 @@ class User extends Authenticatable
     public function isTaxAdvisorAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;
+    }
+
+
+    public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): self
+    {
+        // Get action and value
+        if(is_string($actionOrActionCode)) {
+            $action = UserCreditAction::query()
+                ->where("action_code", $actionOrActionCode)
+                ->firstOrFail();
+        }
+        else {
+            $action = $actionOrActionCode;
+        }
+        $value = !is_null($value) ? $value : $action->value;
+
+        // Log it and add it to user table
+        UserCreditLog::log($this->id, $value, $action->action_code, $action->id);
+        $this->credits += $value;
+        $this->save();
+
+        return $this;
     }
 }

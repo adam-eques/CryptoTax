@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFetchingStartedAtToTableCryptoExchangeAccounts extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -20,4 +20,4 @@ class AddFetchingStartedAtToTableCryptoExchangeAccounts extends Migration
             $table->dropColumn("fetching_scheduled_at");
         });
     }
-}
+};

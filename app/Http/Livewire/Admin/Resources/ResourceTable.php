@@ -17,6 +17,7 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
 
     public bool $disableAdd = false;
     public string $resourceClass;
+    public array $relationConditions = [];
     protected Resource $resource;
 
 
@@ -25,7 +26,17 @@ abstract class ResourceTable extends Component implements Tables\Contracts\HasTa
 
     protected function getTableQuery(): Builder
     {
-        return ($this->resource->model())::query();
+        /**
+         * @var Builder $query
+         */
+        $query = ($this->resource->model())::query();
+        if(!empty($this->relationConditions)) {
+            foreach($this->relationConditions AS $key => $val) {
+                $query->where($key, "=", $val);
+            }
+        }
+
+        return $query;
     }
 
 
