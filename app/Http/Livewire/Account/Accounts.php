@@ -71,21 +71,21 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $this->form->fill($this->account->credentials);
         }
     }
-    public function delete_exchange()
+    public function delete_exchange(CryptoExchangeAccount $account)
     {
-        // if ($this->account && $this->account->id == $account->id) {
-        //     $this->account = null;
-        // }
-        // $account->delete();
+        if ($this->account) {
+            $this->account = null;
+        }
+        $account->delete();
 
-        // // Update table
-        // $this->emit("transactionTable.updateTable");
+        // Update table
+        $this->emit("transactionTable.updateTable");
 
-        // // Notify
-        // $this->notification()->success(
-        //     $title = __('Successfully deleted'),
-        //     $description = ''
-        // );
+        // Notify
+        $this->notification()->success(
+            $title = __('Successfully deleted'),
+            $description = ''
+        );
     }
 
     public function render()

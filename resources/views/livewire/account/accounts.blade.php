@@ -1,4 +1,4 @@
-<div class="mx-auto my-5 px-3 xs:px-4 lg:px-5 py-5 xl:max-w-screen-2xl  bg-white rounded-sm shadow" x-data="{ selected: '', category:'', action:'' }">
+<div class="mx-auto my-5 px-3 xs:px-4 lg:px-5 py-5 xl:max-w-screen-2xl  bg-white rounded-sm shadow" x-data="{ selected: '', category:'', action:'', isModalOpen:false }">
     <div class="w-full border-b pb-5">
         <div class="grid grid-cols-1 md:grid-cols-8">
             <div class="flex items-center justify-start space-x-3 col-span-6 py-6">
@@ -86,40 +86,85 @@
                     </div>
                     <div class="flex items-center space-x-3">
                         <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __('$ 698,189.000') }}</p>
-                        <x-button size="xs">
+                        <x-button size="xs" x-show="category!='Blockchain'">
                             <x-icon name="edit" class="w-6" wire:click="edit_exchange" x-on:click="action='edit'"/>
                         </x-button>
-                        <x-button size="xs" variant="danger" wire:click="delete_exchange" x-on:click="action='delete'">
+                        <x-button size="xs" variant="danger" x-on:click="action='delete'" x-on:click="action='delete'">
                             <x-icon name="fas-trash-alt" class="w-6"/>
                         </x-button>
                     </div>
                 </div>
-                {{-- Echange --}}
                 <div x-show="selected!=''">
-                    <div x-show="category == 'Exchanges' && action == 'edit' ">
-                        @if($account)  
-                            <div>
+                    {{-- Echange --}}
+                    <div x-show="category == 'Exchanges'">
+                        <div x-show="action == ''" class="p-5">
+                            <div class="text-center">
+                                <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __("Transaction Details") }}</p>
+                                <p>{{ __() }}</p>
+                            </div>
+                        </div>
+                        <div x-show="action == 'edit'">
+                            @if($account)  
                                 <form wire:submit.prevent="save_exchange">
                                     <div class="p-4">
                                         {{ $this->form }}
-        
+    
                                         <div class="text-center mt-4">
                                             <x-button type="submit">{{ __("Save") }}</x-button>
                                         </div>
                                     </div>
                                 </form>
-                            </div>
-                        @endif
-                    </div>
-                </div>
+                            @endif
+                        </div>
+                        <div x-show="action =='delete'">
 
-                {{-- Blockchains --}}
-                <div x-show="selected!=''">
-                    <div x-show="category == 'Blockchain' && action == 'edit' ">
-                       Edit
+                        </div>
+                    </div>
+                    {{-- Blockchains --}}
+                    <div x-show="category == 'Blockchain'">
+                        <div x-show="action == ''" class="p-5">
+                            <div class="text-center">
+                                <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __("Transaction Details") }}</p>
+                                <p>{{ __() }}</p>
+                            </div>
+                        </div>
+                        <div x-show="selected!=''">
+                            <div x-show="action == 'edit'">
+                               Edit
+                            </div>
+                        </div>
+                        <div x-show="action =='delete'">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- Modal --}}
+    <div 
+        class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"  
+        x-show="action == 'delete'"
+        x-on:click.away="action = ''"
+        x-cloak
+        x-transition
+    >
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-black bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <span class="block sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div class="inline-block align-bottom bg-white rounded-lg px-5 py-5 text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <x-icon name="fas-exclamation-triangle" class="w-14 h-14 m-auto"/>
+                    <h4 class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl mt-5">{{ __('Are you sure?') }}</h4>
+                    <p class="mt-5">{{ __('If you processed, you will lose all your transaction details. Are you sure you want to delete this Transaction?') }}</p>
+                    <div class="flex justify-center space-x-5 items-center mt-10">
+                        <x-button variant="white" x-on:click="action=''">Cancel</x-button>
+                        <x-button variant="danger" x-show="category == 'Exchanges'" wire:click="delete_exchange">Confirm</x-button>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
 </div>
+
+
