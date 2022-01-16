@@ -57,7 +57,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $data = $this->form->getState();
         $this->account->credentials = $data;
         $this->account->save();
-        $this->fetch($this->account);
+        // $this->fetch($this->account);
     }
 
     public function get_selected_account(CryptoExchangeAccount $account){
