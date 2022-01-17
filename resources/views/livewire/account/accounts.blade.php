@@ -24,7 +24,7 @@
                 $rows = [
                     ["label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
                     ["label" => "Wallets", "items" => [ ]],
-                    ["label" => "Blockchain", "items" => $blockchains],
+                    ["label" => "Blockchain", "items" => [  ]],
                     ["label" => "Others", "items" => [ ]],
                 ];
             @endphp
@@ -86,10 +86,10 @@
                     </div>
                     <div class="flex items-center space-x-3">
                         <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __('$ 698,189.000') }}</p>
-                        <x-button size="xs" x-show="category!='Blockchain'">
-                            <x-icon name="edit" class="w-6" wire:click="edit_exchange" x-on:click="action='edit'"/>
+                        <x-button size="xs" wire:click="edit_exchange" x-on:click="action='edit'">
+                            <x-icon name="edit" class="w-6"/>
                         </x-button>
-                        <x-button size="xs" variant="danger" x-on:click="action='delete'" x-on:click="action='delete'">
+                        <x-button size="xs" variant="danger" x-on:click="action='delete'">
                             <x-icon name="fas-trash-alt" class="w-6"/>
                         </x-button>
                     </div>
