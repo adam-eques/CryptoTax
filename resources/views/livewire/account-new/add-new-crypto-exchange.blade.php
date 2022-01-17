@@ -1,9 +1,13 @@
 <div x-data="{item:''}">
     <div class="flex items-center border rounded-lg px-4 py-2">
         <x-icon name="fas-search" class="w-4"/>
-        <input type="text" class="border-0 ring-0 outline-none rounded-lg w-full focus:ring-0" placeholder="Search for an exchange">
+        <input 
+            type="text" 
+            class="border-0 ring-0 outline-none rounded-lg w-full focus:ring-0" 
+            placeholder="Search for an exchange" 
+            wire:model="search" 
+        >
     </div>
-    
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-10 mt-8">
         {{-- Left panel --}}
         <div class="overflow-auto h-full border rounded-md">

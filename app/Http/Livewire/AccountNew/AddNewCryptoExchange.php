@@ -75,8 +75,11 @@ class AddNewCryptoExchange extends Component implements Forms\Contracts\HasForms
             $account->user_id = $user->id;
             $account->credentials = [];
             $account->save();
+            $this->edit_exchange($account);
         }
-        $this->edit_exchange($account);
+        else {
+            $this->edit_exchange($user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first());
+        }
     }
 
     public function edit_exchange( CryptoExchangeAccount $account )
@@ -87,9 +90,11 @@ class AddNewCryptoExchange extends Component implements Forms\Contracts\HasForms
 
     public function render()
     {
-        $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
+        $search = '%' . $this->search . '%';
+        $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts->where("name", "like", $search);
         $exchanges = CryptoExchange::query()
             ->where("active", true)
+            ->where("name", "like", $search)
             ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
             ->get();
         return view('livewire.account-new.add-new-crypto-exchange', [
