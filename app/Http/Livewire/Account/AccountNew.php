@@ -5,8 +5,8 @@ namespace App\Http\Livewire\Account;
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
 use App\Jobs\CryptoExchangeFetchJob;
-use App\Jobs\BlockchainFetchJob;
-use App\Models\Blockchain;
+use App\Jobs\BlockchainAccountFetchJob;
+use App\Models\BlockchainAccount;
 use WireUi\Traits\Actions;
 use Filament\Forms;
 
@@ -17,12 +17,12 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
     use Actions;
     use Forms\Concerns\InteractsWithForms;
-    
+
     // public ?string $search_string = null;
-    
+
     public ?CryptoExchangeAccount $account = null;
     public ?int $newAccountId = null;
-    public ?Blockchain $blockchain = null;
+    public ?BlockchainAccount $blockchain = null;
     public ?string $newBlockchainAddress = null;
 
     protected function getFormSchema(): array
@@ -116,7 +116,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         }
 
         if (! $user->blockchains()->where("address", $this->newBlockchainAddress)->first()) {
-            $blockchain = new Blockchain();
+            $blockchain = new BlockchainAccount();
             $blockchain->address = $this->newBlockchainAddress;
             $blockchain->user_id = $user->id;
             $blockchain->save();

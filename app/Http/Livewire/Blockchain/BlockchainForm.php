@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire\Blockchain;
 
-use App\Jobs\BlockchainFetchJob;
+use App\Jobs\BlockchainAccountFetchJob;
+use App\Models\BlockchainAccount;
 use App\Models\Blockchain;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -11,26 +12,26 @@ class BlockchainForm extends Component
 {
     use Actions;
 
-    public ?Blockchain $blockchain = null;
+    public ?BlockchainAccount $blockchainAccount = null;
     public ?string $newBlockchainAddress = null;
+    public ?int $newBlockchainId= null;
 
 
     public function render()
     {
-        $blockchains = auth()->user()->blockchains;
-
         return view('livewire.blockchain.blockchain-form', [
-            "blockchains" => $blockchains,
+            "blockchainAccounts" => auth()->user()->blockchainAccounts,
+            "blockchains" => Blockchain::all()
         ]);
     }
 
 
-    public function delete(Blockchain $blockchain)
+    public function delete(BlockchainAccount $blockchainAccount)
     {
-        if ($this->blockchain && $this->blockchain->id == $blockchain->id) {
-            $this->blockchain = null;
+        if ($this->blockchainAccount && $this->blockchainAccount->id == $blockchainAccount->id) {
+            $this->blockchainAccount = null;
         }
-        $blockchain->delete();
+        $blockchainAccount->delete();
 
         // Update table
         $this->emit("transactionTable.updateTable");
@@ -43,14 +44,14 @@ class BlockchainForm extends Component
     }
 
 
-    public function fetch(Blockchain $blockchain)
+    public function fetch(BlockchainAccount $blockchainAccount)
     {
         try {
-            $blockchain->fetching_scheduled_at = now();
-            $blockchain->save();
-            BlockchainFetchJob::dispatch($blockchain);
+            $blockchainAccount->fetching_scheduled_at = now();
+            $blockchainAccount->save();
+            BlockchainAccountFetchJob::dispatch($blockchainAccount);
             $this->notification()->info(
-                __("Fetching :name is now scheduled", ["name" => $blockchain->getName()]),
+                __("Fetching :name is now scheduled", ["name" => $blockchainAccount->getName()]),
                 "Please check blockchain transactions in a couple of minutes"
             );
         }
@@ -64,22 +65,37 @@ class BlockchainForm extends Component
     {
         $user = auth()->user();
 
+        if (! $this->newBlockchainId) {
+            $this->notification()->info(__("Please select a blockchain"));
+            return;
+        }
         if (! $this->newBlockchainAddress) {
             $this->notification()->info(__("Please enter a blockchain address"));
 
             return;
         }
 
-        if (! $user->blockchains()->where("address", $this->newBlockchainAddress)->first()) {
-            $blockchain = new Blockchain();
-            $blockchain->address = $this->newBlockchainAddress;
-            $blockchain->user_id = $user->id;
-            $blockchain->save();
+        // Check
+        $exists = $user
+            ->blockchainAccounts()
+            ->where("blockchain_id", $this->newBlockchainId)
+            ->where("address", $this->newBlockchainAddress)
+            ->first();
 
-            $this->fetch($blockchain);
+        // Create it
+        if (!$exists) {
+            $blockchainAccount = new BlockchainAccount([
+                "user_id" => $user->id,
+                "blockchain_id" => $this->newBlockchainId,
+                "address" => $this->newBlockchainAddress
+            ]);
+            $blockchainAccount->save();
+            $this->fetch($blockchainAccount);
+            $this->newBlockchainAddress = null;
+            $this->newBlockchainId = null;
         }
         else {
-            $this->notification()->info(__("Blockchain address already exists"));
+            $this->notification()->info(__("Blockchain address already exists in your account"));
             return;
         }
     }

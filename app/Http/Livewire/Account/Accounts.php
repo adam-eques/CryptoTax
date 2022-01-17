@@ -7,8 +7,8 @@ use Livewire\Component;
 use App\Jobs\CryptoExchangeFetchJob;
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
-use App\Jobs\BlockchainFetchJob;
-use App\Models\Blockchain;
+use App\Jobs\BlockchainAccountFetchJob;
+use App\Models\BlockchainAccount;
 use Filament\Forms;
 use WireUi\Traits\Actions;
 
