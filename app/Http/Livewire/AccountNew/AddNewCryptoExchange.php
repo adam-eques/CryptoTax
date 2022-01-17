@@ -1,29 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Account;
+namespace App\Http\Livewire\AccountNew;
 
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
-use App\Jobs\CryptoExchangeFetchJob;
-use App\Jobs\BlockchainAccountFetchJob;
-use App\Models\BlockchainAccount;
 use WireUi\Traits\Actions;
 use Filament\Forms;
 
 use Livewire\Component;
 
-class AccountNew extends Component implements Forms\Contracts\HasForms
+class AddNewCryptoExchange extends Component implements Forms\Contracts\HasForms
 {
-
     use Actions;
     use Forms\Concerns\InteractsWithForms;
 
-    // public ?string $search_string = null;
+    public ?string $search = null;
 
     public ?CryptoExchangeAccount $account = null;
     public ?int $newAccountId = null;
-    public ?BlockchainAccount $blockchain = null;
-    public ?string $newBlockchainAddress = null;
 
     protected function getFormSchema(): array
     {
@@ -46,20 +40,6 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         ];
     }
 
-    public function render()
-    {
-        $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
-        $exchanges = CryptoExchange::query()
-            ->where("active", true)
-            ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
-            ->get();
-
-        return view('livewire.account.account-new', [
-            "exchanges" => $exchanges,
-            "cryptoExchangeAccounts" => $cryptoExchangeAccounts
-        ]);
-    }
-
     public function isRequiredField(string $fieldName): bool
     {
         if ($this->account) {
@@ -73,7 +53,6 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     }
 
     //Functions for Exchange
-
     public function save_exchange()
     {
         $data = $this->form->getState();
@@ -81,7 +60,6 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $this->account->save();
         $this->notification()->info(__("Exchange Account is added successfully"));
     }
-
 
     public function get_new_account_id( int $id )
     {
@@ -94,8 +72,11 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $account->user_id = $user->id;
             $account->credentials = [];
             $account->save();
+            $this->edit_exchange($account);
         }
-        $this->edit_exchange($account);
+        else {
+            $this->edit_exchange($user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first());
+        }
     }
 
     public function edit_exchange( CryptoExchangeAccount $account )
@@ -104,27 +85,30 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $this->form->fill($account->credentials);
     }
 
-    //Functions for Blockchain
-    public function add_blockchain()
+    public function render()
     {
-        $user = auth()->user();
+        $search = '%' . $this->search . '%';
+        $exchanges = CryptoExchange::query()
+            ->where("active", true)
+            ->where("name", "like", $search)
+            ->get();
 
-        if (! $this->newBlockchainAddress) {
-            $this->notification()->info(__("Please enter a blockchain address"));
+        $exchanges_array = $exchanges->toArray();
 
-            return;
-        }
+        $exchanges_array = array_filter($exchanges_array, function($exchange){
+            $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts->toArray();
+            foreach ($cryptoExchangeAccounts as $account) {
+                if($account['crypto_exchange_id'] == $exchange['id']){
+                    if(array_key_exists("apiKey", $account['credentials'])){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        });
 
-        if (! $user->blockchainAccounts()->where("address", $this->newBlockchainAddress)->first()) {
-            $blockchain = new BlockchainAccount();
-            $blockchain->address = $this->newBlockchainAddress;
-            $blockchain->user_id = $user->id;
-            $blockchain->save();
-            $this->notification()->info(__("Blockchain address is added successfully"));
-        }
-        else {
-            $this->notification()->info(__("Blockchain address already exists"));
-            return;
-        }
+        return view('livewire.account-new.add-new-crypto-exchange', [
+            "exchanges_array" => $exchanges_array
+        ]);
     }
 }
