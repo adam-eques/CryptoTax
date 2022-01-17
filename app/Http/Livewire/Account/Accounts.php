@@ -91,10 +91,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
-        $blockchains = auth()->user()->blockchains;
+        $blockchainAccounts = auth()->user()->blockchainAccounts;
         return view('livewire.account.accounts', [
             "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
-            "blockchains" => $blockchains
+            "blockchainAccounts" => $blockchainAccounts
         ]);
     }
 }
