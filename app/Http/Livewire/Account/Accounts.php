@@ -73,7 +73,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     }
     public function delete_exchange(CryptoExchangeAccount $account)
     {
-        if ($this->account) {
+        if ($this->account && $this->account->id == $account->id) {
             $this->account = null;
         }
         $account->delete();
