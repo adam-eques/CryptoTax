@@ -4,9 +4,6 @@ namespace App\Http\Livewire\AccountNew;
 
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
-use App\Jobs\CryptoExchangeFetchJob;
-use App\Jobs\BlockchainFetchJob;
-use App\Models\Blockchain;
 use WireUi\Traits\Actions;
 use Filament\Forms;
 
@@ -16,9 +13,9 @@ class AddNewCryptoExchange extends Component implements Forms\Contracts\HasForms
 {
     use Actions;
     use Forms\Concerns\InteractsWithForms;
-    
+
     public ?string $search = null;
-    
+
     public ?CryptoExchangeAccount $account = null;
     public ?int $newAccountId = null;
 

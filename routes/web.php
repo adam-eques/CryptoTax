@@ -40,9 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::view('/services', 'pages.customer.service.service')->name('services');
 
     // Transactions
-    Route::get('/transactions', [Controllers\Customer\TransactionController::class, 'index'])
-        ->name('transactions');
-    Route::view('/transactions1', 'pages.customer.transactions.transactions1')->name('transactions1');
+    Route::view('/transactions', 'pages.customer.transactions.transactions')->name('transactions');
 
     // Specials]
     Route::view('/account/new', 'pages.customer.account.new')->name('account.new');
@@ -54,6 +52,12 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
 
     //Invite Friends
     Route::view('/invite', 'pages.customer.invite.invite')->name('invite');
+
+    // Test only
+    Route::prefix("test")->group(function() {
+        Route::get('transactions', [Controllers\Customer\TransactionController::class, 'index'])
+            ->name('test.transactions');
+    });
 });
 
 

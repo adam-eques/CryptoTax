@@ -7,8 +7,8 @@ use Livewire\Component;
 use App\Jobs\CryptoExchangeFetchJob;
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
-use App\Jobs\BlockchainFetchJob;
-use App\Models\Blockchain;
+use App\Jobs\BlockchainAccountFetchJob;
+use App\Models\BlockchainAccount;
 use Filament\Forms;
 use WireUi\Traits\Actions;
 
@@ -91,10 +91,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
-        $blockchains = auth()->user()->blockchains;
+        $blockchainAccounts = auth()->user()->blockchainAccounts;
         return view('livewire.account.accounts', [
             "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
-            "blockchains" => $blockchains
+            "blockchainAccounts" => $blockchainAccounts
         ]);
     }
 }

@@ -24,7 +24,7 @@
                 $rows = [
                     ["label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
                     ["label" => "Wallets", "items" => [ ]],
-                    ["label" => "Blockchain", "items" => [  ]],
+                    ["label" => "Blockchain", "items" => $blockchainAccounts],
                     ["label" => "Others", "items" => [ ]],
                 ];
             @endphp
@@ -34,7 +34,7 @@
                         <div class="flex flex-col divide-y divide-gray-300 scrollbar overflow-auto max-h-100" x-on:click="category=`{{ $row['label'] }}`; action=''">
                             @foreach($row["items"] as $item)
                                 @if (  $row['label'] == 'Exchanges' && $item->credentials )
-                                    <button 
+                                    <button
                                         class="flex justify-between space-x-4 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         x-on:click="selected = `{{ $item->getName() }}`"
                                         wire:click="get_selected_account({{ $item->id }})"
@@ -44,15 +44,15 @@
                                             <p class="text-gray-400 text-xs xl:text-md">Updating...</p>
                                         </div>
                                         <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
-                                        <div 
-                                            class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"     
+                                        <div
+                                            class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
                                             x-transition
                                             x-bind:class="selected == `{{ $item->getName() }}` ? 'absolute' : 'hidden'"
                                         ></div>
                                     </button>
                                 @endif
                                 @if ($row['label'] == 'Blockchain')
-                                    <button 
+                                    <button
                                         class="flex justify-between space-x-4 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         x-on:click="selected = `{{ $item->getName() }}`"
                                         {{-- wire:click="get_selected_account({{ $item->id }})" --}}
@@ -62,8 +62,8 @@
                                             <p class="text-gray-400 text-xs xl:text-md">Updating...</p>
                                         </div>
                                         <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
-                                        <div 
-                                            class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"     
+                                        <div
+                                            class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
                                             x-transition
                                             x-bind:class="selected == `{{ $item->getName() }}` ? 'absolute' : 'hidden'"
                                         ></div>
@@ -104,11 +104,11 @@
                             </div>
                         </div>
                         <div x-show="action == 'edit'">
-                            @if($account)  
+                            @if($account)
                                 <form wire:submit.prevent="save_exchange">
                                     <div class="p-4">
                                         {{ $this->form }}
-    
+
                                         <div class="text-center mt-4">
                                             <x-button type="submit">{{ __("Save") }}</x-button>
                                         </div>
@@ -143,8 +143,8 @@
     </div>
 
     {{-- Modal --}}
-    <div 
-        class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"  
+    <div
+        class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
         x-show="action == 'delete'"
         x-on:click.away="action = ''"
         x-cloak
@@ -161,7 +161,7 @@
                         <x-button variant="white" x-on:click="action=''">Cancel</x-button>
                         <x-button variant="danger" x-show="category == 'Exchanges'" wire:click="delete_exchange">Confirm</x-button>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>

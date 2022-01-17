@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property \Illuminate\Support\Collection<BlockchainAsset> $blockchainAssets
+ *
+ * @property int $blockchain_account_id
+ * @property int $user_id
+ * @property \Carbon\Carbon $created_at
+ *
+ * @property BlockchainAccount $blockchain
+ * @property User $user
  */
 class BlockchainTransaction extends Model
 {
@@ -15,8 +21,14 @@ class BlockchainTransaction extends Model
     protected $guarded = [];
 
 
-    public function blockchainAssets(): BelongsTo
+    public function blockchainAccount(): BelongsTo
     {
-        return $this->belongsTo(BlockchainAsset::class);
+        return $this->belongsTo(BlockchainAccount::class);
+    }
+
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

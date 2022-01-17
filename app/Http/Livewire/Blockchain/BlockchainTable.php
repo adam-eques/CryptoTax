@@ -21,27 +21,21 @@ class BlockchainTable extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return BlockchainTransaction::whereIn("blockchain_asset_id", function(\Illuminate\Database\Query\Builder $query){
-            $query->select("id")
-                ->from("blockchain_assets")
-                ->whereIn("blockchain_id", auth()->user()->blockchains->pluck("id"));
-        });
+        return BlockchainTransaction::query()
+            ->where("user_id", auth()->user()->id);
     }
 
 
     protected function getTableFilters(): array
     {
-        $blockchainOptions = auth()->user()->blockchains->pluck("address", "id");
+        $blockchainOptions = auth()->user()->blockchainAccounts->pluck("address", "id");
         return [
-            SelectFilter::make('blockchain_asset_id')
+            SelectFilter::make('blockchain_id')
                 ->label(__("Blockchain"))
                 ->query(function (Builder $query, array $data): Builder {
                     if(! empty($data["value"])) {
                         $id = $data["value"];
-                        $query->whereIn(
-                            "blockchain_asset_id",
-                            auth()->user()->blockchainAssets()->where("blockchain_id", $id)->get()->pluck("id")
-                        );
+                        $query->where("blockchain_account_id", $id);
                     }
 
                     return $query;
@@ -69,7 +63,7 @@ class BlockchainTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make("to")->sortable(true),
             TextColumn::make("transaction_index")->sortable(true),
             TextColumn::make("txreceipt_status")->sortable(true),
-            TextColumn::make("blockchainAssets.blockchain.address")->sortable(true),
+            TextColumn::make("blockchainAccount.address")->sortable(true),
             TextColumn::make("block_hash")->sortable(true),
             TextColumn::make("block_number")->searchable(true),
             TextColumn::make("input")->sortable(true),

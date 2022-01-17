@@ -14,11 +14,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            // Users
             TestUserSeeder::class,
             UserCreditActionSeeder::class,
             UserAccountTypeSeeder::class,
+
+            // Crypto Exchanges
             CryptoExchangeSeeder::class,
             CryptoExchangeAccountSeeder::class,
+
+            // Blockchains
+            BlockchainSeeder::class
         ]);
     }
 }

@@ -17,11 +17,11 @@
             <x-icon name="transaction" class="w-10 h-10"/>
             <p class="mr-3 text-lg font-extrabold">{{ __('Recent Transaction') }}</p>
         </div>
-        <x-button variant="primary" tag="a" href="{{ route('customer.transactions1') }}">{{ __('View all') }}</x-button>
+        <x-button variant="primary" tag="a" href="{{ route('customer.transactions') }}">{{ __('View all') }}</x-button>
     </div>
     <div class="overflow-auto mt-7">
         <div class="space-y-4 min-w-cmd">
-            @foreach ($transactios as $item)                
+            @foreach ($transactios as $item)
                 <div class="flex items-center justify-between border p-5 rounded-lg {{ $item['type'] == 'Buy'?'bg-lightgreen':' bg-lightpink' }}">
                     <div class="flex items-center justify-between space-x-6">
                         <div class="w-12 h-12 rounded-lg">

@@ -3,18 +3,32 @@
 namespace App\Models;
 
 use App\Helpers\BlockchainHelper;
-use App\Blockchains\BlockChainApi;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property Collection<\App\Models\BlockchainTransaction> $blockchainTransactions
- * @property \App\Models\Blockchain $blockchain
+ * @property int $user_id
+ * @property int $blockchain_id
+ * @property string $address
+ * @property float $balance
+ * @property \Carbon\Carbon $fetched_at
+ * @property \Carbon\Carbon $fetching_scheduled_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ *
+ * @property Blockchain $blockchain
+ * @property User $user
+ * @property \Illuminate\Support\Collection<\App\Models\BlockchainTransaction> $blockchainTransactions
  */
-class BlockchainAsset extends Model
+class BlockchainAccount extends Model
 {
     protected $guarded = [];
+
+    protected $casts = [
+        'fetched_at' => 'datetime',
+        'fetching_scheduled_at' => 'datetime',
+    ];
 
 
     public static function boot()
@@ -25,6 +39,16 @@ class BlockchainAsset extends Model
             $item->blockchainTransactions()->delete();
         });
     }
+
+
+    /**
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     public function blockchain(): BelongsTo
     {
@@ -38,19 +62,41 @@ class BlockchainAsset extends Model
     }
 
 
-    public function updateTransactions(BlockChainApi $api): self
+    public function getName(): string
     {
-        $assetId = $this->id;
+        return $this->blockchain->getName() . ": " . $this->address;
+    }
+
+
+    public function fetchApi()
+    {
+        /**
+         * @var \App\Blockchains\BscScanBlockChainApi $api
+         */
+        // Create api
+        $class = "\\App\\Blockchains\\" . $this->blockchain->class;
+        $api = new $class();
+        $api->setAddress($this->address);
+        $now = now();
+
+        // Start transaction
+        \DB::beginTransaction();
+
+        // Get Balance
+        $this->balance = $api->getBalance(true);
+
+        // Get Transactions
+        $userId = $this->user_id;
+        $blockchainAccountId = $this->id;
         $lastEntry = $this->blockchainTransactions()
             ->orderBy("time_stamp", "desc")
             ->first();
         $lastTimeStamp = $lastEntry?->time_stamp; // 1639314121
-
-        // TODO: Paging, etc.
         $transactions = $api->getTransactionsSince($lastTimeStamp + 1);
-        $data = collect($transactions)->map(function($item) use ($assetId) {
+        $data = collect($transactions)->map(function($item) use ($blockchainAccountId, $userId) {
             return [
-                "blockchain_asset_id" => $assetId,
+                "blockchain_account_id" => $blockchainAccountId,
+                "user_id" => $userId,
                 "block_hash" => $item["blockHash"],
                 "block_number" => $item["blockNumber"],
                 "confirmations" => $item["confirmations"],
@@ -71,8 +117,15 @@ class BlockchainAsset extends Model
                 "value" => BlockchainHelper::convertToDecimalString($item["value"])
             ];
         });
-
         BlockchainTransaction::insert($data->toArray());
+
+        // Save fetch staties
+        $this->fetched_at = $now;
+        $this->fetching_scheduled_at = null;
+        $this->save();
+
+        // End Transaction
+        \DB::commit();
 
         return $this;
     }

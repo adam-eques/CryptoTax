@@ -203,7 +203,7 @@ class NavigationService
             ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.account',
                 "children" => [
                     ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
-                    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions1"],
+                    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
                     ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
                 ],
                 "actions" => [
