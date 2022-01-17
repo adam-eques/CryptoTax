@@ -12,39 +12,20 @@
         {{-- Left panel --}}
         <div class="overflow-auto h-full border rounded-md">
             <div class="h-110">
-                @foreach($cryptoExchangeAccounts as $row)
-                    @if (!count($row->credentials))                                
-                        <div 
-                            class="grid grid-cols-5 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                            x-on:click="item = `{{ $row->getName() }}`"
-                            x-bind:class = "item == `{{ $row->getName() }}`? 'bg-gray-100' : '' "
-                            wire:click = "edit_exchange({{ $row->id }})"
-                        >
-                            <x-icon name="{{ $row->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
-                            <p class="col-span-2">{{ __($row->getName()) }}</p>
-                            <div class="w-full flex justify-end">
-                                <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $row->getName() }}`"/>
-                            </div>
+                @foreach ($exchanges_array as $exchange)
+                    <div 
+                        class="grid grid-cols-5 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
+                        x-on:click="item = `{{ $exchange['name'] }}`"
+                        x-bind:class = "item == `{{ $exchange['name'] }}`? 'bg-gray-100' : '' "
+                        wire:click = "get_new_account_id({{ $exchange['id'] }})"
+                    >
+                        <x-icon name="{{ $exchange['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
+                        <p class="col-span-2">{{ __($exchange['name']) }}</p>
+                        <div class="w-full flex justify-end">
+                            <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $exchange['name'] }}`"/>
                         </div>
-                    @endif
+                    </div>
                 @endforeach
-
-                @if ($exchanges->count())
-                    @foreach ($exchanges as $exchange)
-                        <div 
-                            class="grid grid-cols-5 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                            x-on:click="item = `{{ $exchange->getName() }}`"
-                            x-bind:class = "item == `{{ $exchange->getName() }}`? 'bg-gray-100' : '' "
-                            wire:click = "get_new_account_id({{ $exchange->id }})"
-                        >
-                            <x-icon name="{{ $exchange->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
-                            <p class="col-span-2">{{ __($exchange->getName()) }}</p>
-                            <div class="w-full flex justify-end">
-                                <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $exchange->getName() }}`"/>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
             </div>
         </div>
     

@@ -91,15 +91,27 @@ class AddNewCryptoExchange extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         $search = '%' . $this->search . '%';
-        $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts->where("name", "like", $search);
         $exchanges = CryptoExchange::query()
             ->where("active", true)
             ->where("name", "like", $search)
-            ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
             ->get();
+
+        $exchanges_array = $exchanges->toArray();
+
+        $exchanges_array = array_filter($exchanges_array, function($exchange){
+            $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts->toArray();
+            foreach ($cryptoExchangeAccounts as $account) {
+                if($account['crypto_exchange_id'] == $exchange['id']){
+                    if(array_key_exists("apiKey", $account['credentials'])){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        });
+
         return view('livewire.account-new.add-new-crypto-exchange', [
-            "exchanges" => $exchanges,
-            "cryptoExchangeAccounts" => $cryptoExchangeAccounts
+            "exchanges_array" => $exchanges_array
         ]);
     }
 }
