@@ -115,7 +115,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             return;
         }
 
-        if (! $user->blockchains()->where("address", $this->newBlockchainAddress)->first()) {
+        if (! $user->blockchainAccounts()->where("address", $this->newBlockchainAddress)->first()) {
             $blockchain = new BlockchainAccount();
             $blockchain->address = $this->newBlockchainAddress;
             $blockchain->user_id = $user->id;
