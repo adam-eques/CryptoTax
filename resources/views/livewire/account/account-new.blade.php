@@ -59,7 +59,7 @@
                                     x-bind:class = "item == `{{ $exchange->getName() }}`? 'bg-gray-100' : '' "
                                     wire:click = "get_new_account_id({{ $exchange->id }})"
                                 >
-                                    <x-icon name="{{ $row->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
+                                    <x-icon name="{{ $exchange->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
                                     <p class="col-span-2">{{ __($exchange->getName()) }}</p>
                                     <div class="w-full flex justify-end">
                                         <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $exchange->getName() }}`"/>
