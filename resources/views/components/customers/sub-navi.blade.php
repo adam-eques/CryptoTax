@@ -18,7 +18,7 @@
                 @if(!empty($subnavi["actions"]))
                     <div class="flex items-center gap-1 lg:gap-3">
                         <x-icon name="wallet" class="w-6 h-6"/>
-                        <p class="text-gray-400 text-xs sm:text-base">{{ __('Balance') }} <span class=" text-lg sm:text-xl font-bold text-primary">{{__('$8623')}}</span> {{ __('Credits') }}</p>
+                        <p class="text-gray-400 text-xs sm:text-base">{{ __('Balance') }} <span class=" text-lg sm:text-xl font-bold text-primary">{{ auth()->user()->credits }}</span> {{ __('Credits') }}</p>
                         @foreach($subnavi["actions"] as $action)
                             <a href="{{ route($action['route']) }}"
                                class="inline-flex items-center justify-center gap-2 p-2 md:px-4 font-medium tracking-wide hover:text-white rounded hover:bg-secondary focus:shadow-outline focus:outline-none outline-none {{ $action["color"] }}">
