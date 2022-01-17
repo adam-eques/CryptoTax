@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\BlockchainAccount;
+use App\Models\Blockchain;
 use Illuminate\Database\Seeder;
 
 class BlockchainSeeder extends Seeder
@@ -19,7 +19,7 @@ class BlockchainSeeder extends Seeder
                 "class" => "CronosBlockChainApi"
             ],
         ])->each(function($data){
-            BlockchainAccount::upsert($data, []);
+            Blockchain::upsert($data, []);
         });
     }
 }
