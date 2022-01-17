@@ -79,7 +79,7 @@
         <!-- Right Panel -->
         <div class="px-2 lg:px-5 md:w-3/5">
             <div class="w-full h-full border rounded">
-                <div class="w-full flex justify-between py-3 lg:py-6 px-4 lg:px-8 bg-gray-100 rounded" x-show="selected!=''">
+                <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded" x-show="selected!=''">
                     <div>
                         <p x-text="selected" class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl"></p>
                         <p class="text-gray-400">{{ __('Updating...') }}</p>
