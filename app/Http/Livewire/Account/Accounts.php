@@ -57,7 +57,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $data = $this->form->getState();
         $this->account->credentials = $data;
         $this->account->save();
-        $this->fetch($this->account);
+        // $this->fetch($this->account);
     }
 
     public function get_selected_account(CryptoExchangeAccount $account){
@@ -73,7 +73,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     }
     public function delete_exchange(CryptoExchangeAccount $account)
     {
-        if ($this->account) {
+        if ($this->account && $this->account->id == $account->id) {
             $this->account = null;
         }
         $account->delete();

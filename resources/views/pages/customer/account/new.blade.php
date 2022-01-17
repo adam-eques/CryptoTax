@@ -1,5 +1,7 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
+    ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
     ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions1"],
+    ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
 ], [
     ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))

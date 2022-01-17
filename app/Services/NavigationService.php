@@ -9,6 +9,8 @@ use App\Http\Livewire\Admin\Customer\CustomerResource;
 use App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource;
 use App\Http\Livewire\Admin\UserCreditAction\UserCreditActionResource;
 
+use Illuminate\Support\Facades\Route;
+
 class NavigationService
 {
     /**
@@ -200,7 +202,9 @@ class NavigationService
             ],
             ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.account',
                 "children" => [
-                    ["label" => __('Transactions'), 'icon' => 'transaction-2', 'route' => 'customer.transactions1'],
+                    ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
+                    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions1"],
+                    ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
