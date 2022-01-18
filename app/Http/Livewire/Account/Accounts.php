@@ -18,6 +18,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     use Forms\Concerns\InteractsWithForms;
 
     public ?CryptoExchangeAccount $account = null;
+    public ?BlockchainAccount $blockchain = null;
+    public ?int $selected_category = null;
 
     protected function getFormSchema(): array
     {
@@ -38,6 +40,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
                 ->required()
                 ->placeholder(__("Your API passphrase")),
         ];
+    }
+
+    public function get_selected_category(int $id){
+        $this->selected_category = $id;
     }
 
     public function isRequiredField(string $fieldName): bool
@@ -62,6 +68,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function get_selected_account(CryptoExchangeAccount $account){
         $this->account = $account;
+    }
+
+    public function get_selected_blockchain(BlockchainAccount $blockchainAccount){
+        $this->blockchain = $blockchainAccount;
     }
 
     public function edit_exchange()

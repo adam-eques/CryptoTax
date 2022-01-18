@@ -22,23 +22,24 @@
         <div class="px-2 lg:px-5 md:w-2/5">
             @php
                 $rows = [
-                    ["label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
-                    ["label" => "Wallets", "items" => [ ]],
-                    ["label" => "Blockchain", "items" => $blockchainAccounts],
-                    ["label" => "Others", "items" => [ ]],
+                    ["id" => 1, "label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
+                    ["id" => 2, "label" => "Wallets", "items" => [ ]],
+                    ["id" => 3, "label" => "Blockchain", "items" => $blockchainAccounts],
+                    ["id" => 4, "label" => "Others", "items" => [ ]],
                 ];
             @endphp
             <div class="flex flex-col gap-5 text-gray-900 font-medium">
                 @foreach($rows as $index => $row)
                     <x-toggle-block :label="$row['label']" :opened="$index === 0">
-                        <div class="flex flex-col divide-y divide-gray-300 scrollbar overflow-auto max-h-100" x-on:click="category=`{{ $row['label'] }}`; action=''">
+                        <div class="flex flex-col divide-y divide-gray-300 scrollbar overflow-auto max-h-100" wire:click="get_selected_category({{$row['id']}})" x-on:click="category=`{{ $row['label'] }}`; action=''">
                             @foreach($row["items"] as $item)
                                 @if (  $row['label'] == 'Exchanges' && $item->credentials )
                                     <button
-                                        class="flex justify-between space-x-4 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
+                                        class="flex justify-between space-x-2 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         x-on:click="selected = `{{ $item->getName() }}`"
                                         wire:click="get_selected_account({{ $item->id }})"
                                     >
+                                        <x-icon name="{{ $item->getName() }}" class="w-30 h-auto"/>
                                         <div class="space-y-1 text-left">
                                             <h3 class="xl:text-lg font-semibold text-gray-700">{{ $item->getName() }}</h3>
                                             <p class="text-gray-400 text-xs xl:text-md">Updating...</p>
@@ -53,15 +54,16 @@
                                 @endif
                                 @if ($row['label'] == 'Blockchain')
                                     <button
-                                        class="flex justify-between space-x-4 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
+                                        class="flex justify-between space-x-2 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         x-on:click="selected = `{{ $item->getName() }}`"
-                                        {{-- wire:click="get_selected_account({{ $item->id }})" --}}
+                                        wire:click="get_selected_blockchain({{ $item->id }})"
                                     >
+                                        <x-icon name="{{ explode(':',  $item->getName())[0] }}" class="w-30 h-auto"/>
                                         <div class="space-y-1 text-left">
-                                            <h3 class="xl:text-lg font-semibold text-gray-700">{{ $item->getName() }}</h3>
+                                            <h3 class="xl:text-lg font-semibold text-gray-700 uppercase">{{explode(':',  $item->getName())[0] }}</h3>
                                             <p class="text-gray-400 text-xs xl:text-md">Updating...</p>
                                         </div>
-                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
+                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["balance"], 2) }}</p>
                                         <div
                                             class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
                                             x-transition
@@ -79,24 +81,23 @@
         <!-- Right Panel -->
         <div class="px-2 lg:px-5 md:w-3/5">
             <div class="w-full h-full border rounded">
-                <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded" x-show="selected!=''">
-                    <div>
-                        <p x-text="selected" class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl"></p>
-                        <p class="text-gray-400">{{ __('Updating...') }}</p>
+                @if ($selected_category == 1)
+                    <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded" x-show="selected!=''">
+                        <div>
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ $account->getName() }}</p>
+                            <p class="text-gray-400">{{ __('Updating...') }}</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat(0.00, 2) }}</p>
+                            <x-button size="xs" wire:click="edit_exchange" x-on:click="action='edit'">
+                                <x-icon name="edit" class="w-6"/>
+                            </x-button>
+                            <x-button size="xs" variant="danger" x-on:click="action='delete'">
+                                <x-icon name="fas-trash-alt" class="w-6"/>
+                            </x-button>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __('$ 698,189.000') }}</p>
-                        <x-button size="xs" wire:click="edit_exchange" x-on:click="action='edit'">
-                            <x-icon name="edit" class="w-6"/>
-                        </x-button>
-                        <x-button size="xs" variant="danger" x-on:click="action='delete'">
-                            <x-icon name="fas-trash-alt" class="w-6"/>
-                        </x-button>
-                    </div>
-                </div>
-                <div x-show="selected!=''">
-                    {{-- Echange --}}
-                    <div x-show="category == 'Exchanges'">
+                    <div x-show="selected!=''">
                         <div x-show="action == ''" class="p-5">
                             <div class="text-center">
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __("Transaction Details") }}</p>
@@ -120,8 +121,24 @@
 
                         </div>
                     </div>
-                    {{-- Blockchains --}}
-                    <div x-show="category == 'Blockchain'">
+                @endif
+                @if ($selected_category == 3)
+                    <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded" x-show="selected!=''">
+                        <div>
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl uppercase">{{ explode(':',  $item->getName())[0] }}</p>
+                            <p class="text-gray-400">{{ __('Updating...') }}</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($blockchain["balance"], 2) }}</p>
+                            <x-button size="xs" x-on:click="action='edit'">
+                                <x-icon name="edit" class="w-6"/>
+                            </x-button>
+                            <x-button size="xs" variant="danger" x-on:click="action='delete'">
+                                <x-icon name="fas-trash-alt" class="w-6"/>
+                            </x-button>
+                        </div>
+                    </div>
+                    <div x-show="selected!=''">
                         <div x-show="action == ''" class="p-5">
                             <div class="text-center">
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __("Transaction Details") }}</p>
@@ -130,14 +147,15 @@
                         </div>
                         <div x-show="selected!=''">
                             <div x-show="action == 'edit'">
-                               Edit
+                                Edit
                             </div>
                         </div>
                         <div x-show="action =='delete'">
-
+    
                         </div>
                     </div>
-                </div>
+                @endif
+                
             </div>
         </div>
     </div>
