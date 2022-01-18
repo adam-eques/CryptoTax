@@ -10,9 +10,13 @@
                     <x-button variant="white" class="border-primary col-span-1">
                         <x-icon name="sync" class="w-7 mr-2" wire:click="fetch_exchange({{$account}})"/>{{ __('Sync ') }}
                     </x-button>
-                @elseif ($selected_category == 2 && $blockchain)
+                @elseif ($selected_category == 3 && $blockchain)
                     <x-button variant="white" class="border-primary col-span-1">
-                        <x-icon name="sync" class="w-7 mr-2" wire:click="fetch_exchange({{$blockchain}})"/>{{ __('Sync ') }}
+                        <x-icon name="sync" class="w-7 mr-2" wire:click="fetch_blockchain({{$blockchain}})"/>{{ __('Sync ') }}
+                    </x-button>
+                @else
+                    <x-button variant="white" class="border-primary col-span-1" :disabled="true">
+                        <x-icon name="sync" class="w-7 mr-2" wire:click="fetch_blockchain({{$blockchain}})"/>{{ __('Sync ') }}
                     </x-button>
                 @endif
                 <x-button class="col-span-2 justify-center" tag="a" href="{{ route('customer.account.new') }}">
