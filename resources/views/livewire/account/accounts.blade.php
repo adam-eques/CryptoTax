@@ -147,7 +147,10 @@
                         </div>
                         <div x-show="selected!=''">
                             <div x-show="action == 'edit'">
-                                Edit
+                                <div class="mt-10 flex justify-center items-center">
+                                    <input class=" h-10 transition duration-75 px-3 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                                    <x-button wire:click="add">Add</x-button>
+                                </div>
                             </div>
                         </div>
                         <div x-show="action =='delete'">
@@ -177,7 +180,12 @@
                     <p class="mt-5">{{ __('If you processed, you will lose all your transaction details. Are you sure you want to delete this Transaction?') }}</p>
                     <div class="flex justify-center space-x-5 items-center mt-10">
                         <x-button variant="white" x-on:click="action=''">Cancel</x-button>
-                        <x-button variant="danger" x-show="category == 'Exchanges'" wire:click="delete_exchange">Confirm</x-button>
+                        @if($selected_category == 1)
+                            <x-button variant="danger" wire:click="delete_exchange">Confirm</x-button>
+                        @endif
+                        @if($selected_category == 3)
+                            <x-button variant="danger" >Confirm</x-button>
+                        @endif
                     </div>
                 </div>
             </div>
