@@ -19,7 +19,14 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public ?CryptoExchangeAccount $account = null;
     public ?BlockchainAccount $blockchain = null;
-    public ?int $selected_category = null;
+
+    public function __construct()
+    {
+        $this->blockchain = BlockchainAccount::query()
+        ->where('user_id', auth()->user()->id)
+        ->orderBy('balance', 'desc')
+        ->first();
+    }
 
     protected function getFormSchema(): array
     {
@@ -40,10 +47,6 @@ class Accounts extends Component implements Forms\Contracts\HasForms
                 ->required()
                 ->placeholder(__("Your API passphrase")),
         ];
-    }
-
-    public function get_selected_category(int $id){
-        $this->selected_category = $id;
     }
 
     public function isRequiredField(string $fieldName): bool
@@ -109,6 +112,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function get_selected_account(CryptoExchangeAccount $account){
         $this->account = $account;
+        $this->blockchain = null;
     }
 
     // blockchains
@@ -147,16 +151,33 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function get_selected_blockchain(BlockchainAccount $blockchainAccount){
         $this->blockchain = $blockchainAccount;
+        $this->account = null;
     }
-
 
     public function render()
     {
-        $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
-        $blockchainAccounts = auth()->user()->blockchainAccounts;
+        $cryptoExchangeAccounts = CryptoExchangeAccount::query()
+            ->where('user_id', auth()->user()->id)
+            ->whereJsonLength('credentials','>', 0)
+            ->get();
+
+        $blockchainAccounts = BlockchainAccount::query()
+            ->where('user_id', auth()->user()->id)
+            ->orderBy('balance', 'desc')
+            ->get();
+
+        // dd($cryptoExchangeAccounts->toArray());    
+        $rows = [
+            ["id" => 1, "label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
+            ["id" => 2, "label" => "Wallets", "items" => [ ]],
+            ["id" => 3, "label" => "Blockchain", "items" => $blockchainAccounts],
+            ["id" => 4, "label" => "Others", "items" => [ ]],
+        ];
+
         return view('livewire.account.accounts', [
             "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
-            "blockchainAccounts" => $blockchainAccounts
+            "blockchainAccounts" => $blockchainAccounts,
+            "rows" => $rows
         ]);
     }
 }

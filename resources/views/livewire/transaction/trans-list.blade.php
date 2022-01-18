@@ -1,8 +1,4 @@
-<div>
-    {{ $this->table }}
-</div>
-
-{{-- @php
+@php
     $transactions = [
         [
             'icon' => '',
@@ -51,7 +47,6 @@
         ],
     ]
 @endphp
-
 <div>
     <div class="bg-gray-100 border rounded-sm p-4">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-0 md:gap-x-2 gap-y-2 md:gap-y-0">
@@ -101,16 +96,16 @@
         </div>
     </div>
     <div class="mt-10 rounded-sm overflow-auto">
-        @foreach ($transactions as $item)
+        @foreach ($exchange_transactions as $transaction)
             <div class="grid grid-cols-3 p-9 border min-w-max">
                 <div class="flex justify-start items-center">
                     <input type="checkbox">
                     <x-icon name="kucoin-token" class="w-18 h-18 ml-7"/>
                     <div class="w-full ml-7 space-y-1">
-                        <p class="text-gray-500">{{ $item['name'] }} </p>
-                        <p class="font-bold text-lg">{{ $item['amount'] }} </p>
+                        <p class="text-gray-500">{{ $transaction->id }} </p>
+                        <p class="font-bold text-lg"> </p>
                         <p class="text-gray-500">View Transactions</p>
-                        <p class="text-gray-500">{{ $item['balance'] }} </p>
+                        <p class="text-gray-500"> </p>
                     </div>
                 </div>
                 <div class="flex justify-start items-center">
@@ -118,16 +113,16 @@
                         <x-icon name="fas-arrow-right" class="w-8 h-5 text-primary"/>
                     </div>
                     <div class="w-full ml-7 space-y-1">
-                        <p class="font-bold text-lg">{{ $item['date'] }}</p>
-                        <p class="text-gray-500">{{ $item['zone'] }}</p>
-                        <x-badge variant="danger" type="square">{{ $item['type'] }}</x-badge>
+                        <p class="font-bold text-lg"></p>
+                        <p class="text-gray-500"></p>
+                        <x-badge variant="danger" type="square"></x-badge>
                     </div>
                 </div>
                 <div class="flex justify-between items-center">
                     <x-icon name="kucoin-token" class="w-18 h-18 ml-7"/>
                     <div class="w-full ml-7 space-y-1">
-                        <p class="text-gray-500">{{ $item['name'] }} </p>
-                        <p class="font-bold text-lg">{{ $item['amount'] }} </p>
+                        <p class="text-gray-500"> </p>
+                        <p class="font-bold text-lg"> </p>
                     </div>
                     <div>
                         <button class="rounded-full w-6 h-6 bg-gray-100 border flex justify-center items-center">
@@ -175,4 +170,4 @@
             </ul>
         </div>
     </div>
-</div> --}}
+</div>
