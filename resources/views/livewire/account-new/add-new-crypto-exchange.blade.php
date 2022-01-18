@@ -39,6 +39,8 @@
         <div class="border border-dashed rounded-md">
             <div class="h-full w-full p-5">
                 @if ($account)
+                    <x-icon name="{{$account->getName()}}" class="h-10 w-auto flex m-auto"/>
+                    <p class="text-xl font-bold text-center mt-3">{{ __($account->getName() . ' API integration')}}</p>
                     <form wire:submit.prevent="save_exchange">
                         <div class="p-4">
                             {{ $this->form }}

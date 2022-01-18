@@ -58,6 +58,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         return false;
     }
 
+    // exchange
     public function save_exchange()
     {
         $data = $this->form->getState();
@@ -65,22 +66,14 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $this->account->save();
         // $this->fetch($this->account);
     }
-
-    public function get_selected_account(CryptoExchangeAccount $account){
-        $this->account = $account;
-    }
-
-    public function get_selected_blockchain(BlockchainAccount $blockchainAccount){
-        $this->blockchain = $blockchainAccount;
-    }
-
+    
     public function edit_exchange()
     {
         if ($this->account) {
-            # code...
             $this->form->fill($this->account->credentials);
         }
     }
+
     public function delete_exchange(CryptoExchangeAccount $account)
     {
         if ($this->account && $this->account->id == $account->id) {
@@ -97,6 +90,65 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $description = ''
         );
     }
+
+    public function fetch_exchange(CryptoExchangeAccount $account)
+    {
+        try {
+            $account->fetching_scheduled_at = now();
+            $account->save();
+            CryptoExchangeFetchJob::dispatch($account);
+            $this->notification()->info(
+                __("Fetching :name is now scheduled", ["name" => $account->getName()]),
+                "Please check transactions in a couple of minutes"
+            );
+        }
+        catch (\Exception $e) {
+            $this->notification()->error(__("An error occured"), $e->getMessage());
+        }
+    }
+
+    public function get_selected_account(CryptoExchangeAccount $account){
+        $this->account = $account;
+    }
+
+    // blockchains
+    public function delete_blockchain(BlockchainAccount $blockchainAccount)
+    {
+        if ($this->blockchain && $this->blockchain->id == $blockchainAccount->id) {
+            $this->blockchain = null;
+        }
+        $blockchainAccount->delete();
+
+        // Update table
+        $this->emit("transactionTable.updateTable");
+
+        // Notify
+        $this->notification()->success(
+            $title = __('Successfully deleted'),
+            $description = ''
+        );
+    }
+    
+    public function fetch_blockchain(BlockchainAccount $blockchainAccount)
+    {
+        try {
+            $blockchainAccount->fetching_scheduled_at = now();
+            $blockchainAccount->save();
+            BlockchainAccountFetchJob::dispatch($blockchainAccount);
+            $this->notification()->info(
+                __("Fetching :name is now scheduled", ["name" => $blockchainAccount->getName()]),
+                "Please check blockchain transactions in a couple of minutes"
+            );
+        }
+        catch (\Exception $e) {
+            $this->notification()->error(__("An error occured"), $e->getMessage());
+        }
+    }
+
+    public function get_selected_blockchain(BlockchainAccount $blockchainAccount){
+        $this->blockchain = $blockchainAccount;
+    }
+
 
     public function render()
     {
