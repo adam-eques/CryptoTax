@@ -6,10 +6,15 @@
                 <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Accounts') }}</h1>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-0 lg:gap-x-3 col-span-2 py-2">
-                <x-button variant="white" class="border-primary col-span-1">
-                    <x-icon name="sync" class="w-7 mr-2"/>
-                    {{ __('Sync ') }}
-                </x-button>
+                @if($selected_category == 1 && $account)
+                    <x-button variant="white" class="border-primary col-span-1">
+                        <x-icon name="sync" class="w-7 mr-2" wire:click="fetch_exchange({{$account}})"/>{{ __('Sync ') }}
+                    </x-button>
+                @elseif ($selected_category == 2 && $blockchain)
+                    <x-button variant="white" class="border-primary col-span-1">
+                        <x-icon name="sync" class="w-7 mr-2" wire:click="fetch_exchange({{$blockchain}})"/>{{ __('Sync ') }}
+                    </x-button>
+                @endif
                 <x-button class="col-span-2 justify-center" tag="a" href="{{ route('customer.account.new') }}">
                     <x-icon name="wallet-1" class="w-7 mr-2"/>
                     {{ __('Add New Account') }}
@@ -81,7 +86,7 @@
         <!-- Right Panel -->
         <div class="px-2 lg:px-5 md:w-3/5">
             <div class="w-full h-full border rounded">
-                @if ($selected_category == 1)
+                @if ($selected_category == 1 && $account)
                     <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded" x-show="selected!=''">
                         <div>
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ $account->getName() }}</p>
@@ -122,7 +127,7 @@
                         </div>
                     </div>
                 @endif
-                @if ($selected_category == 3)
+                @if ($selected_category == 3 && $blockchain)
                     <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded" x-show="selected!=''">
                         <div>
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl uppercase">{{ explode(':',  $item->getName())[0] }}</p>
@@ -180,11 +185,11 @@
                     <p class="mt-5">{{ __('If you processed, you will lose all your transaction details. Are you sure you want to delete this Transaction?') }}</p>
                     <div class="flex justify-center space-x-5 items-center mt-10">
                         <x-button variant="white" x-on:click="action=''">Cancel</x-button>
-                        @if($selected_category == 1)
-                            <x-button variant="danger" wire:click="delete_exchange">Confirm</x-button>
+                        @if($selected_category == 1 && $account)
+                            <x-button variant="danger" wire:click="delete_exchange({{ $account }})" x-on:click="action=''">Confirm</x-button>
                         @endif
-                        @if($selected_category == 3)
-                            <x-button variant="danger" >Confirm</x-button>
+                        @if($selected_category == 3 && $blockchain)
+                            <x-button variant="danger" wire:click="delete_blockchain({{ $blockchain }})" x-on:click="action=''">Confirm</x-button>
                         @endif
                     </div>
                 </div>
