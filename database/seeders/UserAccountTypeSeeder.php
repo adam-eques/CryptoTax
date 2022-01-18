@@ -119,6 +119,22 @@ class UserAccountTypeSeeder extends Seeder
                     'editor@example.com',
                 ],
             ],
+            [
+                'id' => UserAccountType::TYPE_AFFILIATE,
+                'data' => [
+                    'name' => "Affiliate",
+                    'duration_in_months' => null,
+                    'max_csv_upload' => null,
+                    'max_backups' => null,
+                    'price_per_month' => null,
+                    'price_per_year' => null,
+                    'is_customer' => false,
+                    'active' => true,
+                ],
+                'users' => [
+                    'affiliate@example.com',
+                ],
+            ],
         ])->each(function ($data) {
             if(!$type = UserAccountType::find($data["id"])) {
                 $data["data"]["id"] = $data["id"];

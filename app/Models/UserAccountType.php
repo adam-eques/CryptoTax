@@ -12,6 +12,7 @@ class UserAccountType extends Model
     const TYPE_SUPPORT = 4;
     const TYPE_EDITOR = 5;
     const TYPE_CUSTOMER_PREMIUM = 6;
+    const TYPE_AFFILIATE = 7;
 
     protected $guarded = [];
 

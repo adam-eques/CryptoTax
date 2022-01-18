@@ -2,7 +2,9 @@
 
 namespace App\CryptoExchangeDrivers;
 
+use App\Models\CryptoCurrency;
 use App\Models\CryptoExchangeAccount;
+use App\Models\CryptoExchangeBalance;
 use App\Models\CryptoExchangeTransaction;
 use Carbon\Carbon;
 
@@ -50,34 +52,41 @@ abstract class Driver
      */
     public function updateTransactions(): self
     {
-        // Get data
-        $since = $this->exchangeAccount->fetched_at ? $this->exchangeAccount->fetched_at : Carbon::create(2010, 1, 1);
+        // Get Balance
+        $balances = $this->fetchBalance();
+
+
+        // Get transaction data
+        $since = $this->exchangeAccount->fetched_at ?: Carbon::create(2010, 1, 1);
         $data = $this->fetchTransactions(null, $since);
 
         // Save it
-        $this->saveTransactions($data, now());
+        $this->saveTransactions($data, now(), $balances["total"]);
 
         return $this;
     }
+
 
     public function getApi()
     {
         return $this->api;
     }
 
+
     /**
      * @param array $data
      * @param \Carbon\Carbon $timestamp
+     * @param float|null $balances
      * @return $this
      */
-    protected function saveTransactions(array $data, Carbon $timestamp): self
+    protected function saveTransactions(array $data, Carbon $timestamp, ?array $balances = null): self
     {
         $account = $this->exchangeAccount;
         $data = collect($data)->map(function ($item){
             return $this->mapFetchedTransactions($item);
         })->toArray();
 
-        \DB::transaction(function() use ($account, $data, $timestamp) {
+        \DB::transaction(function() use ($account, $data, $balances, $timestamp) {
             // Insert data
             if($data) CryptoExchangeTransaction::insert($data);
 
@@ -85,10 +94,44 @@ abstract class Driver
             $account->fetched_at = $timestamp;
             $account->fetching_scheduled_at = null;
             $account->save();
+
+            // Save balances
+            $this->saveBalances($balances);
         });
 
         return $this;
     }
+
+
+    protected function saveBalances(?array $balances = null)
+    {
+        if(!is_null($balances)) {
+            $account = $this->exchangeAccount;
+
+            $account->balances()->delete();
+            foreach($balances AS $key => $val) {
+                if($val && $val > 0) {
+                    $currency = CryptoCurrency::findByShortName($key);
+                    if($currency) {
+                        $currency = $currency->id;
+                    }
+                    else {
+                        $currency = 0;
+                        logger("Missing crypto currency " . $key);
+                    }
+
+                    CryptoExchangeBalance::make([
+                        "crypto_exchange_account_id" => $account->id,
+                        "crypto_currency_id" => $currency,
+                        "balance" => $val
+                    ])->save();
+                }
+            }
+        }
+    }
+
+
+
 
     /**
      * @param array $data
@@ -118,6 +161,8 @@ abstract class Driver
     }
 
     /**
+     * See https://docs.ccxt.com/en/latest/manual.html#balance-structure
+     *
      * @return mixed
      */
     public function fetchBalance()

@@ -46,7 +46,10 @@ class KucoinDriver extends Driver
         $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
         $now = now();
 
-        \DB::transaction(function() use ($account, $since, $now) {
+        // Balance
+        $balances = $this->fetchBalance();
+
+        \DB::transaction(function() use ($account, $since, $balances, $now) {
             $counter = 0;
 
             while($since->isPast()) {
@@ -62,8 +65,10 @@ class KucoinDriver extends Driver
                 $since->addDays(7);
                 $counter++;
             }
-        });
 
+            // Save balances
+            $this->saveBalances($balances["total"]);
+        });
 
         return $this;
     }

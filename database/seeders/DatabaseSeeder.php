@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            // Crypto Currency
+            CryptoCurrencySeeder::class,
+
             // Users
             TestUserSeeder::class,
             UserCreditActionSeeder::class,

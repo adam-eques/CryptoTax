@@ -24,6 +24,8 @@ class CryptoExchangeAccount extends Model
         'fetching_scheduled_at' => 'datetime',
     ];
 
+    protected $guarded = [];
+
 
     public static function boot() {
         parent::boot();
@@ -58,6 +60,15 @@ class CryptoExchangeAccount extends Model
     public function exchangeTransactions(): HasMany
     {
         return $this->hasMany(CryptoExchangeTransaction::class);
+    }
+
+
+    /**
+     * @return HasMany
+     */
+    public function balances(): HasMany
+    {
+        return $this->hasMany(CryptoExchangeBalance::class);
     }
 
 
