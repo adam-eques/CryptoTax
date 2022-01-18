@@ -56,19 +56,10 @@ class AccountNew extends Component
             ->where("name","like",'%'.$this->search.'%')
             ->get()
             ->toArray();
-        
-        $filtered_account_array = [];
-        if ($this->selected == 1) {
-            $filtered_account_array = $exchanges_array;
-        }
-        elseif ($this->selected == 3) {
-            $filtered_account_array = $blockchains;
-        }
 
         return view('livewire.account-new.account-new', [
             "exchanges_array" => $exchanges_array,
             "blockchains" => $blockchains,
-            "filtered_account_array" => $filtered_account_array
         ]);
     }
 }
