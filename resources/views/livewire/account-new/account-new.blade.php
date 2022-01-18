@@ -19,6 +19,15 @@
         @if ($selected == 1)            
             @livewire('account-new.add-new-crypto-exchange')
         @endif
+        @if ($selected == 2)
+            @livewire('account-new.add-new-wallet')            
+        @endif
+        @if ($selected == 3)
+            @livewire('account-new.add-new-blockchain')
+        @endif
+        @if ($selected == 4)
+            @livewire('account-new.add-others')
+        @endif
     </div>
 </div>
 
