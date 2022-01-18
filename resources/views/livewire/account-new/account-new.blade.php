@@ -72,26 +72,42 @@
                                 </div>
                             @endforeach
                         @else
-                            @foreach ($filtered_account_array as $account)
-                                <div 
-                                    class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                                    {{-- wire:click = "get_new_blockchain_id({{ $exchange_account['id'] }})" --}}
-                                >
-                                    <x-icon name="{{ $account['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
-                                    <p class="col-span-2">{{ __($account['name']) }}</p>
-                                    <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2" x-show="category==1">
-                                        <x-icon name="exchange-1" class="w-8 h-8 mr-2 text"/>
-                                        <span class="text-md font-bold tracking-tight">{{ __( 'Exchange') }}</span>
+                            @if ($selected == 1)                                
+                                @foreach ($exchanges_array as $account)
+                                    <div 
+                                        class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
+                                        {{-- wire:click = "get_new_blockchain_id({{ $exchange_account['id'] }})" --}}
+                                    >
+                                        <x-icon name="{{ $account['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
+                                        <p class="col-span-2">{{ __($account['name']) }}</p>
+                                        <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2">
+                                            <x-icon name="blockchain" class="w-8 h-8 mr-2 text"/>
+                                            <span class="text-md font-bold tracking-tight">{{ __( 'Blockchain') }}</span>
+                                        </div>
+                                        <div class="w-full flex justify-end">
+                                            <x-icon name="arrow-right" class="w-5 col-span-1"/>
+                                        </div>
                                     </div>
-                                    <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2" x-show="category==3">
-                                        <x-icon name="blockchain" class="w-8 h-8 mr-2 text"/>
-                                        <span class="text-md font-bold tracking-tight">{{ __( 'Blockchain') }}</span>
+                                @endforeach
+                            @endif
+                            @if ($selected == 3)                                
+                                @foreach ($blockchains as $account)
+                                    <div 
+                                        class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
+                                        {{-- wire:click = "get_new_blockchain_id({{ $exchange_account['id'] }})" --}}
+                                    >
+                                        <x-icon name="{{ $account['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
+                                        <p class="col-span-2">{{ __($account['name']) }}</p>
+                                        <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2">
+                                            <x-icon name="exchange-1" class="w-8 h-8 mr-2 text"/>
+                                            <span class="text-md font-bold tracking-tight">{{ __( 'Exchange') }}</span>
+                                        </div>
+                                        <div class="w-full flex justify-end">
+                                            <x-icon name="arrow-right" class="w-5 col-span-1"/>
+                                        </div>
                                     </div>
-                                    <div class="w-full flex justify-end">
-                                        <x-icon name="arrow-right" class="w-5 col-span-1"/>
-                                    </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         @endif
                     </div>
                 </div>
