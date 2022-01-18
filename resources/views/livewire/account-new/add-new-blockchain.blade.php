@@ -18,17 +18,17 @@
         {{-- Left panel --}}
         <div class="overflow-auto h-full border rounded-md">
             <div class="h-110">
-                @foreach ($exchanges_array as $exchange)
+                @foreach ($blockchains as $blockchain)
                     <div 
                         class="grid grid-cols-5 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                        x-on:click="item = `{{ $exchange['name'] }}`"
-                        x-bind:class = "item == `{{ $exchange['name'] }}`? 'bg-gray-100' : '' "
-                        wire:click = "get_new_account_id({{ $exchange['id'] }})"
+                        x-on:click="item = `{{ $blockchain->getName() }}`"
+                        x-bind:class = "item == `{{ $blockchain->getName() }}`? 'bg-gray-100' : '' "
+                        wire:click = "get_new_blockchain_id({{ $blockchain->id }})"
                     >
-                        <x-icon name="{{ $exchange['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
-                        <p class="col-span-2">{{ __($exchange['name']) }}</p>
+                        <x-icon name="{{ $blockchain->getName() }}" class="w-auto h-8 col-span-2"></x-icon>
+                        <p class="col-span-2">{{ __($blockchain->getName()) }}</p>
                         <div class="w-full flex justify-end">
-                            <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $exchange['name'] }}`"/>
+                            <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $blockchain->getName() }}`"/>
                         </div>
                     </div>
                 @endforeach
@@ -38,19 +38,14 @@
         {{-- Right panel --}}
         <div class="border border-dashed rounded-md">
             <div class="h-full w-full p-5">
-                @if ($account)
-                    <x-icon name="{{$account->getName()}}" class="h-10 w-auto flex m-auto"/>
-                    <p class="text-xl font-bold text-center mt-3">{{ __($account->getName() . ' API integration')}}</p>
-                    <form wire:submit.prevent="save_exchange">
-                        <div class="p-4">
-                            {{ $this->form }}
-                            <div class="text-center mt-4">
-                                <x-button type="submit">{{ __("Save") }}</x-button>
-                            </div>
-                        </div>
-                    </form>
+                @if ($newBlockchainId) 
+                    <p class="text-xl font-bold text-center mt-3"><span x-text="item" class="uppercase"></span> {{ __(' API integration') }} </p> 
+                    <div class="mt-10 flex justify-center items-center">
+                        <input class=" h-10 transition duration-75 px-3 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                        <x-button wire:click="add">Add</x-button>
+                    </div>
                 @endif
-                @if (!$account)
+                @if (!$newBlockchainId)
                     <div class="text-center w-full h-full flex justify-center items-center">
                         <div>
                             <div class="bg-primary flex justify-center items-center rounded-full mx-auto w-30 h-30">

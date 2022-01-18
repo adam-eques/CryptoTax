@@ -4,10 +4,10 @@ namespace App\Http\Livewire\AccountNew;
 
 use Livewire\Component;
 
-class Blockchain extends Component
+class AddNewWallet extends Component
 {
     public function render()
     {
-        return view('livewire.account-new.blockchain');
+        return view('livewire.account-new.add-new-wallet');
     }
 }
