@@ -100,8 +100,8 @@
                             </div>
                         </div>
                         <div>
-                            <div x-show="action == ''">
-                                <div class="divide-y">
+                            <div x-show="action == ''" class="overflow-auto">
+                                <div class="divide-y max-h-110">
                                     @foreach ($account->balances()->get() as $balance)                                        
                                         <div class="flex justify-between items-center px-5 py-3">
                                             <div class="flex items-center space-x-4">
