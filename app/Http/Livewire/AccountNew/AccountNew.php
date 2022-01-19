@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire\AccountNew;
 
-use App\Jobs\BlockchainFetchJob;
+use App\Jobs\BlockchainAccountFetchJob;
+use App\Models\BlockchainAccount;
 use App\Models\Blockchain;
 use App\Models\CryptoExchange;
 use App\Models\CryptoExchangeAccount;
