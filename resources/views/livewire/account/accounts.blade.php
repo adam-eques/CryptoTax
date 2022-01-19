@@ -105,7 +105,7 @@
                                     @foreach ($account->balances()->get() as $balance)                                        
                                         <div class="flex justify-between items-center px-5 py-3">
                                             <div class="flex items-center space-x-4">
-                                                <x-icon name="bitcoin" class="w-14 h-14"/>
+                                                <x-icon name="{{str_replace(' ', '-',strtolower( $balance->cryptoCurrency()->get()[0]->getName()))}}" class="w-14 h-14"/>
                                                 <div>
                                                     <p class="font-bold">{{$balance->cryptoCurrency()->get()[0]->getName()}} Wallet</p>
                                                     <p class="text-gray-400">102 Transactions</p>
