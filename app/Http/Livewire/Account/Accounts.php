@@ -174,6 +174,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             ["id" => 4, "label" => "Others", "items" => [ ]],
         ];
 
+        // $balances = $cryptoExchangeAccounts[0]->balances()->get()[0]->cryptoCurrency()->get();
+
         return view('livewire.account.accounts', [
             "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
             "blockchainAccounts" => $blockchainAccounts,
