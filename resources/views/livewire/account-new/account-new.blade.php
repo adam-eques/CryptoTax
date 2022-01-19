@@ -15,7 +15,7 @@
             </button>
         @endforeach
     </div>
-    <div class="col-span-5 border rounded-md p-7">
+    <div class="col-span-5 border rounded-md p-7" x-data="{selected_item:''}">
         <div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-10">
                 <div class="flex items-center border rounded-lg px-4 py-2">
@@ -37,75 +37,29 @@
                 <div class="overflow-auto h-full border rounded-md">
                     <div class="h-110">
                         @if (!$selected)                            
-                            @foreach ($exchanges_array as $exchange_account)
-                                <div 
-                                    class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                                    {{-- wire:click = "get_new_blockchain_id({{ $exchange_account['id'] }})" --}}
-                                >
-                                    <x-icon name="{{ $exchange_account['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
-                                    <p class="col-span-2">{{ __($exchange_account['name']) }}</p>
-                                    <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2">
-                                        <x-icon name="exchange-1" class="w-8 h-8 mr-2 text"/>
-                                        <span class="text-md font-bold tracking-tight">{{ __( 'Exchange') }}</span>
-                                    </div>
-                                    <div class="w-full flex justify-end">
-                                        <x-icon name="arrow-right" class="w-5 col-span-1"/>
-                                    </div>
-                                </div>
+                            @foreach ($exchanges_array as $account)
+                                <x-new-account-row :category="1" :selected="$newAccountId == $account['id']" :name="$account['name']" 
+                                    wire:click="get_new_exchange_id({{ $account['id'] }})"
+                                />
                             @endforeach
-                            @foreach ($blockchains as $blockchain)
-                                <div 
-                                    class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                                    x-on:click="item = `{{ $blockchain['name'] }}`"
-                                    x-bind:class = "item == `{{ $blockchain['name'] }}`? 'bg-gray-100' : '' "
-                                    {{-- wire:click = "get_new_blockchain_id({{ $blockchain['id'] }})" --}}
-                                >
-                                    <x-icon name="{{ $blockchain['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
-                                    <p class="col-span-2 uppercase">{{ __($blockchain['name']) }}</p>
-                                    <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2">
-                                        <x-icon name="blockchain" class="w-8 h-8 mr-2 text"/>
-                                        <span class="text-md font-bold tracking-tight">{{ __( 'Blockchain') }}</span>
-                                    </div>
-                                    <div class="w-full flex justify-end">
-                                        <x-icon name="arrow-right" class="w-5 col-span-1" x-show="item == `{{ $blockchain['name'] }}`"/>
-                                    </div>
-                                </div>
+                            @foreach ($blockchains as $account)
+                                <x-new-account-row :category="3" :selected="$newBlockchainId == $account['id']" :name="$account['name']"
+                                    wire:click="get_new_blockchain_id({{ $account['id'] }})"
+                                />
                             @endforeach
                         @else
                             @if ($selected == 1)                                
                                 @foreach ($exchanges_array as $account)
-                                    <div 
-                                        class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                                        {{-- wire:click = "get_new_blockchain_id({{ $exchange_account['id'] }})" --}}
-                                    >
-                                        <x-icon name="{{ $account['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
-                                        <p class="col-span-2">{{ __($account['name']) }}</p>
-                                        <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2">
-                                            <x-icon name="exchange-1" class="w-8 h-8 mr-2 text"/>
-                                            <span class="text-md font-bold tracking-tight">{{ __( 'Exchange') }}</span>
-                                        </div>
-                                        <div class="w-full flex justify-end">
-                                            <x-icon name="arrow-right" class="w-5 col-span-1"/>
-                                        </div>
-                                    </div>
+                                    <x-new-account-row :category="1" :selected="$newAccountId == $account['id']" :name="$account['name']"
+                                        wire:click="get_new_exchange_id({{ $account['id'] }})"
+                                    />
                                 @endforeach
                             @endif
                             @if ($selected == 3)                                
                                 @foreach ($blockchains as $account)
-                                    <div 
-                                        class="grid grid-cols-7 items-center py-5 px-6 border-b cursor-pointer hover:bg-gray-100"
-                                        {{-- wire:click = "get_new_blockchain_id({{ $exchange_account['id'] }})" --}}
-                                    >
-                                        <x-icon name="{{ $account['name'] }}" class="w-auto h-8 col-span-2"></x-icon>
-                                        <p class="col-span-2">{{ __($account['name']) }}</p>
-                                        <div class="inline-flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2">
-                                            <x-icon name="blockchain" class="w-8 h-8 mr-2 text"/>
-                                            <span class="text-md font-bold tracking-tight">{{ __( 'Blockchain') }}</span>
-                                        </div>
-                                        <div class="w-full flex justify-end">
-                                            <x-icon name="arrow-right" class="w-5 col-span-1"/>
-                                        </div>
-                                    </div>
+                                    <x-new-account-row :category="3" :selected="$newBlockchainId == $account['id']" :name="$account['name']"
+                                        wire:click="get_new_blockchain_id({{ $account['id'] }})"
+                                    />
                                 @endforeach
                             @endif
                         @endif
@@ -115,7 +69,39 @@
                 {{-- Right panel --}}
                 <div class="border border-dashed rounded-md">
                     <div class="h-full w-full p-5">
-                        
+                        @if ($exchange_account)
+                            <x-icon name="{{$exchange_account->getName()}}" class="h-10 w-auto flex m-auto"/>
+                            <p class="text-xl font-bold text-center mt-3">{{ __($exchange_account->getName() . ' API integration')}}</p>
+                            <form wire:submit.prevent="save_exchange">
+                                <div class="p-4">
+                                    {{ $this->form }}
+                                    <div class="text-center mt-4">
+                                        <x-button type="submit">{{ __("Save") }}</x-button>
+                                    </div>
+                                </div>
+                            </form>
+                        @elseif($newBlockchainId)
+                            <p class="text-xl font-bold text-center mt-3"><span x-text="selected_item" class="uppercase"></span> {{ __(' API integration') }} </p> 
+                            <div class="flex justify-center mt-10">
+                                <div>
+                                    <p class="text-gray-600">Address<span class="text-danger">*</span></p>
+                                    <div class="mt-1">
+                                        <input class=" h-10 transition duration-75 px-3 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                                        <x-button wire:click="add_blockchain">Add</x-button>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="text-center w-full h-full flex justify-center items-center">
+                                <div>
+                                    <div class="bg-primary flex justify-center items-center rounded-full mx-auto w-30 h-30">
+                                        <x-icon name="book-info" class="w-16 h-16 text-white"/>
+                                    </div>
+                                    <p class="text-xl font-bold mt-3">{{ __('Instructions for API or CSV') }}</p>
+                                    <p>{{ __('Please select an Exchange to see import instructions.') }}</p>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>    
