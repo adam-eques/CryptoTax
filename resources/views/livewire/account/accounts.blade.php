@@ -48,7 +48,7 @@
                                             <div wire:loading.remove class="text-gray-400">{{ $item['fetched_at'] ? $item['fetched_at']: "Never" }}</div>
                                         </div>
                                         <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
-                                        @if ($account && $account->getName() == $item->getName())                                            
+                                        @if ($account && $account->getName() == $item->getName())
                                             <div
                                                 class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
                                                 x-transition
@@ -67,7 +67,7 @@
                                             <div wire:loading.remove class="text-gray-400">{{ $item['fetched_at'] ? $item['fetched_at']: "Never" }}</div>
                                         </div>
                                         <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["balance"], 2) }}</p>
-                                        @if ($blockchain && $blockchain->blockchain_id == $item->blockchain_id)                                            
+                                        @if ($blockchain && $blockchain->blockchain_id == $item->blockchain_id)
                                             <div
                                                 class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
                                                 x-transition
@@ -107,7 +107,7 @@
                         <div>
                             <div x-show="action == ''" class="overflow-auto">
                                 <div class="divide-y max-h-110 overflow-x-auto">
-                                    @foreach ($account->balances()->get() as $balance)                                        
+                                    @foreach ($account->cryptoExchangeAssets()->get() as $balance)
                                         <div class="flex justify-between items-center px-5 py-3 min-w-cmd">
                                             <div class="flex items-center space-x-4">
                                                 <x-icon name="{{str_replace(' ', '-',strtolower( $balance->cryptoCurrency()->get()[0]->getName()))}}" class="w-14 h-14"/>
@@ -124,7 +124,7 @@
                                                 <x-button tag="a" href="{{route('customer.transactions')}}" variant="white" class="rounded-full border-primary">View Transaction</x-button>
                                             </div>
                                         </div>
-                                    @endforeach                                   
+                                    @endforeach
                                 </div>
                             </div>
                             <div x-show="action == 'edit'">
@@ -138,7 +138,7 @@
                                 </form>
                             </div>
                             <div x-show="action =='delete'">
-    
+
                             </div>
                         </div>
                     @elseif ($blockchain)
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                             <div x-show="action =='delete'">
-        
+
                             </div>
                         </div>
                     @endif
@@ -195,7 +195,7 @@
                                 </x-button>
                             </div>
                         </div>
-                    </div>    
+                    </div>
                 @endif
             </div>
         </div>

@@ -2,23 +2,24 @@
 
 namespace App\Blockchains;
 
+use App\Models\BlockchainAccount;
 use GuzzleHttp\Client;
 
 abstract class BlockChainApi
 {
-    protected ?string $address = null;
+    protected BlockchainAccount $account;
     protected array $extraParams = [];
     protected string $baseUrl;
 
 
     /**
-     * @param string $address
+     * @param \App\Models\BlockchainAccount|null $account
      * @return static
      */
-    public static function make(?string $address = null): self
+    public static function make(BlockchainAccount $account = null): self
     {
         $obj = new static();
-        $obj->setAddress($address);
+        $obj->setAccount($account);
 
         return $obj;
     }
@@ -42,26 +43,31 @@ abstract class BlockChainApi
     }
 
 
-    /**
-     * Returns the balance as int (with 20 decimals moved to right). This means you have to
-     *
-     * @param bool $convertToDecimal
-     * @return int|float
-     * @throws \Exception
-     */
-    public function getBalance(bool $convertToDecimal = false): int|float
+    public function getBalances(): array
     {
-        $result = $this->callAccount("balance", true);
-        $balance = (int) $result["result"];
+        $result = $this->callAccount("tokenlist", true);
+        $array = [];
 
-        return $convertToDecimal ? $balance / 1000000000000000000 : $balance;
+        foreach($result["result"] AS $row) {
+            $currency = \App\Models\CryptoCurrency::findByShortName($row["symbol"]);
+
+            $array[]= [
+                "blockchain_account_id" => $this->account->id,
+                "crypto_currency_id" => $currency ? $currency->id : 0,
+                "balance" => $row["balance"] / 1000000000000000000,
+                "contract_address" => $row["contractAddress"],
+                "symbol" => $row["symbol"],
+            ];
+        }
+
+        return $array;
     }
 
 
     protected function callAccount(string $action, bool $includeAddress = false, array $params = []): array
     {
         if ($includeAddress) {
-            $params["address"] = $this->address;
+            $params["address"] = $this->account->address;
         }
 
         $result = $this->call('account', $action, $params);
@@ -89,21 +95,21 @@ abstract class BlockChainApi
 
 
     /**
-     * @return string
+     * @return \App\Models\BlockchainAccount
      */
-    public function getAddress(): string
+    public function getAccount(): BlockchainAccount
     {
-        return $this->address;
+        return $this->account;
     }
 
 
     /**
-     * @param string $address
-     * @return self
+     * @param \App\Models\BlockchainAccount $account
+     * @return BlockChainApi
      */
-    public function setAddress(?string $address): self
+    public function setAccount(BlockchainAccount $account): BlockChainApi
     {
-        $this->address = $address;
+        $this->account = $account;
 
         return $this;
     }

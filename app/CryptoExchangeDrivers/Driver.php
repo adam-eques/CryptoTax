@@ -4,7 +4,7 @@ namespace App\CryptoExchangeDrivers;
 
 use App\Models\CryptoCurrency;
 use App\Models\CryptoExchangeAccount;
-use App\Models\CryptoExchangeBalance;
+use App\Models\CryptoExchangeAsset;
 use App\Models\CryptoExchangeTransaction;
 use Carbon\Carbon;
 
@@ -108,7 +108,7 @@ abstract class Driver
         if(!is_null($balances)) {
             $account = $this->exchangeAccount;
 
-            $account->balances()->delete();
+            $account->cryptoExchangeAssets()->delete();
             foreach($balances AS $key => $val) {
                 if($val && $val > 0) {
                     $currency = CryptoCurrency::findByShortName($key);
@@ -120,7 +120,7 @@ abstract class Driver
                         logger("Missing crypto currency " . $key);
                     }
 
-                    CryptoExchangeBalance::make([
+                    CryptoExchangeAsset::make([
                         "crypto_exchange_account_id" => $account->id,
                         "crypto_currency_id" => $currency,
                         "balance" => $val

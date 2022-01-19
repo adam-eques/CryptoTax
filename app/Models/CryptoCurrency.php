@@ -18,9 +18,9 @@ class CryptoCurrency extends Model
     protected $guarded = [];
 
 
-    public function cryptoExchangeBalances()
+    public function CryptoExchangeAssets()
     {
-        return $this->hasMany(CryptoExchangeBalance::class);
+        return $this->hasMany(CryptoExchangeAsset::class);
     }
 
 

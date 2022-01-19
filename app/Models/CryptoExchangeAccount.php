@@ -32,7 +32,7 @@ class CryptoExchangeAccount extends Model
 
         static::deleting(function (self $item) {
             $item->exchangeTransactions()->cascadeDelete();
-            $item->balances()->cascadeDelete();
+            $item->cryptoExchangeAssets()->cascadeDelete();
         });
     }
 
@@ -67,9 +67,9 @@ class CryptoExchangeAccount extends Model
     /**
      * @return HasMany
      */
-    public function balances(): HasMany
+    public function cryptoExchangeAssets(): HasMany
     {
-        return $this->hasMany(CryptoExchangeBalance::class);
+        return $this->hasMany(CryptoExchangeAsset::class);
     }
 
 
@@ -83,9 +83,9 @@ class CryptoExchangeAccount extends Model
     {
         $sum = 0;
 
-        $this->balances->each(function(CryptoExchangeBalance $balance) use (&$sum, $currency) {
-            if($balance->balance) {
-                $sum+= $balance->convertTo($currency);
+        $this->cryptoExchangeAssets->each(function(CryptoExchangeAsset $asset) use (&$sum, $currency) {
+            if($asset->balance) {
+                $sum+= $asset->convertTo($currency);
             }
         });
 

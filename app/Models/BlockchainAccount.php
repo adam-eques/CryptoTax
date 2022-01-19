@@ -19,12 +19,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @property Blockchain $blockchain
  * @property User $user
+ * @property \Illuminate\Support\Collection<BlockchainAsset> $blockchainAssets
  * @property \Illuminate\Support\Collection<\App\Models\BlockchainTransaction> $blockchainTransactions
  */
 class BlockchainAccount extends Model
 {
     protected $guarded = [];
-
     protected $casts = [
         'fetched_at' => 'datetime',
         'fetching_scheduled_at' => 'datetime',
@@ -36,7 +36,8 @@ class BlockchainAccount extends Model
         parent::boot();
 
         static::deleting(function (self $item) {
-            $item->blockchainTransactions()->delete();
+            $item->blockchainTransactions()->cascadeDelete();
+            $item->blockchainAssets()->cascadeDelete();
         });
     }
 
@@ -62,9 +63,36 @@ class BlockchainAccount extends Model
     }
 
 
+    /**
+     * @return HasMany
+     */
+    public function blockchainAssets(): HasMany
+    {
+        return $this->hasMany(BlockchainAsset::class);
+    }
+
+
     public function getName(): string
     {
-        return $this->blockchain->getName() . ": " . $this->address;
+        return $this->blockchain->getName().": ".$this->address;
+    }
+
+
+    /**
+     * @param string $currency
+     * @return float
+     */
+    public function getBalanceSum(string $currency = "USD"): float
+    {
+        $sum = 0;
+
+        $this->cryptoExchangeAssets->each(function(BlockchainAsset $asset) use (&$sum, $currency) {
+            if($asset->balance) {
+                $sum+= $asset->convertTo($currency);
+            }
+        });
+
+        return $sum;
     }
 
 
@@ -74,16 +102,18 @@ class BlockchainAccount extends Model
          * @var \App\Blockchains\BscScanBlockChainApi $api
          */
         // Create api
-        $class = "\\App\\Blockchains\\" . $this->blockchain->class;
-        $api = new $class();
-        $api->setAddress($this->address);
+        $class = "\\App\\Blockchains\\".$this->blockchain->class;
+        $api = $class::make($this);
         $now = now();
 
         // Start transaction
         \DB::beginTransaction();
 
         // Get Balance
-        $this->balance = $api->getBalance(true);
+        $result = $api->getBalances();
+        // Clear old vals
+        $this->blockchainAssets()->cascadeDelete();
+        \App\Models\BlockchainAsset::insert($result);
 
         // Get Transactions
         $userId = $this->user_id;
@@ -93,7 +123,7 @@ class BlockchainAccount extends Model
             ->first();
         $lastTimeStamp = $lastEntry?->time_stamp; // 1639314121
         $transactions = $api->getTransactionsSince($lastTimeStamp + 1);
-        $data = collect($transactions)->map(function($item) use ($blockchainAccountId, $userId) {
+        $data = collect($transactions)->map(function ($item) use ($blockchainAccountId, $userId) {
             return [
                 "blockchain_account_id" => $blockchainAccountId,
                 "user_id" => $userId,
@@ -114,7 +144,7 @@ class BlockchainAccount extends Model
                 "to" => $item["to"],
                 "transaction_index" => $item["transactionIndex"],
                 "txreceipt_status" => $item["txreceipt_status"],
-                "value" => BlockchainHelper::convertToDecimalString($item["value"])
+                "value" => BlockchainHelper::convertToDecimalString($item["value"]),
             ];
         });
         BlockchainTransaction::insert($data->toArray());

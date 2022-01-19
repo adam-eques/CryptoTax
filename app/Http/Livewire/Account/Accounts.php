@@ -23,9 +23,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function __construct()
     {
         $this->blockchain = BlockchainAccount::query()
-        ->where('user_id', auth()->user()->id)
-        ->orderBy('balance', 'desc')
-        ->first();
+            ->where('user_id', auth()->user()->id)
+            ->first();
     }
 
     protected function getFormSchema(): array
@@ -69,7 +68,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $this->account->save();
         // $this->fetch($this->account);
     }
-    
+
     public function edit_exchange()
     {
         if ($this->account) {
@@ -132,7 +131,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $description = ''
         );
     }
-    
+
     public function fetch_blockchain(BlockchainAccount $blockchainAccount)
     {
         try {
@@ -163,10 +162,9 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
         $blockchainAccounts = BlockchainAccount::query()
             ->where('user_id', auth()->user()->id)
-            ->orderBy('balance', 'desc')
             ->get();
 
-        // dd($cryptoExchangeAccounts->toArray());    
+        // dd($cryptoExchangeAccounts->toArray());
         $rows = [
             ["id" => 1, "label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
             ["id" => 2, "label" => "Wallets", "items" => [ ]],
@@ -174,7 +172,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             ["id" => 4, "label" => "Others", "items" => [ ]],
         ];
 
-        // $balances = $cryptoExchangeAccounts[0]->balances()->get()[0]->cryptoCurrency()->get();
+        // $balances = $cryptoExchangeAccounts[0]->cryptoExchangeAssets()->get()[0]->cryptoCurrency()->get();
 
         return view('livewire.account.accounts', [
             "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
