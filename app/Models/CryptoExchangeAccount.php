@@ -85,7 +85,7 @@ class CryptoExchangeAccount extends Model
 
         $this->balances->each(function(CryptoExchangeBalance $balance) use (&$sum, $currency) {
             if($balance->balance) {
-                $sum+= $balance->cryptoCurrency->convertTo($balance->balance, $currency);
+                $sum+= $balance->convertTo($currency);
             }
         });
 
