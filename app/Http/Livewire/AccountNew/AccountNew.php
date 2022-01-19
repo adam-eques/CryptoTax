@@ -50,24 +50,24 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     public function add_blockchain()
     {
         $user = auth()->user();
-        
+
         if (! $this->newBlockchainId) {
             $this->notification()->info(__("Please select a blockchain"));
             return;
         }
         if (! $this->newBlockchainAddress) {
             $this->notification()->info(__("Please enter a blockchain address"));
-            
+
             return;
         }
-        
+
         // Check
         $exists = $user
-        ->blockchainAccounts()
-        ->where("blockchain_id", $this->newBlockchainId)
-        ->where("address", $this->newBlockchainAddress)
-        ->first();
-        
+            ->blockchainAccounts()
+            ->where("blockchain_id", $this->newBlockchainId)
+            ->where("address", $this->newBlockchainAddress)
+            ->first();
+
         // Create it
         if (!$exists) {
             $blockchainAccount = new BlockchainAccount([
