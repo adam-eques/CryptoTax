@@ -21,7 +21,7 @@ class HitBTCDriver extends Driver
     protected function connect(): self
     {
         $credentials = $this->getCredentials();
-        $this->api = new \ccxt\hitbtc3([
+        $this->api = new \ccxt\hitbtc([
             "apiKey" => \Arr::get($credentials, "apiKey"),
             "secret" => \Arr::get($credentials, "secret"),
         ]);
