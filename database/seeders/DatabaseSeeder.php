@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // Crypto Currency
             CryptoCurrencySeeder::class,
+            CoingeckoSupportedVsCurrenciesSeeder::class,
 
             // Users
             TestUserSeeder::class,

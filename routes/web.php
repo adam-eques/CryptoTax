@@ -57,6 +57,14 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
     Route::prefix("test")->group(function() {
         Route::get('transactions', [Controllers\Customer\TransactionController::class, 'index'])
             ->name('test.transactions');
+
+        Route::get("coingecko", function () {
+            $currency = \App\Models\CryptoCurrency::findByShortName("BTC");
+
+            dd(
+                $currency->convertTo(1, "USD")
+            );
+        });
     });
 });
 

@@ -79,6 +79,20 @@ class CryptoExchangeAccount extends Model
     }
 
 
+    public function getBalanceSum(string $currency = "USD"): float
+    {
+        $sum = 0;
+
+        $this->balances->each(function(CryptoExchangeBalance $balance) use (&$sum, $currency) {
+            if($balance->balance) {
+                $sum+= $balance->cryptoCurrency->convertTo($balance->balance, $currency);
+            }
+        });
+
+        return $sum;
+    }
+
+
     public function hasAllCredentials(): bool
     {
         $api = $this->getApi();

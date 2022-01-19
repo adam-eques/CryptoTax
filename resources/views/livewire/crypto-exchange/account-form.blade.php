@@ -8,6 +8,8 @@
                         @foreach($cryptoExchangeAccounts as $row)
                             <li class="@if(!$loop->last)mb-8 @endif">
                                 {{ $row->getName() }}
+                                <small>({{ moneyFormat($row->getBalanceSum()) }} USD)</small>
+
                                 <div class="float-right">
                                     @if($row->hasAllCredentials())<x-button :disabled="$row->fetching_scheduled_at" size="sm" wire:click="fetch({{ $row->id }})">{{ __("Fetch") }}</x-button>@endif
 {{--                                    <x-button size="sm" wire:click="fetch({{ $row->id }})">{{ __("Fetch2") }}</x-button>--}}
