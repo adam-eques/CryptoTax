@@ -86,7 +86,7 @@ class BlockchainAccount extends Model
     {
         $sum = 0;
 
-        $this->cryptoExchangeAssets->each(function(BlockchainAsset $asset) use (&$sum, $currency) {
+        $this->blockchainAssets->each(function(BlockchainAsset $asset) use (&$sum, $currency) {
             if($asset->balance) {
                 $sum+= $asset->convertTo($currency);
             }
