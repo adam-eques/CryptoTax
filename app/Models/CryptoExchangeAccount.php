@@ -31,7 +31,8 @@ class CryptoExchangeAccount extends Model
         parent::boot();
 
         static::deleting(function (self $item) {
-            $item->exchangeTransactions()->delete();
+            $item->exchangeTransactions()->cascadeDelete();
+            $item->balances()->cascadeDelete();
         });
     }
 

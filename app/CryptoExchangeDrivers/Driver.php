@@ -167,7 +167,9 @@ abstract class Driver
      */
     public function fetchBalance()
     {
-        return $this->api->fetch_balance();
+        return $this->api->fetchBalance([
+            "type" => "main"
+        ]);
     }
 
     /**
