@@ -100,10 +100,26 @@
                             </div>
                         </div>
                         <div>
-                            <div x-show="action == ''" class="p-5">
-                                <div class="text-center">
-                                    <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __("Transaction Details") }}</p>
-                                    <p>{{ __() }}</p>
+                            <div x-show="action == ''">
+                                <div class="divide-y">
+                                    @foreach ($account->balances()->get() as $balance)                                        
+                                        <div class="flex justify-between items-center px-5 py-3">
+                                            <div class="flex items-center space-x-4">
+                                                <x-icon name="bitcoin" class="w-14 h-14"/>
+                                                <div>
+                                                    <p class="font-bold">{{$balance->cryptoCurrency()->get()[0]->getName()}} Wallet</p>
+                                                    <p class="text-gray-400">102 Transactions</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-4">
+                                                <div>
+                                                    <p class="font-bold">$ 2013.00</p>
+                                                    <p class="text-gray-400">{{$balance->balance}} {{$balance->cryptoCurrency()->get()[0]->short_name}}</p>
+                                                </div>
+                                                <x-button variant="white" class="rounded-full border-primary">View Transaction</x-button>
+                                            </div>
+                                        </div>
+                                    @endforeach                                   
                                 </div>
                             </div>
                             <div x-show="action == 'edit'">
