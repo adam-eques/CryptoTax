@@ -11,4 +11,9 @@ class BscScanBlockChainApi extends BlockChainApi
         $this->baseUrl = config("crypto.blockchains.bscscan.url");
         $this->extraParams["apiKey"] = config("crypto.blockchains.bscscan.apiKey");
     }
+
+    public function getBalances(): array
+    {
+        return [];
+    }
 }
