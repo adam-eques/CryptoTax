@@ -30,4 +30,10 @@ class CryptoExchangeBalance extends Model
     {
         return $this->belongsTo(CryptoCurrency::class);
     }
+
+
+    public function convertTo(string $currency = "USD")
+    {
+        return $this->cryptoCurrency->convertTo($this->balance, $currency);
+    }
 }
