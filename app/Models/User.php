@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\Traits\HasName;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Services\CreditCodeService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,6 +26,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
  * @property \Illuminate\Support\Collection<BlockchainAccount> $blockchainAccounts
  * @property \Illuminate\Support\Collection<UserCreditLog> $creditLogs
+ * @property \App\Models\UserAccountType $userAccountType
  */
 class User extends Authenticatable
 {
@@ -83,9 +86,19 @@ class User extends Authenticatable
             }
         });
 
+        static::created(function( self $item){
+            if($item->userAccountType->is_customer) {
+                $item->creditAction(CreditCodeService::ACTION_REGISTER);
+            }
+            if($item->userAccountType->id == UserAccountType::TYPE_CUSTOMER_PREMIUM) {
+                $item->creditAction(CreditCodeService::ACTION_ADD_PREMIUM);
+            }
+        });
+
         static::deleting(function (self $item) {
-            $item->blockchains()->delete();
-            $item->cryptoExchangeAccounts()->delete();
+            $item->blockchainAccounts()->cascadeDelete();
+            $item->cryptoExchangeAccounts()->cascadeDelete();
+            $item->creditLogs()->cascadeDelete();
         });
     }
 
@@ -94,7 +107,7 @@ class User extends Authenticatable
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeCustomersOnly(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
+    public function scopeCustomersOnly(Builder $query): Builder
     {
         return $query->whereIn('user_account_type_id', UserAccountType::customerTypes());
     }
@@ -103,7 +116,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function userAccountType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function userAccountType(): BelongsTo
     {
         return $this->belongsTo(UserAccountType::class);
     }
@@ -203,9 +216,7 @@ class User extends Authenticatable
     {
         // Get action and value
         if(is_string($actionOrActionCode)) {
-            $action = UserCreditAction::query()
-                ->where("action_code", $actionOrActionCode)
-                ->firstOrFail();
+            $action = UserCreditAction::findAction($actionOrActionCode);
         }
         else {
             $action = $actionOrActionCode;

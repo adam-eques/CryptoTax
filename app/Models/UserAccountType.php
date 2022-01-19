@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property boolean $active
+ * @property boolean $is_customer
+ */
 class UserAccountType extends Model
 {
     const TYPE_ADMIN = 1;
