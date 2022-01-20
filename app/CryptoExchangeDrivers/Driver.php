@@ -53,8 +53,7 @@ abstract class Driver
     public function updateTransactions(): self
     {
         // Get Balance
-        $balances = $this->fetchBalance();
-
+        $balances = $this->fetchBalances();
 
         // Get transaction data
         $since = $this->exchangeAccount->fetched_at ?: Carbon::create(2010, 1, 1);
@@ -67,6 +66,9 @@ abstract class Driver
     }
 
 
+    /**
+     * @return \ccxt\Exchange
+     */
     public function getApi()
     {
         return $this->api;
@@ -165,7 +167,7 @@ abstract class Driver
      *
      * @return mixed
      */
-    public function fetchBalance()
+    public function fetchBalances()
     {
         return $this->api->fetchBalance([
             "type" => "main"

@@ -47,7 +47,7 @@ class KucoinDriver extends Driver
         $now = now();
 
         // Balance
-        $balances = $this->fetchBalance();
+        $balances = $this->fetchBalances();
 
         \DB::transaction(function() use ($account, $since, $balances, $now) {
             $counter = 0;
