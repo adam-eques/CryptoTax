@@ -27,6 +27,6 @@ trait CryptoAssetTrait
      */
     public function convertTo(string $currency = "USD"): float
     {
-        return $this->cryptoCurrency->convertTo($this->balance, $currency);
+        return $this->cryptoCurrency ? $this->cryptoCurrency->convertTo($this->balance, $currency) : 0;
     }
 }
