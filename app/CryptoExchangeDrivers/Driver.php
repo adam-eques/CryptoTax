@@ -78,7 +78,7 @@ abstract class Driver
     /**
      * @param array $data
      * @param \Carbon\Carbon $timestamp
-     * @param float|null $balances
+     * @param array|null $balances
      * @return $this
      */
     protected function saveTransactions(array $data, Carbon $timestamp, ?array $balances = null): self
