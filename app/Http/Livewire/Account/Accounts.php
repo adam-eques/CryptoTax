@@ -22,9 +22,19 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function __construct()
     {
-        $this->blockchain = BlockchainAccount::query()
-            ->where('user_id', auth()->user()->id)
-            ->first();
+        if (auth()->user()->blockchainAccounts->count()) {
+            $this->account = null;
+            $this->blockchain = BlockchainAccount::query()
+                ->where('user_id', auth()->user()->id)
+                ->first();
+        }
+        else {
+            $this->blockchain = null;
+            $this->account = CryptoExchangeAccount::query()
+                ->where('user_id', auth()->user()->id)
+                ->whereJsonLength('credentials','>', 0)
+                ->first();
+        }
     }
 
     protected function getFormSchema(): array
@@ -66,7 +76,6 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $data = $this->form->getState();
         $this->account->credentials = $data;
         $this->account->save();
-        // $this->fetch($this->account);
     }
 
     public function edit_exchange()

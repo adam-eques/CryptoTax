@@ -47,7 +47,7 @@
                                             <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
                                             <div wire:loading.remove class="text-gray-400">{{ $item['fetched_at'] ? $item['fetched_at']: "Never" }}</div>
                                         </div>
-                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["price"], 2) }}</p>
+                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item->getBalanceSum(), 2) }}</p>
                                         @if ($account && $account->getName() == $item->getName())
                                             <div
                                                 class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
@@ -66,7 +66,7 @@
                                             <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
                                             <div wire:loading.remove class="text-gray-400">{{ $item['fetched_at'] ? $item['fetched_at']: "Never" }}</div>
                                         </div>
-                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat($item["balance"], 2) }}</p>
+                                        <p class="xl:text-xl text-gray-700 font-semibold">${{ moneyFormat(0.00, 2) }}</p>
                                         @if ($blockchain && $blockchain->blockchain_id == $item->blockchain_id)
                                             <div
                                                 class="bg-secondary-500 rounded-br-sm rounded-tr-sm w-2 h-full absolute right-0"
@@ -95,7 +95,7 @@
                                 <div wire:loading.remove class="text-gray-400">{{ __("Last Fetched: ") }}{{ $account->fetched_at ? $account->fetched_at: "Never" }}</div>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat(0.00, 2) }}</p>
+                                <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($account->getBalanceSum(), 2) }}</p>
                                 <x-button size="xs" wire:click="edit_exchange" x-on:click="action='edit'">
                                     <x-icon name="edit" class="w-6"/>
                                 </x-button>
@@ -107,21 +107,21 @@
                         <div>
                             <div x-show="action == ''" class="overflow-auto">
                                 <div class="divide-y max-h-110 overflow-x-auto">
-                                    @foreach ($account->cryptoExchangeAssets()->get() as $balance)
+                                    @foreach ($account->cryptoExchangeAssets as $asset)
                                         <div class="flex justify-between items-center px-5 py-3 min-w-cmd">
                                             <div class="flex items-center space-x-4">
-                                                <x-icon name="{{str_replace(' ', '-',strtolower( $balance->cryptoCurrency()->get()[0]->getName()))}}" class="w-14 h-14"/>
+                                                <x-icon name="{{str_replace(' ', '-',strtolower( $asset->cryptoCurrency()->first()->getName()))}}" class="w-14 h-14"/>
                                                 <div>
-                                                    <p class="font-bold">{{$balance->cryptoCurrency()->get()[0]->getName()}} Wallet</p>
-                                                    <p class="text-gray-400">102 Transactions</p>
+                                                    <p class="font-bold">{{$asset->cryptoCurrency()->first()->getName()}} Wallet</p>
+                                                    <p class="text-gray-400">{{ 11 }} {{__('Transactions')}}</p>
                                                 </div>
                                             </div>
                                             <div class="flex items-center space-x-4">
                                                 <div>
-                                                    <p class="font-bold">$ 2013.00</p>
-                                                    <p class="text-gray-400">{{$balance->balance}} {{$balance->cryptoCurrency()->get()[0]->short_name}}</p>
+                                                    <p class="font-bold">${{ moneyFormat($asset->convertTo(), 2) }}</p>
+                                                    <p class="text-gray-400">{{ moneyFormat($asset->balance, 10) }} {{$asset->cryptoCurrency()->get()[0]->short_name}}</p>
                                                 </div>
-                                                <x-button tag="a" href="{{route('customer.transactions')}}" variant="white" class="rounded-full border-primary">View Transaction</x-button>
+                                                <x-button tag="a" href="{{route('customer.transactions')}}" variant="white" class="rounded-full border-primary">{{ __('View Transaction') }}</x-button>
                                             </div>
                                         </div>
                                     @endforeach
@@ -146,7 +146,8 @@
                         <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded">
                             <div>
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl uppercase">{{ explode(':',  $blockchain->getName())[0] }}</p>
-                                <p class="text-gray-400">{{ __("Last Fetched: ") }}{{ $blockchain->fetched_at ? $blockchain->fetched_at: "Never" }}</p>
+                                <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
+                                <div wire:loading.remove class="text-gray-400">{{ __("Last Fetched: ") }}{{ $blockchain->fetched_at ? $blockchain->fetched_at: "Never" }}</div>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($blockchain["balance"], 2) }}</p>
