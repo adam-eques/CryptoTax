@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CryptoExchangeTransaction extends Model
 {
+    const UPDATED_AT = null;
+
     protected $casts = [
         "data" => "json"
     ];
