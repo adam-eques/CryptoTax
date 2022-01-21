@@ -14,18 +14,18 @@
                 {{ session('status') }}
             </div>
         @endif --}}
-        <div class="mt-5 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-44 relative">
+        <div class="mt-5 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-44 relative px-5 md:px-10">
             <div class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden md:block">
                 <div class="w-12 h-12 bg-primary rounded-full text-white text-lg font-bold flex justify-center items-center">
                     <p>OR</p>
                 </div>
             </div>
-            <div class="px-2">
+            <div class="px-2 w-full">
                 <p class="text-lg font-bold">{{ __('Free Sign In') }}</p>
-                <div class="h-full flex items-center">
+                <div class="h-full w-full flex items-center">
                     <div class="space-y-0 md:space-y-6 space-x-4 md:space-x-0 grid grid-cols-2 md:grid-cols-1">
-                        <x-social-auth-item name="google" icon="google-circle">{{ __("Sign in with Google") }}</x-social-auth-item>
-                        <x-social-auth-item name="facebook" icon="facebook-circle">{{ __("Sign in with Facebook") }}</x-social-auth-item>
+                        <x-social-auth-item size="lg" name="google" icon="google-circle">{{ __("Sign in with Google") }}</x-social-auth-item>
+                        <x-social-auth-item size="lg" name="facebook" icon="facebook-circle">{{ __("Sign in with Facebook") }}</x-social-auth-item>
                     </div>
                 </div>
             </div>
