@@ -21,12 +21,14 @@ use Laravel\Sanctum\HasApiTokens;
  * @package App\Models
  *
  * @property int $user_account_type_id
+ * @property int $datacenter_id
  *
  *
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
  * @property \Illuminate\Support\Collection<BlockchainAccount> $blockchainAccounts
  * @property \Illuminate\Support\Collection<UserCreditLog> $creditLogs
  * @property \App\Models\UserAccountType $userAccountType
+ * @property \App\Models\Datacenter $datacenter
  */
 class User extends Authenticatable
 {
@@ -128,6 +130,15 @@ class User extends Authenticatable
     public function creditLogs(): HasMany
     {
         return $this->hasMany(UserCreditLog::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function datacenter(): BelongsTo
+    {
+        return $this->belongsTo(Datacenter::class);
     }
 
 

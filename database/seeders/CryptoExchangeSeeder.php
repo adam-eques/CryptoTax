@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\CryptoExchangeDrivers\BinanceDriver;
 use App\CryptoExchangeDrivers\HitBTCDriver;
 use App\CryptoExchangeDrivers\KucoinDriver;
 use App\Models\CryptoExchange;
@@ -27,6 +28,13 @@ class CryptoExchangeSeeder extends Seeder
                 'description' => 'HitBTC lorem ipsum dolor.',
                 'website' => "https://hitbtc.com/",
                 'driver' => HitBTCDriver::class
+            ],
+            [
+                'id' => CryptoExchange::EXCHANGE_BINANCE,
+                'name' => "Binance",
+                'description' => 'Binance lorem ipsum dolor.',
+                'website' => "https://www.binance.com/",
+                'driver' => BinanceDriver::class
             ],
         ])->each(function($data){
             $item = new CryptoExchange($data);
