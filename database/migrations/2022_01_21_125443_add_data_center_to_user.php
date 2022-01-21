@@ -8,7 +8,7 @@ return new class extends Migration{
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Datacenter::class)->index()->default(\App\Models\Datacenter::CENTER_EU);
+            $table->foreignIdFor(\App\Models\Datacenter::class)->index()->default(\App\Models\Datacenter::CENTER_EU)->after("credits");
         });
     }
 
