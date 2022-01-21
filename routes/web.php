@@ -70,6 +70,8 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:t
 
 });
 
+//Landing Page
+Route::view('/', 'pages.index')->name('index');
 
 // UserAccountType agnostic
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
@@ -78,7 +80,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     })->name('dashboard');
 
     // Redirect / to dashboard
-    Route::redirect("/", "/dashboard");
+    // Route::redirect("/", "/dashboard");
+   
 
     // Specials
     Route::view('/todo', 'errors.todo')->name('todo');
