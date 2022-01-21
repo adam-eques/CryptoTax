@@ -42,12 +42,6 @@
                 </div>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-        
-                    {{-- <div>
-                        <x-jet-label for="name" value="{{ __('Name') }}" />
-                        <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                    </div> --}}
-        
                     <div class="mt-4">
                         <x-jet-label for="email" value="{{ __('Email') }}" />
                         <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
@@ -59,8 +53,11 @@
                     </div>
         
                     <div class="mt-4">
-                        <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                        <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                        <x-jet-label for="data_center" value="{{ __('Data Location') }}" />
+                        <select name="data_center" id="data_center" class="border border-gray-300 py-4 w-full rounded-sm shadow-md mt-1">
+                            <option value="1">{{__('Europe')}}</option>
+                            <option value="2">{{__("United States")}}</option>
+                        </select>
                     </div>
                     <label for="email_update" class="flex items-center my-10">
                         <x-jet-checkbox id="email_update" name="email_receive" />
