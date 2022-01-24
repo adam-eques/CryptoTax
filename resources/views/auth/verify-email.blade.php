@@ -11,7 +11,7 @@
                     <x-jet-authentication-card-logo />
                     <h2 class="text-3xl font-extrabold my-6">{{ __('Thank you for your Registration') }}</h2>
                     <div class="mb-4 text-sm text-gray-600">
-                        {{ __('We have send you an confirmation email to johnjoe7501@gmail.com. please confirm your email address to active your account.') }}
+                        {{ __('We have send you an confirmation email to ' . auth()->user()->email . '. please confirm your email address to active your account.') }}
                     </div>
             
                     @if (session('status') == 'verification-link-sent')
