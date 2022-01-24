@@ -1,9 +1,9 @@
 @if ($errors->any())
     <div {{ $attributes }}>
-        <ul class="mt-2 list-disc list-inside text-sm text-red-600">
+        <div class="mt-2 list-disc list-inside text-sm text-red-600">
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <p>{{ $error }}</p>
             @endforeach
-        </ul>
+        </div>
     </div>
 @endif

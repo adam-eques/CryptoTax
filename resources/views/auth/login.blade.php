@@ -7,13 +7,7 @@
             <h2 class="text-3xl font-extrabold">{{ __('Sign in to myCrypto Tax') }}</h2>
             <p class="text-base mt-3">{{__('Welcome back! Please enter your details')}}</p>
         </div>
-        {{-- <x-jet-validation-errors class="mb-4" /> --}}
-
-        {{-- @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif --}}
+       
         <div class="mt-5 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-44 relative px-5 md:px-10">
             <div class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden md:block">
                 <div class="w-12 h-12 bg-primary rounded-full text-white text-lg font-bold flex justify-center items-center">
@@ -30,6 +24,13 @@
                 </div>
             </div>
             <div class="px-2">
+                <x-jet-validation-errors class="mb-4" />
+
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
         
