@@ -31,7 +31,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
  * @property \App\Models\UserAccountType $userAccountType
  * @property \App\Models\Datacenter $datacenter
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
