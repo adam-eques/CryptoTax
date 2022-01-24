@@ -4,7 +4,7 @@
                          text-primary-3 hover:bg-primary-2 focus:outline-none outline-none"
             aria-controls="mobile-menu"
             aria-expanded="false" @click="mobile = true">
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">{{ __('Open main menu') }}</span>
         {{--
             Heroicon name: outline/menu
             Menu open: "hidden ", Menu closed: "block "

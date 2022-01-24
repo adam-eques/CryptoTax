@@ -26,7 +26,7 @@
                     {{-- Message Button --}}
                     <button type="button" title="Message"
                             class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none ">
-                        <span class="sr-only">Message</span>
+                        <span class="sr-only">{{__('Message')}}</span>
                         <x-icon name="message" class="w-6 h-6 mr-2"/>
                     </button>
 
@@ -47,14 +47,14 @@
                             x-transition:enter-start="transition ease-in duration-3000">
                             <x-jet-dropdown-link href="{{ route('customer.taxes') }}">
                                 <x-icon name="fas-file-alt"  class="w-3 sm:inline mr-2" />
-                                New tax report available
+                                {{ __("New tax report available") }}
                                 <small class="sm:block text-2xs mt-1 ml-6 text-gray-400">2021-11-30 03:04 pm</small>
                             </x-jet-dropdown-link>
                             <div class="border-t border-gray-100"></div>
 
                             <x-jet-dropdown-link href="{{ route('customer.account') }}">
                                 <x-icon name="fas-plus-square" class="w-3 sm:inline mr-2" />
-                                New wallet added
+                                {{ __('New wallet added') }}
                                 <small class="sm:block text-2xs mt-1 ml-6 text-gray-400">2021-11-30 03:04 pm</small>
                             </x-jet-dropdown-link>
                         </div>
@@ -88,7 +88,7 @@
                          alt=""/>
                 </div>
                 <div class="ml-3 space-y-2">
-                    <div class="text-base font-medium leading-none text-white">John Doe</div>
+                    <div class="text-base font-medium leading-none text-white">{{ __(auth()->user()->name) }}</div>
                     <div class="text-sm font-light leading-none text-gray-200 hidden">tom@example.com</div>
                 </div>
 
@@ -97,10 +97,10 @@
             <!-- Dropdown -->
             <div class="mt-3 md:mt-0 px-2 space-y-1 md:space-y-0 flex flex-col md:flex-row md:gap-2">
                 <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">
-                    Your Profile
+                    {{ __('Your Profile') }}
                 </a>
-                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">Settings</a>
-                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">Sign out</a>
+                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Settings') }}</a>
+                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Sign out') }}</a>
             </div>
         </div>
     </div>
