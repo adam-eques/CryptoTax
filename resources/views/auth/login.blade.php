@@ -38,9 +38,13 @@
                         <x-jet-input id="email" class="block mt-3 w-full" type="email" name="email" :value="old('email')" required autofocus />
                     </div>
         
-                    <div class="mt-9">
+                    <div class="mt-9 relative" x-data="{ishide: true}">
                         <x-jet-label for="password" value="{{ __('Password') }}" />
-                        <x-jet-input id="password" class="block mt-3 w-full" type="password" name="password" required autocomplete="current-password" />
+                        <x-jet-input id="password" class="block mt-3 w-full" type="password" name="password" required autocomplete="current-password" x-bind:type="ishide?'password':'text'"/>
+                        <button class="absolute top-12 right-3" type="button" x-on:click="ishide=!ishide">
+                            <x-icon name="fas-eye" class="w-8 text-gray-400" x-show="ishide"/>
+                            <x-icon name="fas-eye-slash" class="w-8 text-gray-400" x-show="!ishide"/>
+                        </button>
                     </div>
         
                     <div class="my-8 flex justify-between items-center">

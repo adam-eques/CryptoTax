@@ -40,6 +40,7 @@
                         <p>OR</p>
                     </div>
                 </div>
+                <x-jet-validation-errors class="mb-2" />
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="mt-4">
@@ -47,9 +48,13 @@
                         <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                     </div>
         
-                    <div class="mt-4">
+                    <div class="mt-4 relative" x-data="{ishide: true}">
                         <x-jet-label for="password" value="{{ __('Password') }}" />
-                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                        <x-jet-input id="password" class="block mt-1 w-full" name="password" required autocomplete="new-password" x-bind:type="ishide?'password':'text'"/>
+                        <button class="absolute top-10 right-3" type="button" x-on:click="ishide=!ishide">
+                            <x-icon name="fas-eye" class="w-8 text-gray-400" x-show="ishide"/>
+                            <x-icon name="fas-eye-slash" class="w-8 text-gray-400" x-show="!ishide"/>
+                        </button>
                     </div>
         
                     <div class="mt-4">
