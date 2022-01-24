@@ -6,7 +6,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-30 px-3 py-5">
             <div>
-                <img src="{{ asset('assets/img/svg/forgot_password.svg') }}" class="w-auto h-auto"/>
+                <img src="{{ asset('assets/img/svg/reset_password.svg') }}" class="w-auto h-auto"/>
             </div>
             <div>
                 <x-jet-authentication-card-logo />
