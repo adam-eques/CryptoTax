@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Request::macro('isAdmin', function () {
+            return str_starts_with($this->getPathInfo(), '/admin/');
+        });
     }
 
     /**

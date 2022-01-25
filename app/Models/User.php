@@ -224,6 +224,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    /**
+     * @return bool
+     */
+    public function isAffiliateAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_AFFILIATE;
+    }
+
+
     public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): self
     {
         // Get action and value

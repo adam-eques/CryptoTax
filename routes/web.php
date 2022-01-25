@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// 
+
+
 // Only for UserAccountType::TYPE_ADMIN
 Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->prefix("admin")->group(function(){
     // Users
@@ -87,7 +90,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     // Redirect / to dashboard
     // Route::redirect("/", "/dashboard");
-   
+
 
     // Specials
     Route::view('/todo', 'errors.todo')->name('todo');
