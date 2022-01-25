@@ -61,5 +61,4 @@ return [
     */
 
     'profile_photo_disk' => 'public',
-
 ];

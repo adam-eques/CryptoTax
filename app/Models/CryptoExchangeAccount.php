@@ -24,7 +24,6 @@ class CryptoExchangeAccount extends Model
         'fetching_scheduled_at' => 'datetime',
     ];
 
-    protected $guarded = [];
 
 
     public static function boot() {

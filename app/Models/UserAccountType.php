@@ -18,7 +18,6 @@ class UserAccountType extends Model
     const TYPE_CUSTOMER_PREMIUM = 6;
     const TYPE_AFFILIATE = 7;
 
-    protected $guarded = [];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -37,6 +36,33 @@ class UserAccountType extends Model
         return [
             self::TYPE_CUSTOMER_FREE,
             self::TYPE_CUSTOMER_PREMIUM,
+        ];
+    }
+
+
+    /**
+     * @return int[]
+     */
+    public static function adminPanelTypes(): array
+    {
+        return [
+            self::TYPE_ADMIN,
+            self::TYPE_SUPPORT,
+            self::TYPE_EDITOR,
+        ];
+    }
+
+
+    /**
+     * @return int[]
+     */
+    public static function customerPanelTypes(): array
+    {
+        return [
+            self::TYPE_CUSTOMER_FREE,
+            self::TYPE_CUSTOMER_PREMIUM,
+            self::TYPE_TAX_ADVISOR,
+            self::TYPE_AFFILIATE,
         ];
     }
 

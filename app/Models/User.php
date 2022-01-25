@@ -182,6 +182,24 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @return bool
      */
+    public function isAdminPanelAccount(): bool
+    {
+        return in_array($this->user_account_type_id, UserAccountType::adminPanelTypes());
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isCustomerPanelAccount(): bool
+    {
+        return in_array($this->user_account_type_id, UserAccountType::customerPanelTypes());
+    }
+
+
+    /**
+     * @return bool
+     */
     public function isAdminAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_ADMIN;

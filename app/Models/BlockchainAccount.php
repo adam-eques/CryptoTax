@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class BlockchainAccount extends Model
 {
-    protected $guarded = [];
     protected $casts = [
         'fetched_at' => 'datetime',
         'fetching_scheduled_at' => 'datetime',

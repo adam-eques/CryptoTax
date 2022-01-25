@@ -15,14 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// 
-
 
 // Only for UserAccountType::TYPE_ADMIN
-Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:admin")->name("admin.")->prefix("admin")->group(function(){
+//Route::middleware(['auth:admin', 'verified'])->middleware("user-account-type:admin")->name("admin.")->prefix("admin")->group(function(){
+Route::middleware(['auth:admin', 'verified'])->name("admin.")->prefix("admin")->group(function(){
+    Route::redirect("/", "/admin/dashboard");
+
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    })->name('dashboard');
+
     // Users
     \App\Http\Livewire\Admin\Customer\CustomerResource::routes();
     \App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource::routes();
+    \App\Http\Livewire\Admin\AffiliateUser\AffiliateUserResource::routes();
     \App\Http\Livewire\Admin\BackendUser\BackendUserResource::routes();
 
     // Other resources
@@ -34,7 +40,11 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:a
 
 
 // Only for customers
-Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:customer")->name("customer.")->group(function(){
+Route::middleware(['auth:web', 'verified'])->name("customer.")->group(function(){
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    })->name('dashboard');
+
     // TODO routes
     Route::view('/account', 'pages.customer.account.index')->name('account');
     Route::view('/portfolio', 'pages.customer.portfolio.portfolio')->name('portfolio');
@@ -69,11 +79,11 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:c
 
 
 // Only for UserAccountType::TYPE_TAX_ADVISOR
-Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:tax-advisor")->name("tax-advisor.")->group(function(){
+Route::middleware(['auth:web', 'verified'])->name("tax-advisor.")->group(function(){
 
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+Route::middleware(['auth:web', 'verified'])->group(function(){
     Route::get('tax-setting', function(){
         return view('pages.tax-setting.index');
     })->name('tax-setting');
@@ -83,14 +93,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 Route::view('/', 'pages.index')->name('index');
 
 // UserAccountType agnostic
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    })->name('dashboard');
-
+Route::middleware(['auth:web', 'verified'])->group(function(){
     // Redirect / to dashboard
     // Route::redirect("/", "/dashboard");
-
 
     // Specials
     Route::view('/todo', 'errors.todo')->name('todo');

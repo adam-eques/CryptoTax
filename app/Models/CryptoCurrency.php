@@ -15,9 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CryptoCurrency extends Model
 {
-    protected $guarded = [];
-
-
     public function CryptoExchangeAssets()
     {
         return $this->hasMany(CryptoExchangeAsset::class);

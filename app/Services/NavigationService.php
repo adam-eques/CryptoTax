@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Livewire\Admin\AffiliateUser\AffiliateUserResource;
 use App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource;
 use App\Http\Livewire\Admin\BackendUser\BackendUserResource;
 use App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource;
@@ -164,11 +165,12 @@ class NavigationService
     private function adminAccountItems()
     {
         $this->addItems([
-            ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard'],
+            ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'admin.dashboard'],
             ["label" => __('User'), 'children' => [
                 CustomerResource::make()->sidebar(),
                 TaxAdvisorResource::make()->sidebar(),
                 BackendUserResource::make()->sidebar(),
+                AffiliateUserResource::make()->sidebar(),
                 UserAccountTypeResource::make()->sidebar(),
                 UserCreditActionResource::make()->sidebar()
             ]],
@@ -191,9 +193,9 @@ class NavigationService
     private function customerAccountItems()
     {
         $this->addItems([
-            ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'dashboard',
+            ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'customer.dashboard',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
                     ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                 ],
                 "actions" => [
@@ -212,7 +214,7 @@ class NavigationService
             ],
             ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
                     ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                 ],
                 "actions" => [
@@ -221,7 +223,7 @@ class NavigationService
             ],
             ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
                     ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                 ],
                 "actions" => [
@@ -230,7 +232,7 @@ class NavigationService
             ],
             ["label" => __('Advisor'), 'icon' => 'advisor', 'route' => 'customer.advisor',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
                     ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                 ],
                 "actions" => [
@@ -239,7 +241,7 @@ class NavigationService
             ],
             ["label" => __('Services'), 'icon' => 'service', 'route' => 'customer.services',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'dashboard'],
+                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
                     ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
                 ],
                 "actions" => [
@@ -253,7 +255,7 @@ class NavigationService
     private function taxAdvisorAccountItems()
     {
         $this->addItems([
-            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'customer.dashboard'],
         ]);
     }
 
@@ -261,7 +263,7 @@ class NavigationService
     private function supportAccountItems()
     {
         $this->addItems([
-            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'admin.dashboard'],
         ]);
     }
 
@@ -269,7 +271,7 @@ class NavigationService
     private function editorAccountItems()
     {
         $this->addItems([
-            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'dashboard'],
+            ["label" => __('Dashboard'), 'icon' => 'fas-home', 'route' => 'admin.dashboard'],
         ]);
     }
 }

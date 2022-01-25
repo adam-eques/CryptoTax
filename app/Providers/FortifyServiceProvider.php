@@ -11,9 +11,11 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -24,11 +26,30 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Add admin routes
+        Route::prefix("admin")->as("admin.")->group(function () {
+            $limiter = config('fortify.limiters.login');
+
+            Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+                ->middleware(['guest:admin'])
+                ->name('login');
+
+            Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+                ->middleware(array_filter([
+                    'guest:admin',
+                    $limiter ? 'throttle:'.$limiter : null,
+                ]));
+
+            Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->name('logout');
+        });
+
         if (request()->isAdmin()) {
             config([
                 // Change guard and prefix
                 'fortify.guard' => 'admin',
                 'fortify.prefix' => 'admin',
+                'fortify.home' => '/admin/dashboard',
 
                 // Disable registration
                 'fortify.features' => array_diff(config("fortify.features"), [
@@ -45,7 +66,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Fortify::loginView(request()->isAdmin() ? 'admin.auth.login' : 'auth.login');
+        if(request()->isAdmin()) {
+            Fortify::loginView( 'admin.auth.login');
+        }
 
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
@@ -67,20 +90,17 @@ class FortifyServiceProvider extends ServiceProvider
              */
             $user = User::where('email', $request->email)->first();
 
-            dd(1);
-
             // Not a user or wrong password
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return false;
             }
 
             // Login to admin
-            if($request->isAdmin() && ($user->isAdminAccount() || $user->isSupportAccount() || $user->isEditorAccount())) {
+            if($request->isAdmin() && $user->isAdminPanelAccount()) {
                 return $user;
             }
-
             // Login to customer panel
-            if(!$request->isAdmin() && ($user->isCustomerAccount() || $user->isTaxAdvisorAccount() || $user->isAffiliateAccount())) {
+            if(!$request->isAdmin() && !$user->isAdminPanelAccount()) {
                 return $user;
             }
 

@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Request::macro('isAdmin', function () {
-            return str_starts_with($this->getPathInfo(), '/admin/');
+            return str_starts_with($this->getPathInfo(), '/admin/') || $this->getPathInfo() == "/admin";
         });
     }
 

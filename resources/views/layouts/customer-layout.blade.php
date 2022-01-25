@@ -37,7 +37,7 @@
                 <!-- Footer Intro section -->
                 <div class="lg:w-1/3 space-y-4 lg:space-y-10 pr-5 xl:pr-20 items-center lg:items-start flex justify-center lg:justify-start flex-col text-center lg:text-left">
                     <div class="flex-shrink-0 ">
-                        <a href="{{ route("dashboard") }}" class="flex items-center text-white group">
+                        <a href="{{ route("customer.dashboard") }}" class="flex items-center text-white group">
                             <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
                             <span class="ml-2 text-xl font-bold">myCrypto Tax</span>
                         </a>

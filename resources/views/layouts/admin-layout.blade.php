@@ -40,7 +40,7 @@
         <div class="sidebar bg-primary text-blue-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out z-40"
              x-bind:class="!mobileSidebar ? '-translate-x-full' : ''">
             {{-- Logo --}}
-            <a href="{{ route("dashboard") }}" class="text-white flex items-center space-x-2 px-4 text-lg font-bold">
+            <a href="{{ route("admin.dashboard") }}" class="text-white flex items-center space-x-2 px-4 text-lg font-bold">
                 <img src="{{ asset("assets/img/logo.jpg") }}" alt="Logo" class="rounded-2xl mr-2 h-8"> myCrypto Tax
             </a>
 
@@ -105,7 +105,7 @@
                         @if($breadcrumbs)
                             <ol class="inline-flex items-center space-x-1 md:space-x-3 text-xs pt-1">
                                 <li class="inline-flex items-center">
-                                    <a href="{{ route("dashboard") }}" class="text-secondary-500 hover:text-gray-900 inline-flex items-center">
+                                    <a href="{{ route("admin.dashboard") }}" class="text-secondary-500 hover:text-gray-900 inline-flex items-center">
                                         {{ __("Home") }}
                                     </a>
                                 </li>

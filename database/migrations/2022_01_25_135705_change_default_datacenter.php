@@ -8,15 +8,12 @@ return new class extends Migration{
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Datacenter::class)->index()->default(\App\Models\Datacenter::CENTER_EU)->after("credits");
+            $table->unsignedBigInteger("datacenter_id")->change()->default(\App\Models\Datacenter::CENTER_US);
         });
     }
 
 
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn("datacenter_id");
-        });
     }
 };

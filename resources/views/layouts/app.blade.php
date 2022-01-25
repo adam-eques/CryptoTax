@@ -1,5 +1,5 @@
 @php($user = auth()->user())
-@if($user->isAdminAccount() || $user->isEditorAccount() || $user->isSupportAccount())
+@if($user->isAdminPanelAccount())
     @include("layouts.admin-layout")
 @else
     @include("layouts.customer-layout")
