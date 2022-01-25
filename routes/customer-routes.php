@@ -36,8 +36,10 @@ Route::prefix("test")->as("test.")->group(function() {
 });
 
 // Settings
-Route::get('tax-setting', function(){
-    return view('pages.tax-setting.index');
+Route::get('tax-setting/{category}', function($category){
+    return view('pages.tax-setting.index', [
+        "category" => $category
+    ]);
 })->name('tax-setting');
 
 // Specials
