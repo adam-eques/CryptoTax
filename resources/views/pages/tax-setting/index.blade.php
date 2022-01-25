@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="mt-12" x-data="{selected: 'profile'}">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-x-0 md:gap-x-10 gap-y-5 md:gap-y-0">
                 <div class="col-span-1 border rounded">
                     <x-tax-setting-list :active="app('request')->input('category')"/>
                 </div>
