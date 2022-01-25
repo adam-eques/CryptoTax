@@ -20,14 +20,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/dashboard';
 
-    /**
-     * The controller namespace for the application.
-     *
-     * When present, controller route declarations will automatically be prefixed with this namespace.
-     *
-     * @var string|null
-     */
-    // protected $namespace = 'App\\Http\\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -37,14 +29,26 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+
         $this->routes(function () {
+            // Api routes
             Route::prefix('api')
                 ->middleware('api')
-                ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
+            // Admin-Panel routes
+            Route::middleware(['web', 'auth:admin', 'verified'])
+                ->name("admin.")
+                ->prefix("admin")
+                ->group(base_path('routes/admin-routes.php'));
+
+            // Customer-Panel routes
+            Route::middleware(['web', 'auth:web', 'verified'])
+                ->name("customer.")
+                ->group(base_path('routes/customer-routes.php'));
+
+            // General web routes
             Route::middleware('web')
-                ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
     }

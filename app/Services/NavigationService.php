@@ -175,10 +175,10 @@ class NavigationService
                 UserCreditActionResource::make()->sidebar()
             ]],
             ["label" => __('Advertising'), 'children' => [
-                ["label" => "Advertising", "icon" => "fas-ad", "route" => "todo"],
+                ["label" => "Advertising", "icon" => "fas-ad", "route" => "admin.todo"],
             ]],
             ["label" => __('Finance'), 'children' => [
-                ["label" => "Finance", "icon" => "fas-coins", "route" => "todo"],
+                ["label" => "Finance", "icon" => "fas-coins", "route" => "admin.todo"],
             ]],
             ["label" => __('API\'s'), 'children' => [
                 CryptoExchangeResource::make()->sidebar(),
