@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\TaxSetting;
+namespace App\Http\Livewire\UserSetting;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Tax extends Component
 {
     public function render()
     {
-        return view('livewire.tax-setting.tax');
+        return view('livewire.user-setting.tax');
     }
 }

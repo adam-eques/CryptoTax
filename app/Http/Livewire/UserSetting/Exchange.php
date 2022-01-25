@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\TaxSetting;
+namespace App\Http\Livewire\UserSetting;
 
 use Livewire\Component;
 
@@ -12,9 +12,9 @@ class Exchange extends Component
     {
         $this->type = 1;
     }
-    
+
     public function render()
     {
-        return view('livewire.tax-setting.exchange');
+        return view('livewire.user-setting.exchange');
     }
 }

@@ -14,16 +14,16 @@
         <div class="mt-7">
             @switch($type)
                 @case(1)
-                    @livewire('tax-setting.exchange-csv')
+                    @livewire('user-setting.exchange-csv')
                     @break
                 @case(2)
-                    @livewire('tax-setting.exchange-api')
+                    @livewire('user-setting.exchange-api')
                     @break
                 @case(3)
-                    @livewire('tax-setting.exchange-blockchain')
+                    @livewire('user-setting.exchange-blockchain')
                     @break
                 @default
-                    
+
             @endswitch
         </div>
     </div>
