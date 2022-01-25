@@ -70,6 +70,12 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware("user-account-type:t
 
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('tax-setting', function(){
+        return view('pages.tax-setting.index');
+    })->name('tax-setting');
+});
+
 //Landing Page
 Route::view('/', 'pages.index')->name('index');
 
