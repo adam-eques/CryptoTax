@@ -47,7 +47,7 @@
                         <x-jet-label for="email" value="{{ __('Email') }}" />
                         <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                     </div>
-        
+
                     <div class="mt-4 relative" x-data="{ishide: true}">
                         <x-jet-label for="password" value="{{ __('Password') }}" />
                         <x-jet-input id="password" class="block mt-1 w-full" name="password" required autocomplete="new-password" x-bind:type="ishide?'password':'text'"/>
@@ -56,25 +56,25 @@
                             <x-icon name="fas-eye-slash" class="w-8 text-gray-400" x-show="!ishide"/>
                         </button>
                     </div>
-        
+
                     <div class="mt-4">
                         <x-jet-label for="data_center" value="{{ __('Data Location') }}" />
                         <select name="data_center" id="data_center" class="border border-gray-300 py-4 w-full rounded-sm shadow-md mt-1">
-                            <option value="1">{{__('Europe')}}</option>
                             <option value="2">{{__("United States")}}</option>
+                            <option value="1">{{__('Europe')}}</option>
                         </select>
                     </div>
                     <label for="email_update" class="flex items-center my-10">
-                        <x-jet-checkbox id="email_update" name="email_receive" />
+                        <x-jet-checkbox id="email_update" name="email_receive" value="1" />
                         <span class="ml-2 text-sm text-gray-600">{{ __('I agree to receive email updates from myCryptoTax') }}</span>
                     </label>
-        
+
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                         <div class="mt-4">
                             <x-jet-label for="terms">
                                 <div class="flex items-center">
                                     <x-jet-checkbox name="terms" id="terms"/>
-        
+
                                     <div class="ml-2">
                                         {!! __('I agree to the :terms_of_service and :privacy_policy', [
                                                 'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
