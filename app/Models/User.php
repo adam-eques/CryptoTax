@@ -23,6 +23,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
  *
  * @property int $user_account_type_id
  * @property int $datacenter_id
+ * @property int $tax_year
  *
  *
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
@@ -30,6 +31,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
  * @property \Illuminate\Support\Collection<UserCreditLog> $creditLogs
  * @property \App\Models\UserAccountType $userAccountType
  * @property \App\Models\Datacenter $datacenter
+ * @property \App\Models\Timezone $timezone
+ * @property \App\Models\TaxCountry $taxCountry
+ * @property \App\Models\TaxCurrency $taxCurrency
+ * @property \App\Models\TaxCostModel $taxCostModel
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -180,6 +185,42 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxCostModel(): BelongsTo
+    {
+        return $this->belongsTo(TaxCostModel::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxCurrency(): BelongsTo
+    {
+        return $this->belongsTo(TaxCurrency::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxCountry(): BelongsTo
+    {
+        return $this->belongsTo(TaxCountry::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function timezone(): BelongsTo
+    {
+        return $this->belongsTo(Timezone::class);
+    }
+
+
+    /**
      * @return bool
      */
     public function isAdminPanelAccount(): bool
@@ -251,6 +292,22 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    /**
+     * Checks if the user has filled out all necessary data
+     *
+     * @return bool
+     */
+    public function setupFinished(): bool
+    {
+        return $this->timezone_id && $this->tax_cost_model_id && $this->tax_year && $this->tax_currency_id && $this->tax_country_id;
+    }
+
+
+    /**
+     * @param string|\App\Models\UserCreditAction $actionOrActionCode
+     * @param float|null $value
+     * @return $this
+     */
     public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): self
     {
         // Get action and value

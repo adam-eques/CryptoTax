@@ -14,8 +14,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            // Datacenter
+            // Base data
             DatacenterSeeder::class,
+            TimezoneSeeder::class,
+            TaxCountrySeeder::class,
+            TaxCurrencySeeder::class,
+            TaxCostModelSeeder::class,
 
             // Crypto Currency
             CryptoCurrencySeeder::class,

@@ -29,4 +29,7 @@ Route::view('/todo', 'errors.todo')->name('todo');
 Route::prefix("dev")->name("dev.")->group(function(){
     Route::get("index", [Controllers\Admin\DevController::class, "index"])->name("index");
     Route::get("icons", [Controllers\Admin\DevController::class, "icons"])->name("icons");
+    Route::get("test", function(){
+       //dd(DateTimeZone::listIdentifiers(DateTimeZone::ALL));
+    });
 });

@@ -16,7 +16,7 @@ if (! function_exists('notify')) {
     /**
      * @param string $title
      * @param string $msg
-     * @param string $type
+     * @param string $type  "success|error|info"
      * @return void
      */
     function notify(string $title, string $msg = "", string $type = "success"): void
