@@ -1,5 +1,5 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
-    ["label" => "profile", "icon" => "wallet", "route" => "customer.account"],
+    ["label" => "profile", "icon" => "user", "route" => "customer.account"],
     ["label" => "Setting", "icon" => "setting", "route" => "customer.transactions"],
 ], [
     ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
@@ -25,7 +25,9 @@
                     <x-tax-setting-list :active="app('request')->input('category')"/>
                 </div>
                 <div class="col-span-3 border rounded">
-                    @livewire('tax-setting.' . app('request')->input('category'))
+                    @if (app('request')->input('category'))                        
+                        @livewire('tax-setting.' . app('request')->input('category'))
+                    @endif
                 </div>
             </div>
         </div>
