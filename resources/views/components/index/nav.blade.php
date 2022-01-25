@@ -1,3 +1,12 @@
+@php
+    $links = [
+        [ 'name' => 'Home', 'route' => 'index' ],
+        [ 'name' => 'Account', 'route' => 'index' ],
+        [ 'name' => 'Portfolio', 'route' => 'index' ],
+        [ 'name' => 'Taxes', 'route' => 'index' ],
+    ]
+@endphp
+
 <nav class="bg-transparent absolute w-full z-10" x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">
@@ -8,9 +17,39 @@
                 </a>
             </div>
 
-            <div class="ml-auto mr-5 flex items-center gap-4">
-                <x-button tag="a" href="{{ route('login') }}" class="bg-transparent">{{ __('Sign in') }}</x-button>
-                <x-button tag="a" href="{{ route('register') }}" variant="secondary" class="font-bold">{{ __('Sign Up') }}</x-button>
+            <div class="ml-auto mr-5 items-center gap-6 lg:flex hidden">
+                <div class="flex items-center gap-10">
+                    @foreach ($links as $link)                        
+                        <a href="{{ route($link['route']) }}" class="text-white font-bold">{{ __($link['name']) }}</a>
+                    @endforeach
+                </div>
+                <a href="{{ route('login') }}" class="bg-transparent font-bold text-white px-8 py-2 border rounded hover:bg-secondary">{{ __('Sign in') }}</a>
+                <a href="{{ route('register') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign Up') }}</a>
+            </div>
+
+            <div class="ml-auto mr-5 lg:hidden block" x-data="{open:false}">
+                <button class="text-white px-3 py-2 border border-white rounded-sm" @click="open = true">
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" :class="{'hidden':mobile, '':!mobile}">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div
+                    class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none py-8 px-5"
+                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                    x-show="open" @click.away="open=false"
+                    x-transition:enter-start="transition ease-in duration-3000"
+                >
+                    @foreach ($links as $link)  
+                        <div class="py-4">                        
+                            <a href="{{ route( $link['route'] ) }}" class="text-primary font-bold w-full">{{ $link['name'] }}</a>
+                        </div>
+                    @endforeach
+                   
+                    <div class="flex items-center space-x-5">
+                        <a href="{{ route('login') }}" class="text-primary">{{ __('Sign in') }}</a>
+                        <a href="{{ route('register') }}" class="text-primary">{{ __('Sign Up') }}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
