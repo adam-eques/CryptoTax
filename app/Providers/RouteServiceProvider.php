@@ -43,9 +43,14 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/admin-routes.php'));
 
             // Customer-Panel routes
-            Route::middleware(['web', 'auth:web', 'verified'])
+            Route::middleware(['web', 'auth:web', 'verified', 'user-account-type:customer'])
                 ->name("customer.")
                 ->group(base_path('routes/customer-routes.php'));
+
+            // Affiliate routes
+            Route::middleware(['web', 'auth:web', 'verified', 'user-account-type:affiliate'])
+                ->name("affiliate.")
+                ->group(base_path('routes/affiliate-routes.php'));
 
             // General web routes
             Route::middleware('web')
