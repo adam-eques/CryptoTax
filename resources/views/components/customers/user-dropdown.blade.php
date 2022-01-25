@@ -34,7 +34,7 @@
         <x-jet-dropdown-link href="{{ route('profile.show') }}">
             {{ __('Profile') }}
         </x-jet-dropdown-link>
-        <x-jet-dropdown-link href="{{ route('profile.show') }}">
+        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
             {{ __('Setting') }}
         </x-jet-dropdown-link>
         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

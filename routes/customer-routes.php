@@ -37,7 +37,7 @@ Route::prefix("test")->as("test.")->group(function() {
 
 // Settings
 Route::redirect('user-setting', 'user-setting/profile');
-Route::get('user-setting/{category}', function($category){
+Route::get('user-setting/{category?}', function($category = "profile"){
     return view('pages.user-setting.index', [
         "category" => $category
     ]);
