@@ -31,8 +31,8 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '1817560145299721',
-        'client_secret' => 'd0dd24f2fc641898e83e7677d59d9a61',
-        'redirect' => 'http://www.cryptotax.local/auth/facebook/callback',
+        'client_id' => env('SOCIALLOGIN_FACEBOOK_CLIENT_ID', '1817560145299721'),
+        'client_secret' => env('SOCIALLOGIN_FACEBOOK_CLIENT_SECRET', 'd0dd24f2fc641898e83e7677d59d9a61'),
+        'redirect' => env('SOCIALLOGIN_FACEBOOK_REDIRECT', 'https://mycrypto.tax/auth/facebook/callback'),
     ],
 ];
