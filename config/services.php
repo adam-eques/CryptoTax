@@ -33,6 +33,12 @@ return [
     'facebook' => [
         'client_id' => env('SOCIALLOGIN_FACEBOOK_CLIENT_ID', '1817560145299721'),
         'client_secret' => env('SOCIALLOGIN_FACEBOOK_CLIENT_SECRET', 'd0dd24f2fc641898e83e7677d59d9a61'),
-        'redirect' => env('SOCIALLOGIN_FACEBOOK_REDIRECT', 'https://mycrypto.tax/auth/facebook/callback'),
+        'redirect' => '/auth/facebook/callback',
+    ],
+
+    'google' => [
+        'client_id' => env('SOCIALLOGIN_GOOGLE_CLIENT_ID', '400308307893-nsvu5h5cgu90i7ve4qiuqs1bjdcteqj9.apps.googleusercontent.com'),
+        'client_secret' => env('SOCIALLOGIN_GOOGLE_CLIENT_SECRET', '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'),
+        'redirect' => '/auth/google/callback',
     ],
 ];

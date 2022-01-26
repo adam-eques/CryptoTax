@@ -19,7 +19,7 @@ class UserCreditActionSeeder extends Seeder
                 'action_code' => CreditCodeService::ACTION_REGISTER,
                 'name' => "Register as Free User",
                 'name_public' => "Register",
-                'value' => 0,
+                'value' => 2,
                 'valid_from' => $now,
                 'valid_till' => null,
             ],
