@@ -35,16 +35,7 @@ class SocialiteController
     public function facebookCallback()
     {
         try {
-            $socalialiteUser = Socialite::driver('facebook')->user();
-            $user = User::where('fb_id', $socalialiteUser->id)->first();
-
-            if ($user) {
-                return $this->loginUser($user);
-            } else {
-                return $this->createUser($socalialiteUser, [
-                    "fb_id" => $socalialiteUser->id
-                ]);
-            }
+            return $this->processCallback("facebook", "fb_id", "id");
         } catch (Exception $e) {
             return $this->handleException($e);
         }
@@ -59,19 +50,40 @@ class SocialiteController
     public function googleCallback()
     {
         try {
-            $socalialiteUser = Socialite::driver('google')->user();
-            $user = User::where('google_id', $socalialiteUser->id)->first();
-
-            if ($user) {
-                return $this->loginUser($user);
-            } else {
-                return $this->createUser($socalialiteUser, [
-                    "google_id" => $socalialiteUser->id
-                ]);
-            }
+            return $this->processCallback("google", "google_id", "id");
         } catch (Exception $e) {
             return $this->handleException($e);
         }
+    }
+
+
+    protected function processCallback(string $driver, string $field, string $idField = "id")
+    {
+        $socalialiteUser = Socialite::driver($driver)->user();
+        $id = $socalialiteUser->$idField;
+        $successRoute = route("customer.dashboard");
+
+        // Already existing social user within this social driver
+        if ($user = User::where($field, $id)->first()) {
+            Auth::login($user);
+
+            return redirect($successRoute);
+        }
+
+        // Already existing user, but not within the social driver
+        if ($user = User::where("email", $socalialiteUser->getEmail())->first()) {
+            $user->$field = $id;
+            $user->save();
+
+            Auth::login($user);
+
+            return redirect($successRoute);
+        }
+
+        // New User
+        return $this->createUser($socalialiteUser, [
+            $field => $id
+        ]);
     }
 
 
@@ -83,15 +95,7 @@ class SocialiteController
     }
 
 
-    protected function loginUser(User $user)
-    {
-        Auth::login($user);
-
-        return redirect(route("customer.dashboard"));
-    }
-
-
-    protected function createUser($socalialiteUser, array $data = [])
+    protected function createUser(\Laravel\Socialite\Contracts\User $socalialiteUser, array $data = [])
     {
         // Create user
         $userData = array_merge([
