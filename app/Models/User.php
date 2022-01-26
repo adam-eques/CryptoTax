@@ -24,7 +24,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
  * @property int $user_account_type_id
  * @property int $datacenter_id
  * @property int $tax_year
- *
+ * @property string|null $fb_id
+ * @property string|null $google_id
  *
  * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
  * @property \Illuminate\Support\Collection<BlockchainAccount> $blockchainAccounts

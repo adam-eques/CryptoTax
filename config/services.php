@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => '1817560145299721',
+        'client_secret' => 'd0dd24f2fc641898e83e7677d59d9a61',
+        'redirect' => 'http://www.cryptotax.local/auth/facebook/callback',
+    ],
 ];

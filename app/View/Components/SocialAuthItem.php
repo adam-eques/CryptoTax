@@ -6,9 +6,11 @@ use Illuminate\View\Component;
 
 class SocialAuthItem extends Component
 {
-    public?string $name = null;
-    public?string $icon = null;
-    public?string $size = null;
+    public ?string $name = null;
+    public ?string $icon = null;
+    public ?string $size = null;
+
+
     /**
      * Create a new component instance.
      *
@@ -21,6 +23,7 @@ class SocialAuthItem extends Component
         $this->icon = $icon;
         $this->size = $size;
     }
+
 
     /**
      * Get the view / contents that represent the component.
