@@ -102,7 +102,6 @@ class SocialiteController
             'name' => $socalialiteUser->name,
             'email' => $socalialiteUser->email,
             'email_verified_at' => now(),
-            'password' => encrypt(time()."@".rand(0, 777)),
         ], $data);
         $user = User::create($userData);
 
