@@ -16,7 +16,7 @@
                             <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
                             <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
                             <div class="flex space-x-4 mt-10 z-20 relative">
-                                <x-button class="bg-transparent text-primary font-bold" size="md">{{ __('Learn More') }}</x-button>
+                                <x-button variant="white" class="bg-transparent text-primary font-bold" size="md">{{ __('Learn More') }}</x-button>
                                 <x-button size="md" class="font-bold">{{ __('Register for free') }}</x-button>
                             </div>
                         </div>
@@ -55,7 +55,172 @@
                     </div>
                 @endforeach
             </div>
-        </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-10 md:py-24">
+                <div>
+                    <img src="{{ asset('assets/img/svg/landing_img_1.svg') }}" class="w-full h-auto"/>
+                </div>
+                <div class="relative px-5 sm:px-10">
+                    <div class="absolute -top-18">
+                        <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="w-full h-auto"/>
+                    </div>
+                    <p class="text-secondary text-lg font-bold">{{ __('Why Choose Us') }}</p>
+                    <p class="text-3xl md:text-4xl xl:text-6xl font-extrabold mt-4">{{  __('Solutions for every ') }}</p>
+                    <p class="text-3xl md:text-4xl  xl:text-6xl font-extrabold mt-4">{{  __('single problems') }}</p>
+                    <p class="my-6">{{ __('Duis consectetur feugiat auctor. Morbi nec enim luctus, feugiat arcu id, ultricies ante. Duis vel massa eleifend, porta est non, feugiat metus. Cras ante massa, tincidunt nec lobortis quis ') }}</p>
+                    <p>{{ __('Design is everywhere. From the dress you’re wearing to the smartphone you’re holding, it’s design. If you think good design is expensive, you should look at the cost of bad design. ') }}</p>
+                    <x-button class="mt-7">{{ __('More Details') }}</x-button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="w-full">
+        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
+            <div class="text-center py-12">
+                <p  class="text-3xl md:text-4xl xl:text-5xl font-extrabold">{{ __('Supported Countries') }}</p>
+            </div>
+        </div>
+    </div>
+
+    {{-- footer========================================================================================== --}}
+    <footer class="bg-primary pt-10 md:pt-20">
+        <h2 id="footer-heading" class="sr-only">Footer</h2>
+        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
+            <div class="flex flex-col lg:flex-row">
+                <!-- Footer Intro section -->
+                <div class="lg:w-1/3 space-y-4 lg:space-y-10 pr-5 xl:pr-20 items-center lg:items-start flex justify-center lg:justify-start flex-col text-center lg:text-left">
+                    <div class="flex-shrink-0 ">
+                        <a href="{{ route("customer.dashboard") }}" class="flex items-center text-white group">
+                            <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
+                            <span class="ml-2 text-xl font-bold">myCrypto Tax</span>
+                        </a>
+                    </div>
+
+                    <p class="text-white text-opacity-30 text-sm sm:text-base leading-loose">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quos!
+                    </p>
+                </div>
+                <!-- Footer Menus -->
+                <div class="grid grid-cols-2 gap-2 xl:gap-8 lg:w-3/4 mt-8 lg:mt-0">
+                    <div class="md:grid md:grid-cols-2 gap-2 xl:gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white tracking-wider space-y-2">
+                                <span>About</span>
+                                <hr class="w-7 h-1 border-blue-500">
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Announcement
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Help Center
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Media
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-lg font-semibold text-white tracking-wider space-y-2">
+                                <span>Product</span>
+                                <hr class="w-7 h-1 border-blue-500">
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        API Doc
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Token Listing
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Cloud Solution
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Institutional Cooperation
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 gap-2 xl:gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white tracking-wider space-y-2">
+                                <span>Legal</span>
+                                <hr class="w-7 h-1 border-blue-500">
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Terms of Service
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Risk And Disclaimer
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-lg font-semibold text-white tracking-wider space-y-2">
+                                <span>Other</span>
+                                <hr class="w-7 h-1 border-blue-500">
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Assets Introduction
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        APP Download
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                        Market Making Program
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <p class="py-8 text-md text-white text-opacity-10 md:mt-0 md:order-1 text-center">
+                    Copyright &copy; Designed & Developed by bsbv.com {{ now()->format("Y") }}.
+                </p>
+            </div>
+        </div>
+    </footer>
 </x-guest-layout>
