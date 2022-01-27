@@ -1,10 +1,10 @@
 <x-app-layout>
-    @livewire('advisor.banner')
+    @livewire('customer.advisor.advisor-banner')
     <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5">
-        @livewire('advisor.advisorlist')
+        @livewire('customer.advisor.advisor-list')
     </div>
     <div class="bg-secondary-100">
-        @livewire('advisor.advisorcarousel')
+        @livewire('customer.advisor.advisor-carousel')
     </div>
     <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5">
         <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-0">

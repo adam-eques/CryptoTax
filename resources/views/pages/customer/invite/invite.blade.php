@@ -15,12 +15,12 @@
         </div>
         <div id="overview" class="bg-bgcolor w-full border-t border-b">
             <div class="mx-auto xl:max-w-screen-2xl px-3 xs:px-4 lg:px-5 py-12">
-                @livewire('invite.overview')
+                @livewire('customer.invite.invite-overview')
             </div>
         </div>
         <div class="mx-auto xl:max-w-screen-2xl px-3 xs:px-4 lg:px-5 py-6">
-            @livewire('invite.referral')
-            @livewire('invite.invitelist')
+            @livewire('customer.invite.invite-referral')
+            @livewire('customer.invite.invite-list')
         </div>
     </div>
 </x-app-layout>

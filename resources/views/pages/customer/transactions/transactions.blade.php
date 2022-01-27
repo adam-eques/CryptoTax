@@ -25,8 +25,8 @@
             </div>
         </div>
         <div class="my-9">
-            @livewire('transaction.overview')
+            @livewire('customer.transaction.overview')
         </div>
-        @livewire('transaction.trans-list')
+        @livewire('customer.transaction.transaction-list')
     </div>
 </x-app-layout>

@@ -1,3 +1,3 @@
 <x-app-layout>
-   @livewire('account.accounts')
+   @livewire('customer.account.accounts')
 </x-app-layout>
