@@ -164,7 +164,7 @@
             </div>
             <div class="flex items-center justify-center">
                 <p class="py-8 text-md text-white text-opacity-10 md:mt-0 md:order-1 text-center">
-                    Copyright &copy; Designed & Developed by bsbv.com {{ now()->format("Y") }}.
+                    Copyright &copy; CryptoTax Inc. Designed & Developed by BSBV (bsbv.net) {{ now()->format("Y") }}.
                 </p>
             </div>
         </div>

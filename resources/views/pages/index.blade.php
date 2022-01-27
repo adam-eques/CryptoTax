@@ -182,9 +182,9 @@
         </div>
     </div>
 
-    {{-- Testforminal --}}
     <div class="w-full">
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-20 text-center relative">
+        {{-- Testforminal --}}
+        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 pt-20 text-center relative">
             <div class="relative">
                 <div class="absolute left-1/2 -translate-x-1/2">
                     <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
@@ -194,9 +194,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-18 relative">
                     @php
                         $reviews = [
-                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => '5' ],
-                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => '5' ],
-                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => '5' ],
+                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
+                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
+                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
                         ]
                     @endphp
                     @foreach ($reviews as $review)                            
@@ -206,14 +206,39 @@
                                 <img src="{{ asset($review['avatar']) }}" class="w-16 h-16 rounded-md"/>
                                 <div>
                                     <p class="text-lg font-bold">{{ __($review['name']) }}</p>
-                                    <div class="flex items-center space-x-2">
-    
+                                    <div class="flex items-center space-x-1">
+                                        @for ($i = 0; $i < $review['score']; $i++)
+                                            <x-icon name="star-1" class="w-5 h-5"/>                                            
+                                        @endfor
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+
+        {{-- Get start --}}
+        <div>
+            <div class="flex items-center justify-center">
+                <div class="flex sm:w-10/12 mt-20 -mb-20 items-center justify-center">
+                    <div class="w-full bg-white rounded-lg">
+                        <div class="py-10 lg:px-28 px-10 flex sm:flex-row flex-col items-center sm:justify-between justify-center">
+                            <div>
+                                <x-jet-button variant="secondary" class="">{{ __('Join myCrypto.tax') }}</x-jet-button>
+                                <h1 role="heading" class="text-3xl md:text-4xl xl:text-5xl mt-3 font-extrabold">{{ __("Act before it's too late") }}</h1>
+                                <p role="contentinfo" class="text-lg mt-3 text-gray-800">{{ __('Sign up and instantly generate your tax report') }}</p>
+                            </div>
+                            <x-button>
+                                {{ __('Get started now') }}
+                                <x-icon name='rocket' class="ml-3 w-6 h-6"/>
+                            </x-button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="bg-primary w-full h-full flex py-10">
             </div>
         </div>
     </div>
@@ -353,7 +378,7 @@
             </div>
             <div class="flex items-center justify-center">
                 <p class="py-8 text-md text-white text-opacity-10 md:mt-0 md:order-1 text-center">
-                    Copyright &copy; Designed & Developed by bsbv.com {{ now()->format("Y") }}.
+                    Copyright &copy; CryptoTax Inc. Designed & Developed by BSBV (bsbv.net) {{ now()->format("Y") }}.
                 </p>
             </div>
         </div>
