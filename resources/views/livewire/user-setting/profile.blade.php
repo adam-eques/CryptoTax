@@ -3,18 +3,37 @@
         <span class="text-xl font-extrabold">{{ __('Profile Setting') }}</span>
     </div>
     <div class="px-10 py-10">
-        <div class=" max-w-lg mt-6">
-            <x-jet-label>{{ __('First Name') }}</x-jet-label>
-            <x-jet-input type="text" class="w-full mt-5"></x-jet-input>
+        @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+            @livewire('profile.update-profile-information-form')
+
+            <x-jet-section-border />
+        @endif
+        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.update-password-form')
+            </div>
+
+            <x-jet-section-border />
+        @endif
+
+        @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.two-factor-authentication-form')
+            </div>
+
+            <x-jet-section-border />
+        @endif
+
+        <div class="mt-10 sm:mt-0">
+            @livewire('profile.logout-other-browser-sessions-form')
         </div>
-        <div class=" max-w-lg mt-6">
-            <x-jet-label>{{ __('Last Name') }}</x-jet-label>
-            <x-jet-input type="text" class="w-full mt-5"></x-jet-input>
-        </div>
-        <div class=" max-w-lg mt-6">
-            <x-jet-label>{{ __('Mobile') }}</x-jet-label>
-            <x-jet-input type="text" class="w-full mt-5"></x-jet-input>
-        </div>
-        <x-jet-button class="mt-12 px-16">{{ __('Save') }}</x-jet-button>
+
+        @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
+            <x-jet-section-border />
+
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.delete-user-form')
+            </div>
+        @endif
     </div>
 </div>
