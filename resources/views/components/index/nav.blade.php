@@ -23,8 +23,12 @@
                         <a href="{{ route($link['route']) }}" class="text-white font-bold">{{ __($link['name']) }}</a>
                     @endforeach
                 </div>
-                <a href="{{ route('login') }}" class="bg-transparent font-bold text-white px-8 py-2 border rounded hover:bg-secondary">{{ __('Sign in') }}</a>
-                <a href="{{ route('register') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign Up') }}</a>
+                @if (auth()->user())                    
+                    <a href="{{ route('logout') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign out') }}</a>
+                @else
+                    <a href="{{ route('login') }}" class="bg-transparent font-bold text-white px-8 py-2 border rounded hover:bg-secondary">{{ __('Sign in') }}</a>
+                    <a href="{{ route('register') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign Up') }}</a>
+                @endif
             </div>
 
             <div class="ml-auto mr-5 lg:hidden block" x-data="{open:false}">

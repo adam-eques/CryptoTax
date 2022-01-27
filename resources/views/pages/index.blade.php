@@ -76,148 +76,22 @@
         </div>
     </div>
 
-    {{-- supported_country --}}
-    <div class="w-full">
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
-            <div class="text-center py-12">
-                <p  class="text-3xl md:text-4xl xl:text-5xl font-extrabold">{{ __('Supported Countries') }}</p>
-                <img src="{{ asset('assets/img/svg/supported_country.svg') }}" class="p-5 md:p-16 w-full max-w-7xl m-auto h-auto"/>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-0 sm:gap-4 lg:gap-10 px-2 lg:px-10">
-                    @php
-                        $items = [
-                            [ 'icon' => 'level-top', 'amount' => '20M +', 'term' => 'Happy Users' ],
-                            [ 'icon' => 'transaction-1', 'amount' => '70M / Year', 'term' => 'Transactions' ],
-                            [ 'icon' => 'solid_land', 'amount' => '15K +', 'term' => 'Recently Sold Lands' ],
-                            [ 'icon' => 'chains', 'amount' => '8K +', 'term' => 'Supported Coins' ],
-                        ]
-                    @endphp
-                    @foreach ($items as $item)                        
-                        <div class="flex items-center justify-end space-x-4">
-                            <div class="w-1/4 p-0 xl:p-3">
-                                <x-icon name="{{ $item['icon'] }}" class="w-full h-full" />
-                            </div>
-                            <div class="text-left w-3/4">
-                                <p class="text-xl font-extrabold">{{ __($item['amount']) }}</p>
-                                <p class="text-gray-400">{{ __($item['term']) }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- Supported Country --}}
+    @livewire('landing-page.supported-country')
 
     <div class="w-full bg-white py-12">
         <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
             {{-- Membership --}}
-            <div class="text-center relative">
-                <div class="absolute left-1/2 -translate-x-1/2">
-                    <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
-                </div>
-                <p class="text-lg">{{ __('Simple & Easy') }}</p>
-                <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('Our Pricing') }}</p>
-                <p class="text-gray-400">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et') }}</p>
-                <P class="text-gray-400 mt-3">{{ __('dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation') }}</P>
-                <div class="relative grid grid-cols-1 lg:grid-cols-3 items-center gap-2 sm:gap-2 xl:gap-5 2xl:gap-8 7xl:gap-18 mt-10">
-                    @php
-                        $plans = [
-                            [ 'name' => 'Freemium', 'description_1' => 'Have a go and test your', 'description_2' => 'superpowers', 'cost' => "0.00", 'service' => [
-                                ' 1 Team', '1 Installed Agent', 'Real-Time Feedback', 'Real-Time Feedback'], 'button_title' => 'Signup for free'],
-                            [ 'name' => 'PRO', 'description_1' => 'Experiment the power of', 'description_2' => 'infinite possibilities', 'cost' => "80.00", 'service' => [
-                                ' 1 Team', '1 Installed Agent', 'Real-Time Feedback', 'Video Dedicated Support', '1 Attacked Targets Per Month'], 'button_title' => 'Go to Pro' ],
-                            [ 'name' => 'Business', 'description_1' => 'Have a go and test your', 'description_2' => 'superpowers', 'cost' => "16.00", 'service' => [
-                                ' 1 Team', '1 Installed Agent', 'Real-Time Feedback', 'Real-Time Feedback'], 'button_title' => 'Signup for free'],
-                        ]
-                    @endphp
-                    @foreach ($plans as $plan)                        
-                        <div class="p-4 mx-0 md:mx-2 2xl:mx-10 rounded @if($plan['name'] == 'PRO') bg-primary text-white @else bg-gray-200 @endif">
-                            <p class="text-2xl font-extrabold my-4">{{ __($plan['name']) }}</p>
-                            <p class="text-gray-400">{{ __($plan['description_1']) }}</p>
-                            <p class="text-gray-400">{{ __($plan['description_2']) }}</p>
-                            <div class="flex justify-center space-x-3 items-start mt-4">
-                                <p class="text-lg">$</p>
-                                <p class="text-5xl font-extrabold">{{ $plan['cost'] }}</p>
-                            </div>
-                            <div class="bg-white rounded mt-4 p-6 space-y-8 text-primary">
-                                @foreach ($plan['service'] as $service)                                    
-                                    <div class="flex items-center space-x-2 xl:space-x-8">
-                                        <x-icon name="check" class="w-4 h-4 rounded-full"/>
-                                        <p class="font-bold">{{ __($service) }}</p>
-                                    </div>
-                                @endforeach
-                                @if ($plan['name'] == 'PRO')                                    
-                                    <x-button variant="primary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
-                                @else
-                                    <x-button variant="secondary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
-                                @endif
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+            @livewire('landing-page.membership-plan')
             
             {{-- FAQs --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-30">
-                <div class="p-5">
-                    <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('Frequently Asked Questions') }}</p>
-                    <p class="text-gray-400">{{ __("Here you'll find answers to the most common questions our users.") }}</p>
-                    <div class="mt-12 divide-y">
-                        @php
-                            $faqs = [ 
-                                [ "title" => "Is SEO a risky and time consuming proposition?", "content" => "There are many variations of passages of Lorem Ipsum available but the majority suffered is alteration in that words which don't look even slightly." ],
-                                [ "title" => "How to choose a perfect digital marketing plan?", "content" => "There are many variations of passages of Lorem Ipsum available but the majority suffered is alteration in that words which don't look even slightly." ],
-                                [ "title" => "Is it feasible to go for a complete website audit?", "content" => "There are many variations of passages of Lorem Ipsum available but the majority suffered is alteration in that words which don't look even slightly." ]
-                            ]
-                        @endphp
-                        @foreach ($faqs as $faq)                            
-                            <x-faq-toggle-block :label="$faq['title']" :opened="true">{{ __($faq['content']) }}</x-faq-toggle-block>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="p-5">
-                    <img src="{{ asset('assets/img/svg/faqs.svg') }}" class="w-full h-auto" />
-                </div>
-            </div>
+            @livewire('landing-page.faqs')
         </div>
     </div>
 
     <div class="w-full">
-        {{-- Testforminal --}}
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 pt-20 text-center relative">
-            <div class="relative">
-                <div class="absolute left-1/2 -translate-x-1/2">
-                    <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
-                </div>
-                <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('What our members are sayings') }}</p>
-                <img src="{{ asset('assets/img/svg/full_marks.svg') }}" class="flex mx-auto"/>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-18 relative">
-                    @php
-                        $reviews = [
-                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
-                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
-                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
-                        ]
-                    @endphp
-                    @foreach ($reviews as $review)                            
-                        <div class="bg-white shadow-sm rounded-md p-8 text-left">
-                            <p>{{ __($review['content']) }}</p>
-                            <div class="flex items-center space-x-4 mt-9">
-                                <img src="{{ asset($review['avatar']) }}" class="w-16 h-16 rounded-md"/>
-                                <div>
-                                    <p class="text-lg font-bold">{{ __($review['name']) }}</p>
-                                    <div class="flex items-center space-x-1">
-                                        @for ($i = 0; $i < $review['score']; $i++)
-                                            <x-icon name="star-1" class="w-5 h-5"/>                                            
-                                        @endfor
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        {{-- testimonials --}}
+        @livewire('landing-page.testimonials')
 
         {{-- Get start --}}
         <div>

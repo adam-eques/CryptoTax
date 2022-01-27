@@ -48,7 +48,7 @@
         </div>
 
         <div class="mt-9 px-3">
-            @livewire('account-new.account-new')
+            @livewire('customer.account.account-new')
         </div>
 
     </div>

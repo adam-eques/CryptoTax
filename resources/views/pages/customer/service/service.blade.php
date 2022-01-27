@@ -19,7 +19,7 @@
     </div>
     <div class="bg-white py-24">
         <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl">
-           @livewire('service.service-list')
+           @livewire('customer.service.service-list')
         </div>
     </div>
 </x-app-layout>
