@@ -31,19 +31,6 @@
         </div>
 
         <div class="mt-10">
-            <p>{{ __('Tax Year') }}</p>
-            <div class="border shadow flex items-center rounded-sm mt-4 px-5">
-                <x-icon name="calendar-1" class="w-9 h-9"/>
-                <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" id="tax_year" wire:model.defer="tax_year">
-                    <option value="0" disabled selected>{{ __('Tax Year') }}</option>
-                    @foreach ($tax_years as $year)
-                        <option value="{{ $year }}" @if($tax_year == $year) selected @endif>{{ $year }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-
-        <div class="mt-10">
             <p>{{ __('Base Currency') }}</p>
             <div class="border shadow flex items-center rounded-sm mt-4 px-5">
                 <x-icon name="{{ 'tax_country_' . $tax_currency_id }}" class="w-9 h-9"/>
