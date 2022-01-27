@@ -156,6 +156,53 @@
                     @endforeach
                 </div>
             </div>
+            
+            {{-- FAQs --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-30">
+                <div class="p-5">
+                    <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('Frequently Asked Questions') }}</p>
+                    <p class="text-gray-400">{{ __("Here you'll find answers to the most common questions our users.") }}</p>
+                    <div class="mt-12 divide-y">
+                        @php
+                            $faqs = [ 
+                                [ "title" => "Is SEO a risky and time consuming proposition?", "content" => "There are many variations of passages of Lorem Ipsum available but the majority suffered is alteration in that words which don't look even slightly." ],
+                                [ "title" => "How to choose a perfect digital marketing plan?", "content" => "There are many variations of passages of Lorem Ipsum available but the majority suffered is alteration in that words which don't look even slightly." ],
+                                [ "title" => "Is it feasible to go for a complete website audit?", "content" => "There are many variations of passages of Lorem Ipsum available but the majority suffered is alteration in that words which don't look even slightly." ]
+                            ]
+                        @endphp
+                        @foreach ($faqs as $faq)                            
+                            <x-faq-toggle-block :label="$faq['title']" :opened="true">{{ __($faq['content']) }}</x-faq-toggle-block>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="p-5">
+                    <img src="{{ asset('assets/img/svg/faqs.svg') }}" class="w-full h-auto" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Testforminal --}}
+    <div class="w-full">
+        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-20 text-center relative">
+            <div class="relative">
+                <div class="absolute left-1/2 -translate-x-1/2">
+                    <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
+                </div>
+                <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('What our members are sayings') }}</p>
+                <img src="{{ asset('assets/img/svg/full_marks.svg') }}" class="flex mx-auto"/>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-18 relative">
+                    <div class="bg-white shadow-sm rounded-t-md p-8 text-left">
+                        <p>{{ __(" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ") }}</p>
+                    </div>
+                    <div class="bg-white shadow-sm rounded-t-md p-8">
+
+                    </div>
+                    <div class="bg-white shadow-sm rounded-t-md p-8">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
