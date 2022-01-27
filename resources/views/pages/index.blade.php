@@ -192,15 +192,27 @@
                 <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('What our members are sayings') }}</p>
                 <img src="{{ asset('assets/img/svg/full_marks.svg') }}" class="flex mx-auto"/>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-18 relative">
-                    <div class="bg-white shadow-sm rounded-t-md p-8 text-left">
-                        <p>{{ __(" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ") }}</p>
-                    </div>
-                    <div class="bg-white shadow-sm rounded-t-md p-8">
-
-                    </div>
-                    <div class="bg-white shadow-sm rounded-t-md p-8">
-
-                    </div>
+                    @php
+                        $reviews = [
+                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => '5' ],
+                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => '5' ],
+                            [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => '5' ],
+                        ]
+                    @endphp
+                    @foreach ($reviews as $review)                            
+                        <div class="bg-white shadow-sm rounded-md p-8 text-left">
+                            <p>{{ __($review['content']) }}</p>
+                            <div class="flex items-center space-x-4 mt-9">
+                                <img src="{{ asset($review['avatar']) }}" class="w-16 h-16 rounded-md"/>
+                                <div>
+                                    <p class="text-lg font-bold">{{ __($review['name']) }}</p>
+                                    <div class="flex items-center space-x-2">
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
