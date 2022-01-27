@@ -300,7 +300,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function setupFinished(): bool
     {
-        return $this->timezone_id && $this->tax_cost_model_id && $this->tax_year && $this->tax_currency_id && $this->tax_country_id;
+        return $this->timezone_id && $this->tax_cost_model_id && $this->tax_currency_id && $this->tax_country_id;
     }
 
 
