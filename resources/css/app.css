@@ -3,7 +3,25 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+@import './flickity.css';
 
 .link {
     @apply text-primary-200;
+}
+
+@font-face {
+    font-family: "Poppine-bold";
+    src: url("../fonts/Poppins-ExtraBold.ttf");
+}
+@font-face {
+    font-family: "Poppine-semibold";
+    src: url("../fonts/Poppins-Bold.ttf");
+}
+
+.font-poppine-bold{
+    font-family: Poppine-bold;
+}
+
+.font-poppine-semibold{
+    font-family: Poppine-semibold;
 }

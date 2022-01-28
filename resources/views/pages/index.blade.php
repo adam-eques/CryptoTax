@@ -11,8 +11,8 @@
                             <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="w-full h-auto"/>
                         </div>
                         <div class="m-auto">
-                            <p class="text-xl lg:text-3xl">{{ __('Track your crypto') }}</p>
-                            <p class="text-4xl lg:text-6xl font-extrabold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</p>
+                            <p class="text-xl lg:text-3xl font-poppine-semibold">{{ __('Track your crypto') }}</p>
+                            <p class="text-4xl lg:text-6xl font-extrabold mt-5 lg:mt-8 font-poppine-bold">{{ __('Portfolio & Taxes') }}</p>
                             <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
                             <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
                             <div class="flex space-x-4 mt-10 z-20 relative">
@@ -66,8 +66,8 @@
                         <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="w-full h-auto"/>
                     </div>
                     <p class="text-secondary text-lg font-bold">{{ __('Why Choose Us') }}</p>
-                    <p class="text-3xl md:text-4xl xl:text-6xl font-extrabold mt-4">{{  __('Solutions for every ') }}</p>
-                    <p class="text-3xl md:text-4xl  xl:text-6xl font-extrabold mt-4">{{  __('single problems') }}</p>
+                    <p class="text-3xl md:text-4xl xl:text-6xl font-extrabold mt-4 font-poppine-bold">{{  __('Solutions for every ') }}</p>
+                    <p class="text-3xl md:text-4xl  xl:text-6xl font-extrabold mt-4 font-poppine-bold">{{  __('single problems') }}</p>
                     <p class="my-6">{{ __('Duis consectetur feugiat auctor. Morbi nec enim luctus, feugiat arcu id, ultricies ante. Duis vel massa eleifend, porta est non, feugiat metus. Cras ante massa, tincidunt nec lobortis quis ') }}</p>
                     <p>{{ __('Design is everywhere. From the dress you’re wearing to the smartphone you’re holding, it’s design. If you think good design is expensive, you should look at the cost of bad design. ') }}</p>
                     <x-button class="mt-7">{{ __('More Details') }}</x-button>

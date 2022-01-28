@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 md:mt-30">
     <div class="p-5">
-        <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5">{{ __('Frequently Asked Questions') }}</p>
+        <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5 font-poppine-bold">{{ __('Frequently Asked Questions') }}</p>
         <p class="text-gray-400">{{ __("Here you'll find answers to the most common questions our users.") }}</p>
         <div class="mt-12 divide-y">
             @php
