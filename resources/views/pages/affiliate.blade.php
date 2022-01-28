@@ -48,7 +48,7 @@
                     <div class="flex items-center order-2 md:order-1">
                         <div class="my-auto">
                             <div class="flex items-center">
-                                <x-icon name="sign-up" class="w-14"/>
+                                <x-icon name="referral" class="w-14"/>
                                 <h4 class=" sm:text-2xl text-xl font-bold ml-5">{{ __('Referral') }}</h4>
                             </div>
                             <p class="sm:mt-9 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
@@ -69,7 +69,7 @@
                     <div class="flex items-center">
                         <div class="my-auto">
                             <div class="flex items-center">
-                                <x-icon name="sign-up" class="w-14"/>
+                                <x-icon name="money" class="w-14"/>
                                 <h4 class=" sm:text-2xl text-xl font-bold ml-5">{{ __('Earn') }}</h4>
                             </div>
                             <p class="sm:mt-9 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>

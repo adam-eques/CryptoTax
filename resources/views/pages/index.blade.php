@@ -11,7 +11,7 @@
                     </div>
                     <div class="m-auto">
                         <p class="text-xl lg:text-3xl">{{ __('Track your crypto') }}</p>
-                        <p class="text-4xl lg:text-6xl font-extrabold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</p>
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</h2>
                         <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
                         <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
                         <div class="flex space-x-4 mt-10 z-20 relative">
@@ -26,7 +26,7 @@
             </div>
         </div>
         {{-- partner --}}
-        <div class="mt-24 mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
+        <div class="mt-10 sm:mt-24 mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
             <p class="text-center font-bold text-gray-300">{{  __('Meet Our Partners') }}</p>
             @php
                 $partners = ['assets/img/svg/binance.svg', 'assets/img/svg/Bitcoin.svg', 'assets/img/svg/Ethereum.svg', 'assets/img/svg/Kucoin.svg', 'assets/img/svg/Litecoin.svg', 'assets/img/svg/tether.svg']
@@ -44,7 +44,7 @@
                     [ 'img' => 'assets/img/svg/download_tax.svg', 'title' => 'Download your tax report', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
                 ]
             @endphp
-            <div class="py-24 grid grid-cols-1 lg:grid-cols-3 items-end gpp-3 lg:gap-10">
+            <div class="py-5 sm:py-24 grid grid-cols-1 lg:grid-cols-3 items-end gap-3 lg:gap-10">
                 @foreach ($items as $item)                    
                     <div class="text-center px-5">
                         <img src="{{ asset($item['img']) }}" class="flex mx-auto"/>
@@ -55,7 +55,7 @@
             </div>
 
             {{-- Why choose us --}}
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 py-10 md:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 py-5 md:py-24">
                 <div>
                     <img src="{{ asset('assets/img/svg/landing_img_1.svg') }}" class="w-full h-auto"/>
                 </div>
@@ -63,9 +63,9 @@
                     <div class="absolute -top-18">
                         <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="w-full h-auto"/>
                     </div>
-                    <p class="text-secondary text-lg font-bold">{{ __('Why Choose Us') }}</p>
-                    <p class="text-3xl md:text-4xl xl:text-6xl font-extrabold mt-4">{{  __('Solutions for every ') }}</p>
-                    <p class="text-3xl md:text-4xl  xl:text-6xl font-extrabold mt-4">{{  __('single problems') }}</p>
+                    <h5 class="text-secondary text-lg font-bold">{{ __('Why Choose Us') }}</h5>
+                    <h3 class="text-2xl md:text-2xl lg:text-4xl xl:text-5xl font-bold mt-4">{{  __('Solutions for every ') }}</h3>
+                    <h3 class="text-2xl md:text-2xl lg:text-4xl xl:text-5xl font-bold mt-4">{{  __('single problems') }}</h3>
                     <p class="my-6">{{ __('Duis consectetur feugiat auctor. Morbi nec enim luctus, feugiat arcu id, ultricies ante. Duis vel massa eleifend, porta est non, feugiat metus. Cras ante massa, tincidunt nec lobortis quis ') }}</p>
                     <p>{{ __('Design is everywhere. From the dress you’re wearing to the smartphone you’re holding, it’s design. If you think good design is expensive, you should look at the cost of bad design. ') }}</p>
                     <x-button class="mt-7">{{ __('More Details') }}</x-button>
@@ -77,7 +77,7 @@
     {{-- Supported Country --}}
     @livewire('landing-page.supported-country')
 
-    <div class="w-full bg-white py-12">
+    <div class="w-full bg-white py-5 sm:py-12">
         <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
             {{-- Membership --}}
             @livewire('landing-page.membership-plan')
@@ -99,7 +99,7 @@
                         <div class="py-10 lg:px-28 px-10 flex sm:flex-row flex-col items-center sm:justify-between justify-center">
                             <div>
                                 <x-jet-button variant="secondary" class="">{{ __('Join myCrypto.tax') }}</x-jet-button>
-                                <h1 role="heading" class="text-3xl md:text-4xl xl:text-5xl mt-3 font-extrabold">{{ __("Act before it's too late") }}</h1>
+                                <h1 role="heading" class="text-3xl md:text-4xl xl:text-5xl mt-3 font-bold">{{ __("Act before it's too late") }}</h1>
                                 <p role="contentinfo" class="text-lg mt-3 text-gray-800">{{ __('Sign up and instantly generate your tax report') }}</p>
                             </div>
                             <x-button>
