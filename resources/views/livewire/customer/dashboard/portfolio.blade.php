@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <x-icon name="portfolio" class="w-8 h-8 text-primary"/>
-            <p class="mr-3 text-lg font-extrabold">{{ __('My Crypto Portfolio') }}</p>
+            <p class="mr-3 text-lg font-semibold">{{ __('My Crypto Portfolio') }}</p>
         </div>
         <div>
             <x-button variant="primary" class="font-normal" tag="a" href="{{ route('customer.portfolio') }}">{{  __('See all assets')}}</x-button>
@@ -44,15 +44,15 @@
                 @click="selected !== {{ $item['id'] }} ? selected = {{ $item['id'] }} : selected = null"
             >
                 <x-portfolio-list-item 
-                    id="{{ $item['id'] }}" 
-                    icon="{{ $item['icon'] }}"
-                    name="{{ $item['name'] }}"
-                    type="{{ $item['type'] }}"
+                    :id="$item['id']" 
+                    :icon="$item['icon']"
+                    :name="$item['name']"
+                    :type="$item['type']"
                     lingColor="#FF0303"
-                    price="{{ $item['price'] }}"
+                    :price="$item['price']"
                     holdingBtc="{{ $item['holding']['btc'] }}"
                     holdingUsd="{{ $item['holding']['usd'] }}"
-                    percent="{{ $item['percentage'] }}"
+                    :percent="$item['percentage']"
                     pnlPrice="{{ $item['pnl']['price'] }}"
                     pnlPercent="{{ $item['pnl']['percent'] }}"
                     node="parent"
@@ -60,12 +60,12 @@
                 <div x-show="selected == {{ $item['id'] }}" x-transition.duration.500ms>
                     @foreach ($item['child'] ?? [] as $child)
                         <x-portfolio-list-item 
-                            id="{{ $child['id'] }}" 
-                            icon="{{ $child['icon'] }}"
-                            name="{{ $child['name'] }}"
-                            type="{{ $child['type'] }}"
+                            :id="$child['id']" 
+                            :icon="$child['icon']"
+                            :name="$child['name']"
+                            :type="$child['type']"
                             lingColor="#FF0303"
-                            price="{{ $child['price'] }}"
+                            :price="$child['price']"
                             holdingBtc="{{ $child['holding']['btc'] }}"
                             holdingUsd="{{ $child['holding']['usd'] }}"
                             percent="{{ $child['percentage'] }}"
