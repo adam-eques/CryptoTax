@@ -3,7 +3,7 @@
         <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
     </div>
     <p class="text-lg">{{ __('Simple & Easy') }}</p>
-    <p class="text-3xl md:text-4xl xl:text-5xl font-extrabold my-5 font-poppine-bold">{{ __('Our Pricing') }}</p>
+    <p class="text-2xl lg:text-3xl xl:text-4xl font-bold my-5">{{ __('Our Pricing') }}</p>
     <p class="text-gray-400">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et') }}</p>
     <P class="text-gray-400 mt-3">{{ __('dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation') }}</P>
     <div class="relative grid grid-cols-1 lg:grid-cols-3 items-center gap-2 sm:gap-2 xl:gap-5 2xl:gap-8 7xl:gap-18 mt-10">

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 // Landing Page
 Route::view('/', 'pages.index')->name('index');
 
+// Affilate Page
+Route::view('/affiliate', 'pages.affiliate')->name('affiliate');
+
 // Logout
 Route::get('logout', function() {
     auth()->logout();

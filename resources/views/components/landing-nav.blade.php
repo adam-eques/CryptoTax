@@ -1,22 +1,52 @@
+@props([
+    'for' => 'customer'
+])
+
 @php
-    $links = [
-        [ 'name' => 'Home', 'route' => 'index' ],
-        [ 'name' => 'Account', 'route' => 'index' ],
-        [ 'name' => 'Portfolio', 'route' => 'index' ],
-        [ 'name' => 'Taxes', 'route' => 'index' ],
-    ]
+    $links = [];
+    switch ($for) {
+        case 'customer':
+            $links = [
+                [ 'name' => 'Home', 'route' => 'index' ],
+                [ 'name' => 'Account', 'route' => 'index' ],
+                [ 'name' => 'Portfolio', 'route' => 'index' ],
+                [ 'name' => 'Taxes', 'route' => 'index' ],
+            ];
+            break;
+        case 'affiliate':
+            $links = [
+                [ 'name' => 'Home', 'route' => 'index' ],
+                [ 'name' => 'How it Works', 'route' => 'index' ],
+                [ 'name' => 'Testimonials', 'route' => 'index' ],
+                [ 'name' => "FAQ's", 'route' => 'index' ],
+            ];
+            break;
+        default:
+            break;
+    }
 @endphp
 
-<nav class="bg-transparent absolute w-full z-10" x-data="{mobile:false}">
+<nav class="bg-transparent relative w-full z-10" x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">
             <div class="flex-shrink-0">
                 <a href="{{ route("index") }}" class="flex items-center text-white group">
-                    <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="w-9">
-                    <span class="ml-2 text-sm xl:text-xl font-bold text-primary">myCrypto Tax</span>
+                    @switch($for)
+                        @case('customer')                            
+                            <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="w-9">
+                            <span class="ml-2 text-md lg:text-xl font-semibold text-primary">MyCrypto Tax</span>
+                            @break
+                        @case('affiliate')                            
+                            <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
+                            <span class="ml-2 text-md lg:text-xl font-bold text-white">MyCrypto Tax</span>
+                            <span class="ml-2 text-md lg:text-xl font-bold text-secondary italic">Affiliate</span>
+                            @break
+                        @default                            
+                    @endswitch
                 </a>
             </div>
 
+            {{-- Desktop View --}}
             <div class="ml-auto mr-5 items-center gap-6 lg:flex hidden">
                 <div class="flex items-center gap-10">
                     @foreach ($links as $link)                        
@@ -31,6 +61,7 @@
                 @endif
             </div>
 
+            {{-- Mobile View --}}
             <div class="ml-auto mr-5 lg:hidden block" x-data="{open:false}">
                 <button class="text-white px-3 py-2 border border-white rounded-sm" @click="open = true">
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" :class="{'hidden':mobile, '':!mobile}">
@@ -50,8 +81,12 @@
                     @endforeach
                    
                     <div class="flex items-center space-x-5">
-                        <a href="{{ route('login') }}" class="text-primary">{{ __('Sign in') }}</a>
-                        <a href="{{ route('register') }}" class="text-primary">{{ __('Sign Up') }}</a>
+                        @if (auth()->user())
+                            <a href="{{ route('logout') }}" class="text-primary">{{ __('Sign out') }}</a>
+                        @else                            
+                            <a href="{{ route('login') }}" class="text-primary">{{ __('Sign in') }}</a>
+                            <a href="{{ route('register') }}" class="text-primary">{{ __('Sign Up') }}</a>
+                        @endif
                     </div>
                 </div>
             </div>
