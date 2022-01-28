@@ -20,3 +20,5 @@ mix.js('resources/js/app.js', 'public/mix/js')
 if (mix.inProduction()) {
     mix.version();
 }
+
+mix.copyDirectory('resources/assets/fonts', 'public/fonts');
