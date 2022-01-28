@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-x-6 md:gap-y-5">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="donut" class="w-8 h-8 text-primary"/>
-            <p class="mr-3 text-lg font-extrabold">{{ __('My Performance') }}</p>
+            <p class="mr-3 text-lg font-semibold">{{ __('My Performance') }}</p>
         </div>
         <x-status-card-dashboard id="status_1" title="24h Portfolio Change" amount="1,254" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
         <x-status-card-dashboard id="status_2" title="Total profit loss" amount="95,422" :increase="true" incdecamount="2.5"></x-status-card-dashboard>

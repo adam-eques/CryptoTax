@@ -11,7 +11,7 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             <x-icon name="tax" class="w-8 h-7"/>
-            <p class="text-lg mr-3 font-extrabold">{{ __('Crypto Taxes') }}</p>
+            <p class="text-lg mr-3 font-semibold">{{ __('Crypto Taxes') }}</p>
         </div>
         <div>
             <x-button variant="primary" class="font-normal" tag="a" href="{{ route('customer.taxes') }}">{{__('See details')}}</x-button>

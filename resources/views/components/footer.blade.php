@@ -121,8 +121,8 @@
                             </li>
 
                             <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Market Making Program
+                                <a href="{{ route('affiliate') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    Affiliate 
                                 </a>
                             </li>
                         </ul>
@@ -132,7 +132,7 @@
         </div>
         <div class="flex items-center justify-center">
             <p class="py-8 text-md text-white text-opacity-10 md:mt-0 md:order-1 text-center">
-                Copyright &copy; CryptoTax Inc. Designed & Developed by BSBV (bsbv.net) {{ now()->format("Y") }}.
+                Copyright &copy; CryptoTax Inc. Designed & Developed by BSBV (<a href="http://bsbv.net" target="_blank" class="text-primary-200 hover:text-white">bsbv.net</a>) {{ now()->format("Y") }}.
             </p>
         </div>
     </div>

@@ -15,7 +15,7 @@
     <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <x-icon name="transaction" class="w-10 h-10"/>
-            <p class="mr-3 text-lg font-extrabold">{{ __('Recent Transaction') }}</p>
+            <p class="mr-3 text-lg font-semibold">{{ __('Recent Transaction') }}</p>
         </div>
         <x-button variant="primary" tag="a" href="{{ route('customer.transactions') }}">{{ __('View all') }}</x-button>
     </div>
