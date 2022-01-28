@@ -8,20 +8,3 @@
 .link {
     @apply text-primary-200;
 }
-
-/* @font-face {
-    font-family: "Poppine-bold";
-    src: url("../fonts/Poppins-ExtraBold.ttf");
-}
-@font-face {
-    font-family: "Poppine-semibold";
-    src: url("../fonts/Poppins-SemiBold.ttf");
-}
-
-.font-poppine-bold{
-    font-family: Poppine-bold;
-}
-
-.font-poppine-semibold{
-    font-family: Poppine-semibold;
-} */
