@@ -3,7 +3,7 @@
     <button 
         aria-current="true"
         type="button"
-        class="text-left py-3 font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl w-full focus:outline-none cursor-pointer flex justify-between items-center"
+        class="text-left py-3 font-semibold sm:text-xl md:text-base lg:text-lg xl:text-xl w-full focus:outline-none cursor-pointer flex justify-between items-center"
         x-bind:class="opened?'text-secondary':'text-primary'"
         x-on:click="opened = !opened; selected='';"
     >

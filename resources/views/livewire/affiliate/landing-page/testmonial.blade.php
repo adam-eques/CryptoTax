@@ -1,9 +1,9 @@
-<div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 pt-5 md::pt-20 text-center relative">
-    <div class="relative">
+<div class="py-10 sm:py-16">
+    <div class="relative text-center">
         <div class="absolute left-1/2 -translate-x-1/2">
             <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
         </div>
-        <p class="text-xl sm:text-3xl font-bold my-5">{{ __('What our members are sayings') }}</p>
+        <h3 class="text-xl sm:text-3xl font-bold my-5">{{ __('What our members are sayings') }}</h3>
         <img src="{{ asset('assets/img/svg/full_marks.svg') }}" class="flex mx-auto"/>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-18 relative">
             @php
