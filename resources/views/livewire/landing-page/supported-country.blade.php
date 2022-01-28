@@ -2,7 +2,7 @@
  <div class="w-full">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="text-center py-12">
-            <p  class="text-3xl md:text-4xl xl:text-5xl font-extrabold">{{ __('Supported Countries') }}</p>
+            <p  class="text-3xl md:text-4xl xl:text-5xl font-extrabold font-poppine-bold">{{ __('Supported Countries') }}</p>
             <img src="{{ asset('assets/img/svg/supported_country.svg') }}" class="p-5 md:p-16 w-full max-w-7xl m-auto h-auto"/>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-0 sm:gap-4 lg:gap-10 px-2 lg:px-10">
                 @php

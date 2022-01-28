@@ -45,8 +45,8 @@
 </div>
 
 @push('scripts')
-<script>
-   var elem = document.querySelector('.main-carousel');
+<script type="module">
+    var elem = document.querySelector('.main-carousel');
     var flkty = new Flickity( elem, {
         prevNextButtons: false,
         cellAlign: 'left',

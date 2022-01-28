@@ -6,7 +6,7 @@
         </button>
     </div>
     <div class="max-w-lg z-10">
-        <h2 class="text-primary text-3xl font-extrabold">{{ __('Hello ' . auth()->user()->name) }}</h2>
+        <h2 class="text-primary text-3xl font-extrabold font-poppine-bold">{{ __('Hello ' . auth()->user()->name) }}</h2>
         <p class="text-primary text-base">Thanks for signing up.</p>
         <div class="flex flex-wrap items-center space-x-3 mt-8">
             <div class="bg-white rounded-xl p-3">
