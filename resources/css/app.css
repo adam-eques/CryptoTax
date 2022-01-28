@@ -9,7 +9,7 @@
     @apply text-primary-200;
 }
 
-@font-face {
+/* @font-face {
     font-family: "Poppine-bold";
     src: url("../fonts/Poppins-ExtraBold.ttf");
 }
@@ -24,4 +24,4 @@
 
 .font-poppine-semibold{
     font-family: Poppine-semibold;
-}
+} */
