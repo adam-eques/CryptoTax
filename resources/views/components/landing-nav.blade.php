@@ -26,7 +26,7 @@
     }
 @endphp
 
-<nav class="bg-transparent relative w-full z-10" x-data="{mobile:false}">
+<nav class="relative w-full z-10" x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">
             <div class="flex-shrink-0">
@@ -69,23 +69,32 @@
                     </svg>
                 </button>
                 <div
-                    class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none py-8 px-5"
+                    class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none py-8 px-5"
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
                     x-show="open" @click.away="open=false"
                     x-transition:enter-start="transition ease-in duration-3000"
                 >
                     @foreach ($links as $link)  
                         <div class="py-4">                        
-                            <a href="{{ route( $link['route'] ) }}" class="text-primary font-bold w-full">{{ $link['name'] }}</a>
+                            <a href="{{ route( $link['route'] ) }}" class="text-white hover:text-secondary font-bold w-full">{{ $link['name'] }}</a>
                         </div>
                     @endforeach
                    
-                    <div class="flex items-center space-x-5">
+                    <div class="border-t pt-4 flex items-center space-x-5">
                         @if (auth()->user())
-                            <a href="{{ route('logout') }}" class="text-primary">{{ __('Sign out') }}</a>
-                        @else                            
-                            <a href="{{ route('login') }}" class="text-primary">{{ __('Sign in') }}</a>
-                            <a href="{{ route('register') }}" class="text-primary">{{ __('Sign Up') }}</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
+                        @else
+                            <div>
+                                <a href="{{ route('login') }}" class="text-secondary underline font-bold">{{ __('Sign in') }}</a>
+                            </div>  
+                            <div>
+                                <a href="{{ route('register') }}" class="text-secondary underline font-bold">{{ __('Sign Up') }}</a>
+                            </div>                          
                         @endif
                     </div>
                 </div>

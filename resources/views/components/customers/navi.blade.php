@@ -96,11 +96,16 @@
             </div>
             <!-- Dropdown -->
             <div class="mt-3 md:mt-0 px-2 space-y-1 md:space-y-0 flex flex-col md:flex-row md:gap-2">
-                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">
+                {{-- <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">
                     {{ __('Your Profile') }}
-                </a>
-                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Settings') }}</a>
-                <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Sign out') }}</a>
+                </a> --}}
+                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Settings') }}</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-jet-dropdown-link>
+                </form>
             </div>
         </div>
     </div>
