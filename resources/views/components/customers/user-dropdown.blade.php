@@ -31,9 +31,9 @@
         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
         x-show="open" @click.away="open=false"
         x-transition:enter-start="transition ease-in duration-3000">
-        <x-jet-dropdown-link href="{{ route('profile.show') }}">
+        {{-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
             {{ __('Profile') }}
-        </x-jet-dropdown-link>
+        </x-jet-dropdown-link> --}}
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
             {{ __('Setting') }}
         </x-jet-dropdown-link>
