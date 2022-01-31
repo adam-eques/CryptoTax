@@ -1,7 +1,7 @@
 <div>
     <div class="mt-7">
         <x-jet-label>{{ __('Coin Name') }}</x-jet-label>
-        <x-jet-input type="text" class="w-full mt-4" placeholder="Bitcoin (BTC )"/>
+        <x-jet-input type="text" class="w-full mt-4" placeholder="Bitcoin(BTC )"/>
     </div>
     <div class="mt-7">
         <x-jet-label>{{ __('Wallet Address') }}</x-jet-label>
@@ -10,7 +10,7 @@
     <div class="mt-7">
         <p class="text-primary">{{ __('Your email address.') }}</p>
         <x-jet-label class="py-3">{{ __('We will let you know when the integration is ready or we need more details on it.') }}</x-jet-label>
-        <x-jet-input type="email" class="w-full mt-4" placeholder="email@gmail.com"/>
+        <x-jet-input type="email" class="w-full mt-4" placeholder="email@example.com"/>
     </div>
     <div class="mt-7">
         <p class="text-primary">{{ __('Comments') }}</p>

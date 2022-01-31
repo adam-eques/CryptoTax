@@ -5,7 +5,7 @@
             <p class="py-2">Total Income</p>
             <div class="flex items-start space-x-2">
                 <p class="text-lg font-bold">$</p>
-                <h2 class="text-5xl font-extrabold">36,806</h2>
+                <h2 class="text-5xl font-bold">36,806</h2>
             </div>
         </div>
         <div class="flex items-center space-x-2">

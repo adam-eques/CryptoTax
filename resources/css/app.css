@@ -8,3 +8,5 @@
 /* .link {
     @apply text-primary-200;
 } */
+
+[x-cloak] { display: none !important; }
