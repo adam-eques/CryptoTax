@@ -1,5 +1,6 @@
 @props([
-    'for' => 'customer'
+    'for' => 'customer',
+    'logo' => 'primary'
 ])
 
 @php
@@ -8,8 +9,8 @@
         case 'customer':
             $links = [
                 [ 'name' => 'Home', 'route' => 'index' ],
-                [ 'name' => 'Account', 'route' => 'index' ],
-                [ 'name' => 'Portfolio', 'route' => 'index' ],
+                [ 'name' => 'Account', 'route' => 'accounts' ],
+                [ 'name' => 'Portfolio', 'route' => 'portfolios' ],
                 [ 'name' => 'Taxes', 'route' => 'index' ],
             ];
             break;
@@ -33,8 +34,13 @@
                 <a href="{{ route("index") }}" class="flex items-center text-white group">
                     @switch($for)
                         @case('customer')                            
-                            <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="w-9">
-                            <span class="ml-2 text-md lg:text-xl font-semibold text-primary">MyCrypto Tax</span>
+                            @if ($logo == "primary")
+                                <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="w-9">
+                                <span class="ml-2 text-md lg:text-xl font-semibold text-primary">MyCrypto Tax</span>
+                            @else 
+                                <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
+                                <span class="ml-2 text-md lg:text-xl font-semibold text-white">MyCrypto Tax</span>
+                            @endif
                             @break
                         @case('affiliate')                            
                             <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
