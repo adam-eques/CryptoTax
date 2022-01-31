@@ -43,7 +43,7 @@
                         <div
                             class="origin-top-right absolute right-0 mt-2 w-70 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
-                            x-show="open" @click.away="open=false"
+                            x-show="open" @click.away="open=false" x-cloak
                             x-transition:enter-start="transition ease-in duration-3000">
                             <x-jet-dropdown-link href="{{ route('customer.taxes') }}">
                                 <x-icon name="fas-file-alt"  class="w-3 sm:inline mr-2" />
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <div class="lg:hidden" id="mobile-menu" x-show="mobile" @click.away="mobile=false"
+    <div class="lg:hidden" id="mobile-menu" x-show="mobile" @click.away="mobile=false" x-cloak
          x-transition:enter-start="transition ease-in duration-3000">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col md:flex-row gap-3 md:gap-0 md:justify-between">
             @foreach($navItems as $navItem)

@@ -1,37 +1,51 @@
 <div>
     {{-- Do your work, then step back. --}}
-    <div class="w-full border-b py-2">
-        <div class="grid grid-cols-1 md:grid-cols-5">
-            <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
-                <x-icon name="portfolio" class="w-8 h-8"/>
+    <div class="w-full border-b py-5">
+        <div class="flex justify-between items-center flex-wrap">
+            <div class="flex items-center justify-start space-x-3">
+                <x-icon name="portfolio" class="w-9 h-9"/>
                 <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Portfolio') }}</h1>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-3 col-span-2">
-                <div class="py-2">
-                    <button class="lg:px-4 p-2 gap-5 text-primary hover:text-white bg-white hover:bg-primary inline-flex justify-center py-4 border border-primary rounded-lg w-full">
-                        <x-icon name="calendar" class="w-5"/>
-                        <span class="hidden sm:inline">{{ __('Today') }}</span>
-                    </button>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="col-span-2 md:col-span-1 w-full">
+                    <x-button variant="white" class="w-full">
+                        <x-icon name="calendar" class="w-5 mr-3"/>
+                        <span>{{ __('Today') }}</span>
+                    </x-button>
                 </div>
-                <div class="py-2">
-                    <button class="border border-primary hover:bg-primary rounded-lg w-full h-full py-3 text-primary hover:text-white">{{ __('Past day') }}</button>
+                <div class="col-span-2 md:col-span-1 w-full">
+                    <x-button variant="white" class="w-full">
+                        <span>{{ __('Past day') }}</span>
+                    </x-button>
                 </div>
-                <div  x-data="{ isOpen: false}" class="relative py-2">
-                    <button 
-                        class="flex justify-center items-center border rounded-lg w-full h-full bg-secondary hover:bg-primary text-white font-bold py-3 px-1"
-                        @click="isOpen = !isOpen" 
-                        @keydown.escape="isOpen = false" 
-                    >
-                        {{ __('Total performance') }}
-                        <x-icon name="fas-chevron-down" class="w-3 ml-3"/>
-                    </button>
-                    <ul x-show="isOpen" @click.away="isOpen = false" 
-                        class="absolute font-normal bg-white shadow overflow-hidden rounded w-60 border mt-2 py-5 right-0 z-20 px-3"
-                    >
-                        <li>{{ __('Add Drop Down Options here') }}</li>
-                    </ul>
+                <div class="col-span-2 w-full">
+                    <x-button class="justify-center tracking-tight w-full" tag="a" href="{{ route('customer.account.new') }}">
+                        {{ __('Total performanace') }}
+                    </x-button>
                 </div>
             </div>
         </div>
+        {{-- <div class="grid grid-cols-1 md:grid-cols-5">
+            <div class="flex items-center justify-start space-x-6 col-span-3 py-5">
+                <x-icon name="portfolio" class="w-8 h-8"/>
+                <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('portfolio') }}</h1>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 col-span-2">
+                <div class="col-span-1">
+                    <x-button variant="white" class="w-full">
+                        <x-icon name="calendar" class="w-5 mr-3"/>
+                        <span class="hidden sm:inline">{{ __('Today') }}</span>
+                    </x-button>
+                </div>
+                <div class="col-span-1">
+                    <x-button variant="white" class="w-full">
+                        <span class="hidden sm:inline">{{ __('Past day') }}</span>
+                    </x-button>
+                </div>
+                <div class="relative  w-full col-span-2">
+                    <x-button>{{ __('Total performanace') }}</x-button>
+                </div>
+            </div>
+        </div> --}}
     </div>
 </div>
