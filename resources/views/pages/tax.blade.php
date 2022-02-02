@@ -1,26 +1,31 @@
 <x-guest-layout>
     <div class="w-full bg-white relative">
-        <img src="{{ asset("assets/img/svg/tax_pattern.svg") }}" class="absolute right-0 top-0 z-0 w-2/3 h-auto -mt-3"/>
-        <x-landing-nav :for="'customer'"/>
-        {{-- Hero --}}
-        <x-container class="pt-16 relative">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                <div class="relative h-full flex items-center">
-                    <div class="my-auto relative">
-                        <div class="relative">
-                            <p class="text-md lg:text-lg text-secondary">{{ __('Duis consectetur feugiat aucto') }}</p>
-                            <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Tax Services') }}</h2>
-                            <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
-                            <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
-                            <x-button variant="secondary" class="font-bold mt-10 z-20" size="md">{{ __('Tax Report') }}</x-button>
+        <div class="relative">
+            <div class="h-full absolute right-0 top-0">
+                <img src="{{ asset("assets/img/svg/tax_banner.svg") }}" class="w-full h-full object-cover lg:block hidden"/>
+            </div>
+            <x-landing-nav :for="'customer'"/>
+            {{-- Hero --}}
+            <x-container class="py-10 lg:py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
+                    <div class="relative flex items-center">
+                        <div class="my-auto relative">
+                            <div class="relative">
+                                <p class="text-md lg:text-lg text-secondary">{{ __('Duis consectetur feugiat aucto') }}</p>
+                                <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Tax Services') }}</h2>
+                                <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
+                                <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
+                                <x-button variant="secondary" class="font-bold mt-10 z-20" size="md">{{ __('Tax Report') }}</x-button>
+                            </div>
                         </div>
                     </div>
+                    <div class="md:block hidden">
+                        <img src="{{ asset('assets/img/svg/tax_hero.svg') }}"/>
+                    </div>
                 </div>
-                <div class="md:block hidden">
-                    <img src="{{ asset('assets/img/svg/tax_banner.svg') }}"/>
-                </div>
-            </div>
-
+            </x-container>
+        </div>
+        <x-container class="relative">
             {{-- Content --}}
             <div class="text-center relative">
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5 py-5">

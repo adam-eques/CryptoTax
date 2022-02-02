@@ -1,26 +1,30 @@
 <x-guest-layout>
-    <div class="w-full bg-white relative">
-        <img src="{{ asset("assets/img/svg/portfolio_pattern.svg") }}" class="absolute -left-0 -top-14 z-0 w-full h-auto"/>
-        <x-landing-nav for="customer" logo="white"/>
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 relative">
-
-            {{-- Hero section --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class=" flex items-center justify-start order-2 sm:order-1">
-                    <div class="my-auto relative">
-                        <h5 class="text-primary sm:text-white text-xl">{{ __('Get Fully Control') }}</h5>
-                        <h2 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Of Your Portfolio') }}</p>
-                        <h5 class="text-primary sm:text-white text-lg mt-6">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</h5>
-                        <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('View Portfolio') }}</x-button>
+    <div class="w-full bg-white">
+        <div class="relative">
+            <div class="w-full h-full absolute right-0 top-0">
+                <img src="{{ asset("assets/img/svg/portfolio_banner.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
+            </div>
+            <x-landing-nav for="customer" logo="white"/>
+            <x-container class="relative">
+                {{-- Hero section --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-26 xl:py-48">
+                    <div class=" flex items-center justify-start order-2 sm:order-1">
+                        <div class="my-auto relative">
+                            <h5 class="text-primary lg:text-white text-xl">{{ __('Get Fully Control') }}</h5>
+                            <h2 class="text-primary lg:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Of Your Portfolio') }}</p>
+                            <h5 class="text-primary lg:text-white text-lg mt-6">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</h5>
+                            <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('View Portfolio') }}</x-button>
+                        </div>
+                    </div>
+                    <div class="order-1 sm:order-2">
+                        <img src="{{ asset('assets/img/svg/portfolio_hero.svg') }}" class="w-full" />
                     </div>
                 </div>
-                <div class="order-1 sm:order-2 mt-26">
-                    <img src="{{ asset('assets/img/svg/portfolio_hero.svg') }}" class="w-full" />
-                </div>
-            </div>
-
+            </x-container>
+        </div>
+        <x-container>
             {{--  --}}
-            <div class="text-center sm:mt-28 mt-8">
+            <div class="text-center">
                 <p class="text-secondary font-semibold">{{ __('Features') }}</p>
                 <h3 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-4">{{ __('With all the Features You Need') }}</h3>
                 <p class="mt-5">{{ __('Duis consectetur feugiat auctor. Morbi nec enim luctus, feugiat arcu id, ultricies ante. Duis vel massa eleifend, porta ') }}</p>
@@ -73,7 +77,7 @@
                 </div>
             </div>
 
-        </div>
+        </x-container>
         <x-footer-get-start/>
     </div>
     <x-footer/>
