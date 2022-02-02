@@ -120,20 +120,20 @@ return [
         'user' => [
             'model' => User::class,
 
-            'trial_days' => 5,
+            //'trial_days' => 5,
 
             'default_interval' => 'monthly',
 
             'plans' => [
                 [
                     'name' => 'Standard',
-                    'short_description' => 'This is a short, human friendly description of the plan.',
-                    'monthly_id' => 'price_id',
-                    'yearly_id' => 'price_id',
+                    'short_description' => 'Premium Account',
+                    'monthly_id' => 'price_1KOpn9J8xGRFiA6gJfzc0DEz',
+                    'yearly_id' => 'price_1KOpn9J8xGRFiA6gUCrJXF2C',
                     'features' => [
-                        'Feature 1',
-                        'Feature 2',
-                        'Feature 3',
+                        'Get 2,500 Credits per year',
+                        'Customer support',
+                        'Yet another feature',
                     ],
                 ],
             ],
