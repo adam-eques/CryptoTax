@@ -130,6 +130,7 @@ return [
                     'short_description' => 'Premium Account',
                     'monthly_id' => 'price_1KOpn9J8xGRFiA6gJfzc0DEz',
                     'yearly_id' => 'price_1KOpn9J8xGRFiA6gUCrJXF2C',
+                    'yearly_incentive' => 'Save 25%',
                     'features' => [
                         'Get 2,500 Credits per year',
                         'Customer support',

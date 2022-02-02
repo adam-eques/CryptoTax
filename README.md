@@ -3,7 +3,7 @@
 ## Stuff to install
 
 ```shell
-sudo apt install php8.0-soap
+sudo apt install php8.0-soap php8.0-intl
 ```
 
 ## Update your local installation

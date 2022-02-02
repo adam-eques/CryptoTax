@@ -18,6 +18,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \Spark\Events\SubscriptionCreated::class => [
+
+        ],
+        Spark\Events\SubscriptionCancelled::class => [
+
+        ]
     ];
 
     /**
