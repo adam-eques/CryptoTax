@@ -3,7 +3,7 @@
         {{-- Hero --}}
         <div class="relative w-full">
             <div class="h-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/svg/hero_pattern.svg") }}" class="w-full h-full object-cover lg:block hidden"/>
+                <img src="{{ asset("assets/img/svg/hero_pattern.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
             <x-landing-nav for="customer"/>
             <x-container class="pt-24">
