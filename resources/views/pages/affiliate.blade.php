@@ -1,29 +1,33 @@
 <x-guest-layout>
-    <div class="w-full bg-white relative">
-        <img src="{{ asset("assets/img/svg/affiliate_pattern.svg") }}" class="absolute left-0 top-0 z-0 w-full h-auto"/>
-        <x-landing-nav :for="'affiliate'"/>
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 relative">
-
-            {{-- hero section --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class=" flex items-center justify-start order-2 sm:order-1">
-                    <div class="my-auto relative">
-                        <img src="{{ asset('assets/img/svg/affiliate_pattern_2.svg') }}" class="w-full -mt-16 hidden sm:absolute"/>
-                        <h2 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">{{ __('Make Money By Becoming') }}</p>
-                        <h3 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl mt-5 font-md">{{ __("a myCrypto Tax") }} <span class="italic text-secondary">{{ _('Affiliate') }}</span></h3>
-                        <h5 class="text-primary sm:text-white text-lg mt-6">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.') }}</h5>
-                        <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('Start Earning Now') }}</x-button>
+    <div class="w-full bg-white">
+        <div class="relative">
+            <div class="w-full absolute right-0 top-0">
+                <img src="{{ asset("assets/img/svg/affiliate_banner.svg") }}" class="w-full h-full object-cover"/>
+            </div>
+            <x-landing-nav :for="'affiliate'"/>
+            <x-container class="relative py-16">    
+                {{-- hero section --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class=" flex items-center justify-start order-2 sm:order-1">
+                        <div class="my-auto relative">
+                            <img src="{{ asset('assets/img/svg/affiliate_pattern_2.svg') }}" class="w-full -mt-16 hidden sm:absolute"/>
+                            <h2 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">{{ __('Make Money By Becoming') }}</p>
+                            <h3 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl mt-5 font-md">{{ __("a myCrypto Tax") }} <span class="italic text-secondary">{{ _('Affiliate') }}</span></h3>
+                            <h5 class="text-primary sm:text-white text-lg mt-6">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.') }}</h5>
+                            <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('Start Earning Now') }}</x-button>
+                        </div>
+                    </div>
+                    <div class="order-1 sm:order-2">
+                        <img src="{{ asset('assets/img/svg/affiliate_hero.svg') }}" class="w-full" />
                     </div>
                 </div>
-                <div class="m-16 order-1 sm:order-2">
-                    <img src="{{ asset('assets/img/svg/affiliate_hero.svg') }}" class="w-full" />
-                </div>
-            </div>
-
-            {{-- How it works --}}
+            </x-container>
+        </div>
+        {{-- How it works --}}
+        <x-container>
             <div class="text-center relative">
                 <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="max-w-md h-auto absolute left-1/2 -translate-x-1/2"/>
-                <div class="sm:py-20 py-10">
+                <div class="sm:py-20 py-10 relative">
                     <h3 class="xl:text-4xl lg:tet-3xl text-2xl text-primary font-bold">{{ __('How It Works') }}</h3>
                     <p class="mt-6 px-2 sm:px-10 leading-loose">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ') }}</p>
                 </div>
@@ -81,21 +85,21 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </x-container>
     </div>
 
     <div class="w-full">
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 relative">
+        <x-container>
             {{-- Textmonial --}}
             @livewire('affiliate.landing-page.testmonial')
-        </div>
+        </x-container>
     </div>
 
     <div class="w-full bg-white py-12">
-        <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 relative">
+        <x-container class="relative">
             {{-- FAQs --}}
             @livewire('affiliate.landing-page.faqs')
-        </div>
+        </x-container>
     </div>
     <x-footer/>
 </x-guest-layout>
