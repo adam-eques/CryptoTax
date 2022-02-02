@@ -56,16 +56,15 @@ server {
     charset utf-8;
 
     location / {
-        # Enable psw protection
         auth_basic "Dev-Zone";
         auth_basic_user_file /etc/apache2/.htpasswd;
-        
         try_files $uri $uri/ /index.php?$query_string;
     }
 
     # Disable password protection for spark webhooks
     location ^~ /spark/ {
         auth_basic off;
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
