@@ -1,5 +1,11 @@
 # CryptoTax Repository
 
+## Stuff to install
+
+```shell
+sudo apt install php8.0-soap
+```
+
 ## Update your local installation
 
 On each pull, run the following commands:

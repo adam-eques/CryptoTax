@@ -21,6 +21,7 @@
         "laravel/jetstream": "^2.4",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.4",
+        "laravel/spark-stripe": "@dev",
         "laravel/telescope": "^4.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
@@ -79,5 +80,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/laravel/spark-stripe"
+        }
+    ]
 }
