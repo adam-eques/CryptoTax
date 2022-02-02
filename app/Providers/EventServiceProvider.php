@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
         \Spark\Events\SubscriptionCreated::class => [
 
         ],
-        Spark\Events\SubscriptionCancelled::class => [
+        \Spark\Events\SubscriptionCancelled::class => [
 
         ]
     ];
