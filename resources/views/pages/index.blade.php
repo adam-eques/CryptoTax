@@ -7,7 +7,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
                 <div class="relative h-full flex items-center">
                     <div class="my-auto relative">
-                        <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
+                        <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="h-auto md:absolute -mt-16 -ml-8 hidden"/>
                         <div class="relative">
                             <p class="text-xl lg:text-3xl">{{ __('Track your crypto') }}</p>
                             <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</h2>
