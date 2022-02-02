@@ -27,7 +27,7 @@
     }
 @endphp
 
-<nav class="relative w-full z-10" x-data="{mobile:false}">
+<nav class="relative w-full z-10 bg-primary lg:bg-transparent" x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">
             <div class="flex-shrink-0">
@@ -77,7 +77,7 @@
                 <div
                     class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none py-8 px-5"
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
-                    x-show="open" @click.away="open=false"
+                    x-show="open" @click.away="open=false" x-cloak
                     x-transition:enter-start="transition ease-in duration-3000"
                 >
                     @foreach ($links as $link)  

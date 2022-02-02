@@ -2,7 +2,7 @@
     <div class="w-full bg-white">
         <div class="relative">
             <div class="w-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/svg/account_banner.svg") }}" class="w-full object-cover lg:block md:hidden"/>
+                <img src="{{ asset("assets/img/svg/account_banner.svg") }}" class="w-full object-cover lg:block hidden"/>
             </div>
             <x-landing-nav for="customer" logo="white"/>
             <x-container class="py-10 sm:py-28 relative">

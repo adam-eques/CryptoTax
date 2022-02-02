@@ -1,12 +1,12 @@
 <x-guest-layout>
     <div class="w-full bg-white relative">
         <div class="relative">
-            <div class="h-full w-3/4 absolute right-0 top-0">
-                <img src="{{ asset("assets/img/svg/tax_pattern.svg") }}" class="w-full h-full object-cover"/>
+            <div class="h-full absolute right-0 top-0">
+                <img src="{{ asset("assets/img/svg/tax_banner.svg") }}" class="w-full h-full object-cover lg:block hidden"/>
             </div>
             <x-landing-nav :for="'customer'"/>
             {{-- Hero --}}
-            <x-container class="h-screen">
+            <x-container class="py-10 lg:py-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
                     <div class="relative flex items-center">
                         <div class="my-auto relative">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="md:block hidden">
-                        <img src="{{ asset('assets/img/svg/tax_banner.svg') }}"/>
+                        <img src="{{ asset('assets/img/svg/tax_hero.svg') }}"/>
                     </div>
                 </div>
             </x-container>
