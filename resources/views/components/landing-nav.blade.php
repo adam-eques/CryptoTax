@@ -11,7 +11,7 @@
                 [ 'name' => 'Home', 'route' => 'index' ],
                 [ 'name' => 'Account', 'route' => 'accounts' ],
                 [ 'name' => 'Portfolio', 'route' => 'portfolios' ],
-                [ 'name' => 'Taxes', 'route' => 'index' ],
+                [ 'name' => 'Taxes', 'route' => 'tax' ],
             ];
             break;
         case 'affiliate':

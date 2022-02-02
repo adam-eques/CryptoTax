@@ -1,6 +1,6 @@
 <div>
     <div class="flex items-center justify-center">
-        <div class="flex sm:w-10/12 mt-20 -mb-20 items-center justify-center">
+        <x-container class="flex sm:w-10/12 mt-20 -mb-20 items-center justify-center">
             <div class="w-full bg-white rounded-lg shadow-md">
                 <div class="py-10 lg:px-28 px-10 flex sm:flex-row flex-col items-center sm:justify-between justify-center">
                     <div>
@@ -14,7 +14,7 @@
                     </x-button>
                 </div>
             </div>
-        </div> 
+        </x-container> 
     </div>
     <div class="bg-primary w-full h-full flex py-10">
     </div>

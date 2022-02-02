@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'pages.index')->name('index');
 Route::view('/accounts', 'pages.account')->name('accounts');
 Route::view('/portfolios', 'pages.portfolio')->name('portfolios');
+Route::view('/tax', 'pages.tax')->name('tax');
 
 // Affilate Page
 Route::view('/affiliate', 'pages.affiliate')->name('affiliate');

@@ -1,6 +1,6 @@
 <footer class="bg-primary pt-10 md:pt-20">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
+    <x-container>
         <div class="flex flex-col lg:flex-row">
             <!-- Footer Intro section -->
             <div class="lg:w-1/3 space-y-4 lg:space-y-10 pr-5 xl:pr-20 items-center lg:items-start flex justify-center lg:justify-start flex-col text-center lg:text-left">
@@ -135,5 +135,5 @@
                 Copyright &copy; CryptoTax Inc. Designed & Developed by BSBV (<a href="http://bsbv.net" target="_blank" class="text-primary-200 hover:text-white">bsbv.net</a>) {{ now()->format("Y") }}.
             </p>
         </div>
-    </div>
+    </x-container>
 </footer>
