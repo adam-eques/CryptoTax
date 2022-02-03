@@ -37,8 +37,19 @@
                         <x-button class="mt-5 font-semibold">{{ __($item['button']) }}</x-button>
                     </div>
                 @endforeach
-               
+            </div>
+            <div class="mt-5 border rounded-lg p-8 relative">
+                <div class="absolute w-10 h-10 border-t border-l top-0 -mt-5 left-1/2 -translate-x-1/2 rotate-45 bg-white"></div>
+                <div class="relative flex justify-center">
+                    <div class="max-w-3xl w-full text-center">
+                        @livewire('sub-pages.contact-us.email-contact')
+                    </div>
+                </div>
             </div>
         </x-container>
     </div>
+    <div class="bg-white">
+        <x-footer-get-start class="bg-white"/>
+    </div>
+    <x-footer/>
 </x-guest-layout>   
