@@ -1,17 +1,5 @@
 <x-guest-layout>
-    <div class="bg-primary">
-        <x-landing-nav for="customer" logo="white"/>
-        <x-container class="mt-10 py-10 relative">
-            <img src="{{asset('assets/img/contact/contact_bg_pattern.svg')}}" class="absolute right-0 -top-2"/>
-            <div class="flex items-center space-x-8">
-                <x-icon name="contact" class="w-12 text-white"/>
-                <div>
-                    <p class="text-white">{{ __("We're here to help you") }}</p>
-                    <h4 class="text-white text-2xl font-semibold">{{ __("Contact Us") }}</h4>
-                </div>
-            </div>
-        </x-container>
-    </div>
+    <x-sub-page-hero icon="contact" subtitle="We're here to help" title="Contact Us"></x-sub-page-hero>
     <div class="relative bg-white py-12">
         <x-container>
             <p>{{ __("The") }} <a href="{{ route('index') }}" class="font-semibold text-secondary">{{ __("myCrypto Tax") }}</a>  {{__("Help Center has answers to most questions. We’re happy to lend a hand,") }}</p>
