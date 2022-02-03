@@ -148,13 +148,22 @@ class NavigationService
      */
     protected function addItem(string $label, ?string $icon = null, ?string $route = null, array $children = [], array $actions = []): self
     {
-        $this->items[] = [
-            'label' => $label,
-            'icon' => $icon,
-            'route' => $route,
-            'children' => $children,
-            'actions' => $actions,
-        ];
+        $hasChildren = false;
+        foreach($children AS $child) {
+            if(empty($child["hide"])) {
+                $hasChildren = true;
+            }
+        }
+
+        if($route || $hasChildren) {
+            $this->items[] = [
+                'label' => $label,
+                'icon' => $icon,
+                'route' => $route,
+                'children' => $children,
+                'actions' => $actions,
+            ];
+        }
 
         return $this;
     }

@@ -307,24 +307,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function can($abilities, $arguments = []): bool
-    {
-        return $this->isAdminPanelAccount() || parent::can($abilities, $arguments);
-    }
-
-
-    public function cant($abilities, $arguments = []): bool
-    {
-        return $this->isAdminPanelAccount() || parent::cant($abilities, $arguments);
-    }
-
-
-    public function canAny($abilities, $arguments = []): bool
-    {
-        return $this->isAdminPanelAccount() || parent::canAny($abilities, $arguments);
-    }
-
-
     public function getName(): ?string
     {
         return $this->name . " (ID=" . $this->id . ")";
