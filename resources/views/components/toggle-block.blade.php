@@ -1,9 +1,9 @@
 @props(["opened" => false, "label"])
-<div class="border border-gray-300 rounded" x-data="{opened:{{ $opened ? 'true' : 'false' }}}">
+<div class="border border-gray-100 rounded" x-data="{opened:{{ $opened ? 'true' : 'false' }}}">
     <button 
         aria-current="true"
         type="button"
-        class="border-0 text-left py-3 lg:py-6 px-4 lg:px-8 font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl bg-gray-100  w-full uppercase text-gray-700  focus:outline-none cursor-pointer flex justify-between items-center rounded"
+        class="border-0 text-left py-3 lg:py-6 px-4 lg:px-8 font-semibold sm:text-xl md:text-base lg:text-lg xl:text-xl bg-gray-50  w-full text-gray-700  focus:outline-none cursor-pointer flex justify-between items-center rounded"
         x-on:click="opened = !opened; selected='';"
     >
         <span>{{ $label }}</span>

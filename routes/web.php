@@ -9,6 +9,7 @@ Route::view('/accounts', 'pages.landing-pages.account')->name('accounts');
 Route::view('/portfolios', 'pages.landing-pages.portfolio')->name('portfolios');
 Route::view('/tax', 'pages.landing-pages.tax')->name('tax');
 Route::view('/contact', 'pages.landing-pages.contact')->name('contact');
+Route::view('/faqs', 'pages.landing-pages.faqs')->name('faqs');
 
 // Affilate Page
 Route::view('/affiliate', 'pages.landing-pages.affiliate')->name('affiliate');
