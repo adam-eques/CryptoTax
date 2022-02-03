@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc5d4926ed923d917fa105e02388c133",
+    "content-hash": "4914994155bda9791f0d2b64726e914a",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -179,16 +179,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.16",
+            "version": "3.209.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5c128ac9a1513bed9b8975fb66821724d0f80ebe"
+                "reference": "3ed5a5ff379e518a4e8c089e412207774daa25e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5c128ac9a1513bed9b8975fb66821724d0f80ebe",
-                "reference": "5c128ac9a1513bed9b8975fb66821724d0f80ebe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3ed5a5ff379e518a4e8c089e412207774daa25e7",
+                "reference": "3ed5a5ff379e518a4e8c089e412207774daa25e7",
                 "shasum": ""
             },
             "require": {
@@ -264,9 +264,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.16"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.17"
             },
-            "time": "2022-02-02T19:17:06+00:00"
+            "time": "2022-02-03T19:19:22+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -534,16 +534,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.71.88",
+            "version": "1.72.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "f64837767ef01aebaac48f7dd7a013e3d9a3d06a"
+                "reference": "645ce8254449da36fc0b6ec9ba2a1da0942d7e89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/f64837767ef01aebaac48f7dd7a013e3d9a3d06a",
-                "reference": "f64837767ef01aebaac48f7dd7a013e3d9a3d06a",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/645ce8254449da36fc0b6ec9ba2a1da0942d7e89",
+                "reference": "645ce8254449da36fc0b6ec9ba2a1da0942d7e89",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.71.88"
+                "source": "https://github.com/ccxt/ccxt/tree/1.72.3"
             },
             "funding": [
                 {
@@ -814,31 +814,31 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-02-02T20:54:59+00:00"
+            "time": "2022-02-03T21:28:15+00:00"
         },
         {
             "name": "codeat3/blade-cryptocurrency-icons",
-            "version": "1.4.3",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeat3/blade-cryptocurrency-icons.git",
-                "reference": "34534a82536bfab448ed13229ab2a2caa31acfab"
+                "reference": "e11eecbb7ed0caafbaf1c305afd6b3f413e5b6cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeat3/blade-cryptocurrency-icons/zipball/34534a82536bfab448ed13229ab2a2caa31acfab",
-                "reference": "34534a82536bfab448ed13229ab2a2caa31acfab",
+                "url": "https://api.github.com/repos/codeat3/blade-cryptocurrency-icons/zipball/e11eecbb7ed0caafbaf1c305afd6b3f413e5b6cb",
+                "reference": "e11eecbb7ed0caafbaf1c305afd6b3f413e5b6cb",
                 "shasum": ""
             },
             "require": {
-                "blade-ui-kit/blade-icons": "^1.0",
-                "illuminate/support": "^8.0",
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
-                "codeat3/blade-icon-generation-helpers": "dev-poc",
-                "codeat3/phpcs-styles": "dev-main",
-                "orchestra/testbench": "^6.0",
+                "codeat3/blade-icon-generation-helpers": "^0.1",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
                 "phpunit/phpunit": "^9.0"
             },
             "type": "library",
@@ -877,7 +877,7 @@
             ],
             "support": {
                 "issues": "https://github.com/codeat3/blade-cryptocurrency-icons/issues",
-                "source": "https://github.com/codeat3/blade-cryptocurrency-icons/tree/1.4.3"
+                "source": "https://github.com/codeat3/blade-cryptocurrency-icons/tree/1.5.3"
             },
             "funding": [
                 {
@@ -885,7 +885,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-01-03T10:01:55+00:00"
+            "time": "2022-02-03T14:57:43+00:00"
         },
         {
             "name": "codenix-sv/coingecko-api",
@@ -1873,16 +1873,16 @@
         },
         {
             "name": "filament/forms",
-            "version": "v2.9.16",
+            "version": "v2.9.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "981575bce6aeeb0cc56707f92e3859bbf9d2dc91"
+                "reference": "28f81538dd8c0a28bc6dfabc891a37b8beacf43a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/981575bce6aeeb0cc56707f92e3859bbf9d2dc91",
-                "reference": "981575bce6aeeb0cc56707f92e3859bbf9d2dc91",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/28f81538dd8c0a28bc6dfabc891a37b8beacf43a",
+                "reference": "28f81538dd8c0a28bc6dfabc891a37b8beacf43a",
                 "shasum": ""
             },
             "require": {
@@ -1925,20 +1925,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-01-30T14:24:54+00:00"
+            "time": "2022-02-03T10:48:31+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.9.16",
+            "version": "v2.9.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "b5484603a76e6851bb7ee33b40d0471759ec1a6a"
+                "reference": "bb9a3caafa93e6d318e79fc83f6622080d961eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/b5484603a76e6851bb7ee33b40d0471759ec1a6a",
-                "reference": "b5484603a76e6851bb7ee33b40d0471759ec1a6a",
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/bb9a3caafa93e6d318e79fc83f6622080d961eaf",
+                "reference": "bb9a3caafa93e6d318e79fc83f6622080d961eaf",
                 "shasum": ""
             },
             "require": {
@@ -1978,7 +1978,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-01-30T14:24:49+00:00"
+            "time": "2022-02-03T10:48:30+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -3277,7 +3277,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-main",
+            "version": "dev-feature/caravel-admin",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -3984,12 +3984,12 @@
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "Mobile_Detect.php"
-                ],
                 "psr-0": {
                     "Detection": "namespaced/"
-                }
+                },
+                "classmap": [
+                    "Mobile_Detect.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -9196,16 +9196,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "dev-main",
+            "version": "v0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "7eb66477b769699bdd1b79bb1058840db88ac39b"
+                "reference": "db23aab034db48d5c9d56f03c0f3653cd4128069"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/7eb66477b769699bdd1b79bb1058840db88ac39b",
-                "reference": "7eb66477b769699bdd1b79bb1058840db88ac39b",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/db23aab034db48d5c9d56f03c0f3653cd4128069",
+                "reference": "db23aab034db48d5c9d56f03c0f3653cd4128069",
                 "shasum": ""
             },
             "require": {
@@ -9228,7 +9228,6 @@
                 "phpunit/phpunit": "^9.5",
                 "spatie/laravel-ray": "^1.26"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -9263,15 +9262,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/main"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/WebCaravel",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-02-03T10:39:20+00:00"
+            "time": "2022-02-03T21:34:54+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -10165,12 +10158,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                },
                 "files": [
                     "src/DeepCopy/deep_copy.php"
-                ]
+                ],
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -12128,8 +12121,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "laravel/spark-stripe": 20,
-        "webcaravel/admin": 20
+        "laravel/spark-stripe": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
