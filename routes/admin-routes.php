@@ -11,16 +11,16 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 // Users
-\App\Http\Livewire\Admin\Customer\CustomerResource::routes();
-\App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource::routes();
-\App\Http\Livewire\Admin\AffiliateUser\AffiliateUserResource::routes();
-\App\Http\Livewire\Admin\BackendUser\BackendUserResource::routes();
+\App\CaravelAdmin\Resources\Customer\CustomerResource::routes();
+\App\CaravelAdmin\Resources\TaxAdvisor\TaxAdvisorResource::routes();
+\App\CaravelAdmin\Resources\AffiliateUser\AffiliateUserResource::routes();
+\App\CaravelAdmin\Resources\BackendUser\BackendUserResource::routes();
 
 // Other resources
-\App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource::routes();
-\App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource::routes();
-\App\Http\Livewire\Admin\UserCreditAction\UserCreditActionResource::routes();
-\App\Http\Livewire\Admin\UserCreditLog\UserCreditLogResource::routes();
+\App\CaravelAdmin\Resources\CryptoExchange\CryptoExchangeResource::routes();
+\App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource::routes();
+\App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource::routes();
+\App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource::routes();
 
 // Specials
 Route::view('/todo', 'errors.todo')->name('todo');

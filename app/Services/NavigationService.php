@@ -2,15 +2,13 @@
 
 namespace App\Services;
 
-use App\Http\Livewire\Admin\AffiliateUser\AffiliateUserResource;
-use App\Http\Livewire\Admin\UserAccountType\UserAccountTypeResource;
-use App\Http\Livewire\Admin\BackendUser\BackendUserResource;
-use App\Http\Livewire\Admin\CryptoExchange\CryptoExchangeResource;
-use App\Http\Livewire\Admin\Customer\CustomerResource;
-use App\Http\Livewire\Admin\TaxAdvisor\TaxAdvisorResource;
-use App\Http\Livewire\Admin\UserCreditAction\UserCreditActionResource;
-
-use Illuminate\Support\Facades\Route;
+use App\CaravelAdmin\Resources\AffiliateUser\AffiliateUserResource;
+use App\CaravelAdmin\Resources\BackendUser\BackendUserResource;
+use App\CaravelAdmin\Resources\CryptoExchange\CryptoExchangeResource;
+use App\CaravelAdmin\Resources\Customer\CustomerResource;
+use App\CaravelAdmin\Resources\TaxAdvisor\TaxAdvisorResource;
+use App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource;
+use App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource;
 
 class NavigationService
 {

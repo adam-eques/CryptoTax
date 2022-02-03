@@ -2,7 +2,7 @@
 
 namespace App\Tables\Columns;
 
-use App\Http\Livewire\Admin\Resources\Resource;
+use WebCaravel\Admin\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
 
 class BelongsToColumn extends TextColumn

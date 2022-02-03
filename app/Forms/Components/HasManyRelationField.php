@@ -2,7 +2,7 @@
 
 namespace App\Forms\Components;
 
-use App\Http\Livewire\Admin\Resources\Resource;
+use WebCaravel\Admin\Resources\Resource;
 use Filament\Forms\Components\Field;
 use Illuminate\Contracts\View\View;
 
@@ -21,7 +21,7 @@ class HasManyRelationField extends Field
 
 
     /**
-     * @return \App\Http\Livewire\Admin\Resources\Resource
+     * @return \WebCaravel\Admin\Resources\Resource
      */
     public function getResource(): Resource
     {

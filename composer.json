@@ -26,7 +26,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
         "owenvoke/blade-fontawesome": "^1.10",
-        "wireui/wireui": "^0.15.0"
+        "webcaravel/admin": "dev-main",
+        "wireui/wireui": "^0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
