@@ -4,13 +4,14 @@ use App\Http\Controllers\Customer\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
 // Landing Page
-Route::view('/', 'pages.index')->name('index');
-Route::view('/accounts', 'pages.account')->name('accounts');
-Route::view('/portfolios', 'pages.portfolio')->name('portfolios');
-Route::view('/tax', 'pages.tax')->name('tax');
+Route::view('/', 'pages.landing-pages.index')->name('index');
+Route::view('/accounts', 'pages.landing-pages.account')->name('accounts');
+Route::view('/portfolios', 'pages.landing-pages.portfolio')->name('portfolios');
+Route::view('/tax', 'pages.landing-pages.tax')->name('tax');
+Route::view('/contact', 'pages.landing-pages.contact')->name('contact');
 
 // Affilate Page
-Route::view('/affiliate', 'pages.affiliate')->name('affiliate');
+Route::view('/affiliate', 'pages.landing-pages.affiliate')->name('affiliate');
 
 // Logout
 Route::get('logout', function() {
