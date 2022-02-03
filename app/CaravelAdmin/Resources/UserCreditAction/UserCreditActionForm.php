@@ -3,7 +3,7 @@
 namespace App\CaravelAdmin\Resources\UserCreditAction;
 
 use WebCaravel\Admin\Resources\ResourceForm;
-use App\Forms\SidebarLayout;
+use WebCaravel\Admin\Forms\SidebarLayout;
 use App\Services\CreditCodeService;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;

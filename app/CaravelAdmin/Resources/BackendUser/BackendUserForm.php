@@ -3,7 +3,7 @@
 namespace App\CaravelAdmin\Resources\BackendUser;
 
 use WebCaravel\Admin\Resources\ResourceForm;
-use App\Forms\SidebarLayout;
+use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms;
 use Illuminate\Database\Eloquent\Builder;
 

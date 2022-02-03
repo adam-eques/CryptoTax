@@ -3,7 +3,7 @@
 namespace App\CaravelAdmin\Resources\UserAccountType;
 
 use WebCaravel\Admin\Resources\ResourceForm;
-use App\Forms\SidebarLayout;
+use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 

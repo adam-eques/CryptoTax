@@ -4,9 +4,8 @@ namespace App\CaravelAdmin\Resources\Customer;
 
 use WebCaravel\Admin\Resources\ResourceForm;
 use App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource;
-use App\Forms\Components\HasManyRelationField;
-use App\Forms\Components\StaticField;
-use App\Forms\SidebarLayout;
+use WebCaravel\Admin\Forms\Components\HasManyRelationField;
+use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms;
 
 use function moneyFormat;
@@ -29,15 +28,12 @@ class CustomerForm extends ResourceForm
                     ->resource(UserCreditLogResource::make())
             ], "Credit Logs")
             ->addCard([
-                StaticField::make(__("ID"), modelValue: "id"),
-                StaticField::make(__("Credits"),callback: function($record){
-                    return moneyFormat($record->credits);
-                }),
-                StaticField::make(__("Registered at"), callback: function($record){
-                    return $record->created_at
-                        ? __(":date at :time" , ["date" => $record->created_at->format("Y-m-d"), "time" => $record->created_at->format("H:i")])
-                        : "";
-                }),
+                Forms\Components\Placeholder::make("id")->label(__("ID"))
+                    ->content(fn ($record): string => $record ? $record->id : '-'),
+                Forms\Components\Placeholder::make("id")->label(__("Credits"))
+                    ->content(fn ($record): string => moneyFormat($record->credits)),
+                Forms\Components\Placeholder::make("id")->label(__("Registered at"))
+                    ->content(fn ($record): string => $record ? $record->created_at : '-'),
             ])
             ->toArray();
     }
