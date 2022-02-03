@@ -307,6 +307,12 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    public function getName(): ?string
+    {
+        return $this->name . " (ID=" . $this->id . ")";
+    }
+
+
     /**
      * @param string|\App\Models\UserCreditAction $actionOrActionCode
      * @param float|null $value
