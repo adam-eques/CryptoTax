@@ -31,12 +31,13 @@ class UserCreditActionForm extends ResourceForm
                     ->nullable(true)
                     ->numeric(),
                 DateTimePicker::make('valid_from')
-                    ->nullable(true),
+                    ->withoutSeconds()
+                    ->nullable(),
                 DateTimePicker::make('valid_till')
+                    ->withoutSeconds()
                     ->placeholder('Leave empty if it has no end (yet)')
-                    ->nullable(true),
-
-            ], columns: 2)
+                    ->nullable(),
+            ])
             ->toArray();
     }
 }

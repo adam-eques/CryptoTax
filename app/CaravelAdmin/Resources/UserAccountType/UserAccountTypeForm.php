@@ -51,7 +51,7 @@ class UserAccountTypeForm extends ResourceForm
                     ->label(__("Is customer")),
                 Toggle::make("active")
                     ->label(__("Active")),
-            ], columns: 2)
+            ])
             ->toArray();
     }
 }

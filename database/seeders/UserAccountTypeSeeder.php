@@ -49,7 +49,6 @@ class UserAccountTypeSeeder extends Seeder
                 ],
                 'creditActions' => [
                     CreditCodeService::ACTION_REGISTER,
-                    CreditCodeService::ACTION_ADD_PREMIUM,
                 ]
             ],
             [

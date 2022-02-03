@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4914994155bda9791f0d2b64726e914a",
+    "content-hash": "673bcbfc71f67212102f5aa54ec4325c",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -534,16 +534,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.72.3",
+            "version": "1.72.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "645ce8254449da36fc0b6ec9ba2a1da0942d7e89"
+                "reference": "03d4e7298170c9c4c318bb52420291994dad9d66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/645ce8254449da36fc0b6ec9ba2a1da0942d7e89",
-                "reference": "645ce8254449da36fc0b6ec9ba2a1da0942d7e89",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/03d4e7298170c9c4c318bb52420291994dad9d66",
+                "reference": "03d4e7298170c9c4c318bb52420291994dad9d66",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.72.3"
+                "source": "https://github.com/ccxt/ccxt/tree/1.72.4"
             },
             "funding": [
                 {
@@ -814,7 +814,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-02-03T21:28:15+00:00"
+            "time": "2022-02-03T21:47:26+00:00"
         },
         {
             "name": "codeat3/blade-cryptocurrency-icons",
@@ -3277,7 +3277,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-feature/caravel-admin",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -9196,16 +9196,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "v0.0.3",
+            "version": "v0.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "db23aab034db48d5c9d56f03c0f3653cd4128069"
+                "reference": "297dd981d002d4ebbfa644d34ba7210eaf03b57a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/db23aab034db48d5c9d56f03c0f3653cd4128069",
-                "reference": "db23aab034db48d5c9d56f03c0f3653cd4128069",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/297dd981d002d4ebbfa644d34ba7210eaf03b57a",
+                "reference": "297dd981d002d4ebbfa644d34ba7210eaf03b57a",
                 "shasum": ""
             },
             "require": {
@@ -9262,9 +9262,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.3"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.4"
             },
-            "time": "2022-02-03T21:34:54+00:00"
+            "time": "2022-02-03T22:08:46+00:00"
         },
         {
             "name": "webmozart/assert",

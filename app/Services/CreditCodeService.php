@@ -7,7 +7,8 @@ use ReflectionClass;
 class CreditCodeService
 {
     const ACTION_REGISTER = "REGI";
-    const ACTION_ADD_PREMIUM = "PREM";
+    const ACTION_ADD_PREMIUM_MONTH = "PREM";
+    const ACTION_ADD_PREMIUM_YEAR = "PREY";
 
 
     public static function allActions(): array

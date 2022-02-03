@@ -10,7 +10,6 @@ class UserCreditAction extends Model
     const UPDATED_AT = null;
 
 
-
     public function scopeActive(Builder $query)
     {
         $now = now();

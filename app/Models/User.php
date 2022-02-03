@@ -102,9 +102,6 @@ class User extends Authenticatable implements MustVerifyEmail
             if($item->userAccountType->is_customer) {
                 $item->creditAction(CreditCodeService::ACTION_REGISTER);
             }
-            if($item->userAccountType->id == UserAccountType::TYPE_CUSTOMER_PREMIUM) {
-                $item->creditAction(CreditCodeService::ACTION_ADD_PREMIUM);
-            }
         });
 
         static::deleting(function (self $item) {
