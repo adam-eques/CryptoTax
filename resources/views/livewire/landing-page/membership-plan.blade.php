@@ -1,6 +1,6 @@
 <div class="text-center relative">
     <div class="absolute left-1/2 -translate-x-1/2">
-        <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
+        <img src="{{ asset('assets/img/landing/landing_logo_bg.svg') }}" class="mx-auto"/>
     </div>
     <div class="relative">
         <p class="text-lg">{{ __('Simple & Easy') }}</p>

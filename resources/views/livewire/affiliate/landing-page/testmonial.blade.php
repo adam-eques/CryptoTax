@@ -1,16 +1,16 @@
 <div class="py-10 sm:py-16">
     <div class="relative text-center">
         <div class="absolute left-1/2 -translate-x-1/2">
-            <img src="{{ asset('assets/img/svg/hero_pattern_2.svg') }}" class="mx-auto"/>
+            <img src="{{ asset('assets/img/affiliate_landing/landing_logo_bg.svg') }}" class="mx-auto"/>
         </div>
         <h3 class="text-2xl lg:text-3xl xl:text-4xl font-bold my-5">{{ __('What our members are sayings') }}</h3>
         <img src="{{ asset('assets/img/svg/full_marks.svg') }}" class="flex mx-auto"/>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-18 relative">
             @php
                 $reviews = [
-                    [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
-                    [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
-                    [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/svg/avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
+                    [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/landing/landing_testimonial_avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
+                    [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/landing/landing_testimonial_avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
+                    [ 'content' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'avatar' => 'assets/img/landing/landing_testimonial_avatar.svg', 'name'=>'Londynn Vargas', 'score' => 5 ],
                 ]
             @endphp
             @foreach ($reviews as $review)                            
