@@ -2,6 +2,7 @@
 
 namespace App\CaravelAdmin\Resources\Customer;
 
+use App\Models\User;
 use App\Models\UserCreditLog;
 use WebCaravel\Admin\Resources\ResourceForm;
 use App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource;
@@ -31,10 +32,12 @@ class CustomerForm extends ResourceForm
             ->addCard([
                 Forms\Components\Placeholder::make("id")->label(__("ID"))
                     ->content(fn ($record): string => $record ? $record->id : '-'),
-                Forms\Components\Placeholder::make("id")->label(__("Credits"))
+                Forms\Components\Placeholder::make("credits")->label(__("Credits"))
                     ->content(fn ($record): string => moneyFormat($record->credits)),
-                Forms\Components\Placeholder::make("id")->label(__("Registered at"))
+                Forms\Components\Placeholder::make("created_at")->label(__("Registered at"))
                     ->content(fn ($record): string => $record ? $record->created_at : '-'),
+                Forms\Components\Placeholder::make("account_type_id")->label(__("Account type"))
+                    ->content(fn (User $record): string => $record->userAccountType->getName()),
             ])
             ->toArray();
     }
