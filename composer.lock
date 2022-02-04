@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9373ca5a1c9dd88f4188e67c88fc8d0a",
+    "content-hash": "bbd46656ab25c2b36fe637221370c223",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -9196,16 +9196,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "v0.0.5",
+            "version": "v0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "b0f4f44a8ce9017c70b8fb99439f4d36da9ff0fa"
+                "reference": "34ad5ba034df27263066e2c4073783b3c54c0447"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/b0f4f44a8ce9017c70b8fb99439f4d36da9ff0fa",
-                "reference": "b0f4f44a8ce9017c70b8fb99439f4d36da9ff0fa",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/34ad5ba034df27263066e2c4073783b3c54c0447",
+                "reference": "34ad5ba034df27263066e2c4073783b3c54c0447",
                 "shasum": ""
             },
             "require": {
@@ -9262,9 +9262,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.5"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.6"
             },
-            "time": "2022-02-04T10:51:37+00:00"
+            "time": "2022-02-04T11:16:57+00:00"
         },
         {
             "name": "webmozart/assert",
