@@ -1,6 +1,7 @@
 @props([
     'for' => 'customer',
-    'logo' => 'primary'
+    'logo' => 'primary',
+    'textColor' => 'text-white'
 ])
 
 @php
@@ -56,17 +57,17 @@
             <div class="ml-auto mr-5 items-center gap-6 lg:flex hidden">
                 <div class="flex items-center gap-10">
                     @foreach ($links as $link)                
-                        @if ( \Request::route()->getName() === $link['route'])
-                            <a href="{{ route($link['route']) }}" class="text-white font-bold border-b-2 border-secondary">{{ __($link['name']) }}</a>
+                        @if (\Request::route() && \Request::route()->getName() === $link['route'])
+                            <a href="{{ route($link['route']) }}" class="{{ $textColor }} font-semibold border-b-2 border-secondary">{{ __($link['name']) }}</a>
                         @else
-                            <a href="{{ route($link['route']) }}" class="text-white font-bold">{{ __($link['name']) }}</a>
+                            <a href="{{ route($link['route']) }}" class="{{ $textColor }} font-semibold">{{ __($link['name']) }}</a>
                         @endif        
                     @endforeach
                 </div>
                 @if (auth()->user())                    
                     <a href="{{ route('logout') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign out') }}</a>
                 @else
-                    <a href="{{ route('login') }}" class="bg-transparent font-bold text-white px-8 py-2 border rounded hover:bg-secondary">{{ __('Sign in') }}</a>
+                    <a href="{{ route('login') }}" class="bg-transparent font-bold {{ $textColor }} hover:text-white hover:bg-secondary px-8 py-2 border rounded">{{ __('Sign in') }}</a>
                     <a href="{{ route('register') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign Up') }}</a>
                 @endif
             </div>
