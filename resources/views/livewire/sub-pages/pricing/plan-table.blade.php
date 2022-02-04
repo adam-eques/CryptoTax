@@ -1,5 +1,5 @@
 <div class="overflow-auto">
-    <div class="grid grid-cols-3">
+    <div class="grid grid-cols-3 min-w-clg">
         <div class="col-span-1">
     
         </div>
@@ -12,14 +12,21 @@
                 ]
             @endphp
             @foreach ($plans as $plan)                
-                <div class="py-5 border text-center">
-                    <p class="text-gray-300 font-extrabold text-xs sm:text-base">{{ __($plan['name']) }}</p>
-                    <h2 class="font-extrabold flex items-start justify-center text-xl sm:text-4xl"><span class="text-lg font-normal">$</span>{{ $plan['cost'] }}</h2>
+                <div class="text-center">
+                    @if ($plan['recommended'])                        
+                        <div class="w-full p-1 bg-secondary text-white">{{ __('Recommended') }}</div>
+                    @else
+                        <div class="w-full p-1 bg-white text-white">{{ __('Recommended') }}</div>
+                    @endif
+                    <div class="py-3 md:py-9 border">
+                        <p class="text-gray-300 font-extrabold text-xs sm:text-base">{{ __($plan['name']) }}</p>
+                        <h2 class="font-extrabold flex items-start justify-center text-xl sm:text-4xl"><span class="text-lg font-normal">$</span>{{ $plan['cost'] }}</h2>
+                    </div>
                 </div>
             @endforeach
         </div>
     </div>
-    <div class="grid grid-cols-3 mt-10">
+    <div class="grid grid-cols-3 mt-6  min-w-clg">
         @php
             $properties = [
                 [ 'name' => 'Secure Online Payments', 'status' => [true, false, true] ],
