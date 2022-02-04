@@ -1,4 +1,4 @@
-<div class="bg-white shadow-md rounded-md p-5 w-full mt-6 sm:mt-12">
+<div class="bg-white shadow-md rounded-md p-5 w-full mt-6 sm:mt-10">
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-x-6 md:gap-y-5">
         <div class="flex items-center space-x-2 py-5">

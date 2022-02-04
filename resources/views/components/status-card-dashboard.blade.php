@@ -10,7 +10,7 @@
         </div>
         <p class="text-xs text-primary">{{ $title }}</p>
     </div>
-    <div id="{{ $id }}" class="-mt-4 -mb-5"></div>
+    <div id="{{ $id }}" class="-my-4"></div>
 </div>
 
 @push('scripts')
@@ -39,7 +39,7 @@
                         left: -5,
                         right: -5,
                         top: -10,
-                        bottom: -10
+                        bottom: -16
                     },
                 },
                 stroke: {

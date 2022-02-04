@@ -28,8 +28,10 @@
                 <x-button tag="a" href="{{route('login')}}" size="md" class="font-bold justify-center mt-6 py-5">{{ __('Already registered?  Log In') }}</x-button>
             </div>
             <div>
-                <x-jet-authentication-card-logo />
-                <h1 class="text-3xl font-extrabold mt-8">{{ __('Sign Up') }}</h1>
+                <div class="flex justify-center">
+                    <x-jet-authentication-card-logo />
+                </div>
+                <h1 class="text-3xl font-extrabold mt-5">{{ __('Sign Up') }}</h1>
                 <p class="py-4 text-lg font-bold">{{ __('Free sign up') }}</p>
                 <div class="grid grid-cols-2 gap-x-3">
                     <x-social-auth-item  size="md" name="google" icon="google-circle">{{ __("Signup with Google") }}</x-social-auth-item>
