@@ -7,7 +7,7 @@
                 <h4 class="text-xl sm:text-3xl font-bold">{{ __("Compare myCrypto Tax pricing and plans") }}</h4>
                 <p class="mt-5 text-gray-400">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et') }}</p>
                 <p class="mt-3 text-gray-400">{{ __('dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation') }}</p>
-                <div class="mt-10">
+                <div class="mt-5">
                     @livewire('sub-pages.pricing.plan-table')
                 </div>
                 <div class="mt-10 bg-primary rounded-md p-5 md:p-14">
