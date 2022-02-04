@@ -4,7 +4,7 @@
             <div class="w-full h-full absolute right-0 top-0">
                 <img src="{{ asset("assets/img/portfolio_landing/portfolio_banner.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
-            <x-landing-nav for="customer" logo="white"/>
+            <x-landing-nav for="customer" logo="white" class="relative"/>
             <x-container class="relative">
                 {{-- Hero section --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-26 xl:py-48">

@@ -5,7 +5,7 @@
             <div class="h-full absolute right-0 top-0">
                 <img src="{{ asset("assets/img/landing/landing_hero_bg.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
-            <x-landing-nav for="customer"/>
+            <x-landing-nav for="customer" class="relative"/>
             <x-container class="pt-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
                     <div class="relative h-full flex items-center">
