@@ -25,7 +25,7 @@ class UserCreditActionSeeder extends Seeder
             ],
             [
                 'action_code' => CreditCodeService::ACTION_ADD_PREMIUM_YEAR,
-                'name' => "Add Premium",
+                'name' => "Premium (Year)",
                 "name_public" => "Become premium member",
                 'value' => 2500,
                 'valid_from' => $now,
@@ -33,7 +33,7 @@ class UserCreditActionSeeder extends Seeder
             ],
             [
                 'action_code' => CreditCodeService::ACTION_ADD_PREMIUM_MONTH,
-                'name' => "Add Premium",
+                'name' => "Premium (Month)",
                 "name_public" => "Become premium member",
                 'value' => 210,
                 'valid_from' => $now,

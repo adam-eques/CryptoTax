@@ -32,26 +32,6 @@ class UserAccountTypeSeeder extends Seeder
                 ],
             ],
             [
-                'id' => UserAccountType::TYPE_CUSTOMER_PREMIUM,
-                'data' => [
-                    'name' => "Customer Premium",
-                    'duration_in_months' => 12,
-                    'max_csv_upload' => 20,
-                    'max_backups' => 5,
-                    'price_per_month' => 10.99,
-                    'price_per_year' => 100,
-                    'is_customer' => true,
-                    'active' => true,
-                ],
-                'users' => [
-                    'customer@example.com',
-                    'premium-customer@example.com',
-                ],
-                'creditActions' => [
-                    CreditCodeService::ACTION_REGISTER,
-                ]
-            ],
-            [
                 'id' => UserAccountType::TYPE_CUSTOMER_FREE,
                 'data' => [
                     'name' => "Customer Free",
