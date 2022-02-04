@@ -1,5 +1,5 @@
 <div class="bg-primary">
-    <x-landing-nav for="customer" logo="white"/>
+    <x-landing-nav for="customer" logo="white" class="relative"/>
     <x-container class="mt-10 py-10 relative">
         <img src="{{asset('assets/img/contact/contact_bg_pattern.svg')}}" class="absolute right-0 -top-2"/>
         <div class="flex items-center space-x-8">

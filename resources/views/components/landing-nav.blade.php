@@ -26,9 +26,12 @@
         default:
             break;
     }
+    $att = $attributes->merge([
+        'class' => 'w-full z-10 bg-primary lg:bg-transparent'
+    ]);
 @endphp
 
-<nav class="relative w-full z-10 bg-primary lg:bg-transparent" x-data="{mobile:false}">
+<nav {{ $att }} x-data="{mobile:false}">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="flex items-center justify-between py-2 lg:py-0 lg:h-20">
             <div class="flex-shrink-0">

@@ -4,7 +4,7 @@
             <div class="w-full absolute right-0 top-0">
                 <img src="{{ asset("assets/img/affiliate_landing/affiliate_banner.svg") }}" class="w-full h-full object-cover"/>
             </div>
-            <x-landing-nav :for="'affiliate'"/>
+            <x-landing-nav for="affiliate" class="relative"/>
             <x-container class="relative py-16">    
                 {{-- hero section --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
