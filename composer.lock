@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "673bcbfc71f67212102f5aa54ec4325c",
+    "content-hash": "9373ca5a1c9dd88f4188e67c88fc8d0a",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -534,16 +534,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.72.4",
+            "version": "1.72.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "03d4e7298170c9c4c318bb52420291994dad9d66"
+                "reference": "a552ee00d875fdc977bc786a4724b000ad709446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/03d4e7298170c9c4c318bb52420291994dad9d66",
-                "reference": "03d4e7298170c9c4c318bb52420291994dad9d66",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/a552ee00d875fdc977bc786a4724b000ad709446",
+                "reference": "a552ee00d875fdc977bc786a4724b000ad709446",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.72.4"
+                "source": "https://github.com/ccxt/ccxt/tree/1.72.20"
             },
             "funding": [
                 {
@@ -814,7 +814,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-02-03T21:47:26+00:00"
+            "time": "2022-02-04T10:13:47+00:00"
         },
         {
             "name": "codeat3/blade-cryptocurrency-icons",
@@ -1873,16 +1873,16 @@
         },
         {
             "name": "filament/forms",
-            "version": "v2.9.17",
+            "version": "v2.9.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "28f81538dd8c0a28bc6dfabc891a37b8beacf43a"
+                "reference": "22eee0bf6b368bf14ffb67558e4555b60703116f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/28f81538dd8c0a28bc6dfabc891a37b8beacf43a",
-                "reference": "28f81538dd8c0a28bc6dfabc891a37b8beacf43a",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/22eee0bf6b368bf14ffb67558e4555b60703116f",
+                "reference": "22eee0bf6b368bf14ffb67558e4555b60703116f",
                 "shasum": ""
             },
             "require": {
@@ -1925,11 +1925,11 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-02-03T10:48:31+00:00"
+            "time": "2022-02-04T07:20:34+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.9.17",
+            "version": "v2.9.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
@@ -3344,16 +3344,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.7.1",
+            "version": "v4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "6bb7653a788c504855d0efa0bca44f5431614dac"
+                "reference": "2baeb9313ce3cfd213b23b52dbaf61615a44f907"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/6bb7653a788c504855d0efa0bca44f5431614dac",
-                "reference": "6bb7653a788c504855d0efa0bca44f5431614dac",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/2baeb9313ce3cfd213b23b52dbaf61615a44f907",
+                "reference": "2baeb9313ce3cfd213b23b52dbaf61615a44f907",
                 "shasum": ""
             },
             "require": {
@@ -3405,9 +3405,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/telescope/issues",
-                "source": "https://github.com/laravel/telescope/tree/v4.7.1"
+                "source": "https://github.com/laravel/telescope/tree/v4.7.2"
             },
-            "time": "2022-02-01T16:33:16+00:00"
+            "time": "2022-02-04T07:19:09+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -6573,16 +6573,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.112.0",
+            "version": "v7.113.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "f5213ccb88795663f73841bc65f467a0e1e61180"
+                "reference": "1aef1ccffad48f39952073e0ed53cb8f3f1b1d8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/f5213ccb88795663f73841bc65f467a0e1e61180",
-                "reference": "f5213ccb88795663f73841bc65f467a0e1e61180",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/1aef1ccffad48f39952073e0ed53cb8f3f1b1d8c",
+                "reference": "1aef1ccffad48f39952073e0ed53cb8f3f1b1d8c",
                 "shasum": ""
             },
             "require": {
@@ -6627,9 +6627,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.112.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.113.0"
             },
-            "time": "2022-01-25T19:42:36+00:00"
+            "time": "2022-02-03T23:46:29+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -9196,16 +9196,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "v0.0.4",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "297dd981d002d4ebbfa644d34ba7210eaf03b57a"
+                "reference": "b0f4f44a8ce9017c70b8fb99439f4d36da9ff0fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/297dd981d002d4ebbfa644d34ba7210eaf03b57a",
-                "reference": "297dd981d002d4ebbfa644d34ba7210eaf03b57a",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/b0f4f44a8ce9017c70b8fb99439f4d36da9ff0fa",
+                "reference": "b0f4f44a8ce9017c70b8fb99439f4d36da9ff0fa",
                 "shasum": ""
             },
             "require": {
@@ -9262,9 +9262,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.4"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.5"
             },
-            "time": "2022-02-03T22:08:46+00:00"
+            "time": "2022-02-04T10:51:37+00:00"
         },
         {
             "name": "webmozart/assert",
