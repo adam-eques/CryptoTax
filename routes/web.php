@@ -13,6 +13,7 @@ Route::view('/faqs', 'pages.landing-pages.faqs')->name('faqs');
 Route::view('/terms', 'pages.landing-pages.terms')->name('terms');
 Route::view('/policy', 'pages.landing-pages.policy')->name('policy');
 Route::view('/pricing', 'pages.landing-pages.pricing')->name('pricing');
+Route::view('/blogs', 'pages.landing-pages.blogs')->name('blogs');
 
 // Affilate Page
 Route::view('/affiliate', 'pages.landing-pages.affiliate')->name('affiliate');
