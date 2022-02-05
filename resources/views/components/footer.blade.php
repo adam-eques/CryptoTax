@@ -26,7 +26,7 @@
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
                                 <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Announcement
+                                    About us
                                 </a>
                             </li>
 
@@ -37,8 +37,8 @@
                             </li>
 
                             <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Media
+                                <a href="{{ route('contact') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    Contact
                                 </a>
                             </li>
                         </ul>
@@ -51,25 +51,19 @@
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
                                 <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    API Doc
+                                    Compare
                                 </a>
                             </li>
 
                             <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Token Listing
+                                <a href="{{ route('pricing') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    Pricing
                                 </a>
                             </li>
 
                             <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Cloud Solution
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Institutional Cooperation
+                                <a href="{{ route('faqs') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    FAQ
                                 </a>
                             </li>
                         </ul>
@@ -84,22 +78,27 @@
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
                                 <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    Imprint 
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('terms') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
                                     Terms of Service
                                 </a>
                             </li>
 
                             <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Privacy Policy
+                                <a href="{{ route('policy') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    Privacy Polity
                                 </a>
                             </li>
 
                             <li>
                                 <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Risk And Disclaimer
+                                    Risk and Disclaimer
                                 </a>
                             </li>
-
                         </ul>
                     </div>
                     <div class="mt-12 md:mt-0">
@@ -110,19 +109,19 @@
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
                                 <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Assets Introduction
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    APP Download
+                                    Tax Advisor
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('affiliate') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
-                                    Affiliate 
+                                    Affiliate Partner 
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('blog') }}" class="text-sm sm:text-base text-white text-opacity-30 hover:text-opacity-100">
+                                    Blog
                                 </a>
                             </li>
                         </ul>
@@ -132,7 +131,7 @@
         </div>
         <div class="flex items-center justify-center">
             <p class="py-8 text-md text-white text-opacity-10 md:mt-0 md:order-1 text-center">
-                Copyright &copy; CryptoTax Inc. Designed & Developed by BSBV (<a href="http://bsbv.net" target="_blank" class="text-primary-200 hover:text-white">bsbv.net</a>) {{ now()->format("Y") }}.
+                Copyright &copy; CryptoTax Inc. Designed & Developed by <a href="http://bsbv.net" target="_blank" class="text-primary-200 hover:text-white"> BSBV Inc</a>.
             </p>
         </div>
     </x-container>

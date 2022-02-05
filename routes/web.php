@@ -13,14 +13,14 @@ Route::view('/faqs', 'pages.landing-pages.faqs')->name('faqs');
 Route::view('/terms', 'pages.landing-pages.terms')->name('terms');
 Route::view('/policy', 'pages.landing-pages.policy')->name('policy');
 Route::view('/pricing', 'pages.landing-pages.pricing')->name('pricing');
-Route::view('/blogs', 'pages.landing-pages.blogs')->name('blogs');
+Route::view('/blog', 'pages.landing-pages.blogs')->name('blog');
 
-Route::redirect('blog', 'blog/1');
-Route::get('blog/{id?}', function($id = 1){
+Route::redirect('blog-detail', 'blog-detail/1');
+Route::get('blog-detail/{id?}', function($id = 1){
     return view('pages.landing-pages.blog', [
         "id" => $id
     ]);
-})->name('blog');
+})->name('blog-detail');
 
 // Affilate Page
 Route::view('/affiliate', 'pages.landing-pages.affiliate')->name('affiliate');
