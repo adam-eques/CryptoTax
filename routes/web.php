@@ -15,6 +15,13 @@ Route::view('/policy', 'pages.landing-pages.policy')->name('policy');
 Route::view('/pricing', 'pages.landing-pages.pricing')->name('pricing');
 Route::view('/blogs', 'pages.landing-pages.blogs')->name('blogs');
 
+Route::redirect('blog', 'blog/1');
+Route::get('blog/{id?}', function($id = 1){
+    return view('pages.landing-pages.blog', [
+        "id" => $id
+    ]);
+})->name('blog');
+
 // Affilate Page
 Route::view('/affiliate', 'pages.landing-pages.affiliate')->name('affiliate');
 
