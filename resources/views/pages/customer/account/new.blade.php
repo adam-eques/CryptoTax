@@ -15,10 +15,10 @@
             </x-button>
         </x-customers.customer-header-bar>
 
-        <div class="py-6 px-3">
+        <div class="py-6">
             <h5 class="font-bold text-xl">{{ __("Import transactions") }}</h5>
-            <div class="grid grid-cols-1 md:grid-cols-7 mt-7">
-                <div class="col-span-2 flex items-center space-x-6">
+            <div class="grid grid-cols-1 xl:grid-cols-7 mt-7 gap-3">
+                <div class="col-span-2 flex items-center space-x-3 md:space-x-6">
                     <div class="w-16 h-16 bg-gray-200 rounded-full flex justify-center items-center relative">
                         <x-icon name="bi-arrow" class="w-7 h-7"/>
                         <div class="bg-primary rounded-full w-5 h-5 absolute top-0 right-0 flex items-center justify-center">
@@ -27,7 +27,7 @@
                     </div>
                     <p class="w-3/4">{{ __('Select your Exchanges from the list.') }}</p>
                 </div>
-                <div class="col-span-5 flex items-center space-x-6">
+                <div class="col-span-5 flex items-center space-x-3 md:space-x-6">
                     <div class="w-16 h-16 bg-gray-200 rounded-full flex justify-center items-center relative">
                         <x-icon name="book" class="w-7 h-7"/>
                         <div class="bg-primary rounded-full w-5 h-5 absolute top-0 right-0 flex items-center justify-center">
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="mt-9 px-3">
+        <div class="mt-9">
             @livewire('customer.account.account-new')
         </div>
 
