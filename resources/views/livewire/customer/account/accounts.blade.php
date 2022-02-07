@@ -1,33 +1,26 @@
 <div class="mx-auto my-5 px-3 xs:px-4 lg:px-5 py-5 xl:max-w-screen-2xl  bg-white rounded-sm shadow" x-data="{ selected: '', category:'', action:'', isModalOpen:false }">
-    <div class="w-full border-b pb-5">
-        <div class="grid grid-cols-1 md:grid-cols-8">
-            <div class="flex items-center justify-start space-x-3 col-span-6 py-6">
-                <x-icon name="wallet" class="w-7 h-8"/>
-                <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Accounts') }}</h1>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-0 lg:gap-x-3 col-span-2 py-2">
-                @if($account)
-                    @if($account->hasAllCredentials())
-                        <x-button variant="white" class="border-primary col-span-1" :disabled="$account->fetching_scheduled_at" wire:click="fetch_exchange({{$account->id}})">
-                            <x-icon name="sync" class="w-7 mr-2" />{{ __('Sync ') }}
-                        </x-button>
-                    @endif
-                @elseif ($blockchain)
-                    <x-button variant="white" class="border-primary col-span-1" :disabled="$blockchain->fetching_scheduled_at" wire:click="fetch_blockchain({{$blockchain->id}})">
-                        <x-icon name="sync" class="w-7 mr-2" />{{ __('Sync ') }}
-                    </x-button>
-                @else
-                    <x-button variant="white" class="border-primary col-span-1" :disabled="true">
-                        <x-icon name="sync" class="w-7 mr-2"/>{{ __('Sync ') }}
-                    </x-button>
-                @endif
-                <x-button class="col-span-2 justify-center" tag="a" href="{{ route('customer.account.new') }}">
-                    <x-icon name="wallet-1" class="w-7 mr-2"/>
-                    {{ __('Add New Account') }}
+    <x-customers.customer-header-bar icon="wallet" name="Accounts">
+        @if($account)
+            @if($account->hasAllCredentials())
+                <x-button variant="white" class="border-primary col-span-1" :disabled="$account->fetching_scheduled_at" wire:click="fetch_exchange({{$account->id}})">
+                    <x-icon name="sync" class="w-7 mr-2" />{{ __('Sync ') }}
                 </x-button>
-            </div>
-        </div>
-    </div>
+            @endif
+        @elseif ($blockchain)
+            <x-button variant="white" class="border-primary col-span-1" :disabled="$blockchain->fetching_scheduled_at" wire:click="fetch_blockchain({{$blockchain->id}})">
+                <x-icon name="sync" class="w-7 mr-2" />{{ __('Sync ') }}
+            </x-button>
+        @else
+            <x-button variant="white" class="border-primary col-span-1" :disabled="true">
+                <x-icon name="sync" class="w-7 mr-2"/>{{ __('Sync ') }}
+            </x-button>
+        @endif
+        <x-button class="col-span-2 justify-center" tag="a" href="{{ route('customer.account.new') }}">
+            <x-icon name="wallet-1" class="w-7 mr-2"/>
+            {{ __('Add New Account') }}
+        </x-button>
+    </x-customers.customer-header-bar>
+    
     <div class="p-7 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
         <!-- Left Panel -->
         <div class="px-2 lg:px-5 md:w-2/5">

@@ -9,19 +9,11 @@
 <x-app-layout>
     <div class="mx-auto my-5 xl:max-w-screen-2xl px-3 xs:px-4 lg:px-6 py-5 bg-white rounded-sm shadow">
 
-        <div class="w-full border-b py-5">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center justify-start space-x-3">
-                    <x-icon name="new-wallet" class="w-9 h-9"/>
-                    <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Add New Account') }}</h1>
-                </div>
-                <div>
-                    <x-button class="justify-center tracking-tight" tag="a" href="{{ route('customer.account.new') }}">
-                        {{ __('Complete Import') }}
-                    </x-button>
-                </div>
-            </div>
-        </div>
+        <x-customers.customer-header-bar icon="new-wallet" name="Add New Account">
+            <x-button class="justify-center tracking-tight" tag="a" href="{{ route('customer.account.new') }}">
+                {{ __('Complete Import') }}
+            </x-button>
+        </x-customers.customer-header-bar>
 
         <div class="py-6 px-3">
             <h5 class="font-bold text-xl">{{ __("Import transactions") }}</h5>
