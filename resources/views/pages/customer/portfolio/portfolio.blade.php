@@ -1,7 +1,50 @@
 <x-app-layout>
     @if(auth()->user()->isCustomerAccount())
     <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
-        @livewire('customer.portfolio.header')
+        <x-customers.customer-header-bar icon="portfolio" name="Portfolio">
+            <div class="w-full">
+                <x-button variant="white" class="w-full">
+                    <x-icon name="calendar" class="w-5 mr-3"/>
+                    <span class="mr-2">{{ __('Today') }}</span>
+                    <x-icon name="fas-chevron-down" class="w-2 ml-2 inline"/>
+                </x-button>
+            </div>
+            <div class="w-full">
+                <x-jet-dropdown>
+                    <x-slot name="trigger">
+                        <x-button variant="white" class="w-full whitespace-nowrap text-primary hover:text-white">
+                            <span class="mr-2">{{ __('Past day') }}</span>
+                            <svg class="w-4 trnstsn transform " fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </x-button>
+                    </x-slot>
+                    <x-slot name="content">
+                        <div class="p-5">
+
+                        </div>
+                    </x-slot>
+                </x-jet-dropdown>
+            </div>
+            <div class="w-full whitespace-nowrap">
+                <x-jet-dropdown>
+                    <x-slot name="trigger">
+                        <x-button class="justify-center tracking-tight w-full" variant="secondary">
+                            <span class="mr-2">{{ __('Total performanace') }}</span>
+                            <svg class="w-4 trnstsn transform " fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </x-button>
+                    </x-slot>
+                    <x-slot name="content">
+                        <div class="p-5">
+
+                        </div>
+                    </x-slot>
+                </x-jet-dropdown>
+            </div>
+        </x-customers.customer-header-bar>
+        
         @livewire('customer.portfolio.overview')
         @livewire('customer.portfolio.line-chart')
         <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 py-4">

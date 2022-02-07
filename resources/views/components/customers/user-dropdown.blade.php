@@ -1,17 +1,18 @@
-<div class="ml-3 relative hidden lg:block" x-data="{open:false}">
+<div class="ml-3 relative w-full hidden lg:block" x-data="{open:false}">
     <button type="button" class=" flex items-center outline-none focus:outline-none text-white gap-4 font-medium"
             id="user-menu-button"
             aria-expanded="false"
             aria-haspopup="true"
+            x-cloak
             @click="open = true">
         <span class="sr-only">{{ __("Open user menu") }}</span>
-        <span class="w-[50px] bg-primary-600 rounded-full overflow-hidden ring-4 ring-white">
-            <img class="h-[50px] w-[50px] rounded-full"
+        <span class="bg-primary-600 rounded-full overflow-hidden h-[50px] w-[50px]">
+            <img class="h-[50px] w-[50px] rounded-full border-4 border-white"
                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                  alt=""/>
         </span>
-        <span class="xl:inline-flex hidden">
-            {{ Auth::user()->name }}
+        <span class="xl:inline-flex hidden xl:w-1/2">
+            <p class="truncate">{{ Auth::user()->name }}</p>
             <x-icon name="fas-chevron-down" class="w-2 ml-2 inline text-white"/>
         </span>
     </button>

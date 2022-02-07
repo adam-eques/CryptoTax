@@ -83,16 +83,15 @@
             class="pt-4 pb-3 border-t border-white border-opacity-30 flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0 ring-4 ring-white rounded-full overflow-hidden">
-                    <img class="h-10 w-10 rounded-full"
-                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                         alt=""/>
+                    <img class="rounded-full w-10 h-10"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                    />
                 </div>
                 <div class="ml-3 space-y-2">
                     <div class="text-base font-medium leading-none text-white">{{ __(auth()->user()->name) }}</div>
                     <div class="text-sm font-light leading-none text-gray-200 hidden">tom@example.com</div>
                 </div>
-
-
             </div>
             <!-- Dropdown -->
             <div class="mt-3 md:mt-0 px-2 space-y-1 md:space-y-0 flex flex-col md:flex-row md:gap-2">

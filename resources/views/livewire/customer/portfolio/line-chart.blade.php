@@ -5,16 +5,23 @@
             <p class="py-2">Total Income</p>
             <div class="flex items-start space-x-2">
                 <p class="text-lg font-bold">$</p>
-                <h2 class="text-5xl font-bold">36,806</h2>
+                <h2 class="text-3xl md:text-5xl font-bold">36,806</h2>
             </div>
         </div>
         <div class="flex items-center space-x-2">
-            <button class="font-bold hover:bg-primary p-3 rounded-md">1D</button>
-            <button class="font-bold hover:bg-primary p-3 rounded-md">1W</button>
-            <button class="font-bold hover:bg-primary p-3 rounded-md">1M</button>
-            <button class="font-bold hover:bg-primary p-3 rounded-md">3M</button>
-            <button class="font-bold hover:bg-primary p-3 rounded-md">1Y</button>
-            <button class="font-bold hover:bg-primary p-3 rounded-md">ALL</button>
+            @php
+                $buttons = [
+                    [ 'name' => '1D' ],
+                    [ 'name' => '1W' ],
+                    [ 'name' => '1M' ],
+                    [ 'name' => '3M' ],
+                    [ 'name' => '1Y' ],
+                    [ 'name' => 'ALL' ],
+                ]
+            @endphp
+            @foreach ($buttons as $button)                
+                <button class="text-primary hover:text-white bg-white hover:bg-primary px-3 py-1 rounded-md">{{ $button['name'] }}</button>
+            @endforeach
         </div>
     </div>
     <div class="px-4 h-90">
