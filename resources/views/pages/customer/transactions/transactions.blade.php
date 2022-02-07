@@ -12,7 +12,7 @@
             <x-button variant="white" class="border-primary">{{ __('Download CSV') }}</x-button>
             <x-button variant="white" class="border-primary">{{ __('Add transaction') }}</x-button>
             <x-button tag="a" href="{{ route('customer.account.new') }}">
-                <x-icon name="wallet-1" class="w-8 mr-2"/>
+                <x-icon name="wallet-1" class="w-5 h-5 mr-2"/>
                 {{ __('Add Account') }}
             </x-button>
         </x-customers.customer-header-bar>
