@@ -1,5 +1,10 @@
 # CryptoTax Repository
 
+## GIT process
+
+The `develop` branch is automatically deployed to the test server.
+
+
 ## Stuff to install
 
 ```shell
