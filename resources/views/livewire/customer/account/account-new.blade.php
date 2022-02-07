@@ -9,7 +9,7 @@
             >
                 <div class="inline-flex items-center">
                     <x-icon name="{{ $button['icon'] }}" class="w-8 h-8 mr-2"/>
-                    <span class="text-xl font-bold tracking-tight">{{ __( $button['name']) }}</span>
+                    <span class="text-xl font-semibold tracking-tight">{{ __( $button['name']) }}</span>
                 </div>
                 <x-icon name="arrow-right" class="w-5 text-white" x-show="category == {{$button['id']}}"/>
             </button>
