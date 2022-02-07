@@ -40,15 +40,16 @@
         </div>
         @foreach ($portfolio ?? [] as $item)  
             <div class="mt-2" 
-                x-bind:class="selected == {{ $item['id'] }} ? 'rounded-l-lg border-l-6 border-primary' : ''" 
+                x-bind:class="selected == {{ $item['id'] }} ? 'rounded-l border-l-5 border-primary' : ''" 
                 @click="selected !== {{ $item['id'] }} ? selected = {{ $item['id'] }} : selected = null"
+                x-transition
             >
                 <x-portfolio-list-item 
                     :id="$item['id']" 
                     :icon="$item['icon']"
                     :name="$item['name']"
                     :type="$item['type']"
-                    lingColor="#FF0303"
+                    lineColor="{{ $item['lineColor'] }}"
                     :price="$item['price']"
                     holdingBtc="{{ $item['holding']['btc'] }}"
                     holdingUsd="{{ $item['holding']['usd'] }}"
@@ -64,7 +65,7 @@
                             :icon="$child['icon']"
                             :name="$child['name']"
                             :type="$child['type']"
-                            lingColor="#FF0303"
+                            lineColor="{{ $child['lineColor'] }}"
                             :price="$child['price']"
                             holdingBtc="{{ $child['holding']['btc'] }}"
                             holdingUsd="{{ $child['holding']['usd'] }}"
