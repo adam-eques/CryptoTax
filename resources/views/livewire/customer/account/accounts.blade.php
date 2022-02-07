@@ -3,20 +3,20 @@
         @if($account)
             @if($account->hasAllCredentials())
                 <x-button variant="white" class="border-primary col-span-1" :disabled="$account->fetching_scheduled_at" wire:click="fetch_exchange({{$account->id}})">
-                    <x-icon name="sync" class="w-7 mr-2" />{{ __('Sync ') }}
+                    <x-icon name="sync" class="w-5 mr-2" />{{ __('Sync ') }}
                 </x-button>
             @endif
         @elseif ($blockchain)
             <x-button variant="white" class="border-primary col-span-1" :disabled="$blockchain->fetching_scheduled_at" wire:click="fetch_blockchain({{$blockchain->id}})">
-                <x-icon name="sync" class="w-7 mr-2" />{{ __('Sync ') }}
+                <x-icon name="sync" class="w-5 mr-2" />{{ __('Sync ') }}
             </x-button>
         @else
             <x-button variant="white" class="border-primary col-span-1" :disabled="true">
-                <x-icon name="sync" class="w-7 mr-2"/>{{ __('Sync ') }}
+                <x-icon name="sync" class="w-5 mr-2"/>{{ __('Sync ') }}
             </x-button>
         @endif
         <x-button class="col-span-2 justify-center" tag="a" href="{{ route('customer.account.new') }}">
-            <x-icon name="wallet-1" class="w-7 mr-2"/>
+            <x-icon name="wallet-1" class="w-5 mr-2"/>
             {{ __('Add New Account') }}
         </x-button>
     </x-customers.customer-header-bar>

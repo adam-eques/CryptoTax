@@ -7,9 +7,9 @@
             </div>
             <p class="font-semibold">Total Return</p>
             <x-badge type="square">+ 117.94%</x-badge>
-            <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
+            <x-icon name="info" class="w-4 h-4"/>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-end justify-between">
             <div class="flex justify-start items-start px-5">
                 <span class="text-xl font-semibold">$</span>
                 <span class="text-2xl md:text-4xl font-semibold">2,080</span>
@@ -26,9 +26,9 @@
             </div>
             <p class="font-semibold">Past Day</p>
             <x-badge type="square" variant="danger">- 117.94%</x-badge>
-            <img src="{{asset('assets/img/icon/noti.png')}}" class="w-4 h-4"/>
+            <x-icon name="info" class="w-4 h-4"/>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-end justify-between">
             <div class="flex justify-start items-start px-5">
                 <span class="text-xl font-semibold">$</span>
                 <span class=" text-4xl font-semibold">1,025</span>
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="border p-5 rounded-md my-2">
+    <div class="border p-5 rounded-md my-2 flex flex-col justify-between">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
                 <x-icon name="deposit" class="text-secondary w-6 h-6" />
@@ -51,7 +51,7 @@
             <span class=" text-4xl font-semibold">12,259</span>
         </div>
     </div>
-    <div class="border p-5 rounded-md my-2">
+    <div class="border p-5 rounded-md my-2 flex flex-col justify-between">
         <div class="flex items-center justify-start space-x-4 px-5">
             <div>
                 <x-icon name="coin-1" class="text-secondary w-6 h-6" />

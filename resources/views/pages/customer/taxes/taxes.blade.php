@@ -2,7 +2,7 @@
     <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
         <x-customers.customer-header-bar icon="tax-1" name="2021 Taxes">
             <x-button class="">
-                <x-icon name="advisor" class="w-6 h-6 text-white mr-3"/>
+                <x-icon name="advisor" class="w-5 h-5 text-white mr-3"/>
                 <p class="text-white font-semibold">Add tax professional</p>
             </x-button>
         </x-customers.customer-header-bar>
