@@ -3,14 +3,14 @@
         {{-- Hero --}}
         <div class="relative w-full">
             <div class="h-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/landing/landing_hero_bg.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
+                <img src="{{ asset("assets/img/subpage_images/landing_hero_bg_pattern.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
             <x-landing-nav for="customer" class="relative"/>
             <x-container class="pt-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
                     <div class="relative h-full flex items-center">
                         <div class="my-auto relative">
-                            <img src="{{ asset('assets/img/landing/landing_logo_bg.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
+                            <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
                             <div class="relative">
                                 <p class="text-xl lg:text-3xl">{{ __('Track your crypto') }}</p>
                                 <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</h2>
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="md:block hidden">
-                        <img src="{{ asset('assets/img/landing/landing_hero.svg') }}"/>
+                        <img src="{{ asset('assets/img/subpage_images/landing_portfolio_and_taxes.svg') }}"/>
                     </div>
                 </div>
             </x-container>
@@ -35,12 +35,12 @@
             <p class="text-center font-bold text-gray-300">{{  __('Meet Our Partners') }}</p>
             @php
                 $partners = [
-                    'assets/img/landing/landing_binance.svg', 
-                    'assets/img/landing/landing_bitcoin.svg', 
-                    'assets/img/landing/landing_ethereum.svg', 
-                    'assets/img/landing/landing_kucoin.svg', 
-                    'assets/img/landing/landing_litecoin.svg', 
-                    'assets/img/landing/landing-tether.svg'
+                    'assets/img/subpage_images/landing_partner_binance.svg', 
+                    'assets/img/subpage_images/landing_partner_bitcoin.svg', 
+                    'assets/img/subpage_images/landing_partner_ethereum.svg', 
+                    'assets/img/subpage_images/landing_partner_kucoin.svg', 
+                    'assets/img/subpage_images/landing_partner_litecoin.svg', 
+                    'assets/img/subpage_images/landing_partner_tether.svg'
                 ]
             @endphp
             <div class="grid grid-cols-3 sm:grid-cols-6 items-center gap-5 md:gap-10 xl:gap-20 mt-5 sm:mt-10">
@@ -51,9 +51,9 @@
 
             @php
                 $items = [
-                    [ 'img' => 'assets/img/landing/landing_import_transaction.svg', 'title' => 'Import Your Transactions', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
-                    [ 'img' => 'assets/img/landing/landing_review_transaction.svg', 'title' => 'Review Your Transactions', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
-                    [ 'img' => 'assets/img/landing/landing_download_tax.svg', 'title' => 'Download your tax report', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
+                    [ 'img' => 'assets/img/subpage_images/landing_import_transaction.svg', 'title' => 'Import Your Transactions', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
+                    [ 'img' => 'assets/img/subpage_images/landing_review_transaction.svg', 'title' => 'Review Your Transactions', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
+                    [ 'img' => 'assets/img/subpage_images/landing_download_tax.svg', 'title' => 'Download your tax report', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
                 ]
             @endphp
             <div class="py-5 sm:py-24 grid grid-cols-1 lg:grid-cols-3 items-end gap-3 lg:gap-10">
@@ -69,12 +69,12 @@
             {{-- Why choose us --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 py-5 md:py-24">
                 <div>
-                    <img src="{{ asset('assets/img/landing/landing_portfolio.svg') }}" class="w-full h-auto"/>
+                    <img src="{{ asset('assets/img/subpage_images/landing_portfolio.svg') }}" class="w-full h-auto"/>
                 </div>
                 <div class="px-5 sm:px-10">
                     <div class="w-full relative">
                         <div class="w-full absolute -top-18">
-                            <img src="{{ asset('assets/img/landing/landing_logo_bg.svg') }}" class="w-full"/>
+                            <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="w-full"/>
                         </div>
                         <div class="relative">
                             <h5 class="text-secondary text-lg font-bold">{{ __('Why Choose Us') }}</h5>

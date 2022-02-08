@@ -20,7 +20,7 @@
             <p>{{ __('Tax Jurisdiction') }}</p>
             <x-jet-label>{{ __('Note: All the set net worth amount would be cleared after switching to another jurisdiction.') }}</x-jet-label>
             <div class="border shadow flex items-center rounded-sm mt-4 px-5">
-                <x-icon name="{{ 'tax_country_' . $tax_country_id }}" class="w-9 h-9"/>
+                <x-icon name="{{ 'flag.tax_country_' . $tax_country_id }}" class="w-9 h-9"/>
                 <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" id="tax_country_id" wire:model.defer="tax_country_id">
                     <option value="0" disabled selected>{{ __('Tax Jurisdiction') }}</option>
                     @foreach ($tax_countries as $country)                        
@@ -33,7 +33,7 @@
         <div class="mt-10">
             <p>{{ __('Base Currency') }}</p>
             <div class="border shadow flex items-center rounded-sm mt-4 px-5">
-                <x-icon name="{{ 'tax_country_' . $tax_currency_id }}" class="w-9 h-9"/>
+                <x-icon name="{{ 'flag.tax_country_' . $tax_currency_id }}" class="w-9 h-9"/>
                 <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" id="tax_currency_id" wire:model.defer="tax_currency_id">
                     <option value="0" disabled selected>{{ __('Base Currency') }}</option>
                     @foreach ($basic_currency as $currency)                        

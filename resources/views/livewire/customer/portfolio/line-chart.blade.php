@@ -1,6 +1,6 @@
-<div class="py-5 px-3 border rounded-lg">
+<div class="py-5 border rounded-lg">
     {{-- The Master doesn't talk, he acts. --}}
-    <div class="p-5 flex items-center justify-between">
+    <div class="flex items-center flex-wrap justify-between p-2 md:p-7">
         <div>
             <p class="py-2">Total Income</p>
             <div class="flex items-start space-x-2">
@@ -20,11 +20,11 @@
                 ]
             @endphp
             @foreach ($buttons as $button)                
-                <button class="text-primary hover:text-white bg-white hover:bg-primary px-3 py-1 rounded-md">{{ $button['name'] }}</button>
+                <button class="text-primary font-bold hover:text-white bg-white hover:bg-primary px-3 py-1 rounded-md">{{ $button['name'] }}</button>
             @endforeach
         </div>
     </div>
-    <div class="px-4 h-90">
+    <div class="h-90">
         <div id="chart"></div>
     </div>
 </div>

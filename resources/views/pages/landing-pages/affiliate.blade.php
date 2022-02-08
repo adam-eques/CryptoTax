@@ -2,7 +2,7 @@
     <div class="w-full bg-white">
         <div class="relative">
             <div class="w-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/affiliate_landing/affiliate_banner.svg") }}" class="w-full h-full object-cover"/>
+                <img src="{{ asset("assets/img/subpage_images/affiliate_banner.svg") }}" class="w-full h-full object-cover"/>
             </div>
             <x-landing-nav for="affiliate" class="relative"/>
             <x-container class="relative py-16">    
@@ -10,7 +10,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div class=" flex items-center justify-start order-2 sm:order-1">
                         <div class="my-auto relative">
-                            <img src="{{ asset('assets/img/affiliate_landing/affiliate_pattern_2.svg') }}" class="w-full -mt-16 hidden sm:absolute"/>
+                            <img src="{{ asset('assets/img/subpage_images/affiliate_pattern_2.svg') }}" class="w-full -mt-16 hidden sm:absolute"/>
                             <h2 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">{{ __('Make Money By Becoming') }}</p>
                             <h3 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl mt-5 font-md">{{ __("a myCrypto Tax") }} <span class="italic text-secondary">{{ _('Affiliate') }}</span></h3>
                             <h5 class="text-primary sm:text-white text-lg mt-6">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.') }}</h5>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="order-1 sm:order-2">
-                        <img src="{{ asset('assets/img/affiliate_landing/affiliate_hero.svg') }}" class="w-full" />
+                        <img src="{{ asset('assets/img/subpage_images/affiliate_hero.svg') }}" class="w-full" />
                     </div>
                 </div>
             </x-container>
@@ -26,14 +26,14 @@
         {{-- How it works --}}
         <x-container>
             <div class="text-center relative">
-                <img src="{{ asset('assets/img/affiliate_landing/landing_logo_bg.svg') }}" class="max-w-md h-auto absolute left-1/2 -translate-x-1/2"/>
+                <img src="{{ asset('assets/img/subpage_images/landing_logo_bg.svg') }}" class="max-w-md h-auto absolute left-1/2 -translate-x-1/2"/>
                 <div class="sm:py-20 py-10 relative">
                     <h3 class="xl:text-4xl lg:tet-3xl text-2xl text-primary font-bold">{{ __('How It Works') }}</h3>
                     <p class="mt-6 px-2 sm:px-10 leading-loose">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ') }}</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5 py-5">
                     <div class="">
-                        <img src="{{asset('assets/img/affiliate_landing/affiliate_1.svg')}}" class="w-full"/>
+                        <img src="{{asset('assets/img/subpage_images/affiliate_1.svg')}}" class="w-full"/>
                     </div>
                     <div class="flex items-center">
                         <div class="my-auto">
@@ -63,12 +63,12 @@
                         </div>
                     </div>
                     <div class="order-1 md:order-2">
-                        <img src="{{asset('assets/img/affiliate_landing/affiliate_2.svg')}}" class="w-full"/>
+                        <img src="{{asset('assets/img/subpage_images/affiliate_2.svg')}}" class="w-full"/>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5 py-5">
                     <div class="">
-                        <img src="{{asset('assets/img/affiliate_landing/affiliate_3.svg')}}" class="w-full"/>
+                        <img src="{{asset('assets/img/subpage_images/affiliate_3.svg')}}" class="w-full"/>
                     </div>
                     <div class="flex items-center">
                         <div class="my-auto">
@@ -89,9 +89,9 @@
     </div>
 
     <div class="w-full">
-        <x-container>
+        <x-container class="pb-20">
             {{-- Textmonial --}}
-            @livewire('affiliate.landing-page.testmonial')
+            @livewire('landing-page.testimonials')
         </x-container>
     </div>
 
