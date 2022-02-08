@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Livewire;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,7 +11,7 @@ Route::middleware('customer-setup')->group(function(){
     })->name('dashboard');
 
     // TODO routes
-    Route::view('account', 'pages.customer.account.index')->name('account');
+    Route::get('account', \App\Http\Livewire\Customer\Account\Accounts::class)->name('account');
     Route::view('portfolio', 'pages.customer.portfolio.portfolio')->name('portfolio');
     Route::view('taxes', 'pages.customer.taxes.taxes')->name('taxes');
     Route::view('advisor', 'pages.customer.advisor.advisor')->name('advisor');

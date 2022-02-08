@@ -20,21 +20,14 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public ?CryptoExchangeAccount $account = null;
     public ?BlockchainAccount $blockchain = null;
 
-    public function __construct()
+    public function mount()
     {
-        if (auth()->user()->blockchainAccounts->count()) {
-            $this->account = null;
-            $this->blockchain = BlockchainAccount::query()
-                ->where('user_id', auth()->user()->id)
-                ->first();
-        }
-        else {
-            $this->blockchain = null;
-            $this->account = CryptoExchangeAccount::query()
-                ->where('user_id', auth()->user()->id)
-                ->whereJsonLength('credentials','>', 0)
-                ->first();
-        }
+        $this->blockchain = null;
+        $this->account = CryptoExchangeAccount::query()
+            ->where('user_id', auth()->user()->id)
+            ->whereJsonLength('credentials','>', 0)
+            ->first();
+       
     }
 
     protected function getFormSchema(): array
