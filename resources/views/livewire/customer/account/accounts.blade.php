@@ -21,7 +21,7 @@
         </x-button>
     </x-customers.customer-header-bar>
     
-    <div class="p-7 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
+    <div class="py-7 flex flex-col md:flex-row -mx-2 lg:-mx-5 space-y-10 md:space-y-0">
         <!-- Left Panel -->
         <div class="px-2 lg:px-5 md:w-2/5">
             <div class="flex flex-col gap-5 text-gray-900 font-medium">
@@ -81,7 +81,7 @@
                 @if($cryptoExchangeAccounts->count() || $blockchainAccounts->count())
                     {{-- Right panel for Exchanges --}}
                     @if ($account)
-                        <div class="w-full flex justify-between py-3 lg:py-6 px-8 bg-gray-100 rounded">
+                        <div class="w-full flex justify-between py-3 lg:py-6 px-3 md:px-8 bg-gray-100 rounded">
                             <div>
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ $account->getName() }}</p>
                                 <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
@@ -90,31 +90,35 @@
                             <div class="flex items-center space-x-3">
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($account->getBalanceSum(), 2) }}</p>
                                 <x-button size="xs" wire:click="edit_exchange" x-on:click="action='edit'">
-                                    <x-icon name="edit" class="w-6"/>
+                                    <x-icon name="edit" class="w-4 md:w-6"/>
                                 </x-button>
                                 <x-button size="xs" variant="danger" x-on:click="action='delete'">
-                                    <x-icon name="fas-trash-alt" class="w-6"/>
+                                    <x-icon name="fas-trash-alt" class="w-4 md:w-6"/>
                                 </x-button>
                             </div>
                         </div>
                         <div>
                             <div x-show="action == ''" class="overflow-auto">
-                                <div class="divide-y max-h-110 overflow-x-auto">
-                                    @foreach ($account->cryptoExchangeAssets as $asset)
-                                        <div class="flex justify-between items-center px-5 py-3 min-w-cmd">
-                                            <div class="flex items-center space-x-4">
-                                                <x-icon name="{{str_replace(' ', '-',strtolower( $asset->cryptoCurrency()->first()->getName()))}}" class="w-14 h-14"/>
-                                                <div>
-                                                    <p class="font-bold">{{$asset->cryptoCurrency()->first()->getName()}} Wallet</p>
-                                                    <p class="text-gray-400">{{ 11 }} {{__('Transactions')}}</p>
+                                <div class="divide-y max-h-[810px] overflow-auto">
+                                    @foreach ($account->cryptoExchangeAssets as $asset)                
+                                        <div class="grid grid-cols-7 gap-5 items-center px-5 py-6 min-w-[720px]">
+                                            <div class="col-span-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-14">
+                                                        <x-icon name="{{str_replace(' ', '-',strtolower( $asset->cryptoCurrency()->first()->getName()))}}" class="w-14 h-14"/>
+                                                    </div>
+                                                    <div>                                                    
+                                                        <p class="font-bold truncate">{{$asset->cryptoCurrency()->first()->getName()}} Wallet</p>
+                                                        <p class="text-gray-400">{{ 11 }} {{__('Transactions')}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="flex items-center space-x-4">
-                                                <div>
-                                                    <p class="font-bold">${{ moneyFormat($asset->convertTo(), 2) }}</p>
-                                                    <p class="text-gray-400">{{ moneyFormat($asset->balance, 10) }} {{$asset->cryptoCurrency()->get()[0]->short_name}}</p>
-                                                </div>
-                                                <x-button tag="a" href="{{route('customer.transactions')}}" variant="white" class="rounded-full border-primary">{{ __('View Transaction') }}</x-button>
+                                            <div class="col-span-2 text-right">
+                                                <p class="font-bold">${{ moneyFormat($asset->convertTo(), 2) }}</p>
+                                                <p class="text-gray-400">{{ moneyFormat($asset->balance, 10) }} {{$asset->cryptoCurrency()->get()[0]->short_name}}</p>
+                                            </div>
+                                            <div class="col-span-2">
+                                                <x-button tag="a" href="{{route('customer.transactions')}}" variant="white" class="rounded-full border-primary w-full justify-center text-center">{{ __('View Transaction') }}</x-button>
                                             </div>
                                         </div>
                                     @endforeach
@@ -131,7 +135,6 @@
                                 </form>
                             </div>
                             <div x-show="action =='delete'">
-
                             </div>
                         </div>
                     @elseif ($blockchain)

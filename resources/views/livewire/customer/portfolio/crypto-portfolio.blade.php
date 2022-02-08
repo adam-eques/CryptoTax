@@ -7,8 +7,8 @@
         <x-button variant="secondary">{{ __('See all assets') }}</x-button>
     </div>
     <div class="overflow-auto">
-        <table class="min-w-cmd w-full border rounded">
-            <thead class="border bg-white shadow-lg">
+        <table class="min-w-[720px] w-full border rounded">
+            <thead class="border bg-white shadow-md">
                 <tr class="py-5">
                     <th class="py-5 text-left pl-5">{{ __('Name') }}</th>
                     <th class="py-5 text-right">{{ __('Holdings') }}</th>
