@@ -8,7 +8,7 @@ class Exchange extends Component
 {
     public?int $type=null;
 
-    public function __construct()
+    public function mount()
     {
         $this->type = 1;
     }
