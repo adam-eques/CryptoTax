@@ -34,8 +34,8 @@
                 <h1 class="text-3xl font-extrabold mt-5">{{ __('Sign Up') }}</h1>
                 <p class="py-4 text-lg font-bold">{{ __('Free sign up') }}</p>
                 <div class="grid grid-cols-2 gap-x-3">
-                    <x-social-auth-item  size="md" name="google" icon="google-circle">{{ __("Signup with Google") }}</x-social-auth-item>
-                    <x-social-auth-item  size="md" name="facebook" icon="facebook-circle">{{ __("Signup with Facebook") }}</x-social-auth-item>
+                    <x-social-auth-item  size="md" name="google" icon="social.google-circle">{{ __("Signup with Google") }}</x-social-auth-item>
+                    <x-social-auth-item  size="md" name="facebook" icon="social.facebook-circle">{{ __("Signup with Facebook") }}</x-social-auth-item>
                 </div>
                 <div class="my-7 flex">
                     <div class="mx-auto w-12 h-12 bg-primary rounded-full text-white text-lg font-bold flex justify-center items-center">
