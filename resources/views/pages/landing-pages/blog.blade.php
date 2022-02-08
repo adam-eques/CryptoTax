@@ -18,10 +18,10 @@
                 </div>
                 <div class="flex items-center space-x-2 py-3">
                     <p class="text-gray-300">{{ __('Share------') }}</p>
-                    <x-icon name="facebook-gray" class="w-6 h-6 text-gray-400"/>
-                    <x-icon name="twitter-gray" class="w-6 h-6 text-gray-400"/>
-                    <x-icon name="instagram-gray" class="w-6 h-6 text-gray-400"/>
-                    <x-icon name="linkedin-gray" class="w-6 h-6 text-gray-400"/>
+                    <x-icon name="social.facebook-gray" class="w-6 h-6 text-gray-400"/>
+                    <x-icon name="social.twitter-gray" class="w-6 h-6 text-gray-400"/>
+                    <x-icon name="social.instagram-gray" class="w-6 h-6 text-gray-400"/>
+                    <x-icon name="social.linkedin-gray" class="w-6 h-6 text-gray-400"/>
                 </div>
             </div>
             <div class="py-10">
