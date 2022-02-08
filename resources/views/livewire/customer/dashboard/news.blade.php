@@ -34,7 +34,7 @@
         @foreach ($news as $item)          
             <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2">
                 <div class="h-full w-full">
-                    <img src="{{asset('assets/img/customer/news.svg')}}" class="w-full h-full object-cover"/>
+                    <img src="{{asset('assets/img/svg/news.svg')}}" class="w-full h-full object-cover"/>
                     <p class="text-base text-primary font-bold mt-6"> {{ __( $item['title'] ) }}</p>
                     <p class="text-gray-400 text-sm mt-2"> {{ __( $item['content'] ) }} </p>
                 </div>

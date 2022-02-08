@@ -34,7 +34,7 @@
                                         class="flex justify-between space-x-2 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         wire:click="get_selected_account({{ $item->id }})"
                                     >
-                                        <x-icon name="{{ $item->getName() }}" class="w-30 h-auto"/>
+                                        <img src="{{ asset('assets/img/exchange_icon/' . $item->getName() . '.svg' ) }}" class="w-30 h-auto"/>
                                         <div class="space-y-1 text-left">
                                             <h3 class="xl:text-lg font-semibold text-gray-700">{{ $item->getName() }}</h3>
                                             <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
@@ -53,7 +53,8 @@
                                         class="flex justify-between space-x-2 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         wire:click="get_selected_blockchain({{ $item->id }})"
                                     >
-                                        <x-icon name="{{ explode(':',  $item->getName())[0] }}" class="w-30 h-auto"/>
+                                        <img src="{{ asset('assets/img/exchange_icon/' . explode(':',  $item->getName())[0] . '.svg' ) }}" class="w-30 h-auto"/>
+                                        {{-- <x-icon name="{{ explode(':',  $item->getName())[0] }}" class="w-30 h-auto"/> --}}
                                         <div class="space-y-1 text-left">
                                             <h3 class="xl:text-lg font-semibold text-gray-700 uppercase">{{explode(':',  $item->getName())[0] }}</h3>
                                             <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
@@ -105,7 +106,7 @@
                                             <div class="col-span-3">
                                                 <div class="flex items-center space-x-3">
                                                     <div class="w-14">
-                                                        <x-icon name="{{str_replace(' ', '-',strtolower( $asset->cryptoCurrency()->first()->getName()))}}" class="w-14 h-14"/>
+                                                        <x-icon name="{{'coins.' . str_replace(' ', '-',strtolower( $asset->cryptoCurrency()->first()->getName()))}}" class="w-14 h-14"/>
                                                     </div>
                                                     <div>                                                    
                                                         <p class="font-bold truncate">{{$asset->cryptoCurrency()->first()->getName()}} Wallet</p>
