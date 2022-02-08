@@ -2,7 +2,7 @@
     <div class="w-full bg-white">
         <div class="relative">
             <div class="w-full h-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/portfolio_landing/portfolio_banner.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
+                <img src="{{ asset("assets/img/subpage_images/portfolio_banner.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
             <x-landing-nav for="customer" logo="white" class="relative"/>
             <x-container class="relative">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="order-1 sm:order-2">
-                        <img src="{{ asset('assets/img/portfolio_landing/portfolio_hero.svg') }}" class="w-full" />
+                        <img src="{{ asset('assets/img/subpage_images/portfolio_hero.svg') }}" class="w-full" />
                     </div>
                 </div>
             </x-container>
@@ -29,7 +29,7 @@
                 <h3 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-4">{{ __('With all the Features You Need') }}</h3>
                 <p class="mt-5">{{ __('Duis consectetur feugiat auctor. Morbi nec enim luctus, feugiat arcu id, ultricies ante. Duis vel massa eleifend, porta ') }}</p>
                 <p class="mt-2">{{ __('est non, feugiat metus. Cras ante massa, tincidunt nec lobortis quis ') }}</p>
-                <img src="{{ asset('assets/img/portfolio_landing/portfolio_all_feature.svg') }}" class="w-full h-auto mt-14" />
+                <img src="{{ asset('assets/img/subpage_images/portfolio_all_feature.svg') }}" class="w-full h-auto mt-14" />
             </div>
 
              {{--  --}}
@@ -43,14 +43,14 @@
                      </div>
                  </div>
                 <div class="flex items-center">
-                    <img src="{{asset('assets/img/portfolio_landing/portfolio_3.svg')}}" class="w-full"/>
+                    <img src="{{asset('assets/img/subpage_images/portfolio_3.svg')}}" class="w-full"/>
                 </div>
             </div>
 
             {{--  --}}
             <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5 py-5  mt-10 sm:mt-21">
                 <div class="">
-                    <img src="{{asset('assets/img/portfolio_landing/portfolio_2.svg')}}" class="w-full"/>
+                    <img src="{{asset('assets/img/subpage_images/portfolio_2.svg')}}" class="w-full"/>
                 </div>
                 <div class="flex items-center">
                     <div class="my-auto">
@@ -73,7 +73,7 @@
                      </div>
                  </div>
                 <div class="flex items-center">
-                    <img src="{{asset('assets/img/portfolio_landing/portfolio_4.svg')}}" class="w-full"/>
+                    <img src="{{asset('assets/img/subpage_images/portfolio_4.svg')}}" class="w-full"/>
                 </div>
             </div>
 

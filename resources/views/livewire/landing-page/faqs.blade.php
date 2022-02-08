@@ -16,6 +16,6 @@
         </div>
     </div>
     <div class="p-5">
-        <img src="{{ asset('assets/img/landing/landing_faqs.svg') }}" class="w-full h-auto" />
+        <img src="{{ asset('assets/img/subpage_images/landing_faqs.svg') }}" class="w-full h-auto" />
     </div>
 </div>

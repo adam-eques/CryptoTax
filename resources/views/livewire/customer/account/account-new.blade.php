@@ -91,7 +91,7 @@
             <div class="border border-dashed rounded-md lg:block hidden">
                 <div class="h-full w-full p-5">
                     @if ($exchange_account)
-                        <x-icon name="{{$exchange_account->getName()}}" class="h-10 w-auto flex m-auto"/>
+                        <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="h-10 w-auto flex m-auto"/>    
                         <p class="text-xl font-bold text-center mt-3">{{ __($exchange_account->getName() . ' API integration')}}</p>
                         <form wire:submit.prevent="save_exchange">
                             <div class="p-4">
@@ -144,7 +144,7 @@
                                     <button aria-label="Close" x-on:click="isModalOpen=false" class="flex justify-end">✖</button>
                                 </div>
                                 @if ($exchange_account)
-                                    <x-icon name="{{$exchange_account->getName()}}" class="h-10 w-auto flex m-auto"/>
+                                    <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="h-10 w-auto flex m-auto"/> 
                                     <p class="text-xl font-bold text-center mt-3">{{ __($exchange_account->getName() . ' API integration')}}</p>
                                     <form wire:submit.prevent="save_exchange">
                                         <div class="p-4">
