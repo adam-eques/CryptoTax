@@ -163,12 +163,14 @@
                                     <p>{{ __() }}</p>
                                 </div>
                             </div>
-                            <div x-show="action == 'edit'" class="py-10 flex justify-center">
-                                <div class="mx-auto">
-                                    <label>{{__('*Address')}}</label>
-                                    <div class="mt-1">
-                                        <input class=" h-10 transition duration-75 px-3 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
-                                        <x-button wire:click="add">Add</x-button>
+                            <div x-show="action == 'edit'" x-cloak>
+                                <div class="flex w-full h-full py-10">
+                                    <div class="m-auto">
+                                        <label>{{__('*Address')}}</label>
+                                        <div class="mt-1">
+                                            <input class=" h-10 transition duration-75 px-3 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                                            <x-button wire:click="add">Add</x-button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
