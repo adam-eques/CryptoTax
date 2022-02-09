@@ -19,8 +19,13 @@
                                 <option></option>
                             </select>
                             <div>
-                                <p class="text-sm text-gray-700">{{ __('Distance') }}</p>
-                                <input class="w-full bg-danger mt-6" type="range" x-model="total_value" min="0" max="100" step="1">
+                                <p class="text-sm text-gray-600">{{ __('Distance') }}</p>
+                                <div class="relative mt-6">
+                                    <div class="absolute -top-6 px-2 text-center text-primary font-bold whitespace-nowrap bg-white rounded-md">
+                                        <span x-text="total_value"></span>km
+                                    </div>
+                                    <input name="distance" class="w-full bg-secondary rounded-full h-2 appearance-none" type="range" x-model="total_value" min="0" max="100" step="1">
+                                </div>
                             </div>
                             <button class="w-full px-7 py-5 border-none rounded-md outline-none ring-0 bg-secondary font-semibold">{{ __('Find a Advisor') }}</button>
                         </div>
