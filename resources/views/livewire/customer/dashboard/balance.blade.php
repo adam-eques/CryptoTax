@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <div class="mt-4 space-y-5" x-show="view == 'list'" x-transition>
+    <div class="mt-2 space-y-5" x-show="view == 'list'" x-transition>
         <div class="flex items-center justify-between px-6 py-4 bg-primary rounded-xl">
             <img src="{{ asset('assets/img/svg/mastercard.svg') }}"/>
             <div class="text-right text-white">
