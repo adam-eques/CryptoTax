@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Customer\Advisor;
 
 use Livewire\Component;
 
-class AdvisorBanner extends Component
+class Recommended extends Component
 {
     public function render()
     {
-        return view('livewire.customer.advisor.advisor-banner');
+        return view('livewire.customer.advisor.recommended');
     }
 }

@@ -28,7 +28,7 @@
                 @foreach ($portfolios as $portfolio)                    
                     <tr class="px-5">
                         <td class="px-3 py-5 flex items-center space-x-4">
-                            <x-icon name="binance" class="w-16 h-16"/>
+                            <x-icon name="coins.binance" class="w-16 h-16"/>
                             <div class="text-left">
                                 <p class=" font-semibold text-black">Ethereum 2</p>
                                 <p class="text-gray-400">ETH2</p>
