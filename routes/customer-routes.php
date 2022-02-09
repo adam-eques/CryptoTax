@@ -35,6 +35,9 @@ Route::middleware('customer-setup')->group(function(){
     Route::prefix("test")->as("test.")->group(function() {
         Route::get('transactions', [Controllers\Customer\TransactionController::class, 'index'])
             ->name('transactions');
+
+        // Test: buy credits
+        Route::any("buy-credits", Livewire\Customer\Test\BuyCredit::class);
     });
 });
 

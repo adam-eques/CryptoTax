@@ -2,6 +2,7 @@
 
 namespace App\CaravelAdmin\Resources\UserCreditAction;
 
+use Closure;
 use WebCaravel\Admin\Resources\ResourceForm;
 use WebCaravel\Admin\Forms\SidebarLayout;
 use App\Services\CreditCodeService;
@@ -24,10 +25,18 @@ class UserCreditActionForm extends ResourceForm
                     ->required(),
                 Forms\Components\Select::make("action_code")
                     ->options(CreditCodeService::allActionsForSelect())
-                    ->label("Action"),
+                    ->required()
+                    ->label("Action")
+                    ->reactive(),
                 TextInput::make('value')
                     ->label(__("Credits (negativ = cost; positiv = reward)"))
                     ->postfix("Credits")
+                    ->nullable(true)
+                    ->numeric(),
+                TextInput::make('price')
+                    ->label(__("Price in $"))
+                    ->postfix("$")
+                    ->visible(fn(Closure $get) => $get('action_code') == CreditCodeService::ACTION_BUY_CREDITS)
                     ->nullable(true)
                     ->numeric(),
                 DateTimePicker::make('valid_from')

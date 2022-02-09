@@ -9,6 +9,7 @@ class CreditCodeService
     const ACTION_REGISTER = "REGI";
     const ACTION_ADD_PREMIUM_MONTH = "PREM";
     const ACTION_ADD_PREMIUM_YEAR = "PREY";
+    const ACTION_BUY_CREDITS = "BUYC";
 
 
     public static function allActions(): array
