@@ -26,7 +26,7 @@ Route::middleware('customer-setup')->group(function(){
     Route::view('taxes/tax-saving-opportunities', 'pages.customer.taxes.tax-saving-opportunities')->name('taxes.tax-saving-opportunities');
 
     // Advisor
-    Route::view('advisor/detail', 'pages.customer.advisor.advisor-detail')->name('advisor.detail');
+    Route::get('advisor/{id?}', \App\Http\Livewire\Customer\Advisor\Detail::class)->name('advisor.detail');
 
     // Invite Friends
     Route::view('invite', 'pages.customer.invite.invite')->name('invite');

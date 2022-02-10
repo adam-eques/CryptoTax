@@ -21,7 +21,7 @@
                     @endphp
                     @foreach ($categories as $category)            
                         <div class="py-5">
-                            <img src="{{ asset('assets/img/contact/' . $category['image']) }}" class="flex mx-auto"/>
+                            <img src="{{ asset('assets/img/subpage_images/' . $category['image']) }}" class="flex mx-auto"/>
                             <div class="space-x-3 flex items-center justify-center">
                                 <input id="{{ $category['id'] }}" name="category" type="radio" class="form-radio h-5 w-5 text-primary transition duration-150 ease-in-out" />
                                 <p> {{ $category['label'] }} </p>

@@ -10,11 +10,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div class=" flex items-center justify-start order-2 sm:order-1">
                         <div class="my-auto relative">
-                            <img src="{{ asset('assets/img/subpage_images/affiliate_pattern_2.svg') }}" class="w-full -mt-16 hidden sm:absolute"/>
-                            <h2 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">{{ __('Make Money By Becoming') }}</p>
-                            <h3 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl mt-5 font-md">{{ __("a myCrypto Tax") }} <span class="italic text-secondary">{{ _('Affiliate') }}</span></h3>
-                            <h5 class="text-primary sm:text-white text-lg mt-6">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.') }}</h5>
-                            <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('Start Earning Now') }}</x-button>
+                            <img src="{{ asset('assets/img/svg/transparent_logo.svg') }}" class="h-auto absolute -mt-20 -ml-8 hidden lg:block"/>
+                            <div class="relative">
+                                <h2 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">{{ __('Make Money By Becoming') }}</p>
+                                <h3 class="text-primary sm:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl mt-5 font-md">{{ __("a myCrypto Tax") }} <span class="italic text-secondary">{{ _('Affiliate') }}</span></h3>
+                                <h5 class="text-primary sm:text-white text-lg mt-6">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.') }}</h5>
+                                <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('Start Earning Now') }}</x-button>
+                            </div>
                         </div>
                     </div>
                     <div class="order-1 sm:order-2">

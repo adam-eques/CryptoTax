@@ -10,10 +10,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-26 xl:py-48">
                     <div class=" flex items-center justify-start order-2 sm:order-1">
                         <div class="my-auto relative">
-                            <h5 class="text-primary lg:text-white text-xl">{{ __('Get Fully Control') }}</h5>
-                            <h2 class="text-primary lg:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Of Your Portfolio') }}</p>
-                            <h5 class="text-primary lg:text-white text-lg mt-6">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</h5>
-                            <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('View Portfolio') }}</x-button>
+                            <img src="{{ asset('assets/img/svg/transparent_logo.svg') }}" class="h-auto absolute -mt-20 -ml-8 hidden lg:block"/>
+                            <div class="relative">
+                                <h5 class="text-primary lg:text-white text-xl">{{ __('Get Fully Control') }}</h5>
+                                <h2 class="text-primary lg:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Of Your Portfolio') }}</p>
+                                <h5 class="text-primary lg:text-white text-lg mt-6">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</h5>
+                                <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('View Portfolio') }}</x-button>
+                            </div>
                         </div>
                     </div>
                     <div class="order-1 sm:order-2">
