@@ -5,7 +5,7 @@
                 <div class="py-10 lg:px-28 px-10 flex sm:flex-row flex-col items-center sm:justify-between justify-center">
                     <div>
                         <x-jet-button variant="secondary" class="">{{ __('Join myCrypto.tax') }}</x-jet-button>
-                        <h1 role="heading" class="text-3xl md:text-4xl xl:text-5xl mt-3 font-bold">{{ __("Act before it's too late") }}</h1>
+                        <h1 role="heading" class="text-2xl md:text-3xl xl:text-4xl mt-3 font-bold">{{ __("Act before it's too late") }}</h1>
                         <p role="contentinfo" class="text-lg mt-3 text-gray-800">{{ __('Sign up and instantly generate your tax report') }}</p>
                     </div>
                     <x-button>

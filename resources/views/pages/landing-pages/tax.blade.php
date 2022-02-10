@@ -10,6 +10,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
                     <div class="relative flex items-center">
                         <div class="my-auto relative">
+                            <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
                             <div class="relative">
                                 <p class="text-md lg:text-lg text-secondary">{{ __('Duis consectetur feugiat aucto') }}</p>
                                 <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Tax Services') }}</h2>
