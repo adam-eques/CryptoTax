@@ -17,8 +17,7 @@
                                 <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
                                 <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
                                 <div class="flex space-x-4 mt-10 z-20">
-                                    <x-button variant="white" class="bg-transparent text-primary font-bold" size="md">{{ __('Learn More') }}</x-button>
-                                    <x-button size="md" class="font-bold">{{ __('Register for free') }}</x-button>
+                                    <x-button size="md" class="font-bold px-8">{{ __('Register for free') }}</x-button>
                                 </div>
                             </div>
                         </div>
