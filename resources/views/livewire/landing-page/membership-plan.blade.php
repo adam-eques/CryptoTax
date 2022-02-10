@@ -7,7 +7,7 @@
         <p class="text-2xl lg:text-3xl xl:text-4xl font-bold my-5">{{ __('Our Pricing') }}</p>
         <p class="text-gray-400">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et') }}</p>
         <P class="text-gray-400 mt-3">{{ __('dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation') }}</P>
-        <div class="relative grid grid-cols-1 lg:grid-cols-3 items-center gap-2 sm:gap-2 xl:gap-5 2xl:gap-8 7xl:gap-18 mt-10">
+        <div class="relative mt-10 main-carousel">
             @php
                 $plans = [
                     [ 'name' => 'Freemium', 'description_1' => 'Have a go and test your', 'description_2' => 'superpowers', 'cost' => "0.00", 'service' => [
@@ -19,11 +19,13 @@
                 ]
             @endphp
             @foreach ($plans as $plan)
+            <div class="w-full md:w-1/2 xl:w-1/3 carousel-cell">
                 @if ($plan['name'] == 'PRO')                
-                    <div class="p-4 mx-0 md:mx-2 2xl:mx-10 rounded bg-primary text-white">
+                    <div class="p-4 mx-0 md:mx-2 2xl:mx-10 rounded bg-primary text-white relative">
                 @else
-                    <div class="p-4 mx-0 md:mx-2 2xl:mx-10 rounded bg-gray-200">
-                @endif                        
+                    <div class="p-4 mt-0 md:mt-10 mx-0 md:mx-2 2xl:mx-10 rounded bg-gray-200 relative">
+                @endif  
+                    <img src="{{ asset('assets/img/subpage_images/membership_bg.svg') }}" class="absolute"/>                      
                     <p class="text-2xl font-extrabold my-4">{{ __($plan['name']) }}</p>
                     <p class="text-gray-400">{{ __($plan['description_1']) }}</p>
                     <p class="text-gray-400">{{ __($plan['description_2']) }}</p>
@@ -45,7 +47,20 @@
                         @endif
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script type="module">
+    var elem = document.querySelector('.main-carousel');
+    var flkty = new Flickity( elem, {
+        prevNextButtons: false,
+        cellAlign: 'left',
+        contain: true,
+        pageDots: false
+    });
+</script>
+@endpush

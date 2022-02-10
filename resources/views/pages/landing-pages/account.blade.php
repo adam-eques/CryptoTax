@@ -1,33 +1,31 @@
 <x-guest-layout>
     <div class="w-full bg-white">
         <div class="relative">
-            <div class="w-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/subpage_images/account_hero_bg.svg") }}" class="w-full object-cover lg:block hidden"/>
+            <div class="w-full h-full absolute right-0 top-0">
+                <img src="{{ asset("assets/img/subpage_images/account_hero_bg.png") }}" class="h-full w-full lg:block hidden"/>
             </div>
             <x-landing-nav for="customer" logo="white" class="relative"/>
-            <x-container class="py-10 sm:py-28 relative">
+            <x-container class="mt-16 2xl:mt-26 pb-10">
                 {{-- Hero section --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div class=" flex items-center justify-start order-2 sm:order-1">
-                        <div class="my-auto relative">
-                            <img src="{{ asset('assets/img/svg/transparent_logo.svg') }}" class="h-auto absolute -mt-20 -ml-8 hidden lg:block"/>
-                            <div class="relative">
-                                <h5 class="text-primary lg:text-white text-xl">{{ __('Duis consectetur feugiat auctor') }}</h5>
-                                <h2 class="text-primary lg:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Add Your Accounts') }}</p>
-                                <h5 class="text-primary lg:text-white text-lg mt-6">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</h5>
-                                <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('Add Accounts') }}</x-button>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-20 relative">
+                    <div class="order-2 sm:order-1 relative mt-0 xl:mt-12 2xl:mt-24">
+                        <img src="{{ asset('assets/img/svg/transparent_logo.svg') }}" class="h-auto max-w-lg absolute -mt-16 z-0 hidden xl:block"/>
+                        <div class="relative">
+                            <h5 class="text-primary lg:text-white text-xl">{{ __('Duis consectetur feugiat auctor') }}</h5>
+                            <h2 class="text-primary lg:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Add Your Accounts') }}</p>
+                            <h5 class="text-primary lg:text-white text-lg mt-6 leading-loose">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</h5>
+                            <x-button variant="secondary" size="lg" class="mt-6 border-0 tracking-tight font-bold">{{ __('Add Accounts') }}</x-button>
                         </div>
                     </div>
-                    <div class="order-1 sm:order-2 py-10 sm:py-0">
+                    <div class="order-1 sm:order-2">
                         <img src="{{ asset('assets/img/subpage_images/account_hero.svg') }}" class="w-full" />
                     </div>
                 </div>
             </x-container>
         </div>
-        <x-container>    
+        <x-container class="relative">    
             {{--  --}}
-            <div class="text-center sm:mt-10 mt-8">
+            <div class="text-center xl:mt-18 sm:mt-10 mt-8 bg-white rounded-md">
                 <p class="text-secondary font-semibold">{{ __('Add Account') }}</p>
                 <h3 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-4">{{ __('Simple and Easy, Add Your Account') }}</h3>
                 <p class="mt-5">{{ __('Duis consectetur feugiat auctor. Morbi nec enim luctus, feugiat arcu id, ultricies ante. Duis vel massa eleifend, porta ') }}</p>

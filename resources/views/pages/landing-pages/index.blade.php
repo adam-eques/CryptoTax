@@ -2,28 +2,25 @@
     <div class="w-full bg-white">
         {{-- Hero --}}
         <div class="relative w-full">
-            <div class="h-full absolute right-0 top-0">
+            <div class="w-2/3 absolute right-0 top-0">
                 <img src="{{ asset("assets/img/subpage_images/landing_hero_bg_pattern.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
             <x-landing-nav for="customer" class="relative"/>
-            <x-container class="pt-24">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
-                    <div class="relative h-full flex items-center">
-                        <div class="my-auto relative">
-                            <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
-                            <div class="relative">
-                                <p class="text-xl lg:text-3xl">{{ __('Track your crypto') }}</p>
-                                <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</h2>
-                                <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
-                                <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
-                                <div class="flex space-x-4 mt-10 z-20">
-                                    <x-button size="md" class="font-bold px-8">{{ __('Register for free') }}</x-button>
-                                </div>
+            <x-container class="mt-16 xl:mt-30">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-20 relative">
+                    <div class="mt-0 xl:mt-12 2xl:mt-24 relative">
+                        <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto max-w-lg absolute -mt-16 z-0 hidden xl:block"/>
+                        <div class="relative">
+                            <p class="text-xl lg:text-3xl">{{ __('Track your crypto') }}</p>
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Portfolio & Taxes') }}</h2>
+                            <p class="mt-5 lg:mt-10 text-lg leading-loose">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</p>
+                            <div class="flex space-x-4 mt-10 z-20">
+                                <x-button size="md" class="font-bold px-8">{{ __('Register for free') }}</x-button>
                             </div>
                         </div>
                     </div>
                     <div class="md:block hidden">
-                        <img src="{{ asset('assets/img/subpage_images/landing_portfolio_and_taxes.svg') }}"/>
+                        <img src="{{ asset('assets/img/subpage_images/landing_portfolio_and_taxes.svg') }}" class="w-full"/>
                     </div>
                 </div>
             </x-container>
@@ -55,7 +52,7 @@
                     [ 'img' => 'assets/img/subpage_images/landing_download_tax.svg', 'title' => 'Download your tax report', 'content' => 'Instantly generate and sign your tax forms including Form 8949, Schedue 1, and Schedue D. also included are our exclusive' ],
                 ]
             @endphp
-            <div class="py-5 sm:py-24 grid grid-cols-1 lg:grid-cols-3 items-end gap-3 lg:gap-10">
+            <div class="py-5 sm:py-24 grid grid-cols-1 md:grid-cols-3 items-end gap-3 lg:gap-10">
                 @foreach ($items as $item)                    
                     <div class="text-center px-5 relative">
                         {{-- <img src="{{ asset('assets/img/subpage_images/landing_arrow.svg') }}" class="absolute right-0"/> --}}
