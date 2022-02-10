@@ -2,7 +2,7 @@
     <div class="w-full bg-white">
         {{-- Hero --}}
         <div class="relative w-full">
-            <div class="w-1/2 absolute right-0 top-0">
+            <div class="w-2/3 absolute right-0 top-0">
                 <img src="{{ asset("assets/img/subpage_images/landing_hero_bg_pattern.svg") }}" class="w-full h-full object-cover hidden lg:block"/>
             </div>
             <x-landing-nav for="customer" class="relative"/>
