@@ -67,13 +67,14 @@
 
             {{-- Desktop View --}}
             <div class="ml-auto mr-5 items-center gap-6 lg:flex hidden">
-                <div class="flex items-center gap-10">
-                    @foreach ($links as $link)                
-                        @if (\Request::route() && \Request::route()->getName() === $link['route'])
-                            <a href="{{ route($link['route']) }}" class="{{ $textColor }} font-semibold border-b-2 border-secondary">{{ __($link['name']) }}</a>
-                        @else
+                <div class="flex items-start gap-10">
+                    @foreach ($links as $link)  
+                        <div>
                             <a href="{{ route($link['route']) }}" class="{{ $textColor }} font-semibold">{{ __($link['name']) }}</a>
-                        @endif        
+                            @if (\Request::route() && \Request::route()->getName() === $link['route'])
+                                <div class="h-1 w-6 bg-secondary"></div>
+                            @endif        
+                        </div>              
                     @endforeach
                 </div>
                 @if (auth()->user())                    
