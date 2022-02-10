@@ -38,9 +38,9 @@
                                 </div>
                             @endforeach
                             @if ($plan['name'] == 'PRO')                                    
-                                <x-button variant="primary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
+                                <x-button variant="primary" class="w-full justify-center font-semibold">{{ __($plan['button_title']) }}</x-button>
                             @else
-                                <x-button variant="secondary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
+                                <x-button variant="secondary" class="w-full justify-center font-semibold">{{ __($plan['button_title']) }}</x-button>
                             @endif
                         </div>
                     </div>
