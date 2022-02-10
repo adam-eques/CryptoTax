@@ -1,27 +1,24 @@
 <x-guest-layout>
     <div class="w-full bg-white relative">
         <div class="relative">
-            <div class="h-full absolute right-0 top-0">
-                <img src="{{ asset("assets/img/subpage_images/tax_banner.svg") }}" class="w-full h-full object-cover lg:block hidden"/>
+            <div class="w-3/4 h-full absolute right-0 top-0">
+                <img src="{{ asset("assets/img/subpage_images/tax_banner.png") }}" class="w-full h-full lg:block hidden"/>
             </div>
             <x-landing-nav for="customer" class="relative"/>
             {{-- Hero --}}
-            <x-container class="py-10 lg:py-24">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 relative">
-                    <div class="relative flex items-center">
-                        <div class="my-auto relative">
-                            <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
-                            <div class="relative">
-                                <p class="text-md lg:text-lg text-secondary">{{ __('Duis consectetur feugiat aucto') }}</p>
-                                <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Tax Services') }}</h2>
-                                <p class="mt-5 lg:mt-10 text-lg">{{ __('Use our cryptocurrency tax software to easily track your trades,') }}</p>
-                                <p class="mt-3 text-lg">{{ __('see your profits, and never overpay on your crypto taxes again.') }}</p>
-                                <x-button variant="secondary" class="font-bold mt-10 z-20" size="md">{{ __('Tax Report') }}</x-button>
-                            </div>
+            <x-container class="mt-8 xl:mt-14 pb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-20 relative">
+                    <div class="relative  mt-0 xl:mt-12 2xl:mt-24">
+                        <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto max-w-lg absolute -mt-16 hidden xl:block"/>
+                        <div class="relative">
+                            <p class="text-md lg:text-lg text-secondary">{{ __('Duis consectetur feugiat aucto') }}</p>
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5 lg:mt-8">{{ __('Tax Services') }}</h2>
+                            <p class="mt-5 lg:mt-10 text-lg leading-loose">{{ __('Use our cryptocurrency tax software to easily track your trades, see your profits, and never overpay on your crypto taxes again.') }}</p>
+                            <x-button variant="secondary" class="font-bold mt-10 z-20" size="md">{{ __('Tax Report') }}</x-button>
                         </div>
                     </div>
                     <div class="md:block hidden">
-                        <img src="{{ asset('assets/img/subpage_images/tax_hero.svg') }}"/>
+                        <img src="{{ asset('assets/img/subpage_images/tax_hero.svg') }}" class="w-full"/>
                     </div>
                 </div>
             </x-container>

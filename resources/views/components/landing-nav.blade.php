@@ -42,13 +42,13 @@
                                 <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="h-10">
                                 <div class="ml-1">
                                     <p class="text-md font-semibold text-primary">my</p>
-                                    <h3 class="text-xl lg:text-2xl font-extrabold text-primary">Crypto.Tax</h3>
+                                    <h3 class="text-2xl font-bold text-primary leading-5">Crypto.Tax</h3>
                                 </div>
                             @else 
                                 <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-10">
                                 <div class="ml-1">
                                     <p class="text-md font-semibold text-white">my</p>
-                                    <h3 class="text-xl lg:text-2xl font-extrabold text-white">Crypto.Tax</h3>
+                                    <h3 class="text-2xl font-bold text-white leading-5">Crypto.Tax</h3>
                                 </div>
                             @endif
                             @break
@@ -56,7 +56,7 @@
                             <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-9">
                             <div class="ml-1">
                                 <p class="text-md font-semibold text-white">my</p>
-                                <h3 class="text-xl lg:text-2xl font-extrabold text-white">Crypto Tax</h3>
+                                <h3 class="text-2xl font-extrabold text-white leading-5">Crypto Tax</h3>
                             </div>
                             <span class="ml-2 text-md lg:text-xl font-bold text-secondary italic">Affiliate</span>
                             @break
