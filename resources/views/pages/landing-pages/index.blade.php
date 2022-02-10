@@ -57,7 +57,8 @@
             @endphp
             <div class="py-5 sm:py-24 grid grid-cols-1 lg:grid-cols-3 items-end gap-3 lg:gap-10">
                 @foreach ($items as $item)                    
-                    <div class="text-center px-5">
+                    <div class="text-center px-5 relative">
+                        {{-- <img src="{{ asset('assets/img/subpage_images/landing_arrow.svg') }}" class="absolute right-0"/> --}}
                         <img src="{{ asset($item['img']) }}" class="flex mx-auto"/>
                         <p class="text-lg font-bold my-5">{{ __($item['title']) }}</p>
                         <p class="text-gray-500">{{ __($item['content']) }}</p>
