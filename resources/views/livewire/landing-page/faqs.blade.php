@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 md:mt-16 xl:mt-30">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 md:mt-16 xl:mt-30">
     <div class="p-5 relative">
         <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="h-auto absolute -mt-16 -ml-8"/>
         <div class="relative">

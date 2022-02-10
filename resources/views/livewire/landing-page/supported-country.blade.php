@@ -2,7 +2,7 @@
  <div class="w-full">
     <div class="mx-auto px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="text-center py-12 relative">
-            <img src="{{ asset('assets/img/subpage_images/landing_logo_bg.svg') }}" class="absolute left-1/2 -translate-x-1/2"/>
+            <img src="{{ asset('assets/img/subpage_images/map_logo_background.svg') }}" class="absolute left-1/2 -translate-x-1/2"/>
             <div class="relative">
                 <p  class="text-2xl lg:text-3xl xl:text-4xl font-bold">{{ __('Supported Countries') }}</p>
                 <div class="flex justify-center items-center space-x-8 md:space-x-16 mt-12">
