@@ -20,31 +20,29 @@
             @endphp
             @foreach ($plans as $plan)
             <div class="w-full md:w-1/2 xl:w-1/3 carousel-cell">
-                @if ($plan['name'] == 'PRO')                
-                    <div class="p-4 mx-0 md:mx-2 2xl:mx-10 rounded bg-primary text-white relative">
-                @else
-                    <div class="p-4 mt-0 md:mt-10 mx-0 md:mx-2 2xl:mx-10 rounded bg-gray-200 relative">
-                @endif  
-                    <img src="{{ asset('assets/img/subpage_images/membership_bg.svg') }}" class="absolute"/>                      
-                    <p class="text-2xl font-extrabold my-4">{{ __($plan['name']) }}</p>
-                    <p class="text-gray-400">{{ __($plan['description_1']) }}</p>
-                    <p class="text-gray-400">{{ __($plan['description_2']) }}</p>
-                    <div class="flex justify-center space-x-3 items-start mt-4">
-                        <p class="text-lg">$</p>
-                        <p class="text-5xl font-extrabold">{{ $plan['cost'] }}</p>
-                    </div>
-                    <div class="bg-white rounded mt-4 p-6 space-y-8 text-primary">
-                        @foreach ($plan['service'] as $service)                                    
-                            <div class="flex items-center space-x-2 xl:space-x-8">
-                                <x-icon name="check" class="w-4 h-4 rounded-full"/>
-                                <p class="font-bold">{{ __($service) }}</p>
-                            </div>
-                        @endforeach
-                        @if ($plan['name'] == 'PRO')                                    
-                            <x-button variant="primary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
-                        @else
-                            <x-button variant="secondary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
-                        @endif
+                <div class="mx-0 md:mx-2 2xl:mx-10">                        
+                    <div class="p-4 rounded relative @if ($plan['name'] !== 'PRO') mt-6 bg-gray-300 text-primary @else bg-primary text-white @endif">
+                        <img src="{{ asset('assets/img/subpage_images/membership_bg.svg') }}" class="absolute left-1/2 -translate-x-1/2"/>                      
+                        <p class="my-4 @if ($plan['name'] !== 'PRO') text-2xl font-bold  @else text-3xl font-extrabold  @endif">{{ __($plan['name']) }}</p>
+                        <p class="text-gray-400">{{ __($plan['description_1']) }}</p>
+                        <p class="text-gray-400">{{ __($plan['description_2']) }}</p>
+                        <div class="flex justify-center space-x-3 items-start mt-4">
+                            <p class="text-lg">$</p>
+                            <p class="text-5xl font-extrabold">{{ $plan['cost'] }}</p>
+                        </div>
+                        <div class="bg-white rounded mt-4 p-6 space-y-8 text-primary">
+                            @foreach ($plan['service'] as $service)                                    
+                                <div class="flex items-center space-x-2 xl:space-x-8">
+                                    <x-icon name="check" class="w-4 h-4 rounded-full"/>
+                                    <p class="font-bold">{{ __($service) }}</p>
+                                </div>
+                            @endforeach
+                            @if ($plan['name'] == 'PRO')                                    
+                                <x-button variant="primary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
+                            @else
+                                <x-button variant="secondary" class="w-full justify-center">{{ __($plan['button_title']) }}</x-button>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

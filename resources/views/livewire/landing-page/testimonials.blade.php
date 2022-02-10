@@ -14,7 +14,8 @@
             <div class="mt-18 main-carousel-1 w-full">
                 @foreach ($reviews as $review)                            
                     <div class="carousel-cell w-full md:w-1/2 xl:w-1/3 px-4">
-                        <div class="bg-white shadow-sm rounded-md p-8 text-left ">
+                        <div class="bg-white shadow-sm rounded-md p-8 text-left relative">
+                            <x-icon name="quote" class="top-4 right-4 w-8 absolute"/>
                             <p class="leading-loose">{{ __($review['content']) }}</p>
                             <div class="flex items-center space-x-4 mt-8">
                                 <img src="{{ asset($review['avatar']) }}" class="w-16 h-16 rounded-md"/>
