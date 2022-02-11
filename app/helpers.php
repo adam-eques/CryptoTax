@@ -37,7 +37,7 @@ if (! function_exists('getGitInfos')) {
             "log" => []
         ];
         exec('git status',$array["status"]);
-        exec('git log -1',$array["log"]);
+        exec('git log -3',$array["log"]);
 
         return $array;
     }
