@@ -103,11 +103,13 @@
                         </form>
                     @elseif($newBlockchainId)
                         <p class="text-xl font-bold text-center mt-3"><span x-text="selected_item" class="uppercase"></span> {{ __(' API integration') }} </p> 
-                        <div class="flex justify-center mt-10">
+                        <div class="mt-10">
                             <div>
                                 <p class="text-gray-600">Address<span class="text-danger">*</span></p>
                                 <div class="mt-1">
-                                    <input class="py-2 px-2 border rounded" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                                    <input class="py-2 px-2 border rounded w-full" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                                </div>
+                                <div class="flex justify-center mt-3">
                                     <x-button wire:click="add_blockchain">Add</x-button>
                                 </div>
                             </div>
@@ -161,7 +163,7 @@
                                             <p class="text-gray-600">Address<span class="text-danger">*</span></p>
                                             <div class="mt-1 space-y-5">
                                                 <input 
-                                                    class="py-2 px-2 border rounded" 
+                                                    class="py-2 px-2 border rounded w-full" 
                                                     name="address" 
                                                     wire:model.defer="newBlockchainAddress" 
                                                     placeholder="Address" 

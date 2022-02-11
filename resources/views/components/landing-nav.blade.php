@@ -79,7 +79,8 @@
                     @endforeach
                 </div>
                 @if (auth()->user())                    
-                    <a href="{{ route('logout') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign out') }}</a>
+                    {{-- <a href="{{ route('logout') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign out') }}</a> --}}
+                    <x-landing-nav-dropdown />
                 @else
                     <a href="{{ route('login') }}" class="bg-transparent font-bold {{ $textColor }} hover:text-white hover:bg-secondary px-8 py-2 border rounded">{{ __('Sign in') }}</a>
                     <a href="{{ route('register') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign Up') }}</a>
