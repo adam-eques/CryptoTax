@@ -7,8 +7,8 @@
                 <a href="{{ route("customer.dashboard") }}" class="flex items-center text-white group">
                     <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-10">
                     <div class="ml-1">
-                        <p class="text-md font-semibold text-primary">my</p>
-                        <h3 class="text-2xl font-bold text-primary leading-5">Crypto.Tax</h3>
+                        <p class="text-md font-semibold text-white">my</p>
+                        <h3 class="text-2xl font-bold text-white leading-5">Crypto.Tax</h3>
                     </div>
                 </a>
             </div>
@@ -101,6 +101,11 @@
                 {{-- <a href="#" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">
                     {{ __('Your Profile') }}
                 </a> --}}
+                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Messages') }}</a>
+                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Notifications') }}</a>
+                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Payment Informations') }}</a>
+                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Billing') }}</a>
+                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Buy Credits') }}</a>
                 <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 rounded text-base font-light text-gray-200 hover:text-primary hover:bg-white">{{ __('Settings') }}</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

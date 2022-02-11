@@ -39,10 +39,11 @@
                     @switch($for)
                         @case('customer')                            
                             @if ($logo == "primary")
-                                <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="h-10">
+                                <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="h-10 hidden lg:block">
+                                <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-10 block lg:hidden">
                                 <div class="ml-1">
-                                    <p class="text-md font-semibold text-primary">my</p>
-                                    <h3 class="text-2xl font-bold text-primary leading-5">Crypto.Tax</h3>
+                                    <p class="text-md font-semibold text-white lg:text-primary">my</p>
+                                    <h3 class="text-2xl font-bold text-white lg:text-primary leading-5">Crypto.Tax</h3>
                                 </div>
                             @else 
                                 <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-10">
