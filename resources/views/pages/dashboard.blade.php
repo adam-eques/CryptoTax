@@ -27,6 +27,14 @@
         <x-page icon="fas-home" :title="__('Admin Dashboard')">
             <p class="block mb-8">This is the Admin Dashboard</p>
         </x-page>
+
+        <x-page icon="fas-home" :title="__('Git Info')">
+            @php($gitInfo = getGitInfos())
+            <p class="block my-3 text-xl">Status</p>
+            <pre>{!! implode("<br>", $gitInfo["status"])  !!}</pre>
+            <p class="block my-3 text-xl">Log</p>
+            <pre>{!! implode("<br>", $gitInfo["log"])  !!}</pre>
+        </x-page>
     @elseif(auth()->user()->isTaxAdvisorAccount())
         <x-page icon="fas-home" :title="__('Tax Advisor Dashboard')">
             <p class="block mb-8">This is the Tax Advisor-Dashboard.</p>
