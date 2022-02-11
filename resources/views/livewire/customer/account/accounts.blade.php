@@ -35,7 +35,7 @@
                                         wire:click="get_selected_account({{ $item->id }})"
                                     >
                                         <div class="grid grid-cols-2 gap-3">
-                                            <img src="{{ asset('assets/img/exchange_icon/' . $item->getName() . '.svg' ) }}" class="w-full h-auto col-span-1"/>
+                                            <img src="{{ asset('assets/img/exchange_icon/' . $item->getName() . '.svg' ) }}" class="w-40 h-auto pl-4 col-span-1"/>
                                             <div class="space-y-1 text-left col-span-1">
                                                 <h3 class="xl:text-lg font-semibold text-gray-700">{{ $item->getName() }}</h3>
                                                 <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
@@ -55,8 +55,8 @@
                                         class="flex justify-between space-x-2 py-2 lg:py-4 px-4 lg:px-6 items-center relative hover:bg-gray-100"
                                         wire:click="get_selected_blockchain({{ $item->id }})"
                                     >
-                                        <div class="grid grid-cols-2 gap-3">
-                                            <img src="{{ asset('assets/img/exchange_icon/' . explode(':',  $item->getName())[0] . '.svg' ) }}" class="w-full h-auto col-span-1"/>
+                                        <div class="grid grid-cols-2 gap-3 items-center">
+                                            <img src="{{ asset('assets/img/exchange_icon/' . explode(':',  $item->getName())[0] . '.svg' ) }}" class="w-40 h-auto pl-4 col-span-1"/>
                                             <div class="space-y-1 text-left col-span-1">
                                                 <h3 class="xl:text-lg font-semibold text-gray-700 uppercase">{{explode(':',  $item->getName())[0] }}</h3>
                                                 <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
