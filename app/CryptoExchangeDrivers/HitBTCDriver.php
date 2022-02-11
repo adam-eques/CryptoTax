@@ -63,11 +63,11 @@ class HitBTCDriver extends Driver
             $cnt = 0;
             foreach ($unique_symbols as $symbol) {
                 // fetch all trades for the $symbol, with pagination
-                $cnt++;
-                if($cnt > 10)
-                {
-                    break;
-                }
+                // $cnt++;
+                // if($cnt > 10)
+                // {
+                //     break;
+                // }
                 $this->fetchAllTransactions($symbol, $balances);
                 sleep(3);
             }

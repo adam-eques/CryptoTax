@@ -71,10 +71,10 @@ class KucoinDriver extends Driver
                     $this->saveTransactions($data, $now);
                 }
 
-                if($counter > 5)
-                {
-                    break;
-                }
+                // if($counter > 1)
+                // {
+                //     break;
+                // }
 
                 // Sleep because of Request Limit of 9 times/3s
                 if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure

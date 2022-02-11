@@ -114,23 +114,40 @@ abstract class Driver
                 if($val && $val > 0) {
 
                     if($account->cryptoExchange()->first()->name == 'Binance'){
-                        $key = str_replace('LB', '', $key);
-                    }
-                    $currency = CryptoCurrency::findByShortName($key);
+                        $pos = strpos($key, 'LD');
+                        if(gettype($pos) == 'integer' && $pos == 0)
+                        {
+                            $key = str_replace('LD', '', $key);
 
-                    if($currency) {
-                        $currency = $currency->id;
-                    }
-                    else {
-                        $currency = 0;
-                        logger("Missing crypto currency " . $key);
-                    }
+                            $currency = CryptoCurrency::findByShortName($key);
 
-                    CryptoExchangeAsset::make([
-                        "crypto_exchange_account_id" => $account->id,
-                        "crypto_currency_id" => $currency,
-                        "balance" => $val
-                    ])->save();
+                            if($currency) {
+
+                                $currency = $currency->id;
+                                CryptoExchangeAsset::make([
+                                    "crypto_exchange_account_id" => $account->id,
+                                    "crypto_currency_id" => $currency,
+                                    "balance" => $val
+                                ])->save();
+                            }
+                        }
+                        
+                    }else{
+                        $currency = CryptoCurrency::findByShortName($key);
+                        if($currency) {
+                            $currency = $currency->id;
+                        }
+                        else {
+                            $currency = 0;
+                            logger("Missing crypto currency " . $key);
+                        }
+
+                        CryptoExchangeAsset::make([
+                            "crypto_exchange_account_id" => $account->id,
+                            "crypto_currency_id" => $currency,
+                            "balance" => $val
+                        ])->save();
+                    }
                 }
             }
         }
@@ -229,7 +246,6 @@ abstract class Driver
         $all_trades = array();
         while (true) {
             $trades = $this->api->fetch_my_trades($symbol, null, null, $params);
-            var_dump($trades);
             if (count($trades) > 0) {
                 // Save it
                 $this->saveTransactions($trades, now(), $balances["total"]);

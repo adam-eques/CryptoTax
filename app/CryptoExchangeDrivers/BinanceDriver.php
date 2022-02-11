@@ -62,11 +62,11 @@ class BinanceDriver extends Driver
             $cnt = 0;
             foreach ($unique_symbols as $symbol) {
                 // fetch all trades for the $symbol, with pagination
-                $cnt++;
-                if($cnt > 1)
-                {
-                    break;
-                }
+                // $cnt++;
+                // if($cnt > 1)
+                // {
+                //     break;
+                // }
                 $this->fetchAllTransactions($symbol, $balances);
                 sleep(3);
             }
