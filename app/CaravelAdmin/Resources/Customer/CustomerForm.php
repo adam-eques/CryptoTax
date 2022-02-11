@@ -2,6 +2,8 @@
 
 namespace App\CaravelAdmin\Resources\Customer;
 
+use App\CaravelAdmin\Resources\CryptoExchangeAccount\CryptoExchangeAccountResource;
+use App\Models\CryptoExchangeAccount;
 use App\Models\User;
 use App\Models\UserCreditLog;
 use WebCaravel\Admin\Resources\ResourceForm;
@@ -29,6 +31,10 @@ class CustomerForm extends ResourceForm
                 HasManyRelationField::make('creditLogs')
                     ->resource(UserCreditLogResource::make())
             ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", UserCreditLog::class)))
+            ->addTab(Forms\Components\Tabs\Tab::make("Exchange Accounts")->schema([
+                HasManyRelationField::make('cryptoExchangeAccounts')
+                    ->resource(CryptoExchangeAccountResource::make())
+            ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", CryptoExchangeAccount::class)))
             ->addCard([
                 Forms\Components\Placeholder::make("id")->label(__("ID"))
                     ->content(fn ($record): string => $record ? $record->id : '-'),
