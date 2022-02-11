@@ -19,7 +19,7 @@ class BlockchainSeeder extends Seeder
                 "class" => "CronosBlockChainApi"
             ],
         ])->each(function($data){
-            Blockchain::upsert($data, []);
+            Blockchain::firstOrCreate($data, []);
         });
     }
 }
