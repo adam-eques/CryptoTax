@@ -22,7 +22,7 @@
             @php
                 $links = [
                     'About' => [ 
-                        ['link' => 'About us', 'route' => 'index'], 
+                        ['link' => 'About us', 'route' => 'about'], 
                         ['link' => 'Help Center', 'route' => 'index'], 
                         ['link' => 'Contact', 'route' => 'contact']
                     ],
