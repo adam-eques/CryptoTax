@@ -12,8 +12,6 @@ class CryptoExchangeSeeder extends Seeder
 {
     public function run()
     {
-        CryptoExchange::query()->truncate();
-
         collect([
             [
                 'id' => CryptoExchange::EXCHANGE_KUCOIN,
@@ -29,9 +27,17 @@ class CryptoExchangeSeeder extends Seeder
                 'website' => "https://hitbtc.com/",
                 'driver' => HitBTCDriver::class
             ],
+            [
+                'id' => CryptoExchange::EXCHANGE_BINANCE,
+                'name' => "Binance",
+                'description' => 'Binance lorem ipsum dolor.',
+                'website' => "",
+                'driver' => BinanceDriver::class
+            ],
         ])->each(function($data){
-            $item = new CryptoExchange($data);
-            $item->save();
+            CryptoExchange::firstOrCreate([
+                "id" => $data["id"]
+            ], $data);
         });
     }
 }
