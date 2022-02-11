@@ -20,6 +20,18 @@ class CustomerTable extends ResourceTable
     }
 
 
+    public function getDefaultTableSortColumn(): ?string
+    {
+        return "created_at";
+    }
+
+
+    public function getDefaultTableSortDirection(): ?string
+    {
+        return "desc";
+    }
+
+
     protected function getTableColumns(): array
     {
         return [
@@ -32,6 +44,11 @@ class CustomerTable extends ResourceTable
                 ->sortable(),
             Tables\Columns\TextColumn::make("email")
                 ->label("E-Mail")
+                ->searchable()
+                ->sortable(),
+            Tables\Columns\TextColumn::make("created_at")
+                ->label("Registered")
+                ->date("Y-m-d H:i:s")
                 ->searchable()
                 ->sortable(),
         ];
