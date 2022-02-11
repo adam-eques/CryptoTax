@@ -23,7 +23,7 @@
                 </div>
             </x-container>
         </div>
-        {{--  --}}
+        {{-- Feature --}}
         <x-container>
             <div class="text-center relative">
                 <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="absolute left-1/2 -translate-x-1/2 -top-6 max-w-full"/>
@@ -36,8 +36,8 @@
                 </div>
             </div>
         </x-container>
-        {{--  --}}
-        <div class="overflow-hidden relative mt-20 py-10">
+        {{-- Analytics --}}
+        <div class="overflow-hidden relative pt-30">
             <img src="{{ asset('assets/img/subpage_images/portfolio_bg_pattern_1.svg') }}" class="absolute top-0 -right-20 h-full"/>
             <x-container class="relative">
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5">
@@ -47,8 +47,8 @@
                             <div class="relative">
                                 <p class="text-secondary font-semibold">{{ __('Analytics') }}</p>
                                 <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-4">{{ __('Advanced Analytics,') }}</h2>
-                                <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-2">{{ __('Understand Business') }}</h2>
-                                <p class="sm:mt-7 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
+                                <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-3">{{ __('Understand Business') }}</h2>
+                                <p class="sm:mt-6 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
                                 <p class="mt-5 text-left leading-loose">{{ __("Design is everywhere. From the dress you’re wearing to the smartphone you’re holding, it’s design. If you think good design is expensive, you should look at the cost of bad design.") }}</p>
                             </div>
                         </div>
@@ -59,11 +59,11 @@
                 </div>
             </x-container>
         </div>
-        {{--  --}}
-        <div class="overflow-hidden relative py-10">
+        {{-- Coin Allocation --}}
+        <div class="overflow-hidden relative pt-26">
             <img src="{{ asset('assets/img/subpage_images/portfolio_bg_pattern_1.svg') }}" class="absolute top-0 -left-30 h-full"/>
             <x-container class="relative">
-                <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5 py-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5">
                     <div class="">
                         <img src="{{asset('assets/img/subpage_images/portfolio_2.svg')}}" class="w-full"/>
                     </div>
@@ -72,8 +72,8 @@
                             <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="absolute left-1/2 -translate-x-1/2 -top-6 max-w-full"/>
                             <div class="relative">
                                 <p class="text-secondary font-semibold">{{ __('Coin Allocation') }}</p>
-                                <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-4">{{ __('Portfolio Allocation') }}</h2>
-                                <p class="sm:mt-9 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
+                                <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-5">{{ __('Portfolio Allocation') }}</h2>
+                                <p class="sm:mt-6 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
                                 <p class="mt-5 text-left leading-loose">{{ __("Design is everywhere. From the dress you’re wearing to the smartphone you’re holding, it’s design. If you think good design is expensive, you should look at the cost of bad design.") }}</p>
                             </div>
                         </div>
@@ -81,18 +81,18 @@
                 </div>
             </x-container>
         </div>
-        {{--  --}}
-        <div class="overflow-hidden relative py-10">
+        {{-- Portfolio --}}
+        <div class="overflow-hidden relative py-20">
             <img src="{{ asset('assets/img/subpage_images/portfolio_bg_pattern_1.svg') }}" class="absolute top-0 -right-30 h-full"/>
             <x-container class="relative">
-                <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5 py-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-42 xl:gap-30 lg:gap-24 md:gap-10 gap-5">
                     <div class="flex items-center">
                         <div class="my-auto relative">
                             <img src="{{ asset('assets/img/subpage_images/landing_logo_bg_pattern.svg') }}" class="absolute left-1/2 -translate-x-1/2 -top-6 max-w-full"/>
                             <div class="relative">
-                                <p class="text-secondary font-semibold">{{ __('portfolio') }}</p>
-                                <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-4">{{ __('My Crypto Portfolio') }}</h2>
-                                <p class="sm:mt-9 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
+                                <p class="text-secondary font-semibold">{{ __('Portfolio') }}</p>
+                                <h2 class="font-bold text-xl md:text-3xl lg:text-4xl xl:text-5xl mt-5">{{ __('My Crypto Portfolio') }}</h2>
+                                <p class="sm:mt-6 mt-5 text-left leading-loose">{{ __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ") }}</p>
                                 <p class="mt-5 text-left leading-loose">{{ __("Design is everywhere. From the dress you’re wearing to the smartphone you’re holding, it’s design. If you think good design is expensive, you should look at the cost of bad design.") }}</p>
                             </div>
                         </div>
