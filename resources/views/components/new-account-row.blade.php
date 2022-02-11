@@ -10,7 +10,7 @@
     ]);
     if ($selected) {
         $att = $attributes->merge([
-            'class' => 'grid grid-cols-4 sm:grid-cols-7 items-center py-5 px-6 border-b cursor-pointer bg-gray-100 w-full'
+            'class' => 'grid grid-cols-4 sm:grid-cols-7 gap-2 items-center py-5 px-6 border-b cursor-pointer bg-gray-100 w-full'
         ]);
     }
     $category_badge = ['name'=>'Exchange', 'icon' =>'exchange-1'];
@@ -26,7 +26,7 @@
     }
 @endphp
 <button {{$att}}>
-    <img src="{{ asset('assets/img/exchange_icon/' . $name . '.svg') }}"  class="w-auto h-8 mr-2 text col-span-2 order-1"/>
+    <img src="{{ asset('assets/img/exchange_icon/' . $name . '.svg') }}"  class="h-auto w-full pr-2 text col-span-2 order-1"/>
     <p class="col-span-2 order-3 sm:order-2 text-left">{{ $name }}</p>
     <div class="flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2 order-2 sm:order-3">
         <x-icon :name="$category_badge['icon']" class="w-8 h-8 mr-2 text"/>
