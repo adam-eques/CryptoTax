@@ -9,7 +9,7 @@
                         <h1 role="heading" class="text-2xl md:text-3xl xl:text-4xl mt-3 font-bold">{{ __("Act before it's too late") }}</h1>
                         <p role="contentinfo" class="text-base mt-3 text-gray-800">{{ __('Sign up and instantly generate your tax report') }}</p>
                     </div>
-                    <x-button class="font-semibold py-6">
+                    <x-button class="font-semibold px-5 py-6">
                         {{ __('Get started now') }}
                         <x-icon name='rocket' class="ml-3 w-6 h-6"/>
                     </x-button>

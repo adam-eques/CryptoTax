@@ -36,6 +36,21 @@
             {{ __('Profile') }}
         </x-jet-dropdown-link> --}}
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
+            {{ __('Messages') }}
+        </x-jet-dropdown-link>
+        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
+            {{ __('Notifications') }}
+        </x-jet-dropdown-link>
+        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
+            {{ __('Payment Informations') }}
+        </x-jet-dropdown-link>
+        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
+            {{ __('Billing') }}
+        </x-jet-dropdown-link>
+        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
+            {{ __('Buy Credits') }}
+        </x-jet-dropdown-link>
+        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
             {{ __('Setting') }}
         </x-jet-dropdown-link>
         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
