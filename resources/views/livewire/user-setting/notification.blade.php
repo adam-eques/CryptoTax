@@ -1,6 +1,6 @@
 <div>
     <div class="bg-gray-100 w-full px-10 py-6 rounded">
-        <span class="text-xl font-extrabold">{{ __('Notifications') }}</span>
+        <span class="text-2xl font-bold">{{ __('Notifications') }}</span>
     </div>
     <div class="px-10 py-10">
         <label for="email_update" class="flex items-center">

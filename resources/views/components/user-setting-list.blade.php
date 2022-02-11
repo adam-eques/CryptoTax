@@ -7,15 +7,14 @@
 @php
     $list = [
         [ 'name' => 'Profile settings', 'icon' => 'user', 'route' => 'profile' ],
+        [ 'name' => 'Tax Settings', 'icon' => 'tax-3', 'route' => 'tax' ],
         [ 'name' => 'Email address', 'icon' => 'inbox', 'route' => 'email' ],
         [ 'name' => 'Password', 'icon' => 'password', 'route' => 'password' ],
         [ 'name' => 'Notification', 'icon' => 'bell', 'route' => 'notification' ],
         [ 'name' => 'Security', 'icon' => 'security', 'route' => 'security' ],
-        [ 'name' => 'Payment Information', 'icon' => 'payment', 'route' => 'payment' ],
-        [ 'name' => 'Billing', 'icon' => 'bill', 'route' => 'billing' ],
-        [ 'name' => 'Other', 'icon' => 'other', 'route' => 'other' ],
         [ 'name' => 'Request Exchange', 'icon' => 'exchange-2', 'route' => 'exchange' ],
-        [ 'name' => 'Tax Settings', 'icon' => 'user-setting', 'route' => 'tax' ]
+        [ 'name' => 'Other', 'icon' => 'other', 'route' => 'other' ],
+        [ 'name' => 'Delete Account', 'icon' => 'delete', 'route' => 'delete' ],
     ]
 @endphp
 

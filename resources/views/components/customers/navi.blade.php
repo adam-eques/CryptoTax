@@ -24,16 +24,14 @@
                 </div>
             </div>
 
-            <div class="ml-auto mr-5 flex items-center gap-4">
-                <div class="flex items-center gap-4">
-                    {{-- Message Button --}}
+            <div class="ml-auto mr-5">
+                {{-- <div class="flex items-center gap-4">
                     <button type="button" title="Message"
                             class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none ">
                         <span class="sr-only">{{__('Message')}}</span>
                         <x-icon name="message" class="w-6 h-6 mr-2"/>
                     </button>
 
-                    {{-- Notification --}}
                     <div class="relative lg:block" x-data="{open:false}">
                         <button type="button" title="Notification"
                                 class="rounded-full text-white hover:text-gray-300 focus:outline-none outline-none relative"
@@ -62,7 +60,7 @@
                             </x-jet-dropdown-link>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- User dropdown --}}
                 <x-customers.user-dropdown />
