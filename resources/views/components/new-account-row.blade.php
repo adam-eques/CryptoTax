@@ -27,7 +27,7 @@
 @endphp
 <button {{$att}}>
     <img src="{{ asset('assets/img/exchange_icon/' . $name . '.svg') }}"  class="w-auto h-8 mr-2 text col-span-2 order-1"/>
-    <p class="col-span-2 order-3 sm:order-2">{{ $name }}</p>
+    <p class="col-span-2 order-3 sm:order-2 text-left">{{ $name }}</p>
     <div class="flex items-center px-3 py-1 bg-primary rounded-md text-white col-span-2 order-2 sm:order-3">
         <x-icon :name="$category_badge['icon']" class="w-8 h-8 mr-2 text"/>
         <span class="text-md font-bold tracking-tight truncate">{{ __( $category_badge['name'] ) }}</span>
