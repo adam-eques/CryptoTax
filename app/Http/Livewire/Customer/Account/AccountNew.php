@@ -10,6 +10,8 @@ use App\Models\CryptoExchangeAccount;
 use WireUi\Traits\Actions;
 use Filament\Forms;
 
+use ccxt;
+
 use Livewire\Component;
 
 class AccountNew extends Component implements Forms\Contracts\HasForms

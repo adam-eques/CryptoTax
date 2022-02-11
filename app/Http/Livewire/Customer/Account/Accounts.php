@@ -12,6 +12,8 @@ use App\Models\BlockchainAccount;
 use Filament\Forms;
 use WireUi\Traits\Actions;
 
+use ccxt;
+
 class Accounts extends Component implements Forms\Contracts\HasForms
 {
     use Actions;
@@ -121,6 +123,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function get_selected_account(CryptoExchangeAccount $account){
         $this->account = $account;
         $this->blockchain = null;
+        // dd($this->account->getApi());
+
     }
 
     // blockchains
@@ -162,8 +166,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $this->account = null;
     }
 
+   
     public function render()
     {
+
         $cryptoExchangeAccounts = CryptoExchangeAccount::query()
             ->where('user_id', auth()->user()->id)
             ->whereJsonLength('credentials','>', 0)
