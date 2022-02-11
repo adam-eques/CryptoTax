@@ -9,7 +9,7 @@
                 {{-- Hero section --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-20 relative">
                     <div class="order-2 sm:order-1 relative mt-0 xl:mt-12 2xl:mt-24">
-                        <img src="{{ asset('assets/img/svg/transparent_logo.svg') }}" class="h-auto max-w-lg absolute -mt-16 z-0 hidden xl:block"/>
+                        <img src="{{ asset('assets/img/subpage_images/contact_bg_pattern.svg') }}" class="h-auto max-w-lg absolute -mt-16 z-0 hidden xl:block"/>
                         <div class="relative">
                             <h5 class="text-primary lg:text-white text-xl">{{ __('Duis consectetur feugiat auctor') }}</h5>
                             <h2 class="text-primary lg:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold mt-7">{{ __('Add Your Accounts') }}</p>

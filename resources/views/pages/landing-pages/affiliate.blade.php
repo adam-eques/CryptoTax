@@ -9,7 +9,7 @@
                 {{-- hero section --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 relative">
                     <div class="order-2 sm:order-1  mt-0 xl:mt-12 2xl:mt-24 relative">
-                        <img src="{{ asset('assets/img/svg/transparent_logo.svg') }}" class="w-full max-w-lg absolute -mt-20 hidden lg:block"/>
+                        <img src="{{ asset('assets/img/subpage_images/contact_bg_pattern.svg') }}" class="w-full max-w-lg absolute -mt-20 hidden lg:block"/>
                         <div class="relative">
                             <h2 class="text-primary md:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">{{ __('Make Money By Becoming') }}</p>
                             <h3 class="text-primary md:text-white xl:text-5xl lg:text-4xl md:text-3xl text-2xl mt-5 font-md">{{ __("a myCrypto Tax") }} <span class="italic text-secondary">{{ _('Affiliate') }}</span></h3>

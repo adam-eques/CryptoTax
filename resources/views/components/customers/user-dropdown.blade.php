@@ -36,6 +36,7 @@
             {{ __('Profile') }}
         </x-jet-dropdown-link> --}}
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
+            {{-- <x-icon name="message" class="w-6"/> --}}
             {{ __('Messages') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}">
