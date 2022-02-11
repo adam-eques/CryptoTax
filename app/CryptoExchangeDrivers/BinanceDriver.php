@@ -4,15 +4,14 @@ namespace App\CryptoExchangeDrivers;
 
 use Carbon\Carbon;
 
-
 /**
- * Class HitBTC
+ * Class BinanceDriver
  *
  * @package App\CryptoExchangeDrivers
  *
- * @property \ccxt\hitbtc3 $api
+ * @property \ccxt\binance $api
  */
-class HitBTCDriver extends Driver
+class BinanceDriver extends Driver
 {
 
     /**
@@ -23,7 +22,7 @@ class HitBTCDriver extends Driver
     {
         date_default_timezone_set ('UTC'); 
         $credentials = $this->getCredentials();
-        $this->api = new \ccxt\hitbtc([
+        $this->api = new \ccxt\binance([
             "apiKey" => \Arr::get($credentials, "apiKey"),
             "secret" => \Arr::get($credentials, "secret"),
             'verbose' => false,
@@ -64,7 +63,7 @@ class HitBTCDriver extends Driver
             foreach ($unique_symbols as $symbol) {
                 // fetch all trades for the $symbol, with pagination
                 // $cnt++;
-                // if($cnt > 10)
+                // if($cnt > 1)
                 // {
                 //     break;
                 // }
