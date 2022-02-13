@@ -81,9 +81,12 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $this->fetch_blockchain($blockchainAccount);
             $this->newBlockchainAddress = null;
             $this->newBlockchainId = null;
+            $this->notification()->info(__("Exchange Account is added successfully"));
+            redirect()->route('customer.account'); 
         }
         else {
             $this->notification()->info(__("Blockchain address already exists in your account"));
+            redirect()->route('customer.account');
             return;
         }
     }
@@ -120,11 +123,13 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
                 ->visible(fn($livewire) => $livewire->isRequiredField('secret'))
                 ->label(__("Secret"))
                 ->required()
+                ->password()
                 ->placeholder(__("Your API secret")),
             Forms\Components\TextInput::make('password')
                 ->visible(fn($livewire) => $livewire->isRequiredField('password'))
                 ->label(__("Passphrase"))
                 ->required()
+                ->password()
                 ->placeholder(__("Your API passphrase")),
         ];
     }
@@ -147,6 +152,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $this->exchange_account->credentials = $data;
         $this->exchange_account->save();
         $this->notification()->info(__("Exchange Account is added successfully"));
+        redirect()->route('customer.account'); 
     }
 
     public function edit_exchange( CryptoExchangeAccount $account )
