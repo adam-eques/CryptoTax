@@ -9,6 +9,11 @@
             'img' => '', 
             'title' => 'Cryptocurrency exchanges start blocking accounts', 
             'content' => 'Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and' 
+        ],
+        [
+            'img' => '', 
+            'title' => 'Cryptocurrency exchanges start blocking accounts', 
+            'content' => 'Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and' 
         ]
 
     ]
@@ -21,10 +26,16 @@
             <p class="mr-3 text-lg font-semibold">{{ __('Crypto News') }}</p>
         </div>
         <div class="flex items-center space-x-6">
-            <button class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white">
+            <button 
+                id="news_prev_button"
+                class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white"
+            >
                 <x-icon name="fas-angle-left" class="w-4 h-4"/>
             </button>
-            <button class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white">
+            <button 
+                id="news_next_button"
+                class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white"
+            >
                 <x-icon name="fas-angle-right" class="w-4 h-4"/>
             </button>
         </div>
@@ -51,7 +62,16 @@
         prevNextButtons: false,
         cellAlign: 'left',
         contain: true,
-        pageDots: false
+        pageDots: false,
+        wrapAround: true,
     });
+   
+    document.getElementById("news_prev_button").addEventListener("click", function(){
+        flkty.previous();
+    });
+    document.getElementById("news_next_button").addEventListener("click", function(){
+        flkty.next();
+    });    
+
 </script>
 @endpush
