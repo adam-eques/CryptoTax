@@ -18,7 +18,7 @@ class CryptoExchangeAccountPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->isAdminPanelAccount();
     }
 
     /**
@@ -30,7 +30,7 @@ class CryptoExchangeAccountPolicy
      */
     public function view(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
     {
-        return $cryptoExchangeAccount->user_id === $user->id;
+        return $user->isAdminPanelAccount() || $cryptoExchangeAccount->user_id === $user->id;
     }
 
     /**

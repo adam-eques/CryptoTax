@@ -1,13 +1,13 @@
 @php
     $transactios = [
         [
-            'name' => 'Binance Coin', 'type' => 'Buy', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'bitcoin'
+            'name' => 'Binance Coin', 'type' => 'Buy', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'coins.bitcoin'
         ],
         [
-            'name' => 'Lite Coin', 'type' => 'Sell', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'litecoin'
+            'name' => 'Lite Coin', 'type' => 'Sell', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'coins.litecoin'
         ],
         [
-            'name' => 'Tether', 'type' => 'Buy', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'tether'
+            'name' => 'Tether', 'type' => 'Buy', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'coins.tether'
         ],
     ]
 @endphp
@@ -22,7 +22,7 @@
     <div class="overflow-auto mt-7">
         <div class="space-y-4 min-w-cmd">
             @foreach ($transactios as $item)
-                <div class="flex items-center justify-between border p-5 rounded-lg {{ $item['type'] == 'Buy'?'bg-lightgreen':' bg-lightpink' }}">
+                <div class="flex items-center justify-between border p-5 rounded-lg">
                     <div class="flex items-center justify-between space-x-6">
                         <div class="w-12 h-12 rounded-lg">
                             <x-icon name="{{ $item['icon'] }}" class="h-full w-full"/>

@@ -16,6 +16,12 @@ class UserCreditLog extends Model
     }
 
 
+    public function action(): BelongsTo
+    {
+        return $this->belongsTo(UserCreditAction::class, "user_credit_action_id");
+    }
+
+
     public function getName(): string
     {
         return "#" . $this->id . ": "  . $this->action_code . " " . $this->created_at->format("Y-m-d H:i:s");

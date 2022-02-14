@@ -18,8 +18,8 @@
                 <p class="text-lg font-bold">{{ __('Free Sign In') }}</p>
                 <div class="h-full w-full flex items-center">
                     <div class="space-y-0 md:space-y-6 space-x-4 md:space-x-0 grid grid-cols-2 md:grid-cols-1">
-                        <x-social-auth-item size="lg" name="google" type="google" icon="google-circle">{{ __("Sign in with Google") }}</x-social-auth-item>
-                        <x-social-auth-item size="lg" name="facebook" type="facebook" icon="facebook-circle">{{ __("Sign in with Facebook") }}</x-social-auth-item>
+                        <x-social-auth-item size="lg" name="google" type="google" icon="social.google-circle">{{ __("Sign in with Google") }}</x-social-auth-item>
+                        <x-social-auth-item size="lg" name="facebook" type="facebook" icon="social.facebook-circle">{{ __("Sign in with Facebook") }}</x-social-auth-item>
                     </div>
                 </div>
             </div>

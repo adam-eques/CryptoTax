@@ -1,6 +1,6 @@
 <div>
     <div class="bg-gray-100 w-full px-10 py-6 rounded">
-        <span class="text-xl font-extrabold">{{ __('Two-Factor Authentication') }}</span>
+        <span class="text-2xl font-bold">{{ __('Two-Factor Authentication') }}</span>
     </div>
     <div class="px-5 py-5 md:px-10 md:py-10 divide-y">
         <div class="block md:flex justify-between items-center py-10">

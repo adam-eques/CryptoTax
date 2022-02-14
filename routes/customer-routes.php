@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Livewire;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,7 +11,7 @@ Route::middleware('customer-setup')->group(function(){
     })->name('dashboard');
 
     // TODO routes
-    Route::view('account', 'pages.customer.account.index')->name('account');
+    Route::get('account', \App\Http\Livewire\Customer\Account\Accounts::class)->name('account');
     Route::view('portfolio', 'pages.customer.portfolio.portfolio')->name('portfolio');
     Route::view('taxes', 'pages.customer.taxes.taxes')->name('taxes');
     Route::view('advisor', 'pages.customer.advisor.advisor')->name('advisor');
@@ -25,7 +26,7 @@ Route::middleware('customer-setup')->group(function(){
     Route::view('taxes/tax-saving-opportunities', 'pages.customer.taxes.tax-saving-opportunities')->name('taxes.tax-saving-opportunities');
 
     // Advisor
-    Route::view('advisor/detail', 'pages.customer.advisor.advisor-detail')->name('advisor.detail');
+    Route::get('advisor/{id?}', \App\Http\Livewire\Customer\Advisor\Detail::class)->name('advisor.detail');
 
     // Invite Friends
     Route::view('invite', 'pages.customer.invite.invite')->name('invite');
@@ -34,6 +35,9 @@ Route::middleware('customer-setup')->group(function(){
     Route::prefix("test")->as("test.")->group(function() {
         Route::get('transactions', [Controllers\Customer\TransactionController::class, 'index'])
             ->name('transactions');
+
+        // Test: buy credits
+        Route::any("buy-credits", Livewire\Customer\Test\BuyCredit::class);
     });
 
     // fetch exchange trades 
@@ -47,6 +51,9 @@ Route::get('user-setting/{category?}', function($category = "profile"){
         "category" => $category
     ]);
 })->name('user-setting');
+
+//Message
+Route::view('message', 'pages.user-setting.message')->name('message');
 
 // Specials
 Route::view('/todo', 'errors.todo')->name('todo');

@@ -1,6 +1,6 @@
 <div>
     <div class="bg-gray-100 w-full px-10 py-6 rounded">
-        <span class="text-xl font-extrabold">{{ __('Request Exchange') }}</span>
+        <span class="text-2xl font-bold">{{ __('Request Exchange') }}</span>
     </div>
     <div class="px-5 py-5 md:px-10 md:py-10">
         <div>

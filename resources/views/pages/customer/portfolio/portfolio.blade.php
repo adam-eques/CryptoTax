@@ -43,7 +43,7 @@
         
         @livewire('customer.portfolio.overview')
         @livewire('customer.portfolio.line-chart')
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 py-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4 py-4">
             <div class="col-span-1 space-y-5 h-full">
                 <div class="border rounded-lg p-5">
                     @livewire('customer.portfolio.allocation')

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="605.998" height="438.789" viewBox="0 0 605.998 438.789">
+  <defs>
+    <filter id="Path_2649" x="0" y="0" width="420.789" height="438.789" filterUnits="userSpaceOnUse">
+      <feOffset dy="33" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_2650" x="185.21" y="0" width="420.789" height="438.789" filterUnits="userSpaceOnUse">
+      <feOffset dy="33" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_3824" data-name="Group 3824" transform="translate(-1029 -88.73)">
+    <g transform="matrix(1, 0, 0, 1, 1029, 88.73)" filter="url(#Path_2649)">
+      <g id="Path_2649-2" data-name="Path 2649" transform="translate(210.39) rotate(45)" fill="none">
+        <path d="M0,0,276.329,0l0,276.326L0,276.329Z" stroke="none"/>
+        <path d="M 231.3286895751953 45.00057983398438 L 45.00311279296875 45.00311279296875 L 45.00057983398438 231.3286895751953 L 231.3260955810547 231.3260955810547 L 231.3286895751953 45.00057983398438 M 276.3293151855469 -3.0517578125e-05 L 276.3254699707031 276.3254699707031 L -3.0517578125e-05 276.3293151855469 L 0.00372314453125 0.00372314453125 L 276.3293151855469 -3.0517578125e-05 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1029, 88.73)" filter="url(#Path_2650)">
+      <g id="Path_2650-2" data-name="Path 2650" transform="translate(395.6) rotate(45)" fill="none">
+        <path d="M0,0,276.329,0l0,276.326L0,276.329Z" stroke="none"/>
+        <path d="M 231.3286895751953 45.00057983398438 L 45.00311279296875 45.00311279296875 L 45.00057983398438 231.3286895751953 L 231.3260955810547 231.3260955810547 L 231.3286895751953 45.00057983398438 M 276.3293151855469 -3.0517578125e-05 L 276.3254699707031 276.3254699707031 L -3.0517578125e-05 276.3293151855469 L 0.00372314453125 0.00372314453125 L 276.3293151855469 -3.0517578125e-05 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -18,6 +18,10 @@ class CryptoExchangeForm extends ResourceForm
                 Forms\Components\TextInput::make('name')
                     ->label(__("Name"))
                     ->required(),
+                Forms\Components\TextInput::make('website')
+                    ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->required(),
                 Forms\Components\Toggle::make("active")
                     ->label(__("Status"))
             ])

@@ -22,21 +22,14 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public ?CryptoExchangeAccount $account = null;
     public ?BlockchainAccount $blockchain = null;
 
-    public function __construct()
+    public function mount()
     {
-        if (auth()->user()->blockchainAccounts->count()) {
-            $this->account = null;
-            $this->blockchain = BlockchainAccount::query()
-                ->where('user_id', auth()->user()->id)
-                ->first();
-        }
-        else {
-            $this->blockchain = null;
-            $this->account = CryptoExchangeAccount::query()
-                ->where('user_id', auth()->user()->id)
-                ->whereJsonLength('credentials','>', 0)
-                ->first();
-        }
+        $this->blockchain = null;
+        $this->account = CryptoExchangeAccount::query()
+            ->where('user_id', auth()->user()->id)
+            ->whereJsonLength('credentials','>', 0)
+            ->first(); 
+        $this->edit_exchange();
     }
 
     protected function getFormSchema(): array
@@ -51,11 +44,13 @@ class Accounts extends Component implements Forms\Contracts\HasForms
                 ->visible(fn($livewire) => $livewire->isRequiredField('secret'))
                 ->label(__("Secret"))
                 ->required()
+                ->password()
                 ->placeholder(__("Your API secret")),
             Forms\Components\TextInput::make('password')
                 ->visible(fn($livewire) => $livewire->isRequiredField('password'))
                 ->label(__("Passphrase"))
                 ->required()
+                ->password()
                 ->placeholder(__("Your API passphrase")),
         ];
     }
@@ -65,7 +60,6 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         if ($this->account) {
             $api = $this->account->getApi();
             $requiredCredentials = $api->getRequiredCredentials();
-
             return $requiredCredentials[$fieldName];
         }
 
@@ -123,8 +117,6 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function get_selected_account(CryptoExchangeAccount $account){
         $this->account = $account;
         $this->blockchain = null;
-        // dd($this->account->getApi());
-
     }
 
     // blockchains
@@ -174,11 +166,11 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             ->whereJsonLength('credentials','>', 0)
             ->get();
 
+
         $blockchainAccounts = BlockchainAccount::query()
             ->where('user_id', auth()->user()->id)
             ->get();
 
-        // dd($cryptoExchangeAccounts->toArray());
         $rows = [
             ["id" => 1, "label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
             ["id" => 2, "label" => "Wallets", "items" => [ ]],

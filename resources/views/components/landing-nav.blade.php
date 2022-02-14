@@ -39,16 +39,26 @@
                     @switch($for)
                         @case('customer')                            
                             @if ($logo == "primary")
-                                <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="w-9">
-                                <span class="ml-2 text-md lg:text-xl font-semibold text-primary">MyCrypto Tax</span>
+                                <img src="{{asset('/assets/img/logo_primary.svg')}}" alt="Logo" class="h-10 hidden lg:block">
+                                <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-10 block lg:hidden">
+                                <div class="ml-1">
+                                    <p class="text-md font-semibold text-white lg:text-primary">my</p>
+                                    <h3 class="text-2xl font-bold text-white lg:text-primary leading-5">Crypto.Tax</h3>
+                                </div>
                             @else 
-                                <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
-                                <span class="ml-2 text-md lg:text-xl font-semibold text-white">MyCrypto Tax</span>
+                                <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-10">
+                                <div class="ml-1">
+                                    <p class="text-md font-semibold text-white">my</p>
+                                    <h3 class="text-2xl font-bold text-white leading-5">Crypto.Tax</h3>
+                                </div>
                             @endif
                             @break
                         @case('affiliate')                            
-                            <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="w-9">
-                            <span class="ml-2 text-md lg:text-xl font-bold text-white">MyCrypto Tax</span>
+                            <img src="{{asset('/assets/img/logo.svg')}}" alt="Logo" class="h-9">
+                            <div class="ml-1">
+                                <p class="text-md font-semibold text-white">my</p>
+                                <h3 class="text-2xl font-extrabold text-white leading-5">Crypto Tax</h3>
+                            </div>
                             <span class="ml-2 text-md lg:text-xl font-bold text-secondary italic">Affiliate</span>
                             @break
                         @default                            
@@ -58,17 +68,19 @@
 
             {{-- Desktop View --}}
             <div class="ml-auto mr-5 items-center gap-6 lg:flex hidden">
-                <div class="flex items-center gap-10">
-                    @foreach ($links as $link)                
-                        @if (\Request::route() && \Request::route()->getName() === $link['route'])
-                            <a href="{{ route($link['route']) }}" class="{{ $textColor }} font-semibold border-b-2 border-secondary">{{ __($link['name']) }}</a>
-                        @else
+                <div class="flex items-start gap-10">
+                    @foreach ($links as $link)  
+                        <div>
                             <a href="{{ route($link['route']) }}" class="{{ $textColor }} font-semibold">{{ __($link['name']) }}</a>
-                        @endif        
+                            @if (\Request::route() && \Request::route()->getName() === $link['route'])
+                                <div class="h-1 w-6 bg-secondary"></div>
+                            @endif        
+                        </div>              
                     @endforeach
                 </div>
                 @if (auth()->user())                    
-                    <a href="{{ route('logout') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign out') }}</a>
+                    {{-- <a href="{{ route('logout') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign out') }}</a> --}}
+                    <x-landing-nav-dropdown />
                 @else
                     <a href="{{ route('login') }}" class="bg-transparent font-bold {{ $textColor }} hover:text-white hover:bg-secondary px-8 py-2 border rounded">{{ __('Sign in') }}</a>
                     <a href="{{ route('register') }}" class="font-bold text-white px-8 py-2 rounded bg-secondary hover:bg-primary">{{ __('Sign Up') }}</a>

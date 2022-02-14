@@ -9,7 +9,7 @@ class About extends Component
     public?array $steps = null;
     public?int $selected_step = null;
 
-    public function __construct()
+    public function mount()
     {
         $this->steps = [
             [ 

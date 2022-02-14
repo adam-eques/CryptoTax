@@ -23,11 +23,12 @@ class UserCreditActionSeeder extends Seeder
                 'valid_from' => $now,
                 'valid_till' => null,
             ],
+            // Add premium
             [
                 'action_code' => CreditCodeService::ACTION_ADD_PREMIUM_YEAR,
                 'name' => "Premium (Year)",
                 "name_public" => "Become premium member",
-                'value' => 2500,
+                'value' => 100,
                 'valid_from' => $now,
                 'valid_till' => null,
             ],
@@ -35,13 +36,43 @@ class UserCreditActionSeeder extends Seeder
                 'action_code' => CreditCodeService::ACTION_ADD_PREMIUM_MONTH,
                 'name' => "Premium (Month)",
                 "name_public" => "Become premium member",
-                'value' => 210,
+                'value' => 8.4,
+                'valid_from' => $now,
+                'valid_till' => null,
+            ],
+            // Buy credits
+            [
+                'action_code' => CreditCodeService::ACTION_BUY_CREDITS,
+                'name' => "Buy 100 Credits for 100$",
+                "name_public" => "100 Credits for 100$",
+                'value' => 100,
+                'price' => 100,
+                'valid_from' => $now,
+                'valid_till' => null,
+            ],
+            [
+                'action_code' => CreditCodeService::ACTION_BUY_CREDITS,
+                'name' => "Buy 300 Credits for 200$",
+                "name_public" => "300 Credits for 200$",
+                'value' => 300,
+                'price' => 200,
+                'valid_from' => $now,
+                'valid_till' => null,
+            ],
+            [
+                'action_code' => CreditCodeService::ACTION_BUY_CREDITS,
+                'name' => "Buy 700 Credits for 500$",
+                "name_public" => "700 Credits for 500$",
+                'value' => 700,
+                'price' => 500,
                 'valid_from' => $now,
                 'valid_till' => null,
             ],
         ])->each(function($data){
             $exists = UserCreditAction::query()
                 ->where("action_code", $data["action_code"])
+                ->where("name", $data["name"])
+                ->where("value", $data["value"])
                 ->exists();
 
             if(!$exists) {

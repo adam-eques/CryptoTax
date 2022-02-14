@@ -28,3 +28,17 @@ if (! function_exists('notify')) {
         ]);
     }
 }
+
+if (! function_exists('getGitInfos')) {
+    function getGitInfos(): array
+    {
+        $array = [
+            "status" => [],
+            "log" => []
+        ];
+        exec('git status',$array["status"]);
+        exec('git log -3',$array["log"]);
+
+        return $array;
+    }
+}

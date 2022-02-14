@@ -10,3 +10,36 @@
 } */
 
 [x-cloak] { display: none !important; }
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 6px solid #fff;
+    height: 21px;
+    width: 21px;
+    border-radius: 100%;
+    background: #7A6CFF;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    border: 6px solid #fff;
+    height: 21px;
+    width: 21px;
+    border-radius: 100%;
+    background: #7A6CFF;
+    cursor: pointer;
+    border-radius: 100%;
+}
+  
+  /* All the same stuff for IE */
+  input[type=range]::-ms-thumb {
+    border: 6px solid #fff;
+    height: 21px;
+    width: 21px;
+    border-radius: 100%;
+    background: #7A6CFF;
+    cursor: pointer;
+    border-radius: 100%;
+}

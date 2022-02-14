@@ -1,4 +1,4 @@
-<div class=" bg-bgcolor1 rounded-md text-white w-full px-5 md:px-8 xl:px-11 py-5 md:py-8 xl:py-12 relative">
+<div class=" bg-white shadow-md rounded-md text-white w-full px-5 md:px-8 xl:px-11 py-5 md:py-8 xl:py-12 relative">
     <img src="{{asset($selected['image'])}}" class="w-1/2 h-full absolute -bottom-6 right-2"/>
     <div class="max-w-lg z-10 relative">
         <h2 class="text-primary text-3xl font-semibold">{{ __('Hello ' . auth()->user()->name) }}</h2>

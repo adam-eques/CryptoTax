@@ -23,6 +23,10 @@ class UserCreditActionTable extends ResourceTable
             TextColumn::make("value")
                 ->label("Credits")
                 ->sortable(),
+            TextColumn::make("price")
+                ->label("Price")
+                ->money()
+                ->sortable(),
             TextColumn::make('valid_from')
                 ->dateTime()
                 ->sortable(),
