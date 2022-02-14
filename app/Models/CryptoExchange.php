@@ -10,6 +10,7 @@ class CryptoExchange extends Model
     use HasName;
     const EXCHANGE_KUCOIN = 1;
     const EXCHANGE_HITBTC = 2;
+    const EXCHANGE_BINANCE = 3;
     protected $fillable = [
         "name", "active"
     ];

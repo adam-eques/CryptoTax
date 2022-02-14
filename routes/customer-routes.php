@@ -35,6 +35,9 @@ Route::middleware('customer-setup')->group(function(){
         Route::get('transactions', [Controllers\Customer\TransactionController::class, 'index'])
             ->name('transactions');
     });
+
+    // fetch exchange trades 
+    Route::post('fetch-trades', [Controllers\Customer\TradeController::class, 'fatchCointrades']);
 });
 
 // Settings
