@@ -35,7 +35,7 @@
         {{-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
             {{ __('Profile') }}
         </x-jet-dropdown-link> --}}
-        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
+        <x-jet-dropdown-link href="{{ route('customer.message') }}" class="flex items-center gap-3 py-3">
             <x-icon name="message" class="w-6"/>
             {{ __('Messages') }}
         </x-jet-dropdown-link>
@@ -47,7 +47,7 @@
             <x-icon name="payment-card" class="w-6"/>
             {{ __('Payment Informations') }}
         </x-jet-dropdown-link>
-        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
+        <x-jet-dropdown-link href="{{ route('index') }}" class="flex items-center gap-3 py-3">
             <x-icon name="bill" class="w-6"/>
             {{ __('Billing') }}
         </x-jet-dropdown-link>

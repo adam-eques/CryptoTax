@@ -99,7 +99,7 @@
                 {{-- <a href="#" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">
                     {{ __('Your Profile') }}
                 </a> --}}
-                <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Messages') }}</a>
+                <a href="{{ route('customer.message') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Messages') }}</a>
                 <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Notifications') }}</a>
                 <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Payment Informations') }}</a>
                 <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Billing') }}</a>
