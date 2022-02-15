@@ -15,6 +15,7 @@ Route::view('/policy', 'pages.landing-pages.policy')->name('policy');
 Route::view('/pricing', 'pages.landing-pages.pricing')->name('pricing');
 Route::view('/about', 'pages.landing-pages.about')->name('about');
 Route::view('/blog', 'pages.landing-pages.blogs')->name('blog');
+Route::view('/risk', 'pages.landing-pages.risk')->name('risk');
 
 Route::redirect('blog-detail', 'blog-detail/1');
 Route::get('blog-detail/{id?}', function($id = 1){

@@ -35,7 +35,7 @@
                         ['link' => 'Imprint', 'route' => 'index'], 
                         ['link' => 'Terms of Service', 'route' => 'terms'],
                         ['link' => 'Privacy Polity', 'route' => 'policy'],
-                        ['link' => 'Risk and Disclaimer', 'route' => 'contact']
+                        ['link' => 'Risk and Disclaimer', 'route' => 'risk']
                     ],
                     'Other' => [ 
                         ['link' => 'Tax Advisor', 'route' => 'index'], 
