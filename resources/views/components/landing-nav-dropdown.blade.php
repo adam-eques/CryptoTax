@@ -24,14 +24,14 @@
         x-transition:enter-start="transition ease-in duration-3000">
              
         <a href="{{ route('customer.dashboard') }}" class="flex items-center space-x-4 py-2 px-4 text-primary hover:bg-gray-100 text-base">
-            <x-icon name="dashboard" class="w-6"/>
+            <x-icon name="dashboard" class="w-4"/>
             <span>{{ __('Dashboard') }}</span>
         </a>
 
         <div class="border-t border-gray-100"></div>
 
         <a href="{{ route('logout') }}" class="flex items-center space-x-4 py-2 px-4 text-primary hover:bg-gray-100 text-base">
-            <x-icon name="dashboard" class="w-6"/>
+            <x-icon name="log-out" class="w-4"/>
             <span>{{ __('Log Out') }}</span>
         </a>
     </div>

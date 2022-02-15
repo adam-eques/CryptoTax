@@ -1,5 +1,4 @@
 <div class="bg-white shadow-md rounded-md p-5 w-full mt-6 sm:mt-10">
-    {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-x-6 md:gap-y-5">
         <div class="flex items-center space-x-2 py-5">
             <x-icon name="donut" class="w-8 h-8 text-primary"/>
@@ -23,10 +22,10 @@
         </div>
         <div class="col-span-5 h-full">
             <div class="flex justify-end space-x-2 col-span-8">
-                <x-speech-button :active="false"> {{ __('24H') }} </x-speech-button>
-                <x-speech-button :active="true"> {{ __('7D') }} </x-speech-button>
-                <x-speech-button :active="false"> {{ __('1M') }} </x-speech-button>
-                <x-speech-button :active="false"> {{ __('1Y') }} </x-speech-button>
+                <x-speech-button :active="$selected_category == 'day'" wire:click="select_category('day')"> {{ __('24H') }} </x-speech-button>
+                <x-speech-button :active="$selected_category == 'week'" wire:click="select_category('week')"> {{ __('7D') }} </x-speech-button>
+                <x-speech-button :active="$selected_category == 'month'" wire:click="select_category('month')"> {{ __('1M') }} </x-speech-button>
+                <x-speech-button :active="$selected_category == 'year'" wire:click="select_category('year')"> {{ __('1Y') }} </x-speech-button>
             </div>
             <div class="mt-8">
                 <div id="line-chart" class="-my-5"></div>
@@ -37,47 +36,7 @@
 
 @push('scripts')
 <script>
-
     (function () {
-        var options = {
-            chart: {
-                type: 'area',
-                toolbar: {
-                    show: false
-                },
-                height: "300",
-            },
-            grid: {
-                show: false,
-                padding: {
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    bottom: 0
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 3
-            },
-            colors: ["#181C3A"],
-            series: [{
-                name: 'sales',
-                data: [30,40,35,50,49,60,70,91,125]
-            }],
-            xaxis: {
-                categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999],
-                tooltip: {
-                    enabled: false
-                }
-            },
-        }
-        const chart = new ApexCharts(document.getElementById(`line-chart`), options);
-        chart.render();
-
         var options_bar = {
             series: [
                 {
@@ -145,6 +104,57 @@
 
         var chart_bar = new ApexCharts(document.getElementById(`column_chart`), options_bar);
         chart_bar.render();
+
+        var options = {
+            chart: {
+                type: 'area',
+                toolbar: {
+                    show: false
+                },
+                height: "300",
+            },
+            grid: {
+                show: false,
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            },
+            colors: ["#181C3A"],
+            series: [{
+                name: 'sales',
+                data: [30,40,35,50,49,60,70,91,125,70,91,125]
+            }],
+            xaxis: {
+                categories: @json($label),
+                tooltip: {
+                    enabled: false
+                }
+            },
+        }
+        const chart = new ApexCharts(document.getElementById(`line-chart`), options);
+        chart.render();
+
+        document.addEventListener('livewire:load', () => {
+            console.log("Reload");
+            // @this.on(`refreshChartData-{!! 'line-chart' !!}`, () => {
+            //     chart.updateOptions({
+            //         xaxis: {
+            //             categories: @jsone($label)
+            //         }
+            //     });
+            // });
+        })
+
     }());
 </script>
 @endpush

@@ -91,24 +91,28 @@
         @livewire('landing-page.testimonials')
     </x-container>
     <div class="bg-white">
-        <x-container class="grid grid-cols-1 md:grid-cols-2 gap-60 py-16 md:py-26">
-            <div>
+        <x-container class="grid grid-cols-1 xl:grid-cols-2 gap-10 xl:gap-60 pt-14">
+            <div class="pt-16">
                 <h3 class="text-2xl lg:text-4xl font-bold">{{ __('Support') }}</h3>
                 <p class="mt-6 leading-loose">{{ __('Choose the most convenient way to contact our support team. Ask your question via email or online chat. Experienced professionals will answer any of your questions about the platform.') }}</p>
-                <div class="mt-10 grid grid-cols-1 md:grid-cols-3 divide-x">
-                    <div>
+                
+                <div class="mt-10 flex items-start space-x-2 md:space-x-8">
+                    <div class="border-r">
                         <h3 class="text-2xl lg:text-4xl font-bold">{{ __('20k +') }}</h3>
+                        <p class="text-gray-400 sm:text-base text-sm">{{ __('Resolved Issues Daily') }}</p>
+                    </div>
+                    <div class="border-r">
+                        <h3 class="text-2xl lg:text-4xl font-bold">{{ __('15') }}</h3>
+                        <p class="text-gray-400 sm:text-base text-sm">{{ __('Average Seconds of Waiting') }}</p>
                     </div>
                     <div>
-                        <h3 class="text-2xl lg:text-4xl font-bold">{{ __('20k +') }}</h3>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl lg:text-4xl font-bold">{{ __('20k +') }}</h3>
+                        <h3 class="text-2xl lg:text-4xl font-bold">{{ __('14') }}</h3>
+                        <p class="text-gray-400 sm:text-base text-sm">{{ __('Languages Of Communication') }}</p>
                     </div>
                 </div>
             </div>
             <div>
-
+                <img src="{{ asset('assets/img/subpage_images/about_contact.svg') }}"/>
             </div>
         </x-container>
         <x-footer-get-start/>

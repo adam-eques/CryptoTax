@@ -33,8 +33,8 @@
                         </div>
                     </div>
                     <div>
-                        <p>{{ $item['balance'] }}</p>
-                        <p>{{ $item['time'] }}</p>
+                        <h5 class="text-lg font-bold">{{ $item['balance'] }}</h5>
+                        <p class="text-sm text-gray-400 mt-2">{{ $item['time'] }}</p>
                     </div>
                 </div>
             @endforeach
