@@ -23,6 +23,9 @@ Route::get('/dashboard', function () {
 \App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource::routes();
 \App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource::routes();
 
+// Settings
+Route::get("settings/affiliate", \App\CaravelAdmin\Settings\AffiliateSettingForm::class)->name("settings.affiliate");
+
 // Specials
 Route::view('/todo', 'errors.todo')->name('todo');
 

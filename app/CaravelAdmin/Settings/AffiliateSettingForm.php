@@ -1,0 +1,80 @@
+<?php
+
+namespace App\CaravelAdmin\Settings;
+
+use App\Settings\AffiliateSetting;
+use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use WebCaravel\Admin\Settings\SettingsForm;
+
+class AffiliateSettingForm extends SettingsForm
+{
+    public string $settingClass = AffiliateSetting::class;
+    public string $title = "Affiliate Setting";
+
+
+    protected function getFormSchema(): array
+    {
+        return [
+            Forms\Components\Card::make([
+                Fieldset::make('First Level')
+                    ->schema([
+                        Forms\Components\TextInput::make('first_level_lifetime')
+                            ->label('First level lifetime')
+                            ->helperText('Lifetime in months')
+                            ->postfix("months")
+                            ->required()
+                            ->numeric()
+                            ->minValue(1)
+                            ->maxValue(999),
+                        Forms\Components\TextInput::make('first_level_percentage')
+                            ->label('First level percentage')
+                            ->postfix("%")
+                            ->required()
+                            ->numeric()
+                            ->minValue(0.01)
+                            ->maxValue(100),
+                    ]),
+
+                Fieldset::make('Second Level')->schema([
+                    Forms\Components\TextInput::make('second_level_lifetime')
+                        ->label('Second level lifetime')
+                        ->helperText('Lifetime in months')
+                        ->postfix("months")
+                        ->required()
+                        ->numeric()
+                        ->minValue(1)
+                        ->maxValue(999),
+
+                    Forms\Components\TextInput::make('second_level_percentage')
+                        ->label('Second level percentage')
+                        ->postfix("%")
+                        ->required()
+                        ->numeric()
+                        ->minValue(0.01)
+                        ->maxValue(100),
+                ]),
+
+                Fieldset::make('Payout')->schema([
+                    Forms\Components\TextInput::make('min_payout_value')
+                        ->label('Min payout value')
+                        ->helperText('Minimum $ value for payout')
+                        ->postfix("$")
+                        ->required()
+                        ->numeric()
+                        ->minValue(1)
+                        ->maxValue(999),
+                    Forms\Components\TextInput::make('conversion_rate')
+                        ->label('Conversion rate')
+                        ->helperText('How much $ will you get for 1 Credit')
+                        ->postfix("$")
+                        ->required()
+                        ->numeric()
+                        ->rules(['regex:/^\d{1,6}(\.\d{0,2})?$/'])
+                        ->minValue(0.01)
+                        ->maxValue(999),
+                ])
+            ])
+        ];
+    }
+}

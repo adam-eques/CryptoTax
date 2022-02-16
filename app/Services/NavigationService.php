@@ -181,14 +181,14 @@ class NavigationService
                 UserAccountTypeResource::make()->sidebar(),
                 UserCreditActionResource::make()->sidebar()
             ]],
-            ["label" => __('Advertising'), 'children' => [
-                ["label" => "Advertising", "icon" => "fas-ad", "route" => "admin.todo"],
-            ]],
             ["label" => __('Finance'), 'children' => [
                 ["label" => "Finance", "icon" => "fas-coins", "route" => "admin.todo"],
             ]],
             ["label" => __('API\'s'), 'children' => [
                 CryptoExchangeResource::make()->sidebar(),
+            ]],
+            ["label" => __('Settings'), 'children' => [
+                ["label" => "Affiliate", "icon" => "fas-ad", "route" => "admin.settings.affiliate"],
             ]],
             ["label" => __('Administration'), 'children' => [
                 ["label" => "Telescope", "icon" => "fas-binoculars", "route" => "telescope", "target" => "_blank"],
