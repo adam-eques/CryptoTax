@@ -161,13 +161,12 @@ class Accounts extends Component implements Forms\Contracts\HasForms
    
     public function render()
     {
-
         $cryptoExchangeAccounts = CryptoExchangeAccount::query()
             ->where('user_id', auth()->user()->id)
             ->whereJsonLength('credentials','>', 0)
             ->get();
 
-        
+
         $blockchainAccounts = BlockchainAccount::query()
             ->where('user_id', auth()->user()->id)
             ->get();

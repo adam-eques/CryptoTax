@@ -2,7 +2,8 @@
     <x-customers.customer-header-bar icon="wallet" name="Accounts">
         @if($account)
             @if($account->hasAllCredentials())
-                <x-button variant="white" class="col-span-1 border-primary" :disabled="$account->fetching_scheduled_at" wire:click="fetch_exchange({{$account->id}})">
+                <x-button variant="white" class="border-primary col-span-1" :disabled="$account->fetching_scheduled_at" wire:click="fetch_exchange({{$account->id}})" onclick="fetchTradedata({{$account->id}})">
+
                     <x-icon name="sync" class="w-5 mr-2" />{{ __('Sync ') }}
                 </x-button>
             @endif
@@ -235,6 +236,36 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var url = "{{ url('fetch-trades') }}";
+    function sendRequest(status, data)
+    {
+        if(status !== 'finish')
+        {
+            window.axios.post(url, data)
+            .then(res => {
+                let res_status = res.data.result.status;
+                data.data_index = res.data.result.data_index;
+                setTimeout(sendRequest(res_status, data), 3 * 1000);
+            })
+            .catch(function (error){
+                let res_status = error;
+                setTimeout(sendRequest(res_status, data), 3 * 1000);
+            });
+        }else{
+            return;
+        }
+    }
+
+    function fetchTradedata(exchange_id)
+    {
+        let data = {
+            exchange_id: exchange_id,
+            data_index: 0
+        }
+        sendRequest('start', data);
+    }
+</script>
 
 
 

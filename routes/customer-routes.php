@@ -39,6 +39,9 @@ Route::middleware('customer-setup')->group(function(){
         // Test: buy credits
         Route::any("buy-credits", Livewire\Customer\Test\BuyCredit::class);
     });
+
+    // fetch exchange trades 
+    Route::post('fetch-trades', [Controllers\Customer\TradeController::class, 'fatchCointrades']);
 });
 
 // Settings

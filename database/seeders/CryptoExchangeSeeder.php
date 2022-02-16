@@ -31,7 +31,9 @@ class CryptoExchangeSeeder extends Seeder
                 'id' => CryptoExchange::EXCHANGE_BINANCE,
                 'name' => "Binance",
                 'description' => 'Binance lorem ipsum dolor.',
-                'website' => "",
+
+                'website' => "https://binance.com/",
+
                 'driver' => BinanceDriver::class
             ],
         ])->each(function($data){
