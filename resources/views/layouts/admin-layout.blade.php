@@ -26,7 +26,7 @@
         {{-- Mobile menu bar --}}
         <div class="bg-primary text-gray-100 flex justify-between md:hidden">
             <a href="#" class="p-4 text-white font-bold flex">
-                <img src="{{ asset("assets/img/logo.jpg") }}" alt="Logo" class="rounded-2xl mr-2 h-8">
+                <img src="{{ asset("assets/img/logo.svg") }}" alt="Logo" class="rounded-2xl mr-2 h-8">
                 <span class="mt-1">myCrypto Tax</span>
             </a>
             <button class="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700" @click="mobileSidebar = !mobileSidebar">
@@ -41,7 +41,7 @@
              x-bind:class="!mobileSidebar ? '-translate-x-full' : ''">
             {{-- Logo --}}
             <a href="{{ route("admin.dashboard") }}" class="text-white flex items-center space-x-2 px-4 text-lg font-bold">
-                <img src="{{ asset("assets/img/logo.jpg") }}" alt="Logo" class="rounded-2xl mr-2 h-8"> myCrypto Tax
+                <img src="{{ asset("assets/img/logo.svg") }}" alt="Logo" class="rounded-2xl mr-2 h-8"> myCrypto Tax
             </a>
 
             {{-- Nav --}}
