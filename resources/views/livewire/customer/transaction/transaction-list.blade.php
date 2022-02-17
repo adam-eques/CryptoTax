@@ -52,7 +52,7 @@
             <div class="grid grid-cols-3 p-9 border min-w-max">
                 <div class="flex justify-start items-center">
                     <input type="checkbox">
-                    <x-icon name="coins.{{$transaction->cryptoExchangeAccount->cryptoExchange->getName()}}" class="w-18 h-18 ml-7"/>
+                    <x-icon name="coins.{{strtolower($transaction->cryptoExchangeAccount->cryptoExchange->getName())}}" class="w-18 h-18 ml-7"/>
                     <div class="w-full ml-7 space-y-1">
                         <p class="text-gray-500">{{$transaction->cryptoExchangeAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[0] }} {{ __('Wallet') }} </p>
                         <p class="font-semibold text-lg"> {{ $transaction->amount }} {{ explode('/', $transaction->symbol)[0] }} </p>
@@ -87,7 +87,7 @@
                    
                 </div>
                 <div class="flex justify-between items-center">
-                    <x-icon name="coins.{{$transaction->cryptoExchangeAccount->cryptoExchange->getName()}}" class="w-18 h-18 ml-7"/>
+                    <x-icon name="coins.{{strtolower($transaction->cryptoExchangeAccount->cryptoExchange->getName())}}" class="w-18 h-18 ml-7"/>
                     <div class="w-full ml-7 space-y-1">
                         <p class="text-gray-500">{{$transaction->cryptoExchangeAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[1] }} {{ __('Wallet') }}</p>
                         <p class="font-semibold text-lg">{{ $transaction->cost }} {{ explode('/', $transaction->symbol)[1] }}</p>
