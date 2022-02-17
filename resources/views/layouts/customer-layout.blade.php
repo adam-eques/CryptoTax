@@ -17,23 +17,24 @@
     {{-- Push ApexCharts to the top of the scripts stack --}}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
+    @include("layouts.partials.google-analytics-header")
 </head>
 <body>
-<div class="overflow-hidden">
-    <header>
-        <x-customers.navi />
-    </header>
+    @include("layouts.partials.google-analytics-body")
+    <div class="overflow-hidden">
+        <header>
+            <x-customers.navi />
+        </header>
 
-    <main>
-        {{ $slot }}
-    </main>
+        <main>
+            {{ $slot }}
+        </main>
 
-    <x-footer/>
-</div>
+        <x-footer/>
+    </div>
 
-@livewireScripts
-@stack('scripts')
-<x-notifications />
+    @livewireScripts
+    @stack('scripts')
+    <x-notifications />
 </body>
 </html>

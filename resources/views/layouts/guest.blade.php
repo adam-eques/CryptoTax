@@ -15,8 +15,12 @@
 
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+        @include("layouts.partials.google-analytics-header")
     </head>
     <body>
+        @include("layouts.partials.google-analytics-body")
+
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
