@@ -23,7 +23,7 @@
                 $links = [
                     'About' => [ 
                         ['link' => 'About us', 'route' => 'about'], 
-                        ['link' => 'Help Center', 'route' => 'index'], 
+                        ['link' => 'Help Center', 'route' => 'help'], 
                         ['link' => 'Contact', 'route' => 'contact']
                     ],
                     'Product' => [ 
@@ -32,7 +32,7 @@
                         ['link' => 'FAQ', 'route' => 'faqs']
                     ],
                     'Legal' => [ 
-                        ['link' => 'Imprint', 'route' => 'index'], 
+                        ['link' => 'Imprint', 'route' => 'imprint'], 
                         ['link' => 'Terms of Service', 'route' => 'terms'],
                         ['link' => 'Privacy Polity', 'route' => 'policy'],
                         ['link' => 'Risk and Disclaimer', 'route' => 'risk']

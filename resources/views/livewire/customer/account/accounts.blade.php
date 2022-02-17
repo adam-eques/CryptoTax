@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                             <div x-show="action == 'edit'">
-                                <form wire:submit.prevent="save_exchange">
+                                <form wire:submit.prevent="save_exchange" autocomplete="off">
                                     <div class="p-4">
                                         {{ $this->form }}
                                         <div class="mt-4 text-center">
