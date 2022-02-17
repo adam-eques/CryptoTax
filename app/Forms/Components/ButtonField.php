@@ -2,14 +2,13 @@
 
 namespace App\Forms\Components;
 
-use Filament\Forms\Components\Field;
+use Filament\Forms\Components\Placeholder;
 
-class ButtonField extends Field
+class ButtonField extends Placeholder
 {
     protected string $view = 'forms.components.button-field';
     protected bool $targetBlank = false;
     protected string|\Closure $href;
-    protected string|\Closure $content;
 
 
     /**
@@ -38,14 +37,6 @@ class ButtonField extends Field
     public function href(string|\Closure $val): self
     {
         $this->href = $val;
-
-        return $this;
-    }
-
-
-    public function content(string|\Closure $val): self
-    {
-        $this->content = $val;
 
         return $this;
     }

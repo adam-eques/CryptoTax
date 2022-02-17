@@ -5,10 +5,9 @@
     :helper-text="$getHelperText()"
     :hint="$getHint()"
     :hint-icon="$getHintIcon()"
-    :required="$isRequired()"
     :state-path="$getStatePath()"
 >
-    <div x-data="{ state: $wire.entangle('{{ $getStatePath() }}') }">
+    <div {{ $attributes->merge($getExtraAttributes())->class('filament-forms-placeholder-component') }}>
         <x-button size="xs" tag="a" href="{{ $getHref() }}" :target="$isTargetBlank() ? '_blank': ''">{{ $getContent() }}</x-button>
     </div>
 </x-forms::field-wrapper>
