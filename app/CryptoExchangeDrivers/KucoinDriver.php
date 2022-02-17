@@ -22,19 +22,11 @@ class KucoinDriver extends Driver
      */
     protected function connect(): self
     {
-        date_default_timezone_set ('UTC'); 
         $credentials = $this->getCredentials();
         $this->api = new \ccxt\kucoin([
             "apiKey" => \Arr::get($credentials, "apiKey"),
             "secret" => \Arr::get($credentials, "secret"),
             "password" => \Arr::get($credentials, "password"),
-            'verbose' => false,
-            'enableRateLimit' => true,
-            'rateLimit' => 100, // unified exchange property
-            'options' => array(
-                'adjustForTimeDifference' => true, // exchange-specific option
-                'recvWindow'=> 60000,
-            ),
         ]);
 
         return $this;
@@ -55,26 +47,14 @@ class KucoinDriver extends Driver
         $now = now();
 
         // Balance
-        $balances = $this->api->fetchBalance([
-            "type" => "main"
-        ]);  
-        // Save balances
-        $this->saveBalances($balances["total"]);  
-        \DB::transaction(function() use ($account, $since, $balances, $now) {
+        $balances = $this->fetchBalances();
 
+        \DB::transaction(function() use ($account, $since, $balances, $now) {
             $counter = 0;
 
             while($since->isPast()) {
                 $data = $this->fetchTransactions(null, $since);
-                if(count($data) > 0)
-                {
-                    $this->saveTransactions($data, $now);
-                }
-
-                // if($counter > 1)
-                // {
-                //     break;
-                // }
+                $this->saveTransactions($data, $now);
 
                 // Sleep because of Request Limit of 9 times/3s
                 if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
@@ -86,6 +66,8 @@ class KucoinDriver extends Driver
                 $counter++;
             }
 
+            // Save balances
+            $this->saveBalances($balances["total"]);
         });
 
         return $this;
