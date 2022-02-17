@@ -36,28 +36,8 @@ class KucoinDriver extends Driver
                 'recvWindow'=> 60000,
             ),
         ]);
+
         return $this;
-    }
-
-    public function getCoins()
-    {
-        $main_balances = $this->api->fetch_balance([
-            "type" => "main"
-        ]);
-        $main_total = $main_balances['total'];
-        
-        $trade_balances = $this->api->fetchBalance([
-            "type" => "trade"
-        ]);
-        $trade_total = $trade_balances['total'];
-
-        $total = array();
-        foreach (array_keys($main_total + $trade_total) as $key) {
-            $sum = (isset($main_total[$key]) ? $main_total[$key] : 0) + (isset($trade_total[$key]) ? $trade_total[$key] : 0);
-            if($sum > 0)
-                $total[$key] = $sum;
-        }
-        return $total;
     }
 
     /**
@@ -66,52 +46,48 @@ class KucoinDriver extends Driver
      */
     public function updateTransactions(): self
     {
-        // Balance
-        $balances = $this->getCoins();
-        $this->saveBalances($balances);  
-        return $this;
-    }
-
-    public function fetchCointransactions($symbol_index = 0)
-    {
+        // Kucoin API used: https://docs.kucoin.com/#list-fills
+        // "The system allows you to retrieve data up to one week (start from the last day by default)"
         $account = $this->exchangeAccount;
-        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 02, 18);
+
+        // Get date: Kucoin max. prev date = 2019-02-18
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
         $now = now();
-        $counter = 0;
-        $result = array(
-            'status' => 'pending',
-            'exchange' => 'KuCoin',
-            'data_index' => $symbol_index
-        );
-        while(true) {
-            $data = $this->fetchTransactions(null, $since);
-            if(count($data) > 0)
-            {
-                $this->saveTransactions($data, $since);
-            }
-            // Add a week aka 7 days and increment counter
-            $since->addDays(7);
 
-            // Update fetched_at
-            $account->fetched_at = $since;
-            $account->save();
+        // Balance
+        $balances = $this->api->fetchBalance([
+            "type" => "main"
+        ]);  
+        // Save balances
+        $this->saveBalances($balances["total"]);  
+        \DB::transaction(function() use ($account, $since, $balances, $now) {
 
-            if(!$since->isPast())
-            {
-                $account->fetched_at = $now;
-                $account->fetching_scheduled_at = null;
-                $account->save();
-                $result['status'] = 'finish';
-                break;
+            $counter = 0;
+
+            while($since->isPast()) {
+                $data = $this->fetchTransactions(null, $since);
+                if(count($data) > 0)
+                {
+                    $this->saveTransactions($data, $now);
+                }
+
+                // if($counter > 1)
+                // {
+                //     break;
+                // }
+
+                // Sleep because of Request Limit of 9 times/3s
+                if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
+                    sleep(3);
+                }
+
+                // Add a week aka 7 days and increment counter
+                $since->addDays(7);
+                $counter++;
             }
-            $counter++;
-            // Return result because of Request Limit of 9 times/3s
-            if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
-                $result['status'] = 'pending';
-                sleep(3);
-                break;
-            }
-        }
-        return $result;
+
+        });
+
+        return $this;
     }
 }
