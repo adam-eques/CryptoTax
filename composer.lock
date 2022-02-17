@@ -179,16 +179,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.25",
+            "version": "3.209.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9f1ae9b3efd1261b7205d79484fc3a3802328667"
+                "reference": "bf29058fc637e4949ec42281e9572b9c968b38cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9f1ae9b3efd1261b7205d79484fc3a3802328667",
-                "reference": "9f1ae9b3efd1261b7205d79484fc3a3802328667",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bf29058fc637e4949ec42281e9572b9c968b38cc",
+                "reference": "bf29058fc637e4949ec42281e9572b9c968b38cc",
                 "shasum": ""
             },
             "require": {
@@ -264,9 +264,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.25"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.26"
             },
-            "time": "2022-02-16T19:18:09+00:00"
+            "time": "2022-02-17T19:15:52+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -3965,16 +3965,16 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.8.38",
+            "version": "2.8.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "b6c4ac9686d204c49a432f527f137cf24ac0b90e"
+                "reference": "0fd6753003fc870f6e229bae869cc1337c99bc45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/b6c4ac9686d204c49a432f527f137cf24ac0b90e",
-                "reference": "b6c4ac9686d204c49a432f527f137cf24ac0b90e",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/0fd6753003fc870f6e229bae869cc1337c99bc45",
+                "reference": "0fd6753003fc870f6e229bae869cc1337c99bc45",
                 "shasum": ""
             },
             "require": {
@@ -4015,9 +4015,9 @@
             ],
             "support": {
                 "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
-                "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.38"
+                "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.39"
             },
-            "time": "2022-02-14T12:38:04+00:00"
+            "time": "2022-02-17T19:24:25+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -9526,16 +9526,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "v0.0.10",
+            "version": "v0.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "880d9be5c4bd24c7e314772de29ec21cc6b1b48f"
+                "reference": "5aed46833a64039a4a51f32ac7f8c8a991994e9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/880d9be5c4bd24c7e314772de29ec21cc6b1b48f",
-                "reference": "880d9be5c4bd24c7e314772de29ec21cc6b1b48f",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/5aed46833a64039a4a51f32ac7f8c8a991994e9f",
+                "reference": "5aed46833a64039a4a51f32ac7f8c8a991994e9f",
                 "shasum": ""
             },
             "require": {
@@ -9593,9 +9593,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.10"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.12"
             },
-            "time": "2022-02-17T16:32:11+00:00"
+            "time": "2022-02-17T19:45:59+00:00"
         },
         {
             "name": "webmozart/assert",

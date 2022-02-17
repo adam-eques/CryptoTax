@@ -29,7 +29,7 @@ class AffiliateSettingForm extends SettingsForm
                             ->required()
                             ->numeric()
                             ->minValue(1)
-                            ->maxValue(999),
+                            ->maxValue(99999),
                     ]),
 
                 Fieldset::make('First Level')
