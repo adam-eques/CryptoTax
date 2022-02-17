@@ -36,95 +36,42 @@ class BinanceDriver extends Driver
         return $this;
     }
 
-    // Get coins balances from BinanceDriver crypto exchange 
-    public function getCoins()
-    {
-        $this->api->load_markets();
-        $main_balances = $this->api->fetch_balance();
-        $total_balances = $main_balances['total'];
-        $balances = array();
-        foreach($total_balances as $type => $value)
-        {
-            if($value > 0)
-            {
-                $pos = strpos($type, 'LD');
-                if(gettype($pos) == 'integer' && $pos == 0)
-                {
-                    $type = str_replace('LD', '', $type);
-                    if(isset($balances->$type) && $balances->$type > 0)
-                    {
-                        unset($balances->$type);
-                    }
-                }
-                $balances[$type] = $value;
-            }
-        }
-        return $balances;
-    }
-
     /**
      * @return $this
      * @throws \ccxt\ExchangeError
      */
     public function updateTransactions(): self
     {
+        // Kucoin API used: https://docs.kucoin.com/#list-fills
+        // "The system allows you to retrieve data up to one week (start from the last day by default)"
         $account = $this->exchangeAccount;
+
+        // Get date: Kucoin max. prev date = 2019-02-18
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
+        $now = now();
 
         // Balance
-        $balances = $this->getCoins();
-        $this->saveBalances($balances);
-        return $this;
-    }
+        $balances = $this->fetchBalances();
+        // Save balances
+        $this->saveBalances($balances["total"]);
+        
+        \DB::transaction(function() use ($account, $since, $balances, $now) {
 
-    public function fetchCointransactions($symbol_index = 0)
-    {
-        $account = $this->exchangeAccount;
-        $balances = $this->getCoins();
-        $unique_symbols = $this->getMachingSymbols($balances);
-
-        // dd($unique_symbols);
-        $since = $account->fetched_at ? $account->fetched_at : null;
-        $now = now();
-        $result = array(
-            'status' => 'pending',
-            'exchange' => 'Binance',
-            'data_index' => $symbol_index
-        );
-
-        $symbol = $unique_symbols[$symbol_index];
-
-        $from_id = '0';
-        $params = array('fromId' => $from_id, 'limit' => 20);
-        $previous_from_id = $from_id;
-        while (true) {
-            $milli_time = $since ? $since->timestamp * 1000 : null;
-            $trades = $this->api->fetch_my_trades($symbol, $milli_time, null, $params);
-            if (count($trades) > 0) {
-                // Save it
-                $this->saveTransactions($trades, now(), $balances);
-
-                $last_trade = $trades[count($trades) - 1];
-                if ($last_trade['id'] == $previous_from_id) {
-                    break;
-                } else {
-                    $params['fromId'] = $last_trade['id'];
-                    $previous_from_id = $last_trade['id'];
-                }
-            } else {
-                break;
+            $all_trades_for_all_symbols = array();
+            $unique_symbols = $this->getMachingSymbols($balances);
+            $cnt = 0;
+            foreach ($unique_symbols as $symbol) {
+                // fetch all trades for the $symbol, with pagination
+                // $cnt++;
+                // if($cnt > 1)
+                // {
+                //     break;
+                // }
+                $this->fetchAllTransactions($symbol, $balances);
+                sleep(3);
             }
-        }
+        });
 
-        if($symbol_index == count($unique_symbols) - 1)
-        {
-            $account->fetched_at = $now;
-            $account->fetching_scheduled_at = null;
-            $account->save();
-            $result['status'] = 'finish';
-        }else{
-            $result['status'] = 'pending';
-        }
-        $result['data_index'] = $symbol_index + 1;
-        return $result;
+        return $this;
     }
 }

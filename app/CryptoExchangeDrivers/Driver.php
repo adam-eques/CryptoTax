@@ -92,6 +92,11 @@ abstract class Driver
             // Insert data
             if($data) CryptoExchangeTransaction::insert($data);
 
+            // Update fetched_at
+            $account->fetched_at = $timestamp;
+            $account->fetching_scheduled_at = null;
+            $account->save();
+
             // Save balances
             $this->saveBalances($balances);
         });
@@ -106,20 +111,44 @@ abstract class Driver
             $account = $this->exchangeAccount;
             $account->cryptoExchangeAssets()->delete();
             foreach($balances AS $key => $val) {
-                $currency = CryptoCurrency::findByShortName($key);
-                if($currency) {
-                    $currency = $currency->id;
-                }
-                else {
-                    $currency = 0;
-                    logger("Missing crypto currency " . $key);
-                }
+                if($val && $val > 0) {
 
-                CryptoExchangeAsset::make([
-                    "crypto_exchange_account_id" => $account->id,
-                    "crypto_currency_id" => $currency,
-                    "balance" => $val
-                ])->save();
+                    if($account->cryptoExchange()->first()->name == 'Binance'){
+                        $pos = strpos($key, 'LD');
+                        if(gettype($pos) == 'integer' && $pos == 0)
+                        {
+                            $key = str_replace('LD', '', $key);
+
+                            $currency = CryptoCurrency::findByShortName($key);
+
+                            if($currency) {
+
+                                $currency = $currency->id;
+                                CryptoExchangeAsset::make([
+                                    "crypto_exchange_account_id" => $account->id,
+                                    "crypto_currency_id" => $currency,
+                                    "balance" => $val
+                                ])->save();
+                            }
+                        }
+                        
+                    }else{
+                        $currency = CryptoCurrency::findByShortName($key);
+                        if($currency) {
+                            $currency = $currency->id;
+                        }
+                        else {
+                            $currency = 0;
+                            logger("Missing crypto currency " . $key);
+                        }
+
+                        CryptoExchangeAsset::make([
+                            "crypto_exchange_account_id" => $account->id,
+                            "crypto_currency_id" => $currency,
+                            "balance" => $val
+                        ])->save();
+                    }
+                }
             }
         }
     }
@@ -189,30 +218,25 @@ abstract class Driver
     }
 
     public function getMachingSymbols($balances) {
+        $total = $balances['total'];
         $all_matching_symbols = array();
         $this->api->load_markets();
-        foreach ($balances as $currency_code => $value) {
-            // get all related markets with
-            //   either base currency === currency code from the balance structure
-            //      or quote currency === currency code from the balance structure
-            $matching_markets = array_filter(array_values($this->api->markets), function ($market) use ($currency_code) {
-                return ($market['base'] === $currency_code) || ($market['quote'] === $currency_code);
-            });
-            $matching_symbols = $this->api->pluck($matching_markets, 'symbol');
-            $all_matching_symbols = array_merge ($all_matching_symbols, $matching_symbols);
+        foreach ($total as $currency_code => $value) {
+            if ($value > 0) {
+                // echo $currency_code . " : " . $value;
+                // echo '\n';
+                // get all related markets with
+                //   either base currency === currency code from the balance structure
+                //      or quote currency === currency code from the balance structure
+                $matching_markets = array_filter(array_values($this->api->markets), function ($market) use ($currency_code) {
+                    return ($market['base'] === $currency_code) || ($market['quote'] === $currency_code);
+                });
+                $matching_symbols = $this->api->pluck ($matching_markets, 'symbol');
+                $all_matching_symbols = array_merge ($all_matching_symbols, $matching_symbols);
+            }
         }
         $unique_symbols = $this->api->unique($all_matching_symbols);
         return $unique_symbols;
-    }
-
-    public function setInterval($f, $milliseconds)
-    {
-        $seconds=(int)$milliseconds/1000;
-        while(true)
-        {
-            $f();
-            sleep($seconds);
-        }
     }
 
     public function fetchAllTransactions($symbol = null, $balances){
