@@ -21,12 +21,6 @@ class CryptoCurrency extends Model
     }
 
 
-    public function conversions()
-    {
-        return $this->hasMany(CryptoCurrencyConversion::class);
-    }
-
-
     public function getName(): string
     {
         return $this->name;
@@ -35,15 +29,22 @@ class CryptoCurrency extends Model
 
     public function convertTo(float $value, string $otherCurrency): float
     {
-        // First check age of last fetch
-        if(!$this->fetched_at || $this->fetched_at < now()->addMinutes(-15)) {
-            $this->updateRowFromApi();
-        }
-
         // Get var name
         $var = "currency_" . strtolower($otherCurrency);
+        $data = \Cache::get($this->getCacheKey());
 
-        return $this->$var * $value;
+        // Get from cache
+        if($data) {
+            return $data[$var] * $value;
+        }
+        else {
+            // First check age of last fetch
+            if(!$this->fetched_at || $this->fetched_at < now()->addMinutes(-15)) {
+                $this->updateRowFromApi();
+            }
+
+            return $this->$var * $value;
+        }
     }
 
 
@@ -60,9 +61,11 @@ class CryptoCurrency extends Model
         $client = new \Codenixsv\CoinGeckoApi\CoinGeckoClient();
         $vsCurrencies = join(",", CoingeckoSupportedVsCurrencies::getCurrencies());
         $result = $client->simple()->getPrice($this->coingecko_id, $vsCurrencies);
+        $data = [];
 
         foreach($result[$this->coingecko_id] AS $currency => $value) {
             $var = "currency_" . strtolower($currency);
+            $data[$var] = $value;
             $this->$var = $value;
         }
 
@@ -70,7 +73,16 @@ class CryptoCurrency extends Model
         $this->fetched_at = now();
         $this->save();
 
+        // Save to cache
+        \Cache::put($this->getCacheKey(), $data, 60 * 15);
+
         return $this;
+    }
+
+
+    public function getCacheKey(): string
+    {
+        return "cryptocurrency_conversionrate_" . $this->id;
     }
 
 
