@@ -534,16 +534,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.73.19",
+            "version": "1.73.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "f696359dd5512550e8a5986a348df9e23dd50c50"
+                "reference": "3f9ac85efc7fa380aaab9f5d265c8e0c8a6904eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/f696359dd5512550e8a5986a348df9e23dd50c50",
-                "reference": "f696359dd5512550e8a5986a348df9e23dd50c50",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/3f9ac85efc7fa380aaab9f5d265c8e0c8a6904eb",
+                "reference": "3f9ac85efc7fa380aaab9f5d265c8e0c8a6904eb",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.73.19"
+                "source": "https://github.com/ccxt/ccxt/tree/1.73.21"
             },
             "funding": [
                 {
@@ -814,7 +814,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-02-17T15:00:01+00:00"
+            "time": "2022-02-17T18:03:10+00:00"
         },
         {
             "name": "codeat3/blade-cryptocurrency-icons",
