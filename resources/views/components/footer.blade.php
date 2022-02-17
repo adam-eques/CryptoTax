@@ -32,7 +32,7 @@
                         ['link' => 'FAQ', 'route' => 'faqs']
                     ],
                     'Legal' => [ 
-                        ['link' => 'Imprint', 'route' => 'index'], 
+                        ['link' => 'Imprint', 'route' => 'imprint'], 
                         ['link' => 'Terms of Service', 'route' => 'terms'],
                         ['link' => 'Privacy Polity', 'route' => 'policy'],
                         ['link' => 'Risk and Disclaimer', 'route' => 'risk']
