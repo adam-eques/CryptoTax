@@ -207,10 +207,19 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             ->where("name","like",'%'.$this->search.'%')
             ->get()
             ->toArray();
+        $blockchains_array = array_filter($blockchains, function($blockchain){
+            $blockchainAccounts = auth()->user()->blockchainAccounts->toArray();
+            foreach ($blockchainAccounts as $account) {
+                if($account['blockchain_id'] == $blockchain['id']){
+                    return false;
+                }
+            } 
+            return true;           
+        });
 
         return view('livewire.customer.account.account-new', [
             "exchanges_array" => $exchanges_array,
-            "blockchains" => $blockchains,
+            "blockchains" => $blockchains_array,
         ]);
     }
 }
