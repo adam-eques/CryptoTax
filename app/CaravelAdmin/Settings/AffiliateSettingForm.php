@@ -17,6 +17,21 @@ class AffiliateSettingForm extends SettingsForm
     {
         return [
             Forms\Components\Card::make([
+                Fieldset::make('General')
+                    ->schema([
+                        Forms\Components\TextInput::make('redirect_url')
+                            ->required()
+                            ->helperText("Url after the redirect cookie was set"),
+                        Forms\Components\TextInput::make('cookie_lifetime')
+                            ->label('Cookie lifetime')
+                            ->helperText('Lifetime in minutes. 1440 = 1d; 43200 = 30d')
+                            ->postfix("minutes")
+                            ->required()
+                            ->numeric()
+                            ->minValue(1)
+                            ->maxValue(999),
+                    ]),
+
                 Fieldset::make('First Level')
                     ->schema([
                         Forms\Components\TextInput::make('first_level_lifetime')
@@ -73,8 +88,8 @@ class AffiliateSettingForm extends SettingsForm
                         ->rules(['regex:/^\d{1,6}(\.\d{0,2})?$/'])
                         ->minValue(0.01)
                         ->maxValue(999),
-                ])
-            ])
+                ]),
+            ]),
         ];
     }
 }

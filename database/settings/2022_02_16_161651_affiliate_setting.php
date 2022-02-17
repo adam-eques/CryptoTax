@@ -12,5 +12,7 @@ class AffiliateSetting extends SettingsMigration
         $this->migrator->add('affiliate.second_level_percentage', 5);
         $this->migrator->add('affiliate.min_payout_value', 20);
         $this->migrator->add('affiliate.conversion_rate', 0.04);
+        $this->migrator->add('affiliate.cookie_lifetime', 43200);
+        $this->migrator->add('affiliate.redirect_url', "/register");
     }
 }

@@ -188,7 +188,7 @@ class NavigationService
                 CryptoExchangeResource::make()->sidebar(),
             ]],
             ["label" => __('Settings'), 'children' => [
-                ["label" => "Affiliate", "icon" => "fas-ad", "route" => "admin.settings.affiliate"],
+                ["label" => "Affiliate Settings", "icon" => "fas-ad", "route" => "admin.settings.affiliate"],
             ]],
             ["label" => __('Administration'), 'children' => [
                 ["label" => "Telescope", "icon" => "fas-binoculars", "route" => "telescope", "target" => "_blank"],

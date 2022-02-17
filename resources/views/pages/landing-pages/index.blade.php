@@ -1,4 +1,4 @@
-<x-guest-layout>    
+<x-guest-layout>
     <div class="w-full bg-white">
         {{-- Hero --}}
         <div class="relative w-full">
@@ -23,22 +23,22 @@
                 </div>
             </x-container>
         </div>
-        
+
         {{-- partner --}}
         <x-container>
             <p class="text-center font-bold text-gray-300">{{  __('Meet Our Partners') }}</p>
             @php
                 $partners = [
-                    'assets/img/subpage_images/landing_partner_binance.svg', 
-                    'assets/img/subpage_images/landing_partner_bitcoin.svg', 
-                    'assets/img/subpage_images/landing_partner_ethereum.svg', 
-                    'assets/img/subpage_images/landing_partner_kucoin.svg', 
-                    'assets/img/subpage_images/landing_partner_litecoin.svg', 
+                    'assets/img/subpage_images/landing_partner_binance.svg',
+                    'assets/img/subpage_images/landing_partner_bitcoin.svg',
+                    'assets/img/subpage_images/landing_partner_ethereum.svg',
+                    'assets/img/subpage_images/landing_partner_kucoin.svg',
+                    'assets/img/subpage_images/landing_partner_litecoin.svg',
                     'assets/img/subpage_images/landing_partner_tether.svg'
                 ]
             @endphp
             <div class="grid grid-cols-3 sm:grid-cols-6 items-center gap-5 md:gap-10 xl:gap-20 px-10 mt-5 sm:mt-12">
-                @foreach ($partners as $partner)                    
+                @foreach ($partners as $partner)
                     <img src="{{ asset($partner) }}" class="w-full h-auto"/>
                 @endforeach
             </div>
@@ -53,7 +53,7 @@
             <div class="relative mt-5 sm:mt-24">
                 <img src="{{ asset('assets/img/subpage_images/landing_arrow.svg') }}" class="absolute w-1/2 left-1/2 -translate-x-1/2 top-24 hidden md:block"/>
                 <div class="grid grid-cols-1 md:grid-cols-3 items-end gap-3 lg:gap-10 relative">
-                    @foreach ($items as $item)                    
+                    @foreach ($items as $item)
                         <div class="text-center px-5 relative">
                             <img src="{{ asset($item['img']) }}" class="flex mx-auto"/>
                             <p class="text-lg font-bold mt-3">{{ __($item['title']) }}</p>
@@ -94,7 +94,7 @@
         <x-container>
             {{-- Membership --}}
             @livewire('landing-page.membership-plan')
-            
+
             {{-- FAQs --}}
             @livewire('landing-page.faqs')
         </x-container>
@@ -110,5 +110,5 @@
 
     {{-- footer --}}
     <x-footer/>
-    
+
 </x-guest-layout>

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -16,6 +17,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spark\Billable;
+use Str;
 
 /**
  * Class User
@@ -37,6 +39,7 @@ use Spark\Billable;
  * @property \App\Models\TaxCountry $taxCountry
  * @property \App\Models\TaxCurrency $taxCurrency
  * @property \App\Models\TaxCostModel $taxCostModel
+ * @property \App\Models\UserAffiliate $userAffiliate
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -99,8 +102,16 @@ class User extends Authenticatable implements MustVerifyEmail
         });
 
         static::created(function( self $item){
+            // Add Register credits
             if($item->userAccountType->is_customer) {
                 $item->creditAction(CreditCodeService::ACTION_REGISTER);
+            }
+
+            // Add user affiliate
+            if (! $item->userAffiliate && in_array($item->user_account_type_id, UserAccountType::customerPanelTypes())) {
+                $item->userAffiliate()->create([
+                    "user_id" => $item->id
+                ]);
             }
         });
 
@@ -108,6 +119,7 @@ class User extends Authenticatable implements MustVerifyEmail
             $item->blockchainAccounts()->cascadeDelete();
             $item->cryptoExchangeAccounts()->cascadeDelete();
             $item->creditLogs()->cascadeDelete();
+            $item->userAffiliate()->delete();
         });
     }
 
@@ -137,6 +149,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function creditLogs(): HasMany
     {
         return $this->hasMany(UserCreditLog::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function userAffiliate(): HasOne
+    {
+        return $this->hasOne(UserAffiliate::class);
     }
 
 
@@ -307,6 +328,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getName(): ?string
     {
         return $this->name . " (ID=" . $this->id . ")";
+    }
+
+
+    public function getAffiliateUrl(): ?string
+    {
+        return $this->userAffiliate?->getUrl();
     }
 
 

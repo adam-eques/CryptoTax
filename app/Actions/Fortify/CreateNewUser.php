@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Services\AffiliateService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -28,12 +29,29 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-        return User::create([
-            'name' => 'User',
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-            'datacenter_id' => $input['data_center'],
-            'newsletter' => isset($input['email_receive']) && $input['email_receive'],
-        ]);
+        $user = \DB::transaction(function() use ($input) {
+            /**
+             * @var User $user
+             */
+            $user = User::create([
+                'name' => 'User',
+                'email' => $input['email'],
+                'password' => Hash::make($input['password']),
+                'datacenter_id' => $input['data_center'],
+                'newsletter' => isset($input['email_receive']) && $input['email_receive'],
+            ]);
+
+            // Affiliate
+            if($affiliateUser = AffiliateService::instance()->getAffiliateUser()) {
+                $user->load("userAffiliate");
+                $current = $user->userAffiliate;
+                $current->recruited_by = $affiliateUser->id;
+                $current->save();
+            }
+
+            return $user;
+        });
+
+        return $user;
     }
 }

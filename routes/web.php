@@ -26,6 +26,9 @@ Route::get('blog-detail/{id?}', function($id = 1){
 
 // Affilate Page
 Route::view('/affiliate', 'pages.landing-pages.affiliate')->name('affiliate');
+Route::get('affili/{userAffiliate:hash}', function (\App\Models\UserAffiliate $userAffiliate) {
+    return \App\Services\AffiliateService::instance()->redirect($userAffiliate);
+});
 
 // Logout
 Route::get('logout', function() {
