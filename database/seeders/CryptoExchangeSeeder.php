@@ -27,13 +27,13 @@ class CryptoExchangeSeeder extends Seeder
                 'website' => "https://hitbtc.com/",
                 'driver' => HitBTCDriver::class
             ],
-            [
-                'id' => CryptoExchange::EXCHANGE_BINANCE,
-                'name' => "Binance",
-                'description' => 'Binance lorem ipsum dolor.',
-                'website' => "",
-                'driver' => BinanceDriver::class
-            ],
+            //[
+            //    'id' => CryptoExchange::EXCHANGE_BINANCE,
+            //    'name' => "Binance",
+            //    'description' => 'Binance lorem ipsum dolor.',
+            //    'website' => "",
+            //    'driver' => BinanceDriver::class
+            //],
         ])->each(function($data){
             CryptoExchange::firstOrCreate([
                 "id" => $data["id"]
