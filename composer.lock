@@ -179,16 +179,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.24",
+            "version": "3.209.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ce68bfc141863a25f4b870f10cfa996312fb1813"
+                "reference": "9f1ae9b3efd1261b7205d79484fc3a3802328667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ce68bfc141863a25f4b870f10cfa996312fb1813",
-                "reference": "ce68bfc141863a25f4b870f10cfa996312fb1813",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9f1ae9b3efd1261b7205d79484fc3a3802328667",
+                "reference": "9f1ae9b3efd1261b7205d79484fc3a3802328667",
                 "shasum": ""
             },
             "require": {
@@ -264,9 +264,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.24"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.25"
             },
-            "time": "2022-02-14T19:15:07+00:00"
+            "time": "2022-02-16T19:18:09+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -534,16 +534,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.73.12",
+            "version": "1.73.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "7b13f1dd04543c354c4348e6b60112d7c7aa0fab"
+                "reference": "f696359dd5512550e8a5986a348df9e23dd50c50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/7b13f1dd04543c354c4348e6b60112d7c7aa0fab",
-                "reference": "7b13f1dd04543c354c4348e6b60112d7c7aa0fab",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/f696359dd5512550e8a5986a348df9e23dd50c50",
+                "reference": "f696359dd5512550e8a5986a348df9e23dd50c50",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.73.12"
+                "source": "https://github.com/ccxt/ccxt/tree/1.73.19"
             },
             "funding": [
                 {
@@ -814,7 +814,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-02-15T18:59:11+00:00"
+            "time": "2022-02-17T15:00:01+00:00"
         },
         {
             "name": "codeat3/blade-cryptocurrency-icons",
@@ -4347,16 +4347,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.56.0",
+            "version": "2.57.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "626ec8cbb724cd3c3400c3ed8f730545b744e3f4"
+                "reference": "4a54375c21eea4811dbd1149fe6b246517554e78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/626ec8cbb724cd3c3400c3ed8f730545b744e3f4",
-                "reference": "626ec8cbb724cd3c3400c3ed8f730545b744e3f4",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a54375c21eea4811dbd1149fe6b246517554e78",
+                "reference": "4a54375c21eea4811dbd1149fe6b246517554e78",
                 "shasum": ""
             },
             "require": {
@@ -4439,7 +4439,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-21T17:08:38+00:00"
+            "time": "2022-02-13T18:13:33+00:00"
         },
         {
             "name": "nette/schema",
@@ -9526,16 +9526,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "v0.0.9",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "8cfcbffa39dc18cad5b8e13bb4eabe368e41f120"
+                "reference": "880d9be5c4bd24c7e314772de29ec21cc6b1b48f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/8cfcbffa39dc18cad5b8e13bb4eabe368e41f120",
-                "reference": "8cfcbffa39dc18cad5b8e13bb4eabe368e41f120",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/880d9be5c4bd24c7e314772de29ec21cc6b1b48f",
+                "reference": "880d9be5c4bd24c7e314772de29ec21cc6b1b48f",
                 "shasum": ""
             },
             "require": {
@@ -9593,9 +9593,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.9"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.0.10"
             },
-            "time": "2022-02-16T16:37:30+00:00"
+            "time": "2022-02-17T16:32:11+00:00"
         },
         {
             "name": "webmozart/assert",

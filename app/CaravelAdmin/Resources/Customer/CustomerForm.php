@@ -2,8 +2,8 @@
 
 namespace App\CaravelAdmin\Resources\Customer;
 
-use App\CaravelAdmin\Resources\AffiliateUser\AffiliateUserResource;
 use App\CaravelAdmin\Resources\CryptoExchangeAccount\CryptoExchangeAccountResource;
+use App\CaravelAdmin\Resources\UserAffiliate\UserAffiliateResource;
 use App\Forms\Components\ButtonField;
 use App\Models\CryptoExchangeAccount;
 use App\Models\User;
@@ -21,6 +21,7 @@ class CustomerForm extends ResourceForm
     protected function getFormSchema(): array
     {
         return SidebarLayout::make()
+            // General tab
             ->addTab(Forms\Components\Tabs\Tab::make(__('General'))->schema([
                 Forms\Components\TextInput::make('name')
                     ->label(__("Name"))
@@ -29,14 +30,20 @@ class CustomerForm extends ResourceForm
                     ->required()
                     ->email(),
             ]))
+
+            // Credit logs
             ->addTab(Forms\Components\Tabs\Tab::make("Credit Logs")->schema([
                 HasManyRelationField::make('creditLogs')
                     ->resource(UserCreditLogResource::make())
             ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", UserCreditLog::class)))
+
+            // Exchange accounts
             ->addTab(Forms\Components\Tabs\Tab::make("Exchange Accounts")->schema([
                 HasManyRelationField::make('cryptoExchangeAccounts')
                     ->resource(CryptoExchangeAccountResource::make())
             ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", CryptoExchangeAccount::class)))
+
+            // Info card
             ->addCard([
                 Forms\Components\Placeholder::make("id")->label(__("ID"))
                     ->content(fn ($record): string => $record ? $record->id : '-'),
