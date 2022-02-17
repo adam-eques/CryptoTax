@@ -23,7 +23,7 @@
                 $links = [
                     'About' => [ 
                         ['link' => 'About us', 'route' => 'about'], 
-                        ['link' => 'Help Center', 'route' => 'index'], 
+                        ['link' => 'Help Center', 'route' => 'help'], 
                         ['link' => 'Contact', 'route' => 'contact']
                     ],
                     'Product' => [ 

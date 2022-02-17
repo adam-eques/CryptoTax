@@ -93,7 +93,7 @@
                     @if ($exchange_account)
                         <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="h-10 w-auto flex m-auto"/>    
                         <p class="text-xl font-bold text-center mt-3">{{ __($exchange_account->getName() . ' API integration')}}</p>
-                        <form wire:submit.prevent="save_exchange">
+                        <form wire:submit.prevent="save_exchange" autocomplete="off">
                             <div class="p-4">
                                 {{ $this->form }}
                                 <div class="text-center mt-4">
@@ -148,7 +148,7 @@
                                 @if ($exchange_account)
                                     <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="h-10 w-auto flex m-auto"/> 
                                     <p class="text-xl font-bold text-center mt-3">{{ __($exchange_account->getName() . ' API integration')}}</p>
-                                    <form wire:submit.prevent="save_exchange">
+                                    <form wire:submit.prevent="save_exchange" autocomplete="off">
                                         <div class="p-4">
                                             {{ $this->form }}
                                             <div class="text-center mt-4">
