@@ -19,13 +19,13 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     use Actions;
     use Forms\Concerns\InteractsWithForms;
 
-    public ?CryptoExchangeAccount $account = null;
+    public ?CryptoExchangeAccount $exchange = null;
     public ?BlockchainAccount $blockchain = null;
 
     public function mount()
     {
         $this->blockchain = null;
-        $this->account = CryptoExchangeAccount::query()
+        $this->exchange = CryptoExchangeAccount::query()
             ->where('user_id', auth()->user()->id)
             ->whereJsonLength('credentials','>', 0)
             ->first(); 
@@ -57,8 +57,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function isRequiredField(string $fieldName): bool
     {
-        if ($this->account) {
-            $api = $this->account->getApi();
+        if ($this->exchange) {
+            $api = $this->exchange->getApi();
             $requiredCredentials = $api->getRequiredCredentials();
             return $requiredCredentials[$fieldName];
         }
@@ -70,23 +70,23 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function save_exchange()
     {
         $data = $this->form->getState();
-        $this->account->credentials = $data;
-        $this->account->save();
+        $this->exchange->credentials = $data;
+        $this->exchange->save();
     }
 
     public function edit_exchange()
     {
-        if ($this->account) {
-            $this->form->fill($this->account->credentials);
+        if ($this->exchange) {
+            $this->form->fill($this->exchange->credentials);
         }
     }
 
-    public function delete_exchange(CryptoExchangeAccount $account)
+    public function delete_exchange(CryptoExchangeAccount $exchange)
     {
-        if ($this->account && $this->account->id == $account->id) {
-            $this->account = null;
+        if ($this->exchange && $this->exchange->id == $exchange->id) {
+            $this->exchange = null;
         }
-        $account->delete();
+        $exchange->delete();
 
         // Update table
         $this->emit("transactionTable.updateTable");
@@ -98,14 +98,14 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         );
     }
 
-    public function fetch_exchange(CryptoExchangeAccount $account)
+    public function fetch_exchange(CryptoExchangeAccount $exchange)
     {
         try {
-            $account->fetching_scheduled_at = now();
-            $account->save();
-            CryptoExchangeFetchJob::dispatch($account);
+            $exchange->fetching_scheduled_at = now();
+            $exchange->save();
+            CryptoExchangeFetchJob::dispatch($exchange);
             $this->notification()->info(
-                __("Fetching :name is now scheduled", ["name" => $account->getName()]),
+                __("Fetching :name is now scheduled", ["name" => $exchange->getName()]),
                 "Please check transactions in a couple of minutes"
             );
         }
@@ -114,8 +114,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         }
     }
 
-    public function get_selected_account(CryptoExchangeAccount $account){
-        $this->account = $account;
+    public function get_selected_account(CryptoExchangeAccount $exchange){
+        $this->exchange = $exchange;
         $this->blockchain = null;
     }
 
@@ -155,10 +155,32 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function get_selected_blockchain(BlockchainAccount $blockchainAccount){
         $this->blockchain = $blockchainAccount;
-        $this->account = null;
+        $this->exchange = null;
     }
 
-   
+
+    //frontend action
+    public function sync(){
+        if($this->exchange){
+            if($this->exchange->hasAllCredentials()){
+                $this->fetch_exchange($this->exchange);
+            }
+        }
+        elseif($this->blockchain){
+            $this->fetch_blockchain($this->blockchain);
+        }
+    }
+
+    public function delete(){
+        if($this->exchange){
+            $this->delete_exchange($this->exchange);
+        }
+        elseif($this->blockchain){
+            $this->delete_blockchain($this->blockchain);
+        }
+    }
+    
+    //Rendering
     public function render()
     {
 
