@@ -14,13 +14,18 @@ class TransactionList extends Component
     protected $paginationTheme = 'tailwind';
 
     public?string $search = null;
+    public?string $order = null;
+
+    public function mount(){
+        $this->order = 'desc';
+    }
 
     public function render()
     {
         $filter = [
             'order' => [ 
-                ['label' =>'Newest', 'value' => 'newest'], 
-                ['label' => 'Oldest', 'value' => 'oldest'] 
+                ['label' =>'Newest', 'value' => 'desc'], 
+                ['label' => 'Oldest', 'value' => 'asc'] 
             ],
             'type' => [ 
                 ['label' => 'Transfer', 'value' => 'transfer'], 
@@ -45,6 +50,7 @@ class TransactionList extends Component
         $exchange_transactions = CryptoExchangeTransaction::query()
             ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoExchangeAccounts->pluck("id"))
             ->where("symbol", "like", $search)
+            ->orderBy('executed_at', $this->order)
             ->paginate(10);
 
         return view('livewire.customer.transaction.transaction-list', [
