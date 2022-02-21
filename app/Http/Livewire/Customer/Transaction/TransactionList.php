@@ -13,6 +13,8 @@ class TransactionList extends Component
 
     protected $paginationTheme = 'tailwind';
 
+    public?string $search = null;
+
     public function render()
     {
         $filter = [
@@ -39,8 +41,10 @@ class TransactionList extends Component
             ]
         ];
 
+        $search = '%' . $this->search . '%';
         $exchange_transactions = CryptoExchangeTransaction::query()
             ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoExchangeAccounts->pluck("id"))
+            ->where("symbol", "like", $search)
             ->paginate(10);
 
         return view('livewire.customer.transaction.transaction-list', [

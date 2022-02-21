@@ -1,10 +1,9 @@
-
 <div>
     <div class="bg-gray-100 border rounded-sm p-4">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-0 md:gap-x-2 gap-y-2 md:gap-y-0">
             <div class="col-span-1 md:col-span-4 bg-white px-6 py-4 rounded-md">
                 <div class="w-full relative">
-                    <input class="border-0 outline-none w-full" placeholder="Filter transactions">
+                    <input class="border-0 outline-none w-full" placeholder="Filter transactions" wire:model.lazy="search">
                     <div class="absolute right-0 top-1 border-l-2 pl-4">
                         <button>
                             <x-icon name="fas-search" class="w-4 h-4"></x-icon>
@@ -64,3 +63,4 @@
         {{$exchange_transactions->links()}}
     </div>
 </div>
+
