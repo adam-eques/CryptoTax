@@ -51,10 +51,12 @@
         </div>
         <div x-data="{open:false}" class="py-2 relative">
             <button class="rounded-full w-6 h-6 bg-gray-100 border flex justify-center items-center" @click="open = true">
-                <x-icon name="fas-chevron-down" class="w-4 h-4"/>
+                <svg class="w-4 trnstsn transform " fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
             </button>
             <div
-                class="origin-top-right absolute top-10 right-0 w-60 rounded-md shadow-lg p-4 bg-white text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="origin-top-right absolute top-10 right-0 w-40 rounded-md shadow-lg p-4 bg-white text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
                 x-show="open" @click.away="open=false" x-cloak
                 x-transition:enter-start="transition ease-in duration-3000"

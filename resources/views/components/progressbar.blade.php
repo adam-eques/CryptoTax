@@ -21,7 +21,7 @@
         case 'warning': $variantClasses = 'bg-warning'; break;
     }
     $att = $attributes->merge([
-        'class' => 'w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-5 mb-7' .
+        'class' => 'w-full bg-gray-200 rounded-full dark:bg-gray-700' .
             trim($heightClass)
     ]);
 

@@ -20,7 +20,10 @@ Route::middleware('customer-setup')->group(function(){
     // Transactions
     Route::view('transactions', 'pages.customer.transactions.transactions')->name('transactions');
 
-    // Specials]
+    //Assets
+    Route::view('asset', 'pages.customer.portfolio.asset')->name('asset');
+
+    // Specials
     Route::view('account/new', 'pages.customer.account.new')->name('account.new');
     Route::view('taxes/tax-loss-harvesting', 'pages.customer.taxes.tax-loss-harvesting')->name('taxes.tax-loss-harvesting');
     Route::view('taxes/tax-saving-opportunities', 'pages.customer.taxes.tax-saving-opportunities')->name('taxes.tax-saving-opportunities');

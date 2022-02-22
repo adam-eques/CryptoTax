@@ -1,6 +1,6 @@
-<div class="bg-white shadow-md rounded-md p-5 w-full mt-6 sm:mt-10">
-    <div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-0 md:gap-x-6 md:gap-y-5">
-        <div class="flex items-center space-x-2 py-5">
+<div class="w-full p-5 mt-6 bg-white rounded-md shadow-md sm:mt-10">
+    <div class="grid grid-cols-1 gap-0 2xl:grid-cols-4 md:grid-cols-2 md:gap-x-6 md:gap-y-5">
+        <div class="flex items-center py-5 space-x-2">
             <x-icon name="donut" class="w-8 h-8 text-primary"/>
             <p class="mr-3 text-lg font-semibold">{{ __('My Performance') }}</p>
         </div>
@@ -8,10 +8,10 @@
         <x-status-card-dashboard id="status_2" title="Total profit loss" amount="95,422" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
         <x-status-card-dashboard id="status_3" title="24h Portfolio Change" amount="3,566" :increase="false" incdecamount="2.5"></x-status-card-dashboard>
     </div>
-    <div class="grid grid-cols-1 xl:grid-cols-8 gap-0 md:gap-6 mt-9">
+    <div class="grid grid-cols-1 gap-0 xl:grid-cols-8 md:gap-6 mt-9">
         <div class="col-span-3">
             <div class="col-span-4">
-                <select class="px-7 py-2 border-gray-300 border">
+                <select class="py-2 border border-gray-300 px-7">
                     <option>{{ __('Top 5 Coins') }}</option>
                     <option>{{ __('Top 5 Coins') }}</option>
                 </select>
@@ -20,8 +20,8 @@
                 <div id="column_chart" class="-my-5"></div>
             </div>
         </div>
-        <div class="col-span-5 h-full">
-            <div class="flex justify-end space-x-2 col-span-8">
+        <div class="h-full col-span-5">
+            <div class="flex justify-end col-span-8 space-x-2">
                 <x-speech-button :active="$selected_category == 'day'" wire:click="select_category('day')"> {{ __('24H') }} </x-speech-button>
                 <x-speech-button :active="$selected_category == 'week'" wire:click="select_category('week')"> {{ __('7D') }} </x-speech-button>
                 <x-speech-button :active="$selected_category == 'month'" wire:click="select_category('month')"> {{ __('1M') }} </x-speech-button>
@@ -132,7 +132,7 @@
             colors: ["#181C3A"],
             series: [{
                 name: 'sales',
-                data: [30,40,35,50,49,60,70,91,125,70,91,125]
+                data: [30,40,35,50,49,60,70]
             }],
             xaxis: {
                 categories: @json($label),
@@ -145,14 +145,14 @@
         chart.render();
 
         document.addEventListener('livewire:load', () => {
-            console.log("Reload");
-            // @this.on(`refreshChartData-{!! 'line-chart' !!}`, () => {
-            //     chart.updateOptions({
-            //         xaxis: {
-            //             categories: @jsone($label)
-            //         }
-            //     });
-            // });
+            @this.on(`refresh-line-chart`, (chartData) => {
+                console.log("Reload");
+                chart.updateOptions({
+                    xaxis: {
+                        categories: chartData.label
+                    }
+                });
+            })
         })
 
     }());
