@@ -39,7 +39,7 @@
             <x-icon name="message" class="w-6"/>
             {{ __('Messages') }}
         </x-jet-dropdown-link>
-        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
+        <x-jet-dropdown-link href="{{ route('customer.notification') }}" class="flex items-center gap-3 py-3">
             <x-icon name="bell" class="w-6"/>
             {{ __('Notifications') }}
         </x-jet-dropdown-link>
