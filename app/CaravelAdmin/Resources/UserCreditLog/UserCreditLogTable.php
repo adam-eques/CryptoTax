@@ -6,8 +6,8 @@ use App\CaravelAdmin\Resources\Customer\CustomerResource;
 use App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource;
 use WebCaravel\Admin\Resources\ResourceTable;
 use App\Services\CreditCodeService;
-use App\Tables\Columns\BelongsToColumn;
 use Filament\Tables\Columns\TextColumn;
+use WebCaravel\Admin\Tables\Columns\BelongsToColumn;
 use function moneyFormat;
 
 class UserCreditLogTable extends ResourceTable

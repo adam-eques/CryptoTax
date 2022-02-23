@@ -14,12 +14,12 @@ class CryptoExchangeAccountResource extends Resource
 
     public function label(): string
     {
-        return __("Crypo exchange");
+        return __("Crypo exchange account");
     }
 
 
     public function labelPlural(): string
     {
-        return __("Crypo exchanges");
+        return __("Crypo exchange accounts");
     }
 }

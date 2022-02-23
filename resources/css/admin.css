@@ -6,5 +6,5 @@
 @import '../../vendor/webcaravel/admin/resources/css/admin.css';
 
 .link {
-    @apply cursor-pointer text-primary-500;
+    @apply cursor-pointer text-primary-200;
 }

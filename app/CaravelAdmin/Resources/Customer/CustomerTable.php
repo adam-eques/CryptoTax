@@ -5,9 +5,9 @@ namespace App\CaravelAdmin\Resources\Customer;
 use WebCaravel\Admin\Resources\ResourceTable;
 use App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource;
 use App\Models\User;
-use App\Tables\Columns\BelongsToColumn;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
+use WebCaravel\Admin\Tables\Columns\BelongsToColumn;
 
 class CustomerTable extends ResourceTable
 {
