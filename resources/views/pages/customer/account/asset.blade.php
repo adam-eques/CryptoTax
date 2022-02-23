@@ -1,3 +1,11 @@
+@php(\App\Services\NavigationService::instance()->overwriteSubnavi([
+    ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
+    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
+    ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
+    ["label" => "Assets", "icon" => "chains", "route" => "customer.asset"],
+], [
+    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+]))
 <x-app-layout>
     <x-container class="px-3 py-5 my-5 bg-white rounded-sm shadow xs:px-4 lg:px-5">
         <x-customers.customer-header-bar icon="chains" name="Assets">

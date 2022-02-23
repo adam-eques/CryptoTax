@@ -1,6 +1,6 @@
 <x-app-layout>
     @if(auth()->user()->isCustomerAccount())
-    <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
+    <x-container class="bg-white rounded-sm shadow">
         <x-customers.customer-header-bar icon="portfolio" name="Portfolio">
             <x-button variant="white" class="w-full justify-between">
                 <x-icon name="calendar" class="w-5 h-5 mr-3"/>
@@ -57,6 +57,6 @@
                 @livewire('customer.portfolio.crypto-portfolio')
             </div>
         </div>
-    </div>
+    </x-container>
     @endif
 </x-app-layout>

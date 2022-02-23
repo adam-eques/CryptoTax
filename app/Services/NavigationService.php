@@ -214,6 +214,7 @@ class NavigationService
                     ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
                     ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
                     ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
+                    ["label" => "Assets", "icon" => "chains", "route" => "customer.asset"],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],

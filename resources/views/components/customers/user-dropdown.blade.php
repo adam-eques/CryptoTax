@@ -1,4 +1,4 @@
-<div class="ml-3 relative w-full hidden lg:block" x-data="{open:false}">
+<div class="ml-3 relative w-full hidden lg:block z-50" x-data="{open:false}">
     <button type="button" class=" flex items-center justify-end outline-none focus:outline-none text-white gap-4 font-medium"
             id="user-menu-button"
             aria-expanded="false"

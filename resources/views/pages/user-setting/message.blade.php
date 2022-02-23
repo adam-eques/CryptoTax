@@ -1,3 +1,9 @@
+@php(\App\Services\NavigationService::instance()->overwriteSubnavi([
+    ["label" => "profile", "icon" => "user", "route" => "customer.account"],
+    ["label" => "Setting", "icon" => "setting", "route" => "customer.transactions"],
+], [
+    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+]))
 <x-app-layout>
     <x-container class="mt-7 mb-24 bg-white p-8 border rounded-sm">
         <x-customers.customer-header-bar icon="message" name="Message">
