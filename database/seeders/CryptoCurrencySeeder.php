@@ -9,6 +9,6 @@ class CryptoCurrencySeeder extends Seeder
 {
     public function run()
     {
-        $data = CryptoCurrency::updateFromApi();
+        $data = CryptoCurrency::updateListFromApi();
     }
 }

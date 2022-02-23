@@ -3,14 +3,13 @@
 namespace App\CaravelAdmin\Resources\Customer;
 
 use App\CaravelAdmin\Resources\CryptoExchangeAccount\CryptoExchangeAccountResource;
-use App\CaravelAdmin\Resources\UserAffiliate\UserAffiliateResource;
 use App\Forms\Components\ButtonField;
 use App\Models\CryptoExchangeAccount;
 use App\Models\User;
 use App\Models\UserCreditLog;
+use WebCaravel\Admin\Forms\Components\RelatedTableField;
 use WebCaravel\Admin\Resources\ResourceForm;
 use App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource;
-use WebCaravel\Admin\Forms\Components\HasManyRelationField;
 use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms;
 
@@ -33,14 +32,14 @@ class CustomerForm extends ResourceForm
 
             // Credit logs
             ->addTab(Forms\Components\Tabs\Tab::make("Credit Logs")->schema([
-                HasManyRelationField::make('creditLogs')
-                    ->resource(UserCreditLogResource::make())
+                RelatedTableField::make(RelatedUserCreditLogTable::class)
             ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", UserCreditLog::class)))
 
             // Exchange accounts
             ->addTab(Forms\Components\Tabs\Tab::make("Exchange Accounts")->schema([
-                HasManyRelationField::make('cryptoExchangeAccounts')
-                    ->resource(CryptoExchangeAccountResource::make())
+                RelatedTableField::make(RelatedCryptoExchangeAccountTable::class)
+                //HasManyRelationField::make('cryptoExchangeAccounts')
+                //    ->resource(CryptoExchangeAccountResource::make())
             ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", CryptoExchangeAccount::class)))
 
             // Info card

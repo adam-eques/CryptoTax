@@ -9,6 +9,9 @@ use Filament\Tables;
 
 class CryptoExchangeAccountTable extends ResourceTable
 {
+    public string $resourceClass = CryptoExchangeAccountResource::class;
+
+
     protected function getTableColumns(): array
     {
         return [

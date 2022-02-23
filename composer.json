@@ -28,7 +28,7 @@
         "livewire/livewire": "^2.5",
         "owenvoke/blade-fontawesome": "^1.10",
         "spatie/laravel-settings": "^2.3",
-        "webcaravel/admin": "^0.0",
+        "webcaravel/admin": "^0.1",
         "wireui/wireui": "^0"
     },
     "require-dev": {

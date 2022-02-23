@@ -5,11 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;900&display=swap');
 @import './flickity.css';
 
-/* .link {
-    @apply text-primary-200;
-} */
-
-[x-cloak] { display: none !important; }
+[x-cloak] {
+    display: none !important;
+}
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -32,9 +30,9 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
     border-radius: 100%;
 }
-  
-  /* All the same stuff for IE */
-  input[type=range]::-ms-thumb {
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
     border: 6px solid #fff;
     height: 21px;
     width: 21px;

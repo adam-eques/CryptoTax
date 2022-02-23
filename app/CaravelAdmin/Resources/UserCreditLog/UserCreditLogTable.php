@@ -12,6 +12,9 @@ use function moneyFormat;
 
 class UserCreditLogTable extends ResourceTable
 {
+    public string $resourceClass = UserCreditLogResource::class;
+
+
     protected function getTableColumns(): array
     {
         return [
@@ -37,12 +40,12 @@ class UserCreditLogTable extends ResourceTable
                 ->sortable()
         ];
     }
-
-
-    protected function getTableFilters(): array
-    {
-        return [
-
-        ];
-    }
+    //
+    //
+    //protected function getTableFilters(): array
+    //{
+    //    return [
+    //
+    //    ];
+    //}
 }

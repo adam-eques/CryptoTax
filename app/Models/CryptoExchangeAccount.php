@@ -3,12 +3,16 @@
 namespace App\Models;
 
 use App\CryptoExchangeDrivers\Driver;
+use App\Models\Traits\BelongsToUserTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CryptoExchangeAccount extends Model
 {
+    use BelongsToUserTrait;
+
+
     /**
      * @var \App\CryptoExchangeDrivers\Driver|null
      */

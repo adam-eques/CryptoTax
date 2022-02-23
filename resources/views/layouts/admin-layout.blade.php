@@ -10,12 +10,12 @@
     {{-- Styles --}}
     <style>[x-cloak] { display: none !important; }</style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-    <link rel="stylesheet" href="{{ mix('mix/css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('mix-admin/css/admin.css') }}">
     @livewireStyles
 
     {{-- Scripts --}}
     <wireui:scripts />
-    <script src="{{ mix('mix/js/app.js') }}" defer></script>
+    <script src="{{ mix('mix-admin/js/admin.js') }}" defer></script>
 {{--    --}}{{-- Push ApexCharts to the top of the scripts stack --}}
 {{--    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>--}}
 {{--    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>--}}
