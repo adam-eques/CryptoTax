@@ -315,16 +315,20 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function buyCredits(UserCreditAction $userCreditAction): self
+    public function buyCredits(string|UserCreditAction $actionOrActionCode): self
     {
+        // Get action and value
+        if(is_string($actionOrActionCode)) {
+            $action = UserCreditAction::findAction($actionOrActionCode);
+        }
+        else {
+            $action = $actionOrActionCode;
+        }
+
+        // Credits action and affiliate stuff
         \DB::beginTransaction();
-
-        // Add credits
-        $log = $this->creditAction($userCreditAction);
-
-        // Affiliate logic
+        $log = $this->creditAction($action);
         $this->giveAffiliateRecruiterCredits($log);
-
         \DB::commit();
 
         return $this;
@@ -340,6 +344,8 @@ class User extends Authenticatable implements MustVerifyEmail
         else {
             $action = $actionOrActionCode;
         }
+
+        // Get value
         $value = !is_null($value) ? $value : $action->value;
 
         // Log it and add it to user table

@@ -15,6 +15,18 @@ class UserCreditLogTable extends ResourceTable
     public string $resourceClass = UserCreditLogResource::class;
 
 
+    public function getDefaultTableSortColumn(): ?string
+    {
+        return "created_at";
+    }
+
+
+    public function getDefaultTableSortDirection(): ?string
+    {
+        return "desc";
+    }
+
+
     protected function getTableColumns(): array
     {
         return [

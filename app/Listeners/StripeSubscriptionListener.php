@@ -21,6 +21,10 @@ class StripeSubscriptionListener
          * @var User $user
          */
         $user = $event->billable;
-        $user->creditAction($user->sparkPlan()->interval == 'monthly' ? CreditCodeService::ACTION_ADD_PREMIUM_MONTH : CreditCodeService::ACTION_ADD_PREMIUM_YEAR);
+
+        // Affiliate logic
+        $user->buyCredits(
+            $user->sparkPlan()->interval == 'monthly' ? CreditCodeService::ACTION_ADD_PREMIUM_MONTH : CreditCodeService::ACTION_ADD_PREMIUM_YEAR
+        );
     }
 }
