@@ -214,7 +214,6 @@ class NavigationService
                     ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
                     ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
                     ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
-                    ["label" => "Assets", "icon" => "chains", "route" => "customer.asset"],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
@@ -222,17 +221,8 @@ class NavigationService
             ],
             ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
-                    ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
-                ],
-                "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
-                ]
-            ],
-            ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes',
-                "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
-                    ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
+                    ["label" => __('Transactions'), 'icon' => 'transaction-2', 'route' => 'customer.transactions'],
+                    ["label" => __('Assets'), 'icon' => 'chains', 'route' => 'customer.asset'],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],

@@ -21,7 +21,7 @@ Route::middleware('customer-setup')->group(function(){
     Route::view('transactions', 'pages.customer.transactions.transactions')->name('transactions');
 
     //Assets
-    Route::view('asset', 'pages.customer.account.asset')->name('asset');
+    Route::view('asset', 'pages.customer.portfolio.asset')->name('asset');
 
     // Specials
     Route::view('account/new', 'pages.customer.account.new')->name('account.new');
