@@ -40,6 +40,7 @@ use Str;
  * @property \App\Models\TaxCurrency $taxCurrency
  * @property \App\Models\TaxCostModel $taxCostModel
  * @property \App\Models\UserAffiliate $userAffiliate
+ * @property \Illuminate\Support\Collection<UserAffiliate> $userAffiliateRecruits
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -124,190 +125,132 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeCustomersOnly(Builder $query): Builder
     {
         return $query->whereIn('user_account_type_id', UserAccountType::customerTypes());
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function userAccountType(): BelongsTo
     {
         return $this->belongsTo(UserAccountType::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function creditLogs(): HasMany
     {
         return $this->hasMany(UserCreditLog::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
     public function userAffiliate(): HasOne
     {
         return $this->hasOne(UserAffiliate::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    public function userAffiliateRecruits(): HasMany
+    {
+        return $this->hasMany(UserAffiliate::class, "recruited_by")->with("user");
+    }
+
+
     public function datacenter(): BelongsTo
     {
         return $this->belongsTo(Datacenter::class);
     }
 
 
-    /**
-     * @return HasMany
-     */
     public function cryptoExchangeAccounts(): HasMany
     {
         return $this->hasMany(CryptoExchangeAccount::class);
     }
 
 
-    /**
-     * @return HasMany
-     */
     public function blockchainAccounts(): HasMany
     {
         return $this->hasMany(BlockchainAccount::class);
     }
 
 
-    /**
-     * @return HasManyThrough
-     */
     public function cryptoExchangeTransactions(): HasManyThrough
     {
         return $this->hasManyThrough(CryptoExchangeTransaction::class, CryptoExchangeAccount::class);
     }
 
 
-    /**
-     * @return HasManyThrough
-     */
     public function blockchainTransactions(): HasManyThrough
     {
         return $this->hasManyThrough(BlockchainTransaction::class, BlockchainAccount::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function taxCostModel(): BelongsTo
     {
         return $this->belongsTo(TaxCostModel::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function taxCurrency(): BelongsTo
     {
         return $this->belongsTo(TaxCurrency::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function taxCountry(): BelongsTo
     {
         return $this->belongsTo(TaxCountry::class);
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function timezone(): BelongsTo
     {
         return $this->belongsTo(Timezone::class);
     }
 
 
-    /**
-     * @return bool
-     */
     public function isAdminPanelAccount(): bool
     {
         return in_array($this->user_account_type_id, UserAccountType::adminPanelTypes());
     }
 
 
-    /**
-     * @return bool
-     */
     public function isCustomerPanelAccount(): bool
     {
         return in_array($this->user_account_type_id, UserAccountType::customerPanelTypes());
     }
 
 
-    /**
-     * @return bool
-     */
     public function isAdminAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_ADMIN;
     }
 
 
-    /**
-     * @return bool
-     */
     public function isCustomerAccount(): bool
     {
         return $this->userAccountType->is_customer;
     }
 
 
-    /**
-     * @return bool
-     */
     public function isSupportAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_SUPPORT;
     }
 
 
-    /**
-     * @return bool
-     */
     public function isEditorAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_EDITOR;
     }
 
 
-    /**
-     * @return bool
-     */
     public function isTaxAdvisorAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_TAX_ADVISOR;
     }
 
 
-    /**
-     * @return bool
-     */
     public function isAffiliateAccount(): bool
     {
         return $this->user_account_type_id === UserAccountType::TYPE_AFFILIATE;
@@ -337,11 +280,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    /**
-     * @param string|\App\Models\UserCreditAction $actionOrActionCode
-     * @param float|null $value
-     * @return $this
-     */
     public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): self
     {
         // Get action and value

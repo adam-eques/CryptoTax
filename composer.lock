@@ -9539,16 +9539,16 @@
         },
         {
             "name": "webcaravel/admin",
-            "version": "v0.1.0",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebCaravel/Admin.git",
-                "reference": "13a649de9f050a6c786ffc0bd770bb09ada92997"
+                "reference": "3e7e384f0d079da0b80a1582b862e4fbc2561fca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/13a649de9f050a6c786ffc0bd770bb09ada92997",
-                "reference": "13a649de9f050a6c786ffc0bd770bb09ada92997",
+                "url": "https://api.github.com/repos/WebCaravel/Admin/zipball/3e7e384f0d079da0b80a1582b862e4fbc2561fca",
+                "reference": "3e7e384f0d079da0b80a1582b862e4fbc2561fca",
                 "shasum": ""
             },
             "require": {
@@ -9606,9 +9606,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WebCaravel/Admin/issues",
-                "source": "https://github.com/WebCaravel/Admin/tree/v0.1.0"
+                "source": "https://github.com/WebCaravel/Admin/tree/v0.1.4"
             },
-            "time": "2022-02-22T10:05:32+00:00"
+            "time": "2022-02-23T14:25:49+00:00"
         },
         {
             "name": "webmozart/assert",

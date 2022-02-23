@@ -12,7 +12,7 @@ class BackendUserTable extends ResourceTable
     public string $resourceClass = BackendUserResource::class;
 
 
-    protected function getTableQuery(): Builder
+    protected function getTableBaseQuery(): Builder
     {
         return User::query()->whereIn("user_account_type_id", $this->resource->typesArray);
     }

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class AffiliateUserTable extends ResourceTable
 {
-    protected function getTableQuery(): Builder
+    protected function getTableBaseQuery(): Builder
     {
         return User::query()->where("user_account_type_id", UserAccountType::TYPE_AFFILIATE);
     }

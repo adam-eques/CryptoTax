@@ -12,9 +12,10 @@ use WebCaravel\Admin\Tables\Columns\BelongsToColumn;
 class CustomerTable extends ResourceTable
 {
     public string $resourceClass = CustomerResource::class;
+    public bool $disableAdd = true;
 
 
-    protected function getTableQuery(): Builder
+    protected function getTableBaseQuery(): Builder
     {
         return User::query()->customersOnly();
     }
