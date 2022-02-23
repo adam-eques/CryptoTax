@@ -30,7 +30,7 @@ class CryptoExchangeAccountPolicy
      */
     public function view(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
     {
-        return $user->isAdminPanelAccount() || $cryptoExchangeAccount->user_id === $user->id;
+        return $cryptoExchangeAccount->user_id === $user->id;
     }
 
     /**
