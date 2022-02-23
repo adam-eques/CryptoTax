@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\RemovePremiumAfterSubscriptionEndsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        RemovePremiumAfterSubscriptionEndsCommand::class,
     ];
 
     /**
@@ -24,7 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Change premium users to free when no subscriptions is there
+        $schedule->command(RemovePremiumAfterSubscriptionEndsCommand::class)->everySixHours();
 
         // Prune telescope entries second daily
         $schedule->command('telescope:prune --hours=48')->daily();

@@ -2,12 +2,14 @@
 
 namespace App\CaravelAdmin\Resources\Customer;
 
+use App\Models\UserAccountType;
 use WebCaravel\Admin\Resources\ResourceTable;
 use App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource;
 use App\Models\User;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use WebCaravel\Admin\Tables\Columns\BelongsToColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 class CustomerTable extends ResourceTable
 {
@@ -52,6 +54,17 @@ class CustomerTable extends ResourceTable
                 ->date("Y-m-d H:i:s")
                 ->searchable()
                 ->sortable(),
+        ];
+    }
+
+
+    protected function getTableFilters(): array
+    {
+        return [
+            SelectFilter::make("user_account_type_id")
+                ->options(
+                    UserAccountType::query()->whereIn("id", UserAccountType::customerTypes())->pluck("name", "id")
+                )
         ];
     }
 }
