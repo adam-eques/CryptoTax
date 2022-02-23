@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/mix-admin
+/public/mix-admin/css
+/public/mix-admin/js
 /public/storage
 /storage/*.key
 /vendor
