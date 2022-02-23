@@ -32,7 +32,7 @@ class AffiliateSettingForm extends SettingsForm
                             ->maxValue(99999),
                     ]),
 
-                Fieldset::make('First Level')
+                Fieldset::make("Affiliate Lifetime")
                     ->schema([
                         Forms\Components\TextInput::make('first_level_lifetime')
                             ->label('First level lifetime')
@@ -42,16 +42,6 @@ class AffiliateSettingForm extends SettingsForm
                             ->numeric()
                             ->minValue(1)
                             ->maxValue(999),
-                        Forms\Components\TextInput::make('first_level_percentage')
-                            ->label('First level percentage')
-                            ->postfix("%")
-                            ->required()
-                            ->numeric()
-                            ->minValue(0.01)
-                            ->maxValue(100),
-                    ]),
-
-                Fieldset::make('Second Level')->schema([
                     Forms\Components\TextInput::make('second_level_lifetime')
                         ->label('Second level lifetime')
                         ->helperText('Lifetime in months')
@@ -60,14 +50,6 @@ class AffiliateSettingForm extends SettingsForm
                         ->numeric()
                         ->minValue(1)
                         ->maxValue(999),
-
-                    Forms\Components\TextInput::make('second_level_percentage')
-                        ->label('Second level percentage')
-                        ->postfix("%")
-                        ->required()
-                        ->numeric()
-                        ->minValue(0.01)
-                        ->maxValue(100),
                 ]),
 
                 Fieldset::make('Payout')->schema([

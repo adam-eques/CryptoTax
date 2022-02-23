@@ -29,8 +29,7 @@ class UserCreditActionForm extends ResourceForm
                     ->label("Action")
                     ->reactive(),
                 TextInput::make('value')
-                    ->label(__("Credits (negativ = cost; positiv = reward)"))
-                    ->postfix("Credits")
+                    ->label(__("Credits (negativ = cost; positiv = reward); If affilate action, its a percentage"))
                     ->nullable(true)
                     ->numeric(),
                 TextInput::make('price')

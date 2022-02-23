@@ -289,19 +289,12 @@ class User extends Authenticatable implements MustVerifyEmail
              */
             $recruitedBy = $this->userAffiliate->recruitedBy;
             $settings = app(AffiliateSetting::class);
-
-            if($level === 1) {
-                $lifetime = $settings->first_level_lifetime;
-                $percentage = $settings->first_level_percentage;
-            }
-            else {
-                $lifetime = $settings->second_level_lifetime;
-                $percentage = $settings->second_level_percentage;
-            }
+            $lifetime = $level === 1 ? $settings->first_level_lifetime : $settings->second_level_lifetime;
 
             if($this->created_at->addMonths($lifetime)->isFuture()) {
-                $credits = round($log->value * $percentage / 100, 2);
                 $actionCode = $level === 1 ? CreditCodeService::ACTION_AFFILIATE_L1 : CreditCodeService::ACTION_AFFILIATE_L2;
+                $action = UserCreditAction::findAction($actionCode);
+                $credits = round($log->value * $action->value / 100, 2);
                 $recruitedBy->creditAction($actionCode, $credits);
             }
 
