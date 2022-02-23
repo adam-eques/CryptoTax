@@ -46,7 +46,7 @@ class BuyCredit extends Component
         ]);
 
         // Log action
-        $user->creditAction($priceAction);
+        $user->buyCredits($priceAction);
 
         // Update credtis
         $this->credits = $user->credits;

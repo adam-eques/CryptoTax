@@ -68,6 +68,24 @@ class UserCreditActionSeeder extends Seeder
                 'valid_from' => $now,
                 'valid_till' => null,
             ],
+            [
+                'action_code' => CreditCodeService::ACTION_AFFILIATE_L1,
+                'name' => "User Affiliate Earning Level 1",
+                "name_public" => "Affiliate Earning Level 1",
+                'value' => null,
+                'price' => null,
+                'valid_from' => $now,
+                'valid_till' => null,
+            ],
+            [
+                'action_code' => CreditCodeService::ACTION_AFFILIATE_L2,
+                'name' => "User Affiliate Earning Level 2",
+                "name_public" => "Affiliate Earning Level 2",
+                'value' => null,
+                'price' => null,
+                'valid_from' => $now,
+                'valid_till' => null,
+            ],
         ])->each(function($data){
             $exists = UserCreditAction::query()
                 ->where("action_code", $data["action_code"])

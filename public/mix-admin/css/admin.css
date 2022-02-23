@@ -4774,6 +4774,10 @@ body{
   overflow-wrap: break-word;
 }
 
+.break-all{
+  word-break: break-all;
+}
+
 .rounded-md{
   border-radius: 0.375rem;
 }

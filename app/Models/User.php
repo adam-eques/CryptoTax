@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\HasName;
 use App\Services\CreditCodeService;
+use App\Settings\AffiliateSetting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -280,7 +281,57 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): self
+    protected function giveAffiliateRecruiterCredits(UserCreditLog $log, int $level = 1): self
+    {
+        if(optional($this->userAffiliate)->recruitedBy) {
+            /**
+             * @var self $recruitedBy
+             */
+            $recruitedBy = $this->userAffiliate->recruitedBy;
+            $settings = app(AffiliateSetting::class);
+
+            if($level === 1) {
+                $lifetime = $settings->first_level_lifetime;
+                $percentage = $settings->first_level_percentage;
+            }
+            else {
+                $lifetime = $settings->second_level_lifetime;
+                $percentage = $settings->second_level_percentage;
+            }
+
+            if($this->created_at->addMonths($lifetime)->isFuture()) {
+                $credits = round($log->value * $percentage / 100, 2);
+                $actionCode = $level === 1 ? CreditCodeService::ACTION_AFFILIATE_L1 : CreditCodeService::ACTION_AFFILIATE_L2;
+                $recruitedBy->creditAction($actionCode, $credits);
+            }
+
+            // Also give level 2 recruiter credits
+            if($level === 1) {
+                $recruitedBy->giveAffiliateRecruiterCredits($log, 2);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function buyCredits(UserCreditAction $userCreditAction): self
+    {
+        \DB::beginTransaction();
+
+        // Add credits
+        $log = $this->creditAction($userCreditAction);
+
+        // Affiliate logic
+        $this->giveAffiliateRecruiterCredits($log);
+
+        \DB::commit();
+
+        return $this;
+    }
+
+
+    public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): UserCreditLog
     {
         // Get action and value
         if(is_string($actionOrActionCode)) {
@@ -292,10 +343,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $value = !is_null($value) ? $value : $action->value;
 
         // Log it and add it to user table
-        UserCreditLog::log($this->id, $value, $action->action_code, $action->id);
+        $log = UserCreditLog::log($this->id, $value, $action->action_code, $action->id);
+
+        // Add credits and save
         $this->credits += $value;
         $this->save();
 
-        return $this;
+        return $log;
     }
 }

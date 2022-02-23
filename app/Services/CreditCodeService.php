@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\User;
+use App\Models\UserCreditLog;
 use ReflectionClass;
 
 class CreditCodeService
@@ -10,6 +12,8 @@ class CreditCodeService
     const ACTION_ADD_PREMIUM_MONTH = "PREM";
     const ACTION_ADD_PREMIUM_YEAR = "PREY";
     const ACTION_BUY_CREDITS = "BUYC";
+    const ACTION_AFFILIATE_L1 = "AFF1";
+    const ACTION_AFFILIATE_L2 = "AFF2";
 
 
     public static function allActions(): array

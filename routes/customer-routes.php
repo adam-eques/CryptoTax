@@ -41,6 +41,13 @@ Route::middleware('customer-setup')->group(function(){
 
         // Test: buy credits
         Route::any("buy-credits", Livewire\Customer\Test\BuyCredit::class);
+
+        // Test affiliate
+        Route::get("affili", function (){
+            $user = auth()->user();
+
+            $user->buyCredits(\App\Models\UserCreditAction::findAction("BUYC"));
+        });
     });
 });
 
