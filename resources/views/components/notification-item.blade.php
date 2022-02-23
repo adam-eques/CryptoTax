@@ -16,7 +16,7 @@
 
 <div {{ $attributes->merge(['class' => 'w-full flex items-center border rounded-lg justify-between ']) }}>
     <div class="flex items-center">
-        <div class="h-full border-r rounded-l-lg py-6 px-6 {{ $typeClass }}">
+        <div class="h-full sm:rounded-l-lg py-6 px-6 {{ $typeClass }}">
             <x-icon name='{{ $icon }}' class="{{ $iconClass }} w-6 h-6"/>
         </div>
         <p class="text-gray-400 ml-6"><span class="font-bold text-primary mr-2">{{ __($title) }}</span>{{ __($content) }}</p>
