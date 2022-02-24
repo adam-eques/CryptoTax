@@ -9,17 +9,17 @@ use App\Models\UserCreditLog;
 class UserCreditLogResource extends Resource
 {
     protected string $model = UserCreditLog::class;
-    protected string $icon = "fas-money-bill-alt";
+    protected string $icon = "fas-table";
 
 
     public function label(): string
     {
-        return __("Credit action");
+        return __("Credit log");
     }
 
 
     public function labelPlural(): string
     {
-        return __("Credit actions");
+        return __("Credit logs");
     }
 }

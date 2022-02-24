@@ -31,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
         // Unguard all models
         Model::unguard();
 
+        // Custom morph map
+        Relation::enforceMorphMap(config("morph-map"));
+
         // Add cascadeDelete macro
         Relation::macro('cascadeDelete', function() {
             $this->chunk(500, function($chunks){

@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Traits\BelongsToUserTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property \App\Models\User $user
+ * @property \App\Models\User $recruitedBy
  */
 class UserAffiliate extends Model
 {
+    use BelongsToUserTrait;
+
 
     public static function boot()
     {
@@ -18,12 +21,6 @@ class UserAffiliate extends Model
         static::creating(function (self $item) {
             $item->hash = $item->hash ?: \Str::uuid()->toString();
         });
-    }
-
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
     }
 
 

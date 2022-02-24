@@ -9,6 +9,7 @@ use App\CaravelAdmin\Resources\Customer\CustomerResource;
 use App\CaravelAdmin\Resources\TaxAdvisor\TaxAdvisorResource;
 use App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource;
 use App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource;
+use App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource;
 
 class NavigationService
 {
@@ -179,7 +180,8 @@ class NavigationService
                 BackendUserResource::make()->sidebar(),
                 AffiliateUserResource::make()->sidebar(),
                 UserAccountTypeResource::make()->sidebar(),
-                UserCreditActionResource::make()->sidebar()
+                UserCreditActionResource::make()->sidebar(),
+                UserCreditLogResource::make()->sidebar()
             ]],
             ["label" => __('Finance'), 'children' => [
                 ["label" => "Finance", "icon" => "fas-coins", "route" => "admin.todo"],

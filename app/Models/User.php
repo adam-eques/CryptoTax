@@ -7,6 +7,7 @@ use App\Services\CreditCodeService;
 use App\Settings\AffiliateSetting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -284,9 +285,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function giveAffiliateRecruiterCredits(UserCreditLog $log, int $level = 1): self
     {
         if(optional($this->userAffiliate)->recruitedBy) {
-            /**
-             * @var self $recruitedBy
-             */
             $recruitedBy = $this->userAffiliate->recruitedBy;
             $settings = app(AffiliateSetting::class);
             $lifetime = $level === 1 ? $settings->first_level_lifetime : $settings->second_level_lifetime;
@@ -295,7 +293,7 @@ class User extends Authenticatable implements MustVerifyEmail
                 $actionCode = $level === 1 ? CreditCodeService::ACTION_AFFILIATE_L1 : CreditCodeService::ACTION_AFFILIATE_L2;
                 $action = UserCreditAction::findAction($actionCode);
                 $credits = round($log->value * $action->value / 100, 2);
-                $recruitedBy->creditAction($actionCode, $credits);
+                $recruitedBy->creditAction($actionCode, $log, $credits);
             }
 
             // Also give level 2 recruiter credits
@@ -328,7 +326,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function creditAction(string|UserCreditAction $actionOrActionCode, ?float $value = null): UserCreditLog
+    public function creditAction(string|UserCreditAction $actionOrActionCode, ?Model $reference = null, ?float $value = null): UserCreditLog
     {
         // Get action and value
         if(is_string($actionOrActionCode)) {
@@ -342,7 +340,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $value = !is_null($value) ? $value : $action->value;
 
         // Log it and add it to user table
-        $log = UserCreditLog::log($this->id, $value, $action->action_code, $action->id);
+        $log = UserCreditLog::log($this->id, $value, $action->action_code, $action->id, $reference);
 
         // Add credits and save
         $this->credits += $value;

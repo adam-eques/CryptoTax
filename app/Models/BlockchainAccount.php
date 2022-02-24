@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\BlockchainHelper;
+use App\Models\Traits\BelongsToUserTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -24,6 +25,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class BlockchainAccount extends Model
 {
+    use BelongsToUserTrait;
+
     protected $casts = [
         'fetched_at' => 'datetime',
         'fetching_scheduled_at' => 'datetime',
@@ -38,15 +41,6 @@ class BlockchainAccount extends Model
             $item->blockchainTransactions()->cascadeDelete();
             $item->blockchainAssets()->cascadeDelete();
         });
-    }
-
-
-    /**
-     * @return BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
     }
 
 

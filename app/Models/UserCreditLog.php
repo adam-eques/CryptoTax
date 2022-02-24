@@ -2,23 +2,32 @@
 
 namespace App\Models;
 
+use App\Models\Traits\BelongsToUserTrait;
+use App\Models\Traits\CreditActionMorphTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * @property UserCreditAction $action
+ * @property Model $reference
+ */
 class UserCreditLog extends Model
 {
+    use BelongsToUserTrait, CreditActionMorphTrait;
+
     const UPDATED_AT = null;
-
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 
 
     public function action(): BelongsTo
     {
         return $this->belongsTo(UserCreditAction::class, "user_credit_action_id");
+    }
+
+
+    public function reference(): MorphTo
+    {
+        return $this->morphTo();
     }
 
 
@@ -28,13 +37,21 @@ class UserCreditLog extends Model
     }
 
 
-    public static function log(int $userId, float $value, string $actionCode, ?int $actionId = null): self
+    public function getNameAttribute(): string
+    {
+        return $this->getName();
+    }
+
+
+    public static function log(int $userId, float $value, string $actionCode, ?int $actionId, ?Model $reference): self
     {
         $obj = self::make([
             'user_id' => $userId,
             'user_credit_action_id' => $actionId,
             'action_code' => $actionCode,
-            'value' => $value
+            'value' => $value,
+            'reference_id' => optional($reference)->id,
+            'reference_type' => optional($reference)->getMorphClass(),
         ]);
         $obj->save();
 
