@@ -4,7 +4,7 @@ namespace App\CaravelAdmin\Resources\UserCreditLog;
 
 use App\CaravelAdmin\Resources\Customer\CustomerResource;
 use App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource;
-use App\Models\UserCreditLog;
+use App\Tables\Columns\UserColumn;
 use Filament\Tables\Filters\SelectFilter;
 use WebCaravel\Admin\Resources\ResourceTable;
 use App\Services\CreditCodeService;
@@ -34,16 +34,15 @@ class UserCreditLogTable extends ResourceTable
     {
         return [
             TextColumn::make("id"),
-            BelongsToColumn::make("user.name")
-                ->resource(CustomerResource::class),
+            UserColumn::make(),
             HtmlColumn::make("action_code")
                 ->subtitle(fn($record): string => CreditCodeService::getLabel($record->action_code))
                 ->label("Action Code")
                 ->sortable()
                 ->searchable(),
             BelongsToColumn::make("action.name")
+                ->subtitle(fn($record): ?string => optional($record->reference)->getName())
                 ->resource(UserCreditActionResource::class),
-            TextColumn::make("reference.name"),
             TextColumn::make("value")
                 ->formatStateUsing(function($record) {
                     return moneyFormat($record->value);

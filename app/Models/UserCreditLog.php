@@ -37,12 +37,6 @@ class UserCreditLog extends Model
     }
 
 
-    public function getNameAttribute(): string
-    {
-        return $this->getName();
-    }
-
-
     public static function log(int $userId, float $value, string $actionCode, ?int $actionId, ?Model $reference): self
     {
         $obj = self::make([
