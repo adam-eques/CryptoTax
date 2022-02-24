@@ -36,27 +36,27 @@
             {{ __('Profile') }}
         </x-jet-dropdown-link> --}}
         <x-jet-dropdown-link href="{{ route('customer.message') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="message" class="w-6"/>
+            <x-icon name="message" class="w-5"/>
             {{ __('Messages') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.notification') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="bell" class="w-6"/>
+            <x-icon name="bell" class="w-5"/>
             {{ __('Notifications') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="payment-card" class="w-6"/>
+            <x-icon name="payment-card" class="w-5"/>
             {{ __('Payment Informations') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('index') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="bill" class="w-6"/>
+            <x-icon name="bill" class="w-5"/>
             {{ __('Billing') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="credit-card" class="w-6"/>
+            <x-icon name="credit-card" class="w-5"/>
             {{ __('Buy Credits') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="setting" class="w-6"/>
+            <x-icon name="setting" class="w-5"/>
             {{ __('Setting') }}
         </x-jet-dropdown-link>
         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

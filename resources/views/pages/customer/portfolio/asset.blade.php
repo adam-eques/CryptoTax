@@ -1,4 +1,5 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
+    ["label" => "Portfolio", "icon" => "wallet", "route" => "customer.portfolio"],
     ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
     ["label" => "Assets", "icon" => "chains", "route" => "customer.asset"],
 ], [
