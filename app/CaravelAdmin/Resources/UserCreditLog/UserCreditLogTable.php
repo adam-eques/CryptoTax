@@ -10,6 +10,7 @@ use WebCaravel\Admin\Resources\ResourceTable;
 use App\Services\CreditCodeService;
 use Filament\Tables\Columns\TextColumn;
 use WebCaravel\Admin\Tables\Columns\BelongsToColumn;
+use WebCaravel\Admin\Tables\Columns\HtmlColumn;
 use function moneyFormat;
 
 class UserCreditLogTable extends ResourceTable
@@ -35,11 +36,9 @@ class UserCreditLogTable extends ResourceTable
             TextColumn::make("id"),
             BelongsToColumn::make("user.name")
                 ->resource(CustomerResource::class),
-            TextColumn::make("action_code")
+            HtmlColumn::make("action_code")
+                ->subtitle(fn($record): string => CreditCodeService::getLabel($record->action_code))
                 ->label("Action Code")
-                ->formatStateUsing(function($record) {
-                    return CreditCodeService::getLabel($record->action_code);
-                })
                 ->sortable()
                 ->searchable(),
             BelongsToColumn::make("action.name")
@@ -51,8 +50,9 @@ class UserCreditLogTable extends ResourceTable
                 })
                 ->label("Credits")
                 ->sortable(),
-            TextColumn::make('created_at')
-                ->dateTime()
+            HtmlColumn::make('created_at')
+                ->formatStateUsing(fn($record): string => $record->created_at->format("H:i:s"))
+                ->subtitle(fn($record): string => $record->created_at->format("Y-m-d"))
                 ->sortable()
         ];
     }
