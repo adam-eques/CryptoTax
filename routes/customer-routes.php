@@ -63,6 +63,7 @@ Route::get('user-setting/{category?}', function($category = "profile"){
 Route::view('message', 'pages.user-setting.message')->name('message');
 Route::view('notification', 'pages.user-setting.notification')->name('notification');
 Route::view('payment-info', 'pages.user-setting.paymentinfo')->name('payment-info');
+Route::view('billing-log', 'pages.user-setting.billing')->name('billing-log');
 
 // Specials
 Route::view('/todo', 'errors.todo')->name('todo');

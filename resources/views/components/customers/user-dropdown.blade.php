@@ -43,11 +43,11 @@
             <x-icon name="bell" class="w-5"/>
             {{ __('Notifications') }}
         </x-jet-dropdown-link>
-        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
+        <x-jet-dropdown-link href="{{ route('customer.payment-info') }}" class="flex items-center gap-3 py-3">
             <x-icon name="payment-card" class="w-5"/>
             {{ __('Payment Informations') }}
         </x-jet-dropdown-link>
-        <x-jet-dropdown-link href="{{ route('index') }}" class="flex items-center gap-3 py-3">
+        <x-jet-dropdown-link href="{{ route('customer.billing-log') }}" class="flex items-center gap-3 py-3">
             <x-icon name="bill" class="w-5"/>
             {{ __('Billing') }}
         </x-jet-dropdown-link>
