@@ -64,6 +64,7 @@ Route::view('message', 'pages.user-setting.message')->name('message');
 Route::view('notification', 'pages.user-setting.notification')->name('notification');
 Route::view('payment-info', 'pages.user-setting.paymentinfo')->name('payment-info');
 Route::view('billing-log', 'pages.user-setting.billing')->name('billing-log');
+Route::view('buy-credit', 'pages.user-setting.buy-credit')->name('buy-credit');
 
 // Specials
 Route::view('/todo', 'errors.todo')->name('todo');
