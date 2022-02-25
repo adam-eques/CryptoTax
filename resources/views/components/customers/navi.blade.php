@@ -25,44 +25,6 @@
             </div>
 
             <div class="ml-auto mr-5">
-                {{-- <div class="flex items-center gap-4">
-                    <button type="button" title="Message"
-                            class="text-white rounded-full outline-none hover:text-gray-300 focus:outline-none ">
-                        <span class="sr-only">{{__('Message')}}</span>
-                        <x-icon name="message" class="w-6 h-6 mr-2"/>
-                    </button>
-
-                    <div class="relative lg:block" x-data="{open:false}">
-                        <button type="button" title="Notification"
-                                class="relative text-white rounded-full outline-none hover:text-gray-300 focus:outline-none"
-                                @click="open = true">
-                            <span class="sr-only">{{ __("View notifications") }}</span>
-                            <x-icon name="bell" class="w-6 h-6 mt-1 mr-2"/>
-                            <span class="absolute inline-flex px-1 text-xs bg-white rounded-full text-primary -top-1 -right-1">2</span>
-                        </button>
-
-                        <div
-                            class="absolute right-0 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg w-70 ring-1 ring-black ring-opacity-5 focus:outline-none"
-                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
-                            x-show="open" @click.away="open=false" x-cloak
-                            x-transition:enter-start="transition ease-in duration-3000">
-                            <x-jet-dropdown-link href="{{ route('customer.taxes') }}">
-                                <x-icon name="fas-file-alt"  class="w-3 mr-2 sm:inline" />
-                                {{ __("New tax report available") }}
-                                <small class="mt-1 ml-6 text-gray-400 sm:block text-2xs">2021-11-30 03:04 pm</small>
-                            </x-jet-dropdown-link>
-                            <div class="border-t border-gray-100"></div>
-
-                            <x-jet-dropdown-link href="{{ route('customer.account') }}">
-                                <x-icon name="fas-plus-square" class="w-3 mr-2 sm:inline" />
-                                {{ __('New wallet added') }}
-                                <small class="mt-1 ml-6 text-gray-400 sm:block text-2xs">2021-11-30 03:04 pm</small>
-                            </x-jet-dropdown-link>
-                        </div>
-                    </div>
-                </div> --}}
-
-                {{-- User dropdown --}}
                 <x-customers.user-dropdown />
             </div>
 

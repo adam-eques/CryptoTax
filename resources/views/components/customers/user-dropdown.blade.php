@@ -31,32 +31,31 @@
         class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none divide-y"
         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
         x-show="open" @click.away="open=false" x-cloak
-        x-transition:enter-start="transition ease-in duration-3000">
-        {{-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
-            {{ __('Profile') }}
-        </x-jet-dropdown-link> --}}
+        x-transition:enter-start="transition ease-in duration-3000"
+    >
         <x-jet-dropdown-link href="{{ route('customer.message') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="message" class="w-5"/>
+            <x-iconoir-message-text class="w-6"/>
             {{ __('Messages') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.notification') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="bell" class="w-5"/>
+            <x-iconoir-bell-notification class="w-6"/>
             {{ __('Notifications') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.payment-info') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="payment-card" class="w-5"/>
+            <x-fluentui-payment-16-o  class="w-6"/>
             {{ __('Payment Informations') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.billing-log') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="bill" class="w-5"/>
+            <x-iconpark-bill-o class="w-6"/>
             {{ __('Billing') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.buy-credit') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="credit-card" class="w-5"/>
+            <x-iconpark-buy-o class="w-6"/>
             {{ __('Buy Credits') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
-            <x-icon name="setting" class="w-5"/>
+            {{-- <x-icon name="setting" class="w-5"/> --}}
+            <x-uni-setting-o class="w-6"/>
             {{ __('Setting') }}
         </x-jet-dropdown-link>
         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -69,7 +68,8 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="flex items-center gap-3 py-3">
-                <x-icon name="log-out" class="w-6"/>
+                {{-- <x-icon name="log-out" class="w-6"/> --}}
+                <x-heroicon-o-logout class="w-6"/>
                 {{ __('Log Out') }}
             </x-jet-dropdown-link>
         </form>

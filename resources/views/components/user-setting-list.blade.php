@@ -6,15 +6,15 @@
 
 @php
     $list = [
-        [ 'name' => 'Profile settings', 'icon' => 'user', 'route' => 'profile' ],
-        [ 'name' => 'Tax Settings', 'icon' => 'tax-3', 'route' => 'tax' ],
-        [ 'name' => 'Email address', 'icon' => 'inbox', 'route' => 'email' ],
-        [ 'name' => 'Password', 'icon' => 'password', 'route' => 'password' ],
-        [ 'name' => 'Notification', 'icon' => 'bell', 'route' => 'notification' ],
-        [ 'name' => 'Security', 'icon' => 'security', 'route' => 'security' ],
-        [ 'name' => 'Request Exchange', 'icon' => 'exchange-2', 'route' => 'exchange' ],
-        [ 'name' => 'Other', 'icon' => 'other', 'route' => 'other' ],
-        [ 'name' => 'Delete Account', 'icon' => 'delete', 'route' => 'delete' ],
+        [ 'name' => 'Profile settings', 'route' => 'profile' ],
+        [ 'name' => 'Tax Settings', 'route' => 'tax' ],
+        [ 'name' => 'Email address', 'route' => 'email' ],
+        [ 'name' => 'Password', 'route' => 'password' ],
+        [ 'name' => 'Notification', 'route' => 'notification' ],
+        [ 'name' => 'Security', 'route' => 'security' ],
+        [ 'name' => 'Request Exchange', 'route' => 'exchange' ],
+        [ 'name' => 'Other', 'route' => 'other' ],
+        [ 'name' => 'Delete Account', 'route' => 'delete' ],
     ]
 @endphp
 
@@ -23,7 +23,37 @@
         <a href="{{ route('customer.user-setting', ['category' => $item['route']]) }}">
             <div class="flex items-center justify-between w-full text-left py-6 px-8 @if($active == $item['route']) bg-gray-100 @endif ">
                 <div class="flex items-center">
-                    <x-icon name="{{$item['icon']}}" class="w-6 h-auto mr-6"/>
+                    @switch($item['route'])
+                        @case('profile')
+                            <x-ri-user-settings-line class="w-6 mr-4"/>
+                            @break
+                        @case('tax')
+                            <x-heroicon-o-receipt-tax class="w-6 mr-4"/>
+                            @break
+                        @case('email')
+                            <x-heroicon-o-mail class="w-6 mr-4"/>
+                            @break
+                        @case('password')
+                            <x-fluentui-password-16-o class="w-6 mr-4"/>
+                            @break
+                        @case('notification')
+                            <x-heroicon-o-bell class="w-6 mr-4"/>
+                            @break
+                        @case('security')
+                            <x-carbon-security class="w-6 mr-4"/>
+                            @break
+                        @case('exchange')
+                            <x-tabler-exchange class="w-6 mr-4"/>
+                            @break
+                        @case('other')
+                            <x-gmdi-settings-backup-restore-o class="w-6 mr-4"/>
+                            @break
+                        @case('delete')
+                            <x-ri-delete-bin-6-line class="w-6 mr-4"/>
+                            @break
+                        @default
+                            
+                    @endswitch
                     {{ __($item['name']) }}
                 </div>
                 @if ($active == $item['route'])
@@ -51,7 +81,37 @@
                     <a href="{{ route('customer.user-setting', ['category' => $item['route']]) }}">
                         <div class="flex items-center justify-between w-full text-left py-6 px-8 @if($active == $item['route']) bg-gray-100 @endif ">
                             <div class="flex items-center">
-                                <x-icon name="{{$item['icon']}}" class="w-6 h-auto mr-6"/>
+                                @switch($item['route'])
+                                    @case('profile')
+                                        <x-ri-user-settings-line class="w-6 mr-4"/>
+                                        @break
+                                    @case('tax')
+                                        <x-heroicon-o-receipt-tax class="w-6 mr-4"/>
+                                        @break
+                                    @case('email')
+                                        <x-heroicon-o-mail class="w-6 mr-4"/>
+                                        @break
+                                    @case('password')
+                                        <x-fluentui-password-16-o class="w-6 mr-4"/>
+                                        @break
+                                    @case('notification')
+                                        <x-heroicon-o-bell class="w-6 mr-4"/>
+                                        @break
+                                    @case('security')
+                                        <x-carbon-security class="w-6 mr-4"/>
+                                        @break
+                                    @case('exchange')
+                                        <x-tabler-exchange class="w-6 mr-4"/>
+                                        @break
+                                    @case('other')
+                                        <x-gmdi-settings-backup-restore-o class="w-6 mr-4"/>
+                                        @break
+                                    @case('delete')
+                                        <x-ri-delete-bin-6-line class="w-6 mr-4"/>
+                                        @break
+                                    @default
+                                        
+                                @endswitch
                                 {{ __($item['name']) }}
                             </div>
                             @if ($active == $item['route'])
