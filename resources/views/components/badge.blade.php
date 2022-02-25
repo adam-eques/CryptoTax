@@ -12,6 +12,7 @@
         case 'success': $variantClasses = 'bg-success'; break;
         case 'danger': $variantClasses = 'bg-danger'; break;
         case 'warning': $variantClasses = 'bg-warning'; break;
+        case 'transparent': $variantClasses = 'bg-gray-100'; break;
     }
     switch($size) {
         case 'sm': $sizeClass = 'px-3 py-2 text-xs font-bold'; break;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26883f3b9b67db332be7f311f67a80ff",
+    "content-hash": "0460161382d729b3cc55ef2bf7919bf3",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -70,6 +70,64 @@
                 "source": "https://github.com/akaunting/laravel-money/tree/2.0.1"
             },
             "time": "2022-01-31T17:11:27+00:00"
+        },
+        {
+            "name": "andreiio/blade-iconoir",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreiio/blade-iconoir.git",
+                "reference": "2b2ce914b51c387ab5c4e6872bb2ef9d3b862a71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreiio/blade-iconoir/zipball/2b2ce914b51c387ab5c4e6872bb2ef9d3b862a71",
+                "reference": "2b2ce914b51c387ab5c4e6872bb2ef9d3b862a71",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AndreiIonita\\BladeIconoir\\BladeIconoirServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndreiIonita\\BladeIconoir\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Ioniță",
+                    "homepage": "https://andrei.io"
+                }
+            ],
+            "description": "A package to easily make use of Iconoir in your Laravel Blade views.",
+            "support": {
+                "issues": "https://github.com/andreiio/blade-iconoir/issues",
+                "source": "https://github.com/andreiio/blade-iconoir/tree/1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/andreiio",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-20T12:51:31+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3275,7 +3333,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-develop",
+            "version": "dev-feature/setting",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -12356,5 +12414,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
