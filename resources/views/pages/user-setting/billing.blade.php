@@ -16,7 +16,7 @@
             <div class="mt-18 overflow-auto">
                 <div class="divide-y min-w-[720px]">
                     <div class="grid grid-cols-12 pb-4">
-                        <div class="col-span-4 ml-10">
+                        <div class="col-span-4 ml-12">
                             <p class="font-semibold">{{ __('Description') }}</p>
                         </div>
                         <div class="col-span-2">
@@ -37,7 +37,7 @@
                     @foreach ($items as $item)                        
                         <div class="grid grid-cols-12 py-8 items-center">
                             <div class="col-span-4">
-                                <div class="flex items-center space-x-6">
+                                <div class="flex items-center space-x-6 pl-2">
                                     <input type="checkbox"/>
                                     <div class="">
                                         <p class="font-base">{{ __('100 Credits for 100 $') }}</p>

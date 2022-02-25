@@ -51,7 +51,7 @@
             <x-icon name="bill" class="w-5"/>
             {{ __('Billing') }}
         </x-jet-dropdown-link>
-        <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
+        <x-jet-dropdown-link href="{{ route('customer.buy-credit') }}" class="flex items-center gap-3 py-3">
             <x-icon name="credit-card" class="w-5"/>
             {{ __('Buy Credits') }}
         </x-jet-dropdown-link>
