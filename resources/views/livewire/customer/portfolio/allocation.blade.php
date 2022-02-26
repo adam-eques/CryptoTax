@@ -1,6 +1,6 @@
 <div>
-    <p class=" text-xl md:text-2xl font-bold">Portfolio Allocation</p>
-    <div class="pt-5 flex-1">
+    <p class="text-xl font-bold  md:text-2xl">Portfolio Allocation</p>
+    <div class="flex-1 pt-5">
         <div class="" id="doghnut-chart"></div>
     </div>
 </div>

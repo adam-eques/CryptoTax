@@ -31,10 +31,10 @@ $overview_data = [
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 sm:gap-x-4 gap-y-4 sm:gap-y-0">
     @foreach ($overview_data as $item)
-        <div class="w-full border rounded-lg p-8 flex justify-between items-start">
+        <div class="flex items-start justify-between w-full p-8 border rounded-lg">
             <div>
                 <p> {{ $item['type'] }}</p>
-                <p class="text-3xl font-bold mt-1">{{ $item['amount'] }}</p>
+                <p class="mt-1 text-3xl font-bold">{{ $item['amount'] }}</p>
             </div>
             <x-icon name="{{ $item['icon'] }}" class="w-14 h-14" />
         </div>

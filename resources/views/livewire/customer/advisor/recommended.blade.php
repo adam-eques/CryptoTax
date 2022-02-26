@@ -1,11 +1,11 @@
 <div class="main-carousel">
-    <div class="w-full lg:w-1/2 2xl:w-1/3 px-2">
+    <div class="w-full px-2 lg:w-1/2 2xl:w-1/3">
         <x-advisor-recommended-item/>
     </div>
-    <div class="w-full lg:w-1/2 2xl:w-1/3 px-2">
+    <div class="w-full px-2 lg:w-1/2 2xl:w-1/3">
         <x-advisor-recommended-item/>
     </div>
-    <div class="w-full lg:w-1/2 2xl:w-1/3 px-2">
+    <div class="w-full px-2 lg:w-1/2 2xl:w-1/3">
         <x-advisor-recommended-item/>
     </div>
 </div>

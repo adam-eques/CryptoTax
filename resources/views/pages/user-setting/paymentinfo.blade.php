@@ -1,7 +1,7 @@
 <x-app-layout>
-    <x-container class="my-7 bg-white p-8 border rounded-sm">
+    <x-container class="p-8 bg-white border rounded-sm my-7">
         <x-customers.customer-header-bar icon="payment" name="Payment Information">
-            <x-button variant="primary" class="w-full justify-between">
+            <x-button variant="primary" class="justify-between w-full">
                 <x-icon name="new-wallet" class="w-5 h-5 mr-3"/>
                 <span class="mr-2">{{ __('Add new account') }}</span>
             </x-button>
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="mt-14 px-5">
+            <div class="px-5 mt-14">
                 @livewire('user-setting.payment-info')
             </div>
         </div>

@@ -1,11 +1,11 @@
  {{-- supported_country --}}
  <div class="w-full">
     <x-container>
-        <div class="text-center py-14 relative">
-            <img src="{{ asset('assets/img/subpage_images/map_logo_background.svg') }}" class="absolute top-8 left-1/2 -translate-x-1/2"/>
+        <div class="relative text-center py-14">
+            <img src="{{ asset('assets/img/subpage_images/map_logo_background.svg') }}" class="absolute -translate-x-1/2 top-8 left-1/2"/>
             <div class="relative">
-                <p  class="text-2xl lg:text-3xl xl:text-4xl font-bold">{{ __('Supported Countries') }}</p>
-                <div class="flex justify-center items-center space-x-2 sm:space-x-8 md:space-x-16 mt-12">
+                <p  class="text-2xl font-bold lg:text-3xl xl:text-4xl">{{ __('Supported Countries') }}</p>
+                <div class="flex items-center justify-center mt-12 space-x-2 sm:space-x-8 md:space-x-16">
                     <div class="text-center">
                         <x-icon name="flag.usa" class="h-7 sm:h-10"/>
                         <p class="mt-1">USA</p>
@@ -27,8 +27,8 @@
                         <p class="mt-1">Japan</p>
                     </div>
                 </div>
-                <img src="{{ asset('assets/img/subpage_images/landing_supported_country.svg') }}" class="p-5 md:p-16 w-full max-w-7xl m-auto h-auto"/>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-0 sm:gap-4 lg:gap-10 px-2 lg:px-10">
+                <img src="{{ asset('assets/img/subpage_images/landing_supported_country.svg') }}" class="w-full h-auto p-5 m-auto md:p-16 max-w-7xl"/>
+                <div class="grid grid-cols-2 gap-0 px-2 md:grid-cols-4 lg:grid-cols-4 sm:gap-4 lg:gap-10 lg:px-10">
                     @php
                         $items = [
                             [ 'icon' => 'level-top', 'amount' => '20M +', 'term' => 'Happy Users' ],
@@ -42,9 +42,9 @@
                             <div class="w-1/4 p-0 xl:p-3">
                                 <x-icon name="{{ $item['icon'] }}" class="w-full h-full" />
                             </div>
-                            <div class="text-left w-3/4">
-                                <p class="text-xl sm:text-2xl xl:text-3xl font-bold">{{ __($item['amount']) }}</p>
-                                <p class="text-gray-400 text-base">{{ __($item['term']) }}</p>
+                            <div class="w-3/4 text-left">
+                                <p class="text-xl font-bold sm:text-2xl xl:text-3xl">{{ __($item['amount']) }}</p>
+                                <p class="text-base text-gray-400">{{ __($item['term']) }}</p>
                             </div>
                         </div>
                     @endforeach

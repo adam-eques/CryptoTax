@@ -19,8 +19,8 @@
     ]
 @endphp
 
-<div class="bg-white shadow-lg rounded-md p-5 h-full">
-    <div class="flex justify-between items-center">
+<div class="h-full p-5 bg-white rounded-md shadow-lg">
+    <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             <x-icon name="news" class="w-8 h-8"/>
             <p class="mr-3 text-lg font-semibold">{{ __('Crypto News') }}</p>
@@ -28,26 +28,26 @@
         <div class="flex items-center space-x-6">
             <button 
                 id="news_prev_button"
-                class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white"
+                class="flex items-center justify-center w-8 h-8 text-sm bg-white border rounded-full hover:bg-primary text-primary hover:text-white"
             >
                 <x-icon name="fas-angle-left" class="w-4 h-4"/>
             </button>
             <button 
                 id="news_next_button"
-                class="border rounded-full w-8 h-8 text-sm flex items-center justify-center bg-white hover:bg-primary text-primary hover:text-white"
+                class="flex items-center justify-center w-8 h-8 text-sm bg-white border rounded-full hover:bg-primary text-primary hover:text-white"
             >
                 <x-icon name="fas-angle-right" class="w-4 h-4"/>
             </button>
         </div>
     </div>
-    <div class="main-carousel mt-9 h-full">
+    <div class="h-full main-carousel mt-9">
 
         @foreach ($news as $item)          
-            <div class="carousel-cell px-1 sm:px-3 w-full md:w-1/2">
-                <div class="h-full w-full">
-                    <img src="{{asset('assets/img/svg/news.svg')}}" class="w-full h-full object-cover"/>
-                    <p class="text-base text-primary font-bold mt-6"> {{ __( $item['title'] ) }}</p>
-                    <p class="text-gray-400 text-sm mt-2"> {{ __( $item['content'] ) }} </p>
+            <div class="w-full px-1 carousel-cell sm:px-3 md:w-1/2">
+                <div class="w-full h-full">
+                    <img src="{{asset('assets/img/svg/news.svg')}}" class="object-cover w-full h-full"/>
+                    <p class="mt-6 text-base font-bold text-primary"> {{ __( $item['title'] ) }}</p>
+                    <p class="mt-2 text-sm text-gray-400"> {{ __( $item['content'] ) }} </p>
                 </div>
             </div>
         @endforeach
