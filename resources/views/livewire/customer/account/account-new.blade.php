@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-0 xl:grid-cols-6 xl:gap-6" x-data="{category:'', 'isModalOpen': false}">
-
     {{-- Category Selection --}}
+
     <div class="col-span-1">
         {{-- Desktop --}}
         <div class="hidden py-8 space-y-5 xl:block">
@@ -40,7 +40,7 @@
                     type="text" 
                     class="w-full border-0 rounded-lg outline-none ring-0 focus:ring-0" 
                     placeholder="Search for an exchange" 
-                    wire:model="search" 
+                    wire:model.lazy="search" 
                 >
             </div>
             <div class="flex flex-wrap items-center justify-end order-1 space-x-3 lg:order-2">
@@ -127,6 +127,7 @@
                     @endif
                 </div>
             </div>
+
             {{-- Mobile --}}
             <div class="block lg:hidden">
                 <div 
@@ -188,6 +189,10 @@
                     </div>
                 </div>
             </div>
+
+            <div wire:loading.block class="lg:block hidden">
+                <x-spiner/>
+            </div>            
         </div>    
     </div>
 </div>
