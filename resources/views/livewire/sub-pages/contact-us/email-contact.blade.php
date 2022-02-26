@@ -1,6 +1,6 @@
 <div>
     <h5 class="text-xl font-bold">{{ __('Choose Category') }}</h5>
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 mt-8 gap-4 md:gap-10 xl:gap-12">
+    <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 xl:grid-cols-4 md:gap-10 xl:gap-12">
         @php
             $categories = [
                 ['image'=>'contact_email_category_account.svg', 'id'=>'account', 'label'=>'Account'],
@@ -11,15 +11,15 @@
         @endphp
         @foreach ($categories as $category)            
             <div class="py-5">
-                <img src="{{ asset('assets/img/subpage_images/' . $category['image']) }}" class="mx-auto flex"/>
-                <div class="space-x-3 flex items-center justify-center">
-                    <input id="{{ $category['id'] }}" name="category" type="radio" class="form-radio h-5 w-5 text-primary transition duration-150 ease-in-out" />
+                <img src="{{ asset('assets/img/subpage_images/' . $category['image']) }}" class="flex mx-auto"/>
+                <div class="flex items-center justify-center space-x-3">
+                    <input id="{{ $category['id'] }}" name="category" type="radio" class="w-5 h-5 transition duration-150 ease-in-out form-radio text-primary" />
                     <p> {{ $category['label'] }} </p>
                 </div>
             </div>
         @endforeach
     </div>
-    <div class="mt-18 text-left">
+    <div class="text-left mt-18">
         <div>
             <x-jet-label>{{ __('Category') }}</x-jet-label>
             <x-jet-input type="text" placeholder="Account access or email" class="w-full mt-4"/>
@@ -30,7 +30,7 @@
         </div>
         <div class="mt-9">
             <h5 class="text-lg font-bold">{{ __('Suggested Answer') }}</h5>
-            <p class="font-bold text-secondary py-2">{{ __('How can I change my Mycryptotax email') }}</p>
+            <p class="py-2 font-bold text-secondary">{{ __('How can I change my Mycryptotax email') }}</p>
             <p>{{ __('You can change your Mycryptotax email at any time from the') }}  <a href="{{route('index')}}" class="font-bold text-secondary">{{ __('Settings page') }}</a></p>
         </div>
         <div class="mt-9">
@@ -45,7 +45,7 @@
             <x-jet-label>{{ __('Screenshots or files') }}</x-jet-label>
             <x-jet-input type="text" placeholder="Select Files" class="w-full mt-4"/>
         </div>
-        <div class="flex items-center space-x-3 mt-10">
+        <div class="flex items-center mt-10 space-x-3">
             <x-button variant="secondary" class="font-bold">{{__("Submit Issue")}}</x-jet-button>
             <x-button variant="primary" class="font-bold" >{{__("Cancel")}}</x-jet-button>
         </div>

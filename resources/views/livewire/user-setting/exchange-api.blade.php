@@ -1,5 +1,5 @@
 <div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
         <div class="">
             <x-jet-label>{{ __('Exchange Name') }}</x-jet-label>
             <x-jet-input type="text" class="w-full mt-4" placeholder="Exchange Name"/>
@@ -9,7 +9,7 @@
             <x-jet-input type="text" class="w-full mt-4" placeholder="http://exchangeurl.com"/>
         </div>
     </div> 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-7">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 mt-7">
         <div class="">
             <x-jet-label>{{ __('Api Key :') }}</x-jet-label>
             <x-jet-input type="text" class="w-full mt-4" placeholder="API Key"/>
@@ -27,7 +27,7 @@
     <div class="mt-7">
         <p class="text-primary">{{ __('Comments') }}</p>
         <x-jet-label class="py-3">{{ __('Please add any more information that may be helpful.') }}</x-jet-label>
-        <textarea rows="6" class="w-full border shadow rounded-sm border-gray-300"></textarea>
+        <textarea rows="6" class="w-full border border-gray-300 rounded-sm shadow"></textarea>
     </div>
     <x-jet-label>{{ __('Note : Your data security is top priority. Please make sure you generate read-only access API keys so that 
         we can import your transactions to build the API support.') }}</x-jet-label>

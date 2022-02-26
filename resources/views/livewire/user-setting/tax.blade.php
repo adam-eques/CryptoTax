@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-gray-100 w-full px-10 py-6 rounded">
+    <div class="w-full px-10 py-6 bg-gray-100 rounded">
         <span class="text-2xl font-bold">{{ __('Tax Settings') }}</span>
     </div>
 
@@ -10,7 +10,7 @@
                 <x-jet-label>{{ __('Default Transaction Time Zone') }}</x-jet-label>
                 <div class="border shadow flex items-center rounded-sm mt-4 px-5 @error('timezone_id') border-danger @enderror">
                     <x-icon name="clock" class="w-9 h-9"/>
-                    <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="timezone_id">
+                    <select class="w-full h-full py-4 border-0 outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="timezone_id">
                         <option value="0" disabled selected hidden>{{ __('Timezone') }}</option>
                         @foreach ($timezone as $zone)                        
                             <option value="{{ $zone->id }}" @if($timezone_id && $timezone_id == $zone->id) selected @endif>
@@ -19,7 +19,7 @@
                         @endforeach
                     </select>
                 </div>
-                @error('timezone_id') <span class="text-danger text-sm">{{ $message }}</span> @enderror
+                @error('timezone_id') <span class="text-sm text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-10">
@@ -27,42 +27,42 @@
                 <x-jet-label>{{ __('Note: All the set net worth amount would be cleared after switching to another jurisdiction.') }}</x-jet-label>
                 <div class="border shadow flex items-center rounded-sm mt-4 px-5 @error('tax_country_id') border-danger @enderror">
                     <x-icon name="{{ 'flag.tax_country_' . $tax_country_id }}" class="w-9 h-9"/>
-                    <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_country_id">
+                    <select class="w-full h-full py-4 border-0 outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_country_id">
                         <option value="0" disabled selected hidden>{{ __('Tax Jurisdiction') }}</option>
                         @foreach ($tax_countries as $country)                        
                             <option value="{{ $country->id }}" @if($tax_country_id == $country->id) selected @endif>{{ __($country->name) }}</option>
                         @endforeach
                     </select>
                 </div>
-                @error('tax_country_id') <span class="text-danger text-sm">{{ $message }}</span> @enderror
+                @error('tax_country_id') <span class="text-sm text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-10">
                 <p>{{ __('Base Currency') }}</p>
                 <div class="border shadow flex items-center rounded-sm mt-4 px-5 @error('tax_currency_id') border-danger @enderror">
                     <x-icon name="{{ 'flag.tax_country_' . $tax_currency_id }}" class="w-9 h-9"/>
-                    <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_currency_id">
+                    <select class="w-full h-full py-4 border-0 outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_currency_id">
                         <option value="0" disabled selected hidden>{{ __('Base Currency') }}</option>
                         @foreach ($basic_currency as $currency)                        
                             <option value="{{ $currency->id }}" @if($tax_currency_id == $currency->id) selected @endif>{{ __($currency->name) }}</option>
                         @endforeach
                     </select>
                 </div>
-                @error('tax_currency_id') <span class="text-danger text-sm">{{ $message }}</span> @enderror
+                @error('tax_currency_id') <span class="text-sm text-danger">{{ $message }}</span> @enderror
             </div>
     
             <div class="mt-10">
                 <p>{{ __('Cost Basis Method') }}</p>
                 <div class="border shadow flex items-center rounded-sm mt-4 px-5 @error('tax_cost_model_id') border-danger @enderror">
                     <x-icon name="money-1" class="w-9 h-9"/>
-                    <select class="h-full border-0 py-4 w-full outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_cost_model_id">
+                    <select class="w-full h-full py-4 border-0 outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_cost_model_id">
                         <option value="0" disabled selected hidden>{{ __('Cost Basis Method') }}</option>
                         @foreach ($basic_cost_method as $method)
                             <option value="{{ $method->id }}" @if($tax_cost_model_id == $method->id) selected @endif>{{ $method->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                @error('tax_cost_model_id') <span class="text-danger text-sm">{{ $message }}</span> @enderror
+                @error('tax_cost_model_id') <span class="text-sm text-danger">{{ $message }}</span> @enderror
             </div>
 
             <x-jet-label class="mt-10">{{ __('Note: You can change these settings anytime by clicking your profile at the top right,') }}</x-jet-label>

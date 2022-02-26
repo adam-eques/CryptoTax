@@ -11,8 +11,8 @@
         ],
     ]
 @endphp
-<div class="bg-white shadow-md rounded-md p-5 h-full">
-    <div class="flex justify-between items-center">
+<div class="h-full p-5 bg-white rounded-md shadow-md">
+    <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             <x-icon name="transaction" class="w-10 h-10"/>
             <p class="mr-3 text-lg font-semibold">{{ __('Recent Transaction') }}</p>
@@ -22,10 +22,10 @@
     <div class="overflow-auto mt-7">
         <div class="space-y-4 min-w-cmd">
             @foreach ($transactios as $item)
-                <div class="flex items-center justify-between border p-5 rounded-lg">
+                <div class="flex items-center justify-between p-5 border rounded-lg">
                     <div class="flex items-center justify-between space-x-6">
                         <div class="w-12 h-12 rounded-lg">
-                            <x-icon name="{{ $item['icon'] }}" class="h-full w-full"/>
+                            <x-icon name="{{ $item['icon'] }}" class="w-full h-full"/>
                         </div>
                         <div>
                             <p class="text-lg font-bold">{{ $item['name'] }} </p>
@@ -34,7 +34,7 @@
                     </div>
                     <div>
                         <h5 class="text-lg font-bold">{{ $item['balance'] }}</h5>
-                        <p class="text-sm text-gray-400 mt-2">{{ $item['time'] }}</p>
+                        <p class="mt-2 text-sm text-gray-400">{{ $item['time'] }}</p>
                     </div>
                 </div>
             @endforeach

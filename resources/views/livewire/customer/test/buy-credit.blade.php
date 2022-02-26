@@ -1,12 +1,12 @@
 <div>
-    <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
+    <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xs:px-4 xl:max-w-screen-2xl lg:px-5">
         <div class="max-w-lg mx-auto text-center">
-            <h2 class="text-lg mb-4">
+            <h2 class="mb-4 text-lg">
                 You have currently <span class="text-primary-100">{{ number_format($credits) }} Credits</span>
             </h2>
 
             @if($showForm)
-                <h2 class="text-lg mb-4">Buy additional credits</h2>
+                <h2 class="mb-4 text-lg">Buy additional credits</h2>
 
                 <div class="mb-4">
                     Number of credits:
@@ -35,7 +35,7 @@
     </div>
 
     @if($showForm)
-        <div class="mx-auto my-5 px-3 xs:px-4 xl:max-w-screen-2xl lg:px-5 py-5 bg-white rounded-sm shadow">
+        <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xs:px-4 xl:max-w-screen-2xl lg:px-5">
             <strong>Test Data: </strong>
             <pre>John Doe</pre>
             <pre>4242 4242 4242 4242 | 12/22 | 123 | 10000</pre>

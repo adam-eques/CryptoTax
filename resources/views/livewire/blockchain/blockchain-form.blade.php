@@ -26,7 +26,7 @@
         @endif
 
         <div class="p-4">
-            <h2 class="text-lg mb-2"> {{ __("Add new blockchain") }}</h2>
+            <h2 class="mb-2 text-lg"> {{ __("Add new blockchain") }}</h2>
             <div class="mt-1">
                 <select wire:model.defer="newBlockchainId" class="rounded-lg">
                     <option></option>
@@ -36,7 +36,7 @@
                 </select>
             </div>
             <div class="mt-1">
-                <input class=" h-10 transition duration-75 px-3 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
+                <input class="h-10 px-3 transition duration-75 border rounded-lg shadow-sm  focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border-primary-300" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
                 <x-button wire:click="add">Add</x-button>
             </div>
         </div>

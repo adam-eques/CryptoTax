@@ -5,9 +5,9 @@
     ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 <x-app-layout>
-    <div class="mx-auto my-5 xl:max-w-screen-2xl px-3 xs:px-4 lg:px-6 py-5 bg-white rounded-sm shadow">
-        <div class="w-full border-b py-5">
-            <div class="flex justify-between items-center">
+    <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xl:max-w-screen-2xl xs:px-4 lg:px-6">
+        <div class="w-full py-5 border-b">
+            <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start space-x-3">
                     <x-uni-setting-o class="w-9"/>
                     <h1 class="font-bold sm:text-xl lg:text-2xl text-primary">{{ __('Settings') }}</h1>

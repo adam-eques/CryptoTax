@@ -1,5 +1,5 @@
-<div class="bg-white shadow-md rounded-md p-5 h-full">
-    <div class="flex justify-between items-center">
+<div class="h-full p-5 bg-white rounded-md shadow-md">
+    <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             <x-icon name="portfolio" class="w-8 h-8 text-primary"/>
             <p class="mr-3 text-lg font-semibold">{{ __('My Crypto Portfolio') }}</p>
@@ -9,31 +9,31 @@
         </div>
     </div>
     <div class="mt-6 overflow-x-auto" x-data="{selected:null}">
-        <div class="border rounded-md bg-gray-100 text-primary grid grid-cols-11 py-6 min-w-clg">
-            <div class="col-span-1 flex justify-center items-center">
+        <div class="grid grid-cols-11 py-6 bg-gray-100 border rounded-md text-primary min-w-clg">
+            <div class="flex items-center justify-center col-span-1">
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
-            <div class="col-span-2 flex justify-start items-center space-x-2 px-5">
+            <div class="flex items-center justify-start col-span-2 px-5 space-x-2">
                 <p class="text-basic">{{ _('Coin') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
-            <div class="col-span-1 flex justify-end items-center space-x-2">
+            <div class="flex items-center justify-end col-span-1 space-x-2">
                 <p class="text-basic">{{ __('Price') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
-            <div class="col-span-3 flex justify-center items-center space-x-2">
+            <div class="flex items-center justify-center col-span-3 space-x-2">
                 <p class="text-basic">{{ __('Last 7 days') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
-            <div class="col-span-1 flex justify-start items-center space-x-2">
+            <div class="flex items-center justify-start col-span-1 space-x-2">
                 <p class="text-md">{{ __('Holdings') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
-            <div class="col-span-1 flex justify-end items-center space-x-2">
+            <div class="flex items-center justify-end col-span-1 space-x-2">
                 <p class="text-basic">{{ __('Percentage') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>
-            <div class="col-span-2 flex justify-center items-center space-x-2">
+            <div class="flex items-center justify-center col-span-2 space-x-2">
                 <p class="text-basic">{{ __('PNL') }}</p>
                 <x-icon name="biarrow" class="w-2 h-3"/>
             </div>

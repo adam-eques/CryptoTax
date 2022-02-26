@@ -6,29 +6,29 @@
     ]
 @endphp
 
-<div class="bg-white shadow-md rounded-md p-5 mt-6">
+<div class="p-5 mt-6 bg-white rounded-md shadow-md">
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             <x-icon name="tax" class="w-8 h-7"/>
-            <p class="text-lg mr-3 font-semibold">{{ __('Crypto Taxes') }}</p>
+            <p class="mr-3 text-lg font-semibold">{{ __('Crypto Taxes') }}</p>
         </div>
         <div>
             <x-button variant="primary" class="font-normal" tag="a" href="{{ route('customer.taxes') }}">{{__('See details')}}</x-button>
         </div>
     </div>
-    <table class="w-full text-center mt-5 text-primary text-base">
-        <thead class="border bg-gray-100">
+    <table class="w-full mt-5 text-base text-center text-primary">
+        <thead class="bg-gray-100 border">
             <tr>
                 <th class="py-5 font-bold">{{ __('Tax year') }}</th>
                 <th class="py-5 font-bold">{{ __('Gains') }}</th>
                 <th class="py-5 font-bold">{{ __('Income') }}</th>
             </tr>
         </thead>
-        <tbody class="border space-y-5">
+        <tbody class="space-y-5 border">
             @foreach ($table as $item)                
                 <tr class="border">
-                    <td class="py-5 flex items-center space-x-2 justify-center">
+                    <td class="flex items-center justify-center py-5 space-x-2">
                         <p>{{ $item['year'] }}</p> 
                         <x-icon name="info" class="w-3 h-3 text-gray-400"/> 
                 </td>

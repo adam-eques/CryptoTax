@@ -1,8 +1,8 @@
 <x-app-layout>
     @if(auth()->user()->isCustomerAccount())
-        <div class="mx-auto xl:max-w-screen-2xl px-3 xs:px-4 lg:px-5 py-6">
+        <div class="px-3 py-6 mx-auto xl:max-w-screen-2xl xs:px-4 lg:px-5">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-x-0 md:gap-x-6 gap-y-6 md:gap-y-0">
-                <div class="col-span-7 h-full">
+                <div class="h-full col-span-7">
                     @livewire('customer.dashboard.about')
                     @livewire('customer.dashboard.performance')
                 </div>
@@ -29,12 +29,12 @@
         </x-page>
 
         @php($gitInfo = getGitInfos())
-        <div class="grid grid-cols-2 gap-4 w-full pt-8 mx-auto px-1 xs:px-4 xl:max-w-screen-2xl lg:px-5">
-            <div class="bg-white border border-gray-200 px-2 xs:px-4 lg:px-8">
+        <div class="grid w-full grid-cols-2 gap-4 px-1 pt-8 mx-auto xs:px-4 xl:max-w-screen-2xl lg:px-5">
+            <div class="px-2 bg-white border border-gray-200 xs:px-4 lg:px-8">
                 <p class="block my-3 text-xl">Git Status</p>
                 <code>{!! implode("<br>", $gitInfo["status"]) !!}</code>
             </div>
-            <div class="bg-white border border-gray-200 px-2 xs:px-4 lg:px-8">
+            <div class="px-2 bg-white border border-gray-200 xs:px-4 lg:px-8">
                 <p class="block my-3 text-xl">Git Log</p>
                 <code>{!! implode("<br>", $gitInfo["log"]) !!}</code>
             </div>
