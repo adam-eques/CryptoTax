@@ -15,10 +15,10 @@
                             <x-icon name="cross-circle" class="w-4 h-4 mr-2"/>
                             <p>{{ __('Remove') }}</p>
                         </button>
-                        <button class="flex items-center px-2 py-1 border rounded border-primary hover:bg-primary hover:text-white">
+                        <a class="flex items-center px-2 py-1 border rounded border-primary hover:bg-primary hover:text-white cursor-pointer" href="{{ route('customer.payment-info.detail', [ 'id' =>1 ]) }}">
                             <x-icon name="edit" class="w-4 h-4 mr-2"/>
                             <p>{{ __('Edit') }}</p>
-                        </button>
+                        </a>
                     </div>
                     <button class="px-4 py-1 text-white border rounded-md bg-primary hover:bg-secondary">{{ __('Default card') }}</button>
                 </div>
