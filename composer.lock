@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cde9abc0e4d4aad315c0619a14283de0",
+    "content-hash": "78c6b7c25e6720f506f7aae186890f6f",
     "packages": [
+        {
+            "name": "actb/blade-github-octicons",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Activisme-be/Blade-github-octicons.git",
+                "reference": "5c8e739985cfc25ca18a0a2f0f1f5e5e0eb4fc9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Activisme-be/Blade-github-octicons/zipball/5c8e739985cfc25ca18a0a2f0f1f5e5e0eb4fc9b",
+                "reference": "5c8e739985cfc25ca18a0a2f0f1f5e5e0eb4fc9b",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Actb\\BladeGithubOcticons\\GithubOcticonsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Actb\\BladeGithubOcticons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A package to easily make use of Github octicons in your Laravel blade views.",
+            "support": {
+                "issues": "https://github.com/Activisme-be/Blade-github-octicons/issues",
+                "source": "https://github.com/Activisme-be/Blade-github-octicons/tree/4.0.0"
+            },
+            "time": "2021-06-10T00:26:57+00:00"
+        },
         {
             "name": "akaunting/laravel-money",
             "version": "2.0.1",
@@ -1274,6 +1321,71 @@
                 }
             ],
             "time": "2022-02-04T09:39:10+00:00"
+        },
+        {
+            "name": "codeat3/blade-grommet-icons",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-grommet-icons.git",
+                "reference": "4624599c9fc5a72c1c4d1625b092411dd0463651"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-grommet-icons/zipball/4624599c9fc5a72c1c4d1625b092411dd0463651",
+                "reference": "4624599c9fc5a72c1c4d1625b092411dd0463651",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeGrommetIcons\\BladeGrommetIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeGrommetIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe"
+                }
+            ],
+            "description": "A package to easily make use of Grommet Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-grommet-icons",
+            "keywords": [
+                "Grommet",
+                "blade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-grommet-icons/issues",
+                "source": "https://github.com/codeat3/blade-grommet-icons/tree/1.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-04T11:20:38+00:00"
         },
         {
             "name": "codeat3/blade-iconpark",

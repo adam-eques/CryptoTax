@@ -8,7 +8,7 @@
 <div class="p-5 bg-white rounded-md shadow-md" x-data="{ view: 'tile' }" >
     <div class="flex items-center justify-between">
         <div class="flex items-center py-5 space-x-2">
-            <x-icon name="coin" class="w-8 h-8"/>
+            <x-icon name="carbon-money" class="w-8 h-8"/>
             <p class="mr-3 text-lg font-semibold">{{ __("My Balance") }}</p>
         </div>
         <div class="flex items-center space-x-3">
@@ -48,19 +48,19 @@
         <div class="grid grid-cols-1 gap-0 mt-8 mb-5 xl:grid-cols-3 xl:gap-2">
             <x-button variant="primary" class="flex items-center p-2 space-x-3" tag="a" href="{{ route('customer.account.new') }}">
                 <div class="p-1 bg-white rounded-lg">
-                    <x-icon name="wallet-1" class="w-5 h-5 text-primary"/>
+                    <x-icon name="carbon-wallet" class="w-5 h-5 text-primary"/>
                 </div>
                 <span class="text-sm font-bold tracking-tighter">{{ __('Add Account') }}</span>
             </x-button>
             <x-button variant="third" class="flex items-center p-2 space-x-3" tag="a" href="{{ route('customer.taxes') }}">
                 <div class="p-1 bg-white rounded-lg">
-                    <x-icon name="tax-1" class="w-5 h-5 text-third"/>
+                    <x-icon name="tabler-calculator" class="w-5 h-5 text-third"/>
                 </div>
                 <span class="text-sm font-bold tracking-tighter">{{ __('Tax Calculation') }}</span>
             </x-button>
             <x-button variant="secondary" class="flex items-center p-2 space-x-3" tag="a" href="{{ route('customer.taxes') }}">
                 <div class="p-1 bg-white rounded-lg">
-                    <x-icon name="professional" class="w-5 h-5 text-secondary"/>
+                    <x-icon name="uni-user-md-o" class="w-5 h-5 text-secondary"/>
                 </div>
                 <span class="text-sm font-bold tracking-tighter">{{ __('Get Tax Pro') }}</span>
             </x-button>
