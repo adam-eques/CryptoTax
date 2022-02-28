@@ -1,7 +1,7 @@
 <div class="w-full p-5 mt-6 bg-white rounded-md shadow-md sm:mt-10">
     <div class="grid grid-cols-1 gap-0 2xl:grid-cols-4 md:grid-cols-2 md:gap-x-6 md:gap-y-5">
         <div class="flex items-center py-5 space-x-2">
-            <x-icon name="donut" class="w-8 h-8 text-primary"/>
+            <x-icon name="ri-pie-chart-line" class="w-8 h-8 text-primary"/>
             <p class="mr-3 text-lg font-semibold">{{ __('My Performance') }}</p>
         </div>
         <x-status-card-dashboard id="status_1" title="24h Portfolio Change" amount="1,254" :increase="true" incdecamount="2.5"></x-status-card-dashboard>

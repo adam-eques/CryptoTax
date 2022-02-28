@@ -1,7 +1,7 @@
 <div class="h-full p-5 bg-white rounded-md shadow-md">
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
-            <x-icon name="portfolio" class="w-8 h-8 text-primary"/>
+            <x-icon name="carbon-portfolio" class="w-8 h-8 text-primary"/>
             <p class="mr-3 text-lg font-semibold">{{ __('My Crypto Portfolio') }}</p>
         </div>
         <div>

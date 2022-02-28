@@ -10,7 +10,7 @@
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
-            <x-icon name="tax" class="w-8 h-7"/>
+            <x-icon name="tabler-tax" class="w-8 h-7"/>
             <p class="mr-3 text-lg font-semibold">{{ __('Crypto Taxes') }}</p>
         </div>
         <div>

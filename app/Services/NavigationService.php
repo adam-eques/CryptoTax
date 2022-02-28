@@ -202,60 +202,60 @@ class NavigationService
     private function customerAccountItems()
     {
         $this->addItems([
-            ["label" => __('Dashboard'), 'icon' => 'dashboard', 'route' => 'customer.dashboard',
+            ["label" => __('Dashboard'), 'icon' => 'carbon-dashboard', 'route' => 'customer.dashboard',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
-                    ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
+                    ["label" => __('Markets'), 'icon' => 'fluentui-building-shop-16-o', 'route' => 'customer.dashboard'],
+                    ["label" => __('Watchlist'), 'icon' => 'uni-eye-o', 'route' => 'customer.account'],
                 ],
                 "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
+                    ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                 ]
             ],
-            ["label" => __('Accounts'), 'icon' => 'wallet', 'route' => 'customer.account',
+            ["label" => __('Accounts'), 'icon' => 'carbon-wallet', 'route' => 'customer.account',
                 "children" => [
-                    ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
+                    ["label" => "Accounts", "icon" => "fluentui-wallet-32-o", "route" => "customer.account"],
                     ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
                     ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
                 ],
                 "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
+                    ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                 ]
             ],
-            ["label" => __('Portfolio'), 'icon' => 'portfolio', 'route' => 'customer.portfolio',
+            ["label" => __('Portfolio'), 'icon' => 'carbon-portfolio', 'route' => 'customer.portfolio',
                 "children" => [
-                    ["label" => __('Portfolio'), "icon" => "wallet", "route" => "customer.portfolio"],
+                    ["label" => __('Portfolio'), "icon" => "fluentui-wallet-32-o", "route" => "customer.portfolio"],
                     ["label" => __('Transactions'), 'icon' => 'transaction-2', 'route' => 'customer.transactions'],
                     ["label" => __('Assets'), 'icon' => 'chains', 'route' => 'customer.asset'],
                 ],
                 "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
+                    ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                 ]
             ],
-            ["label" => __('Taxes'), 'icon' => 'tax', 'route' => 'customer.taxes',
+            ["label" => __('Taxes'), 'icon' => 'tabler-tax', 'route' => 'customer.taxes',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
-                    ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
+                    ["label" => __('Markets'), 'icon' => 'fluentui-building-shop-16-o', 'route' => 'customer.dashboard'],
+                    ["label" => __('Watchlist'), 'icon' => 'uni-eye-o', 'route' => 'customer.account'],
                 ],
                 "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
+                    ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                 ]
             ],
-            ["label" => __('Advisor'), 'icon' => 'advisor', 'route' => 'customer.advisor',
+            ["label" => __('Advisor'), 'icon' => 'uni-user-md-o', 'route' => 'customer.advisor',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
-                    ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
+                    ["label" => __('Markets'), 'icon' => 'fluentui-building-shop-16-o', 'route' => 'customer.dashboard'],
+                    ["label" => __('Watchlist'), 'icon' => 'uni-eye-o', 'route' => 'customer.account'],
                 ],
                 "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
+                    ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                 ]
             ],
-            ["label" => __('Services'), 'icon' => 'service', 'route' => 'customer.services',
+            ["label" => __('Services'), 'icon' => 'carbon-folders', 'route' => 'customer.services',
                 "children" => [
-                    ["label" => __('Markets'), 'icon' => 'market', 'route' => 'customer.dashboard'],
-                    ["label" => __('Watchlist'), 'icon' => 'watchlist', 'route' => 'customer.account'],
+                    ["label" => __('Markets'), 'icon' => 'fluentui-building-shop-16-o', 'route' => 'customer.dashboard'],
+                    ["label" => __('Watchlist'), 'icon' => 'uni-eye-o', 'route' => 'customer.account'],
                 ],
                 "actions" => [
-                    ["label" => __('Invite a Friend'), 'icon' => 'invite', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
+                    ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
                 ]
             ],
         ]);
