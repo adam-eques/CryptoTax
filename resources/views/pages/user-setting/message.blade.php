@@ -52,7 +52,7 @@
                                 <p class="text-sm">{{ __('From Admin') }}</p>
                                 <p class="text-gray-300">{{ __('12 Jan') }}</p>
                             </div>
-                            <h3 class="text-base font-semibold truncate">{{ __('Unable to select currency when order.') }}</h3>
+                            <h3 class="text-base font-semibold">{{ __('Unable to select currency when order.') }}</h3>
                         </div>
                     </div>
                     <div class="flex items-center p-8 space-x-4">
@@ -64,7 +64,7 @@
                                 <p class="text-sm">{{ __('From Admin') }}</p>
                                 <p class="text-gray-300">{{ __('12 Jan') }}</p>
                             </div>
-                            <h3 class="text-base font-semibold truncate">{{ __('Unable to select currency when order.') }}</h3>
+                            <h3 class="text-base font-semibold">{{ __('Unable to select currency when order.') }}</h3>
                         </div>
                     </div>
                     <div class="flex items-center p-8 space-x-4">
@@ -76,7 +76,7 @@
                                 <p class="text-sm">{{ __('From Admin') }}</p>
                                 <p class="text-gray-300">{{ __('12 Jan') }}</p>
                             </div>
-                            <h3 class="text-base font-semibold truncate">{{ __('Unable to select currency when order.') }}</h3>
+                            <h3 class="text-base font-semibold">{{ __('Unable to select currency when order.') }}</h3>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="p-6 mt-10 border rounded-md">
                     <textarea rows="6" class="w-full border-0 focus:border-none focus:ring-0 focus:outline-none"></textarea>
                     <div class="flex space-x-4 bottom-5 left-4">
-                        <button class="px-3 py-1 font-semibold text-white rounded-md  bg-primary hover:bg-secondary">{{ __('Reply') }}</button>
+                        <button class="px-3 py-1 font-semibold text-white rounded-md bg-primary hover:bg-secondary">{{ __('Reply') }}</button>
                         <button>
                             <x-icon name="attatchment" class="h-6 text-gray-300 hover:text-primary"/>
                         </button>
