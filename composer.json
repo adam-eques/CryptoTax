@@ -10,6 +10,7 @@
         "andreiio/blade-remix-icon": "^1.1",
         "aws/aws-sdk-php": "^3.208",
         "blade-ui-kit/blade-icons": "^1.2",
+        "brunocfalcao/blade-feather-icons": "^2.1",
         "ccxt/ccxt": "^1.63",
         "codeat3/blade-carbon-icons": "^2.3",
         "codeat3/blade-cryptocurrency-icons": "^1.3",
