@@ -23,6 +23,7 @@ jobs:
             composer install
             php artisan optimize:clear
             php artisan migrate --force
+            php artisan icons:cache
             php artisan db:seed TestServerSeeder
             npm install
             npm run prod
