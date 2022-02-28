@@ -10,19 +10,19 @@ class Portfolio extends Component
     {
         $portfolio = [
             [
-                'id' => 1, 'icon' => 'coins.bitcoin', 'name' => 'Bitcoin', 'type' => 'BIT', 'lineColor' =>'#FF0303', 'price' => '$69,729.64',
+                'id' => 1, 'icon' => 'coins.btc', 'name' => 'Bitcoin', 'type' => 'BIT', 'lineColor' =>'#FF0303', 'price' => '$69,729.64',
                 'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '4,886.64' ], 'percentage' => 56,
                 'pnl' => [ 'price' => '$89,402.19', 'percent' => 10 ], 
                 'child' => [
                     [
-                        'id' => 3, 'icon' => 'coins.bitcoin', 'name' => 'Bitcoin', 'type' => 'BIT', 'lineColor' =>'#FF0303', 'price' => '$69,729.64',
+                        'id' => 3, 'icon' => 'coins.eth', 'name' => 'Bitcoin', 'type' => 'BIT', 'lineColor' =>'#FF0303', 'price' => '$69,729.64',
                         'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '4,886.64' ], 'percentage' => 56,
                         'pnl' => [ 'price' => '$89,402.19', 'percent' => 10 ]
                     ]
                 ]
             ],
             [
-                'id' => 2, 'icon' => 'coins.bitcoin', 'name' => 'Bitcoin', 'type' => 'BIT', 'lineColor' =>'#1DB737', 'price' => '$69,729.64',
+                'id' => 2, 'icon' => 'coins.anc', 'name' => 'Bitcoin', 'type' => 'BIT', 'lineColor' =>'#1DB737', 'price' => '$69,729.64',
                 'holding' => [ 'btc' => '0.1002365 BTC', 'usd' => '4,886.64' ], 'percentage' => 56,
                 'pnl' => [ 'price' => '$89,402.19', 'percent' => 10 ], 
                 'child' => []
