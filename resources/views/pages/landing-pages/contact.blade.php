@@ -1,10 +1,10 @@
 <x-guest-layout>
     <x-sub-page-hero icon="contact" subtitle="We're here to help" title="Contact Us"></x-sub-page-hero>
-    <div class="relative bg-white py-12">
+    <div class="relative py-12 bg-white">
         <x-container>
             <p>{{ __("The") }} <a href="{{ route('index') }}" class="font-semibold text-secondary">{{ __("myCrypto Tax") }}</a>  {{__("Help Center has answers to most questions. We’re happy to lend a hand,") }}</p>
             <p>{{ __("but response times may take longer than normal.") }}</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 py-12 gap-5 md:gap-8 lg:gap-10 xl:gap-18">
+            <div class="grid grid-cols-1 gap-5 py-12 md:grid-cols-3 md:gap-8 lg:gap-10 xl:gap-18">
                 @php
                     $items = [
                         [ 'id'=>1, 'name'=>'Live chat', 'icon'=>'live-chat', 'line_1'=>'Weekdays: 9 AM — 6 PM ET', 'line_2'=>'Weekends: 9 AM — 5 PM ET', 'button'=>'Chat Now' ],
@@ -13,7 +13,7 @@
                     ]
                 @endphp
                 @foreach ($items as $item)                    
-                    <div class="border rounded-lg p-5 lg:p-9 text-center">
+                    <div class="p-5 text-center border rounded-lg lg:p-9">
                         <div class="flex items-center justify-center space-x-5">
                             <x-icon name="{{$item['icon']}}" class="w-10"/>
                             <h5 class="text-lg font-bold">{{ __($item['name']) }}</h5>
@@ -26,10 +26,10 @@
                     </div>
                 @endforeach
             </div>
-            <div class="mt-5 border rounded-lg p-8 relative">
-                <div class="absolute w-10 h-10 border-t border-l top-0 -mt-5 left-1/2 -translate-x-1/2 rotate-45 bg-white"></div>
+            <div class="relative p-8 mt-5 border rounded-lg">
+                <div class="absolute top-0 w-10 h-10 -mt-5 rotate-45 -translate-x-1/2 bg-white border-t border-l left-1/2"></div>
                 <div class="relative flex justify-center">
-                    <div class="max-w-3xl w-full text-center">
+                    <div class="w-full max-w-3xl text-center">
                         @livewire('sub-pages.contact-us.email-contact')
                     </div>
                 </div>

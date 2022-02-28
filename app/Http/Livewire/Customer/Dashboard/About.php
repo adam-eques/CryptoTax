@@ -6,12 +6,21 @@ use Livewire\Component;
 
 class About extends Component
 {
-    public?array $steps = null;
     public?int $selected_step = null;
 
     public function mount()
     {
-        $this->steps = [
+        $this->selected_step = 1;
+    }
+
+    public function get_selected_step( int $id )
+    {
+        $this->selected_step = $id;
+    }
+
+    public function render()
+    {
+        $steps = [
             [ 
                 'id' => 1, 'status' => 1, 'label' => 'Tax Settings', 
                 'description' =>'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 
@@ -49,18 +58,9 @@ class About extends Component
             ],
         ];  
 
-        $this->selected_step = 1;
-    }
-
-    public function get_selected_step( int $id )
-    {
-        $this->selected_step = $id;
-    }
-
-    public function render()
-    {
-        $selected_step = $this->steps[$this->selected_step-1];
+        $selected_step = $steps[$this->selected_step-1];
         return view('livewire.customer.dashboard.about', [
+            'steps' => $steps,
             'selected' => $selected_step
         ]);
     }

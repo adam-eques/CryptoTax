@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26883f3b9b67db332be7f311f67a80ff",
+    "content-hash": "cde9abc0e4d4aad315c0619a14283de0",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -70,6 +70,122 @@
                 "source": "https://github.com/akaunting/laravel-money/tree/2.0.1"
             },
             "time": "2022-01-31T17:11:27+00:00"
+        },
+        {
+            "name": "andreiio/blade-iconoir",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreiio/blade-iconoir.git",
+                "reference": "2b2ce914b51c387ab5c4e6872bb2ef9d3b862a71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreiio/blade-iconoir/zipball/2b2ce914b51c387ab5c4e6872bb2ef9d3b862a71",
+                "reference": "2b2ce914b51c387ab5c4e6872bb2ef9d3b862a71",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AndreiIonita\\BladeIconoir\\BladeIconoirServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndreiIonita\\BladeIconoir\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Ioniță",
+                    "homepage": "https://andrei.io"
+                }
+            ],
+            "description": "A package to easily make use of Iconoir in your Laravel Blade views.",
+            "support": {
+                "issues": "https://github.com/andreiio/blade-iconoir/issues",
+                "source": "https://github.com/andreiio/blade-iconoir/tree/1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/andreiio",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-20T12:51:31+00:00"
+        },
+        {
+            "name": "andreiio/blade-remix-icon",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreiio/blade-remix-icon.git",
+                "reference": "b25796c992a7c9be674febceb3594d39fb6b9e96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreiio/blade-remix-icon/zipball/b25796c992a7c9be674febceb3594d39fb6b9e96",
+                "reference": "b25796c992a7c9be674febceb3594d39fb6b9e96",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AndreiIonita\\BladeRemixIcon\\BladeRemixIconServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndreiIonita\\BladeRemixIcon\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Ioniță",
+                    "homepage": "https://andrei.io"
+                }
+            ],
+            "description": "A package to easily make use of Remix Icon in your Laravel Blade views.",
+            "support": {
+                "issues": "https://github.com/andreiio/blade-remix-icon/issues",
+                "source": "https://github.com/andreiio/blade-remix-icon/tree/1.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/andreiio",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-20T12:54:02+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -533,6 +649,67 @@
             "time": "2021-08-15T20:50:18+00:00"
         },
         {
+            "name": "brunocfalcao/blade-feather-icons",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brunocfalcao/blade-feather-icons.git",
+                "reference": "8996efa45baab09ca32217a783ec24de7f116f94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brunocfalcao/blade-feather-icons/zipball/8996efa45baab09ca32217a783ec24de7f116f94",
+                "reference": "8996efa45baab09ca32217a783ec24de7f116f94",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "illuminate/support": "^7.14|^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Brunocfalcao\\BladeFeatherIcons\\BladeFeatherIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Brunocfalcao\\BladeFeatherIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Falcao",
+                    "email": "bruno.c.falcao@brunofalcao.me",
+                    "homepage": "https://www.laraning.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of Feather Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/brunocfalcao/blade-feather-icons",
+            "keywords": [
+                "Feather Icons",
+                "blade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/brunocfalcao/blade-feather-icons/issues",
+                "source": "https://github.com/brunocfalcao/blade-feather-icons/tree/v2.1.0"
+            },
+            "time": "2022-02-19T20:24:59+00:00"
+        },
+        {
             "name": "ccxt/ccxt",
             "version": "1.74.4",
             "source": {
@@ -817,6 +994,72 @@
             "time": "2022-02-24T11:03:19+00:00"
         },
         {
+            "name": "codeat3/blade-carbon-icons",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-carbon-icons.git",
+                "reference": "1082f2bcd8bd4f84ca0978bc96711306e0191961"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-carbon-icons/zipball/1082f2bcd8bd4f84ca0978bc96711306e0191961",
+                "reference": "1082f2bcd8bd4f84ca0978bc96711306e0191961",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.1",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeCarbonIcons\\BladeCarbonIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeCarbonIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of Carbon Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-carbon-icons",
+            "keywords": [
+                "blade",
+                "carbon-icons",
+                "icons",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-carbon-icons/issues",
+                "source": "https://github.com/codeat3/blade-carbon-icons/tree/2.3.0"
+            },
+            "time": "2022-02-03T14:44:16+00:00"
+        },
+        {
             "name": "codeat3/blade-cryptocurrency-icons",
             "version": "1.5.3",
             "source": {
@@ -886,6 +1129,292 @@
                 }
             ],
             "time": "2022-02-03T14:57:43+00:00"
+        },
+        {
+            "name": "codeat3/blade-fluentui-system-icons",
+            "version": "1.18.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-fluentui-system-icons.git",
+                "reference": "08f460beb292d1ab0b2814479b8d65e33f57a3ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-fluentui-system-icons/zipball/08f460beb292d1ab0b2814479b8d65e33f57a3ff",
+                "reference": "08f460beb292d1ab0b2814479b8d65e33f57a3ff",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.1",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeFluentUiSystemIcons\\BladeFluentUiSystemIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeFluentUiSystemIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of FluentUI System Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-fluentui-system-icons",
+            "keywords": [
+                "FluentUI",
+                "blade",
+                "icons",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-fluentui-system-icons/issues",
+                "source": "https://github.com/codeat3/blade-fluentui-system-icons/tree/1.18.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-14T15:11:21+00:00"
+        },
+        {
+            "name": "codeat3/blade-google-material-design-icons",
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-google-material-design-icons.git",
+                "reference": "1900aea4674c384e7a09aaf86e2bcca0ad2d4122"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-google-material-design-icons/zipball/1900aea4674c384e7a09aaf86e2bcca0ad2d4122",
+                "reference": "1900aea4674c384e7a09aaf86e2bcca0ad2d4122",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.1",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeGoogleMaterialDesignIcons\\BladeGoogleMaterialDesignIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeGoogleMaterialDesignIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of \"Google Fonts Material Icons\" in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-google-material-design-icons",
+            "keywords": [
+                "blade",
+                "google",
+                "icons",
+                "laravel",
+                "material"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-google-material-design-icons/issues",
+                "source": "https://github.com/codeat3/blade-google-material-design-icons/tree/1.8.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-04T09:39:10+00:00"
+        },
+        {
+            "name": "codeat3/blade-iconpark",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-iconpark.git",
+                "reference": "f241731d133dadcc276f0e266bea59576a0eff09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-iconpark/zipball/f241731d133dadcc276f0e266bea59576a0eff09",
+                "reference": "f241731d133dadcc276f0e266bea59576a0eff09",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeIconpark\\BladeIconparkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeIconpark\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of \"Icon Park Icons\" in your Laravel Blade views. ",
+            "homepage": "https://github.com/codeat3/blade-iconpark",
+            "keywords": [
+                "blade",
+                "iconpark",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-iconpark/issues",
+                "source": "https://github.com/codeat3/blade-iconpark/tree/1.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-04T11:24:01+00:00"
+        },
+        {
+            "name": "codeat3/blade-unicons",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-unicons.git",
+                "reference": "88a0a5644e3e653d4201d27ed7b75ed205392b61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-unicons/zipball/88a0a5644e3e653d4201d27ed7b75ed205392b61",
+                "reference": "88a0a5644e3e653d4201d27ed7b75ed205392b61",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.1",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeUnicons\\BladeUniconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeUnicons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of \"Unicons\" in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-unicons",
+            "keywords": [
+                "blade",
+                "laravel",
+                "unicons"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-unicons/issues",
+                "source": "https://github.com/codeat3/blade-unicons/tree/1.5.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-07T04:01:55+00:00"
         },
         {
             "name": "codenix-sv/coingecko-api",
@@ -3275,7 +3804,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-develop",
+            "version": "dev-feature/setting",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -6581,6 +7110,68 @@
                 }
             ],
             "time": "2021-07-11T12:37:55+00:00"
+        },
+        {
+            "name": "ryangjchandler/blade-tabler-icons",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ryangjchandler/blade-tabler-icons.git",
+                "reference": "d533a52bdceb0521fec3c4c15943e33964ef9d3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ryangjchandler/blade-tabler-icons/zipball/d533a52bdceb0521fec3c4c15943e33964ef9d3e",
+                "reference": "d533a52bdceb0521fec3c4c15943e33964ef9d3e",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RyanChandler\\TablerIcons\\BladeTablerIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RyanChandler\\TablerIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Chandler",
+                    "email": "support@ryangjchandler.co.uk",
+                    "homepage": "https://ryangjchandler.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of Tabler icons in your Laravel Blade views.",
+            "homepage": "https://github.com/ryangjchandler/blade-tabler-icons",
+            "keywords": [
+                "blade",
+                "laravel",
+                "tabler"
+            ],
+            "support": {
+                "issues": "https://github.com/ryangjchandler/blade-tabler-icons/issues",
+                "source": "https://github.com/ryangjchandler/blade-tabler-icons/tree/v1.2.0"
+            },
+            "time": "2022-01-13T17:42:24+00:00"
         },
         {
             "name": "sabberworm/php-css-parser",
@@ -12356,5 +12947,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

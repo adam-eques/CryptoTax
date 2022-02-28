@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-gray-100 w-full px-10 py-6 rounded">
+    <div class="w-full px-10 py-6 bg-gray-100 rounded">
         <span class="text-2xl font-bold">{{ __('Delete Account') }}</span>
         <span class="text-gray-400">{{ __("Permanently delete your account. ") }}</span>
     </div>

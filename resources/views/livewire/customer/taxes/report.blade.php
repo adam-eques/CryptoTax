@@ -1,23 +1,23 @@
-<div class="border rounded-md p-5">
+<div class="p-5 border rounded-md">
     {{-- The Master doesn't talk, he acts. --}}
-    <h2 class="text-xl font-semibold py-4">Tax report</h2>
-    <p class="text-lg font-semibold py-5">CSV reports</p>
-    <div class="grid grid-cols-1 md:grid-cols-5 my-2">
-        <div class="col-span-3 flex justify-start items-center">
+    <h2 class="py-4 text-xl font-semibold">Tax report</h2>
+    <p class="py-5 text-lg font-semibold">CSV reports</p>
+    <div class="grid grid-cols-1 my-2 md:grid-cols-5">
+        <div class="flex items-center justify-start col-span-3">
             <x-icon name="pdf" class="w-16 h-16"/>
-            <p class="text-lg ml-4 font-semibold text-gray-400">Transaction History CSV</p>
+            <p class="ml-4 text-lg font-semibold text-gray-400">Transaction History CSV</p>
         </div>
         <div class="col-span-2 py-2">
-            <button class="bg-primary hover:bg-secondary text-white px-10 py-5 font-semibold rounded-sm">Download</button>
+            <button class="px-10 py-5 font-semibold text-white rounded-sm bg-primary hover:bg-secondary">Download</button>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-5 my-2">
-        <div class="col-span-3 flex justify-start items-center">
+    <div class="grid grid-cols-1 my-2 md:grid-cols-5">
+        <div class="flex items-center justify-start col-span-3">
             <x-icon name="pdf" class="w-16 h-16"/>
-            <p class="text-lg ml-4 font-semibold text-gray-400">Transaction History CSV</p>
+            <p class="ml-4 text-lg font-semibold text-gray-400">Transaction History CSV</p>
         </div>
         <div class="col-span-2 py-2">
-            <button class="bg-primary hover:bg-secondary text-white px-10 py-5 font-semibold rounded-sm">Download</button>
+            <button class="px-10 py-5 font-semibold text-white rounded-sm bg-primary hover:bg-secondary">Download</button>
         </div>
     </div>
 </div>
