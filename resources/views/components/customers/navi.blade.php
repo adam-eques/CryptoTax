@@ -58,21 +58,41 @@
             </div>
             <!-- Dropdown -->
             <div class="flex flex-col px-2 mt-3 space-y-1 md:mt-0 md:space-y-0 md:flex-row md:gap-2">
-                {{-- <a href="#" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">
-                    {{ __('Your Profile') }}
-                </a> --}}
-                <a href="{{ route('customer.message') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Messages') }}</a>
-                <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Notifications') }}</a>
-                <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Payment Informations') }}</a>
-                <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Billing') }}</a>
-                <a href="{{ route('index') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Buy Credits') }}</a>
-                <a href="{{ route('customer.user-setting') }}" class="block px-3 py-2 text-base font-light text-gray-200 rounded hover:text-primary hover:bg-white">{{ __('Settings') }}</a>
+              
+                <x-jet-dropdown-link href="{{ route('customer.message') }}" class="flex items-center gap-3 py-3 text-white">
+                    <x-iconoir-message-text class="w-6"/>
+                    {{ __('Messages') }}
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('customer.notification') }}" class="flex items-center gap-3 py-3 text-white">
+                    <x-iconoir-bell-notification class="w-6"/>
+                    {{ __('Notifications') }}
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('customer.payment-info') }}" class="flex items-center gap-3 py-3 text-white">
+                    <x-fluentui-payment-16-o  class="w-6"/>
+                    {{ __('Payment Informations') }}
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('customer.billing-log') }}" class="flex items-center gap-3 py-3 text-white">
+                    <x-ri-bill-line class="w-6"/>
+                    {{ __('Billing') }}
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('customer.buy-credit') }}" class="flex items-center gap-3 py-3 text-white">
+                    <x-feathericon-shopping-bag class="w-6"/>
+                    {{ __('Buy Credits') }}
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3 text-white">
+                    <x-uni-setting-o class="w-6"/>
+                    {{ __('Setting') }}
+                </x-jet-dropdown-link>
+                
+                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="flex items-center gap-3 py-3 text-white">
+                        <x-heroicon-o-logout class="w-6"/>
                         {{ __('Log Out') }}
                     </x-jet-dropdown-link>
                 </form>
+                
             </div>
         </div>
     </div>

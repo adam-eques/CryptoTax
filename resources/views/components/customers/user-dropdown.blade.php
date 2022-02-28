@@ -34,41 +34,35 @@
         x-transition:enter-start="transition ease-in duration-3000"
     >
         <x-jet-dropdown-link href="{{ route('customer.message') }}" class="flex items-center gap-3 py-3">
-            <x-iconoir-message-text class="w-6"/>
+            <x-iconoir-message-text class="w-6 text-primary"/>
             {{ __('Messages') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.notification') }}" class="flex items-center gap-3 py-3">
-            <x-iconoir-bell-notification class="w-6"/>
+            <x-iconoir-bell-notification class="w-6 text-primary"/>
             {{ __('Notifications') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.payment-info') }}" class="flex items-center gap-3 py-3">
-            <x-fluentui-payment-16-o  class="w-6"/>
+            <x-fluentui-payment-16-o  class="w-6 text-primary"/>
             {{ __('Payment Informations') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.billing-log') }}" class="flex items-center gap-3 py-3">
-            <x-ri-bill-line class="w-6"/>
+            <x-ri-bill-line class="w-6 text-primary"/>
             {{ __('Billing') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.buy-credit') }}" class="flex items-center gap-3 py-3">
-            <x-feathericon-shopping-bag class="w-6"/>
+            <x-feathericon-shopping-bag class="w-6 text-primary"/>
             {{ __('Buy Credits') }}
         </x-jet-dropdown-link>
         <x-jet-dropdown-link href="{{ route('customer.user-setting') }}" class="flex items-center gap-3 py-3">
-            <x-uni-setting-o class="w-6"/>
+            <x-uni-setting-o class="w-6 text-primary"/>
             {{ __('Setting') }}
         </x-jet-dropdown-link>
-        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}" class="flex items-center gap-3 py-3">
-                {{ __('API Tokens') }}
-            </x-jet-dropdown-link>
-        @endif
-
+        
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="flex items-center gap-3 py-3">
-                {{-- <x-icon name="log-out" class="w-6"/> --}}
-                <x-heroicon-o-logout class="w-6"/>
+                <x-heroicon-o-logout class="w-6 text-primary"/>
                 {{ __('Log Out') }}
             </x-jet-dropdown-link>
         </form>
