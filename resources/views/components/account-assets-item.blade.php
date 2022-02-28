@@ -2,7 +2,7 @@
     <div class="col-span-3">
         <div class="flex items-center space-x-3">
             <div class="w-14">
-                <x-icon name="{{ 'coins.' . $asset->cryptoCurrency->short_name }}" class="w-14 h-14"/>
+                <x-icon name="{{ 'coins.' . strtolower($asset->cryptoCurrency->short_name) }}" class="w-14 h-14"/>
             </div>
             <div>                                                    
                 <p class="font-bold truncate">{{$asset->cryptoCurrency->getName()}} Wallet</p>
