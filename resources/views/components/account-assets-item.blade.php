@@ -1,4 +1,4 @@
-<div class="grid grid-cols-7 gap-5 items-center px-5 py-6 min-w-[720px]">
+<div class="grid grid-cols-7 gap-5 items-center px-5 py-6 min-w-[720px]" wire:key='{{ $asset->id }}'>
     <div class="col-span-3">
         <div class="flex items-center space-x-3">
             <div class="w-14">
