@@ -1,8 +1,8 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
-    ["label" => "profile", "icon" => "user", "route" => "customer.account"],
-    ["label" => "Setting", "icon" => "setting", "route" => "customer.transactions"],
+    ["label" => "profile", "icon" => "tabler-user", "route" => "customer.account"],
+    ["label" => "Setting", "icon" => "uni-setting-o", "route" => "customer.transactions"],
 ], [
-    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+    ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 <x-app-layout>
     <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xl:max-w-screen-2xl xs:px-4 lg:px-6">

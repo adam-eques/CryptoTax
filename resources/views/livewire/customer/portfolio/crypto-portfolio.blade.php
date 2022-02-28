@@ -1,7 +1,7 @@
 <div>
     <div class="flex items-center justify-between">
         <div class="flex items-center justify-start col-span-3 py-5 space-x-6">
-            <x-icon name="portfolio" class="w-10 h-8"/>
+            <x-icon name="carbon-portfolio" class="w-10 h-8"/>
             <h4 class="text-xl font-bold md:text-2xl">{{ __('My Crypto Portfolio') }}</h4>
         </div>
         <x-button variant="secondary">{{ __('See all assets') }}</x-button>

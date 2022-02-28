@@ -214,7 +214,7 @@ class NavigationService
             ["label" => __('Accounts'), 'icon' => 'carbon-wallet', 'route' => 'customer.account',
                 "children" => [
                     ["label" => "Accounts", "icon" => "fluentui-wallet-32-o", "route" => "customer.account"],
-                    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
+                    ["label" => "Transactions", "icon" => "grommet-transaction", "route" => "customer.transactions"],
                     ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
                 ],
                 "actions" => [
@@ -224,7 +224,7 @@ class NavigationService
             ["label" => __('Portfolio'), 'icon' => 'carbon-portfolio', 'route' => 'customer.portfolio',
                 "children" => [
                     ["label" => __('Portfolio'), "icon" => "fluentui-wallet-32-o", "route" => "customer.portfolio"],
-                    ["label" => __('Transactions'), 'icon' => 'transaction-2', 'route' => 'customer.transactions'],
+                    ["label" => __('Transactions'), 'icon' => 'grommet-transaction', 'route' => 'customer.transactions'],
                     ["label" => __('Assets'), 'icon' => 'chains', 'route' => 'customer.asset'],
                 ],
                 "actions" => [

@@ -70,7 +70,7 @@
                 <h2 class="text-2xl font-bold">{{ __('Focus') }}</h2>
                 <div class="max-w-sm mt-6 space-y-4">
                     <div class="flex items-center px-5 py-4 space-x-4 bg-gray-100 rounded-lg">
-                        <x-icon name="tax-advisor" class="w-auto h-8"/>
+                        <x-icon name="uni-user-md-o" class="w-auto h-8"/>
                         <p class="font-bold">{{ __('Tax Financial Advisor') }}</p>
                     </div>
                 </div>

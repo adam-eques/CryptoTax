@@ -1,5 +1,5 @@
 <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xs:px-4 lg:px-5 xl:max-w-screen-2xl" x-data="{ selected: '', category:'', action:'', isModalOpen:false }">
-    <x-customers.customer-header-bar icon="wallet" name="Accounts">
+    <x-customers.customer-header-bar icon="carbon-wallet" name="Accounts">
         <x-button variant="white" class="col-span-1 border-primary" wire:click="sync">
             <x-icon name="sync" class="w-5 mr-2" />{{ __('Sync ') }}
         </x-button>
