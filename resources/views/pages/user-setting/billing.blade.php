@@ -1,14 +1,14 @@
 @php
 (\App\Services\NavigationService::instance()->overwriteSubnavi([
-    ["label" => "profile", "icon" => "user", "route" => "customer.account"],
-    ["label" => "Setting", "icon" => "setting", "route" => "customer.user-setting"],
+    ["label" => "profile", "icon" => "tabler-user", "route" => "customer.account"],
+    ["label" => "Setting", "icon" => "uni-setting-o", "route" => "customer.user-setting"],
 ], [
-    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+    ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 @endphp
 <x-app-layout>
     <x-container class="p-8 bg-white border rounded-sm my-7">
-        <x-customers.customer-header-bar icon="bill" name="Billings">
+        <x-customers.customer-header-bar icon="ri-bill-line" name="Billings">
         </x-customers.customer-header-bar>
         <div class="mt-8">
             <div class="flex items-center justify-between">

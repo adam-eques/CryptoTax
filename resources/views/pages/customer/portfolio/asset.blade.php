@@ -1,9 +1,9 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
-    ["label" => "Portfolio", "icon" => "wallet", "route" => "customer.portfolio"],
-    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
+    ["label" => "Portfolio", "icon" => "carbon-wallet", "route" => "customer.portfolio"],
+    ["label" => "Transactions", "icon" => "grommet-transaction", "route" => "customer.transactions"],
     ["label" => "Assets", "icon" => "chains", "route" => "customer.asset"],
 ], [
-    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+    ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 <x-app-layout>
     <x-container class="px-3 py-5 my-5 bg-white rounded-sm shadow xs:px-4 lg:px-5">

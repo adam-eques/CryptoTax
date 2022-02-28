@@ -1,9 +1,9 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
-    ["label" => "Accounts", "icon" => "wallet", "route" => "customer.account"],
-    ["label" => "Transactions", "icon" => "transaction-2", "route" => "customer.transactions"],
+    ["label" => "Accounts", "icon" => "fluentui-wallet-32-o", "route" => "customer.account"],
+    ["label" => "Transactions", "icon" => "grommet-transaction", "route" => "customer.transactions"],
     ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
 ], [
-    ["label" => "Invite a Friend", "icon" => "invite", "route" => "customer.invite", "color" => "text-white bg-primary"],
+    ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 
 <x-app-layout>
