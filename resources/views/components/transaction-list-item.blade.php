@@ -1,4 +1,4 @@
-<div class="grid w-full grid-cols-3 border p-9">
+<div class="grid w-full grid-cols-3 border p-9" wire:key='{{ $transaction->id }}'>
     <div class="flex items-center">
         <input type="checkbox">
         <x-icon name="coins.{{strtolower(explode('/', $transaction->symbol)[0])}}" class="w-18 h-18 ml-7"/>
