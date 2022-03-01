@@ -144,7 +144,7 @@
                                 <p class="mt-4 text-gray-400">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ') }}</p>
                                 <x-button variant="primary" tag="a" href="{{route('customer.account.new')}}" class="mt-7">
                                     {{ __('Add Account') }}
-                                    <x-icon name="fas-arrow-right" class="w-12 h-5"/>
+                                    <x-icon name="heroicon-o-arrow-narrow-right" class="w-12 h-5"/>
                                 </x-button>
                             </div>
                         </div>

@@ -28,17 +28,17 @@
             <div class="col-span-1 py-8 space-y-4 md:border-r">
                 @php
                     $items = [
-                        [ 'icon'=>'location', 'label' => 'Address', 'data' => '97845 Baker st. 567, Los Angeles - US' ],
-                        [ 'icon'=>'phone', 'label' => 'Phone Number', 'data' => '+54 423 565624' ],
-                        [ 'icon'=>'email', 'label' => 'Email Address', 'data' => 'Contact@gmail.com' ],
-                        [ 'icon'=>'website', 'label' => 'Website', 'data' => 'www.damianbrayden.com' ],
-                        [ 'icon'=>'language', 'label' => 'Languages', 'data' => 'English, Spanish, France' ],
+                        [ 'icon'=>'carbon-location', 'label' => 'Address', 'data' => '97845 Baker st. 567, Los Angeles - US' ],
+                        [ 'icon'=>'heroicon-o-phone', 'label' => 'Phone Number', 'data' => '+54 423 565624' ],
+                        [ 'icon'=>'carbon-email', 'label' => 'Email Address', 'data' => 'Contact@gmail.com' ],
+                        [ 'icon'=>'bi-globe', 'label' => 'Website', 'data' => 'www.damianbrayden.com' ],
+                        [ 'icon'=>'lineawesome-language-solid', 'label' => 'Languages', 'data' => 'English, Spanish, France' ],
                     ]
                 @endphp
                 @foreach ($items as $item)                    
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center justify-center p-4 bg-gray-100 rounded-md h-14 w-14">
-                            <x-icon name="{{ $item['icon'] }}" class="w-auto h-full"/>
+                            <x-icon name="{{ $item['icon'] }}" class="w-full h-auto"/>
                         </div>
                         <div class="space-y-2 ">
                             <p class="font-bold">{{ __($item['label']) }}</p>
@@ -48,7 +48,7 @@
                 @endforeach
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center justify-center p-4 bg-gray-100 rounded-md h-14 w-14">
-                        <x-icon name="third-party" class="w-auto h-full"/>
+                        <x-icon name="lineawesome-network-wired-solid" class="w-auto h-full"/>
                     </div>
                     <div class="flex items-center space-x-2">
                        <x-icon name="social.whatsapp" class="w-8"/>

@@ -12,11 +12,11 @@
                 <div class="flex flex-wrap items-center justify-between gap-2 mt-5">
                     <div class="flex items-center space-x-3 lg:space-x-6">
                         <button class="flex items-center px-2 py-1 border rounded border-primary hover:bg-primary hover:text-white">
-                            <x-icon name="cross-circle" class="w-4 h-4 mr-2"/>
+                            <x-icon name="radix-cross-circled" class="w-4 h-4 mr-2"/>
                             <p>{{ __('Remove') }}</p>
                         </button>
-                        <a class="flex items-center px-2 py-1 border rounded border-primary hover:bg-primary hover:text-white cursor-pointer" href="{{ route('customer.payment-info.detail', [ 'id' =>1 ]) }}">
-                            <x-icon name="edit" class="w-4 h-4 mr-2"/>
+                        <a class="flex items-center px-2 py-1 border rounded cursor-pointer border-primary hover:bg-primary hover:text-white" href="{{ route('customer.payment-info.detail', [ 'id' =>1 ]) }}">
+                            <x-icon name="feathericon-edit" class="w-4 h-4 mr-2"/>
                             <p>{{ __('Edit') }}</p>
                         </a>
                     </div>

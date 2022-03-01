@@ -6,7 +6,7 @@
 ]))
 <x-app-layout>
     <x-container class="p-8 mb-24 bg-white border rounded-sm mt-7">
-        <x-customers.customer-header-bar icon="message" name="Message">
+        <x-customers.customer-header-bar icon="iconoir-message-text" name="Message">
         </x-customers.customer-header-bar>
         <div class="grid grid-cols-1 gap-10 mt-12 overflow-y-auto lg:grid-cols-3">
             <div class="col-span-1 border rounded min-h-[584px]">
@@ -96,13 +96,13 @@
                     <div class="flex space-x-4 bottom-5 left-4">
                         <button class="px-3 py-1 font-semibold text-white rounded-md bg-primary hover:bg-secondary">{{ __('Reply') }}</button>
                         <button>
-                            <x-icon name="attatchment" class="h-6 text-gray-300 hover:text-primary"/>
+                            <x-icon name="ri-attachment-line" class="h-6 text-gray-300 hover:text-primary"/>
                         </button>
                         <button>
-                            <x-icon name="emoji" class="h-6 text-gray-300 hover:text-primary"/>
+                            <x-icon name="iconoir-emoji" class="h-6 text-gray-300 hover:text-primary"/>
                         </button>
                         <button>
-                            <x-icon name="image" class="h-6 text-gray-300 hover:text-primary"/>
+                            <x-icon name="uiw-picture" class="h-6 text-gray-300 hover:text-primary"/>
                         </button>
                     </div>
                 </div>

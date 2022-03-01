@@ -30,7 +30,7 @@
                 <tr class="border">
                     <td class="flex items-center justify-center py-5 space-x-2">
                         <p>{{ $item['year'] }}</p> 
-                        <x-icon name="info" class="w-3 h-3 text-gray-400"/> 
+                        <x-icon name="uni-comment-info-o" class="w-3 h-3 text-gray-400"/> 
                 </td>
                     <td class="py-5">{{ $item['gains'] }}</td>
                     <td class="py-5">{{ $item['income'] }}</td>

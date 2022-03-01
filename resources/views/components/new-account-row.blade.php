@@ -34,7 +34,7 @@
     </div>
     @if($selected) 
         <div class="w-full justify-end col-span-1 hidden sm:flex order-4">
-            <x-icon name="arrow-right" class="w-5 col-span-1"/>
+            <x-icon name="heroicon-o-arrow-narrow-right" class="w-5 col-span-1"/>
         </div>
     @endif
 </button>

@@ -13,7 +13,7 @@
             <div class="flex items-center space-x-4">
                 <h5 class="text-gray-400">{{ __($item['name']) }}</h5>
                 <x-badge variant="success" type='square'>{{ __('+ $ 117,94.0') }}</x-badge>
-                <x-icon name="info" class="w-4 text-gray-500"/>
+                <x-icon name="uni-comment-info-o" class="w-4 text-gray-500"/>
             </div>
             <h3 class="flex items-start text-2xl font-bold xl:text-3xl"><span class="text-base">$</span>{{ __($item['balance']) }}</h3>
         </div>
