@@ -1,5 +1,5 @@
-<div class="relative w-full px-5 py-5 text-white bg-white rounded-md shadow-md  md:px-8 xl:px-11 md:py-8 xl:py-12">
-    <img src="{{asset($selected['image'])}}" class="absolute w-1/2 h-full -bottom-6 right-2"/>
+<div class="relative w-full px-5 py-5 text-white bg-white rounded-md shadow-md md:px-8 xl:px-11 md:py-8 xl:py-12">
+    <img src="{{asset($selected['image'])}}" class="absolute bottom-0 hidden w-2/5 h-auto right-2 lg:block"/>
     <div class="relative z-10 max-w-lg">
         <h2 class="text-3xl font-semibold text-primary">{{ __('Hello ' . auth()->user()->name) }}</h2>
         <p class="text-base text-primary">{{ __('Thanks for signing up.') }}</p>
@@ -10,10 +10,10 @@
             <h5 class="text-lg font-bold text-primary">{{$selected['id']}}. {{ __($selected['label']) }}</h5>
             <a href="{{ route('customer.account.new') }}" class="px-3 py-2 my-2 text-sm font-bold rounded bg-primary hover:bg-secondary">{{ __($selected['button']) }}</a>
         </div>
-        <p class="mt-6 text-primary">{{ __($selected['description']) }}</p>
+        <p class="max-w-sm mt-4 text-primary">{{ __($selected['description']) }}</p>
         
         {{-- stepper --}}
-        <nav aria-label="Progress" class="mt-11">
+        <nav aria-label="Progress" class="mt-8">
             <ol class="flex items-center">
                 @foreach ($steps as $step)
                     @switch($step['status'])
