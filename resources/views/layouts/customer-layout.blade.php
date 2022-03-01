@@ -17,6 +17,13 @@
     {{-- Push ApexCharts to the top of the scripts stack --}}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    
     @include("layouts.partials.google-analytics-header")
 </head>
 <body>

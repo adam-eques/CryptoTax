@@ -8,6 +8,7 @@
                 <button 
                     class="flex items-center justify-between w-full px-3 py-4 rounded-lg hover:bg-primary hover:text-white border-1 2xl:px-5" 
                     wire:click="get_selected_item({{ $button['id'] }})"
+                    wire:key='{{ $button["id"] }}'
                     x-on:click="category = {{$button['id']}}"
                     x-bind:class="category == {{$button['id']}}?'bg-primary text-white':'bg-gray-100'"
                 >
@@ -40,7 +41,7 @@
                     type="text" 
                     class="w-full border-0 rounded-lg outline-none ring-0 focus:ring-0" 
                     placeholder="Search for an exchange" 
-                    wire:model.lazy="search" 
+                    wire:model="search" 
                 >
             </div>
             <div class="flex flex-wrap items-center justify-end order-1 space-x-3 lg:order-2">

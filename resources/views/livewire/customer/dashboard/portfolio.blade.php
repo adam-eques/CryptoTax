@@ -5,7 +5,7 @@
             <p class="mr-3 text-lg font-semibold">{{ __('My Crypto Portfolio') }}</p>
         </div>
         <div>
-            <x-button variant="primary" class="font-normal" tag="a" href="{{ route('customer.portfolio') }}">{{  __('See all assets')}}</x-button>
+            <x-button variant="primary" tag="a" href="{{ route('customer.portfolio') }}">{{  __('See all assets')}}</x-button>
         </div>
     </div>
     <div class="mt-6 overflow-x-auto" x-data="{selected:null}">

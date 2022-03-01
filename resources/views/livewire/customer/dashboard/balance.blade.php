@@ -29,8 +29,21 @@
         </div>
     </div>
 
-    <div class="px-2 py-4 lg:px-4 sm:px-3">
-        <img src="{{asset('assets/img/svg/Credit Card.svg')}}" class="w-9/12 mx-auto "/>
+    <div class="px-2 py-4 lg:px-4 sm:px-3 relative overflow-hidden">
+        <div class="mySwiper w-full">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-center bg-cover w-2/3">
+                    <img src="{{asset('assets/img/cards/red_card.svg')}}" class="w-2/3 mx-auto"/>
+                </div>
+                <div class="swiper-slide bg-center bg-cover w-2/3">
+                    <img src="{{asset('assets/img/cards/red_card.svg')}}" class="w-2/3 mx-auto"/>
+                </div>
+                <div class="swiper-slide bg-center bg-cover w-2/3">
+                    <img src="{{asset('assets/img/cards/red_card.svg')}}" class="w-2/3 mx-auto"/>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
 
     <div x-show="view == 'tile'" x-transition class="mt-3">
@@ -84,3 +97,25 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script type="module">
+    var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        loop: true,
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+    });
+</script>
+@endpush
