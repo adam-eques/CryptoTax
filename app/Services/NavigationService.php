@@ -225,7 +225,7 @@ class NavigationService
                 "children" => [
                     ["label" => __('Portfolio'), "icon" => "fluentui-wallet-32-o", "route" => "customer.portfolio"],
                     ["label" => __('Transactions'), 'icon' => 'grommet-transaction', 'route' => 'customer.transactions'],
-                    ["label" => __('Assets'), 'icon' => 'chains', 'route' => 'customer.asset'],
+                    ["label" => __('Assets'), 'icon' => 'grommet-money', 'route' => 'customer.asset'],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],

@@ -20,6 +20,7 @@
         "codeat3/blade-grommet-icons": "^1.3",
         "codeat3/blade-iconpark": "^1.4",
         "codeat3/blade-unicons": "^1.5",
+        "codeat3/blade-vaadin-icons": "^1.3",
         "codenix-sv/coingecko-api": "^1.0",
         "doctrine/dbal": "^3.2",
         "eduard9969/blade-polaris-icons": "^1.0",
@@ -41,6 +42,7 @@
         "owenvoke/blade-fontawesome": "^1.10",
         "ryangjchandler/blade-tabler-icons": "*",
         "spatie/laravel-settings": "^2.3",
+        "troccoli/blade-health-icons": "^0.3.0",
         "webcaravel/admin": "^0.1",
         "wireui/wireui": "^0"
     },

@@ -5,9 +5,9 @@
             <div class="relative rounded-full w-7 h-7 bg-success-500">
                 <x-icon name='fas-arrow-up' class="absolute w-4 h-4 text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
             </div>
-            <p class="font-semibold">Total Return</p>
+            <p class="font-semibold">{{ __('Total Return') }}</p>
             <x-badge type="square">+ 117.94%</x-badge>
-            <x-icon name="info" class="w-4 h-4"/>
+            <x-icon name="uni-comment-info-o" class="w-4 h-4"/>
         </div>
         <div class="flex items-end justify-between">
             <div class="flex items-start justify-start px-5">
@@ -24,9 +24,9 @@
             <div class="relative rounded-full w-7 h-7 bg-danger">
                 <x-icon name='fas-arrow-down' class="absolute w-4 h-4 text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
             </div>
-            <p class="font-semibold">Past Day</p>
+            <p class="font-semibold">{{ __('Past Day') }}</p>
             <x-badge type="square" variant="danger">- 117.94%</x-badge>
-            <x-icon name="info" class="w-4 h-4"/>
+            <x-icon name="uni-comment-info-o" class="w-4 h-4"/>
         </div>
         <div class="flex items-end justify-between">
             <div class="flex items-start justify-start px-5">
@@ -41,10 +41,10 @@
     <div class="flex flex-col justify-between px-2 py-5 my-1 border rounded-md md:px-5">
         <div class="flex items-center justify-start px-5 space-x-4">
             <div>
-                <x-icon name="deposit" class="w-6 h-6 text-secondary" />
+                <x-icon name="fluentui-building-retail-money-24-o" class="w-6 h-6 text-secondary" />
             </div>
-            <p class="text-sm font-semibold">Net Deposits</p>
-            <x-icon name="info" class="w-4 h-4"/>
+            <p class="text-sm font-semibold">{{ __('Net Deposits') }}</p>
+            <x-icon name="uni-comment-info-o" class="w-4 h-4"/>
         </div>
         <div class="flex items-start justify-start px-5 pt-4">
             <span class="text-xl font-semibold">$</span>
@@ -54,10 +54,10 @@
     <div class="flex flex-col justify-between px-2 py-5 my-1 border rounded-md md:px-5">
         <div class="flex items-center justify-start px-5 space-x-4">
             <div>
-                <x-icon name="coin-1" class="w-6 h-6 text-secondary" />
+                <x-icon name="vaadin-coin-piles" class="w-6 h-6 text-secondary" />
             </div>
-            <p class="font-semibold">Net Proceeds</p>
-            <x-icon name="info" class="w-4 h-4"/>
+            <p class="font-semibold">{{ __('Net Proceeds') }}</p>
+            <x-icon name="uni-comment-info-o" class="w-4 h-4"/>
         </div>
         <div class="flex items-start justify-start px-5 pt-4">
             <span class="text-xl font-semibold">$</span>
