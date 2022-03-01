@@ -119,7 +119,7 @@
                         <div class="flex items-center justify-center w-full h-full text-center">
                             <div>
                                 <div class="flex items-center justify-center mx-auto rounded-full bg-primary w-30 h-30">
-                                    <x-icon name="book-info" class="w-16 h-16 text-white"/>
+                                    <x-icon name="go-book-16" class="w-16 h-16 text-white"/>
                                 </div>
                                 <p class="mt-3 text-xl font-bold">{{ __('Instructions for API or CSV') }}</p>
                                 <p>{{ __('Please select an Exchange to see import instructions.') }}</p>
@@ -178,7 +178,7 @@
                                     <div class="flex items-center justify-center w-full h-full text-center">
                                         <div>
                                             <div class="flex items-center justify-center mx-auto rounded-full bg-primary w-30 h-30">
-                                                <x-icon name="book-info" class="w-16 h-16 text-white"/>
+                                                <x-icon name="go-book-16" class="w-16 h-16 text-white"/>
                                             </div>
                                             <p class="mt-3 text-xl font-bold">{{ __('Instructions for API or CSV') }}</p>
                                             <p>{{ __('Please select an Exchange to see import instructions.') }}</p>

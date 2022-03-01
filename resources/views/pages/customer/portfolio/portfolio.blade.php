@@ -3,7 +3,7 @@
     <x-container class="bg-white rounded-sm shadow">
         <x-customers.customer-header-bar icon="carbon-portfolio" name="Portfolio">
             <x-button variant="white" class="justify-between w-full">
-                <x-icon name="calendar" class="w-5 h-5 mr-3"/>
+                <x-icon name="carbon-calendar" class="w-5 h-5 mr-3"/>
                 <span class="mr-2">{{ __('Today') }}</span>
                 <svg class="w-4 transform trnstsn " fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />

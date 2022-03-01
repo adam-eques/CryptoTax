@@ -48,7 +48,7 @@
                 </div>
                 <div class="max-w-xl">
                     <div class="flex items-center space-x-4 border rounded-sm p-7">
-                        <x-icon name="wallet-1" class="w-12 h-12"/>
+                        <x-icon name="bx-add-to-queue" class="w-12 h-12"/>
                         <div>
                             <p class="text-gray-400">{{ __('You have Currently') }}</p>
                             <h3 class="text-2xl font-bold">{{ __('8654.0 Credits') }}</h3>

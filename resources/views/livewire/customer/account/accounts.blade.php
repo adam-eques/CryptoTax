@@ -1,10 +1,10 @@
 <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xs:px-4 lg:px-5 xl:max-w-screen-2xl" x-data="{ selected: '', category:'', action:'', isModalOpen:false }">
     <x-customers.customer-header-bar icon="carbon-wallet" name="Accounts">
         <x-button variant="white" class="col-span-1 border-primary" wire:click="sync">
-            <x-icon name="sync" class="w-5 mr-2" />{{ __('Sync ') }}
+            <x-icon name="fluentui-arrow-sync-16-o" class="w-5 mr-2" />{{ __('Sync ') }}
         </x-button>
         <x-button class="justify-center col-span-2" tag="a" href="{{ route('customer.account.new') }}">
-            <x-icon name="wallet-1" class="w-5 mr-2"/>
+            <x-icon name="bx-add-to-queue" class="w-5 mr-2"/>
             {{ __('Add New Account') }}
         </x-button>
     </x-customers.customer-header-bar>
@@ -60,10 +60,10 @@
                             <div class="flex items-center space-x-3">
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($exchange->getBalanceSum(), 2) }}</p>
                                 <x-button size="xs" wire:click="edit_exchange" x-on:click="action='edit'">
-                                    <x-icon name="edit" class="w-4 md:w-6"/>
+                                    <x-icon name="feathericon-edit" class="w-4 md:w-6"/>
                                 </x-button>
                                 <x-button size="xs" variant="danger" x-on:click="action='delete'">
-                                    <x-icon name="fas-trash-alt" class="w-4 md:w-6"/>
+                                    <x-icon name="ri-delete-bin-6-line" class="w-4 md:w-6"/>
                                 </x-button>
                             </div>
                         </div>
@@ -99,10 +99,10 @@
                             <div class="flex items-center space-x-3">
                                 <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($blockchain["balance"], 2) }}</p>
                                 <x-button size="xs" x-on:click="action='edit'">
-                                    <x-icon name="edit" class="w-6"/>
+                                    <x-icon name="feathericon-edit" class="w-6"/>
                                 </x-button>
                                 <x-button size="xs" variant="danger" x-on:click="action='delete'">
-                                    <x-icon name="fas-trash-alt" class="w-6"/>
+                                    <x-icon name="ri-delete-bin-6-line" class="w-6"/>
                                 </x-button>
                             </div>
                         </div>

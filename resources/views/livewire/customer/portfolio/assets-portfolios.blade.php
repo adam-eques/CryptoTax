@@ -33,7 +33,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </div>
-                <x-icon name="wallet-1" class="w-6 h-6"/>
+                <x-icon name="bx-add-to-queue" class="w-6 h-6"/>
                 <span class="text-xl font-bold">{{ __('Wallet') }}</span>
                 <x-badge size="md" variant="primary" type="square">{{ __('$ 21.67') }}</x-badge>
                 <button class="p-2 text-sm text-white rounded-md bg-primary hover:bg-secondary">{{ __('Add Token') }}</button>

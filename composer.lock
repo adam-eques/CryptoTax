@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78c6b7c25e6720f506f7aae186890f6f",
+    "content-hash": "5a422afa34529abea2efc07b367e9285",
     "packages": [
         {
             "name": "actb/blade-github-octicons",
@@ -2398,6 +2398,68 @@
             "time": "2022-01-18T15:43:28+00:00"
         },
         {
+            "name": "eduard9969/blade-polaris-icons",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eduard9969/blade-polaris-icons.git",
+                "reference": "67224a03c55aa943a659f6e9e698f90fb5589d55"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eduard9969/blade-polaris-icons/zipball/67224a03c55aa943a659f6e9e698f90fb5589d55",
+                "reference": "67224a03c55aa943a659f6e9e698f90fb5589d55",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.1",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eduard9969\\BladePolarisIcons\\BladePolarisIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eduard9969\\BladePolarisIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduard Samoilenko",
+                    "homepage": "https://readytest.tk/"
+                }
+            ],
+            "description": "A package to easily make use of Polaris Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/Eduard9969/blade-polaris-icons",
+            "keywords": [
+                "blade",
+                "laravel",
+                "polaris",
+                "shopify"
+            ],
+            "support": {
+                "issues": "https://github.com/Eduard9969/blade-polaris-icons/issues",
+                "source": "https://github.com/Eduard9969/blade-polaris-icons/tree/1.0.1"
+            },
+            "time": "2022-02-26T17:18:27+00:00"
+        },
+        {
             "name": "egulias/email-validator",
             "version": "2.1.25",
             "source": {
@@ -3916,7 +3978,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-feature/setting",
+            "version": "dev-feature/api-integration",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -4601,6 +4663,84 @@
                 }
             ],
             "time": "2022-02-18T22:35:27+00:00"
+        },
+        {
+            "name": "mallardduck/blade-boxicons",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mallardduck/blade-boxicons.git",
+                "reference": "d29309ceffcfbffafe53709263425237a04372e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mallardduck/blade-boxicons/zipball/d29309ceffcfbffafe53709263425237a04372e5",
+                "reference": "d29309ceffcfbffafe53709263425237a04372e5",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.2.0",
+                "illuminate/support": "^8.74 || ^9.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "replace": {
+                "jfvoliveira/blade-boxicons": "1.1.2"
+            },
+            "require-dev": {
+                "ext-dom": "*",
+                "orchestra/testbench": "^6.24 || ^7.0",
+                "phpunit/phpunit": "^8.5.14 || ^9.0",
+                "spatie/phpunit-snapshot-assertions": "^4.2",
+                "symfony/console": "^5.3 || ^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MallardDuck\\BladeBoxicons\\BladeBoxiconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MallardDuck\\BladeBoxicons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Pock",
+                    "homepage": "https://danpock.me",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "João Oliveira",
+                    "email": "joao@joliveira.pt",
+                    "homepage": "https://joliveira.pt",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "A package to easily make use of Boxicons in your Laravel Blade views.",
+            "homepage": "https://github.com/mallardduck/blade-boxicons",
+            "keywords": [
+                "Blade UI Kit",
+                "Boxicons",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/mallardduck/blade-boxicons/issues",
+                "source": "https://github.com/mallardduck/blade-boxicons/tree/2.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mallardduck",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-08T18:50:37+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
