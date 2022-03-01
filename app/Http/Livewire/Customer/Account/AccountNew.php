@@ -26,10 +26,10 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     
     
     public ?array $buttons = [
-        [ 'id' => 1, 'icon' => 'exchange-1', 'name' => 'Exchange' ],
-        [ 'id' => 2, 'icon' => 'wallet-1', 'name' => 'Wallets' ],
-        [ 'id' => 3, 'icon' => 'blockchain', 'name' => 'Blockchains' ],
-        [ 'id' => 4, 'icon' => 'others', 'name' => 'Others' ],
+        [ 'id' => 1, 'icon' => 'ri-exchange-dollar-line', 'name' => 'Exchange' ],
+        [ 'id' => 2, 'icon' => 'carbon-wallet', 'name' => 'Wallets' ],
+        [ 'id' => 3, 'icon' => 'iconpark-blockchain', 'name' => 'Blockchains' ],
+        [ 'id' => 4, 'icon' => 'tabler-dots-circle-horizontal', 'name' => 'Others' ],
     ];
     
     public function get_selected_item( $id ){

@@ -14,7 +14,7 @@
         <p class="font-bold">${{ moneyFormat($asset->convertTo(), 2) }}</p>
         <p class="text-gray-400">{{ moneyFormat($asset->balance, 10) }} {{$asset->cryptoCurrency->short_name}}</p>
     </div>
-    <div class="col-span-2">
-        <x-button tag="a" href="{{route('customer.transactions', ['asset' => $asset->cryptoCurrency->getName()])}}" variant="white" class="justify-center w-full text-center rounded-full border-primary">{{ __('View Transaction') }}</x-button>
+    <div class="col-span-2 flex justify-end">
+        <x-button tag="a" href="{{route('customer.transactions', ['asset' => $asset->cryptoCurrency->short_name])}}" variant="white" class="justify-center text-center border-primary">{{ __('View Transaction') }}</x-button>
     </div>
 </div>

@@ -16,10 +16,10 @@
     $category_badge = ['name'=>'Exchange', 'icon' =>'exchange-1'];
     switch ($category) {
         case '1':
-            $category_badge = ['name'=>'Exchange', 'icon' =>'exchange-1'];
+            $category_badge = ['name'=>'Exchange', 'icon' =>'ri-exchange-dollar-line'];
             break;
         case '3':
-            $category_badge = ['name'=>'Blockchain', 'icon' =>'blockchain'];
+            $category_badge = ['name'=>'Blockchain', 'icon' =>'iconpark-blockchain'];
             break;
         default:
             break;

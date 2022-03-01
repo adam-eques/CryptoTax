@@ -14,7 +14,7 @@
             <p class="mr-3 text-lg font-semibold">{{ __('Crypto Taxes') }}</p>
         </div>
         <div>
-            <x-button variant="primary" class="font-normal" tag="a" href="{{ route('customer.taxes') }}">{{__('See details')}}</x-button>
+            <x-button variant="primary" tag="a" href="{{ route('customer.taxes') }}">{{__('See details')}}</x-button>
         </div>
     </div>
     <table class="w-full mt-5 text-base text-center text-primary">
