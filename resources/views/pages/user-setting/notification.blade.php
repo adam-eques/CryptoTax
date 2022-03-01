@@ -6,7 +6,7 @@
 ]))
 <x-app-layout>
     <x-container class="p-8 bg-white border rounded-sm my-7">
-        <x-customers.customer-header-bar icon="bell" name="Notification">
+        <x-customers.customer-header-bar icon="iconoir-bell-notification" name="Notification">
         </x-customers.customer-header-bar>
         <div class="mt-6 space-y-3">
             <x-notification-item type="success" title="Successfully 2000 Credited" content="you can amend your PIN at any time by using an iTAN under Administration."/>

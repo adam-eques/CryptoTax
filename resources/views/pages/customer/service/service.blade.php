@@ -9,7 +9,7 @@
                         <h4 class="text-5xl text-secondary">{{ __('UPTO') }} <span class="font-bold">65%</span> OFF</h4>
                     </div>
                     <p class="mt-3">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua') }}</p>
-                    <x-button size="xl" class="px-10 py-6 mt-5 font-extrabold">{{ __('Refer and Earn') }}</x-button>
+                    <x-button size="xl" class="px-10 py-4 mt-5">{{ __('Refer and Earn') }}</x-button>
                 </div>
                 <div>
                     <img src="{{ asset('assets/img/svg/service.svg') }}" class="w-full h-full"/>

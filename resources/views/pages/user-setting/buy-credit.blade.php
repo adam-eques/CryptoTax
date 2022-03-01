@@ -18,7 +18,7 @@
                         <div class="relative space-y-12">
                             <div class="flex items-center gap-4 bg-white">
                                 <div class="flex items-center justify-center bg-gray-100 w-18 h-18">
-                                    <x-icon name="select-dropdown" class="w-12 h-12"/>
+                                    <x-icon name="carbon-list-dropdown" class="w-12 h-12"/>
                                 </div>
                                 <div class="w-10/12 ">
                                     <h6 class="text-lg font-bold">{{ __('Step - 1') }}</h6>
@@ -27,7 +27,7 @@
                             </div>
                             <div class="flex items-center gap-4 bg-white">
                                 <div class="flex items-center justify-center bg-gray-100 w-18 h-18">
-                                    <x-icon name="credit-card-1" class="w-12 h-12"/>
+                                    <x-icon name="bi-credit-card-2-front" class="w-12 h-12"/>
                                 </div>
                                 <div class="w-10/12 ">
                                     <h6 class="text-lg font-bold">{{ __('Step - 2') }}</h6>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="flex items-center gap-4 bg-white">
                                 <div class="flex items-center justify-center bg-gray-100 w-18 h-18">
-                                    <x-icon name="submit-success" class="w-12 h-12"/>
+                                    <x-icon name="iconoir-page" class="w-12 h-12"/>
                                 </div>
                                 <div class="w-10/12 ">
                                     <h6 class="text-lg font-bold">{{ __('Step - 3') }}</h6>

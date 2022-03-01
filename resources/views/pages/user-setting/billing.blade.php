@@ -17,7 +17,7 @@
                     <p class="text-gray-400">{{ __("Pick an account plan that's fits your workflow") }}</p>
                 </div>
                 <x-button>
-                    <x-heroicon-o-document-download class="w-6 h-6" />
+                    <x-iconoir-download-square-outline class="w-6 h-6" />
                     <p class="ml-3">{{ __('Download all') }}</p>
                 </x-button>
             </div>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-span-2">
                                 <x-badge variant="transparent" type="square" class="text-success-600">
-                                    <x-icon name="success" class="w-4 h-4 mr-2"/>
+                                    <x-icon name="bi-check-circle" class="w-4 h-4 mr-2"/>
                                     {{__("Paid")}}
                                 </x-badge>
                             </div>
