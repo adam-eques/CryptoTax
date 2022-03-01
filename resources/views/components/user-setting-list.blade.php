@@ -57,7 +57,7 @@
                     {{ __($item['name']) }}
                 </div>
                 @if ($active == $item['route'])
-                    <x-icon name="arrow-right" class="w-6"/>
+                    <x-icon name="heroicon-o-arrow-narrow-right" class="w-6"/>
                 @endif
             </div>
         </a>
@@ -115,7 +115,7 @@
                                 {{ __($item['name']) }}
                             </div>
                             @if ($active == $item['route'])
-                                <x-icon name="arrow-right" class="w-6"/>
+                                <x-icon name="heroicon-o-arrow-narrow-right" class="w-6"/>
                             @endif
                         </div>
                     </a>

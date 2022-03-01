@@ -16,7 +16,7 @@
                         <x-icon name="{{ $button['icon'] }}" class="w-8 h-8 mr-2"/>
                         <span class="text-xl font-semibold tracking-tight truncate">{{ __( $button['name']) }}</span>
                     </div>
-                    <x-icon name="arrow-right" class="hidden w-5 text-white 2xl:block" x-cloak x-show="category == {{$button['id']}}"/>
+                    <x-icon name="heroicon-o-arrow-narrow-right" class="hidden w-5 text-white 2xl:block" x-cloak x-show="category == {{$button['id']}}"/>
                 </button>
             @endforeach
         </div>

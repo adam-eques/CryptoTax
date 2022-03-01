@@ -17,7 +17,7 @@
         @switch($transaction->side)
             @case('sell')                                
                 <div class="px-3 py-5 bg-gray-100 rounded-lg">
-                    <x-icon name="arrow-right" class="w-6 text-primary"/>
+                    <x-icon name="heroicon-o-arrow-narrow-right" class="w-6 text-primary"/>
                 </div>
                 <div class="w-full space-y-1 ml-7">
                     <p class="text-lg font-semibold">{{ date("M d, Y H:i:s", $transaction->executed_at/1000) }}</p>
@@ -27,7 +27,7 @@
                 @break
             @case('buy')
                 <div class="px-3 py-5 bg-gray-100 rounded-lg">
-                    <x-icon name="arrow-right" class="w-6 rotate-180 text-primary"/>
+                    <x-icon name="heroicon-o-arrow-narrow-right" class="w-6 rotate-180 text-primary"/>
                 </div>
                 <div class="w-full space-y-1 ml-7">
                     <p class="text-lg font-semibold">{{ date("M d, Y H:i:s", $transaction->executed_at/1000) }}</p>
