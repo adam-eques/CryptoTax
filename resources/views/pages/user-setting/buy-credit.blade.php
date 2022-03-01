@@ -5,7 +5,7 @@
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 <x-app-layout>
-    <x-container class="p-8 bg-white border rounded-sm my-7">
+    <x-container class="p-8 my-5 bg-white border rounded-sm">
         <x-customers.customer-header-bar icon="feathericon-shopping-bag" name="Buy Credits">
         </x-customers.customer-header-bar>
         <div class="mt-14">

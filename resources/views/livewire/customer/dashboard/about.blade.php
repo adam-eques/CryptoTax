@@ -1,10 +1,10 @@
 <div class="relative w-full px-5 py-5 text-white bg-white rounded-md shadow-md md:px-8 xl:px-11 md:py-8 xl:py-12">
-    <img src="{{asset($selected['image'])}}" class="absolute bottom-0 hidden w-2/5 h-auto right-2 lg:block"/>
+    <img src="{{asset($selected['image'])}}" class="absolute hidden w-2/5 h-auto -translate-y-1/2 top-1/2 right-2 lg:block"/>
     <div class="relative z-10 max-w-lg">
         <h2 class="text-3xl font-semibold text-primary">{{ __('Hello ' . auth()->user()->name) }}</h2>
-        <p class="text-base text-primary">{{ __('Thanks for signing up.') }}</p>
-        <div class="flex flex-wrap items-center mt-8 space-x-3">
-            <div class="p-3 bg-white rounded-xl">
+        <p class="mt-2 text-base text-primary">{{ __('Thanks for signing up.') }}</p>
+        <div class="flex flex-wrap items-center mt-6 space-x-3">
+            <div class="mr-2 bg-white rounded-xl">
                 <x-icon name="{{ $selected['icon'] }}" class="w-8 h-8 text-secondary"></x-icon>
             </div>
             <h5 class="text-lg font-bold text-primary">{{$selected['id']}}. {{ __($selected['label']) }}</h5>
