@@ -3,15 +3,16 @@
         <img src="{{ asset("assets/img/svg/avatar.svg") }}" class="rounded-lg w-18 h-18 object-cover"/>
         <div class="text-right">
             <div class="flex items-center justify-end space-x-4">
-                <x-icon name="heart" class="w-4 h-4 text-primary"/>
+                <x-icon name="fas-heart" class="w-4 h-4 text-primary"/> 
+                {{-- <x-icon name="far-heart" class="w-4 h-4 text-primary"/> --}}
                 <h3 class="text-2xl font-bold">5.0</h3>
             </div>
             <div class="flex items-end space-x-1 my-1">
-                <x-icon name="star-golden" class="w-4"/>
-                <x-icon name="star-golden" class="w-4"/>
-                <x-icon name="star-golden" class="w-4"/>
-                <x-icon name="star-golden" class="w-4"/>
-                <x-icon name="star-golden" class="w-4"/>
+                <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
             </div>
             <p class="text-sm text-gray-400">{{ __('150 Reviews') }}</p>
         </div>

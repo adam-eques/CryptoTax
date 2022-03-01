@@ -12,15 +12,15 @@
                 <h3 class="text-xl font-bold">{{ __('4.9/5.0') }}</h3>
                 <div>
                     <div class="flex items-center space-x-1">
-                        <x-icon name="star-golden" class="w-4"/>
-                        <x-icon name="star-golden" class="w-4"/>
-                        <x-icon name="star-golden" class="w-4"/>
-                        <x-icon name="star-golden" class="w-4"/>
-                        <x-icon name="star-golden" class="w-4"/>
+                        <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                        <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                        <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                        <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                        <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
                     </div>
                     <p class="text-sm text-gray-400">{{ __('150 Reviews') }}</p>
                 </div>
-                <div class="p-3 border rounded-md"><x-icon name="heart-blank" class="w-6 bg-white"/></div>
+                <div class="p-3 border rounded-md"><x-icon name="far-heart" class="w-6 bg-white"/></div>
                 <x-button class="font-semibold">{{ __("Contact Now") }}</x-button>
             </div>
         </div>
@@ -89,11 +89,11 @@
                     <p class="py-4 italic text-gray-400">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam ", </p>
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center space-x-1">
-                            <x-icon name="star-golden" class="w-4"/>
-                            <x-icon name="star-golden" class="w-4"/>
-                            <x-icon name="star-golden" class="w-4"/>
-                            <x-icon name="star-golden" class="w-4"/>
-                            <x-icon name="star-golden" class="w-4"/>
+                            <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                            <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                            <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                            <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
+                            <x-icon name="ri-star-fill" class="w-4 text-yellow-400"/>
                         </div>
                         <p class="text-sm text-gray-400">{{ __('06/24/2022') }}</p>
                     </div>
