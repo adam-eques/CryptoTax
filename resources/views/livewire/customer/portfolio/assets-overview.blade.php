@@ -1,10 +1,10 @@
 <div class="grid grid-cols-1 gap-4 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
     @php
         $items = [
-            [ 'icon' => 'net-worth', 'name' => 'Net Worth', 'balance' => '40,307,515.403' ],
-            [ 'icon' => 'claim', 'name' => 'to be Claimed', 'balance' => '10,254,.023' ],
-            [ 'icon' => 'money', 'name' => 'Total Assets', 'balance' => '60,637,515.403' ],
-            [ 'icon' => 'debt', 'name' => 'Total Debts', 'balance' => '-2630.02' ]
+            [ 'icon' => 'uni-moneybag-o', 'name' => 'Net Worth', 'balance' => '40,307,515.403' ],
+            [ 'icon' => 'fluentui-receipt-money-24-o', 'name' => 'to be Claimed', 'balance' => '10,254,.023' ],
+            [ 'icon' => 'healthicons-o-money-bag', 'name' => 'Total Assets', 'balance' => '60,637,515.403' ],
+            [ 'icon' => 'fluentui-money-dismiss-20-o', 'name' => 'Total Debts', 'balance' => '-2630.02' ]
         ]        
     @endphp
     @foreach ($items as $item)        

@@ -215,7 +215,7 @@ class NavigationService
                 "children" => [
                     ["label" => "Accounts", "icon" => "fluentui-wallet-32-o", "route" => "customer.account"],
                     ["label" => "Transactions", "icon" => "grommet-transaction", "route" => "customer.transactions"],
-                    ["label" => "Add New Account", "icon" => "new-wallet", "route" => "customer.account.new"],
+                    ["label" => "Add New Account", "icon" => "bx-add-to-queue", "route" => "customer.account.new"],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],
@@ -225,7 +225,7 @@ class NavigationService
                 "children" => [
                     ["label" => __('Portfolio'), "icon" => "fluentui-wallet-32-o", "route" => "customer.portfolio"],
                     ["label" => __('Transactions'), 'icon' => 'grommet-transaction', 'route' => 'customer.transactions'],
-                    ["label" => __('Assets'), 'icon' => 'chains', 'route' => 'customer.asset'],
+                    ["label" => __('Assets'), 'icon' => 'grommet-money', 'route' => 'customer.asset'],
                 ],
                 "actions" => [
                     ["label" => __('Invite a Friend'), 'icon' => 'go-person-add-16', 'route' => 'customer.invite', 'color' => 'text-white bg-primary'],

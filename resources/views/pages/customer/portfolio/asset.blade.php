@@ -1,15 +1,15 @@
 @php(\App\Services\NavigationService::instance()->overwriteSubnavi([
     ["label" => "Portfolio", "icon" => "carbon-wallet", "route" => "customer.portfolio"],
     ["label" => "Transactions", "icon" => "grommet-transaction", "route" => "customer.transactions"],
-    ["label" => "Assets", "icon" => "chains", "route" => "customer.asset"],
+    ["label" => "Assets", "icon" => "grommet-money", "route" => "customer.asset"],
 ], [
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 <x-app-layout>
     <x-container class="px-3 py-5 my-5 bg-white rounded-sm shadow xs:px-4 lg:px-5">
-        <x-customers.customer-header-bar icon="chains" name="Assets">
+        <x-customers.customer-header-bar icon="grommet-money" name="Assets">
             <x-button class="">
-                <x-icon name="export" class="w-5 h-5 mr-3 text-white"/>
+                <x-icon name="uni-file-export-o" class="w-5 h-5 mr-3 text-white"/>
                 <p class="font-semibold text-white">{{ __('Export') }}</p>
             </x-button>
         </x-customers.customer-header-bar>

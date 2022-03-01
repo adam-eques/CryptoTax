@@ -3,27 +3,27 @@ $overview_data = [
     [
         'type' => 'Deposit',
         'amount' => '1056',
-        'icon' => 'deposit-1',
+        'icon' => 'fluentui-building-retail-money-24-o',
     ],
     [
         'type' => 'Withdrawal',
         'amount' => '263',
-        'icon' => 'withdrawal',
+        'icon' => 'uni-money-withdrawal-o',
     ],
     [
         'type' => 'Trades',
         'amount' => '1056',
-        'icon' => 'trade',
+        'icon' => 'polaris-major-exchange',
     ],
     [
         'type' => 'Needs Review',
         'amount' => '09',
-        'icon' => 'review',
+        'icon' => 'gmdi-rate-review-o',
     ],
     [
         'type' => 'Exchanges',
         'amount' => '11',
-        'icon' => 'exchange',
+        'icon' => 'ri-exchange-funds-line',
     ],
 ]    
 @endphp

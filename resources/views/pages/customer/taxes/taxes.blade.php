@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-container class="bg-white rounded-sm shadow mt-7">
-        <x-customers.customer-header-bar icon="tax-1" name="2021 Taxes">
+        <x-customers.customer-header-bar icon="tabler-tax" name="2021 Taxes">
             <x-button class="">
                 <x-icon name="uni-user-md-o" class="w-5 h-5 mr-3 text-white"/>
                 <p class="font-semibold text-white">Add tax professional</p>
