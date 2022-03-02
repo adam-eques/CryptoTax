@@ -1,10 +1,3 @@
-@php
-    $situation = [
-        [ 'category' => 'Total Balance', 'amount' => '$ 124, 563, 000', 'percent' => '30'],
-        [ 'category' => 'Your Tax', 'amount' => '$ 124, 563, 000', 'percent' => '94'],
-    ]
-@endphp
-
 <div class="p-5 bg-white rounded-md shadow-md" x-data="{ view: 'tile' }" >
     <div class="flex items-center justify-between">
         <div class="flex items-center py-5 space-x-2">
@@ -29,16 +22,16 @@
         </div>
     </div>
 
-    <div class="px-2 py-4 lg:px-4 sm:px-3 relative overflow-hidden">
-        <div class="mySwiper w-full">
+    <div class="relative px-2 py-4 overflow-hidden lg:px-4 sm:px-3">
+        <div class="w-full mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide bg-center bg-cover w-2/3">
+                <div class="w-2/3 bg-center bg-cover swiper-slide">
                     <img src="{{asset('assets/img/cards/red_card.svg')}}" class="w-2/3 mx-auto"/>
                 </div>
-                <div class="swiper-slide bg-center bg-cover w-2/3">
+                <div class="w-2/3 bg-center bg-cover swiper-slide">
                     <img src="{{asset('assets/img/cards/red_card.svg')}}" class="w-2/3 mx-auto"/>
                 </div>
-                <div class="swiper-slide bg-center bg-cover w-2/3">
+                <div class="w-2/3 bg-center bg-cover swiper-slide">
                     <img src="{{asset('assets/img/cards/red_card.svg')}}" class="w-2/3 mx-auto"/>
                 </div>
             </div>
@@ -52,7 +45,7 @@
             @foreach ($situation as $item)            
                 <div>
                     <p class="text-sm text-secondary">{{ __( $item['category'] ) }}</p>
-                    <p class="pt-2 text-2xl font-semibold text-primary">{{ __( $item['amount'] ) }}</p>
+                    <p class="pt-2 text-2xl font-semibold text-primary">$ {{ __( $item['amount'] ) }}</p>
                     <x-progressbar height="sm" variant="primary" progress="{{ $item['percent'] }}" class="mt-5"></x-progressbar>
                 </div>
             @endforeach

@@ -4,9 +4,16 @@
             <x-icon name="ri-pie-chart-line" class="w-8 h-8 text-primary"/>
             <p class="mr-3 text-lg font-semibold">{{ __('My Performance') }}</p>
         </div>
-        <x-status-card-dashboard id="status_1" title="24h Portfolio Change" amount="1,254" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
-        <x-status-card-dashboard id="status_2" title="Total profit loss" amount="95,422" :increase="true" incdecamount="2.5"></x-status-card-dashboard>
-        <x-status-card-dashboard id="status_3" title="24h Portfolio Change" amount="3,566" :increase="false" incdecamount="2.5"></x-status-card-dashboard>
+        @foreach ($over_view as $item)            
+            <x-status-card-dashboard 
+                :id="$item['id']" 
+                :title="$item['category']" 
+                :amount="$item['balance']" 
+                :increase="$item['increase']" 
+                :incdecamount="$item['incdec_percent']" 
+                :line="$item['line']"
+            />
+        @endforeach
     </div>
     <div class="grid grid-cols-1 gap-0 xl:grid-cols-8 md:gap-6 mt-9">
         <div class="col-span-3">
