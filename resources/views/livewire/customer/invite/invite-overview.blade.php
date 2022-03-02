@@ -1,27 +1,27 @@
 @php
     $lastweek= [
         'first_row' => [
-            [ 'icon' => 'level-1', 'amount' => '10', 'category' => 'First-level Invitee' ],
-            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
-            [ 'icon' => 'level-top', 'amount' => '0', 'category' => 'Total - Invitee' ]
+            [ 'icon' => 'bi-trophy', 'amount' => '10', 'category' => 'First-level Invitee' ],
+            [ 'icon' => 'phosphor-trophy', 'amount' => '10', 'category' => 'Second-level Invitee' ],
+            [ 'icon' => 'go-people-24', 'amount' => '0', 'category' => 'Total - Invitee' ]
         ],
         'second_row' => [
-            [ 'icon' => 'level-1', 'amount' => '1.29', 'category' => 'First-level commission' ],
-            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level commission' ],
-            [ 'icon' => 'money-2', 'amount' => '1.29', 'category' => 'Total commission' ]
+            [ 'icon' => 'bi-trophy', 'amount' => '1.29', 'category' => 'First-level commission' ],
+            [ 'icon' => 'phosphor-trophy', 'amount' => '10', 'category' => 'Second-level commission' ],
+            [ 'icon' => 'healthicons-o-money-bag', 'amount' => '1.29', 'category' => 'Total commission' ]
         ]
     ];
 
     $total= [
         'first_row' => [
-            [ 'icon' => 'level-1', 'amount' => '122', 'category' => 'First-level Invitee' ],
-            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level Invitee' ],
-            [ 'icon' => 'level-top', 'amount' => '122', 'category' => 'Total - Invitee' ]
+            [ 'icon' => 'bi-trophy', 'amount' => '122', 'category' => 'First-level Invitee' ],
+            [ 'icon' => 'phosphor-trophy', 'amount' => '10', 'category' => 'Second-level Invitee' ],
+            [ 'icon' => 'go-people-24', 'amount' => '122', 'category' => 'Total - Invitee' ]
         ],
         'second_row' => [
-            [ 'icon' => 'level-1', 'amount' => '1.29', 'category' => 'First-level commission' ],
-            [ 'icon' => 'level-2', 'amount' => '10', 'category' => 'Second-level commission' ],
-            [ 'icon' => 'money-2', 'amount' => '1.29', 'category' => 'Total commission' ]
+            [ 'icon' => 'bi-trophy', 'amount' => '1.29', 'category' => 'First-level commission' ],
+            [ 'icon' => 'phosphor-trophy', 'amount' => '10', 'category' => 'Second-level commission' ],
+            [ 'icon' => 'healthicons-o-money-bag', 'amount' => '1.29', 'category' => 'Total commission' ]
         ]
     ];
 @endphp
@@ -32,7 +32,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12">
             <div class="flex items-center col-span-4 space-x-5">
                 <div class="flex items-center justify-center w-16 rounded-lg h-14 bg-secondary">
-                    <x-icon name="money" class="w-10 h-10 text-white"/>
+                    <x-icon name="healthicons-o-money-bag" class="w-10 h-10 text-white"/>
                 </div>
                 <p class="text-2xl font-bold">Commissions Last Week</p>
             </div>
@@ -40,7 +40,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-y-2 gap-x-0 md:gap-x-5">
                     <x-button size="md" variant="secondary" class="col-span-3">First-level:40%</x-button>
                     <x-button size="md" class="col-span-3">Second-level : 5%</x-button>
-                    <x-button size="md" class="col-span-6 bg-gray-400">Referral relationship : 365 Day(s)</x-button>
+                    <x-button size="md" class="justify-center col-span-6 bg-gray-400">Referral relationship : 365 Day(s)</x-button>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12">
             <div class="flex items-center col-span-4 space-x-5">
                 <div class="flex items-center justify-center w-16 rounded-lg h-14 bg-primary">
-                    <x-icon name="money" class="w-10 h-10 text-white"/>
+                    <x-icon name="healthicons-o-money-bag" class="w-10 h-10 text-white"/>
                 </div>
                 <p class="text-2xl font-bold">Total Commissions</p>
             </div>

@@ -8,15 +8,15 @@
                     <p class="text-base">Default referral Code</p>
                     <div class="flex items-center justify-center py-2 space-x-5">
                         <p class="text-3xl font-bold">dQhR75</p>
-                        <button><x-icon name="copy" class="w-8 h-10"/></button>
+                        <button><x-icon name="far-copy" class="w-5 h-6"/></button>
                     </div>
                     {{-- <div class="absolute w-10 h-10 rounded-full bg-bgcolor1 top-6 -left-5"/> --}}
                 </div>
                 <div class="col-span-7">
                     <p class="text-base">Default referral Link</p>
                     <div type='text' class="flex items-center justify-between py-0 mt-2 border-0 rounded-md bg-secondary-400">
-                        <input value="https://www.mycryptotax.com/r/dQhR75" class="truncate bg-secondary-400 focus:outline-none hover:outline-none"/>
-                        <button><x-icon name="copy" class="w-8 h-10"/></button>
+                        <input value="https://www.mycryptotax.com/r/dQhR75" class="py-3 truncate bg-secondary-400 focus:outline-none hover:outline-none"/>
+                        <button><x-icon name="far-copy" class="w-5 h-6"/></button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <p class="mt-2 text-sm">Friend's fee discount</p>
                 </div>
                 <button class="flex items-center h-full px-6 py-2 space-x-3 border rounded-lg bg-primary hover:bg-secondary" x-on:click="isModalOpen = true">
-                    <x-icon name="share" class="w-10 h-10 text-white"></x-icon>
+                    <x-icon name="heroicon-o-share" class="w-10 h-10 text-white"></x-icon>
                     <p class="font-bold text-white text-basic">SHARE NOW</p>
                 </button>
                 @livewire('customer.invite.invite-share-link-modal')
@@ -81,7 +81,7 @@
                 </div>
                 <div class="flex justify-end col-span-1 py-5">
                     <button class="flex items-center w-full px-8 py-6 my-auto rounded-lg bg-secondary hover:bg-primary">
-                        <x-icon name="masic" class="w-10 h-10 text-white"></x-icon>
+                        <x-icon name="gmdi-create-o" class="w-10 h-10 text-white"></x-icon>
                         <p class="ml-3 font-bold text-white text-basic">CREATE NOW</p>
                     </button>
                 </div>

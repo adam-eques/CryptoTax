@@ -12,13 +12,13 @@
             <nav class="flex items-end space-x-4" aria-label="Tabs">
                 <button class="px-8 py-4 text-base font-bold bg-white border rounded-t-lg text-primary hover:text-white focus:text-white hover:bg-primary focus:bg-primary h-18 hover:h-20 focus:h-20">
                     <div class="flex items-center space-x-4">
-                        <x-icon name="level-1" class="w-8 h-8"/>
+                        <x-icon name="bi-trophy" class="w-8 h-8"/>
                         <p>First-Level Invitee</p>
                     </div>
                 </button>
                 <button class="px-8 py-4 text-base font-bold bg-white border rounded-t-lg text-primary hover:text-white focus:text-white hover:bg-primary focus:bg-primary h-18 hover:h-20 focus:h-20">
                     <div class="flex items-center space-x-4">
-                        <x-icon name="level-2" class="w-8 h-8"/>
+                        <x-icon name="phosphor-trophy" class="w-8 h-8"/>
                         <p>Second-Level Invitee</p>
                     </div>
                 </button>
