@@ -5,7 +5,7 @@
     <div class="px-5 py-5 md:px-10 md:py-10">
         <div>
             <x-jet-label>{{ __('Exchange Type') }}</x-jet-label>
-            <select class="w-full py-4 mt-4 border border-gray-300 rounded-sm shadow" id="type" wire:model="type">
+            <select class="w-full py-4 mt-4 border border-gray-300 rounded-sm" id="type" wire:model="type">
                 <option value="1" selected>{{ __('CSV') }}</option>
                 <option value="2">{{ __('API') }}</option>
                 <option value="3">{{ __('Blockchain') }}</option>

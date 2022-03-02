@@ -11,7 +11,7 @@
     </div>
     <div class="mt-7">
         <x-jet-label>{{ __('Country') }}</x-jet-label>
-        <select class="w-full py-4 mt-4 border border-gray-300 rounded-sm shadow" id="type">
+        <select class="w-full py-4 mt-4 border border-gray-300 rounded-sm" id="type">
             <option value="1" selected>{{ __('Europe') }}</option>
             <option value="2">{{ __('United State') }}</option>
         </select>
@@ -40,7 +40,7 @@
     <div class="mt-7">
         <p class="text-primary">{{ __('Comments') }}</p>
         <x-jet-label class="py-3">{{ __('Please add any more information that may be helpful.') }}</x-jet-label>
-        <textarea rows="6" class="w-full border border-gray-300 rounded-sm shadow"></textarea>
+        <textarea rows="6" class="w-full border border-gray-300 rounded-sm"></textarea>
     </div>
     <x-jet-button class="mt-7">{{ __('Submit') }}</x-jet-button>
 </div>

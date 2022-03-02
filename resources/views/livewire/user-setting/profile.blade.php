@@ -6,9 +6,9 @@
         @if (Laravel\Fortify\Features::canUpdateProfileInformation())
             {{-- @livewire('profile.update-profile-information-form') --}}
             <x-jet-label for="bane" value="{{ __('Name') }}" />
-            <x-jet-input placeholder="Name" class="w-full max-w-2xl px-4 mt-2" wire:model.defer="name"/>
+            <x-jet-input placeholder="Name" class="w-full max-w-2xl px-4 mt-2 border" wire:model.defer="name"/>
             <x-jet-label for="bane" value="{{ __('Mobile') }}" class="mt-6"/>
-            <x-jet-input class="w-full max-w-2xl px-4 mt-2" placeholder="Enter mobile number here" wire:model.defer="phone" />
+            <x-jet-input class="w-full max-w-2xl px-4 mt-2 border" placeholder="Enter mobile number here" wire:model.defer="phone" />
             <div class="flex items-center mt-10 space-x-4">
                 <x-jet-button class="mt-2 mr-2" type="button" wire:click="update_userprofile" wire:loading.attr="disabled">
                     {{ __('Save') }}
