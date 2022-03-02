@@ -31,10 +31,10 @@
                 <div class="grid grid-cols-2 gap-0 px-2 md:grid-cols-4 lg:grid-cols-4 sm:gap-4 lg:gap-10 lg:px-10">
                     @php
                         $items = [
-                            [ 'icon' => 'level-top', 'amount' => '20M +', 'term' => 'Happy Users' ],
-                            [ 'icon' => 'transaction-1', 'amount' => '70M / Year', 'term' => 'Transactions' ],
+                            [ 'icon' => 'go-people-24', 'amount' => '20M +', 'term' => 'Happy Users' ],
+                            [ 'icon' => 'transaction', 'amount' => '70M / Year', 'term' => 'Transactions' ],
                             [ 'icon' => 'solid_land', 'amount' => '15K +', 'term' => 'Recently Sold Lands' ],
-                            [ 'icon' => 'chains', 'amount' => '8K +', 'term' => 'Supported Coins' ],
+                            [ 'icon' => 'phosphor-coins-light', 'amount' => '8K +', 'term' => 'Supported Coins' ],
                         ]
                     @endphp
                     @foreach ($items as $item)                        
