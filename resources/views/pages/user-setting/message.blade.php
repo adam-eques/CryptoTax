@@ -5,7 +5,7 @@
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 <x-app-layout>
-    <x-container class="p-8 mb-24 bg-white border rounded-sm mt-7">
+    <x-container class="p-8 mt-5 mb-24 bg-white border rounded-sm">
         <x-customers.customer-header-bar icon="iconoir-message-text" name="Message">
         </x-customers.customer-header-bar>
         <div class="grid grid-cols-1 gap-10 mt-12 overflow-y-auto lg:grid-cols-3">

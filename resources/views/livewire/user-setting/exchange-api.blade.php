@@ -27,7 +27,7 @@
     <div class="mt-7">
         <p class="text-primary">{{ __('Comments') }}</p>
         <x-jet-label class="py-3">{{ __('Please add any more information that may be helpful.') }}</x-jet-label>
-        <textarea rows="6" class="w-full border border-gray-300 rounded-sm shadow"></textarea>
+        <textarea rows="6" class="w-full border border-gray-300 rounded-sm"></textarea>
     </div>
     <x-jet-label>{{ __('Note : Your data security is top priority. Please make sure you generate read-only access API keys so that 
         we can import your transactions to build the API support.') }}</x-jet-label>

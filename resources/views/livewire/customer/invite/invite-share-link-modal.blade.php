@@ -45,14 +45,14 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap justify-center mt-5 space-x-4 bg-primary py-9">
-                   <x-icon name="facebook" class="my-2"/>
-                   <x-icon name="twitter" class="my-2"/>
-                   <x-icon name="youtube" class="my-2"/>
-                   <x-icon name="instagram" class="my-2"/>
-                   <x-icon name="linkedin" class="my-2"/>
-                   <x-icon name="whatsapp" class="my-2"/>
-                   <x-icon name="telegram" class="my-2"/>
-                   <x-icon name="line" class="my-2"/>
+                   <x-icon name="social.facebook" class="my-2"/>
+                   <x-icon name="social.twitter" class="my-2"/>
+                   <x-icon name="social.youtube" class="my-2"/>
+                   <x-icon name="social.instagram" class="my-2"/>
+                   <x-icon name="social.linkedin" class="my-2"/>
+                   <x-icon name="social.whatsapp" class="my-2"/>
+                   <x-icon name="social.telegram" class="my-2"/>
+                   <x-icon name="social.line" class="my-2"/>
                 </div>
             </div>
         </div>

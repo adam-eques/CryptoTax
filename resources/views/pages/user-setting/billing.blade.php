@@ -7,7 +7,7 @@
 ]))
 @endphp
 <x-app-layout>
-    <x-container class="p-8 bg-white border rounded-sm my-7">
+    <x-container class="p-8 my-5 bg-white border rounded-sm">
         <x-customers.customer-header-bar icon="ri-bill-line" name="Billings">
         </x-customers.customer-header-bar>
         <div class="mt-8">
