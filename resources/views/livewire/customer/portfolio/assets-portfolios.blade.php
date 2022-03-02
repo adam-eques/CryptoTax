@@ -48,7 +48,7 @@
                 <div class="divide-y">
                     <div class="grid items-center grid-cols-4 p-5 min-w-[520px]">
                         <div class="flex items-center space-x-4">
-                            <x-icon name="coins.BTC" class="w-8 h-8"/>
+                            <x-icon name="coins.btc" class="w-8 h-8"/>
                             <p class="font-bold">{{ __('Bitcoin') }}</p>
                         </div>
                         <p class="">{{ __('$ 69,729.64') }}</p>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="grid items-center grid-cols-4 p-5 min-w-[520px]">
                         <div class="flex items-center space-x-4">
-                            <x-icon name="coins.BTC" class="w-8 h-8"/>
+                            <x-icon name="coins.btc" class="w-8 h-8"/>
                             <p class="font-bold">{{ __('Bitcoin') }}</p>
                         </div>
                         <p class="">{{ __('$ 69,729.64') }}</p>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="grid items-center grid-cols-4 p-5 min-w-[520px]">
                         <div class="flex items-center space-x-4">
-                            <x-icon name="coins.BTC" class="w-8 h-8"/>
+                            <x-icon name="coins.btc" class="w-8 h-8"/>
                             <p class="font-bold">{{ __('Bitcoin') }}</p>
                         </div>
                         <p class="">{{ __('$ 69,729.64') }}</p>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="grid items-center grid-cols-4 p-5 min-w-[520px]">
                         <div class="flex items-center space-x-4">
-                            <x-icon name="coins.BTC" class="w-8 h-8"/>
+                            <x-icon name="coins.btc" class="w-8 h-8"/>
                             <p class="font-bold">{{ __('Bitcoin') }}</p>
                         </div>
                         <p class="">{{ __('$ 69,729.64') }}</p>
@@ -109,8 +109,8 @@
                     <div class="grid grid-cols-5 p-5 rounded-md min-w-[1024px]">
                         <div class="font-bold">
                             <div class="relative flex items-center space-x-6">
-                                <x-icon name="coins.BTC" class="w-8 h-8"/>
-                                <x-icon name="coins.LTC" class="absolute left-0 w-7 h-7 top-2"/>
+                                <x-icon name="coins.btc" class="w-8 h-8"/>
+                                <x-icon name="coins.ltc" class="absolute left-0 w-7 h-7 top-2"/>
                                 <p class="font-bold">{{ __('Bitcoin + Litecoin') }}</p>
                             </div>
                         </div>
@@ -144,8 +144,8 @@
                     <div class="grid grid-cols-5 p-5 rounded-md min-w-[1024px]">
                         <div class="font-bold">
                             <div class="relative flex items-center space-x-6">
-                                <x-icon name="coins.BTC" class="w-8 h-8"/>
-                                <x-icon name="coins.LTC" class="absolute left-0 w-7 h-7 top-2"/>
+                                <x-icon name="coins.btc" class="w-8 h-8"/>
+                                <x-icon name="coins.ltc" class="absolute left-0 w-7 h-7 top-2"/>
                                 <p class="font-bold">{{ __('Bitcoin + Litecoin') }}</p>
                             </div>
                         </div>
@@ -190,8 +190,8 @@
                     <div class="grid grid-cols-5 p-5 rounded-md min-w-[1024px]">
                         <div class="font-bold">
                             <div class="relative flex items-center space-x-6">
-                                <x-icon name="coins.BTC" class="w-8 h-8"/>
-                                <x-icon name="coins.LTC" class="absolute left-0 w-7 h-7 top-2"/>
+                                <x-icon name="coins.btc" class="w-8 h-8"/>
+                                <x-icon name="coins.ltc" class="absolute left-0 w-7 h-7 top-2"/>
                                 <p class="font-bold">{{ __('Bitcoin + Litecoin') }}</p>
                             </div>
                         </div>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="grid items-center grid-cols-4 p-5 min-w-[520px]">
                     <div class="flex items-center space-x-4">
-                        <x-icon name="coins.BTC" class="w-8 h-8"/>
+                        <x-icon name="coins.btc" class="w-8 h-8"/>
                         <p class="font-bold">{{ __('Bitcoin') }}</p>
                     </div>
                     <p class="">{{ __('$ 69,729.64') }}</p>
@@ -261,7 +261,7 @@
                 </div>
                 <div class="grid items-center grid-cols-4 p-5 min-w-[520px]">
                     <div class="flex items-center space-x-4">
-                        <x-icon name="coins.BTC" class="w-8 h-8"/>
+                        <x-icon name="coins.btc" class="w-8 h-8"/>
                         <p class="font-bold">{{ __('Bitcoin') }}</p>
                     </div>
                     <p class="">{{ __('$ 69,729.64') }}</p>
