@@ -18,9 +18,9 @@
     <div class="grid grid-cols-1 gap-0 xl:grid-cols-8 md:gap-6 mt-9">
         <div class="col-span-3">
             <div class="col-span-4">
-                <select class="py-2 border border-gray-300 px-7">
-                    <option>{{ __('Top 5 Coins') }}</option>
-                    <option>{{ __('Top 5 Coins') }}</option>
+                <select class="py-2 border border-gray-300 px-7" wire:model.lazy = "selected_top_coin">
+                    <option value="5">{{ __('Top 5 Coins') }}</option>
+                    <option value="10">{{ __('Top 10 Coins') }}</option>
                 </select>
             </div>
             <div class="mt-8">
@@ -47,7 +47,7 @@
         var options_bar = {
             series: [
                 {
-                    data: [213.3, 123.1, 154.0, 234.1, 312.0],
+                    data: @json($top_coins['value']),
                 }
             ],
             colors: ['#FFAB2D', '#DA31C9', '#2B98D6', '#5A5A5A', '#7A6CFF'],
@@ -82,7 +82,7 @@
                 }
             },        
             xaxis: {
-                categories: ["Lite Coin", "Bit Coin", "Ripple", "Kraken", "Kucoin"],
+                categories: @json($top_coins['label']),
                 position: 'bottom',
                 labels: {
                     show: true,
@@ -138,11 +138,10 @@
             },
             colors: ["#181C3A"],
             series: [{
-                name: 'sales',
-                data: [30,40,35,50,49,60,70]
+                data: @json($line_chart['value'])
             }],
             xaxis: {
-                categories: @json($label),
+                categories: @json($line_chart['label']),
                 tooltip: {
                     enabled: false
                 }
@@ -153,12 +152,24 @@
 
         document.addEventListener('livewire:load', () => {
             @this.on(`refresh-line-chart`, (chartData) => {
-                console.log("Reload");
                 chart.updateOptions({
                     xaxis: {
-                        categories: chartData.label
-                    }
+                        categories: chartData.line_chart.label
+                    },
+                    series: [{
+                        data: chartData.line_chart.value
+                    }],
                 });
+                chart_bar.updateOptions({
+                    xaxis: {
+                        categories: chartData.top_coins.label
+                    },
+                    series: [
+                        {
+                            data: chartData.top_coins.value,
+                        }
+                    ],
+                })
             })
         })
 

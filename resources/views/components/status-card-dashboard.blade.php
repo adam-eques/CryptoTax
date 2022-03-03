@@ -80,6 +80,14 @@
             }
             const chart_status = new ApexCharts(document.getElementById(`{{ $id }}`), options_status);
             chart_status.render();
+
+            document.addEventListener('livewire:load', () => {
+                @this.on(`refresh-line-chart`, (chartData) => {
+                    chart_status.updateOptions({
+                        
+                    })
+                })
+            })
         }());
     </script>
 @endpush
