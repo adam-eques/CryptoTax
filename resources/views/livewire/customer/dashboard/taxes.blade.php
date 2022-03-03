@@ -1,10 +1,3 @@
-@php
-    $table = [
-        [ 'year' => '2021', 'gains' => '+ $2,456.00', 'income' => '$1659.00' ],
-        [ 'year' => '2020', 'gains' => '+ $2,456.00', 'income' => '$1659.00' ],
-        [ 'year' => '2019', 'gains' => '+ $2,456.00', 'income' => '$1659.00' ],
-    ]
-@endphp
 
 <div class="p-5 mt-6 bg-white rounded-md shadow-md">
     {{-- The best athlete wants his opponent at his best. --}}
@@ -32,8 +25,8 @@
                         <p>{{ $item['year'] }}</p> 
                         <x-icon name="uni-comment-info-o" class="w-3 h-3 text-gray-400"/> 
                 </td>
-                    <td class="py-5">{{ $item['gains'] }}</td>
-                    <td class="py-5">{{ $item['income'] }}</td>
+                    <td class="py-5">+ $ {{ $item['gains'] }}</td>
+                    <td class="py-5">$ {{ $item['income'] }}</td>
                 </tr>
             @endforeach
         </tbody>

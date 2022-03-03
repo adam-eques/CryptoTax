@@ -1,7 +1,7 @@
-<div class="border rounded-lg my-3 sm:my-0">
+<div class="my-3 border rounded-lg sm:my-0">
     <div class="w-full px-3 py-2">
-        <div class="flex items-center space-x-2 justify-between">
-            <h1 class="text-xl text-primary font-bold">${{ $amount }}</h1>
+        <div class="flex items-center justify-between space-x-2">
+            <h1 class="text-xl font-bold text-primary">${{ $amount }}</h1>
             @if ($increase)                
                 <x-badge variant="success" size='sm' type='rounded'>+{{ $incdecamount }}%</x-badge>               
             @else
@@ -27,7 +27,7 @@
                 colors: ['#7A6CFF'],
                 series: [{
                     name: 'sales',
-                    data: [143,24,34,123,23,25,100,91,23]
+                    data: @json($line)
                 }],
                 legend: {
                     show: false,
@@ -80,6 +80,14 @@
             }
             const chart_status = new ApexCharts(document.getElementById(`{{ $id }}`), options_status);
             chart_status.render();
+
+            document.addEventListener('livewire:load', () => {
+                @this.on(`refresh-line-chart`, (chartData) => {
+                    chart_status.updateOptions({
+                        
+                    })
+                })
+            })
         }());
     </script>
 @endpush
