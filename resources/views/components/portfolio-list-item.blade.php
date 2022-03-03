@@ -1,4 +1,4 @@
-<div class="grid grid-cols-11 min-w-clg py-6 rounded-sm  cursor-pointer bg-white hover:bg-gray-100 border">
+<div class="grid grid-cols-11 min-w-clg py-6 rounded-sm  cursor-pointer bg-white hover:bg-gray-100 border" wire:key='{{ $id }}'>
     <div class="col-span-1 flex justify-center items-center">
         @if ( $node == "parent")                
             <div class="w-6 h-6 bg-white shadow-md rounded-full flex justify-center items-center">
@@ -61,7 +61,7 @@
                 },
                 series: [{
                     name: 'sales',
-                    data: [10,30,12, 56,10,34,70,30,50,123,89,70,231,110,50]
+                    data: @json($line)
                 }],
                 grid: {
                     show: false,
