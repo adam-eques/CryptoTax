@@ -4,7 +4,7 @@
             <x-icon name="carbon-portfolio" class="w-10 h-8"/>
             <h4 class="text-xl font-bold md:text-2xl">{{ __('My Crypto Portfolio') }}</h4>
         </div>
-        <x-button variant="secondary">{{ __('See all assets') }}</x-button>
+        <x-button tag="a" href="{{ route('customer.asset') }}">{{ __('See all assets') }}</x-button>
     </div>
     <div class="overflow-auto">
         <table class="min-w-[720px] w-full border rounded">

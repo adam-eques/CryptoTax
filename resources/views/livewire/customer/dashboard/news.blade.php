@@ -1,24 +1,3 @@
-@php
-    $news = [
-        [ 
-            'img' => '', 
-            'title' => 'Cryptocurrency exchanges start blocking accounts', 
-            'content' => 'Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and' 
-        ],
-        [
-            'img' => '', 
-            'title' => 'Cryptocurrency exchanges start blocking accounts', 
-            'content' => 'Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and' 
-        ],
-        [
-            'img' => '', 
-            'title' => 'Cryptocurrency exchanges start blocking accounts', 
-            'content' => 'Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and' 
-        ]
-
-    ]
-@endphp
-
 <div class="h-full p-5 bg-white rounded-md shadow-lg">
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
