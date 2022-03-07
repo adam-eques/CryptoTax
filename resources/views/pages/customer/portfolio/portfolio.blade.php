@@ -1,6 +1,6 @@
 <x-app-layout>
     @if(auth()->user()->isCustomerAccount())
-    <x-container class="bg-white rounded-sm shadow my-5">
+    <x-container class="my-5 bg-white rounded-sm shadow">
         <x-customers.customer-header-bar icon="carbon-portfolio" name="Portfolio">
             <x-button variant="white" class="justify-between w-full">
                 <x-icon name="carbon-calendar" class="w-5 h-5 mr-3"/>
@@ -48,7 +48,7 @@
                 <div class="p-5 border rounded-lg">
                     @livewire('customer.portfolio.allocation')
                 </div>
-                <div class="relative p-5 bg-gray-100 border rounded-lg">
+                <div class="relative p-5 bg-white border rounded-lg">
                     @livewire('customer.portfolio.invite')
                     <img src="{{asset('assets/img/svg/portfolio_invite.svg')}}" class="absolute bottom-0 right-0 w-40 h-22"/>
                 </div>
