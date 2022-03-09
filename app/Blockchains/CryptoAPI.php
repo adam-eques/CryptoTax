@@ -5,53 +5,93 @@ namespace App\Blockchains;
 use GuzzleHttp\Client;
 use CryptoAPIs\Configuration;
 use CryptoAPIs\Api\UnifiedEndpointsApi;
+use CryptoAPIs\Api\TokensApi;
 use CryptoAPIs\Api;
 
 // reference https://packagist.org/packages/cryptoapis/sdk
 
 class CryptoAPI {
-    public $instance;
     public $config;
+    public $chainInstance;
+    public $tokenInstance;
 
     public function __construct() {
         $client = new Client();
         // Configure API key authorization: ApiKey
         $this->config = Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'e9b60d3c77930ecd0e776b7edd604a887de3b918');
 
-        // $this->instance = new AssetsApi(
-        $this->instance = new UnifiedEndpointsApi(
+        $this->chainInstance = new UnifiedEndpointsApi(
+            new Client(),
+            $this->config
+        );
+
+        $this->tokenInstance = new TokensApi(
             new Client(),
             $this->config
         );
     }
 
-    public function get_transactions_bsc($address, $limit, $offset) {
+    // get transactions
+    public function get_transactions($address, $limit, $offset, $blockchain, $network, $context) {
         $result;
-        $blockchain = 'binance-smart-chain'; // string | Represents the specific blockchain protocol name, e.g. Ethereum, Bitcoin, etc.
-        $network = 'testnet'; // string | Represents the name of the blockchain network used; blockchain networks are usually identical as technology and software, but they differ in data, e.g. - \"mainnet\" is the live network with actual data while networks like \"testnet\", \"ropsten\" are test networks.
-        // $address = '0x0243B2b953F18C7881d0B9A6cA0e4FCf34a22859'; // string | Represents the public address, which is a compressed and shortened form of a public key.
-        $context = 'bsc transactions'; // string | In batch situations the user can use the context to correlate responses with requests. This property is present regardless of whether the response was successful or returned as an error. `context` is specified by the user.
-        // $limit = 3; // int | Defines how many items should be returned in the response per page basis.
-        // $offset = 10; // int | The starting index of the response items, i.e. where the response should start listing the returned items.
-
         try {
-            $result = $this->instance->listConfirmedTransactionsByAddress($blockchain, $network, $address, $context, $limit, $offset);
+            $result = $this->chainInstance->listConfirmedTransactionsByAddress($blockchain, $network, $address, $context, $limit, $offset);
         } catch (Exception $e) {
             echo 'Exception when calling UnifiedEndpointsApi->listConfirmedTransactionsByAddress: ', $e->getMessage(), PHP_EOL;
         }
         return $result;
     }
 
-    public function get_balance_bsc($address) {
+    // get balances of the blockchain
+    public function get_balance($address, $blockchain, $network, $context) {
         $result;
-        $blockchain = 'binance-smart-chain'; // string | Represents the specific blockchain protocol name, e.g. Ethereum, Bitcoin, etc.
-        $network = 'testnet'; // string | Represents the name of the blockchain network used; blockchain networks are usually identical as technology and software, but they differ in data, e.g. - \"mainnet\" is the live network with actual data while networks like \"testnet\", \"ropsten\" are test networks.
-        $context = 'bsc balance'; // string | In batch situations the user can use the context to correlate responses with requests. This property is present regardless of whether the response was successful or returned as an error. `context` is specified by the user.
         try {
-            $result = $this->instance->getAddressDetails($blockchain, $network, $address, $context);
+            $result = $this->chainInstance->getAddressDetails($blockchain, $network, $address, $context);
         } catch (Exception $e) {
             echo 'Exception when calling UnifiedEndpointsApi->getAddressDetails: ', $e->getMessage(), PHP_EOL;
         }
         return $result;
+    }
+
+    public function get_token_transfers($address, $limit, $offset, $blockchain, $network, $context) {
+        $result;
+        try {
+            $result = $this->tokenInstance->listConfirmedTokensTransfersByAddress($blockchain, $network, $address, $context, $limit, $offset);
+        } catch (Exception $e) {
+            echo 'Exception when calling TokensApi->listConfirmedTokensTransfersByAddress: ', $e->getMessage(), PHP_EOL;
+        }
+        return $result;
+    }
+
+    // get balance of the tokens
+    public function get_balance_tokens($address, $limit, $offset, $blockchain, $network, $context) {
+        $result;
+        try {
+            $result = $this->tokenInstance->listTokensByAddress($blockchain, $network, $address, $context, $limit, $offset);
+        } catch (Exception $e) {
+            echo 'Exception when calling TokensApi->listTokensByAddress: ', $e->getMessage(), PHP_EOL;
+        }
+        return $result;
+    }
+
+
+    // get bsc testnet transactions of $address
+    public function get_transactions_bsc($address, $limit, $offset) {
+        return $this->get_transactions($address, $limit, $offset, 'binance-smart-chain', 'testnet', 'bsc transactions');
+    }
+
+    // get bsc testnet balance of $address
+    public function get_balance_bsc($address) {
+        return $this->get_balance($address, 'binance-smart-chain', 'testnet', 'bsc balance');
+    }
+
+    // get binance-smart-chain based token transfers by $address
+    public function get_token_transfers_eth($address, $limit, $offset) {
+        return $this->get_token_transfers($address, $limit, $offset, 'binance-smart-chain', 'testnet', 'bsc transactions');
+    }
+
+    // get binance-smart-chain based token balance of $address
+    public function get_balance_tokens_eth($address) {
+        return $this->get_balance_tokens($address, 50, 0, 'binance-smart-chain', 'testnet', 'balance of bsc tokens');
     }
 }
