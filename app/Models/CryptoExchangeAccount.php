@@ -43,15 +43,6 @@ class CryptoExchangeAccount extends Model
     /**
      * @return BelongsTo
      */
-    public function users(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-
-    /**
-     * @return BelongsTo
-     */
     public function cryptoExchange(): BelongsTo
     {
         return $this->belongsTo(CryptoExchange::class);
