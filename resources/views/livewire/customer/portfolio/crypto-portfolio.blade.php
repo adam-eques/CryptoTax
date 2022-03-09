@@ -17,34 +17,26 @@
                 </tr>
             </thead>
             <tbody>
-                @php
-                    $portfolios = [
-                        [],
-                        [],
-                        [],
-                        []
-                    ]
-                @endphp
                 @foreach ($portfolios as $portfolio)                    
                     <tr class="px-5">
                         <td class="flex items-center px-3 py-5 space-x-4">
-                            <x-icon name="coins.btc" class="w-16 h-16"/>
+                            <x-icon name="{{ 'coins.' . strtolower($portfolio['short_name']) }}" class="w-14 h-14"/>
                             <div class="text-left">
-                                <p class="font-semibold text-black ">Ethereum 2</p>
-                                <p class="text-gray-400">ETH2</p>
+                                <p class="font-semibold text-black ">{{ $portfolio['name'] }}</p>
+                                <p class="text-gray-400">{{ $portfolio['short_name'] }}</p>
                             </div>
                         </td>
                         <td class="py-5 text-right">
-                            <p>$1663</p>
-                            <p class="text-gray-400">0.2261929</p>
-                            <p>ETH2</p>
+                            <p>{{ $portfolio['holding_price'] }}</p>
+                            <p class="text-gray-400">{{ $portfolio['holding_amount'] }}</p>
+                            <p>{{ $portfolio['short_name'] }}</p>
                         </td>
                         <td class="py-5 text-right">
-                            <p>$3156.85</p>
+                            <p>{{ $portfolio['price'] }}</p>
                         </td>
                         <td class="py-5 text-center">
-                            <p>$699.12</p>
-                        <x-badge variant="danger" type="square">-27.54%</x-badge>
+                            <p>{{ $portfolio['unrealized'] }}</p>
+                        <x-badge variant="danger" type="square">{{ $portfolio['unrealized_percent'] }}</x-badge>
                         </td>
                     </tr>             
                 @endforeach

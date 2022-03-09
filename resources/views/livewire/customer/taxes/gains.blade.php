@@ -4,8 +4,8 @@
         <thead class="text-left bg-gray-100 border">
             <tr>
                 <th class="px-4 py-5">Value</th>
-                <th class="py-5">Short Term</th>
-                <th class="py-5">Long Term</th>
+                <th class="px-4 py-5">Short Term</th>
+                <th class="px-4 py-5">Long Term</th>
             </tr>
         </thead>
         <tbody>
