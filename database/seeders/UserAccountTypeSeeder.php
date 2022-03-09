@@ -12,8 +12,6 @@ class UserAccountTypeSeeder extends Seeder
 {
     public function run()
     {
-        UserAccountType::query()->truncate();
-
         collect([
             [
                 'id' => UserAccountType::TYPE_ADMIN,
@@ -114,6 +112,20 @@ class UserAccountTypeSeeder extends Seeder
                     'affiliate@example.com',
                 ],
             ],
+            [
+                'id' => UserAccountType::TYPE_CUSTOMER_PREMIUM,
+                'data' => [
+                    'name' => "Customer Premium",
+                    'duration_in_months' => 12,
+                    'max_csv_upload' => 20,
+                    'max_backups' => 5,
+                    'price_per_year' => 10.99 * 12,
+                    'price_per_month' => 10.99,
+                    'is_customer' => true,
+                    'active' => true,
+                ],
+                'users' => [],
+            ],
         ])->each(function ($data) {
             if(!$type = UserAccountType::find($data["id"])) {
                 $data["data"]["id"] = $data["id"];
@@ -124,19 +136,21 @@ class UserAccountTypeSeeder extends Seeder
             }
 
             // Loop over users
-            User::query()->whereIn("email", $data["users"])->get()->each(function ($user) use ($type, $data) {
-                $type->users()->save($user);
+            if($data["users"]) {
+                User::query()->whereIn("email", $data["users"])->get()->each(function ($user) use ($type, $data) {
+                    $type->users()->save($user);
 
-                // Credit action
-                if(!empty($data["creditActions"])) {
-                    foreach($data["creditActions"] AS $action) {
-                        $creditAction = UserCreditAction::query()
-                            ->where("action_code", $action)
-                            ->first();
-                        $user->creditAction($creditAction);
+                    // Credit action
+                    if(!empty($data["creditActions"])) {
+                        foreach($data["creditActions"] AS $action) {
+                            $creditAction = UserCreditAction::query()
+                                ->where("action_code", $action)
+                                ->first();
+                            $user->creditAction($creditAction);
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     }
 }
