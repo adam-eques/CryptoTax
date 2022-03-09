@@ -6,7 +6,7 @@
             <thead class="text-left bg-gray-100 border">
                 <tr>
                     <th class="px-4 py-5">Taxable Income</th>
-                    <th class="py-5">Amount</th>
+                    <th class="px-4 py-5">Amount</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@
             <thead class="text-left bg-gray-100 border">
                 <tr>
                     <th class="px-4 py-5">Other Transaction</th>
-                    <th class="py-5">Amount</th>
+                    <th class="px-4 py-5">Amount</th>
                 </tr>
             </thead>
             <tbody>

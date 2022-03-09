@@ -1,5 +1,5 @@
 <div>
-    <p class="text-xl font-bold  md:text-2xl">Portfolio Allocation</p>
+    <p class="text-xl font-bold md:text-2xl">Portfolio Allocation</p>
     <div class="flex-1 pt-5">
         <div class="" id="doghnut-chart"></div>
     </div>
@@ -11,8 +11,8 @@
             chart: {
                 type: 'donut'
             },
-            series: [44, 55, 13, 33],
-            labels: ['Bitcoin', 'Ethereum', 'Ripple', 'Litecoin'],
+            series: @json($chart_data['value']),
+            labels: @json($chart_data['label']),
             legend: {
                 show: true,
                 position: 'bottom'

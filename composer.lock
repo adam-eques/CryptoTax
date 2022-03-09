@@ -758,6 +758,7 @@
         },
         {
             "name": "ccxt/ccxt",
+<<<<<<< HEAD
             "version": "1.75.16",
             "source": {
                 "type": "git",
@@ -768,6 +769,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/ccxt/ccxt/zipball/406bdd325483e8b6ec485a2207fca712c0672711",
                 "reference": "406bdd325483e8b6ec485a2207fca712c0672711",
+=======
+            "version": "1.75.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ccxt/ccxt.git",
+                "reference": "4f9b91dcf89f0822ad5cc72f09443e32a035b8da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/4f9b91dcf89f0822ad5cc72f09443e32a035b8da",
+                "reference": "4f9b91dcf89f0822ad5cc72f09443e32a035b8da",
+>>>>>>> develop
                 "shasum": ""
             },
             "require": {
@@ -1030,7 +1043,11 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/ccxt/ccxt/tree/1.75.16"
+=======
+                "source": "https://github.com/ccxt/ccxt/tree/1.75.38"
+>>>>>>> develop
             },
             "funding": [
                 {
@@ -1038,7 +1055,11 @@
                     "type": "open_collective"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-08T18:24:15+00:00"
+=======
+            "time": "2022-03-09T08:43:20+00:00"
+>>>>>>> develop
         },
         {
             "name": "codeat3/blade-carbon-icons",
@@ -3052,6 +3073,7 @@
         },
         {
             "name": "filament/forms",
+<<<<<<< HEAD
             "version": "v2.10.23",
             "source": {
                 "type": "git",
@@ -3062,6 +3084,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel-filament/forms/zipball/6736a86cdd37a8bd907e01d9360b5fd1964c9614",
                 "reference": "6736a86cdd37a8bd907e01d9360b5fd1964c9614",
+=======
+            "version": "v2.10.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-filament/forms.git",
+                "reference": "c9f96c2df77826dacbaf377b47e938e661816b0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/c9f96c2df77826dacbaf377b47e938e661816b0b",
+                "reference": "c9f96c2df77826dacbaf377b47e938e661816b0b",
+>>>>>>> develop
                 "shasum": ""
             },
             "require": {
@@ -3104,6 +3138,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
+<<<<<<< HEAD
             "time": "2022-03-07T09:53:36+00:00"
         },
         {
@@ -3118,6 +3153,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel-filament/tables/zipball/873edadcc1bd6e48722fc666d769cc708067d88e",
                 "reference": "873edadcc1bd6e48722fc666d769cc708067d88e",
+=======
+            "time": "2022-03-09T09:18:23+00:00"
+        },
+        {
+            "name": "filament/tables",
+            "version": "v2.10.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-filament/tables.git",
+                "reference": "da575397bef545c8cce3e200278237eeaacecb9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/da575397bef545c8cce3e200278237eeaacecb9d",
+                "reference": "da575397bef545c8cce3e200278237eeaacecb9d",
+>>>>>>> develop
                 "shasum": ""
             },
             "require": {
@@ -3157,7 +3208,11 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
+<<<<<<< HEAD
             "time": "2022-03-07T09:53:32+00:00"
+=======
+            "time": "2022-03-09T09:18:21+00:00"
+>>>>>>> develop
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -4396,7 +4451,11 @@
         },
         {
             "name": "laravel/spark-stripe",
+<<<<<<< HEAD
             "version": "dev-feature/cryptoapis-test",
+=======
+            "version": "dev-develop",
+>>>>>>> develop
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -13574,5 +13633,9 @@
         "php": "^8.0"
     },
     "platform-dev": [],
+<<<<<<< HEAD
     "plugin-api-version": "2.2.0"
+=======
+    "plugin-api-version": "2.0.0"
+>>>>>>> develop
 }
