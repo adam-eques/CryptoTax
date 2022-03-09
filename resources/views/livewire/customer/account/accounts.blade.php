@@ -117,12 +117,12 @@
                                 <p class="mt-3 text-xl font-bold text-center">{{ __(' API integration') }} </p> 
                                 <div class="mt-10">
                                     <div>
-                                        <p class="text-gray-600">Address<span class="text-danger">*</span></p>
+                                        <p class="text-gray-600">{{ __('Address') }}<span class="text-danger">*</span></p>
                                         <div class="mt-1">
                                             <input class="w-full px-2 py-2 border rounded" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
                                         </div>
                                         <div class="flex justify-center mt-3">
-                                            <x-button wire:click="add">Add</x-button>
+                                            <x-button wire:click="add">{{ __('Add') }}</x-button>
                                         </div>
                                     </div>
                                 </div>
@@ -170,8 +170,8 @@
                     <h4 class="mt-5 font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ __('Are you sure?') }}</h4>
                     <p class="mt-5">{{ __('If you processed, you will lose all your transaction details. Are you sure you want to delete this Transaction?') }}</p>
                     <div class="flex items-center justify-center mt-10 space-x-5">
-                        <x-button variant="white" x-on:click="action=''">Cancel</x-button>
-                        <x-button variant="danger" wire:click="delete" x-on:click="action=''">Confirm</x-button>
+                        <x-button variant="white" x-on:click="action=''">{{ __('Cancel') }}</x-button>
+                        <x-button variant="danger" wire:click="delete" x-on:click="action=''">{{ __('Confirm') }}</x-button>
                     </div>
                 </div>
             </div>

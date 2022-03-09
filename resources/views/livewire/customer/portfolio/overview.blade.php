@@ -6,13 +6,13 @@
                 <x-icon name='fas-arrow-up' class="absolute w-4 h-4 text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
             </div>
             <p class="font-semibold">{{ __('Total Return') }}</p>
-            <x-badge type="square">+ 117.94%</x-badge>
+            <x-badge type="square">{{ $total_return['total_return_percent'] }}%</x-badge>
             <x-icon name="uni-comment-info-o" class="w-4 h-4"/>
         </div>
         <div class="flex items-end justify-between">
             <div class="flex items-start justify-start px-5">
                 <span class="text-xl font-semibold">$</span>
-                <span class="text-2xl font-semibold md:text-4xl">2,080</span>
+                <span class="text-2xl font-semibold md:text-4xl">{{ $total_return['total_return_amount'] }}</span>
             </div>
             <div class="h-16">
                 <div id="situation-line-1"></div>
@@ -25,13 +25,13 @@
                 <x-icon name='fas-arrow-down' class="absolute w-4 h-4 text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
             </div>
             <p class="font-semibold">{{ __('Past Day') }}</p>
-            <x-badge type="square" variant="danger">- 117.94%</x-badge>
+            <x-badge type="square" variant="danger">{{ $past_day['past_day_percent'] }}%</x-badge>
             <x-icon name="uni-comment-info-o" class="w-4 h-4"/>
         </div>
         <div class="flex items-end justify-between">
             <div class="flex items-start justify-start px-5">
                 <span class="text-xl font-semibold">$</span>
-                <span class="text-2xl font-semibold md:text-4xl">1,025</span>
+                <span class="text-2xl font-semibold md:text-4xl">{{ $past_day['past_day_amount'] }}</span>
             </div>
             <div class="h-16">
                 <div id="situation-line-2"></div>
@@ -48,7 +48,7 @@
         </div>
         <div class="flex items-start justify-start px-5 pt-4">
             <span class="text-xl font-semibold">$</span>
-            <span class="text-2xl font-semibold md:text-4xl">12,259</span>
+            <span class="text-2xl font-semibold md:text-4xl">{{ $net_deposite['net_deposite_amount'] }}</span>
         </div>
     </div>
     <div class="flex flex-col justify-between px-2 py-5 my-1 border rounded-md md:px-5">
@@ -61,7 +61,7 @@
         </div>
         <div class="flex items-start justify-start px-5 pt-4">
             <span class="text-xl font-semibold">$</span>
-            <span class="text-2xl font-semibold md:text-4xl">1,256</span>
+            <span class="text-2xl font-semibold md:text-4xl">{{ $net_proceed['net_proceed_amount'] }}</span>
         </div>
     </div>
 </div>
@@ -79,7 +79,7 @@
                 },
                 series: [{
                     name: 'sales',
-                    data: [30,50,35,50,49,20,70,30,50]
+                    data: @json($total_return['line'])
                 }],
                 grid: {
                     show: false
@@ -120,7 +120,7 @@
                 },
                 series: [{
                     name: 'sales',
-                    data: [30,50,35,50,49,20,70,30,50]
+                    data: @json($past_day['line'])
                 }],
                 grid: {
                     show: false
