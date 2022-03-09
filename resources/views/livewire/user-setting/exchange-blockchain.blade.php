@@ -19,4 +19,3 @@
     </div>
     <x-jet-button class="mt-7">{{ __('Submit') }}</x-jet-button>
 </div>
-</div>
