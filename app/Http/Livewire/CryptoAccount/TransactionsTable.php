@@ -88,7 +88,7 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
     public function updateTable()
     {
         $this->notification()->success("Refresh");
-        $this->updated_at = now();
+        $this->updated_at = now()->timestamp;
     }
 
 
