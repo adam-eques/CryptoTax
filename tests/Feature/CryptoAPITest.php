@@ -9,6 +9,8 @@ use Tests\TestCase;
 use App\Blockchains\CryptoAPI;
 use App\Models\CryptoSources;
 
+use Database\Seeders\CryptoAccountSeeder;
+
 
 class CryptoAPITest extends TestCase
 {
@@ -72,8 +74,12 @@ class CryptoAPITest extends TestCase
     //     // var_dump($result);
     // }
 
-    public function test_migrate_to_db() {
-        CryptoSources::updateFromApi();
-        $this->assertTrue(true, 'Migration success');
+    // public function test_migrate_to_db() {
+    //     CryptoSources::updateFromApi();
+    //     $this->assertTrue(true, 'Migration success');
+    // }
+
+    public function test_CryptoAccountSeeder_Test() {
+        $this->seed(CryptoAccountSeeder::class);
     }
 }
