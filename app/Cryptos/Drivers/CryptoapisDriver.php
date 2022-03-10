@@ -14,7 +14,7 @@ class CryptoapisDriver implements ApiDriverInterface
 
     public function getRequiredCredentials(): array
     {
-        // TODO: Implement getRequiredCredentials() method.
+        return ["address"];
     }
 
 
