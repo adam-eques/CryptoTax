@@ -30,12 +30,8 @@ class DatabaseSeeder extends Seeder
             UserCreditActionSeeder::class,
             UserAccountTypeSeeder::class,
 
-            // Crypto Exchanges
-            CryptoExchangeSeeder::class,
-            CryptoExchangeAccountSeeder::class,
-
-            // Blockchains
-            BlockchainSeeder::class
+            // Crypto tables
+            CryptoSourceSeeder::class,
         ]);
     }
 }

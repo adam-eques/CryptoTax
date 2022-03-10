@@ -17,8 +17,8 @@ Route::get('/dashboard', function () {
 \App\CaravelAdmin\Resources\BackendUser\BackendUserResource::routes();
 
 // Other resources
-\App\CaravelAdmin\Resources\CryptoExchange\CryptoExchangeResource::routes();
-\App\CaravelAdmin\Resources\CryptoExchangeAccount\CryptoExchangeAccountResource::routes();
+\App\CaravelAdmin\Resources\CryptoSource\CryptoSourceResource::routes();
+\App\CaravelAdmin\Resources\CryptoAccount\CryptoAccountResource::routes();
 \App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource::routes();
 \App\CaravelAdmin\Resources\UserCreditAction\UserCreditActionResource::routes();
 \App\CaravelAdmin\Resources\UserCreditLog\UserCreditLogResource::routes();

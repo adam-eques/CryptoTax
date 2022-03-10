@@ -3,11 +3,11 @@
         <input type="checkbox">
         <x-icon name="coins.{{strtolower(explode('/', $transaction->symbol)[0])}}" class="w-18 h-18 ml-7"/>
         <div class="w-full space-y-1 ml-7">
-            <p class="text-gray-500">{{$transaction->cryptoExchangeAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[0] }} {{ __('Wallet') }} </p>
-            <p class="text-lg font-semibold"> 
-                @if($transaction->side == 'sell') - @elseif($transaction->side == 'buy') + @endif 
-                {{ $transaction->amount }} 
-                {{ explode('/', $transaction->symbol)[0] }} 
+            <p class="text-gray-500">{{$transaction->cryptoAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[0] }} {{ __('Wallet') }} </p>
+            <p class="text-lg font-semibold">
+                @if($transaction->side == 'sell') - @elseif($transaction->side == 'buy') + @endif
+                {{ $transaction->amount }}
+                {{ explode('/', $transaction->symbol)[0] }}
             </p>
             <p class="text-gray-500">{{ __('View Transactions') }}</p>
             <p class="text-gray-500">{{ $transaction->fee_cost }} {{ $transaction->fee_currency }}</p>
@@ -15,7 +15,7 @@
     </div>
     <div class="flex items-center">
         @switch($transaction->side)
-            @case('sell')                                
+            @case('sell')
                 <div class="px-3 py-5 bg-gray-100 rounded-lg">
                     <x-icon name="heroicon-o-arrow-narrow-right" class="w-6 text-primary"/>
                 </div>
@@ -37,15 +37,15 @@
                 @break
             @default
         @endswitch
-       
+
     </div>
     <div class="flex items-center justify-between">
         <x-icon name="coins.{{strtolower(explode('/', $transaction->symbol)[1])}}" class="w-18 h-18 ml-7"/>
         <div class="w-full space-y-1 ml-7">
-            <p class="text-gray-500">{{$transaction->cryptoExchangeAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[1] }} {{ __('Wallet') }}</p>
+            <p class="text-gray-500">{{$transaction->cryptoAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[1] }} {{ __('Wallet') }}</p>
             <p class="text-lg font-semibold">
                 @if($transaction->side == 'sell') + @elseif($transaction->side == 'buy') - @endif
-                {{ $transaction->cost }} 
+                {{ $transaction->cost }}
                 {{ explode('/', $transaction->symbol)[1] }}
             </p>
         </div>

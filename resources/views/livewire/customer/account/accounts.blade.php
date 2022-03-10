@@ -8,7 +8,7 @@
             {{ __('Add New Account') }}
         </x-button>
     </x-customers.customer-header-bar>
-    
+
     <div class="flex flex-col -mx-2 space-y-10 py-7 md:flex-row lg:-mx-5 md:space-y-0">
         <!-- Left Panel -->
         <div class="px-2 lg:px-5 md:w-2/5">
@@ -17,9 +17,9 @@
                     <x-toggle-block :label="$row['label']" :opened="true">
                         <div class="flex flex-col overflow-auto divide-y divide-gray-300 scrollbar max-h-100" x-on:click="category=`{{ $row['label'] }}`; action=''">
                             @foreach($row["items"] as $item)
-                                @if (  $row['id'] == 1)                                   
-                                    <x-account-item-button 
-                                        wire:click="get_selected_account({{ $item->id }})" 
+                                @if (  $row['id'] == 1)
+                                    <x-account-item-button
+                                        wire:click="get_selected_account({{ $item->id }})"
                                         label="{{ $item->getName() }}"
                                         selected="{{ $exchange && $exchange->getName() == $item->getName() }}"
                                         balance="{{ moneyFormat($item->getBalanceSum(), 2) }}"
@@ -28,8 +28,8 @@
                                         <div wire:loading.remove class="text-gray-400">{{ $item['fetched_at'] ? $item['fetched_at']: "Never" }}</div>
                                     </x-account-item-button>
                                 @elseif ($row['id'] == 3)
-                                    <x-account-item-button 
-                                        wire:click="get_selected_blockchain({{ $item->id }})" 
+                                    <x-account-item-button
+                                        wire:click="get_selected_blockchain({{ $item->id }})"
                                         label="{{ explode(':',  $item->getName())[0] }}"
                                         selected="{{ $blockchain && $blockchain->blockchain_id == $item->blockchain_id }}"
                                         balance="{{ moneyFormat(0.00, 2) }}"
@@ -48,7 +48,7 @@
         <!-- Right Panel -->
         <div class="px-2 lg:px-5 md:w-3/5">
             <div class="w-full h-full border rounded">
-                @if($cryptoExchangeAccounts->count() || $blockchainAccounts->count())
+                @if($cryptoAccounts->count() || $blockchainAccounts->count())
                     {{-- Right panel for Exchanges --}}
                     @if ($exchange)
                         <div class="flex justify-between w-full px-3 py-3 bg-gray-100 rounded lg:py-6 md:px-8">
@@ -70,7 +70,7 @@
                         <div>
                             <div x-show="action == ''" class="overflow-auto">
                                 <div class="divide-y max-h-[810px] overflow-auto">
-                                    @foreach ($exchange->cryptoExchangeAssets as $asset)                
+                                    @foreach ($exchange->cryptoExchangeAssets as $asset)
                                         <x-account-assets-item :asset="$asset"/>
                                     @endforeach
                                 </div>
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div x-show="action == 'edit'" x-cloak class="px-5 py-10">
-                                <p class="mt-3 text-xl font-bold text-center">{{ __(' API integration') }} </p> 
+                                <p class="mt-3 text-xl font-bold text-center">{{ __(' API integration') }} </p>
                                 <div class="mt-10">
                                     <div>
                                         <p class="text-gray-600">{{ __('Address') }}<span class="text-danger">*</span></p>

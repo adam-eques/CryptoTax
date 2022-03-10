@@ -23,18 +23,18 @@ class TransactionList extends Component
     public function render()
     {
         $filter = [
-            'order' => [ 
-                ['label' =>'Newest', 'value' => 'desc'], 
-                ['label' => 'Oldest', 'value' => 'asc'] 
+            'order' => [
+                ['label' =>'Newest', 'value' => 'desc'],
+                ['label' => 'Oldest', 'value' => 'asc']
             ],
-            'type' => [ 
-                ['label' => 'Transfer', 'value' => 'transfer'], 
-                ['label' => 'Trade', 'value' => 'trade'], 
-                ['label' => 'Bought', 'value' => 'buy'], 
-                ['label' => 'Sold', 'value' => 'sell'], 
-                ['label' => 'Received', 'value' => 'receive'], 
-                ['label' => 'Sent', 'value' => 'send'], 
-                ['label' => 'Mint', 'value' => 'mint'] 
+            'type' => [
+                ['label' => 'Transfer', 'value' => 'transfer'],
+                ['label' => 'Trade', 'value' => 'trade'],
+                ['label' => 'Bought', 'value' => 'buy'],
+                ['label' => 'Sold', 'value' => 'sell'],
+                ['label' => 'Received', 'value' => 'receive'],
+                ['label' => 'Sent', 'value' => 'send'],
+                ['label' => 'Mint', 'value' => 'mint']
             ],
             'category' => [
                 ['label' => 'Kucoin', 'value' => 'kucoin'],
@@ -48,7 +48,7 @@ class TransactionList extends Component
 
         $search = '%' . $this->search . '%';
         $exchange_transactions = CryptoExchangeTransaction::query()
-            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoExchangeAccounts->pluck("id"))
+            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoAccounts->pluck("id"))
             ->where("symbol", "like", $search)
             ->orderBy('executed_at', $this->order)
             ->paginate(10);

@@ -3,7 +3,7 @@
 namespace App\CaravelAdmin\Resources\Customer;
 
 use App\Forms\Components\ButtonField;
-use App\Models\CryptoExchangeAccount;
+use App\Models\CryptoAccount;
 use App\Models\User;
 use App\Models\UserCreditLog;
 use WebCaravel\Admin\Forms\Components\RelatedTableField;
@@ -35,8 +35,8 @@ class CustomerForm extends ResourceForm
 
             // Exchange accounts
             ->addTab(Forms\Components\Tabs\Tab::make("Exchange Accounts")->schema([
-                RelatedTableField::make(RelatedCryptoExchangeAccountTable::class)
-            ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", CryptoExchangeAccount::class)))
+                RelatedTableField::make(RelatedCryptoAccountTable::class)
+            ])->visible(fn($record) => $record->exists && auth()->user()->can("viewAny", CryptoAccount::class)))
 
             // Recruited user
             ->addTab(Forms\Components\Tabs\Tab::make("Recruited Users")->schema([

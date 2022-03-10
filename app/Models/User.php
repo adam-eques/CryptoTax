@@ -32,8 +32,7 @@ use Str;
  * @property string|null $fb_id
  * @property string|null $google_id
  *
- * @property \Illuminate\Support\Collection<CryptoExchangeAccount> $cryptoExchangeAccounts
- * @property \Illuminate\Support\Collection<BlockchainAccount> $blockchainAccounts
+ * @property \Illuminate\Support\Collection<CryptoAccount> $cryptoExchangeAccounts
  * @property \Illuminate\Support\Collection<UserCreditLog> $creditLogs
  * @property \App\Models\UserAccountType $userAccountType
  * @property \App\Models\Datacenter $datacenter
@@ -119,8 +118,7 @@ class User extends Authenticatable implements MustVerifyEmail
         });
 
         static::deleting(function (self $item) {
-            $item->blockchainAccounts()->cascadeDelete();
-            $item->cryptoExchangeAccounts()->cascadeDelete();
+            $item->cryptoAccount()->cascadeDelete();
             $item->creditLogs()->cascadeDelete();
             $item->userAffiliate()->delete();
         });
@@ -163,27 +161,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function cryptoExchangeAccounts(): HasMany
+    public function cryptoAccounts(): HasMany
     {
-        return $this->hasMany(CryptoExchangeAccount::class);
+        return $this->hasMany(CryptoAccount::class);
     }
 
 
-    public function blockchainAccounts(): HasMany
+    public function cryptoTransactions(): HasManyThrough
     {
-        return $this->hasMany(BlockchainAccount::class);
-    }
-
-
-    public function cryptoExchangeTransactions(): HasManyThrough
-    {
-        return $this->hasManyThrough(CryptoExchangeTransaction::class, CryptoExchangeAccount::class);
-    }
-
-
-    public function blockchainTransactions(): HasManyThrough
-    {
-        return $this->hasManyThrough(BlockchainTransaction::class, BlockchainAccount::class);
+        return $this->hasManyThrough(CryptoTransaction::class, CryptoAccount::class);
     }
 
 
