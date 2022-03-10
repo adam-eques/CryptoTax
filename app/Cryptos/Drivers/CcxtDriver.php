@@ -5,7 +5,7 @@ namespace App\Cryptos\Drivers;
 use App\Models\CryptoAccount;
 use App\Models\CryptoCurrency;
 use App\Models\CryptoExchangeAsset;
-use App\Models\CryptoExchangeTransaction;
+use App\Models\CryptoTransaction;
 use Carbon\Carbon;
 use function collect;
 use function logger;
@@ -44,7 +44,15 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     public function getRequiredCredentials(): array
     {
-        return $this->api->requiredCredentials;
+        $credentials = $this->api->requiredCredentials;
+        $array = [];
+        foreach($credentials AS $cred => $bool) {
+            if($bool) {
+                $array[] = $cred;
+            }
+        }
+
+        return $array;
     }
 
     /**
@@ -90,7 +98,7 @@ abstract class CcxtDriver implements ApiDriverInterface
 
         \DB::transaction(function() use ($account, $data, $balances, $timestamp) {
             // Insert data
-            if($data) CryptoExchangeTransaction::insert($data);
+            if($data) CryptoTransaction::insert($data);
 
             // Update fetched_at
             $account->fetched_at = $timestamp;
@@ -123,7 +131,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                     }
 
                     CryptoExchangeAsset::make([
-                        "crypto_exchange_account_id" => $account->id,
+                        "crypto_account_id" => $account->id,
                         "crypto_currency_id" => $currency,
                         "balance" => $val
                     ])->save();
@@ -131,8 +139,6 @@ abstract class CcxtDriver implements ApiDriverInterface
             }
         }
     }
-
-
 
 
     /**
@@ -144,7 +150,7 @@ abstract class CcxtDriver implements ApiDriverInterface
         $info = \Arr::get($data, "info");
 
         return [
-            "crypto_exchange_account_id" => $this->exchangeAccount->id,
+            "crypto_account_id" => $this->exchangeAccount->id,
             "external_id" => $data["id"],
             "order" => $data["order"],
             "executed_at" => $data["timestamp"],

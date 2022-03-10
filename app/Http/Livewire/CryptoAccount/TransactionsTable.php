@@ -23,19 +23,19 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
     protected function getTableQuery(): Builder
     {
         return CryptoTransaction::query()
-            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoAccounts->pluck("id"));
+            ->whereIn("crypto_account_id", auth()->user()->cryptoAccounts->pluck("id"));
     }
 
 
     protected function getTableFilters(): array
     {
-        $accountOptions = auth()->user()->cryptoAccounts->pluck("cryptoExchange.name", "id");
+        $accountOptions = auth()->user()->cryptoAccounts->pluck("cryptoSource.name", "id");
 
         return [
-            SelectFilter::make('crypto_exchange_account_id')
+            SelectFilter::make('crypto_account_id')
                 ->label(__("Exchange"))
                 ->query(function (Builder $query, array $data): Builder {
-                    return ! empty($data["value"]) ? $query->where("crypto_exchange_account_id", $data["value"]) : $query;
+                    return ! empty($data["value"]) ? $query->where("crypto_account_id", $data["value"]) : $query;
                 })
                 ->options($accountOptions),
             SelectFilter::make('side')
