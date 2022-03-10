@@ -11,6 +11,7 @@ use CryptoAPIs\Api\MetadataApi;
 // reference https://packagist.org/packages/cryptoapis/sdk
 
 class CryptoAPI {
+    public $requiredCredentials=['x-api-key' => 'e9b60d3c77930ecd0e776b7edd604a887de3b918'];
     public $config;
     public $chainInstance;
     public $tokenInstance;
@@ -19,7 +20,7 @@ class CryptoAPI {
     public function __construct() {
         $client = new Client();
         // Configure API key authorization: ApiKey
-        $this->config = Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'e9b60d3c77930ecd0e776b7edd604a887de3b918');
+        $this->config = Configuration::getDefaultConfiguration()->setApiKey('x-api-key', $this->requiredCredentials);
 
         $this->chainInstance = new UnifiedEndpointsApi(
             new Client(),
@@ -35,6 +36,10 @@ class CryptoAPI {
             new Client(),
             $this->config
         );
+    }
+
+    public function check_required_credentials() {
+        return true;
     }
 
     // get supported market assets
