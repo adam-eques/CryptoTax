@@ -10,7 +10,6 @@ return new class extends Migration{
         Schema::create('crypto_exchange_balances', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignIdFor(\App\Models\CryptoCurrency::class);
-            $table->foreignIdFor(\App\Models\CryptoExchangeAccount::class);
             $table->unsignedDecimal("balance", 30, 18)->default(0);
             $table->timestamps();
         });
