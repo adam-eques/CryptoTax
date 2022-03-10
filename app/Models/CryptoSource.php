@@ -16,4 +16,10 @@ class CryptoSource extends Model
     const SOURCE_EXCHANGE_BINANCE = 3;
     const SOURCE_BLOCKCHAIN_ETHEREUM = 4;
     const SOURCE_BLOCKCHAIN_LITECOIN = 5;
+
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }

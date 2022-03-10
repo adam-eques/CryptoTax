@@ -1,10 +1,11 @@
 <?php
 
-namespace App\CryptoExchangeDrivers;
+namespace App\Cryptos\Drivers;
 
 
 
 use Carbon\Carbon;
+use function now;
 
 /**
  * Class KucoinDriver
@@ -13,7 +14,7 @@ use Carbon\Carbon;
  *
  * @property \ccxt\kucoin $api
  */
-class KucoinDriver extends Driver
+class KucoinDriver extends CcxtDriver
 {
 
     /**

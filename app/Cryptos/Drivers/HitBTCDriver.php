@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CryptoExchangeDrivers;
+namespace App\Cryptos\Drivers;
 
 
 
@@ -11,7 +11,7 @@ namespace App\CryptoExchangeDrivers;
  *
  * @property \ccxt\hitbtc3 $api
  */
-class HitBTCDriver extends Driver
+class HitBTCDriver extends CcxtDriver
 {
 
     /**

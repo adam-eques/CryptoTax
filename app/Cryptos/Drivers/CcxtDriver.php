@@ -1,23 +1,23 @@
 <?php
 
-namespace App\CryptoExchangeDrivers;
+namespace App\Cryptos\Drivers;
 
+use App\Models\CryptoAccount;
 use App\Models\CryptoCurrency;
-use App\Models\CryptoExchangeAccount;
 use App\Models\CryptoExchangeAsset;
 use App\Models\CryptoExchangeTransaction;
 use Carbon\Carbon;
+use function collect;
+use function logger;
+use function now;
 
-abstract class Driver
+abstract class CcxtDriver implements ApiDriverInterface
 {
-    protected CryptoExchangeAccount $exchangeAccount;
+    protected CryptoAccount $exchangeAccount;
     protected $api;
 
-    /**
-     * @param \App\Models\CryptoExchangeAccount $exchangeAccount
-     * @return static
-     */
-    public static function make(CryptoExchangeAccount $exchangeAccount): self
+
+    public static function make(CryptoAccount $exchangeAccount): self
     {
         $obj = new static();
         $obj->exchangeAccount = $exchangeAccount;

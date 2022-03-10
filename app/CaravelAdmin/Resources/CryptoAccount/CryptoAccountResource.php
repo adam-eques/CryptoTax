@@ -1,14 +1,14 @@
 <?php
 
-namespace App\CaravelAdmin\Resources\CryptoExchangeAccount;
+namespace App\CaravelAdmin\Resources\CryptoAccount;
 
-use App\Models\CryptoExchangeAccount;
+use App\Models\CryptoAccount;
 use WebCaravel\Admin\Resources\Resource;
 
 
-class CryptoExchangeAccountResource extends Resource
+class CryptoAccountResource extends Resource
 {
-    protected string $model = CryptoExchangeAccount::class;
+    protected string $model = CryptoAccount::class;
     protected string $icon = "fas-shield-alt";
 
 

@@ -5,7 +5,7 @@
             <div class="px-2 lg:px-5 md:w-2/5">
                 <x-card :title="__('Edit Credentials')">
                     <div class="p-6">
-                        <livewire:crypto-exchange-accounts.kucoin-form :account="$exchangeAccount" />
+                        <livewire:crypto-account-accounts.kucoin-form :account="$exchangeAccount" />
                     </div>
                 </x-card>
             </div>

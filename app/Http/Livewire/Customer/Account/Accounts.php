@@ -4,33 +4,31 @@ namespace App\Http\Livewire\Customer\Account;
 
 use Livewire\Component;
 
-use App\Jobs\CryptoExchangeFetchJob;
-use App\Models\CryptoExchange;
-use App\Models\CryptoExchangeAccount;
-use App\Jobs\BlockchainAccountFetchJob;
+use App\Jobs\CryptoAccountFetchJob;
+use App\Models\CryptoAccount;
 use App\Models\BlockchainAccount;
 use Filament\Forms;
 use WireUi\Traits\Actions;
-
-use ccxt;
 
 class Accounts extends Component implements Forms\Contracts\HasForms
 {
     use Actions;
     use Forms\Concerns\InteractsWithForms;
 
-    public ?CryptoExchangeAccount $exchange = null;
+    public ?CryptoAccount $exchange = null;
     public ?BlockchainAccount $blockchain = null;
+
 
     public function mount()
     {
         $this->blockchain = null;
-        $this->exchange = CryptoExchangeAccount::query()
+        $this->exchange = CryptoAccount::query()
             ->where('user_id', auth()->user()->id)
-            ->whereJsonLength('credentials','>', 0)
-            ->first(); 
+            ->whereJsonLength('credentials', '>', 0)
+            ->first();
         $this->edit_exchange();
     }
+
 
     protected function getFormSchema(): array
     {
@@ -55,16 +53,19 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         ];
     }
 
+
     public function isRequiredField(string $fieldName): bool
     {
         if ($this->exchange) {
             $api = $this->exchange->getApi();
             $requiredCredentials = $api->getRequiredCredentials();
+
             return $requiredCredentials[$fieldName];
         }
 
         return false;
     }
+
 
     // exchange
     public function save_exchange()
@@ -74,6 +75,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $this->exchange->save();
     }
 
+
     public function edit_exchange()
     {
         if ($this->exchange) {
@@ -81,7 +83,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         }
     }
 
-    public function delete_exchange(CryptoExchangeAccount $exchange)
+
+    public function delete_exchange(CryptoAccount $exchange)
     {
         if ($this->exchange && $this->exchange->id == $exchange->id) {
             $this->exchange = null;
@@ -98,26 +101,29 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         );
     }
 
-    public function fetch_exchange(CryptoExchangeAccount $exchange)
+
+    public function fetch_exchange(CryptoAccount $exchange)
     {
         try {
             $exchange->fetching_scheduled_at = now();
             $exchange->save();
-            CryptoExchangeFetchJob::dispatch($exchange);
+            CryptoAccountFetchJob::dispatch($exchange);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $exchange->getName()]),
                 "Please check transactions in a couple of minutes"
             );
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->notification()->error(__("An error occured"), $e->getMessage());
         }
     }
 
-    public function get_selected_account(CryptoExchangeAccount $exchange){
+
+    public function get_selected_account(CryptoAccount $exchange)
+    {
         $this->exchange = $exchange;
         $this->blockchain = null;
     }
+
 
     // blockchains
     public function delete_blockchain(BlockchainAccount $blockchainAccount)
@@ -137,76 +143,79 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         );
     }
 
+
     public function fetch_blockchain(BlockchainAccount $blockchainAccount)
     {
         try {
             $blockchainAccount->fetching_scheduled_at = now();
             $blockchainAccount->save();
-            BlockchainAccountFetchJob::dispatch($blockchainAccount);
+            CryptoAccountFetchJob::dispatch($blockchainAccount);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $blockchainAccount->getName()]),
                 "Please check blockchain transactions in a couple of minutes"
             );
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->notification()->error(__("An error occured"), $e->getMessage());
         }
     }
 
-    public function get_selected_blockchain(BlockchainAccount $blockchainAccount){
+
+    public function get_selected_blockchain(BlockchainAccount $blockchainAccount)
+    {
         $this->blockchain = $blockchainAccount;
         $this->exchange = null;
     }
 
 
     //frontend action
-    public function sync(){
-        if($this->exchange){
-            if($this->exchange->hasAllCredentials()){
+    public function sync()
+    {
+        if ($this->exchange) {
+            if ($this->exchange->hasAllCredentials()) {
                 $this->fetch_exchange($this->exchange);
             }
-        }
-        elseif($this->blockchain){
+        } elseif ($this->blockchain) {
             $this->fetch_blockchain($this->blockchain);
         }
     }
 
-    public function delete(){
-        if($this->exchange){
+
+    public function delete()
+    {
+        if ($this->exchange) {
             $this->delete_exchange($this->exchange);
-        }
-        elseif($this->blockchain){
+        } elseif ($this->blockchain) {
             $this->delete_blockchain($this->blockchain);
         }
     }
-    
+
+
     //Rendering
     public function render()
     {
 
-        $cryptoExchangeAccounts = CryptoExchangeAccount::query()
+        $cryptoAccounts = CryptoAccount::query()
             ->where('user_id', auth()->user()->id)
-            ->whereJsonLength('credentials','>', 0)
+            ->whereJsonLength('credentials', '>', 0)
             ->get();
 
-        
         $blockchainAccounts = BlockchainAccount::query()
             ->where('user_id', auth()->user()->id)
             ->get();
 
         $rows = [
-            ["id" => 1, "label" => "Exchanges", "items" => $cryptoExchangeAccounts ],
-            ["id" => 2, "label" => "Wallets", "items" => [ ]],
+            ["id" => 1, "label" => "Exchanges", "items" => $cryptoAccounts],
+            ["id" => 2, "label" => "Wallets", "items" => []],
             ["id" => 3, "label" => "Blockchain", "items" => $blockchainAccounts],
-            ["id" => 4, "label" => "Others", "items" => [ ]],
+            ["id" => 4, "label" => "Others", "items" => []],
         ];
 
-        // $balances = $cryptoExchangeAccounts[0]->cryptoExchangeAssets()->get()[0]->cryptoCurrency()->get();
+        // $balances = $cryptoAccounts[0]->cryptoExchangeAssets()->get()[0]->cryptoCurrency()->get();
 
         return view('livewire.customer.account.accounts', [
-            "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
+            "cryptoAccounts" => $cryptoAccounts,
             "blockchainAccounts" => $blockchainAccounts,
-            "rows" => $rows
+            "rows" => $rows,
         ]);
     }
 }

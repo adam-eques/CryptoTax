@@ -30,4 +30,10 @@ class CryptoAsset extends Model
     {
         return $this->hasMany(CryptoTransaction::class);
     }
+
+
+    public function convertTo(string $currency = "USD"): float
+    {
+        return $this->cryptoCurrency ? $this->cryptoCurrency->convertTo($this->balance, $currency) : 0;
+    }
 }
