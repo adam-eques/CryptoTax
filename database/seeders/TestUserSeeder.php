@@ -48,6 +48,7 @@ class TestUserSeeder extends Seeder
             if(!User::query()->where("email", $data["email"])->exists()) {
                 $data["password"] = bcrypt(isset($data["password"]) && $data["password"] ? $data["password"] : $data["email"]);
                 $data["created_at"] = now();
+                $data["email_verified_at"] = now();
                 DB::table('users')->insert($data);
             }
         });
