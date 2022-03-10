@@ -3,6 +3,9 @@
 namespace App\Cryptos\Drivers;
 
 use App\Models\CryptoAccount;
+use App\Models\CryptoSource;
+use App\Models\CryptoAsset;
+use App\Models\CryptoCurrency;
 use App\Blockchains\CryptoAPI;
 use Carbon\Carbon;
 
@@ -51,12 +54,13 @@ class CryptoapisDriver implements ApiDriverInterface
         $balances;
         $credentials = $this->getCredentials();
         // var_dump($credentials);
-        switch($this->account->cryptoSource->name) {
-            case 'Ethereum Blockchain':
+        switch($this->account->cryptoSource->id) {
+            case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
                 $detail = $this->api->get_details($credentials['address'], 'ethereum', 'mainnet', 'balances');
+                var_dump($detail['data']);
                 $balances = [
                     'amount' => $detail['data']['item']['confirmed_balance']['amount'],
-                    'ETH' => $detail['data']['item']['confirmed_balance']['unit']
+                    'unit' => $detail['data']['item']['confirmed_balance']['unit']
                 ];
                 break;
             default: break;
@@ -78,7 +82,7 @@ class CryptoapisDriver implements ApiDriverInterface
         if ($to) $toTimestamp = $to->timestamp;
         $credentials = $this->getCredentials();
         switch($this->account->cryptoSource->name) {
-            case 'Ethereum Blockchain':
+            case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
                 $context = 'ethereum';
                 $blockchain = 'ethereum';
                 $network = 'mainnet';
@@ -96,5 +100,25 @@ class CryptoapisDriver implements ApiDriverInterface
         } while ($offset <= $total);
 
         return $transactions;
+    }
+
+    public function saveBalances($balance) {
+        $assets = $this->account->cryptoAssets();
+        $currencyId = CryptoCurrency::findByShortName($balance['unit'])->id;
+        $create = true;
+        foreach($assets as $asset) {
+            if ($asset === $currencyId) {
+                // assets.bal
+                $create = false;
+            }
+        }
+        if ($create) {
+            $asset = new CryptoAsset();
+            $asset->balance = $balance['amount'];
+            $asset->crypto_account_id = $this->account->id;
+            $asset->crypto_currency_id = $currencyId;
+            $asset->save();
+        }
+        var_dump($currencyId);
     }
 }

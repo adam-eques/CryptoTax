@@ -45,8 +45,13 @@ class CryptoAPI {
         ]);
     }
 
-    public function check_required_credentials() {
-        return true;
+    /**
+     * $from: string -> cryptocurrency symbol ex: btc
+     * $to: string -> money symbol ex: usd
+     * $time: int -> timestamp of date
+     */
+    public function get_exrateBySymbol($from, $to, $time) {
+
     }
 
     // get supported market assets
