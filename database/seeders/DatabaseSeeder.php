@@ -30,10 +30,13 @@ class DatabaseSeeder extends Seeder
             UserCreditActionSeeder::class,
             UserAccountTypeSeeder::class,
 
+            // Crypto tables
+            CryptoSourceSeeder::class,
+
+            // Old tables (do we need them?)
             // Crypto Exchanges
             CryptoExchangeSeeder::class,
             CryptoExchangeAccountSeeder::class,
-
             // Blockchains
             BlockchainSeeder::class
         ]);
