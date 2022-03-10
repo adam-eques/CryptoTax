@@ -79,7 +79,22 @@ class CryptoAPITest extends TestCase
     //     $this->assertTrue(true, 'Migration success');
     // }
 
-    public function test_CryptoAccountSeeder_Test() {
-        $this->seed(CryptoAccountSeeder::class);
-    }
+    // public function test_CryptoAccountSeeder_Test() {
+    //     $this->seed(CryptoAccountSeeder::class);
+    // }
+
+    // public function test_get_transactions_by_time() {
+    //     $this->cryptoApi = new CryptoAPI();
+    //     $address = '0xcf72b431d5a471255c208b65c15798d5577eeaed';
+    //     $limit = 50;
+    //     $offset = 0;
+    //     $blockchain = 'ethereum';
+    //     $network = 'mainnet';
+    //     $from = 0;
+    //     $to = now()->timestamp;
+    //     $context = 'ethereum';
+    //     $transactions = $this->cryptoApi->get_transactionsByTime($address, $limit, $offset, $blockchain, $network, $from, $to, $context);
+    //     $this->assertIsArray($transactions->data->items, 'Failed to get transactions by address and time range');
+    //     var_dump($transactions->data->items);
+    // }
 }

@@ -25,7 +25,20 @@ class CryptoapisDriver extends Driver
     }
 
     public function fetchBalances() {
-
+        $balances;
+        $credentials = $this->getCredentials();
+        // var_dump($credentials);
+        switch($this->account->cryptoSource->name) {
+            case 'Ethereum Blockchain':
+                $detail = $this->api->get_details($credentials['address'], 'ethereum', 'mainnet', 'balances');
+                $balances = [
+                    'amount' => $detail['data']['item']['confirmed_balance']['amount'],
+                    'ETH' => $detail['data']['item']['confirmed_balance']['unit']
+                ];
+                break;
+            default: break;
+        }
+        return $balances;
     }
 
     public function fetchTransactions(?string $symbol = null, ?Carbon $since = null): array {

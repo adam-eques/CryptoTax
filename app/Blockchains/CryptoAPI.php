@@ -13,9 +13,11 @@ use CryptoAPIs\Api\MetadataApi;
 class CryptoAPI {
     public $requiredCredentials=['x-api-key' => 'e9b60d3c77930ecd0e776b7edd604a887de3b918'];
     public $config;
+    public $transactionInterface;
     public $chainInstance;
     public $tokenInstance;
     public $metaDataInstance;
+
 
     public function __construct() {
         $client = new Client();
@@ -36,6 +38,11 @@ class CryptoAPI {
             new Client(),
             $this->config
         );
+
+        $this->transactionInterface = new Client([
+            'base_uri' => 'https://rest.cryptoapis.io/v2/blockchain-data/',
+            'headers' => $this->requiredCredentials
+        ]);
     }
 
     public function check_required_credentials() {
@@ -55,6 +62,30 @@ class CryptoAPI {
         return $result;
     }
 
+    // get transactions by time
+    public function get_transactionsByTime($address, $limit, $offset, $blockchain, $network, $from, $to, $context) {
+        $result;
+        try {
+            $result = $this->transactionInterface->request(
+                'GET',
+                ''.$blockchain.'/'.$network.'/addresses/'.$address.'/transactions-by-time-range',
+                [
+                    'query' => [
+                        'fromTimestamp' => $from,
+                        'toTimestamp' => $to,
+                        'context' => $context,
+                        'limit' => $limit,
+                        'offset' => $offset,
+                    ]
+                ]
+            );
+            $result = json_decode($result->getBody()->getContents());
+        } catch (Exception $e) {
+            echo 'Exception when calling get Transaction by time: ', $e->getMessage(), PHP_EOL;
+        }
+        return $result;
+    }
+
     // get transactions
     public function get_transactions($address, $limit, $offset, $blockchain, $network, $context) {
         $result;
@@ -67,7 +98,7 @@ class CryptoAPI {
     }
 
     // get balances of the blockchain
-    public function get_balance($address, $blockchain, $network, $context) {
+    public function get_details($address, $blockchain, $network, $context) {
         $result;
         try {
             $result = $this->chainInstance->getAddressDetails($blockchain, $network, $address, $context);
@@ -106,7 +137,7 @@ class CryptoAPI {
 
     // get bsc testnet balance of $address
     public function get_balance_bsc($address) {
-        return $this->get_balance($address, 'binance-smart-chain', 'testnet', 'bsc balance');
+        return $this->get_details($address, 'binance-smart-chain', 'testnet', 'bsc balance');
     }
 
     // get binance-smart-chain based token transfers by $address
