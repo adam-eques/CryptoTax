@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\_Blockchains\CryptoApisDriver;
+use App\Cryptos\Drivers\CryptoapisDriver;
 use App\Cryptos\Drivers\HitBTCDriver;
 use App\Cryptos\Drivers\KucoinDriver;
 use App\Models\CryptoSource;
@@ -42,7 +42,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "Ethereum Blockchain",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
-                'driver' => CryptoApisDriver::class,
+                'driver' => CryptoapisDriver::class,
                 'active' => true
             ],
             [
@@ -50,7 +50,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "Litecoin Blockchain",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
-                'driver' => CryptoApisDriver::class,
+                'driver' => CryptoapisDriver::class,
                 'active' => true
             ],
         ])->each(function($data){
