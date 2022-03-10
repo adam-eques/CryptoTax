@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use CryptoAPIs\Configuration;
 use CryptoAPIs\Api\UnifiedEndpointsApi;
 use CryptoAPIs\Api\TokensApi;
-use CryptoAPIs\Api;
+use CryptoAPIs\Api\MetadataApi;
 
 // reference https://packagist.org/packages/cryptoapis/sdk
 
@@ -14,6 +14,7 @@ class CryptoAPI {
     public $config;
     public $chainInstance;
     public $tokenInstance;
+    public $metaDataInstance;
 
     public function __construct() {
         $client = new Client();
@@ -29,6 +30,24 @@ class CryptoAPI {
             new Client(),
             $this->config
         );
+
+        $this->metaDataInstance = new MetadataApi(
+            new Client(),
+            $this->config
+        );
+    }
+
+    // get supported market assets
+    public function get_supported_cryptoAssets($limit, $offset) {
+        $context = 'supported assets'; // string | In batch situations the user can use the context to correlate responses with requests. This property is present regardless of whether the response was successful or returned as an error. `context` is specified by the user.
+        $asset_type = 'crypto'; // string | Defines the type of the supported asset. This could be either \"crypto\" or \"fiat\".
+
+        try {
+            $result = $this->metaDataInstance->listSupportedAssets($context, $asset_type, $limit, $offset);
+        } catch (Exception $e) {
+            echo 'Exception when calling MetadataApi->listSupportedAssets: ', $e->getMessage(), PHP_EOL;
+        }
+        return $result;
     }
 
     // get transactions
