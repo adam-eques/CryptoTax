@@ -1,12 +1,12 @@
 <?php
 
-namespace App\CaravelAdmin\Resources\CryptoExchange;
+namespace App\CaravelAdmin\Resources\CryptoSource;
 
 use WebCaravel\Admin\Resources\ResourceTable;
 use Filament\Tables;
 
 
-class CryptoExchangeTable extends ResourceTable
+class CryptoSourceTable extends ResourceTable
 {
     protected function getTableColumns(): array
     {

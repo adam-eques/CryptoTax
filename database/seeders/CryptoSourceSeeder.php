@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Blockchains\CryptoApisDriver;
-use App\CryptoExchangeDrivers\HitBTCDriver;
-use App\CryptoExchangeDrivers\KucoinDriver;
+use App\_Blockchains\CryptoApisDriver;
+use App\Cryptos\Drivers\HitBTCDriver;
+use App\Cryptos\Drivers\KucoinDriver;
 use App\Models\CryptoSource;
 use Illuminate\Database\Seeder;
 

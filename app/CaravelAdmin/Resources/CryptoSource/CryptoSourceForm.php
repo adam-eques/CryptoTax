@@ -1,13 +1,13 @@
 <?php
 
-namespace App\CaravelAdmin\Resources\CryptoExchangeAccount;
+namespace App\CaravelAdmin\Resources\CryptoSource;
 
 use WebCaravel\Admin\Resources\ResourceForm;
 use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms;
 
 
-class CryptoExchangeAccountForm extends ResourceForm
+class CryptoSourceForm extends ResourceForm
 {
     public function getFormSchema(): array
     {

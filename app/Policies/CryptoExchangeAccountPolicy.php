@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\CryptoExchangeAccount;
+use App\Models\CryptoAccount;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CryptoExchangeAccountPolicy
+class cryptoAccountPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class CryptoExchangeAccountPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchangeAccount  $cryptoExchangeAccount
+     * @param  \App\Models\CryptoAccount  $cryptoAccount
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
+    public function view(User $user, CryptoAccount $cryptoAccount)
     {
-        return $cryptoExchangeAccount->user_id === $user->id;
+        return $cryptoAccount->user_id === $user->id;
     }
 
     /**
@@ -48,22 +48,22 @@ class CryptoExchangeAccountPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchangeAccount  $cryptoExchangeAccount
+     * @param  \App\Models\CryptoAccount  $cryptoAccount
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
+    public function update(User $user, CryptoAccount $cryptoAccount)
     {
-        return $cryptoExchangeAccount->user_id === $user->id;
+        return $cryptoAccount->user_id === $user->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchangeAccount  $cryptoExchangeAccount
+     * @param  \App\Models\CryptoAccount  $cryptoAccount
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
+    public function delete(User $user, CryptoAccount $cryptoAccount)
     {
 
     }
@@ -72,10 +72,10 @@ class CryptoExchangeAccountPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchangeAccount  $cryptoExchangeAccount
+     * @param  \App\Models\CryptoAccount  $cryptoAccount
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
+    public function restore(User $user, CryptoAccount $cryptoAccount)
     {
         //
     }
@@ -84,10 +84,10 @@ class CryptoExchangeAccountPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchangeAccount  $cryptoExchangeAccount
+     * @param  \App\Models\CryptoAccount  $cryptoAccount
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, CryptoExchangeAccount $cryptoExchangeAccount)
+    public function forceDelete(User $user, CryptoAccount $cryptoAccount)
     {
         //
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\CryptoExchange;
+namespace App\Http\Livewire\CryptoAccount;
 
-use App\Jobs\CryptoExchangeFetchJob;
-use App\Models\CryptoExchange;
-use App\Models\CryptoExchangeAccount;
+use App\Jobs\CryptoAccountFetchJob;
+use App\Models\CryptoAccount;
+use App\Models\CryptoSource;
 use Filament\Forms;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -14,7 +14,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     use Actions;
     use Forms\Concerns\InteractsWithForms;
 
-    public ?CryptoExchangeAccount $account = null;
+    public ?CryptoAccount $account = null;
     public ?int $newAccountId = null;
 
 
@@ -42,20 +42,20 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
 
     public function render()
     {
-        $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts;
-        $exchanges = CryptoExchange::query()
+        $cryptoAccounts = auth()->user()->cryptoAccounts;
+        $exchanges = CryptoSource::query()
             ->where("active", true)
-            ->whereNotIn("id", $cryptoExchangeAccounts->pluck("crypto_exchange_id")->toArray())
+            ->whereNotIn("id", $cryptoAccounts->pluck("crypto_exchange_id")->toArray())
             ->get();
 
-        return view('livewire.crypto-exchange.account-form', [
+        return view('livewire.crypto-account.account-form', [
             "exchanges" => $exchanges,
-            "cryptoExchangeAccounts" => $cryptoExchangeAccounts,
+            "cryptoAccounts" => $cryptoAccounts,
         ]);
     }
 
 
-    public function delete(CryptoExchangeAccount $account)
+    public function delete(CryptoAccount $account)
     {
         if ($this->account && $this->account->id == $account->id) {
             $this->account = null;
@@ -82,7 +82,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     }
 
 
-    public function edit(CryptoExchangeAccount $account)
+    public function edit(CryptoAccount $account)
     {
         $this->account = $account;
         $this->form->fill($account->credentials);
@@ -102,12 +102,12 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     }
 
 
-    public function fetch(CryptoExchangeAccount $account)
+    public function fetch(CryptoAccount $account)
     {
         try {
             $account->fetching_scheduled_at = now();
             $account->save();
-            CryptoExchangeFetchJob::dispatch($account);
+            CryptoAccountFetchJob::dispatch($account);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $account->getName()]),
                 "Please check transactions in a couple of minutes"
@@ -129,8 +129,8 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
             return;
         }
 
-        if (! $user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
-            $account = new CryptoExchangeAccount();
+        if (! $user->cryptoAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
+            $account = new CryptoAccount();
             $account->crypto_exchange_id = $this->newAccountId;
             $account->user_id = $user->id;
             $account->credentials = [];

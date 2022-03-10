@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Customer\Account;
 
-use App\Jobs\BlockchainAccountFetchJob;
+use App\Jobs\CryptoAccountFetchJob;
 use App\Models\BlockchainAccount;
 use App\Models\Blockchain;
 use App\Models\CryptoExchange;
-use App\Models\CryptoExchangeAccount;
+use App\Models\CryptoAccount;
 use WireUi\Traits\Actions;
 use Filament\Forms;
 
@@ -19,31 +19,31 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
     use Actions;
     use Forms\Concerns\InteractsWithForms;
-    
+
     public ?int $selected = null;
     public ?string $search = null;
 
-    
-    
+
+
     public ?array $buttons = [
         [ 'id' => 1, 'icon' => 'ri-exchange-dollar-line', 'name' => 'Exchange' ],
         [ 'id' => 2, 'icon' => 'carbon-wallet', 'name' => 'Wallets' ],
         [ 'id' => 3, 'icon' => 'iconpark-blockchain', 'name' => 'Blockchains' ],
         [ 'id' => 4, 'icon' => 'tabler-dots-circle-horizontal', 'name' => 'Others' ],
     ];
-    
+
     public function get_selected_item( $id ){
         $this->selected = $id;
         $this->newBlockchainId= null;
         $this->newAccountId = null;
         $this->exchange_account = null;
     }
-    
+
     // For Blockchain Account==================================================================================
     public ?BlockchainAccount $blockchainAccount = null;
     public ?string $newBlockchainAddress = null;
     public ?int $newBlockchainId= null;
-    
+
     public function get_new_blockchain_id( int $id ){
         $this->newAccountId = null;
         $this->exchange_account = null;
@@ -82,7 +82,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $this->newBlockchainAddress = null;
             $this->newBlockchainId = null;
             $this->notification()->info(__("Exchange Account is added successfully"));
-            redirect()->route('customer.account'); 
+            redirect()->route('customer.account');
         }
         else {
             $this->notification()->info(__("Blockchain address already exists in your account"));
@@ -90,13 +90,13 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             return;
         }
     }
-    
+
     public function fetch_blockchain(BlockchainAccount $blockchainAccount)
     {
         try {
             $blockchainAccount->fetching_scheduled_at = now();
             $blockchainAccount->save();
-            BlockchainAccountFetchJob::dispatch($blockchainAccount);
+            CryptoAccountFetchJob::dispatch($blockchainAccount);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $blockchainAccount->getName()]),
                 "Please check blockchain transactions in a couple of minutes"
@@ -106,9 +106,9 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $this->notification()->error(__("An error occured"), $e->getMessage());
         }
     }
-    
+
     // For Exchange Account---------------------------------------------------------------------------------------------------------------------
-    public ?CryptoExchangeAccount $exchange_account = null;
+    public ?CryptoAccount $exchange_account = null;
     public ?int $newAccountId = null;
 
     protected function getFormSchema(): array
@@ -152,10 +152,10 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $this->exchange_account->credentials = $data;
         $this->exchange_account->save();
         $this->notification()->info(__("Exchange Account is added successfully"));
-        redirect()->route('customer.account'); 
+        redirect()->route('customer.account');
     }
 
-    public function edit_exchange( CryptoExchangeAccount $account )
+    public function edit_exchange( CryptoAccount $account )
     {
         $this->exchange_account = $account;
         $this->form->fill($account->credentials);
@@ -167,8 +167,8 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $user = auth()->user();
         $this->newAccountId = $id;
 
-        if (! $user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
-            $account = new CryptoExchangeAccount();
+        if (! $user->cryptoAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
+            $account = new CryptoAccount();
             $account->crypto_exchange_id = $this->newAccountId;
             $account->user_id = $user->id;
             $account->credentials = [];
@@ -176,7 +176,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $this->edit_exchange($account);
         }
         else {
-            $this->edit_exchange($user->cryptoExchangeAccounts()->where("crypto_exchange_id", $this->newAccountId)->first());
+            $this->edit_exchange($user->cryptoAccounts()->where("crypto_exchange_id", $this->newAccountId)->first());
         }
     }
 
@@ -192,8 +192,8 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $exchanges_array = $exchanges->toArray();
 
         $exchanges_array = array_filter($exchanges_array, function($exchange){
-            $cryptoExchangeAccounts = auth()->user()->cryptoExchangeAccounts->toArray();
-            foreach ($cryptoExchangeAccounts as $account) {
+            $cryptoAccounts = auth()->user()->cryptoAccounts->toArray();
+            foreach ($cryptoAccounts as $account) {
                 if($account['crypto_exchange_id'] == $exchange['id']){
                     if(array_key_exists("apiKey", $account['credentials'])){
                         return false;
@@ -213,8 +213,8 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
                 if($account['blockchain_id'] == $blockchain['id']){
                     return false;
                 }
-            } 
-            return true;           
+            }
+            return true;
         });
 
         return view('livewire.customer.account.account-new', [

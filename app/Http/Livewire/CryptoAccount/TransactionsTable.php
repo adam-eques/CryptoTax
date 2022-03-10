@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\CryptoExchange;
+namespace App\Http\Livewire\CryptoAccount;
 
-use App\Models\CryptoExchangeTransaction;
+use App\Models\CryptoTransaction;
 use Carbon\Carbon;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -22,14 +22,14 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return CryptoExchangeTransaction::query()
-            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoExchangeAccounts->pluck("id"));
+        return CryptoTransaction::query()
+            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoAccounts->pluck("id"));
     }
 
 
     protected function getTableFilters(): array
     {
-        $accountOptions = auth()->user()->cryptoExchangeAccounts->pluck("cryptoExchange.name", "id");
+        $accountOptions = auth()->user()->cryptoAccounts->pluck("cryptoExchange.name", "id");
 
         return [
             SelectFilter::make('crypto_exchange_account_id')
@@ -68,7 +68,7 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make('executed_at')
                 ->formatStateUsing(fn($state): string => (new Carbon($state / 1000))->format("Y-m-d H:i:s"))
                 ->sortable(),
-            TextColumn::make('cryptoExchangeAccount.cryptoExchange.name')->label('Exchange')->sortable()->searchable(),
+            TextColumn::make('cryptoAccount.cryptoExchange.name')->label('Exchange')->sortable()->searchable(),
             TextColumn::make('external_id')->sortable()->searchable(),
             TextColumn::make('order')->sortable()->searchable(),
             TextColumn::make('symbol')->sortable()->searchable(),
@@ -94,6 +94,6 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
 
     public function render()
     {
-        return view('livewire.crypto-exchange.transaction-table');
+        return view('livewire.crypto-account.transaction-table');
     }
 }

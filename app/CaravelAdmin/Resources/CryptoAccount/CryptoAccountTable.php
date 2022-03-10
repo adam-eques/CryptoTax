@@ -1,22 +1,22 @@
 <?php
 
-namespace App\CaravelAdmin\Resources\CryptoExchangeAccount;
+namespace App\CaravelAdmin\Resources\CryptoAccount;
 
-use App\CaravelAdmin\Resources\CryptoExchange\CryptoExchangeResource;
+use App\CaravelAdmin\Resources\CryptoSource\CryptoSourceResource;
 use WebCaravel\Admin\Resources\ResourceTable;
 use Filament\Tables;
 use WebCaravel\Admin\Tables\Columns\BelongsToColumn;
 
-class CryptoExchangeAccountTable extends ResourceTable
+class CryptoAccountTable extends ResourceTable
 {
-    public string $resourceClass = CryptoExchangeAccountResource::class;
+    public string $resourceClass = CryptoAccountResource::class;
 
 
     protected function getTableColumns(): array
     {
         return [
             BelongsToColumn::make("cryptoExchange.name")
-                ->resource(CryptoExchangeResource::class),
+                ->resource(CryptoSourceResource::class),
             Tables\Columns\TextColumn::make("fetching_scheduled_at")
                 ->date("Y-m-d H:i")
                 ->sortable(),

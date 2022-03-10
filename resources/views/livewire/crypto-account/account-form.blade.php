@@ -2,10 +2,10 @@
     <!-- Left Panel -->
     <div class="px-2 lg:px-5 md:w-1/2">
         <x-card :title="__('Exchanges')">
-            @if($cryptoExchangeAccounts->count())
+            @if($cryptoAccounts->count())
                 <div class="p-4">
                     <ul>
-                        @foreach($cryptoExchangeAccounts as $row)
+                        @foreach($cryptoAccounts as $row)
                             <li class="@if(!$loop->last)mb-8 @endif">
                                 {{ $row->getName() }}
                                 <small>({{ moneyFormat($row->getBalanceSum()) }} USD)</small>
