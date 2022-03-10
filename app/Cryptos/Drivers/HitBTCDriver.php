@@ -7,8 +7,6 @@ namespace App\Cryptos\Drivers;
 /**
  * Class HitBTC
  *
- * @package App\CryptoExchangeDrivers
- *
  * @property \ccxt\hitbtc3 $api
  */
 class HitBTCDriver extends CcxtDriver

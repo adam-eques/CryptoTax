@@ -3,8 +3,8 @@
 namespace App\Cryptos\Drivers;
 
 use App\Models\CryptoAccount;
+use App\Models\CryptoAsset;
 use App\Models\CryptoCurrency;
-use App\Models\CryptoExchangeAsset;
 use App\Models\CryptoTransaction;
 use Carbon\Carbon;
 use function collect;
@@ -13,23 +13,25 @@ use function now;
 
 abstract class CcxtDriver implements ApiDriverInterface
 {
-    protected CryptoAccount $exchangeAccount;
+    protected CryptoAccount $account;
     protected $api;
 
 
-    public static function make(CryptoAccount $exchangeAccount): self
+    public static function make(CryptoAccount $account): self
     {
         $obj = new static();
-        $obj->exchangeAccount = $exchangeAccount;
+        $obj->account = $account;
         $obj->connect();
 
         return $obj;
     }
 
+
     /**
      * @return $this
      */
     abstract protected function connect(): self;
+
 
     /**
      * @return bool
@@ -39,6 +41,7 @@ abstract class CcxtDriver implements ApiDriverInterface
         return $this->api->check_required_credentials();
     }
 
+
     /**
      * @return array
      */
@@ -46,8 +49,8 @@ abstract class CcxtDriver implements ApiDriverInterface
     {
         $credentials = $this->api->requiredCredentials;
         $array = [];
-        foreach($credentials AS $cred => $bool) {
-            if($bool) {
+        foreach ($credentials as $cred => $bool) {
+            if ($bool) {
                 $array[] = $cred;
             }
         }
@@ -55,17 +58,18 @@ abstract class CcxtDriver implements ApiDriverInterface
         return $array;
     }
 
+
     /**
      * @return $this
      */
     public function updateTransactions(): self
     {
-        // Get Balance
-        $balances = $this->fetchBalances();
-
         // Get transaction data
-        $since = $this->exchangeAccount->fetched_at ?: Carbon::create(2010, 1, 1);
+        $since = $this->account->fetched_at ?: Carbon::create(2010, 1, 1);
         $data = $this->fetchTransactions(null, $since);
+
+        // Balances
+        $balances = $this->fetchBalances();
 
         // Save it
         $this->saveTransactions($data, now(), $balances["total"]);
@@ -91,14 +95,16 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function saveTransactions(array $data, Carbon $timestamp, ?array $balances = null): self
     {
-        $account = $this->exchangeAccount;
-        $data = collect($data)->map(function ($item){
+        $account = $this->account;
+        $data = collect($data)->map(function ($item) {
             return $this->mapFetchedTransactions($item);
         })->toArray();
 
-        \DB::transaction(function() use ($account, $data, $balances, $timestamp) {
+        \DB::transaction(function () use ($account, $data, $balances, $timestamp) {
             // Insert data
-            if($data) CryptoTransaction::insert($data);
+            if ($data) {
+                CryptoTransaction::insert($data);
+            }
 
             // Update fetched_at
             $account->fetched_at = $timestamp;
@@ -115,25 +121,24 @@ abstract class CcxtDriver implements ApiDriverInterface
 
     protected function saveBalances(?array $balances = null)
     {
-        if(!is_null($balances)) {
-            $account = $this->exchangeAccount;
+        if (! is_null($balances)) {
+            $account = $this->account;
 
-            $account->cryptoExchangeAssets()->delete();
-            foreach($balances AS $key => $val) {
-                if($val && $val > 0) {
+            $account->cryptoAssets()->delete();
+            foreach ($balances as $key => $val) {
+                if ($val && $val > 0) {
                     $currency = CryptoCurrency::findByShortName($key);
-                    if($currency) {
+                    if ($currency) {
                         $currency = $currency->id;
-                    }
-                    else {
+                    } else {
                         $currency = 0;
-                        logger("Missing crypto currency " . $key);
+                        logger("Missing crypto currency ".$key);
                     }
 
-                    CryptoExchangeAsset::make([
+                    CryptoAsset::make([
                         "crypto_account_id" => $account->id,
                         "crypto_currency_id" => $currency,
-                        "balance" => $val
+                        "balance" => $val,
                     ])->save();
                 }
             }
@@ -147,26 +152,40 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function mapFetchedTransactions(array $data)
     {
-        $info = \Arr::get($data, "info");
+        // Trade type
+        if ($data["side"] == "sell") {
+            $trade_type = "S";
+        } else {
+            if ($data["side"] == "buy") {
+                $trade_type = "B";
+            } else {
+                $trade_type = "";
+            }
+        }
 
+        // Currencies
+        $currencies = explode("/", $data["symbol"]);
+        $assetCurrency = CryptoCurrency::findByShortName($currencies[0]);
+        $priceCurrency = CryptoCurrency::findByShortName($currencies[1]);
+        $feeCurrency = CryptoCurrency::findByShortName(\Arr::get($data, "fee.currency"));
+
+        // Return data
         return [
-            "crypto_account_id" => $this->exchangeAccount->id,
-            "external_id" => $data["id"],
-            "order" => $data["order"],
-            "executed_at" => $data["timestamp"],
-            "symbol" => $data["symbol"],
-            "type" => $data["type"],
-            "side" => $data["side"],
-            "taker_or_maker" => $data["takerOrMaker"],
-            "price" => $data["price"],
+            "crypto_account_id" => $this->account->id,
+            "currency_id" => optional($assetCurrency)->id,
+            "price_currency_id" => optional($priceCurrency)->id,
+            "fee_currency_id" => optional($feeCurrency)->id,
+            "trade_type" => $trade_type,
+            "from_addr" => null,
+            "to_addr" => null,
             "amount" => $data["amount"],
-            "cost" => $data["cost"],
-            "fee_cost" => \Arr::get($data, "fee.cost"),
-            "fee_rate" => \Arr::get($data, "fee.rate"),
-            "fee_currency" => \Arr::get($data, "fee.currency"),
-            "data" => $info ? json_encode($info) : null,
+            "price" => $data["price"],
+            "fee" => \Arr::get($data, "fee.cost"),
+            "raw_data" => json_encode($data),
+            "executed_at" => substr($data["datetime"], 0, -1),
         ];
     }
+
 
     /**
      * See https://docs.ccxt.com/en/latest/manual.html#balance-structure
@@ -176,17 +195,19 @@ abstract class CcxtDriver implements ApiDriverInterface
     public function fetchBalances()
     {
         return $this->api->fetchBalance([
-            "type" => "main"
+            "type" => "main",
         ]);
     }
+
 
     /**
      * @return array
      */
-    protected function getCredentials() : array
+    protected function getCredentials(): array
     {
-        return $this->exchangeAccount->credentials ?: [];
+        return $this->account->credentials ?: [];
     }
+
 
     /**
      * @param string|null $symbol

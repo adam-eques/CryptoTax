@@ -6,22 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property CryptoAsset $cryptoAsset
  * @property CryptoAccount $cryptoAccount
+ * @property CryptoCurrency $cryptoCurrency
  * @property CryptoCurrency $feeCurrency
  * @property CryptoCurrency $priceCurrency
  */
 class CryptoTransaction extends Model
 {
-    public function cryptoAsset(): BelongsTo
-    {
-        return $this->belongsTo(CryptoAsset::class);
-    }
-
-
     public function cryptoAccount(): BelongsTo
     {
         return $this->belongsTo(CryptoAccount::class);
+    }
+
+
+    public function cryptoCurrency(): BelongsTo
+    {
+        return $this->belongsTo(CryptoCurrency::class, "currency_id");
     }
 
 

@@ -15,15 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CryptoCurrency extends Model
 {
-    public function CryptoExchangeAssets()
+    public function cryptoAssets()
     {
-        return $this->hasMany(CryptoExchangeAsset::class);
-    }
-
-
-    public function conversions()
-    {
-        return $this->hasMany(CryptoCurrencyConversion::class);
+        return $this->hasMany(CryptoAsset::class);
     }
 
 

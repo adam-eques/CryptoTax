@@ -10,8 +10,6 @@ use function now;
 /**
  * Class KucoinDriver
  *
- * @package App\CryptoExchangeDrivers
- *
  * @property \ccxt\kucoin $api
  */
 class KucoinDriver extends CcxtDriver
@@ -41,7 +39,7 @@ class KucoinDriver extends CcxtDriver
     {
         // Kucoin API used: https://docs.kucoin.com/#list-fills
         // "The system allows you to retrieve data up to one week (start from the last day by default)"
-        $account = $this->exchangeAccount;
+        $account = $this->account;
 
         // Get date: Kucoin max. prev date = 2019-02-18
         $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);

@@ -33,30 +33,19 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
 
         return [
             SelectFilter::make('crypto_account_id')
-                ->label(__("Exchange"))
+                ->label(__("Account"))
                 ->query(function (Builder $query, array $data): Builder {
                     return ! empty($data["value"]) ? $query->where("crypto_account_id", $data["value"]) : $query;
                 })
                 ->options($accountOptions),
-            SelectFilter::make('side')
+            SelectFilter::make('trade_type')
                 ->options([
-                    'sell' => 'Sell',
-                    'buy' => 'Buy',
-                ]),
-            SelectFilter::make('taker_or_maker')
-                ->options([
-                    'taker' => 'taker',
-                    'maker' => 'maker',
+                    'S' => 'Sell',
+                    'B' => 'Buy',
                 ]),
             SelectFilter::make('type')
                 ->options([
                     'limit' => 'limit',
-                ]),
-            SelectFilter::make('fee_currency')
-                ->options([
-                    'USDT' => 'USDT',
-                    'ETH' => 'ETH',
-                    'BTC' => 'BTC',
                 ]),
         ];
     }
@@ -66,21 +55,17 @@ class TransactionsTable extends Component implements Tables\Contracts\HasTable
     {
         return [
             TextColumn::make('executed_at')
-                ->formatStateUsing(fn($state): string => (new Carbon($state / 1000))->format("Y-m-d H:i:s"))
                 ->sortable(),
-            TextColumn::make('cryptoAccount.cryptoExchange.name')->label('Exchange')->sortable()->searchable(),
-            TextColumn::make('external_id')->sortable()->searchable(),
-            TextColumn::make('order')->sortable()->searchable(),
-            TextColumn::make('symbol')->sortable()->searchable(),
-            TextColumn::make('type')->sortable()->searchable(),
-            TextColumn::make('taker_or_maker'),
-            TextColumn::make('side')->sortable(),
-            TextColumn::make('price')->sortable(),
-            TextColumn::make('amount')->sortable(),
-            TextColumn::make('cost')->sortable(),
-            TextColumn::make('fee_cost')->sortable(),
-            TextColumn::make('fee_rate')->sortable(),
-            TextColumn::make('fee_currency')->sortable()->searchable(),
+            TextColumn::make('cryptoAccount.cryptoSource.name')->label('Source')->sortable()->searchable(),
+            TextColumn::make('cryptoCurrency.short_name')->label('Currency')->sortable()->searchable(),
+            TextColumn::make('trade_type')->sortable()->searchable(),
+            TextColumn::make('amount')->sortable()->searchable(),
+            TextColumn::make('price'),
+            TextColumn::make('priceCurrency.short_name')->sortable(),
+            TextColumn::make('fee')->sortable(),
+            TextColumn::make('feeCurrency.short_name')->sortable(),
+            TextColumn::make('from_addr')->sortable()->searchable(),
+            TextColumn::make('to_addr')->sortable()->searchable(),
         ];
     }
 
