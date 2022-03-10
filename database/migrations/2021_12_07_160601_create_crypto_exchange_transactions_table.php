@@ -10,7 +10,6 @@ class CreateCryptoExchangeTransactionsTable extends Migration
     {
         Schema::create('crypto_exchange_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(\App\Models\CryptoExchangeAccount::class);
             $table->string("external_id", 100);
             $table->string("order", 100)->nullable(true);
             $table->string("symbol", 50);
