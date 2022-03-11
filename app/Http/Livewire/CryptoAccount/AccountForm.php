@@ -43,13 +43,14 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         $cryptoAccounts = auth()->user()->cryptoAccounts;
-        $exchanges = CryptoSource::query()
-            ->where("active", true)
-            ->whereNotIn("id", $cryptoAccounts->pluck("crypto_exchange_id")->toArray())
-            ->get();
 
         return view('livewire.crypto-account.account-form', [
-            "exchanges" => $exchanges,
+            "exchanges" => CryptoSource::activeExchanges()
+                ->whereNotIn("id", $cryptoAccounts->pluck("crypto_source_id")->toArray())
+                ->get(),
+            "blockchains" => CryptoSource::activeBlockchains()
+                ->whereNotIn("id", $cryptoAccounts->pluck("crypto_source_id")->toArray())
+                ->get(),
             "cryptoAccounts" => $cryptoAccounts,
         ]);
     }
@@ -95,7 +96,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
             $api = $this->account->getApi();
             $requiredCredentials = $api->getRequiredCredentials();
 
-            return $requiredCredentials[$fieldName];
+            return in_array($fieldName, $requiredCredentials);
         }
 
         return false;
@@ -124,14 +125,14 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
         $user = auth()->user();
 
         if (! $this->newAccountId) {
-            $this->notification()->info(__("Please select an exchange"));
+            $this->notification()->info(__("Please select an account"));
 
             return;
         }
 
-        if (! $user->cryptoAccounts()->where("crypto_exchange_id", $this->newAccountId)->first()) {
+        if (! $user->cryptoAccounts()->where("crypto_source_id", $this->newAccountId)->first()) {
             $account = new CryptoAccount();
-            $account->crypto_exchange_id = $this->newAccountId;
+            $account->crypto_source_id = $this->newAccountId;
             $account->user_id = $user->id;
             $account->credentials = [];
             $account->save();
