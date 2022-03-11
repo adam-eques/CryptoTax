@@ -54,18 +54,26 @@ class CryptoapisDriver implements ApiDriverInterface
     public function fetchBalances() {
         $balances;
         $credentials = $this->getCredentials();
+        $blockchain = '';
+        $network = 'mainnet';
         // var_dump($credentials);
         switch($this->account->cryptoSource->id) {
             case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
-                $detail = $this->api->get_details($credentials['address'], 'ethereum', 'mainnet', 'balances');
-                var_dump($detail['data']);
-                $balances = [
-                    'amount' => $detail['data']['item']['confirmed_balance']['amount'],
-                    'unit' => $detail['data']['item']['confirmed_balance']['unit']
-                ];
+                $blockchain = 'ethereum';
+                $network = 'mainnet';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN :
+                $blockchain = 'litecoin';
+                $network = 'mainnet';
                 break;
             default: break;
         }
+        $detail = $this->api->get_details($credentials['address'], $blockchain, $network, 'balances');
+        var_dump($detail['data']);
+        $balances = [
+            'amount' => $detail['data']['item']['confirmed_balance']['amount'],
+            'unit' => $detail['data']['item']['confirmed_balance']['unit']
+        ];
         return $balances;
     }
 
@@ -84,8 +92,13 @@ class CryptoapisDriver implements ApiDriverInterface
         $credentials = $this->getCredentials();
         switch($this->account->cryptoSource->name) {
             case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
-                $context = 'ethereum';
+                $context = 'ethereum transactions';
                 $blockchain = 'ethereum';
+                $network = 'mainnet';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN :
+                $context = 'litecoin transactions';
+                $blockchain = 'litecoin';
                 $network = 'mainnet';
                 break;
             default: break;
