@@ -5,6 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
+        "cryptoapis/sdk": "^1.4.0",
         "php": "^8.0",
         "actb/blade-github-octicons": "^4.0",
         "andreiio/blade-iconoir": "^1.4",
@@ -32,7 +33,7 @@
         "filament/forms": "^2.4",
         "filament/tables": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^6.2.0",
         "kucoin/kucoin-php-sdk": "~1.1.0",
         "laravel/cashier": "^v12.17.0",
         "laravel/framework": "^8.65",
