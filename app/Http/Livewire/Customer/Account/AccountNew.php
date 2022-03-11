@@ -125,14 +125,14 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     public function fetch(CryptoAccount $account)
     {
         try {
-            $account->fetched_scheduled_at = now();
+            $account->fetching_scheduled_at = now();
             $account->save();
             CryptoAccountFetchJob::dispatch($account);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $account->getName()]),
                 "Please check transactions in a couple of minutes"
             );
-            return redirect()->route('account');
+            return redirect()->route('customer.account');
         }
         catch (\Exception $e) {
             $this->notification()->error(__("An error occured"), $e->getMessage());

@@ -68,11 +68,9 @@
             {{-- Desktop --}}
             <div class="hidden border border-dashed rounded-md lg:block">
                 <div class="w-full h-full p-5">
-                    @if ($selected_account)                        
-                        <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
-                    @endif
-                    <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account_id . ' API integration')}}</p>
                     @if($selected_account)
+                        <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
+                        <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account_id . ' API integration')}}</p>
                         <form wire:submit.prevent="save" autocomplete="off">
                             <div class="p-4">
                                 {{ $this->form }}
@@ -82,41 +80,6 @@
                             </div>
                         </form>
                     @endif
-                    {{-- @if ($exchange_account)
-                        <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
-                        <p class="mt-3 text-xl font-bold text-center">{{ __($exchange_account->getName() . ' API integration')}}</p>
-                        <form wire:submit.prevent="save_exchange" autocomplete="off">
-                            <div class="p-4">
-                                {{ $this->form }}
-                                <div class="mt-4 text-center">
-                                    <x-button type="submit">{{ __("Save") }}</x-button>
-                                </div>
-                            </div>
-                        </form>
-                    @elseif($newBlockchainId)
-                        <p class="mt-3 text-xl font-bold text-center"><span x-text="selected_item" class="uppercase"></span> {{ __(' API integration') }} </p> 
-                        <div class="mt-10">
-                            <div>
-                                <p class="text-gray-600">Address<span class="text-danger">*</span></p>
-                                <div class="mt-1">
-                                    <input class="w-full px-2 py-2 border rounded" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
-                                </div>
-                                <div class="flex justify-center mt-3">
-                                    <x-button wire:click="add_blockchain">Add</x-button>
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="flex items-center justify-center w-full h-full text-center">
-                            <div>
-                                <div class="flex items-center justify-center mx-auto rounded-full bg-primary w-30 h-30">
-                                    <x-icon name="go-book-16" class="w-16 h-16 text-white"/>
-                                </div>
-                                <p class="mt-3 text-xl font-bold">{{ __('Instructions for API or CSV') }}</p>
-                                <p>{{ __('Please select an Exchange to see import instructions.') }}</p>
-                            </div>
-                        </div>
-                    @endif --}}
                 </div>
             </div>
 
@@ -184,7 +147,7 @@
 
             <div wire:loading.block class="hidden lg:block">
                 <x-spiner/>
-            </div>            
+            </div> 
         </div>    
     </div>
 </div>
