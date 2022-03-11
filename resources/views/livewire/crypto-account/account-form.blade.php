@@ -1,7 +1,7 @@
 <div class="flex flex-col pb-8 -mx-2 space-y-10 md:flex-row lg:-mx-5 md:space-y-0">
     <!-- Left Panel -->
     <div class="px-2 lg:px-5 md:w-1/2">
-        <x-card :title="__('Exchanges')">
+        <x-card :title="__('Exchanges & Blockchains')">
             @if($cryptoAccounts->count())
                 <div class="p-4">
                     <ul>
@@ -12,7 +12,6 @@
 
                                 <div class="float-right">
                                     @if($row->hasAllCredentials())<x-button :disabled="$row->fetching_scheduled_at" size="sm" wire:click="fetch({{ $row->id }})">{{ __("Fetch") }}</x-button>@endif
-{{--                                    <x-button size="sm" wire:click="fetch({{ $row->id }})">{{ __("Fetch2") }}</x-button>--}}
                                     <x-button size="sm" wire:click="edit({{ $row->id }})" :disabled="$row->fetching_scheduled_at">{{ __("Edit") }}</x-button>
                                     <x-button variant="danger" :disabled="$row->fetching_scheduled_at" size="sm" wire:click="delete({{ $row->id }})">{{ __("Delete") }}</x-button>
                                 </div>
@@ -34,12 +33,19 @@
 
             @if($exchanges->count())
                 <div class="p-4">
-                    <h2 class="mb-2 text-lg"> {{ __("Add new exchange") }}</h2>
+                    <h2 class="mb-2 text-lg"> {{ __("Add new account") }}</h2>
                     <select wire:model.defer="newAccountId" class="rounded-lg">
                         <option></option>
-                        @foreach($exchanges as $exchange)
-                            <option value="{{ $exchange->id }}">{{ $exchange->getName() }}</option>
-                        @endforeach
+                        <optgroup label="Exchange">
+                            @foreach($exchanges as $exchange)
+                                <option value="{{ $exchange->id }}">{{ $exchange->getName() }}</option>
+                            @endforeach
+                        </optgroup>
+                        <optgroup label="Blockchain">
+                            @foreach($blockchains as $blockchain)
+                                <option value="{{ $blockchain->id }}">{{ $blockchain->getName() }}</option>
+                            @endforeach
+                        </optgroup>
                     </select>
 
                     <x-button wire:click="add">Add</x-button>

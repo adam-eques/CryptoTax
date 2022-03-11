@@ -32,7 +32,7 @@ use Str;
  * @property string|null $fb_id
  * @property string|null $google_id
  *
- * @property \Illuminate\Support\Collection<CryptoAccount> $cryptoExchangeAccounts
+ * @property \Illuminate\Support\Collection<CryptoAccount> $cryptoAccounts
  * @property \Illuminate\Support\Collection<UserCreditLog> $creditLogs
  * @property \App\Models\UserAccountType $userAccountType
  * @property \App\Models\Datacenter $datacenter

@@ -15,7 +15,7 @@ class CryptoAccountTable extends ResourceTable
     protected function getTableColumns(): array
     {
         return [
-            BelongsToColumn::make("cryptoExchange.name")
+            BelongsToColumn::make("cryptoSource.name")
                 ->resource(CryptoSourceResource::class),
             Tables\Columns\TextColumn::make("fetching_scheduled_at")
                 ->date("Y-m-d H:i")
