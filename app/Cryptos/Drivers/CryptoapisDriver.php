@@ -6,6 +6,7 @@ use App\Models\CryptoAccount;
 use App\Models\CryptoSource;
 use App\Models\CryptoAsset;
 use App\Models\CryptoCurrency;
+use App\Models\CryptoTransaction;
 use App\Blockchains\CryptoAPI;
 use Carbon\Carbon;
 
@@ -103,12 +104,16 @@ class CryptoapisDriver implements ApiDriverInterface
     }
 
     public function saveBalances($balance) {
+        // $this->account->update(['fetched_at' => now()]);
         $assets = $this->account->cryptoAssets();
         $currencyId = CryptoCurrency::findByShortName($balance['unit'])->id;
         $create = true;
-        foreach($assets as $asset) {
-            if ($asset === $currencyId) {
+        $cryptoAssetId = 0;
+        foreach($assets->get() as $asset) {
+            if ($asset->crypto_currency_id === $currencyId) {
                 // assets.bal
+                $asset->update(['balance' => $balance['amount']]);
+                $cryptoAssetId = $asset->id;
                 $create = false;
             }
         }
@@ -118,7 +123,34 @@ class CryptoapisDriver implements ApiDriverInterface
             $asset->crypto_account_id = $this->account->id;
             $asset->crypto_currency_id = $currencyId;
             $asset->save();
+            $cryptoAssetId = $asset->id;
         }
-        var_dump($currencyId);
+        var_dump($cryptoAssetId);
+        return $cryptoAssetId;
+    }
+
+    public function saveTransactions($transactions, $cryptoAssetId) {
+        foreach($transactions as $transaction) {
+            $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
+            $credentials = $this->getCredentials();
+            $tradeType = 'N';
+            foreach($transaction->senders as $sender) {
+                if ($credentials['address'] == $sender->address) $tradeType = 'S';
+            }
+            foreach($transaction->recipients as $recipient) {
+                if ($credentials['address'] == $recipient->address) $tradeType = 'B';
+            }
+            // var_dump($currencyId);
+            $trans = new CryptoTransaction();
+            $trans->crypto_asset_id = $cryptoAssetId;
+            $trans->fee_currency_id = $currencyId;
+            $trans->trade_type = $tradeType;
+            $trans->from_addr = $transaction->senders[0]->address;
+            $trans->to_addr = $transaction->recipients[0]->address;
+            $trans->amount = $transaction->recipients[0]->amount;
+            $trans->price = $cryptoAssetId;
+            $trans->fee = $cryptoAssetId;
+            $trans->save();
+        }
     }
 }
