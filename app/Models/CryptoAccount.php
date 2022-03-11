@@ -89,7 +89,7 @@ class CryptoAccount extends Model
     public function getApi(bool $forceReload = false): ApiDriverInterface
     {
         if (! $this->api || $forceReload) {
-            $driverClass = $this->cryptoExchange->driver;
+            $driverClass = $this->cryptoSource->driver;
             $this->api = $driverClass::make($this);
         }
 

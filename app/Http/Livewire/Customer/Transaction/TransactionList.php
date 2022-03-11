@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Customer\Transaction;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-use App\Models\CryptoExchangeTransaction;
+use App\Models\CryptoTransaction;
 
 class TransactionList extends Component
 {
@@ -47,8 +47,8 @@ class TransactionList extends Component
         ];
 
         $search = '%' . $this->search . '%';
-        $exchange_transactions = CryptoExchangeTransaction::query()
-            ->whereIn("crypto_exchange_account_id", auth()->user()->cryptoAccounts->pluck("id"))
+        $exchange_transactions = CryptoTransaction::query()
+            ->whereIn("crypto_account_id", auth()->user()->cryptoAccounts->pluck("id"))
             ->where("symbol", "like", $search)
             ->orderBy('executed_at', $this->order)
             ->paginate(10);

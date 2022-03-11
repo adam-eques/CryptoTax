@@ -42,11 +42,18 @@ Route::middleware('customer-setup')->group(function(){
         // Test: buy credits
         Route::any("buy-credits", Livewire\Customer\Test\BuyCredit::class);
 
-        // Test affiliate
-        Route::get("affili", function (){
-            $user = auth()->user();
+        Route::get("kucoin", function (){
+            /**
+             * @var \App\Models\CryptoAccount $account
+             */
+            $account = auth()->user()->cryptoAccounts()->where("crypto_source_id", \App\Models\CryptoSource::SOURCE_EXCHANGE_KUCOIN)->first();
+            /**
+             * @var \App\Cryptos\Drivers\HitBTCDriver $api
+             */
+            $api = $account->getApi();
 
-            $user->buyCredits(\App\Models\UserCreditAction::findAction("BUYC"));
+            dd($api->updateTransactions());
+            dd($account);
         });
     });
 });

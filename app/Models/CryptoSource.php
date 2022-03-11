@@ -22,4 +22,20 @@ class CryptoSource extends Model
     {
         return $this->name;
     }
+
+
+    public function scopeActiveExchanges($query)
+    {
+        return $query
+            ->where("active", true)
+            ->where("type", static::SOURCE_TYPE_EXCHANGE);
+    }
+
+
+    public function scopeActiveBlockchains($query)
+    {
+        return $query
+            ->where("active", true)
+            ->where("type", static::SOURCE_TYPE_BLOCKCHAIN);
+    }
 }

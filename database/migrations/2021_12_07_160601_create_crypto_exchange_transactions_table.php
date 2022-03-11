@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCryptoExchangeTransactionsTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('crypto_exchange_transactions', function (Blueprint $table) {
@@ -32,4 +31,4 @@ class CreateCryptoExchangeTransactionsTable extends Migration
     {
         Schema::dropIfExists('exchange_transactions');
     }
-}
+};
