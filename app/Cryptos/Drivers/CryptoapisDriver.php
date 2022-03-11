@@ -130,27 +130,28 @@ class CryptoapisDriver implements ApiDriverInterface
     }
 
     public function saveTransactions($transactions, $cryptoAssetId) {
-        foreach($transactions as $transaction) {
-            $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
-            $credentials = $this->getCredentials();
-            $tradeType = 'N';
-            foreach($transaction->senders as $sender) {
-                if ($credentials['address'] == $sender->address) $tradeType = 'S';
-            }
-            foreach($transaction->recipients as $recipient) {
-                if ($credentials['address'] == $recipient->address) $tradeType = 'B';
-            }
-            // var_dump($currencyId);
-            $trans = new CryptoTransaction();
-            $trans->crypto_asset_id = $cryptoAssetId;
-            $trans->fee_currency_id = $currencyId;
-            $trans->trade_type = $tradeType;
-            $trans->from_addr = $transaction->senders[0]->address;
-            $trans->to_addr = $transaction->recipients[0]->address;
-            $trans->amount = $transaction->recipients[0]->amount;
-            $trans->price = $cryptoAssetId;
-            $trans->fee = $cryptoAssetId;
-            $trans->save();
-        }
+        var_dump($transactions);
+        // foreach($transactions as $transaction) {
+        //     $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
+        //     $credentials = $this->getCredentials();
+        //     $tradeType = 'N';
+        //     foreach($transaction->senders as $sender) {
+        //         if ($credentials['address'] == $sender->address) $tradeType = 'S';
+        //     }
+        //     foreach($transaction->recipients as $recipient) {
+        //         if ($credentials['address'] == $recipient->address) $tradeType = 'B';
+        //     }
+        //     // var_dump($currencyId);
+        //     $trans = new CryptoTransaction();
+        //     $trans->crypto_asset_id = $cryptoAssetId;
+        //     $trans->fee_currency_id = $currencyId;
+        //     $trans->trade_type = $tradeType;
+        //     $trans->from_addr = $transaction->senders[0]->address;
+        //     $trans->to_addr = $transaction->recipients[0]->address;
+        //     $trans->amount = $transaction->recipients[0]->amount;
+        //     $trans->price = $cryptoAssetId;
+        //     $trans->fee = $cryptoAssetId;
+        //     $trans->save();
+        // }
     }
 }
