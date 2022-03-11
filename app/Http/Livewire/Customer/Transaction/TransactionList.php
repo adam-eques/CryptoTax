@@ -47,14 +47,14 @@ class TransactionList extends Component
         ];
 
         $search = '%' . $this->search . '%';
-        $exchange_transactions = CryptoTransaction::query()
+        $transactions = CryptoTransaction::query()
             ->whereIn("crypto_account_id", auth()->user()->cryptoAccounts->pluck("id"))
-            ->where("symbol", "like", $search)
+            // ->where("symbol", "like", $search)
             ->orderBy('executed_at', $this->order)
             ->paginate(10);
 
         return view('livewire.customer.transaction.transaction-list', [
-            "exchange_transactions" => $exchange_transactions,
+            "transactions" => $transactions,
             'filter' => $filter
         ]);
     }

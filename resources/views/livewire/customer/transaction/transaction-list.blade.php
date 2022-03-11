@@ -54,13 +54,13 @@
     </div>
     <div class="mt-10 overflow-auto rounded-sm">
         <div class="min-w-[1024px]">            
-            @foreach ($exchange_transactions as $transaction)
+            @foreach ($transactions as $transaction)
                 <x-transaction-list-item :transaction="$transaction"/>
             @endforeach
         </div>
     </div>
     <div class="mt-16 mb-8">
-        {{$exchange_transactions->links()}}
+        {{$transactions->links()}}
     </div>
 </div>
 

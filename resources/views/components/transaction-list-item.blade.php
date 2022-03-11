@@ -1,36 +1,36 @@
 <div class="grid w-full grid-cols-3 border p-9" wire:key='{{ $transaction->id }}'>
     <div class="flex items-center">
         <input type="checkbox">
-        <x-icon name="coins.{{strtolower(explode('/', $transaction->symbol)[0])}}" class="w-18 h-18 ml-7"/>
+        <x-icon name="coins.{{ strtolower($transaction->cryptoCurrency->short_name) }}" class="w-18 h-18 ml-7"/>
         <div class="w-full space-y-1 ml-7">
-            <p class="text-gray-500">{{$transaction->cryptoAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[0] }} {{ __('Wallet') }} </p>
+            <p class="text-gray-500">{{$transaction->cryptoAccount->getName()}} {{ $transaction->cryptoCurrency->short_name }} {{ __('Wallet') }} </p>
             <p class="text-lg font-semibold">
-                @if($transaction->side == 'sell') - @elseif($transaction->side == 'buy') + @endif
+                @if($transaction->trade_type == 'S') - @elseif($transaction->trade_type == 'B') + @endif
                 {{ $transaction->amount }}
-                {{ explode('/', $transaction->symbol)[0] }}
+                {{ $transaction->cryptoCurrency->short_name }}
             </p>
             <p class="text-gray-500">{{ __('View Transactions') }}</p>
-            <p class="text-gray-500">{{ $transaction->fee_cost }} {{ $transaction->fee_currency }}</p>
+            <p class="text-gray-500">{{ $transaction->fee }} {{ $transaction->feeCurrency->short_name }}</p>
         </div>
     </div>
     <div class="flex items-center">
-        @switch($transaction->side)
-            @case('sell')
+        @switch($transaction->trade_type)
+            @case('S')
                 <div class="px-3 py-5 bg-gray-100 rounded-lg">
                     <x-icon name="heroicon-o-arrow-narrow-right" class="w-6 text-primary"/>
                 </div>
                 <div class="w-full space-y-1 ml-7">
-                    <p class="text-lg font-semibold">{{ date("M d, Y H:i:s", $transaction->executed_at/1000) }}</p>
+                    <p class="text-lg font-semibold">{{ date("M d, Y H:i:s", strtotime($transaction->executed_at)) }}</p>
                     <p class="text-gray-500">{{ __('UTC Transfer') }}</p>
                     <x-badge variant="danger" type="square">{{ __('Sold') }}</x-badge>
                 </div>
                 @break
-            @case('buy')
+            @case('B')
                 <div class="px-3 py-5 bg-gray-100 rounded-lg">
                     <x-icon name="heroicon-o-arrow-narrow-right" class="w-6 rotate-180 text-primary"/>
                 </div>
                 <div class="w-full space-y-1 ml-7">
-                    <p class="text-lg font-semibold">{{ date("M d, Y H:i:s", $transaction->executed_at/1000) }}</p>
+                    <p class="text-lg font-semibold">{{ date("M d, Y H:i:s", strtotime($transaction->executed_at)) }}</p>
                     <p class="text-gray-500">{{ __('UTC Transfer') }}</p>
                     <x-badge variant="success" type="square">{{ __('Bought') }}</x-badge>
                 </div>
@@ -40,14 +40,15 @@
 
     </div>
     <div class="flex items-center justify-between">
-        <x-icon name="coins.{{strtolower(explode('/', $transaction->symbol)[1])}}" class="w-18 h-18 ml-7"/>
+        <x-icon name="coins.{{strtolower($transaction->priceCurrency->short_name)}}" class="w-18 h-18 ml-7"/>
         <div class="w-full space-y-1 ml-7">
-            <p class="text-gray-500">{{$transaction->cryptoAccount->cryptoExchange->getName()}} {{ explode('/', $transaction->symbol)[1] }} {{ __('Wallet') }}</p>
+            <p class="text-gray-500">{{$transaction->cryptoAccount->getName()}} {{ $transaction->priceCurrency->short_name }} {{ __('Wallet') }}</p>
             <p class="text-lg font-semibold">
-                @if($transaction->side == 'sell') + @elseif($transaction->side == 'buy') - @endif
-                {{ $transaction->cost }}
-                {{ explode('/', $transaction->symbol)[1] }}
+                @if($transaction->trade_type == 'S') + @elseif($transaction->trade_type == 'B') - @endif
+                {{ $transaction->price *  $transaction->amount}}
+                {{ $transaction->priceCurrency->short_name }}
             </p>
+            <p class="text-gray-500">{{ $transaction->fee }} {{ $transaction->feeCurrency->short_name }}</p>
         </div>
         <div x-data="{open:false}" class="relative py-2">
             <button class="flex items-center justify-center w-6 h-6 bg-gray-100 border rounded-full" @click="open = true">
