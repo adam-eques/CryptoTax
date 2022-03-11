@@ -342,16 +342,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.212.5",
+            "version": "3.212.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ed69594b385233bb895342e18008cd811e8225e7"
+                "reference": "fcb57b1f840938813e83f521e169914a076b3be9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ed69594b385233bb895342e18008cd811e8225e7",
-                "reference": "ed69594b385233bb895342e18008cd811e8225e7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fcb57b1f840938813e83f521e169914a076b3be9",
+                "reference": "fcb57b1f840938813e83f521e169914a076b3be9",
                 "shasum": ""
             },
             "require": {
@@ -427,9 +427,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.212.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.212.6"
             },
-            "time": "2022-03-09T19:19:58+00:00"
+            "time": "2022-03-10T19:14:38+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -758,38 +758,16 @@
         },
         {
             "name": "ccxt/ccxt",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "version": "1.75.16",
+            "version": "1.75.82",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "406bdd325483e8b6ec485a2207fca712c0672711"
+                "reference": "40e2982cb84650ac24d9a4ef8aa4103df1df58f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/406bdd325483e8b6ec485a2207fca712c0672711",
-                "reference": "406bdd325483e8b6ec485a2207fca712c0672711",
-=======
-            "version": "1.75.38",
-=======
-            "version": "1.75.56",
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "be3cefdc64377076e0a7f3c3efd31ff4cd4ba6ee"
-            },
-            "dist": {
-                "type": "zip",
-<<<<<<< HEAD
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/4f9b91dcf89f0822ad5cc72f09443e32a035b8da",
-                "reference": "4f9b91dcf89f0822ad5cc72f09443e32a035b8da",
->>>>>>> develop
-=======
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/be3cefdc64377076e0a7f3c3efd31ff4cd4ba6ee",
-                "reference": "be3cefdc64377076e0a7f3c3efd31ff4cd4ba6ee",
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/40e2982cb84650ac24d9a4ef8aa4103df1df58f4",
+                "reference": "40e2982cb84650ac24d9a4ef8aa4103df1df58f4",
                 "shasum": ""
             },
             "require": {
@@ -1052,15 +1030,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "source": "https://github.com/ccxt/ccxt/tree/1.75.16"
-=======
-                "source": "https://github.com/ccxt/ccxt/tree/1.75.38"
->>>>>>> develop
-=======
-                "source": "https://github.com/ccxt/ccxt/tree/1.75.56"
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
+                "source": "https://github.com/ccxt/ccxt/tree/1.75.82"
             },
             "funding": [
                 {
@@ -1068,15 +1038,7 @@
                     "type": "open_collective"
                 }
             ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "time": "2022-03-08T18:24:15+00:00"
-=======
-            "time": "2022-03-09T08:43:20+00:00"
->>>>>>> develop
-=======
-            "time": "2022-03-10T05:41:47+00:00"
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
+            "time": "2022-03-11T15:35:12+00:00"
         },
         {
             "name": "codeat3/blade-carbon-icons",
@@ -3090,29 +3052,16 @@
         },
         {
             "name": "filament/forms",
-<<<<<<< HEAD
-            "version": "v2.10.23",
+            "version": "v2.10.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "6736a86cdd37a8bd907e01d9360b5fd1964c9614"
+                "reference": "ac2717a8cc1d51df0e403b42bf068a1f2130c7c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/6736a86cdd37a8bd907e01d9360b5fd1964c9614",
-                "reference": "6736a86cdd37a8bd907e01d9360b5fd1964c9614",
-=======
-            "version": "v2.10.24",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "c9f96c2df77826dacbaf377b47e938e661816b0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/c9f96c2df77826dacbaf377b47e938e661816b0b",
-                "reference": "c9f96c2df77826dacbaf377b47e938e661816b0b",
->>>>>>> develop
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/ac2717a8cc1d51df0e403b42bf068a1f2130c7c9",
+                "reference": "ac2717a8cc1d51df0e403b42bf068a1f2130c7c9",
                 "shasum": ""
             },
             "require": {
@@ -3155,27 +3104,11 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-<<<<<<< HEAD
-            "time": "2022-03-07T09:53:36+00:00"
+            "time": "2022-03-11T11:07:24+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.10.23",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "873edadcc1bd6e48722fc666d769cc708067d88e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/873edadcc1bd6e48722fc666d769cc708067d88e",
-                "reference": "873edadcc1bd6e48722fc666d769cc708067d88e",
-=======
-            "time": "2022-03-09T09:18:23+00:00"
-        },
-        {
-            "name": "filament/tables",
-            "version": "v2.10.24",
+            "version": "v2.10.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
@@ -3185,7 +3118,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel-filament/tables/zipball/da575397bef545c8cce3e200278237eeaacecb9d",
                 "reference": "da575397bef545c8cce3e200278237eeaacecb9d",
->>>>>>> develop
                 "shasum": ""
             },
             "require": {
@@ -3225,11 +3157,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-<<<<<<< HEAD
-            "time": "2022-03-07T09:53:32+00:00"
-=======
             "time": "2022-03-09T09:18:21+00:00"
->>>>>>> develop
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -4468,11 +4396,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-<<<<<<< HEAD
-            "version": "dev-feature/cryptoapis-test",
-=======
-            "version": "dev-develop",
->>>>>>> develop
+            "version": "dev-feature/real-data-integration",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -8074,16 +7998,16 @@
         },
         {
             "name": "spatie/temporary-directory",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/temporary-directory.git",
-                "reference": "06fe0f10d068fdf145c9b2235030e568c913bb61"
+                "reference": "79f138f2b81adae583d04d3727a4538dd394023f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/06fe0f10d068fdf145c9b2235030e568c913bb61",
-                "reference": "06fe0f10d068fdf145c9b2235030e568c913bb61",
+                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/79f138f2b81adae583d04d3727a4538dd394023f",
+                "reference": "79f138f2b81adae583d04d3727a4538dd394023f",
                 "shasum": ""
             },
             "require": {
@@ -8119,7 +8043,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/temporary-directory/issues",
-                "source": "https://github.com/spatie/temporary-directory/tree/2.0.0"
+                "source": "https://github.com/spatie/temporary-directory/tree/2.1.0"
             },
             "funding": [
                 {
@@ -8131,7 +8055,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-30T19:46:13+00:00"
+            "time": "2022-03-11T08:16:01+00:00"
         },
         {
             "name": "stripe/stripe-php",
@@ -13650,9 +13574,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-<<<<<<< HEAD
-    "plugin-api-version": "2.2.0"
-=======
-    "plugin-api-version": "2.0.0"
->>>>>>> develop
+    "plugin-api-version": "2.1.0"
 }
