@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "494c88b5077d6b98cbf5067b7b5f0dc7",
+    "content-hash": "a5e5e4d42deac82e2e3d074dbb70f023",
     "packages": [
         {
             "name": "actb/blade-github-octicons",
@@ -342,16 +342,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.212.5",
+            "version": "3.212.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ed69594b385233bb895342e18008cd811e8225e7"
+                "reference": "7f4c976df8a0fbe8d786e4b479d44e22478ce8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ed69594b385233bb895342e18008cd811e8225e7",
-                "reference": "ed69594b385233bb895342e18008cd811e8225e7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7f4c976df8a0fbe8d786e4b479d44e22478ce8af",
+                "reference": "7f4c976df8a0fbe8d786e4b479d44e22478ce8af",
                 "shasum": ""
             },
             "require": {
@@ -427,22 +427,22 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.212.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.212.7"
             },
-            "time": "2022-03-09T19:19:58+00:00"
+            "time": "2022-03-11T19:14:33+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bacon/BaconQrCode.git",
-                "reference": "0069435e2a01a57193b25790f105a5d3168653c1"
+                "reference": "d70c840f68657ce49094b8d91f9ee0cc07fbf66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/0069435e2a01a57193b25790f105a5d3168653c1",
-                "reference": "0069435e2a01a57193b25790f105a5d3168653c1",
+                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/d70c840f68657ce49094b8d91f9ee0cc07fbf66c",
+                "reference": "d70c840f68657ce49094b8d91f9ee0cc07fbf66c",
                 "shasum": ""
             },
             "require": {
@@ -481,9 +481,9 @@
             "homepage": "https://github.com/Bacon/BaconQrCode",
             "support": {
                 "issues": "https://github.com/Bacon/BaconQrCode/issues",
-                "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.6"
+                "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.7"
             },
-            "time": "2022-02-04T20:16:05+00:00"
+            "time": "2022-03-14T02:02:36+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -758,38 +758,16 @@
         },
         {
             "name": "ccxt/ccxt",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "version": "1.75.16",
+            "version": "1.76.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "406bdd325483e8b6ec485a2207fca712c0672711"
+                "reference": "ce4557c21e9c465bd0db554076dcf79d0a48a7aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/406bdd325483e8b6ec485a2207fca712c0672711",
-                "reference": "406bdd325483e8b6ec485a2207fca712c0672711",
-=======
-            "version": "1.75.38",
-=======
-            "version": "1.75.56",
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "be3cefdc64377076e0a7f3c3efd31ff4cd4ba6ee"
-            },
-            "dist": {
-                "type": "zip",
-<<<<<<< HEAD
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/4f9b91dcf89f0822ad5cc72f09443e32a035b8da",
-                "reference": "4f9b91dcf89f0822ad5cc72f09443e32a035b8da",
->>>>>>> develop
-=======
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/be3cefdc64377076e0a7f3c3efd31ff4cd4ba6ee",
-                "reference": "be3cefdc64377076e0a7f3c3efd31ff4cd4ba6ee",
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/ce4557c21e9c465bd0db554076dcf79d0a48a7aa",
+                "reference": "ce4557c21e9c465bd0db554076dcf79d0a48a7aa",
                 "shasum": ""
             },
             "require": {
@@ -808,6 +786,7 @@
                 "clue/buzz-react": "Required for asynchronous API calls to exchanges with PHP",
                 "clue/http-proxy-react": "Required for using a proxy when doing asynchronous API calls to exchanges with PHP",
                 "react/event-loop": "Required for asynchronous API calls to exchanges with PHP",
+                "react/http": "Required for asynchronous API calls to exchanges with PHP",
                 "recoil/react": "Required for asynchronous API calls to exchanges with PHP",
                 "recoil/recoil": "Required for asynchronous API calls to exchanges with PHP"
             },
@@ -1052,15 +1031,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "source": "https://github.com/ccxt/ccxt/tree/1.75.16"
-=======
-                "source": "https://github.com/ccxt/ccxt/tree/1.75.38"
->>>>>>> develop
-=======
-                "source": "https://github.com/ccxt/ccxt/tree/1.75.56"
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
+                "source": "https://github.com/ccxt/ccxt/tree/1.76.12"
             },
             "funding": [
                 {
@@ -1068,15 +1039,7 @@
                     "type": "open_collective"
                 }
             ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "time": "2022-03-08T18:24:15+00:00"
-=======
-            "time": "2022-03-09T08:43:20+00:00"
->>>>>>> develop
-=======
-            "time": "2022-03-10T05:41:47+00:00"
->>>>>>> e8705335207198cbee754b0c7d58f61d73798d4e
+            "time": "2022-03-14T08:38:56+00:00"
         },
         {
             "name": "codeat3/blade-carbon-icons",
@@ -3090,29 +3053,16 @@
         },
         {
             "name": "filament/forms",
-<<<<<<< HEAD
-            "version": "v2.10.23",
+            "version": "v2.10.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "6736a86cdd37a8bd907e01d9360b5fd1964c9614"
+                "reference": "208b747075f83865f4628c41f6297e5fbe8d12fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/6736a86cdd37a8bd907e01d9360b5fd1964c9614",
-                "reference": "6736a86cdd37a8bd907e01d9360b5fd1964c9614",
-=======
-            "version": "v2.10.24",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "c9f96c2df77826dacbaf377b47e938e661816b0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/c9f96c2df77826dacbaf377b47e938e661816b0b",
-                "reference": "c9f96c2df77826dacbaf377b47e938e661816b0b",
->>>>>>> develop
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/208b747075f83865f4628c41f6297e5fbe8d12fc",
+                "reference": "208b747075f83865f4628c41f6297e5fbe8d12fc",
                 "shasum": ""
             },
             "require": {
@@ -3155,37 +3105,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-<<<<<<< HEAD
-            "time": "2022-03-07T09:53:36+00:00"
+            "time": "2022-03-13T13:04:09+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.10.23",
+            "version": "v2.10.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "873edadcc1bd6e48722fc666d769cc708067d88e"
+                "reference": "cce7a83277e33f149fffcbc02554a949a19d2a65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/873edadcc1bd6e48722fc666d769cc708067d88e",
-                "reference": "873edadcc1bd6e48722fc666d769cc708067d88e",
-=======
-            "time": "2022-03-09T09:18:23+00:00"
-        },
-        {
-            "name": "filament/tables",
-            "version": "v2.10.24",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "da575397bef545c8cce3e200278237eeaacecb9d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/da575397bef545c8cce3e200278237eeaacecb9d",
-                "reference": "da575397bef545c8cce3e200278237eeaacecb9d",
->>>>>>> develop
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/cce7a83277e33f149fffcbc02554a949a19d2a65",
+                "reference": "cce7a83277e33f149fffcbc02554a949a19d2a65",
                 "shasum": ""
             },
             "require": {
@@ -3225,11 +3158,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-<<<<<<< HEAD
-            "time": "2022-03-07T09:53:32+00:00"
-=======
-            "time": "2022-03-09T09:18:21+00:00"
->>>>>>> develop
+            "time": "2022-03-11T21:17:26+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -4468,11 +4397,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-<<<<<<< HEAD
             "version": "dev-feature/cryptoapis-test",
-=======
-            "version": "dev-develop",
->>>>>>> develop
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -5380,16 +5305,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.3.5",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "fd4380d6fc37626e2f799f29d91195040137eba9"
+                "reference": "d7fd7450628561ba697b7097d86db72662f54aef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd4380d6fc37626e2f799f29d91195040137eba9",
-                "reference": "fd4380d6fc37626e2f799f29d91195040137eba9",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/d7fd7450628561ba697b7097d86db72662f54aef",
+                "reference": "d7fd7450628561ba697b7097d86db72662f54aef",
                 "shasum": ""
             },
             "require": {
@@ -5411,7 +5336,7 @@
                 "phpstan/phpstan": "^0.12.91",
                 "phpunit/phpunit": "^8.5",
                 "predis/predis": "^1.1",
-                "rollbar/rollbar": "^1.3",
+                "rollbar/rollbar": "^1.3 || ^2 || ^3",
                 "ruflin/elastica": ">=0.90@dev",
                 "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
@@ -5463,7 +5388,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.3.5"
+                "source": "https://github.com/Seldaek/monolog/tree/2.4.0"
             },
             "funding": [
                 {
@@ -5475,7 +5400,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-01T21:08:31+00:00"
+            "time": "2022-03-14T12:44:37+00:00"
         },
         {
             "name": "mpociot/vat-calculator",
@@ -8074,16 +7999,16 @@
         },
         {
             "name": "spatie/temporary-directory",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/temporary-directory.git",
-                "reference": "06fe0f10d068fdf145c9b2235030e568c913bb61"
+                "reference": "79f138f2b81adae583d04d3727a4538dd394023f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/06fe0f10d068fdf145c9b2235030e568c913bb61",
-                "reference": "06fe0f10d068fdf145c9b2235030e568c913bb61",
+                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/79f138f2b81adae583d04d3727a4538dd394023f",
+                "reference": "79f138f2b81adae583d04d3727a4538dd394023f",
                 "shasum": ""
             },
             "require": {
@@ -8119,7 +8044,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/temporary-directory/issues",
-                "source": "https://github.com/spatie/temporary-directory/tree/2.0.0"
+                "source": "https://github.com/spatie/temporary-directory/tree/2.1.0"
             },
             "funding": [
                 {
@@ -8131,7 +8056,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-30T19:46:13+00:00"
+            "time": "2022-03-11T08:16:01+00:00"
         },
         {
             "name": "stripe/stripe-php",
@@ -13650,9 +13575,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-<<<<<<< HEAD
     "plugin-api-version": "2.2.0"
-=======
-    "plugin-api-version": "2.0.0"
->>>>>>> develop
 }
