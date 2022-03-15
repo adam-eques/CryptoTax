@@ -26,5 +26,21 @@ interface ApiDriverInterface
      *
      * @return $this
      */
-    public function updateTransactions(): self;
+    public function update(): self;
+
+
+    /**
+     * Get the api interface of the driver
+     *
+     * @return api
+     */
+    public function getApi();
+
+
+    /**
+     * Check if the driver is connected
+     *
+     * @return bool
+     */
+    public function isConnected() : bool;
 }

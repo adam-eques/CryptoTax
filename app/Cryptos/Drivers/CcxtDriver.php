@@ -9,12 +9,19 @@ use App\Models\CryptoCurrency;
 use App\Models\CryptoTransaction;
 use App\Blockchains\CCXTAPI;
 use Carbon\Carbon;
+use App\Helpers\TestHelper;
+
 
 class CcxtDriver implements ApiDriverInterface
 {
     protected CryptoAccount $account;
     protected $api;
+    protected $connected = false;
 
+    /**
+     * @param CryptoAccount $account
+     * @return ApiDriverInterface
+     */
     public static function make(CryptoAccount $account): self
     {
         $obj = new static();
@@ -24,6 +31,9 @@ class CcxtDriver implements ApiDriverInterface
         return $obj;
     }
 
+    /**
+     * @return array
+     */
     public function getRequiredCredentials(): array
     {
         return ["apiKey", "secret"];
@@ -32,179 +42,156 @@ class CcxtDriver implements ApiDriverInterface
     /**
      * @return $this
      */
-    protected function connect(): self {
-
+    public function update() : self {
+        $this->account->update(['fetched_at' => now()]);
+        $balance = $this->fetchBalances();
+        $transactions = $this->fetchTransactions($this->account->fetched_at);
+        $this->saveBalances($balance);
+        $this->saveTransactions($transactions);
+        return $this;
     }
-
-
-    // /**
-    //  * @return bool
-    //  */
-    // public function checkRequiredCredentials(): bool
-    // {
-    //     return $this->api->check_required_credentials();
-    // }
 
     /**
      * @return $this
      */
-    public function updateTransactions(): self
-    {
-        // Get transaction data
-        $since = $this->account->fetched_at ?: Carbon::create(2010, 1, 1);
-        $data = $this->fetchTransactions(null, $since);
-
-        // Balances
-        $balances = $this->fetchBalances();
-
-        // Save it
-        $this->saveTransactions($data, now(), $balances["total"]);
-
+    protected function connect(): self {
+        $this->api = new CCXTAPI();
+        $exchange_id = $this->account->cryptoSource->name;
+        $credentials = $this->getCredentials();
+        $apiKey = $credentials["apiKey"];
+        $secret = $credentials["secret"];
+        $this->connected = $this->api->loadExchange($exchange_id, $apiKey, $secret);
         return $this;
     }
 
+    /**
+     * @return App\Blockchains\CCXTAPI
+     */
+    public function getApi()
+    {
+        return $this->api;
+    }
 
-    // /**
-    //  * @return \ccxt\Exchange
-    //  */
-    // public function getApi()
-    // {
-    //     return $this->api;
-    // }
+    /**
+     * @return bool
+     */
+    public function isConnected() : bool {
+        return $this->connected;
+    }
 
+    /**
+     * @return array
+     */
+    protected function getCredentials() : array
+    {
+        return $this->account->credentials ?: [];
+    }
 
-    // /**
-    //  * @param array $data
-    //  * @param \Carbon\Carbon $timestamp
-    //  * @param array|null $balances
-    //  * @return $this
-    //  */
-    // protected function saveTransactions(array $data, Carbon $timestamp, ?array $balances = null): self
-    // {
-    //     $account = $this->account;
-    //     $data = collect($data)->map(function ($item) {
-    //         return $this->mapFetchedTransactions($item);
-    //     })->toArray();
+    /**
+     * @return array
+     */
+    public function fetchBalances() : array {
+        $balances = $this->api->getBalance();
+        return $balances;
+    }
 
-    //     \DB::transaction(function () use ($account, $data, $balances, $timestamp) {
-    //         // Insert data
-    //         if ($data) {
-    //             CryptoTransaction::insert($data);
-    //         }
+    /**
+     * @param \Carbon\Carbon $from
+     * @return array
+     */
+    public function fetchTransactions(Carbon $from = null): array {
+        $transactions = $this->api->getTrades(NULL, $from->timestamp, NULL);
+        return $transactions;
+    }
 
-    //         // Update fetched_at
-    //         $account->fetched_at = $timestamp;
-    //         $account->fetching_scheduled_at = null;
-    //         $account->save();
+    /**
+     * @param array $balance
+     * @return bool
+     */
+    public function saveBalances($balanceData) : bool {
+        $flag = false;
+        $balances = $balanceData['total'];
+        $unsupported = [];
+        foreach($balances as $currency => $value) {
+            $cc = CryptoCurrency::findByShortName($currency);
+            if ($cc == NULL) {
+                var_dump($currency);
+                array_push($unsupported, [
+                    'currency' => $currency,
+                    'value' => $value
+                ]);
+            } else {
+                $currencyId = $cc->id;
+                $row = CryptoAsset::findByCurrency_Account($this->account->id, $currencyId);
+                if ($row) {
+                    $row->update([
+                        'balance' => $value
+                    ]);
+                } else {
+                    $row = new CryptoAsset();
+                    $row->balance = $value;
+                    $row->crypto_account_id = $this->account->id;
+                    $row->crypto_currency_id = $currencyId;
+                    $row->save();
+                }
+                $flag = true;
+            }
+        }
+        TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
+        return $flag;
+    }
 
-    //         // Save balances
-    //         $this->saveBalances($balances);
-    //     });
+    /**
+     * @param array $transactions
+     * @return bool
+     */
+    public function saveTransactions($transactions) : bool {
+        $unsupported = [];
+        foreach($transactions as $transaction) {
+            $currencyId = -1;
+            $costCurrencyId = -1;
+            $priceCurrencyId = -1;
+            $feeCurrencyId = -1;
+            $tradeType = 'N';
+            $executed_at = Carbon::createFromTimestampMsUTC($transaction['timestamp']);
+            // $executed_at = new \DateTime();
+            // $executed_at->setTimestamp($transaction['timestamp']);
 
-    //     return $this;
-    // }
+            if ($transaction['side'] == 'sell') $tradeType = 'S';
+            elseif ($transaction['side'] == 'buy') $tradeType = 'B';
 
+            [$fromCurrency, $toCurrency] = explode('/', $transaction['symbol']);
+            $fromCC = CryptoCurrency::findByShortName($fromCurrency);
+            $toCC = CryptoCurrency::findByShortName($toCurrency);
+            $feeCC = CryptoCurrency::findByShortName($transaction['fee']['currency']);
+            if ($fromCC == NULL || $toCC == NULL || $tradeType == 'N') {
+                array_push($transaction);
+            } else {
+                $currencyId = $fromCC->id;
+                $costCurrencyId = $currencyId;
+                $priceCurrencyId = $toCC->id;
+                $feeCurrencyId = $feeCC->id;
 
-    // protected function saveBalances(?array $balances = null)
-    // {
-    //     if (! is_null($balances)) {
-    //         $account = $this->account;
-
-    //         $account->cryptoAssets()->delete();
-    //         foreach ($balances as $key => $val) {
-    //             if ($val && $val > 0) {
-    //                 $currency = CryptoCurrency::findByShortName($key);
-    //                 if ($currency) {
-    //                     $currency = $currency->id;
-    //                 } else {
-    //                     $currency = 0;
-    //                     logger("Missing crypto currency ".$key);
-    //                 }
-
-    //                 CryptoAsset::make([
-    //                     "crypto_account_id" => $account->id,
-    //                     "crypto_currency_id" => $currency,
-    //                     "balance" => $val,
-    //                 ])->save();
-    //             }
-    //         }
-    //     }
-    // }
-
-
-    // /**
-    //  * @param array $data
-    //  * @return array
-    //  */
-    // protected function mapFetchedTransactions(array $data)
-    // {
-    //     // Trade type
-    //     if ($data["side"] == "sell") {
-    //         $trade_type = "S";
-    //     } else {
-    //         if ($data["side"] == "buy") {
-    //             $trade_type = "B";
-    //         } else {
-    //             $trade_type = "";
-    //         }
-    //     }
-
-    //     // Currencies
-    //     $currencies = explode("/", $data["symbol"]);
-    //     $assetCurrency = CryptoCurrency::findByShortName($currencies[0]);
-    //     $priceCurrency = CryptoCurrency::findByShortName($currencies[1]);
-    //     $feeCurrency = CryptoCurrency::findByShortName(\Arr::get($data, "fee.currency"));
-
-    //     // Return data
-    //     return [
-    //         "crypto_account_id" => $this->account->id,
-    //         "currency_id" => optional($assetCurrency)->id,
-    //         "price_currency_id" => optional($priceCurrency)->id,
-    //         "fee_currency_id" => optional($feeCurrency)->id,
-    //         "trade_type" => $trade_type,
-    //         "from_addr" => null,
-    //         "to_addr" => null,
-    //         "amount" => $data["amount"],
-    //         "price" => $data["price"],
-    //         "fee" => \Arr::get($data, "fee.cost"),
-    //         "raw_data" => json_encode($data),
-    //         "executed_at" => substr($data["datetime"], 0, -1),
-    //     ];
-    // }
-
-
-    // /**
-    //  * See https://docs.ccxt.com/en/latest/manual.html#balance-structure
-    //  *
-    //  * @return mixed
-    //  */
-    // public function fetchBalances()
-    // {
-    //     return $this->api->fetchBalance([
-    //         "type" => "main",
-    //     ]);
-    // }
-
-
-    // /**
-    //  * @return array
-    //  */
-    // protected function getCredentials(): array
-    // {
-    //     return $this->account->credentials ?: [];
-    // }
-
-
-    // /**
-    //  * @param string|null $symbol
-    //  * @param Carbon|null $since
-    //  * @return array
-    //  */
-    // public function fetchTransactions(?string $symbol = null, ?Carbon $since = null): array
-    // {
-    //     return $this->api->fetch_my_trades(
-    //         $symbol,
-    //         $since ? $since->timestamp * 1000 : null
-    //     );
-    // }
+                // var_dump($currencyId);
+                $trans = new CryptoTransaction();
+                $trans->crypto_account_id = $this->account->id;
+                $trans->currency_id = $currencyId;
+                $trans->cost_currency_id = $costCurrencyId;
+                $trans->price_currency_id = $priceCurrencyId;
+                $trans->fee_currency_id = $feeCurrencyId;
+                $trans->trade_type = $tradeType;
+                $trans->from_addr = NULL;
+                $trans->to_addr = NULL;
+                $trans->amount = $transaction['amount'];
+                $trans->price = $transaction['price'];
+                $trans->cost = $transaction['cost'];
+                $trans->fee = $transaction['fee']['cost'];
+                $trans->raw_data = json_encode($transaction);
+                $trans->executed_at = $executed_at;
+                $trans->save();
+            }
+        }
+        TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
+        return true;
+    }
 }

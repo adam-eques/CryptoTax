@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             CryptoAccountSeeder::class,
 
             // Crypapis supported tokens table
-            CryptoapisSupportedTokensSeeder::class,
+            // CryptoapisSupportedTokensSeeder::class,
         ]);
     }
 }
