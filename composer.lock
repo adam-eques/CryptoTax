@@ -342,16 +342,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.212.7",
+            "version": "3.212.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7f4c976df8a0fbe8d786e4b479d44e22478ce8af"
+                "reference": "fcb57b1f840938813e83f521e169914a076b3be9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7f4c976df8a0fbe8d786e4b479d44e22478ce8af",
-                "reference": "7f4c976df8a0fbe8d786e4b479d44e22478ce8af",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fcb57b1f840938813e83f521e169914a076b3be9",
+                "reference": "fcb57b1f840938813e83f521e169914a076b3be9",
                 "shasum": ""
             },
             "require": {
@@ -427,9 +427,10 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.212.7"
+
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.212.6"
             },
-            "time": "2022-03-11T19:14:33+00:00"
+            "time": "2022-03-10T19:14:38+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -758,16 +759,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.76.12",
+            "version": "1.75.82",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "ce4557c21e9c465bd0db554076dcf79d0a48a7aa"
+                "reference": "40e2982cb84650ac24d9a4ef8aa4103df1df58f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/ce4557c21e9c465bd0db554076dcf79d0a48a7aa",
-                "reference": "ce4557c21e9c465bd0db554076dcf79d0a48a7aa",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/40e2982cb84650ac24d9a4ef8aa4103df1df58f4",
+                "reference": "40e2982cb84650ac24d9a4ef8aa4103df1df58f4",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1032,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.76.12"
+                "source": "https://github.com/ccxt/ccxt/tree/1.75.82"
             },
             "funding": [
                 {
@@ -1039,7 +1040,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-03-14T08:38:56+00:00"
+            "time": "2022-03-11T15:35:12+00:00"
         },
         {
             "name": "codeat3/blade-carbon-icons",
@@ -3053,16 +3054,16 @@
         },
         {
             "name": "filament/forms",
-            "version": "v2.10.27",
+            "version": "v2.10.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "208b747075f83865f4628c41f6297e5fbe8d12fc"
+                "reference": "ac2717a8cc1d51df0e403b42bf068a1f2130c7c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/208b747075f83865f4628c41f6297e5fbe8d12fc",
-                "reference": "208b747075f83865f4628c41f6297e5fbe8d12fc",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/ac2717a8cc1d51df0e403b42bf068a1f2130c7c9",
+                "reference": "ac2717a8cc1d51df0e403b42bf068a1f2130c7c9",
                 "shasum": ""
             },
             "require": {
@@ -3105,20 +3106,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-03-13T13:04:09+00:00"
+            "time": "2022-03-11T11:07:24+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.10.27",
+            "version": "v2.10.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "cce7a83277e33f149fffcbc02554a949a19d2a65"
+                "reference": "da575397bef545c8cce3e200278237eeaacecb9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/cce7a83277e33f149fffcbc02554a949a19d2a65",
-                "reference": "cce7a83277e33f149fffcbc02554a949a19d2a65",
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/da575397bef545c8cce3e200278237eeaacecb9d",
+                "reference": "da575397bef545c8cce3e200278237eeaacecb9d",
                 "shasum": ""
             },
             "require": {
@@ -3158,7 +3159,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-03-11T21:17:26+00:00"
+            "time": "2022-03-09T09:18:21+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -4397,7 +4398,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-feature/cryptoapis-test",
+            "version": "dev-feature/real-data-integration",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -13575,5 +13576,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }

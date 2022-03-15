@@ -4,19 +4,19 @@
     <div class="col-span-1">
         {{-- Desktop --}}
         <div class="hidden py-8 space-y-5 xl:block">
-            @foreach ($buttons as $button)
+            @foreach ($categories as $category)
                 <button 
                     class="flex items-center justify-between w-full px-3 py-4 rounded-lg hover:bg-primary hover:text-white border-1 2xl:px-5" 
-                    wire:click="get_selected_item({{ $button['id'] }})"
-                    wire:key='{{ $button["id"] }}'
-                    x-on:click="category = {{$button['id']}}"
-                    x-bind:class="category == {{$button['id']}}?'bg-primary text-white':'bg-gray-100'"
+                    wire:key='{{ $category["id"] }}'
+                    wire:click="get_selected_category({{ $category["id"] }})"
+                    x-on:click="category = {{$category['id']}}"
+                    x-bind:class="category == {{$category['id']}}?'bg-primary text-white':'bg-gray-100'"
                 >
                     <div class="inline-flex items-center">
-                        <x-icon name="{{ $button['icon'] }}" class="w-8 h-8 mr-2"/>
-                        <span class="text-xl font-semibold tracking-tight truncate">{{ __( $button['name']) }}</span>
+                        <x-icon name="{{ $category['icon'] }}" class="w-8 h-8 mr-2"/>
+                        <span class="text-xl font-semibold tracking-tight truncate">{{ __( $category['name']) }}</span>
                     </div>
-                    <x-icon name="heroicon-o-arrow-narrow-right" class="hidden w-5 text-white 2xl:block" x-cloak x-show="category == {{$button['id']}}"/>
+                    <x-icon name="heroicon-o-arrow-narrow-right" class="hidden w-5 text-white 2xl:block" x-cloak x-show="category == {{$category['id']}}"/>
                 </button>
             @endforeach
         </div>
@@ -25,8 +25,8 @@
         <div class="block py-2 xl:hidden">
             <select name="category" class="w-full px-3 py-4 bg-white border border-gray-200 rounded outline-none" wire:model.lazy="selected">
                 <option selected>All</option>
-                @foreach ($buttons as $button)                    
-                    <option value="{{ $button['id'] }}">{{ __($button['name']) }}</option>
+                @foreach ($categories as $category)                    
+                    <option value="{{ $category['id'] }}">{{ __($category['name']) }}</option>
                 @endforeach
             </select>
         </div>
@@ -53,37 +53,14 @@
             {{-- Left panel --}}
             <div class="h-full overflow-auto border rounded-md">
                 <div class="h-110">
-                    @if (!$selected)                            
-                        @foreach ($exchanges_array as $account)
-                            <x-new-account-row :category="1" :selected="$newAccountId == $account['id']" :name="$account['name']" 
-                                wire:click="get_new_exchange_id({{ $account['id'] }})"
-                                x-on:click="isModalOpen=true"
-                            />
-                        @endforeach
-                        @foreach ($blockchains as $account)
-                            <x-new-account-row :category="3" :selected="$newBlockchainId == $account['id']" :name="$account['name']"
-                                wire:click="get_new_blockchain_id({{ $account['id'] }})"
-                                x-on:click="isModalOpen=true"
-                            />
-                        @endforeach
-                    @else
-                        @if ($selected == 1)                                
-                            @foreach ($exchanges_array as $account)
-                                <x-new-account-row :category="1" :selected="$newAccountId == $account['id']" :name="$account['name']"
-                                    wire:click="get_new_exchange_id({{ $account['id'] }})"
-                                    x-on:click="isModalOpen=true"
-                                />
-                            @endforeach
-                        @endif
-                        @if ($selected == 3)                                
-                            @foreach ($blockchains as $account)
-                                <x-new-account-row :category="3" :selected="$newBlockchainId == $account['id']" :name="$account['name']"
-                                    wire:click="get_new_blockchain_id({{ $account['id'] }})"
-                                    x-on:click="isModalOpen=true"
-                                />
-                            @endforeach
-                        @endif
-                    @endif
+                    @foreach ($crypto_resources as $resource)                        
+                        <x-new-account-row 
+                            category="{{$resource->type}}" 
+                            :selected="$selected_account_id === $resource->id" 
+                            wire:click="add({{ $resource->id }})"
+                            :name="$resource->name" 
+                        />
+                    @endforeach
                 </div>
             </div>
         
@@ -91,10 +68,10 @@
             {{-- Desktop --}}
             <div class="hidden border border-dashed rounded-md lg:block">
                 <div class="w-full h-full p-5">
-                    @if ($exchange_account)
-                        <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
-                        <p class="mt-3 text-xl font-bold text-center">{{ __($exchange_account->getName() . ' API integration')}}</p>
-                        <form wire:submit.prevent="save_exchange" autocomplete="off">
+                    @if($selected_account)
+                        <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
+                        <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account_id . ' API integration')}}</p>
+                        <form wire:submit.prevent="save" autocomplete="off">
                             <div class="p-4">
                                 {{ $this->form }}
                                 <div class="mt-4 text-center">
@@ -102,19 +79,6 @@
                                 </div>
                             </div>
                         </form>
-                    @elseif($newBlockchainId)
-                        <p class="mt-3 text-xl font-bold text-center"><span x-text="selected_item" class="uppercase"></span> {{ __(' API integration') }} </p> 
-                        <div class="mt-10">
-                            <div>
-                                <p class="text-gray-600">Address<span class="text-danger">*</span></p>
-                                <div class="mt-1">
-                                    <input class="w-full px-2 py-2 border rounded" name="address" wire:model.defer="newBlockchainAddress" placeholder="Address" />
-                                </div>
-                                <div class="flex justify-center mt-3">
-                                    <x-button wire:click="add_blockchain">Add</x-button>
-                                </div>
-                            </div>
-                        </div>
                     @else
                         <div class="flex items-center justify-center w-full h-full text-center">
                             <div>
@@ -147,10 +111,10 @@
                                 <div class="flex justify-end">
                                     <button aria-label="Close" x-on:click="isModalOpen=false" class="flex justify-end">✖</button>
                                 </div>
-                                @if ($exchange_account)
-                                    <img src="{{ asset('assets/img/exchange_icon/' . $exchange_account->getName() . '.svg') }}"  class="flex w-auto h-10 m-auto"/> 
-                                    <p class="mt-3 text-xl font-bold text-center">{{ __($exchange_account->getName() . ' API integration')}}</p>
-                                    <form wire:submit.prevent="save_exchange" autocomplete="off">
+                                @if($selected_account)
+                                    <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
+                                    <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account_id . ' API integration')}}</p>
+                                    <form wire:submit.prevent="save" autocomplete="off">
                                         <div class="p-4">
                                             {{ $this->form }}
                                             <div class="mt-4 text-center">
@@ -158,22 +122,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                @elseif($newBlockchainId)
-                                    <p class="mt-3 text-xl font-bold text-center"><span x-text="selected_item" class="uppercase"></span> {{ __(' API integration') }} </p> 
-                                    <div class="flex justify-center mt-5">
-                                        <div>
-                                            <p class="text-gray-600">Address<span class="text-danger">*</span></p>
-                                            <div class="mt-1 space-y-5">
-                                                <input 
-                                                    class="w-full px-2 py-2 border rounded" 
-                                                    name="address" 
-                                                    wire:model.defer="newBlockchainAddress" 
-                                                    placeholder="Address" 
-                                                />
-                                                <x-button wire:click="add_blockchain" class="justify-center w-full">Add</x-button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 @else
                                     <div class="flex items-center justify-center w-full h-full text-center">
                                         <div>
@@ -191,9 +139,9 @@
                 </div>
             </div>
 
-            <div wire:loading.block class="lg:block hidden">
+            <div wire:loading.block class="hidden lg:block">
                 <x-spiner/>
-            </div>            
+            </div> 
         </div>    
     </div>
 </div>
