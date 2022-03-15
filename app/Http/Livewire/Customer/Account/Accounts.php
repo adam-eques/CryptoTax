@@ -167,12 +167,6 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         
     }
 
-    public function get_transaction_num($assets_name): int
-    {
-        $transactions_num = auth()->user()->cryptoTransactions()->count();
-        return $transactions_num;
-    }
-
     /**
      * Rendering
      */
