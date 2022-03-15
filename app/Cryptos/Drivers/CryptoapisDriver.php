@@ -103,7 +103,7 @@ class CryptoapisDriver implements ApiDriverInterface
         }
 
         do {
-            $response = $this->api->get_transactionsByTime($credentials['address'], $limit, $offset, 'ethereum', $network, $fromTimestamp, $toTimestamp, $context);
+            $response = $this->api->get_transactionsByTime($credentials['address'], $limit, $offset, $blockchain, $network, $fromTimestamp, $toTimestamp, $context);
             foreach ($response->data->items as $transaction) {
                 $transactions[] = $transaction;
             }
