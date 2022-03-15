@@ -31,7 +31,7 @@ class CryptoSourceSeeder extends Seeder
             ],
             [
                 'id' => CryptoSource::SOURCE_EXCHANGE_BINANCE,
-                'name' => "HitBTC",
+                'name' => "Binance",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
                 'driver' => HitBTCDriver::class,
