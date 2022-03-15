@@ -4,13 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCryptoExchangeTransactionsTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('crypto_exchange_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(\App\Models\CryptoExchangeAccount::class);
             $table->string("external_id", 100);
             $table->string("order", 100)->nullable(true);
             $table->string("symbol", 50);
@@ -33,4 +31,4 @@ class CreateCryptoExchangeTransactionsTable extends Migration
     {
         Schema::dropIfExists('exchange_transactions');
     }
-}
+};

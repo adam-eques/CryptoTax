@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Blockchain;
 
-use App\Jobs\BlockchainAccountFetchJob;
+use App\Jobs\CryptoAccountFetchJob;
 use App\Models\BlockchainAccount;
 use App\Models\Blockchain;
+use App\Models\CryptoAccount;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
@@ -12,7 +13,7 @@ class BlockchainForm extends Component
 {
     use Actions;
 
-    public ?BlockchainAccount $blockchainAccount = null;
+    public ?CryptoAccount $blockchainAccount = null;
     public ?string $newBlockchainAddress = null;
     public ?int $newBlockchainId= null;
 
@@ -26,7 +27,7 @@ class BlockchainForm extends Component
     }
 
 
-    public function delete(BlockchainAccount $blockchainAccount)
+    public function delete(CryptoAccount $blockchainAccount)
     {
         if ($this->blockchainAccount && $this->blockchainAccount->id == $blockchainAccount->id) {
             $this->blockchainAccount = null;
@@ -44,12 +45,12 @@ class BlockchainForm extends Component
     }
 
 
-    public function fetch(BlockchainAccount $blockchainAccount)
+    public function fetch(CryptoAccount $blockchainAccount)
     {
         try {
             $blockchainAccount->fetching_scheduled_at = now();
             $blockchainAccount->save();
-            BlockchainAccountFetchJob::dispatch($blockchainAccount);
+            CryptoAccountFetchJob::dispatch($blockchainAccount);
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $blockchainAccount->getName()]),
                 "Please check blockchain transactions in a couple of minutes"

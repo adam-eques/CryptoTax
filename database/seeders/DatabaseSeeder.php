@@ -32,13 +32,10 @@ class DatabaseSeeder extends Seeder
 
             // Crypto tables
             CryptoSourceSeeder::class,
+            CryptoAccountSeeder::class,
 
-            // Old tables (do we need them?)
-            // Crypto Exchanges
-            CryptoExchangeSeeder::class,
-            CryptoExchangeAccountSeeder::class,
-            // Blockchains
-            BlockchainSeeder::class
+            // Crypapis supported tokens table
+            CryptoapisSupportedTokensSeeder::class,
         ]);
     }
 }

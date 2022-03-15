@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\CaravelAdmin\Resources\AffiliateUser\AffiliateUserResource;
 use App\CaravelAdmin\Resources\BackendUser\BackendUserResource;
-use App\CaravelAdmin\Resources\CryptoExchange\CryptoExchangeResource;
+use App\CaravelAdmin\Resources\CryptoSource\CryptoSourceResource;
 use App\CaravelAdmin\Resources\Customer\CustomerResource;
 use App\CaravelAdmin\Resources\TaxAdvisor\TaxAdvisorResource;
 use App\CaravelAdmin\Resources\UserAccountType\UserAccountTypeResource;
@@ -187,7 +187,7 @@ class NavigationService
                 ["label" => "Finance", "icon" => "fas-coins", "route" => "admin.todo"],
             ]],
             ["label" => __('API\'s'), 'children' => [
-                CryptoExchangeResource::make()->sidebar(),
+                CryptoSourceResource::make()->sidebar(),
             ]],
             ["label" => __('Settings'), 'children' => [
                 ["label" => "Affiliate Settings", "icon" => "fas-ad", "route" => "admin.settings.affiliate"],

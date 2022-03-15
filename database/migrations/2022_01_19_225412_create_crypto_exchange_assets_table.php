@@ -9,8 +9,6 @@ return new class extends Migration{
     {
         Schema::create('blockchain_assets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(\App\Models\CryptoCurrency::class)->index();
-            $table->foreignIdFor(\App\Models\BlockchainAccount::class)->index();
             $table->unsignedDecimal("balance", 30, 18)->default(0);
             $table->string("contract_address", 255)->nullable();
             $table->string("symbol", 25)->nullable();

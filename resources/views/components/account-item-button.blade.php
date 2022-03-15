@@ -9,7 +9,7 @@
     <div class="grid items-center w-2/3 grid-cols-2 gap-3">
         <img src="{{ asset('assets/img/exchange_icon/' . $label . '.svg' ) }}" class="h-10 col-span-1 pl-4 w-36"/>
         <div class="col-span-1 space-y-1 text-left">
-            <h3 class="font-semibold text-gray-700 xl:text-lg">{{ $label }}</h3>
+            <h3 class="font-semibold text-gray-700 xl:text-lg truncate">{{ $label }}</h3>
             {{ $slot }}
         </div>
     </div>
