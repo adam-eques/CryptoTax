@@ -15,6 +15,10 @@ class CryptoapisDriver implements ApiDriverInterface
     protected CryptoAccount $account;
     protected $api;
 
+    /**
+     * @param CryptoAccount $account
+     * @return ApiDriverInterface
+     */
     public static function make(CryptoAccount $account): ApiDriverInterface
     {
         $obj = new static();
@@ -24,7 +28,9 @@ class CryptoapisDriver implements ApiDriverInterface
         return $obj;
     }
 
-
+    /**
+     * @return array
+     */
     public function getRequiredCredentials(): array
     {
         return ["address"];
@@ -139,7 +145,7 @@ class CryptoapisDriver implements ApiDriverInterface
         return $cryptoAssetId;
     }
 
-    public function saveTransactions($transactions, $cryptoAssetId) {
+    public function saveTransactions($transactions) {
         foreach($transactions as $transaction) {
             $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
             $costCurrencyId = $currencyId;
@@ -157,7 +163,7 @@ class CryptoapisDriver implements ApiDriverInterface
             }
             // var_dump($currencyId);
             $trans = new CryptoTransaction();
-            $trans->crypto_account_id = $cryptoAssetId;
+            $trans->crypto_account_id = $this->account->id;
             $trans->currency_id = $currencyId;
             $trans->cost_currency_id = $costCurrencyId;
             $trans->price_currency_id = NULL;
@@ -179,6 +185,6 @@ class CryptoapisDriver implements ApiDriverInterface
         $balances = $this->fetchBalances();
         $transactions = $this->fetchTransactions($this->account->fetched_at, now());
         $assetId = $this->saveBalances($balances);
-        $this->saveTransactions($transactions, $assetId);
+        $this->saveTransactions($transactions);
     }
 }
