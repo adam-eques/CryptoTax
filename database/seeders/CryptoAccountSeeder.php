@@ -57,7 +57,7 @@ class CryptoAccountSeeder extends Seeder
                 'credentials' => '{
                     "apiKey" : "60042ffdad62470006b584d9",
                     "secret" : "6588acc4-057a-43bb-9659-9a9afce88b89",
-                    "passphrase" : "pt83144789"
+                    "password" : "pt83144789"
                 }',
                 'fetched_at' => $fetched_at,
                 'fetching_scheduled_at' => $now,

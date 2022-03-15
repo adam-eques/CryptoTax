@@ -55,13 +55,14 @@ class CCXTAPI {
         // $hitbtc->create_order ('BTC/USD', 'limit', 'buy', 1, 3000, array ('clientOrderId' => '123'));
     }
 
-    public function loadExchange($exchange_id, $apiKey, $secret) {
+    public function loadExchange($exchange_id, $apiKey, $secret, $password) {
         $flag = false;
         try {
             $exchange_class = "\\ccxt\\$exchange_id";
             $this->exchange = new $exchange_class(array(
                 'apiKey' => $apiKey,
                 'secret' => $secret,
+                'password' => $password
             ));
             $this->exchange->load_markets();
             $flag = true;

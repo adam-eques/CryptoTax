@@ -36,7 +36,16 @@ class CcxtDriver implements ApiDriverInterface
      */
     public function getRequiredCredentials(): array
     {
-        return ["apiKey", "secret"];
+        $required = [];
+        switch($this->account->cryptoSource->id) {
+            case CryptoSource::SOURCE_EXCHANGE_KUCOIN :
+                $required = ["apiKey", "secret", "password"];
+                break;
+            default:
+                $required = ["apiKey", "secret"];
+                break;
+        }
+        return $required;
     }
 
     /**
@@ -58,9 +67,20 @@ class CcxtDriver implements ApiDriverInterface
         $this->api = new CCXTAPI();
         $exchange_id = $this->account->cryptoSource->name;
         $credentials = $this->getCredentials();
-        $apiKey = $credentials["apiKey"];
-        $secret = $credentials["secret"];
-        $this->connected = $this->api->loadExchange($exchange_id, $apiKey, $secret);
+        $apiKey = '';
+        $secret = '';
+        $password = '';
+        $required = $this->getRequiredCredentials();
+        if (in_array('apiKey', $required)) {
+            $apiKey = $credentials["apiKey"];
+        }
+        if (in_array('secret', $required)) {
+            $secret = $credentials["secret"];
+        }
+        if (in_array('password', $required)) {
+            $password = $credentials["password"];
+        }
+        $this->connected = $this->api->loadExchange($exchange_id, $apiKey, $secret, $password);
         return $this;
     }
 
