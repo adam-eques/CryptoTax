@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Cryptos\Drivers\CryptoapisDriver;
+use App\Cryptos\Drivers\CcxtDriver;
 use App\Cryptos\Drivers\HitBTCDriver;
 use App\Cryptos\Drivers\KucoinDriver;
 use App\Models\CryptoSource;
@@ -18,7 +19,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "Kucoin",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
-                'driver' => KucoinDriver::class,
+                'driver' => CcxtDriver::class,
                 'active' => true
             ],
             [
@@ -26,7 +27,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "HitBTC",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
-                'driver' => HitBTCDriver::class,
+                'driver' => CcxtDriver::class,
                 'active' => true
             ],
             [
