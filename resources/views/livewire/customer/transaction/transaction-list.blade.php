@@ -39,7 +39,7 @@
                     <select class="w-full h-full col-span-3 bg-white rounded-md">
                         <option value="" disabled selected hidden>{{ __('Account') }}</option>
                         @foreach ($filter['category'] as $item)                                
-                            <option value="{{ $item['value'] }}">{{ __($item['label']) }}</option>
+                            <option value="{{ $item['name'] }}">{{ __($item['name']) }}</option>
                         @endforeach
                     </select>
                     <select class="w-full h-full col-span-4 bg-white rounded-md">
@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="mt-10 overflow-auto rounded-sm">
-        <div class="min-w-[1024px]">            
+        <div class="min-w-[1024px]">    
             @foreach ($transactions as $transaction)
                 <x-transaction-list-item :transaction="$transaction"/>
             @endforeach

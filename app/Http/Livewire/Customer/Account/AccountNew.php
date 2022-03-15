@@ -33,6 +33,11 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
                 ->label(__("Key"))
                 ->required()
                 ->placeholder(__("Your API key")),
+            Forms\Components\TextInput::make('address')
+                ->visible(fn($livewire) => $livewire->isRequiredField('address'))
+                ->label(__("Address"))
+                ->required()
+                ->placeholder(__("Your Address here")),
             Forms\Components\TextInput::make('secret')
                 ->visible(fn($livewire) => $livewire->isRequiredField('secret'))
                 ->label(__("Secret"))
@@ -68,6 +73,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     {
         $this->selected_category = $id;
         $this->selected_account_id = null;
+        $this->selected_account = null;
     }   
     
     /*
@@ -108,10 +114,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $account->save();
         }
         $this->selected_account = $user->cryptoAccounts()->where("crypto_source_id", $this->selected_account_id)->first();
-
-        if( $this->selected_account->cryptoSource->type == 'E' ){
-            $this->form->fill($this->selected_account->credentials);
-        }
+        $this->form->fill($this->selected_account->credentials);
     }
 
     public function save()
@@ -124,18 +127,31 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
     public function fetch(CryptoAccount $account)
     {
-        try {
-            $account->fetching_scheduled_at = now();
-            $account->save();
-            CryptoAccountFetchJob::dispatch($account);
-            $this->notification()->info(
-                __("Fetching :name is now scheduled", ["name" => $account->getName()]),
-                "Please check transactions in a couple of minutes"
-            );
-            return redirect()->route('customer.account');
+        if($this->selected_account->cryptoSource->type == 'E'){
+            try {
+                $account->fetching_scheduled_at = now();
+                $account->save();
+                CryptoAccountFetchJob::dispatch($account);
+                $this->notification()->info(
+                    __("Fetching :name is now scheduled", ["name" => $account->getName()]),
+                    "Please check transactions in a couple of minutes"
+                );
+                return redirect()->route('customer.account');
+            }
+            catch (\Exception $e) {
+                $this->notification()->error(__("An error occured"), $e->getMessage());
+            }
         }
-        catch (\Exception $e) {
-            $this->notification()->error(__("An error occured"), $e->getMessage());
+        elseif($this->selected_account->cryptoSource->type == 'B')
+        {
+            try {
+                //code...
+                $driver = CryptoapisDriver::make($this->selected_account);
+                $driver->update();
+            } catch (\Exception $e) {
+                //throw $th;
+                $this->notification()->error(__("An error occured"), $e->getMessage());
+            }
         }
     }
     

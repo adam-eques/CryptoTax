@@ -56,7 +56,6 @@ class CryptoapisDriver implements ApiDriverInterface
         $credentials = $this->getCredentials();
         $blockchain = '';
         $network = 'mainnet';
-        // var_dump($credentials);
         switch($this->account->cryptoSource->id) {
             case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
                 $blockchain = 'ethereum';
@@ -69,7 +68,6 @@ class CryptoapisDriver implements ApiDriverInterface
             default: break;
         }
         $detail = $this->api->get_details($credentials['address'], $blockchain, $network, 'balances');
-        var_dump($detail['data']);
         $balances = [
             'amount' => $detail['data']['item']['confirmed_balance']['amount'],
             'unit' => $detail['data']['item']['confirmed_balance']['unit']
@@ -138,12 +136,10 @@ class CryptoapisDriver implements ApiDriverInterface
             $asset->save();
             $cryptoAssetId = $asset->id;
         }
-        var_dump($cryptoAssetId);
         return $cryptoAssetId;
     }
 
     public function saveTransactions($transactions, $cryptoAssetId) {
-        // var_dump($transactions);
         foreach($transactions as $transaction) {
             $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
             $feeCurrencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;

@@ -40,13 +40,13 @@
 
     </div>
     <div class="flex items-center justify-between">
-        <x-icon name="coins.{{strtolower($transaction->priceCurrency->short_name)}}" class="w-18 h-18 ml-7"/>
+        {{-- <x-icon name="coins.{{strtolower($transaction->priceCurrency->short_name)}}" class="w-18 h-18 ml-7"/> --}}
         <div class="w-full space-y-1 ml-7">
-            <p class="text-gray-500">{{$transaction->cryptoAccount->getName()}} {{ $transaction->priceCurrency->short_name }} {{ __('Wallet') }}</p>
+            {{-- <p class="text-gray-500">{{$transaction->cryptoAccount->getName()}} {{ $transaction->priceCurrency->short_name }} {{ __('Wallet') }}</p> --}}
             <p class="text-lg font-semibold">
                 @if($transaction->trade_type == 'S') + @elseif($transaction->trade_type == 'B') - @endif
                 {{ $transaction->price *  $transaction->amount}}
-                {{ $transaction->priceCurrency->short_name }}
+                {{-- {{ $transaction->priceCurrency->short_name }} --}}
             </p>
             <p class="text-gray-500">{{ $transaction->fee }} {{ $transaction->feeCurrency->short_name }}</p>
         </div>

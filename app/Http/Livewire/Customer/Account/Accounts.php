@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Customer\Account;
 
 use Livewire\Component;
 
+use App\Cryptos\Drivers\CryptoapisDriver;
 use App\Jobs\CryptoAccountFetchJob;
 use App\Models\CryptoAccount;
 use App\Models\BlockchainAccount;
@@ -32,6 +33,11 @@ class Accounts extends Component implements Forms\Contracts\HasForms
                 ->label(__("Key"))
                 ->required()
                 ->placeholder(__("Your API key")),
+            Forms\Components\TextInput::make('address')
+                ->visible(fn($livewire) => $livewire->isRequiredField('address'))
+                ->label(__("Address"))
+                ->required()
+                ->placeholder(__("Your Address here")),
             Forms\Components\TextInput::make('secret')
                 ->visible(fn($livewire) => $livewire->isRequiredField('secret'))
                 ->label(__("Secret"))
@@ -80,10 +86,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $this->notification()->info(__("Please select an account"));
             return;
         }
-        if( $this->selected_account->cryptoSource->type == 'E' ){
-            $this->form->fill($this->selected_account->credentials);
-        }
-
+        $this->form->fill($this->selected_account->credentials);
     }
 
     /**
@@ -97,11 +100,9 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $this->notification()->info(__("Please select an account"));
             return;
         }
-        if( $this->selected_account->cryptoSource->type == 'E' ){
-            $data = $this->form->getState();
-            $this->selected_account->credentials = $data;
-            $this->selected_account->save();
-        }
+        $data = $this->form->getState();
+        $this->selected_account->credentials = $data;
+        $this->selected_account->save();
     }
 
     /**
@@ -154,6 +155,15 @@ class Accounts extends Component implements Forms\Contracts\HasForms
                 $this->notification()->error(__("An error occured"), $e->getMessage());
             }
         }
+        elseif($this->selected_account->cryptoSource->type == 'B')
+        {
+            try {
+                $driver = CryptoapisDriver::make($this->selected_account);
+                $driver->update();
+            } catch (\Exception $e) {
+                $this->notification()->error(__("An error occured"), $e->getMessage());
+            }
+        }
         
     }
 
@@ -163,7 +173,11 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     public function render()
     {
 
-        $crypto_accounts = auth()->user()->cryptoAccounts;
+        // $crypto_accounts = auth()->user()->cryptoAccounts;
+        $crypto_accounts = CryptoAccount::query()
+            ->where('user_id', auth()->user()->id)
+            ->whereJsonDoesntContain('credentials', [])
+            ->get();
 
         $rows = [
             ["id" => 1, "label" => "Exchanges"],

@@ -25,10 +25,18 @@
                                         balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
                                     >
                                         <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
-                                        <div wire:loading.remove class="text-gray-400">{{ date("M d, Y, H:i", strtotime($selected_account->fetched_at)) }}</div>
+                                        <div wire:loading.remove class="text-gray-400">{{ $crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never' }}</div>
                                     </x-account-item-button>
                                 @elseif (($row['id'] == 3) && ($crypto_account->cryptoSource->type == "B"))
-                                    
+                                    <x-account-item-button
+                                        wire:click="get_selected_account_id({{ $crypto_account->id }})"
+                                        :label="$crypto_account->getName()"
+                                        :selected="$crypto_account->id == $selected_account->id"
+                                        balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
+                                    >
+                                        <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
+                                        <div wire:loading.remove class="text-gray-400">{{$crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never'}}</div>
+                                    </x-account-item-button>
                                 @endif
                             @endforeach
                         </div>
@@ -45,7 +53,7 @@
                         <div>
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ $selected_account->getName() }}</p>
                             <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
-                            <div wire:loading.remove class="text-gray-400">{{ __( date("M d, Y, H:i", strtotime($selected_account->fetched_at)) ) }}</div>
+                            <div wire:loading.remove class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
                         </div>
                         <div class="flex items-center space-x-3">
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($crypto_account->getBalanceSum(), 2) }}</p>
@@ -66,16 +74,14 @@
                             </div>
                         </div>
                         <div x-show="action == 'edit'">
-                            @if($selected_account->cryptoSource->type == 'E')
-                                <form wire:submit.prevent="save" autocomplete="off">
-                                    <div class="p-4">
-                                        {{ $this->form }}
-                                        <div class="mt-4 text-center">
-                                            <x-button type="submit">{{ __("Save") }}</x-button>
-                                        </div>
+                            <form wire:submit.prevent="save" autocomplete="off">
+                                <div class="p-4">
+                                    {{ $this->form }}
+                                    <div class="mt-4 text-center">
+                                        <x-button type="submit">{{ __("Save") }}</x-button>
                                     </div>
-                                </form>
-                            @endif
+                                </div>
+                            </form>
                         </div>
                         <div x-show="action =='delete'">
                         </div>

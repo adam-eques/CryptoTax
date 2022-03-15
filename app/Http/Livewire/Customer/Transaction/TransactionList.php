@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 use App\Models\CryptoTransaction;
+use App\Models\CryptoSource;
 
 class TransactionList extends Component
 {
@@ -28,21 +29,15 @@ class TransactionList extends Component
                 ['label' => 'Oldest', 'value' => 'asc']
             ],
             'type' => [
-                ['label' => 'Transfer', 'value' => 'transfer'],
-                ['label' => 'Trade', 'value' => 'trade'],
-                ['label' => 'Bought', 'value' => 'buy'],
-                ['label' => 'Sold', 'value' => 'sell'],
-                ['label' => 'Received', 'value' => 'receive'],
-                ['label' => 'Sent', 'value' => 'send'],
-                ['label' => 'Mint', 'value' => 'mint']
+                ['label' => 'Deposit', 'value' => 'D'],
+                ['label' => 'Trade', 'value' => 'T'],
+                ['label' => 'Withdrawal', 'value' => 'W'],
+                ['label' => 'Exchange', 'value' => 'E'],
             ],
-            'category' => [
-                ['label' => 'Kucoin', 'value' => 'kucoin'],
-                ['label' => 'Solana', 'value' => 'Solana']
-            ],
+            'category' => CryptoSource::query()->get()->toArray(),
             'exchange' => [
-                ['label' => 'Kucoin', 'value' => 'kucoin'],
-                ['label' => 'Solana', 'value' => 'Solana']
+                ['label' => 'Exchange', 'value' => 'E'],
+                ['label' => 'Blockchain', 'value' => 'B']
             ]
         ];
 
