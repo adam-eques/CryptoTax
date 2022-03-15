@@ -142,7 +142,8 @@ class CryptoapisDriver implements ApiDriverInterface
     public function saveTransactions($transactions, $cryptoAssetId) {
         foreach($transactions as $transaction) {
             $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
-            $feeCurrencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
+            $costCurrencyId = $currencyId;
+            $feeCurrencyId = $currencyId;
             $credentials = $this->getCredentials();
             $tradeType = 'N';
             $executed_at = new \DateTime();
@@ -158,12 +159,14 @@ class CryptoapisDriver implements ApiDriverInterface
             $trans = new CryptoTransaction();
             $trans->crypto_account_id = $cryptoAssetId;
             $trans->currency_id = $currencyId;
+            $trans->cost_currency_id = $costCurrencyId;
             $trans->price_currency_id = NULL;
             $trans->fee_currency_id = $feeCurrencyId;
             $trans->trade_type = $tradeType;
             $trans->from_addr = $transaction->senders[0]->address;
             $trans->to_addr = $transaction->recipients[0]->address;
             $trans->amount = $transaction->recipients[0]->amount;
+            $trans->cost = $transaction->recipients[0]->amount;
             $trans->price = NULL;
             $trans->fee = $transaction->fee->amount;
             $trans->raw_data = json_encode($transaction);

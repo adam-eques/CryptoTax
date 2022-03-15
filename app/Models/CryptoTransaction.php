@@ -18,6 +18,10 @@ class CryptoTransaction extends Model
         return $this->belongsTo(CryptoAccount::class);
     }
 
+    public function costCurrency(): BelongsTo
+    {
+        return $this->belongsTo(CryptoCurrency::class, "cost_currency_id");
+    }
 
     public function cryptoCurrency(): BelongsTo
     {
