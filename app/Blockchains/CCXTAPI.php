@@ -95,7 +95,7 @@ class CCXTAPI {
         return $all_trades;
     }
 
-    public function getTradesAvailable($fromSymbol, $toSymbol) {
+    public function getTradesAvailable($fromSymbol, $toSymbol) : bool {
         $flag = false;
         $symbol = $this->genSymbol($fromSymbol, $toSymbol);
         if ($this->exchange->has['fetchMyTrades'] && array_search($symbol, $this->exchange->symbols) > -1) {
@@ -104,10 +104,12 @@ class CCXTAPI {
         return $flag;
     }
 
-    public function getTransactions($since) {
+    public function getTransactions($since) : array {
         $code = NULL;
         $limit = NULL;
-        $params = [];
+        $params = [
+            'type' => 'withdrawal'
+        ];
         $transactions = [];
         if ($this->exchange->has['fetchTransactions']) {
             $transactions = $this->exchange->fetch_transactions ($code, $since, $limit, $params);

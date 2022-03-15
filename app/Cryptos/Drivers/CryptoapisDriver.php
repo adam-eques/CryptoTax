@@ -14,6 +14,7 @@ class CryptoapisDriver implements ApiDriverInterface
 {
     protected CryptoAccount $account;
     protected $api;
+    protected $connected = false;
 
     /**
      * @param CryptoAccount $account
@@ -40,6 +41,7 @@ class CryptoapisDriver implements ApiDriverInterface
      * @return $this
      */
     public function update() : self {
+        $this->account->update(['fetched_at' => now()]);
         $balances = $this->fetchBalances();
         $transactions = $this->fetchTransactions($this->account->fetched_at, now());
         $assetId = $this->saveBalances($balances);
@@ -52,6 +54,7 @@ class CryptoapisDriver implements ApiDriverInterface
      */
     protected function connect() : self {
         $this->api = new CryptoAPI();
+        $this->connected = true;
         return $this;
     }
 
@@ -61,6 +64,13 @@ class CryptoapisDriver implements ApiDriverInterface
     public function getApi()
     {
         return $this->api;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConnected() : bool {
+        return $this->connected;
     }
 
     /**
@@ -147,7 +157,6 @@ class CryptoapisDriver implements ApiDriverInterface
      * @return bool
      */
     public function saveBalances($balance) : bool {
-        $this->account->update(['fetched_at' => now()]);
         $assets = $this->account->cryptoAssets();
         $currencyId = CryptoCurrency::findByShortName($balance['unit'])->id;
         $create = true;
@@ -176,11 +185,14 @@ class CryptoapisDriver implements ApiDriverInterface
         foreach($transactions as $transaction) {
             $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
             $costCurrencyId = $currencyId;
+            $priceCurrencyId = $currencyId;
             $feeCurrencyId = $currencyId;
             $credentials = $this->getCredentials();
             $tradeType = 'N';
             $executed_at = new \DateTime();
             $executed_at->setTimestamp($transaction->timestamp);
+            var_dump($executed_at);
+            var_dump($transaction->timestamp);
 
             foreach($transaction->senders as $sender) {
                 if ($credentials['address'] == $sender->address) $tradeType = 'S';
@@ -193,14 +205,14 @@ class CryptoapisDriver implements ApiDriverInterface
             $trans->crypto_account_id = $this->account->id;
             $trans->currency_id = $currencyId;
             $trans->cost_currency_id = $costCurrencyId;
-            $trans->price_currency_id = NULL;
+            $trans->price_currency_id = $priceCurrencyId;
             $trans->fee_currency_id = $feeCurrencyId;
             $trans->trade_type = $tradeType;
             $trans->from_addr = $transaction->senders[0]->address;
             $trans->to_addr = $transaction->recipients[0]->address;
             $trans->amount = $transaction->recipients[0]->amount;
+            $trans->price = 1;
             $trans->cost = $transaction->recipients[0]->amount;
-            $trans->price = NULL;
             $trans->fee = $transaction->fee->amount;
             $trans->raw_data = json_encode($transaction);
             $trans->executed_at = $executed_at;
