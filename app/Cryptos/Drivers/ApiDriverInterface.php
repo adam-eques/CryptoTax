@@ -26,5 +26,5 @@ interface ApiDriverInterface
      *
      * @return $this
      */
-    public function updateTransactions(): self;
+    public function update(): self;
 }

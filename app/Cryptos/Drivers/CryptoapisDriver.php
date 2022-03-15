@@ -36,28 +36,45 @@ class CryptoapisDriver implements ApiDriverInterface
         return ["address"];
     }
 
-
-    public function updateTransactions(): ApiDriverInterface
-    {
-        // TODO: Implement updateTransactions() method.
+    /**
+     * @return $this
+     */
+    public function update() : self {
+        $balances = $this->fetchBalances();
+        $transactions = $this->fetchTransactions($this->account->fetched_at, now());
+        $assetId = $this->saveBalances($balances);
+        $this->saveTransactions($transactions);
+        return $this;
     }
 
+    /**
+     * @return $this
+     */
     protected function connect() : self {
         $this->api = new CryptoAPI();
         return $this;
     }
 
+    /**
+     * @return App\Blockchains\CryptoAPI
+     */
     public function getApi()
     {
         return $this->api;
     }
 
+    /**
+     * @return array
+     */
     protected function getCredentials() : array
     {
         return $this->account->credentials ?: [];
     }
 
-    public function fetchBalances() {
+    /**
+     * @return array
+     */
+    public function fetchBalances() : array {
         $balances;
         $credentials = $this->getCredentials();
         $blockchain = '';
@@ -81,6 +98,11 @@ class CryptoapisDriver implements ApiDriverInterface
         return $balances;
     }
 
+    /**
+     * @param \Carbon\Carbon $from
+     * @param \Carbon\Carbon $to
+     * @return array
+     */
     public function fetchTransactions(Carbon $from = null, Carbon $to = null): array {
         $transactions = [];
         $fromTimestamp = 0;
@@ -120,17 +142,19 @@ class CryptoapisDriver implements ApiDriverInterface
         return $transactions;
     }
 
-    public function saveBalances($balance) {
+    /**
+     * @param array $balance
+     * @return bool
+     */
+    public function saveBalances($balance) : bool {
         $this->account->update(['fetched_at' => now()]);
         $assets = $this->account->cryptoAssets();
         $currencyId = CryptoCurrency::findByShortName($balance['unit'])->id;
         $create = true;
-        $cryptoAssetId = 0;
         foreach($assets->get() as $asset) {
             if ($asset->crypto_currency_id === $currencyId) {
                 // assets.bal
                 $asset->update(['balance' => $balance['amount']]);
-                $cryptoAssetId = $asset->id;
                 $create = false;
             }
         }
@@ -140,12 +164,15 @@ class CryptoapisDriver implements ApiDriverInterface
             $asset->crypto_account_id = $this->account->id;
             $asset->crypto_currency_id = $currencyId;
             $asset->save();
-            $cryptoAssetId = $asset->id;
         }
-        return $cryptoAssetId;
+        return true;
     }
 
-    public function saveTransactions($transactions) {
+    /**
+     * @param array $transactions
+     * @return bool
+     */
+    public function saveTransactions($transactions) : bool {
         foreach($transactions as $transaction) {
             $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
             $costCurrencyId = $currencyId;
@@ -179,12 +206,6 @@ class CryptoapisDriver implements ApiDriverInterface
             $trans->executed_at = $executed_at;
             $trans->save();
         }
-    }
-
-    public function update() {
-        $balances = $this->fetchBalances();
-        $transactions = $this->fetchTransactions($this->account->fetched_at, now());
-        $assetId = $this->saveBalances($balances);
-        $this->saveTransactions($transactions);
+        return true;
     }
 }
