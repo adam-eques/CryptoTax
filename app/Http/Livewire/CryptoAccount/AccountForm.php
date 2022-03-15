@@ -26,6 +26,11 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
                 ->label(__("Key"))
                 ->required()
                 ->placeholder(__("Your API key")),
+            Forms\Components\TextInput::make('address')
+                ->visible(fn($livewire) => $livewire->isRequiredField('address'))
+                ->label(__("Address"))
+                ->required()
+                ->placeholder(__("Your Address here")),
             Forms\Components\TextInput::make('secret')
                 ->visible(fn($livewire) => $livewire->isRequiredField('secret'))
                 ->label(__("Secret"))

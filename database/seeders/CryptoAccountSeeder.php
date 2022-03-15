@@ -23,7 +23,7 @@ class CryptoAccountSeeder extends Seeder
         collect([
             [
                 'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM,
-                'user_id' => 1,
+                'user_id' => 2,
                 'credentials' => '{"address" : "0xcf72b431d5a471255c208b65c15798d5577eeaed"}',
                 'fetched_at' => $fetched_at,
                 'fetching_scheduled_at' => $now,
@@ -32,7 +32,7 @@ class CryptoAccountSeeder extends Seeder
             ],
             [
                 'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN,
-                'user_id' => 1,
+                'user_id' => 2,
                 'credentials' => '{"address" : "MV9pffMixgbGF4XzPnjFky74kgEWJUcKqj"}',
                 'fetched_at' => $fetched_at,
                 'fetching_scheduled_at' => $now,
