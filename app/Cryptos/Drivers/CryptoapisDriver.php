@@ -90,7 +90,7 @@ class CryptoapisDriver implements ApiDriverInterface
         if ($from) $fromTimestamp = $from->timestamp;
         if ($to) $toTimestamp = $to->timestamp;
         $credentials = $this->getCredentials();
-        switch($this->account->cryptoSource->name) {
+        switch($this->account->cryptoSource->id) {
             case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
                 $context = 'ethereum transactions';
                 $blockchain = 'ethereum';
