@@ -5,11 +5,14 @@ namespace App\Http\Livewire\Customer\Account;
 use Livewire\Component;
 
 use App\Cryptos\Drivers\CryptoapisDriver;
+use App\Cryptos\Drivers\CcxtDriver;
 use App\Jobs\CryptoAccountFetchJob;
 use App\Models\CryptoAccount;
 use App\Models\BlockchainAccount;
 use Filament\Forms;
 use WireUi\Traits\Actions;
+
+use Carbon\Carbon;
 
 class Accounts extends Component implements Forms\Contracts\HasForms
 {
@@ -143,9 +146,13 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         }
         if( $this->selected_account->cryptoSource->type == 'E' ){
             try {
-                $this->selected_account->fetching_scheduled_at = now();
-                $this->selected_account->save();
-                CryptoAccountFetchJob::dispatch($this->selected_account);
+
+                $driver = CcxtDriver::make($this->selected_account);
+                $balance = $driver->fetchBalances();
+                $since = Carbon::create(2000, 1, 1, 0, 0, 0);
+                $transactions = $driver->fetchTransactions($since);
+                $driver->update();
+
                 $this->notification()->info(
                     __("Fetching :name is now scheduled", ["name" => $this->selected_account->getName()]),
                     "Please check transactions in a couple of minutes"
