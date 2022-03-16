@@ -148,9 +148,6 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             try {
 
                 $driver = CcxtDriver::make($this->selected_account);
-                $balance = $driver->fetchBalances();
-                $since = Carbon::create(2000, 1, 1, 0, 0, 0);
-                $transactions = $driver->fetchTransactions($since);
                 $driver->update();
 
                 $this->notification()->info(
