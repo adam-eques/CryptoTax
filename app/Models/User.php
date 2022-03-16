@@ -118,7 +118,7 @@ class User extends Authenticatable implements MustVerifyEmail
         });
 
         static::deleting(function (self $item) {
-            $item->cryptoAccount()->cascadeDelete();
+            $item->cryptoAccounts()->cascadeDelete();
             $item->creditLogs()->cascadeDelete();
             $item->userAffiliate()->delete();
         });

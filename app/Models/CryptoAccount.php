@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property \App\Models\CryptoSource $cryptoSource
  * @property \Illuminate\Database\Eloquent\Collection<CryptoAsset> $cryptoAssets
+ * @property \Illuminate\Database\Eloquent\Collection<CryptoTransaction> $cryptoTransactions
  */
 class CryptoAccount extends Model
 {
@@ -48,6 +49,12 @@ class CryptoAccount extends Model
     public function cryptoAssets(): HasMany
     {
         return $this->hasMany(CryptoAsset::class);
+    }
+
+
+    public function cryptoTransactions(): HasMany
+    {
+        return $this->hasMany(CryptoTransaction::class);
     }
 
 
