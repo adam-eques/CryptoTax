@@ -188,7 +188,7 @@ class CcxtDriver implements ApiDriverInterface
                 array_push($transaction);
             } else {
                 $currencyId = $fromCC->id;
-                $costCurrencyId = $currencyId;
+                $costCurrencyId = $priceCurrencyId;
                 $priceCurrencyId = $toCC->id;
                 $feeCurrencyId = $feeCC->id;
 
