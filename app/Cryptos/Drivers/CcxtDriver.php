@@ -168,6 +168,7 @@ class CcxtDriver implements ApiDriverInterface
      * @return bool
      */
     public function saveTransactions($transactions) : bool {
+        // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
         $unsupported = [];
         foreach($transactions as $transaction) {
             $currencyId = -1;
@@ -210,10 +211,12 @@ class CcxtDriver implements ApiDriverInterface
                 $trans->fee = $transaction['fee']['cost'];
                 $trans->raw_data = json_encode($transaction);
                 $trans->executed_at = $executed_at;
+                // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
+
                 $trans->save();
             }
         }
-        // TestHelper::save2file('../CcxtDriver_unsupported_transactions.php', $unsupported);
+        // TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
         return true;
     }
 }
