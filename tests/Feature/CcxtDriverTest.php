@@ -22,7 +22,7 @@ class CcxtDriverTest extends TestCase
     {
         $accounts = CryptoAccount::get();
         $this->assertTrue($accounts->count() >= 4, 'Crypto_account table has not enough accounts');
-        $account = $accounts[3];
+        $account = $accounts[2];
         $driver = CcxtDriver::make($account);
         $this->assertIsObject($driver, 'Failed to make CcxtDriver');
         $this->assertIsArray($driver->getRequiredCredentials(), 'Failed to get requiredCredentials for api');

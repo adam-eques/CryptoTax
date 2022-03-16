@@ -7,10 +7,12 @@ use Filament\Forms;
 
 use App\Jobs\CryptoAccountFetchJob;
 use App\Cryptos\Drivers\CryptoapisDriver;
+use App\Cryptos\Drivers\CcxtDriver;
 use App\Models\CryptoAccount;
 use App\Models\CryptoSource;
 
 use Livewire\Component;
+use Carbon\Carbon;
 
 class AccountNew extends Component implements Forms\Contracts\HasForms
 {
@@ -130,9 +132,15 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
     {
         if($this->selected_account->cryptoSource->type == 'E'){
             try {
-                $account->fetching_scheduled_at = now();
-                $account->save();
-                CryptoAccountFetchJob::dispatch($account);
+                // $account->fetching_scheduled_at = now();
+                // $account->save();
+                // CryptoAccountFetchJob::dispatch($account);
+                $driver = CcxtDriver::make($this->selected_account);
+                $balance = $driver->fetchBalances();
+                $since = Carbon::create(2000, 1, 1, 0, 0, 0);
+                $transactions = $driver->fetchTransactions($since);
+                $driver->update();
+
                 $this->notification()->info(
                     __("Fetching :name is now scheduled", ["name" => $account->getName()]),
                     "Please check transactions in a couple of minutes"
@@ -149,6 +157,11 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
                 //code...
                 $driver = CryptoapisDriver::make($this->selected_account);
                 $driver->update();
+                $this->notification()->info(
+                    __("Fetching :name is now scheduled", ["name" => $this->selected_account->getName()]),
+                    "Please check transactions in a couple of minutes"
+                );
+                return redirect()->route('customer.account');
             } catch (\Exception $e) {
                 //throw $th;
                 $this->notification()->error(__("An error occured"), $e->getMessage());
