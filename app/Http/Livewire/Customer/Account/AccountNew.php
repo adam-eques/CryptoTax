@@ -149,6 +149,11 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
                 //code...
                 $driver = CryptoapisDriver::make($this->selected_account);
                 $driver->update();
+                $this->notification()->info(
+                    __("Fetching :name is now scheduled", ["name" => $this->selected_account->getName()]),
+                    "Please check transactions in a couple of minutes"
+                );
+                return redirect()->route('customer.account');
             } catch (\Exception $e) {
                 //throw $th;
                 $this->notification()->error(__("An error occured"), $e->getMessage());
