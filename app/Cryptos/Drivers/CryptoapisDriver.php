@@ -41,11 +41,11 @@ class CryptoapisDriver implements ApiDriverInterface
      * @return $this
      */
     public function update() : self {
-        $this->account->update(['fetched_at' => now()]);
         $balances = $this->fetchBalances();
         $transactions = $this->fetchTransactions($this->account->fetched_at, now());
         $assetId = $this->saveBalances($balances);
         $this->saveTransactions($transactions);
+        $this->account->update(['fetched_at' => now()]);
         return $this;
     }
 
