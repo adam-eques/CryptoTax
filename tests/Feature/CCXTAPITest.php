@@ -17,11 +17,12 @@ class CCXTAPITest extends TestCase
      */
     public function test_example()
     {
-        $exchange_id = 'HitBTC';
-        $apiKey = 'XnDHZ6n5ernQ6WuGy5iMuqKqDFlSyLdB';
-        $secret = 'Vbxrl5JX-uIcS8RtF6r4lzoRNM2fLXdX';
+        $exchange_id = 'Kucoin';
+        $apiKey = '60042ffdad62470006b584d9';
+        $secret = '6588acc4-057a-43bb-9659-9a9afce88b89';
+        $password = 'pt83144789';
         $ccxtApi = new CCXTAPI();
-        $success = $ccxtApi->loadExchange($exchange_id, $apiKey, $secret);
+        $success = $ccxtApi->loadExchange($exchange_id, $apiKey, $secret, $password);
         $this->assertTrue($success, 'Failed to load Exchange');
         // var_dump($ccxtApi->exchange->has['fetchTrades']);
         // var_dump($ccxtApi->exchange);
@@ -31,11 +32,11 @@ class CCXTAPITest extends TestCase
         TestHelper::save2file('../test_balances.php', $balances);
         // var_dump($balance);
 
-        $trades = $ccxtApi->getTrades(NULL, 1584194760, NULL);
+        $trades = $ccxtApi->getTrades(NULL, 1635710400, NULL);
         TestHelper::save2file('../test_trades.php', $trades);
 
-        $transactions = $ccxtApi->getTransactions(1584194760);
-        TestHelper::save2file('../test_transactinon.php', $transactions);
+        // $transactions = $ccxtApi->getTransactions(1584194760);
+        // TestHelper::save2file('../test_transactinon.php', $transactions);
 
         // $withdrawals = $ccxtApi->getWithdrawals(1584194760);
         // var_dump($withdrawals);

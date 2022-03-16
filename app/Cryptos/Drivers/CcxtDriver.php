@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use App\Helpers\TestHelper;
 
 
-class CcxtDriver implements ApiDriverInterface
+abstract class CcxtDriver implements ApiDriverInterface
 {
     protected CryptoAccount $account;
     protected $api;
@@ -167,7 +167,7 @@ class CcxtDriver implements ApiDriverInterface
      * @param array $transactions
      * @return bool
      */
-    public function saveTransactions($transactions) : bool {
+    public function saveTransactions($transactions=[]) : bool {
         // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
         $unsupported = [];
         foreach($transactions as $transaction) {
@@ -187,12 +187,13 @@ class CcxtDriver implements ApiDriverInterface
             $fromCC = CryptoCurrency::findByShortName($fromCurrency);
             $toCC = CryptoCurrency::findByShortName($toCurrency);
             $feeCC = CryptoCurrency::findByShortName($transaction['fee']['currency']);
-            if ($fromCC == NULL || $toCC == NULL || $tradeType == 'N') {
+            if ( $fromCC->id < 0 || $toCC->id < 0 || $feeCC->id < 0 || $fromCC == NULL || $toCC == NULL || $tradeType == 'N') {
                 array_push($transaction);
             } else {
+                // var_dump($fromCC->id);
                 $currencyId = $fromCC->id;
-                $costCurrencyId = $priceCurrencyId;
                 $priceCurrencyId = $toCC->id;
+                $costCurrencyId = $priceCurrencyId;
                 $feeCurrencyId = $feeCC->id;
 
                 // var_dump($currencyId);
