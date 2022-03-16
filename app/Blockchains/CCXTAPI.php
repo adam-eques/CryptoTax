@@ -11,7 +11,7 @@ class CCXTAPI {
         $exchange = NULL;
         // var_dump (ccxt\Exchange::$exchanges);
 
-       
+
 
         // $poloniex = new \ccxt\poloniex();
         // $bittrex  = new \ccxt\bittrex(array ('verbose' => true));

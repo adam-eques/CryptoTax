@@ -44,7 +44,7 @@ abstract class AbstractAddExchangeTest extends TestCase
         $account = $this->account;
 
         // Test if there are balances and transactions
-        $this->assertGreaterThan($account->cryptoAssets()->count(), 0);
-        $this->assertGreaterThan($account->cryptoTransactions()->count(), 0);
+        $this->assertGreaterThan(0, $account->cryptoAssets()->count(), "no assets found");
+        $this->assertGreaterThan(0, $account->cryptoTransactions()->count(), "No transactions found");
     }
 }
