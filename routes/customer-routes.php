@@ -52,7 +52,7 @@ Route::middleware('customer-setup')->group(function(){
              */
             $api = $account->getApi();
 
-            dd($api->updateTransactions());
+            dd($api->update());
             dd($account);
         });
     });
