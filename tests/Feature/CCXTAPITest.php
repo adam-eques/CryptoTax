@@ -28,31 +28,31 @@ class CCXTAPITest extends TestCase
 
         // balance
         $balances = $ccxtApi->getBalance();
-        TestHelper::save2file('..\test_balances.php', $balances);
+        TestHelper::save2file('../test_balances.php', $balances);
         // var_dump($balance);
 
         $trades = $ccxtApi->getTrades(NULL, 1584194760, NULL);
-        TestHelper::save2file('..\test_trades.php', $trades);
+        TestHelper::save2file('../test_trades.php', $trades);
 
         $transactions = $ccxtApi->getTransactions(1584194760);
-        TestHelper::save2file('..\test_transactinon.php', $transactions);
+        TestHelper::save2file('../test_transactinon.php', $transactions);
 
         // $withdrawals = $ccxtApi->getWithdrawals(1584194760);
         // var_dump($withdrawals);
-        // TestHelper::save2file('..\test_withdrawals.php', $withdrawals);
+        // TestHelper::save2file('../test_withdrawals.php', $withdrawals);
 
         // $deposits = $ccxtApi->getDeposits(1584194760);
         // var_dump($deposits);
-        // TestHelper::save2file('..\test_deposits.php', $deposits);
+        // TestHelper::save2file('../test_deposits.php', $deposits);
 
         // var_dump($ccxtApi->exchange->has);
-        // TestHelper::save2file('..\test_has.php', $ccxtApi->exchange->has);
+        // TestHelper::save2file('../test_has.php', $ccxtApi->exchange->has);
         // var_dump($ccxtApi->exchange->name);
         // var_dump($ccxtApi->exchange->countries);
         // // var_dump($ccxtApi->exchange->urls);
 
         $markets = $ccxtApi->exchange->markets;
-        TestHelper::save2file('..\test_markets.php', $markets);
+        TestHelper::save2file('../test_markets.php', $markets);
 
         // var_dump($ccxtApi->exchange->symbols);
         // var_dump($ccxtApi->exchange->currencies);
