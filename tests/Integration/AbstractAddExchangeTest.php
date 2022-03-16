@@ -24,8 +24,11 @@ abstract class AbstractAddExchangeTest extends TestCase
             "fetching_scheduled_at" => now()
         ]);
 
+        echo "tested1\n";
+
         // Update the account
         $this->account->getApi()->update();
+        echo "tested2\n";
     }
 
 

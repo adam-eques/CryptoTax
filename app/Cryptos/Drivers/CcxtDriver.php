@@ -120,7 +120,9 @@ class CcxtDriver implements ApiDriverInterface
      * @return array
      */
     public function fetchTransactions(Carbon $from = null): array {
-        $transactions = $this->api->getTrades(NULL, $from->timestamp, NULL);
+        $pfrom = $from;
+        if ($from == null) $pfrom = Carbon::createFromTimestampMsUTC(946670400);
+        $transactions = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
         return $transactions;
     }
 
@@ -135,7 +137,7 @@ class CcxtDriver implements ApiDriverInterface
         foreach($balances as $currency => $value) {
             $cc = CryptoCurrency::findByShortName($currency);
             if ($cc == NULL) {
-                var_dump($currency);
+                // var_dump($currency);
                 array_push($unsupported, [
                     'currency' => $currency,
                     'value' => $value
@@ -157,7 +159,7 @@ class CcxtDriver implements ApiDriverInterface
                 $flag = true;
             }
         }
-        // TestHelper::save2file('../CcxtDriver_unsupported_balances.php', $unsupported);
+        // TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
         return $flag;
     }
 
