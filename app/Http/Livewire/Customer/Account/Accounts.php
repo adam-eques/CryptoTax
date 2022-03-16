@@ -151,8 +151,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
                 $driver->update();
 
                 $this->notification()->info(
-                    __("Fetching :name is now scheduled", ["name" => $this->selected_account->getName()]),
-                    "Please check transactions in a couple of minutes"
+                    __("Fetched Successfully"),
+                    "Please check transactions"
                 );
             }
             catch (\Exception $e) {
@@ -164,6 +164,11 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             try {
                 $driver = CryptoapisDriver::make($this->selected_account);
                 $driver->update();
+
+                $this->notification()->info(
+                    __("Fetched Successfully"),
+                    "Please check transactions"
+                );
             } catch (\Exception $e) {
                 $this->notification()->error(__("An error occured"), $e->getMessage());
             }
