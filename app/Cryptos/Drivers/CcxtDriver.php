@@ -71,13 +71,13 @@ class CcxtDriver implements ApiDriverInterface
         $secret = '';
         $password = '';
         $required = $this->getRequiredCredentials();
-        if (in_array('apiKey', $required)) {
+        if (in_array('apiKey', $required) && array_key_exists('apiKey', $credentials)) {
             $apiKey = $credentials["apiKey"];
         }
-        if (in_array('secret', $required)) {
+        if (in_array('secret', $required) && array_key_exists('secret', $credentials)) {
             $secret = $credentials["secret"];
         }
-        if (in_array('password', $required)) {
+        if (in_array('password', $required) && array_key_exists('password', $credentials)) {
             $password = $credentials["password"];
         }
         $this->connected = $this->api->loadExchange($exchange_id, $apiKey, $secret, $password);
