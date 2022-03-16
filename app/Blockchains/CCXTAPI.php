@@ -11,7 +11,7 @@ class CCXTAPI {
         $exchange = NULL;
         // var_dump (ccxt\Exchange::$exchanges);
 
-       
+
 
         // $poloniex = new \ccxt\poloniex();
         // $bittrex  = new \ccxt\bittrex(array ('verbose' => true));
@@ -58,7 +58,7 @@ class CCXTAPI {
     public function loadExchange($exchange_id, $apiKey, $secret, $password) {
         $flag = false;
         try {
-            $exchange_class = "\\ccxt\\$exchange_id";
+            $exchange_class = "\\ccxt\\" . strtolower($exchange_id);
             $this->exchange = new $exchange_class(array(
                 'apiKey' => $apiKey,
                 'secret' => $secret,
