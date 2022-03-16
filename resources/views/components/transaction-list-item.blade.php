@@ -10,7 +10,6 @@
                 {{ $transaction->cryptoCurrency->short_name }}
             </p>
             <p class="text-gray-500">{{ __('View Transactions') }}</p>
-            <p class="text-gray-500">{{ $transaction->fee }} {{ $transaction->feeCurrency->short_name }}</p>
         </div>
     </div>
     <div class="flex items-center">
@@ -48,7 +47,7 @@
                 {{ $transaction->cost}}
                 {{ $transaction->costCurrency->short_name }}
             </p>
-            <p class="text-gray-500">{{ $transaction->fee }} {{ $transaction->feeCurrency->short_name }}</p>
+            <p class="text-sm text-gray-500">{{ $transaction->fee }} {{ $transaction->feeCurrency->short_name .  __(' :fee')}}</p>
         </div>
         <div x-data="{open:false}" class="relative py-2">
             <button class="flex items-center justify-center w-6 h-6 bg-gray-100 border rounded-full" @click="open = true">
