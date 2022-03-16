@@ -7,10 +7,12 @@ use Filament\Forms;
 
 use App\Jobs\CryptoAccountFetchJob;
 use App\Cryptos\Drivers\CryptoapisDriver;
+use App\Cryptos\Drivers\CcxtDriver;
 use App\Models\CryptoAccount;
 use App\Models\CryptoSource;
 
 use Livewire\Component;
+use Carbon\Carbon;
 
 class AccountNew extends Component implements Forms\Contracts\HasForms
 {
@@ -63,7 +65,6 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
             return in_array($fieldName, $requiredCredentials);
         }
-
         return false;
     }
 
@@ -120,42 +121,21 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
     public function save()
     {
-        $data = $this->form->getState();
-        $this->selected_account->credentials = $data;
-        $this->selected_account->save();
-        $this->fetch($this->selected_account);
+        try {
+            //code...
+            $data = $this->form->getState();
+            $this->selected_account->credentials = $data;
+            $this->selected_account->save();
+            $this->notification()->info(
+                __("Successfully Added")
+            );
+            return redirect()->route('customer.account');
+        } catch (\Exception $e) {
+            $this->notification()->error(__("An error occured"), $e->getMessage());
+        }
     }
 
-    public function fetch(CryptoAccount $account)
-    {
-        if($this->selected_account->cryptoSource->type == 'E'){
-            try {
-                $account->fetching_scheduled_at = now();
-                $account->save();
-                CryptoAccountFetchJob::dispatch($account);
-                $this->notification()->info(
-                    __("Fetching :name is now scheduled", ["name" => $account->getName()]),
-                    "Please check transactions in a couple of minutes"
-                );
-                return redirect()->route('customer.account');
-            }
-            catch (\Exception $e) {
-                $this->notification()->error(__("An error occured"), $e->getMessage());
-            }
-        }
-        elseif($this->selected_account->cryptoSource->type == 'B')
-        {
-            try {
-                //code...
-                $driver = CryptoapisDriver::make($this->selected_account);
-                $driver->update();
-            } catch (\Exception $e) {
-                //throw $th;
-                $this->notification()->error(__("An error occured"), $e->getMessage());
-            }
-        }
-    }
-    
+     
 
     /**
      * Rendering

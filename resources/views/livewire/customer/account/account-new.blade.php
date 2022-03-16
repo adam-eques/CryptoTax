@@ -70,8 +70,8 @@
                 <div class="w-full h-full p-5">
                     @if($selected_account)
                         <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
-                        <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account_id . ' API integration')}}</p>
-                        <form wire:submit.prevent="save" autocomplete="off">
+                        <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account->getName() . ' API integration')}}</p>
+                        <form wire:submit.prevent="save" autocomplete="off" wire:key="{{$selected_account->id}}">
                             <div class="p-4">
                                 {{ $this->form }}
                                 <div class="mt-4 text-center">
@@ -113,7 +113,7 @@
                                 </div>
                                 @if($selected_account)
                                     <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
-                                    <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account_id . ' API integration')}}</p>
+                                    <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account->getName() . ' API integration')}}</p>
                                     <form wire:submit.prevent="save" autocomplete="off">
                                         <div class="p-4">
                                             {{ $this->form }}
