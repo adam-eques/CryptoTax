@@ -67,7 +67,7 @@ class CCXTAPI {
             $this->exchange->load_markets();
             $flag = true;
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
         return $flag;
     }
