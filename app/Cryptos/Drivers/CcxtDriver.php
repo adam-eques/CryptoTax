@@ -157,7 +157,7 @@ class CcxtDriver implements ApiDriverInterface
                 $flag = true;
             }
         }
-        TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
+        TestHelper::save2file('../CcxtDriver_unsupported_balances.php', $unsupported);
         return $flag;
     }
 
@@ -211,7 +211,7 @@ class CcxtDriver implements ApiDriverInterface
                 $trans->save();
             }
         }
-        TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
+        TestHelper::save2file('../CcxtDriver_unsupported_transactions.php', $unsupported);
         return true;
     }
 }
