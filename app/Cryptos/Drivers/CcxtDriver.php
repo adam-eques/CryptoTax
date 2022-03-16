@@ -52,11 +52,11 @@ class CcxtDriver implements ApiDriverInterface
      * @return $this
      */
     public function update() : self {
-        $this->account->update(['fetched_at' => now()]);
         $balance = $this->fetchBalances();
         $transactions = $this->fetchTransactions($this->account->fetched_at);
         $this->saveBalances($balance);
         $this->saveTransactions($transactions);
+        $this->account->update(['fetched_at' => now()]);
         return $this;
     }
 
