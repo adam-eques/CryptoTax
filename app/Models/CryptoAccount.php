@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Cryptos\Drivers\ApiDriverInterface;
+use App\Jobs\CryptoAccountFetchJob;
 use App\Models\Traits\BelongsToUserTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -101,5 +102,13 @@ class CryptoAccount extends Model
         }
 
         return $this->api;
+    }
+
+
+    public function requestUpdate(): self
+    {
+        $this->fetching_scheduled_at = now();
+        $this->save();
+        CryptoAccountFetchJob::dispatch($this);
     }
 }

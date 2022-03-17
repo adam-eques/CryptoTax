@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\CryptoAccount;
 
-use App\Jobs\CryptoAccountFetchJob;
 use App\Models\CryptoAccount;
 use App\Models\CryptoSource;
 use Filament\Forms;
@@ -111,9 +110,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
     public function fetch(CryptoAccount $account)
     {
         try {
-            $account->fetching_scheduled_at = now();
-            $account->save();
-            CryptoAccountFetchJob::dispatch($account);
+            $account->requestUpdate();
             $this->notification()->info(
                 __("Fetching :name is now scheduled", ["name" => $account->getName()]),
                 "Please check transactions in a couple of minutes"

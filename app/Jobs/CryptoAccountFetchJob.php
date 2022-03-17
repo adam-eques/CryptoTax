@@ -30,9 +30,13 @@ class CryptoAccountFetchJob implements ShouldQueue
 
     public function handle()
     {
-        $api = $this->account->getApi();
+        $account = $this->account;
+
+        // Update with the driver
+        $api = $account->getApi();
         $api->update();
-        $this->account->fetching_scheduled_at = null;
-        $this->account->save();
+
+        // Set fetching_scheduled_at to null
+        $account->update(['fetching_scheduled_at' => null]);
     }
 }
