@@ -144,36 +144,15 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $this->notification()->info(__("Please select an account"));
             return;
         }
-        if( $this->selected_account->cryptoSource->type == 'E' ){
-            try {
-
-                $driver = CcxtDriver::make($this->selected_account);
-                $driver->update();
-
-                $this->notification()->info(
-                    __("Fetched Successfully"),
-                    "Please check transactions"
-                );
-            }
-            catch (\Exception $e) {
-                $this->notification()->error(__("An error occured"), $e->getMessage());
-            }
-        }
-        elseif($this->selected_account->cryptoSource->type == 'B')
-        {
-            try {
-                $driver = CryptoapisDriver::make($this->selected_account);
-                $driver->update();
-
-                $this->notification()->info(
-                    __("Fetched Successfully"),
-                    "Please check transactions"
-                );
-            } catch (\Exception $e) {
-                $this->notification()->error(__("An error occured"), $e->getMessage());
-            }
-        }
-        
+        try{
+            $this->selected_account->requestUpdate();
+            $this->notification()->info(
+                __("Fetched Successfully"),
+                "Please check transactions"
+            );
+        } catch (\Exception $e) {
+            $this->notification()->error(__("An error occured"), $e->getMessage());
+        }        
     }
 
     /**
