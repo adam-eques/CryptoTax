@@ -38,4 +38,22 @@ class CryptoSource extends Model
             ->where("active", true)
             ->where("type", static::SOURCE_TYPE_BLOCKCHAIN);
     }
+
+
+    public function isExchangeType(): bool
+    {
+        return  $this->type == static::SOURCE_TYPE_EXCHANGE;
+    }
+
+
+    public function isWalledType(): bool
+    {
+        return  $this->type == static::SOURCE_TYPE_WALLET;
+    }
+
+
+    public function isBlockchainType(): bool
+    {
+        return  $this->type == static::SOURCE_TYPE_BLOCKCHAIN;
+    }
 }
