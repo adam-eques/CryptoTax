@@ -30,7 +30,8 @@ class CryptoCurrency extends Model
     public function convertTo(float $value, string $otherCurrency): float
     {
         // First check age of last fetch; 35 Minutes, because the scheduled job runs every 15min
-        if(!$this->fetched_at || $this->fetched_at < now()->addMinutes(-35)) {
+        $lifetime = config("app.cryptos.coingecko.prices_lifetime");
+        if(!$this->fetched_at || $this->fetched_at < now()->addMinutes(-$lifetime)) {
             $this->updateRowFromApi();
         }
 

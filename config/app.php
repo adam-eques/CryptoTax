@@ -235,4 +235,11 @@ return [
 
     ],
 
+
+    'cryptos' => [
+        'coingecko' => [
+            // Number of minutes, how long the coingecko prices are valid
+            'prices_lifetime' => env("APP_CRYPTOS_COINGECKO_PRICES_LIFETIME", 35)
+        ]
+    ]
 ];
