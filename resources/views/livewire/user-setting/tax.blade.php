@@ -40,7 +40,7 @@
             <div class="mt-10">
                 <p>{{ __('Base Currency') }}</p>
                 <div class="border flex items-center rounded mt-4 px-5 @error('tax_currency_id') border-danger @enderror">
-                    <x-icon name="{{ 'flag.tax_country_' . $tax_currency_id }}" class="w-9 h-9"/>
+                    <x-icon name="{{ 'flag.tax_currency_' . $tax_currency_id }}" class="w-9 h-9"/>
                     <select class="w-full h-full py-4 border-0 outline-none ring-0 focus:outline-none focus:ring-0" wire:model.defer="tax_currency_id">
                         <option value="0" disabled selected hidden>{{ __('Base Currency') }}</option>
                         @foreach ($basic_currency as $currency)                        
