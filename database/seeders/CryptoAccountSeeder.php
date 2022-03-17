@@ -17,6 +17,7 @@ class CryptoAccountSeeder extends Seeder
      */
     public function run()
     {
+        CryptoAccount::truncate();
         $now = now();
         $fetched_at = Carbon::create(2000, 1, 1, 0, 0, 0);
 
@@ -59,6 +60,60 @@ class CryptoAccountSeeder extends Seeder
                     "secret" : "6588acc4-057a-43bb-9659-9a9afce88b89",
                     "password" : "pt83144789"
                 }',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOIN,
+                'user_id' => 2,
+                'credentials' => '{"address" : "bc1q87rd2l6el0qv565w7rattqzqv8f9ghgsnjev2e"}',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOINCASH,
+                'user_id' => 2,
+                'credentials' => '{"address" : "3GYpC8kWiqKDpfQ6orPuctFBPyAdyoA2Yc"}',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_DASH,
+                'user_id' => 2,
+                'credentials' => '{"address" : "XtoTaaexjwAFuQ3KHmaqyYHRHqyZgG9R5i"}',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_DOGE,
+                'user_id' => 2,
+                'credentials' => '{"address" : "DCzmMTATevk4xhTJ8TJJgcqKXLHEY1uCR6"}',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC,
+                'user_id' => 2,
+                'credentials' => '{"address" : "0x594a6de78a147371e8288c3a09fa94d673df63e1"}',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_ZCASH,
+                'user_id' => 2,
+                'credentials' => '{"address" : "t3XyYW8yBFRuMnfvm5KLGFbEVz25kckZXym"}',
                 'fetched_at' => $fetched_at,
                 'fetching_scheduled_at' => $now,
                 'created_at' => $now,

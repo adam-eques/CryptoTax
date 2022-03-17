@@ -85,26 +85,50 @@ class CryptoapisDriver implements ApiDriverInterface
     }
 
     /**
+     * @return string
+     */
+    public function getBlockchain() : string {
+        $blockchain = '';
+        switch($this->account->cryptoSource->id)
+        {
+            case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
+                $blockchain = 'ethereum';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN :
+                $blockchain = 'litecoin';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_BITCOIN :
+                $blockchain = 'bitcoin';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_BITCOINCASH :
+                $blockchain = 'bitcoin-cash';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_DASH :
+                $blockchain = 'dash';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_DOGE :
+                $blockchain = 'dogecoin';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC :
+                $blockchain = 'ethereum-classic';
+                break;
+            case CryptoSource::SOURCE_BLOCKCHAIN_ZCASH :
+                $blockchain = 'zcash';
+                break;
+            default: break;
+        }
+        return $blockchain;
+    }
+
+    /**
      * @return array
      */
     public function fetchBalances() : array
     {
         $balances;
         $credentials = $this->getCredentials();
-        $blockchain = '';
+        $blockchain = $this->getBlockchain();
         $network = 'mainnet';
-        switch($this->account->cryptoSource->id)
-        {
-            case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
-                $blockchain = 'ethereum';
-                $network = 'mainnet';
-                break;
-            case CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN :
-                $blockchain = 'litecoin';
-                $network = 'mainnet';
-                break;
-            default: break;
-        }
         $detail = $this->api->get_details($credentials['address'], $blockchain, $network, 'balances');
         $balances = [
             'amount' => $detail['data']['item']['confirmed_balance']['amount'],
@@ -124,7 +148,7 @@ class CryptoapisDriver implements ApiDriverInterface
         $fromTimestamp = 0;
         $toTimestamp = now()->timestamp;
         $context = 'not set';
-        $blockchain = '';
+        $blockchain = $this->getBlockchain();
         $network = 'mainnet';
         $limit = 50;
         $offset = 0;
@@ -138,20 +162,6 @@ class CryptoapisDriver implements ApiDriverInterface
             $toTimestamp = $to->timestamp;
         }
         $credentials = $this->getCredentials();
-        switch($this->account->cryptoSource->id)
-        {
-            case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
-                $context = 'ethereum transactions';
-                $blockchain = 'ethereum';
-                $network = 'mainnet';
-                break;
-            case CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN :
-                $context = 'litecoin transactions';
-                $blockchain = 'litecoin';
-                $network = 'mainnet';
-                break;
-            default: break;
-        }
 
         do {
             $response = $this->api->get_transactionsByTime($credentials['address'], $limit, $offset, $blockchain, $network, $fromTimestamp, $toTimestamp, $context);
@@ -210,30 +220,48 @@ class CryptoapisDriver implements ApiDriverInterface
             $tradeType = 'N';
             $executed_at = new \DateTime();
             $executed_at->setTimestamp($transaction->timestamp);
-            var_dump($executed_at);
-            var_dump($transaction->timestamp);
+            // var_dump($executed_at);
+            // var_dump($transaction->timestamp);
+            $trans = new CryptoTransaction();
 
             foreach($transaction->senders as $sender)
             {
-                if ($credentials['address'] == $sender->address) $tradeType = 'S';
+                if ($credentials['address'] == $sender->address)
+                {
+                    $tradeType = 'S';
+                    $trans->from_addr = $sender->address;
+                    if (count($transaction->recipients) == 1)
+                    {
+                        $trans->to_addr = $transaction->recipients[0]->address;
+                    }
+                    $trans->amount = $sender->amount;
+                    $trans->cost = $sender->amount;
+                    break;
+                }
             }
             foreach($transaction->recipients as $recipient)
             {
-                if ($credentials['address'] == $recipient->address) $tradeType = 'B';
+                if ($credentials['address'] == $recipient->address)
+                {
+                    $tradeType = 'B';
+                    $trans->to_addr = $recipient->address;
+                    if (count($transaction->senders) == 1)
+                    {
+                        $trans->from_addr = $transaction->senders[0]->address;
+                    }
+                    $trans->amount = $recipient->amount;
+                    $trans->cost = $recipient->amount;
+                    break;
+                };
             }
             // var_dump($currencyId);
-            $trans = new CryptoTransaction();
             $trans->crypto_account_id = $this->account->id;
             $trans->currency_id = $currencyId;
             $trans->cost_currency_id = $costCurrencyId;
             $trans->price_currency_id = $priceCurrencyId;
             $trans->fee_currency_id = $feeCurrencyId;
             $trans->trade_type = $tradeType;
-            $trans->from_addr = $transaction->senders[0]->address;
-            $trans->to_addr = $transaction->recipients[0]->address;
-            $trans->amount = $transaction->recipients[0]->amount;
             $trans->price = 1;
-            $trans->cost = $transaction->recipients[0]->amount;
             $trans->fee = $transaction->fee->amount;
             $trans->raw_data = json_encode($transaction);
             $trans->executed_at = $executed_at;

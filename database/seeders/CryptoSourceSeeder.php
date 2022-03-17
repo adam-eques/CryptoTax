@@ -13,6 +13,7 @@ class CryptoSourceSeeder extends Seeder
 {
     public function run()
     {
+        CryptoSource::truncate();
         collect([
             [
                 'id' => CryptoSource::SOURCE_EXCHANGE_KUCOIN,
@@ -49,6 +50,53 @@ class CryptoSourceSeeder extends Seeder
             [
                 'id' => CryptoSource::SOURCE_BLOCKCHAIN_LITECOIN,
                 'name' => "Litecoin Blockchain",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ], [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOIN,
+                'name' => "Bitcoin",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOINCASH,
+                'name' => "Bitcoin Cash",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_DASH,
+                'name' => "Dash",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_DOGE,
+                'name' => "Doge",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC,
+                'name' => "Ethereum classic",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_ZCASH,
+                'name' => "Zcash",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
                 'driver' => CryptoapisDriver::class,
