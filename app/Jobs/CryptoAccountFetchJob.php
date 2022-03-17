@@ -31,6 +31,6 @@ class CryptoAccountFetchJob implements ShouldQueue
     public function handle()
     {
         $api = $this->account->getApi();
-        $api->updateTransactions();
+        $api->update();
     }
 }
