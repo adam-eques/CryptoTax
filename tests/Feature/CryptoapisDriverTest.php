@@ -47,7 +47,9 @@ class CryptoapisDriverTest extends TestCase
     public function test_update() {
         $accounts = CryptoAccount::get();
         $this->assertTrue($accounts->count()>0, 'Crypto_account table is empty');
-        $account = $accounts[0];
+        $account = $accounts[5];
+        $account->update(['fetched_at' => NULL]);
+        // var_dump($account);
         $driver = CryptoapisDriver::make($account);
         $this->assertIsObject($driver, 'Failed to make CryptoapisDriver');
         $this->assertIsArray($driver->getRequiredCredentials(), 'Failed to get requiredCredentials for api');
