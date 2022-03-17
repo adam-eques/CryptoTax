@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
 
             // Crypto Currency
             CryptoCurrencySeeder::class,
-            CoingeckoSupportedVsCurrenciesSeeder::class,
 
             // Users
             TestUserSeeder::class,
