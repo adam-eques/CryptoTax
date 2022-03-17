@@ -110,5 +110,7 @@ class CryptoAccount extends Model
         $this->fetching_scheduled_at = now();
         $this->save();
         CryptoAccountFetchJob::dispatch($this);
+
+        return $this;
     }
 }
