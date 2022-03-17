@@ -53,6 +53,45 @@ class CryptoSourceSeeder extends Seeder
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
                 'driver' => CryptoapisDriver::class,
                 'active' => true
+            ], [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOIN,
+                'name' => "Bitcoin",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOINCASH,
+                'name' => "Bitcoin Cash",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_DASH,
+                'name' => "Dash",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_DOGE,
+                'name' => "Doge",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_ZCASH,
+                'name' => "Zcash",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
             ],
         ])->each(function($data){
             CryptoSource::firstOrCreate([

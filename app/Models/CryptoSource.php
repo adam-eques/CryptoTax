@@ -16,6 +16,14 @@ class CryptoSource extends Model
     const SOURCE_EXCHANGE_BINANCE = 3;
     const SOURCE_BLOCKCHAIN_ETHEREUM = 4;
     const SOURCE_BLOCKCHAIN_LITECOIN = 5;
+    const SOURCE_BLOCKCHAIN_BITCOIN = 6;
+    const SOURCE_BLOCKCHAIN_BITCOINCASH = 7;
+    const SOURCE_BLOCKCHAIN_DASH = 8;
+    const SOURCE_BLOCKCHAIN_DOGE = 9;
+    const SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC = 10;
+    const SOURCE_BLOCKCHAIN_ZCASH = 11;
+    const SOURCE_BLOCKCHAIN_ZILLIQA = 12;
+    const SOURCE_BLOCKCHAIN_XRP = 13;
 
 
     public function getName(): string
