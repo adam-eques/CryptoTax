@@ -8,17 +8,7 @@ class Transaction extends Component
 {
     public function render()
     {
-        $transactios = [
-            [
-                'name' => 'Binance Coin', 'type' => 'Buy', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'coins.btc'
-            ],
-            [
-                'name' => 'Lite Coin', 'type' => 'Sell', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'coins.eth'
-            ],
-            [
-                'name' => 'Tether', 'type' => 'Buy', 'balance' => '$2356', 'time' => 'Today 13,59 pm', 'icon' => 'coins.cro'
-            ],
-        ];
+        $transactios = auth()->user()->cryptoTransactions()->orderBy('executed_at', 'DESC')->get()->take(3);
         
         return view('livewire.customer.dashboard.transaction', [
             'transactios' => $transactios
