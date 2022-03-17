@@ -121,7 +121,8 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     public function fetchTransactions(Carbon $from = null): array {
         $pfrom = $from;
-        if ($from == null) $pfrom = Carbon::createFromTimestampMsUTC(946670400);
+        if ($from == null) $pfrom = Carbon::create(2000, 1, 1);
+        var_dump($pfrom->timestamp);
         $transactions = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
         return $transactions;
     }

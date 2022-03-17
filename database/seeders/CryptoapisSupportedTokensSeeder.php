@@ -23,7 +23,7 @@ class CryptoapisSupportedTokensSeeder extends Seeder
         do {
             $result = $cryptoApi->get_supported_cryptoAssets($limit, $offset);
             foreach($result['data']['items'] as $item) {
-                $token = new CryptoapisSuppotedTokens();
+                $token = new CryptoapisSuppotedToken();
                 $token->asset_id = $item["asset_id"];
                 $token->name = $item["asset_name"];
                 $token->symbol = $item["asset_symbol"];
