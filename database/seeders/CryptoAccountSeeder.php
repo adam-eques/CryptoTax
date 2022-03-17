@@ -64,6 +64,15 @@ class CryptoAccountSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now
             ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOIN,
+                'user_id' => 2,
+                'credentials' => '{"address" : "0xcf72b431d5a471255c208b65c15798d5577eeaed"}',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ])->each(function($data){
             // var_dump($data);
             DB::table(CryptoAccount::make()->getTable())->insert($data);

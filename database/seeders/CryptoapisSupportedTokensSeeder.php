@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Blockchains\CryptoAPI;
-use App\Models\CryptoapisSuppotedTokens;
+use App\Models\CryptoapisSupportedToken;
 
 class CryptoapisSupportedTokensSeeder extends Seeder
 {
@@ -15,6 +15,7 @@ class CryptoapisSupportedTokensSeeder extends Seeder
      */
     public function run()
     {
+        CryptoapisSupportedToken::truncate();
         //
         $cryptoApi = new CryptoAPI();
         $limit = 50;
@@ -23,7 +24,7 @@ class CryptoapisSupportedTokensSeeder extends Seeder
         do {
             $result = $cryptoApi->get_supported_cryptoAssets($limit, $offset);
             foreach($result['data']['items'] as $item) {
-                $token = new CryptoapisSuppotedToken();
+                $token = new CryptoapisSupportedToken();
                 $token->asset_id = $item["asset_id"];
                 $token->name = $item["asset_name"];
                 $token->symbol = $item["asset_symbol"];
