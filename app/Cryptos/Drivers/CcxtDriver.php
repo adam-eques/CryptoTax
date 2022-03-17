@@ -37,7 +37,8 @@ abstract class CcxtDriver implements ApiDriverInterface
     public function getRequiredCredentials(): array
     {
         $required = [];
-        switch($this->account->cryptoSource->id) {
+        switch($this->account->cryptoSource->id)
+        {
             case CryptoSource::SOURCE_EXCHANGE_KUCOIN :
                 $required = ["apiKey", "secret", "password"];
                 break;
@@ -51,7 +52,8 @@ abstract class CcxtDriver implements ApiDriverInterface
     /**
      * @return $this
      */
-    public function update() : self {
+    public function update() : self
+    {
         $balance = $this->fetchBalances();
         $transactions = $this->fetchTransactions($this->account->fetched_at);
         $this->saveBalances($balance);
@@ -63,7 +65,8 @@ abstract class CcxtDriver implements ApiDriverInterface
     /**
      * @return $this
      */
-    protected function connect(): self {
+    protected function connect(): self
+    {
         $this->api = new CCXTAPI();
         $exchange_id = $this->account->cryptoSource->name;
         $credentials = $this->getCredentials();
@@ -71,13 +74,16 @@ abstract class CcxtDriver implements ApiDriverInterface
         $secret = '';
         $password = '';
         $required = $this->getRequiredCredentials();
-        if (in_array('apiKey', $required) && array_key_exists('apiKey', $credentials)) {
+        if (in_array('apiKey', $required) && array_key_exists('apiKey', $credentials))
+        {
             $apiKey = $credentials["apiKey"];
         }
-        if (in_array('secret', $required) && array_key_exists('secret', $credentials)) {
+        if (in_array('secret', $required) && array_key_exists('secret', $credentials))
+        {
             $secret = $credentials["secret"];
         }
-        if (in_array('password', $required) && array_key_exists('password', $credentials)) {
+        if (in_array('password', $required) && array_key_exists('password', $credentials))
+        {
             $password = $credentials["password"];
         }
         $this->connected = $this->api->loadExchange($exchange_id, $apiKey, $secret, $password);
@@ -110,7 +116,8 @@ abstract class CcxtDriver implements ApiDriverInterface
     /**
      * @return array
      */
-    public function fetchBalances() : array {
+    public function fetchBalances() : array
+    {
         $balances = $this->api->getBalance();
         return $balances;
     }
@@ -119,9 +126,14 @@ abstract class CcxtDriver implements ApiDriverInterface
      * @param \Carbon\Carbon $from
      * @return array
      */
-    public function fetchTransactions(Carbon $from = null): array {
+    public function fetchTransactions(Carbon $from = null): array
+    {
         $pfrom = $from;
-        if ($from == null) $pfrom = Carbon::createFromTimestampMsUTC(946670400);
+        if ($from == null)
+        {
+            $pfrom = Carbon::create(2000, 1, 1);
+        }
+        var_dump($pfrom->timestamp);
         $transactions = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
         return $transactions;
     }
@@ -130,13 +142,16 @@ abstract class CcxtDriver implements ApiDriverInterface
      * @param array $balance
      * @return bool
      */
-    public function saveBalances($balanceData) : bool {
+    public function saveBalances($balanceData) : bool
+    {
         $flag = false;
         $balances = $balanceData['total'];
         $unsupported = [];
-        foreach($balances as $currency => $value) {
+        foreach($balances as $currency => $value)
+        {
             $cc = CryptoCurrency::findByShortName($currency);
-            if ($cc == NULL) {
+            if ($cc == NULL)
+            {
                 // var_dump($currency);
                 array_push($unsupported, [
                     'currency' => $currency,
@@ -167,10 +182,12 @@ abstract class CcxtDriver implements ApiDriverInterface
      * @param array $transactions
      * @return bool
      */
-    public function saveTransactions($transactions=[]) : bool {
+    public function saveTransactions($transactions=[]) : bool
+    {
         // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
         $unsupported = [];
-        foreach($transactions as $transaction) {
+        foreach($transactions as $transaction)
+        {
             $currencyId = -1;
             $costCurrencyId = -1;
             $priceCurrencyId = -1;
@@ -187,7 +204,8 @@ abstract class CcxtDriver implements ApiDriverInterface
             $fromCC = CryptoCurrency::findByShortName($fromCurrency);
             $toCC = CryptoCurrency::findByShortName($toCurrency);
             $feeCC = CryptoCurrency::findByShortName($transaction['fee']['currency']);
-            if ( $fromCC->id < 0 || $toCC->id < 0 || $feeCC->id < 0 || $fromCC == NULL || $toCC == NULL || $tradeType == 'N') {
+            if ( $fromCC->id < 0 || $toCC->id < 0 || $feeCC->id < 0 || $fromCC == NULL || $toCC == NULL || $tradeType == 'N')
+            {
                 array_push($transaction);
             } else {
                 // var_dump($fromCC->id);

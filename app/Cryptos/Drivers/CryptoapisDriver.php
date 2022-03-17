@@ -40,7 +40,8 @@ class CryptoapisDriver implements ApiDriverInterface
     /**
      * @return $this
      */
-    public function update() : self {
+    public function update() : self
+    {
         $balances = $this->fetchBalances();
         $transactions = $this->fetchTransactions($this->account->fetched_at, now());
         $assetId = $this->saveBalances($balances);
@@ -52,7 +53,8 @@ class CryptoapisDriver implements ApiDriverInterface
     /**
      * @return $this
      */
-    protected function connect() : self {
+    protected function connect() : self
+    {
         $this->api = new CryptoAPI();
         $this->connected = true;
         return $this;
@@ -69,7 +71,8 @@ class CryptoapisDriver implements ApiDriverInterface
     /**
      * @return bool
      */
-    public function isConnected() : bool {
+    public function isConnected() : bool
+    {
         return $this->connected;
     }
 
@@ -84,12 +87,14 @@ class CryptoapisDriver implements ApiDriverInterface
     /**
      * @return array
      */
-    public function fetchBalances() : array {
+    public function fetchBalances() : array
+    {
         $balances;
         $credentials = $this->getCredentials();
         $blockchain = '';
         $network = 'mainnet';
-        switch($this->account->cryptoSource->id) {
+        switch($this->account->cryptoSource->id)
+        {
             case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
                 $blockchain = 'ethereum';
                 $network = 'mainnet';
@@ -113,7 +118,8 @@ class CryptoapisDriver implements ApiDriverInterface
      * @param \Carbon\Carbon $to
      * @return array
      */
-    public function fetchTransactions(Carbon $from = null, Carbon $to = null): array {
+    public function fetchTransactions(Carbon $from = null, Carbon $to = null): array
+    {
         $transactions = [];
         $fromTimestamp = 0;
         $toTimestamp = now()->timestamp;
@@ -123,10 +129,17 @@ class CryptoapisDriver implements ApiDriverInterface
         $limit = 50;
         $offset = 0;
         $total = 0;
-        if ($from) $fromTimestamp = $from->timestamp;
-        if ($to) $toTimestamp = $to->timestamp;
+        if ($from)
+        {
+            $fromTimestamp = $from->timestamp;
+        }
+        if ($to)
+        {
+            $toTimestamp = $to->timestamp;
+        }
         $credentials = $this->getCredentials();
-        switch($this->account->cryptoSource->id) {
+        switch($this->account->cryptoSource->id)
+        {
             case CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM :
                 $context = 'ethereum transactions';
                 $blockchain = 'ethereum';
@@ -142,7 +155,8 @@ class CryptoapisDriver implements ApiDriverInterface
 
         do {
             $response = $this->api->get_transactionsByTime($credentials['address'], $limit, $offset, $blockchain, $network, $fromTimestamp, $toTimestamp, $context);
-            foreach ($response->data->items as $transaction) {
+            foreach ($response->data->items as $transaction)
+            {
                 $transactions[] = $transaction;
             }
             $total = $response->data->total;
@@ -156,12 +170,15 @@ class CryptoapisDriver implements ApiDriverInterface
      * @param array $balance
      * @return bool
      */
-    public function saveBalances($balance) : bool {
+    public function saveBalances($balance) : bool
+    {
         $assets = $this->account->cryptoAssets();
         $currencyId = CryptoCurrency::findByShortName($balance['unit'])->id;
         $create = true;
-        foreach($assets->get() as $asset) {
-            if ($asset->crypto_currency_id === $currencyId) {
+        foreach($assets->get() as $asset)
+        {
+            if ($asset->crypto_currency_id === $currencyId)
+            {
                 // assets.bal
                 $asset->update(['balance' => $balance['amount']]);
                 $create = false;
@@ -181,8 +198,10 @@ class CryptoapisDriver implements ApiDriverInterface
      * @param array $transactions
      * @return bool
      */
-    public function saveTransactions($transactions) : bool {
-        foreach($transactions as $transaction) {
+    public function saveTransactions($transactions) : bool
+    {
+        foreach($transactions as $transaction)
+        {
             $currencyId = CryptoCurrency::findByShortName($transaction->fee->unit)->id;
             $costCurrencyId = $currencyId;
             $priceCurrencyId = $currencyId;
@@ -194,10 +213,12 @@ class CryptoapisDriver implements ApiDriverInterface
             var_dump($executed_at);
             var_dump($transaction->timestamp);
 
-            foreach($transaction->senders as $sender) {
+            foreach($transaction->senders as $sender)
+            {
                 if ($credentials['address'] == $sender->address) $tradeType = 'S';
             }
-            foreach($transaction->recipients as $recipient) {
+            foreach($transaction->recipients as $recipient)
+            {
                 if ($credentials['address'] == $recipient->address) $tradeType = 'B';
             }
             // var_dump($currencyId);

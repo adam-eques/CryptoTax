@@ -13,7 +13,7 @@ class CreateCryptoapisSuppotedTokens extends Migration
      */
     public function up()
     {
-        Schema::create('cryptoapis_suppoted_tokens', function (Blueprint $table) {
+        Schema::create('cryptoapis_supported_tokens', function (Blueprint $table) {
             $table->id();
             $table->string('asset_id');
             $table->string('name');
@@ -32,6 +32,6 @@ class CreateCryptoapisSuppotedTokens extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cryptoapis_suppoted_tokens');
+        Schema::dropIfExists('cryptoapis_supported_tokens');
     }
 }

@@ -39,31 +39,22 @@ class KucoinDriver extends CcxtDriver
         $balance = $this->fetchBalances();
         $this->saveBalances($balance);
 
-
-        // $transactions = $this->fetchTransactions($this->account->fetched_at);
-        // $this->saveTransactions($transactions);
-
         $account = $this->account;
-        // $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
         $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2021, 9, 15);
         $counter = 0;
+        $exchange = $this->api->exchange;
 
         while($since->isPast()) {
-            $data = $this->fetchTransactions($since);
-            var_dump($data);
+            $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
             $this->saveTransactions($data);
 
-            // Sleep because of Request Limit of 9 times/3s
             if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
                 sleep(3);
             }
 
-            // Add a week aka 7 days and increment counter
-            if (count($data) == 0) $since->addDays(7);
-            else $since = Carbon::createFromTimestampMsUTC($data[count($data) - 1]['timestamp'] + 1);
+            $since->addDays(7);
             $counter++;
         }
-
 
         $this->account->update(['fetched_at' => now()]);
 
