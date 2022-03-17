@@ -29,8 +29,8 @@ class CryptoCurrency extends Model
 
     public function convertTo(float $value, string $otherCurrency): float
     {
-        // First check age of last fetch
-        if(!$this->fetched_at || $this->fetched_at < now()->addMinutes(-15)) {
+        // First check age of last fetch; 35 Minutes, because the scheduled job runs every 15min
+        if(!$this->fetched_at || $this->fetched_at < now()->addMinutes(-35)) {
             $this->updateRowFromApi();
         }
 
@@ -68,9 +68,56 @@ class CryptoCurrency extends Model
     }
 
 
-    public static function updateRowsFromApi($cryptoCurrencies)
+    /**
+     * Update ALL rows
+     *
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateAllRowsFromApi(): void
     {
+        $limit = 300;
+        $offset = 0;
+        $loopCounter = 0;
 
+        while($currencies = static::query()->limit($limit)->offset($offset)->pluck("coingecko_id")->toArray()) {
+            $currencies = join(",", $currencies);
+            $offset += $limit;
+            $loopCounter++;
+            static::updateRowsFromApi($currencies);
+
+            if($loopCounter == 40) { // so that we do not get a timeout after 50 requests
+                sleep(30);
+            }
+        }
+    }
+
+
+    /**
+     * Updates all provided coingecko rows
+     *
+     * @param string $coingeckoCurrencyCsv
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateRowsFromApi(string $coingeckoCurrencyCsv): void
+    {
+        $client = new \Codenixsv\CoinGeckoApi\CoinGeckoClient();
+        $vsCurrencies = join(",", CoingeckoSupportedVsCurrencies::getCurrencies());
+        $result = $client->simple()->getPrice($coingeckoCurrencyCsv, $vsCurrencies);
+        $updates = [];
+
+        foreach($result AS $key => $conversions) {
+            $update = "UPDATE crypto_currencies SET ";
+            foreach($conversions AS $cur => $val) {
+                $update.= "currency_" . strtolower($cur) . " = " . number_format($val, 10, ".", "") . ", ";
+            }
+            $update.= "fetched_at = '" . now() . "' WHERE coingecko_id = '$key'";
+            $updates[] = $update;
+        }
+
+        // Run query
+        \DB::unprepared(implode(";\n\n", $updates));
     }
 
 
