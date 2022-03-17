@@ -147,8 +147,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         try{
             $this->selected_account->requestUpdate();
             $this->notification()->info(
-                __("Fetched Successfully"),
-                "Please check transactions"
+                __("Fetch is now queued"),
+                "Please update this page in 2 minutes"
             );
         } catch (\Exception $e) {
             $this->notification()->error(__("An error occured"), $e->getMessage());
