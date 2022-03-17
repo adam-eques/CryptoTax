@@ -24,6 +24,7 @@ class CryptoSource extends Model
     const SOURCE_BLOCKCHAIN_ZCASH = 11;
     const SOURCE_BLOCKCHAIN_ZILLIQA = 12;
     const SOURCE_BLOCKCHAIN_XRP = 13;
+    const SOURCE_BLOCKCHAIN_CRONOS = 14;
 
 
     public function getName(): string

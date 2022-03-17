@@ -6,6 +6,7 @@ use App\Cryptos\Drivers\CryptoapisDriver;
 use App\Cryptos\Drivers\CcxtDriver;
 use App\Cryptos\Drivers\HitBTCDriver;
 use App\Cryptos\Drivers\KucoinDriver;
+use App\Cryptos\Drivers\CronosDriver;
 use App\Models\CryptoSource;
 use Illuminate\Database\Seeder;
 
@@ -100,6 +101,14 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
                 'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_CRONOS,
+                'name' => "Cronos",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CronosDriver::class,
                 'active' => true
             ],
         ])->each(function($data){
