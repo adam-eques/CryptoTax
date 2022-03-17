@@ -83,9 +83,13 @@ class CCXTAPI {
     // $since -> timestamp in seconds
     public function getTrades($symbol, $since, $limit) {
         $all_trades = [];
+        var_dump($since);
+        var_dump($this->exchange->seconds());
         while ($since < $this->exchange->seconds()) {
             // $symbol = null; // change for your symbol
             $trades = $this->exchange->fetchMyTrades($symbol, $since, $limit);
+            echo "trades: ";
+            var_dump($trades);
             if (count($trades)) {
                 $since = $trades[count($trades) - 1]['timestamp'] + 1;
                 $all_trades = array_merge ($all_trades, $trades);
