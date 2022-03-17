@@ -19,7 +19,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "Kucoin",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
-                'driver' => CcxtDriver::class,
+                'driver' => KucoinDriver::class,
                 'active' => true
             ],
             [
@@ -27,7 +27,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "HitBTC",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
-                'driver' => CcxtDriver::class,
+                'driver' => HitBTCDriver::class,
                 'active' => true
             ],
             [
