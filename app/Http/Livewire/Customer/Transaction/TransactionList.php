@@ -21,6 +21,13 @@ class TransactionList extends Component
     public?string $type = null;
     public?string $wallet = null;
 
+    protected $queryString = [
+        'search' => ['except' => '0'],
+        'order' => ['except' => '0'],
+        'type' => ['except' => '0'],
+        'wallet' => ['except' => '0'],
+    ];
+
     public function mount(){
         $this->order = 'DESC';
     }
@@ -58,7 +65,7 @@ class TransactionList extends Component
         $transactions = $transactions
             ->whereHas( 'cryptoCurrency', function($q){
                 $q->where('short_name', 'like', '%'. $this->search .'%');
-            } );
+            });
 
         if ($this->wallet) {
             $transactions = $transactions->whereHas('cryptoAccount', function($q){

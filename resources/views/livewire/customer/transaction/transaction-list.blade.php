@@ -20,7 +20,7 @@
                     </div>
                     <div class="w-full h-full col-span-4">
                         <select class="w-full h-full bg-white rounded-md" wire:model.lazy="order">
-                            <option value="" disabled selected hidden>{{ __('Order By') }}</option>
+                            <option :value="" disabled selected hidden>{{ __('Order By') }}</option>
                             @foreach ($filter['order'] as $item)                                
                                 <option value="{{ $item['value'] }}">{{ __($item['label']) }}</option>
                             @endforeach
@@ -29,21 +29,21 @@
                 </div>
             </div>
             <select class="h-full col-span-1 bg-white rounded-md md:col-span-2" wire:model.lazy="type">
-                <option value="" disabled selected class="text-gray-100">{{ __('Transaction type') }}</option>
+                <option value="0" selected>{{ __('All types') }}</option>
                 @foreach ($filter['type'] as $item)                                
                     <option value="{{ $item['value'] }}">{{ __($item['label']) }}</option>
                 @endforeach
             </select>
             <div class="col-span-1 md:col-span-3">
-                <div class="grid h-full grid-cols-7 gap-x-3">
+                <div class="grid h-full grid-cols-6 gap-x-3">
                     <select class="w-full h-full col-span-3 bg-white rounded-md" wire:model.lazy="wallet">
-                        <option value="" disabled selected hidden>{{ __('Account') }}</option>
+                        <option value="0" selected>{{ __('All accounts') }}</option>
                         @foreach ($filter['category'] as $item)                                
                             <option value="{{ $item['id'] }}">{{ __($item['name']) }}</option>
                         @endforeach
                     </select>
-                    <select class="w-full h-full col-span-4 bg-white rounded-md">
-                        <option value="" disabled selected hidden>{{ __('Category') }}</option>
+                    <select class="w-full h-full col-span-3 bg-white rounded-md">
+                        <option value="0" selected>{{ __('All categories') }}</option>
                         @foreach ($filter['exchange'] as $item)                                
                             <option value="{{ $item['value'] }}">{{ __($item['label']) }}</option>
                         @endforeach
