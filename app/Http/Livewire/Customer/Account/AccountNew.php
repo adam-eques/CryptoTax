@@ -153,17 +153,23 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         //Added Crypto source
         $cryptoAccounts = auth()->user()->cryptoAccounts;
 
-        //All actived Crypto Resource
-
-        if($this->selected_category === 1)
-        {
-            $crypto_resources = $this->default_query(CryptoSource::activeExchanges());
-        }
-        elseif ($this->selected_category === 3) {
-            $crypto_resources = $this->default_query(CryptoSource::activeBlockchains());
-        }
-        else {
-            $crypto_resources = $this->default_query(CryptoSource::query());
+        //All actived Crypto Resources
+        switch ($this->selected_category) {
+            case '1':
+                $crypto_resources = $this->default_query(CryptoSource::activeExchanges());
+                break;
+            case '2':
+                $crypto_resources = [];
+                break;
+            case '3':
+                $crypto_resources = $this->default_query(CryptoSource::activeBlockchains());
+                break;
+            case '4':
+                $crypto_resources = [];
+                break;
+            default:
+                $crypto_resources = $this->default_query(CryptoSource::query());
+                break;
         }
 
         return view('livewire.customer.account.account-new', [
