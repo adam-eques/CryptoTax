@@ -86,6 +86,14 @@ class CryptoSourceSeeder extends Seeder
                 'active' => true
             ],
             [
+                'id' => CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC,
+                'name' => "Ethereum classic",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
+                'driver' => CryptoapisDriver::class,
+                'active' => true
+            ],
+            [
                 'id' => CryptoSource::SOURCE_BLOCKCHAIN_ZCASH,
                 'name' => "Zcash",
                 'icon' => '',
