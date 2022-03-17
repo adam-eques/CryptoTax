@@ -13,6 +13,7 @@ class CryptoSourceSeeder extends Seeder
 {
     public function run()
     {
+        CryptoSource::truncate();
         collect([
             [
                 'id' => CryptoSource::SOURCE_EXCHANGE_KUCOIN,
