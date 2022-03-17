@@ -25,5 +25,6 @@ jobs:
             php artisan migrate --force
             php artisan icons:cache
             php artisan db:seed TestServerSeeder
+            php artisan queue:restart
             npm install
             npm run prod
