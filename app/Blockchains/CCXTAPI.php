@@ -2,6 +2,7 @@
 
 namespace App\Blockchains;
 date_default_timezone_set('UTC');
+use CCXT\Exchange;
 use CCXT;
 
 class CCXTAPI {
@@ -10,7 +11,6 @@ class CCXTAPI {
     public function __construct() {
         $exchange = NULL;
         // var_dump (ccxt\Exchange::$exchanges);
-
 
 
         // $poloniex = new \ccxt\poloniex();
@@ -55,15 +55,12 @@ class CCXTAPI {
         // $hitbtc->create_order ('BTC/USD', 'limit', 'buy', 1, 3000, array ('clientOrderId' => '123'));
     }
 
-    public function loadExchange($exchange_id, $apiKey, $secret, $password) {
+    public function loadExchange($exchange_id, $credentials) {
         $flag = false;
         try {
             $exchange_class = "\\ccxt\\" . strtolower($exchange_id);
-            $this->exchange = new $exchange_class(array(
-                'apiKey' => $apiKey,
-                'secret' => $secret,
-                'password' => $password
-            ));
+            $this->exchange = new $exchange_class($credentials);
+            var_dump('before load', $credentials);
             $this->exchange->load_markets();
             $flag = true;
         } catch (\Throwable $th) {
@@ -155,6 +152,10 @@ class CCXTAPI {
 
     public function genSymbol($fromSymbol, $toSymbol) {
         return $fromSymbol.'/'.$toSymbol;
+    }
+
+    public static function supportedList() {
+        return Exchange::$exchanges;
     }
 
 }

@@ -2,11 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Cryptos\Drivers\CryptoapisDriver;
-use App\Cryptos\Drivers\CcxtDriver;
+// Exchange drivers
+// use App\Cryptos\Drivers\CcxtDriver;
+use App\Cryptos\Drivers\BinanceDriver;
 use App\Cryptos\Drivers\HitBTCDriver;
 use App\Cryptos\Drivers\KucoinDriver;
+use App\Cryptos\Drivers\CryptocomDriver;
+use App\Cryptos\Drivers\HuobiDriver;
+
+// Blockchain drivers
+use App\Cryptos\Drivers\CryptoapisDriver;
 use App\Cryptos\Drivers\CronosDriver;
+
 use App\Models\CryptoSource;
 use Illuminate\Database\Seeder;
 
@@ -37,7 +44,7 @@ class CryptoSourceSeeder extends Seeder
                 'name' => "Binance",
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
-                'driver' => HitBTCDriver::class,
+                'driver' => BinanceDriver::class,
                 'active' => false
             ],
             [
@@ -109,6 +116,22 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
                 'driver' => CronosDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_EXCHANGE_CRYPTOCOM,
+                'name' => "Cryptocom",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
+                'driver' => CryptocomDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_EXCHANGE_HUOBI,
+                'name' => "Huobi",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
+                'driver' => HuobiDriver::class,
                 'active' => true
             ],
         ])->each(function($data){

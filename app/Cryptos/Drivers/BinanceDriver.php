@@ -6,11 +6,10 @@ use App\Blockchains\CCXTAPI;
 
 
 /**
- * Class HitBTC
+ * Class BinanceDriver
  *
- * @property \ccxt\hitbtc3 $api
  */
-class HitBTCDriver extends CcxtDriver
+class BinanceDriver extends CcxtDriver
 {
 
     /**
@@ -20,8 +19,7 @@ class HitBTCDriver extends CcxtDriver
     protected function connect(): self
     {
         $this->api = new CCXTAPI();
-        // $exchange_id = 'hitbtc3';
-        $exchange_id = 'hitbtc';
+        $exchange_id = 'binance';
         $credentials = $this->getCredentials();
         $this->connected = $this->api->loadExchange($exchange_id, [
             'apiKey' => \Arr::get($credentials, "apiKey"),

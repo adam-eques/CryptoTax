@@ -128,6 +128,30 @@ class CryptoAccountSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now
             ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_EXCHANGE_CRYPTOCOM,
+                'user_id' => 2,
+                'credentials' => '{
+                    "apiKey" : "vJwZWxTPFAEXQqREpNXaGL",
+                    "secret" : "cbNwm8cEfYW7DYuKknDVKv"
+                }',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_EXCHANGE_BINANCE,
+                'user_id' => 2,
+                'credentials' => '{
+                    "apiKey" : "OxUHNMyYuIoIgoyjp8QCEnw4j3C3Yxuu157tYVfrUfPj3lnCsKBZcjxbt3pLToL2",
+                    "secret" : "zBPfdJqCZZXHoHj8Bnm5ItDib02RvZ5wYk57OWDOC9StFsxBJv9cczLbap7gSK5C"
+                }',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ])->each(function($data){
             // var_dump($data);
             DB::table(CryptoAccount::make()->getTable())->insert($data);

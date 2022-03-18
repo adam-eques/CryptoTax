@@ -2,6 +2,7 @@
 
 namespace App\Cryptos\Drivers;
 
+use App\Blockchains\CCXTAPI;
 
 
 /**
@@ -16,16 +17,17 @@ class CryptocomDriver extends CcxtDriver
      * @return $this
      * @throws \Exception
      */
-    // protected function connect(): self
-    // {
-    //     $credentials = $this->getCredentials();
-    //     $this->api = new \ccxt\hitbtc([
-    //         "apiKey" => \Arr::get($credentials, "apiKey"),
-    //         "secret" => \Arr::get($credentials, "secret"),
-    //     ]);
-
-    //     return $this;
-    // }
+    protected function connect(): self
+    {
+        $this->api = new CCXTAPI();
+        $exchange_id = 'cryptocom';
+        $credentials = $this->getCredentials();
+        $this->connected = $this->api->loadExchange($exchange_id, [
+            'apiKey ' => $credentials['apiKey'],
+            'secret' => $credentials['secret']
+        ]);
+        return $this;
+    }
 
     /**
      * @return array
@@ -34,7 +36,5 @@ class CryptocomDriver extends CcxtDriver
     {
         return ['apiKey', 'secret'];
     }
-
-    
 
 }

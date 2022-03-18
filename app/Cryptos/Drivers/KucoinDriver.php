@@ -2,6 +2,7 @@
 
 namespace App\Cryptos\Drivers;
 
+use App\Blockchains\CCXTAPI;
 
 
 use Carbon\Carbon;
@@ -19,17 +20,18 @@ class KucoinDriver extends CcxtDriver
      * @return $this
      * @throws \Exception
      */
-    // protected function connect(): self
-    // {
-    //     $credentials = $this->getCredentials();
-    //     $this->api = new \ccxt\kucoin([
-    //         "apiKey" => \Arr::get($credentials, "apiKey"),
-    //         "secret" => \Arr::get($credentials, "secret"),
-    //         "password" => \Arr::get($credentials, "password"),
-    //     ]);
-
-    //     return $this;
-    // }
+    protected function connect(): self
+    {
+        $this->api = new CCXTAPI();
+        $exchange_id = 'kucoin';
+        $credentials = $this->getCredentials();
+        $this->connected = $this->api->loadExchange($exchange_id, [
+            "apiKey" => \Arr::get($credentials, "apiKey"),
+            "secret" => \Arr::get($credentials, "secret"),
+            "password" => \Arr::get($credentials, "password"),
+        ]);
+        return $this;
+    }
 
     /**
      * @return array

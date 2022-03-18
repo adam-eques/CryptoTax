@@ -52,30 +52,7 @@ abstract class CcxtDriver implements ApiDriverInterface
     /**
      * @return $this
      */
-    protected function connect(): self
-    {
-        $this->api = new CCXTAPI();
-        $exchange_id = $this->account->cryptoSource->name;
-        $credentials = $this->getCredentials();
-        $apiKey = '';
-        $secret = '';
-        $password = '';
-        $required = $this->getRequiredCredentials();
-        if (in_array('apiKey', $required) && array_key_exists('apiKey', $credentials))
-        {
-            $apiKey = $credentials["apiKey"];
-        }
-        if (in_array('secret', $required) && array_key_exists('secret', $credentials))
-        {
-            $secret = $credentials["secret"];
-        }
-        if (in_array('password', $required) && array_key_exists('password', $credentials))
-        {
-            $password = $credentials["password"];
-        }
-        $this->connected = $this->api->loadExchange($exchange_id, $apiKey, $secret, $password);
-        return $this;
-    }
+    abstract protected function connect(): self;
 
     /**
      * @return App\Blockchains\CCXTAPI
