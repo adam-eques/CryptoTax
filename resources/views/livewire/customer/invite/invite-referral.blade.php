@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <div class="mt-8 overflow-auto">
+    <div class="mt-8 overflow-auto scrollbar">
         <table class="w-full text-center border min-w-clg">
             <thead class="bg-bgcolor">
                 <tr>

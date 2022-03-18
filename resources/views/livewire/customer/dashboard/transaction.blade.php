@@ -7,7 +7,7 @@
         </div>
         <x-button variant="primary" tag="a" href="{{ route('customer.transactions') }}">{{ __('View all') }}</x-button>
     </div>
-    <div class="overflow-auto mt-7">
+    <div class="overflow-auto mt-7 scrollbar">
         <div class="space-y-4 min-w-cmd">
             @foreach ($transactios as $item)
                 <div class="flex items-center justify-between p-5 border rounded-lg" wire:key="{{$item->id}}">
