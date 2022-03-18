@@ -54,7 +54,14 @@ class CryptoCurrency extends Model
     {
         $client = new \Codenixsv\CoinGeckoApi\CoinGeckoClient();
         $vsCurrencies = join(",", CoingeckoSupportedVsCurrencies::getCurrencies());
-        $result = $client->simple()->getPrice($this->coingecko_id, $vsCurrencies);
+        $result = [];
+
+        // get price data from coingecko
+        try {
+            $client->simple()->getPrice($this->coingecko_id, $vsCurrencies);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
 
         foreach($result[$this->coingecko_id] AS $currency => $value) {
             $var = "currency_" . strtolower($currency);
@@ -105,7 +112,14 @@ class CryptoCurrency extends Model
     {
         $client = new \Codenixsv\CoinGeckoApi\CoinGeckoClient();
         $vsCurrencies = join(",", CoingeckoSupportedVsCurrencies::getCurrencies());
-        $result = $client->simple()->getPrice($coingeckoCurrencyCsv, $vsCurrencies);
+        $result = [];
+
+        // get price data from coingecko
+        try {
+            $result = $client->simple()->getPrice($coingeckoCurrencyCsv, $vsCurrencies);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
         $updates = [];
 
         foreach($result AS $key => $conversions) {

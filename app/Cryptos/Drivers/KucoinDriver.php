@@ -32,6 +32,14 @@ class KucoinDriver extends CcxtDriver
     // }
 
     /**
+     * @return array
+     */
+    public function getRequiredCredentials(): array
+    {
+        return ["apiKey", "secret", "password"];
+    }
+
+    /**
      * @return $this
      */
     public function update() : self {

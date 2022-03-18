@@ -34,20 +34,7 @@ abstract class CcxtDriver implements ApiDriverInterface
     /**
      * @return array
      */
-    public function getRequiredCredentials(): array
-    {
-        $required = [];
-        switch($this->account->cryptoSource->id)
-        {
-            case CryptoSource::SOURCE_EXCHANGE_KUCOIN :
-                $required = ["apiKey", "secret", "password"];
-                break;
-            default:
-                $required = ["apiKey", "secret"];
-                break;
-        }
-        return $required;
-    }
+    abstract public function getRequiredCredentials(): array;
 
     /**
      * @return $this

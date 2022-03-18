@@ -5,11 +5,11 @@ namespace App\Cryptos\Drivers;
 
 
 /**
- * Class HitBTC
+ * Class Cryptocom
  *
- * @property \ccxt\hitbtc3 $api
+ *
  */
-class HitBTCDriver extends CcxtDriver
+class CryptocomDriver extends CcxtDriver
 {
 
     /**
@@ -32,6 +32,9 @@ class HitBTCDriver extends CcxtDriver
      */
     public function getRequiredCredentials(): array
     {
-        return ["apiKey", "secret"];
+        return ['apiKey', 'secret'];
     }
+
+    
+
 }

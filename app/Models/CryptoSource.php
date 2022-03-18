@@ -11,20 +11,23 @@ class CryptoSource extends Model
     const SOURCE_TYPE_BLOCKCHAIN = "B";
     const SOURCE_TYPE_WALLET = "W";
     // Sources
-    const SOURCE_EXCHANGE_KUCOIN = 1;
-    const SOURCE_EXCHANGE_HITBTC = 2;
-    const SOURCE_EXCHANGE_BINANCE = 3;
-    const SOURCE_BLOCKCHAIN_ETHEREUM = 4;
-    const SOURCE_BLOCKCHAIN_LITECOIN = 5;
-    const SOURCE_BLOCKCHAIN_BITCOIN = 6;
-    const SOURCE_BLOCKCHAIN_BITCOINCASH = 7;
-    const SOURCE_BLOCKCHAIN_DASH = 8;
-    const SOURCE_BLOCKCHAIN_DOGE = 9;
-    const SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC = 10;
-    const SOURCE_BLOCKCHAIN_ZCASH = 11;
-    const SOURCE_BLOCKCHAIN_ZILLIQA = 12;
-    const SOURCE_BLOCKCHAIN_XRP = 13;
-    const SOURCE_BLOCKCHAIN_CRONOS = 14;
+    // Exchanges
+    const SOURCE_EXCHANGE_KUCOIN =              100001;
+    const SOURCE_EXCHANGE_HITBTC =              100002;
+    const SOURCE_EXCHANGE_BINANCE =             100003;
+
+    // Blockchains
+    const SOURCE_BLOCKCHAIN_ETHEREUM =          1;
+    const SOURCE_BLOCKCHAIN_LITECOIN =          2;
+    const SOURCE_BLOCKCHAIN_BITCOIN =           3;
+    const SOURCE_BLOCKCHAIN_BITCOINCASH =       4;
+    const SOURCE_BLOCKCHAIN_DASH =              5;
+    const SOURCE_BLOCKCHAIN_DOGE =              6;
+    const SOURCE_BLOCKCHAIN_ETHEREUMCLASSIC =   7;
+    const SOURCE_BLOCKCHAIN_ZCASH =             8;
+    const SOURCE_BLOCKCHAIN_ZILLIQA =           9;
+    const SOURCE_BLOCKCHAIN_XRP =               10;
+    const SOURCE_BLOCKCHAIN_CRONOS =            11;
 
 
     public function getName(): string
