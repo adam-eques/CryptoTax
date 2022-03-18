@@ -51,8 +51,8 @@
         </div>
         <div class="grid grid-cols-1 gap-4 mt-5 lg:grid-cols-2 lg:gap-10 lg:mt-8">
             {{-- Left panel --}}
-            <div class="h-full overflow-auto border rounded-md">
-                <div class="h-110">
+            <div class="h-full overflow-auto border rounded-md scrollbar">
+                <div class="h-[550px]">
                     @foreach ($crypto_resources as $resource)                        
                         <x-new-account-row 
                             category="{{$resource->type}}" 
