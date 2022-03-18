@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-10 overflow-auto rounded-sm">
+    <div class="mt-10 overflow-auto rounded-sm scrollbar">
         <div class="min-w-[1024px]">    
             @foreach ($transactions as $transaction)
                 <x-transaction-list-item :transaction="$transaction"/>

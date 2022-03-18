@@ -30,7 +30,7 @@
         <x-button size="md" variant="white">This Month</x-button>
         <x-button size="md" variant="white">This Week</x-button>
     </div>
-    <div class="overflow-auto mt-9">
+    <div class="overflow-auto mt-9 scrollbar">
         <div class="grid grid-cols-12 py-8 text-sm text-center border bg-bgcolor min-w-clg">
             <div class="col-span-2">Username</div>
             <div class="col-span-2">Registration Time (UTC+8)</div>

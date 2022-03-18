@@ -21,7 +21,7 @@
                     <p class="ml-3">{{ __('Download all') }}</p>
                 </x-button>
             </div>
-            <div class="overflow-auto mt-18">
+            <div class="overflow-auto scrollbar mt-18">
                 <div class="divide-y min-w-[720px]">
                     <div class="grid grid-cols-12 pb-4">
                         <div class="col-span-4 ml-12">

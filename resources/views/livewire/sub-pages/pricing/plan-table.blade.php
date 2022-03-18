@@ -1,4 +1,4 @@
-<div class="overflow-auto">
+<div class="overflow-auto scrollbar">
     <div class="grid grid-cols-3 min-w-clg">
         <div class="col-span-1">
     

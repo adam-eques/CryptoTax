@@ -38,7 +38,7 @@
                 <x-badge size="md" variant="primary" type="square">{{ __('$ 21.67') }}</x-badge>
                 <button class="p-2 text-sm text-white rounded-md bg-primary hover:bg-secondary">{{ __('Add Token') }}</button>
             </x-slot>
-            <div class="p-5 overflow-auto">
+            <div class="p-5 overflow-auto scrollbar">
                 <div class="grid grid-cols-4 p-5 rounded-md min-w-[520px] bg-gray-50">
                     <p class="font-bold">{{ __('Assets') }}</p>
                     <p class="font-bold">{{ __('Balances') }}</p>
@@ -96,7 +96,7 @@
                 <p class="font-normal">{{ __('to be claimed') }}<span class="ml-2 font-bold">$56.36</span></p>
                 <x-badge size="md" variant="primary" type="square">{{ __('$ 5,392.62') }}</x-badge>
             </x-slot>
-            <div class="p-5 overflow-auto">
+            <div class="p-5 overflow-auto scrollbar">
                 <p class="mb-4 font-bold">{{ __('Farms') }}</p>
                 <div class="grid grid-cols-5 p-5 rounded-md min-w-[1024px] bg-gray-50">
                     <p class="font-bold">{{ __('Pool') }}</p>
@@ -178,7 +178,7 @@
                 <span class="text-xl font-bold">{{ __('PancakeSwap') }}</span>
                 <x-badge size="md" variant="primary" type="square">{{ __('$ 5,392.62') }}</x-badge>
             </x-slot>
-            <div class="p-5 overflow-auto">
+            <div class="p-5 overflow-auto scrollbar">
                 <div class="grid grid-cols-5 p-5 rounded-md min-w-[1024px] bg-gray-50">
                     <p class="font-bold">{{ __('Pool') }}</p>
                     <p class="font-bold">{{ __('Balances') }}</p>
@@ -224,7 +224,7 @@
                 <span class="text-xl font-bold">{{ __('Tectonic') }}</span>
                 <x-badge size="md" variant="primary" type="square">{{ __('$ 5,392.62') }}</x-badge>
             </x-slot>
-            <div class="p-5 overflow-auto">
+            <div class="p-5 overflow-auto scrollbar">
                 <div class="grid grid-cols-4 p-5 rounded-md min-w-[520px] bg-gray-50">
                     <p class="font-bold">{{ __('Assets') }}</p>
                     <p class="font-bold">{{ __('Balances') }}</p>
@@ -252,7 +252,7 @@
                 <span class="text-xl font-bold">{{ __('Binance Spot & Earn') }}</span>
                 <x-badge size="md" variant="primary" type="square">{{ __('Earn $ 21.67') }}</x-badge>
             </x-slot>
-            <div class="p-5 overflow-auto">
+            <div class="p-5 overflow-auto scrollbar">
                 <div class="grid grid-cols-4 p-5 rounded-md min-w-[520px] bg-gray-50">
                     <p class="font-bold">{{ __('Assets') }}</p>
                     <p class="font-bold">{{ __('Balances') }}</p>
