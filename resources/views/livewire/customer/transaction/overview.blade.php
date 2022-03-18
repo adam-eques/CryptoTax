@@ -30,7 +30,7 @@ $overview_data = [
 
 <div>
     <x-customers.customer-header-bar icon="grommet-transaction" name="Transactions">
-        <x-button variant="white" class="my-2 border-primary">{{ __('Download CSV') }}</x-button>
+        <x-button variant="white" class="my-2 border-primary" wire:click='fileExport'>{{ __('Download CSV') }}</x-button>
         <x-button variant="white" class="border-primary">{{ __('Add transaction') }}</x-button>
         <x-button tag="a" href="{{ route('customer.account.new') }}">
             <x-icon name="bx-add-to-queue" class="w-5 h-5 mr-2"/>

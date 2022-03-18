@@ -3,9 +3,17 @@
 namespace App\Http\Livewire\Customer\Transaction;
 
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\TransactionImport;
+use App\Exports\TransactionExport;
 
 class Overview extends Component
 {
+    public function fileExport() 
+    {
+        return Excel::download(new TransactionExport, 'transactions.xlsx');
+    }   
+
     public function render()
     {
         $trades_num = auth()->user()->cryptoTransactions()->where('trade_type', 'B')->orWhere('trade_type', 'S')->get()->count();

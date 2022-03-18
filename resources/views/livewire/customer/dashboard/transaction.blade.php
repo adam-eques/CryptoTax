@@ -10,19 +10,28 @@
     <div class="overflow-auto mt-7">
         <div class="space-y-4 min-w-cmd">
             @foreach ($transactios as $item)
-                <div class="flex items-center justify-between p-5 border rounded-lg" wire:key="{{$item['name']}}">
+                <div class="flex items-center justify-between p-5 border rounded-lg" wire:key="{{$item->id}}">
                     <div class="flex items-center justify-between space-x-6">
                         <div class="w-12 h-12 rounded-lg">
-                            <x-icon name="{{ $item['icon'] }}" class="w-full h-full"/>
+                            <x-icon name="{{'coins.' . strtolower($item->costCurrency->short_name) }}" class="w-full h-full"/>
                         </div>
                         <div>
-                            <p class="text-lg font-bold">{{ $item['name'] }} </p>
-                            <x-badge type="square" class="mt-2">{{ $item['type'] }}</x-badge>
+                            <p class="text-lg font-bold">{{ $item->costCurrency->short_name }} </p>
+                            @switch($item->trade_type)
+                                @case('B')
+                                    <x-badge type="square" class="mt-2">{{ __("Bought") }}</x-badge>
+                                    @break
+                                @case('S')
+                                    <x-badge type="square" class="mt-2">{{ __("Sold") }}</x-badge>
+                                    @break
+                                @default
+                                    
+                            @endswitch
                         </div>
                     </div>
                     <div>
-                        <h5 class="text-lg font-bold">{{ $item['balance'] }}</h5>
-                        <p class="mt-2 text-sm text-gray-400">{{ $item['time'] }}</p>
+                        <h5 class="text-lg font-bold">{{ $item->cost }}</h5>
+                        <p class="mt-2 text-sm text-gray-400">{{ $item->executed_at }}</p>
                     </div>
                 </div>
             @endforeach
