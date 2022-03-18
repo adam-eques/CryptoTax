@@ -15,7 +15,7 @@
             <div class="flex flex-col gap-5 font-medium text-gray-900">
                 @foreach($rows as $index => $row)
                     <x-toggle-block :label="$row['label']" :opened="true">
-                        <div class="flex flex-col overflow-auto divide-y divide-gray-300 scrollbar max-h-100" x-on:click="category=`{{ $row['label'] }}`; action=''">
+                        <div class="flex flex-col overflow-auto divide-y divide-gray-300 scrollbar max-h-60" x-on:click="category=`{{ $row['label'] }}`; action=''">
                             @foreach($crypto_accounts as $crypto_account)
                                 @if ( ($row['id'] == 1) && ($crypto_account->cryptoSource->type == "E"))
                                     <x-account-item-button
@@ -67,7 +67,7 @@
                     </div>
                     <div>
                         <div x-show="action == ''" class="overflow-auto">
-                            <div class="divide-y max-h-[810px] overflow-auto">
+                            <div class="divide-y max-h-[810px] overflow-auto scrollbar">
                                 @foreach ($selected_account->cryptoAssets as $asset)
                                     <x-account-assets-item :asset="$asset"/>
                                 @endforeach

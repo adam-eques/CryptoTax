@@ -18,7 +18,7 @@
     ]
 @endphp
 
-<div class="divide-y hidden md:block">
+<div class="hidden divide-y md:block">
     @foreach ($list as $item)
         <a href="{{ route('customer.user-setting', ['category' => $item['route']]) }}">
             <div class="flex items-center justify-between w-full text-left py-6 px-8 @if($active == $item['route']) bg-gray-100 @endif ">
@@ -67,12 +67,12 @@
     <div class="relative" x-data="{open:false}">
         <button
             @click="open = true"
-            class="py-3 h-full w-full flex justify-start px-5 text-gray-600"
+            class="flex justify-start w-full h-full px-5 py-3 text-gray-600"
         >
             <x-icon name="list" class="h-8" />
         </button>
         <div
-            class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none  overflow-auto"
+            class="absolute right-0 w-full py-1 mt-2 overflow-auto origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none scrollbar"
             x-show="open" @click.away="open=false"
             x-transition:enter-start="transition ease-in duration-3000"
         >

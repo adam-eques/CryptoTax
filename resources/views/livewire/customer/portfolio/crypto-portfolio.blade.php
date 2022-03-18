@@ -6,7 +6,7 @@
         </div>
         <x-button tag="a" href="{{ route('customer.asset') }}">{{ __('See all assets') }}</x-button>
     </div>
-    <div class="overflow-auto">
+    <div class="overflow-auto scrollbar">
         <table class="min-w-[720px] w-full border rounded">
             <thead class="bg-white border shadow-md">
                 <tr class="py-5">
