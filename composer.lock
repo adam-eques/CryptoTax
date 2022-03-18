@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e749033d62aceb18eca530adcddf48f4",
+    "content-hash": "c2e636dae16338ec36acecde4f18abb3",
     "packages": [
         {
             "name": "actb/blade-github-octicons",
@@ -4448,7 +4448,7 @@
         },
         {
             "name": "laravel/spark-stripe",
-            "version": "dev-feature/real-data-integration",
+            "version": "dev-feature/cryptoapis-test",
             "dist": {
                 "type": "path",
                 "url": "./packages/laravel/spark-stripe",
@@ -14291,5 +14291,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
