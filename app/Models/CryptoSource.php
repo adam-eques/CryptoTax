@@ -15,6 +15,8 @@ class CryptoSource extends Model
     const SOURCE_EXCHANGE_KUCOIN =              100001;
     const SOURCE_EXCHANGE_HITBTC =              100002;
     const SOURCE_EXCHANGE_BINANCE =             100003;
+    const SOURCE_EXCHANGE_CRYPTOCOM =           100004;
+    const SOURCE_EXCHANGE_HUOBI =               100005;
 
     // Blockchains
     const SOURCE_BLOCKCHAIN_ETHEREUM =          1;
