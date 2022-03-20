@@ -119,7 +119,7 @@ class BinanceDriver extends CcxtDriver
 
 
         // var_dump($all_matching_symbols);
-        TestHelper::save2file('../binance_test_trades.php', $unique_symbols);
+        // TestHelper::save2file('../binance_test_trades.php', $unique_symbols);
         $this->saveTransactions($all_trades_for_all_symbols);
 
         $this->account->update(['fetched_at' => now()]);
