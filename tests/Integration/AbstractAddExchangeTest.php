@@ -16,6 +16,11 @@ abstract class AbstractAddExchangeTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $this->customSetUp();
+    }
+
+    protected function customSetUp(): void
+    {
         $this->user = User::factory()->create();
         $this->account = CryptoAccount::create([
             "user_id" => $this->user->id,

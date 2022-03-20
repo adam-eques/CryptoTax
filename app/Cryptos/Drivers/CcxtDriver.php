@@ -80,7 +80,7 @@ abstract class CcxtDriver implements ApiDriverInterface
     /**
      * @return array
      */
-    public function fetchBalances() : array
+    protected function fetchBalances() : array
     {
         $balances = $this->api->getBalance();
         return $balances;
@@ -90,14 +90,13 @@ abstract class CcxtDriver implements ApiDriverInterface
      * @param \Carbon\Carbon $from
      * @return array
      */
-    public function fetchTransactions(Carbon $from = null): array
+    protected function fetchTransactions(Carbon $from = null): array
     {
         $pfrom = $from;
         if ($from == null)
         {
             $pfrom = Carbon::create(2000, 1, 1);
         }
-        var_dump($pfrom->timestamp);
         $transactions = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
         return $transactions;
     }
@@ -106,7 +105,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      * @param array $balance
      * @return bool
      */
-    public function saveBalances($balanceData) : bool
+    protected function saveBalances($balanceData) : bool
     {
         $flag = false;
         $balances = $balanceData['total'];
@@ -138,7 +137,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $flag = true;
             }
         }
-        // TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
+        TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
         return $flag;
     }
 
@@ -146,7 +145,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      * @param array $transactions
      * @return bool
      */
-    public function saveTransactions($transactions=[]) : bool
+    protected function saveTransactions($transactions=[]) : bool
     {
         // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
         $unsupported = [];
@@ -168,7 +167,7 @@ abstract class CcxtDriver implements ApiDriverInterface
             $fromCC = CryptoCurrency::findByShortName($fromCurrency);
             $toCC = CryptoCurrency::findByShortName($toCurrency);
             $feeCC = CryptoCurrency::findByShortName($transaction['fee']['currency']);
-            if ( $fromCC->id < 0 || $toCC->id < 0 || $feeCC->id < 0 || $fromCC == NULL || $toCC == NULL || $tradeType == 'N')
+            if ( $fromCC == NULL || $toCC == NULL || $tradeType == 'N' || $fromCC->id < 0 || $toCC->id < 0 || $feeCC->id < 0)
             {
                 array_push($transaction);
             } else {
@@ -201,5 +200,9 @@ abstract class CcxtDriver implements ApiDriverInterface
         }
         // TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
         return true;
+    }
+
+    public function possibleMethods() {
+        return $this->api->possibleMethods();
     }
 }

@@ -7,6 +7,7 @@ use CCXT;
 
 class CCXTAPI {
     public $exchange;
+    protected $exchange_id;
 
     public function __construct() {
         $exchange = NULL;
@@ -66,6 +67,7 @@ class CCXTAPI {
         } catch (\Throwable $th) {
             throw $th;
         }
+        $this->exchange_id = $exchange_id;
         return $flag;
     }
 
@@ -82,10 +84,9 @@ class CCXTAPI {
         $all_trades = [];
         var_dump($since);
         var_dump($this->exchange->seconds());
+
         while ($since < $this->exchange->seconds()) {
-            // $symbol = null; // change for your symbol
             $trades = $this->exchange->fetchMyTrades($symbol, $since*1000, $limit);
-            // var_dump($symbol, $since, $limit);
             echo "trade: ";
             var_dump($trades);
             echo "trade end";
@@ -97,6 +98,7 @@ class CCXTAPI {
                 break;
             }
         }
+
         return $all_trades;
     }
 
@@ -147,6 +149,20 @@ class CCXTAPI {
         } else {
             throw new Exception ($this->exchange->id . ' does not have the fetch_withdrawals method');
         }
+        var_dump($transactions);
+        return $transactions;
+    }
+
+    public function getTransfers($since) {
+        $code = NULL;
+        $limit = NULL;
+        $params = [];
+        $transactions = [];
+        if ($this->exchange->has['fetchTransfers']) {
+            $withdrawals = $this->exchange->fetch_transfers ($code, $since, $limit, $params);
+        } else {
+            throw new Exception ($this->exchange->id . ' does not have the fetch_transfers method');
+        }
         return $transactions;
     }
 
@@ -156,6 +172,14 @@ class CCXTAPI {
 
     public static function supportedList() {
         return Exchange::$exchanges;
+    }
+
+    public function getExchangeId() {
+        return $this->exchange_id;
+    }
+
+    public function possibleMethods() {
+        return $this->exchange->has;
     }
 
 }
