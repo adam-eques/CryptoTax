@@ -40,8 +40,14 @@ abstract class DuskTestCase extends BaseTestCase
             ]);
         })->all());
 
+        // $options = (new ChromeOptions)->addArguments([
+        //     '--disable-gpu',
+        //     '--headless',
+        //     '--no-sandbox'
+        // ]);
+
         return RemoteWebDriver::create(
-            $_ENV['DUSK_DRIVER_URL'] ?? 'http://localhost:9515',
+            $_ENV['DUSK_DRIVER_URL'] ?? 'http://localhost',
             DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
