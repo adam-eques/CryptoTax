@@ -7,6 +7,7 @@ use CryptoAPIs\Configuration;
 use CryptoAPIs\Api\UnifiedEndpointsApi;
 use CryptoAPIs\Api\TokensApi;
 use CryptoAPIs\Api\MetadataApi;
+use Exception;
 
 // reference https://packagist.org/packages/cryptoapis/sdk
 
@@ -69,7 +70,7 @@ class CryptoAPI {
 
     // get transactions by time
     public function get_transactionsByTime($address, $limit, $offset, $blockchain, $network, $from, $to, $context) {
-        $result;
+        $result=NULL;
         try {
             $result = $this->transactionInterface->request(
                 'GET',
@@ -93,7 +94,7 @@ class CryptoAPI {
 
     // get transactions
     public function get_transactions($address, $limit, $offset, $blockchain, $network, $context) {
-        $result;
+        $result=NULL;
         try {
             $result = $this->chainInstance->listConfirmedTransactionsByAddress($blockchain, $network, $address, $context, $limit, $offset);
         } catch (Exception $e) {
@@ -104,7 +105,7 @@ class CryptoAPI {
 
     // get balances of the blockchain
     public function get_details($address, $blockchain, $network, $context) {
-        $result;
+        $result=NULL;
         try {
             $result = $this->chainInstance->getAddressDetails($blockchain, $network, $address, $context);
         } catch (Exception $e) {
@@ -114,7 +115,7 @@ class CryptoAPI {
     }
 
     public function get_token_transfers($address, $limit, $offset, $blockchain, $network, $context) {
-        $result;
+        $result=NULL;
         try {
             $result = $this->tokenInstance->listConfirmedTokensTransfersByAddress($blockchain, $network, $address, $context, $limit, $offset);
         } catch (Exception $e) {
@@ -125,7 +126,7 @@ class CryptoAPI {
 
     // get balance of the tokens
     public function get_balance_tokens($address, $limit, $offset, $blockchain, $network, $context) {
-        $result;
+        $result=NULL;
         try {
             $result = $this->tokenInstance->listTokensByAddress($blockchain, $network, $address, $context, $limit, $offset);
         } catch (Exception $e) {

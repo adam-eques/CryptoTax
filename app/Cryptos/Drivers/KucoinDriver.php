@@ -3,12 +3,12 @@
 namespace App\Cryptos\Drivers;
 
 use App\Blockchains\CCXTAPI;
-use App\Helpers\TestHelper;
 
 
 use Carbon\Carbon;
 use function now;
-
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 /**
  * Class KucoinDriver
  *
@@ -27,9 +27,9 @@ class KucoinDriver extends CcxtDriver
         $exchange_id = 'kucoin';
         $credentials = $this->getCredentials();
         $this->connected = $this->api->loadExchange($exchange_id, [
-            "apiKey" => $credentials["apiKey"],
-            "secret" => $credentials["secret"],
-            "password" => $credentials["password"],
+            "apiKey" => Arr::get($credentials, "apiKey"),
+            "secret" => Arr::get($credentials, "secret"),
+            "password" => Arr::get($credentials, "password"),
         ]);
         return $this;
     }
@@ -46,25 +46,18 @@ class KucoinDriver extends CcxtDriver
      * @return $this
      */
     public function update() : self {
-        // $since = $this->account->fetched_at;
-        // $transactions = $this->fetchTransfers($since);
-        // $this->saveTransactions($transactions);
-        $transfers = $this->fetchDeposits($this->account->fetched_at);
-        TestHelper::save2file('../Kucoin_deposits.php', $transfers);
-
         var_dump('KucoinDriver update');
         $balance = $this->fetchBalances();
         $this->saveBalances($balance);
 
         $account = $this->account;
-        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2017, 1, 1);
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2021, 9, 15);
         $counter = 0;
         $exchange = $this->api->exchange;
 
         while($since->isPast()) {
             $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
-            $this->saveTrades($data);
-            
+            $this->saveTransactions($data);
 
             if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
                 sleep(3);
@@ -79,4 +72,44 @@ class KucoinDriver extends CcxtDriver
         return $this;
     }
 
+    /**
+     * @return $this
+     * @throws \ccxt\ExchangeError
+     */
+    public function updateTransactions(): self
+    {
+        // Kucoin API used: https://docs.kucoin.com/#list-fills
+        // "The system allows you to retrieve data up to one week (start from the last day by default)"
+        $account = $this->account;
+
+        // Get date: Kucoin max. prev date = 2019-02-18
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
+        $now = now();
+
+        // Balance
+        $balances = $this->fetchBalances();
+
+        DB::transaction(function() use ($account, $since, $balances, $now) {
+            $counter = 0;
+
+            while($since->isPast()) {
+                $data = $this->fetchTransactions(null, $since);
+                $this->saveTransactions($data, $now);
+
+                // Sleep because of Request Limit of 9 times/3s
+                if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
+                    sleep(3);
+                }
+
+                // Add a week aka 7 days and increment counter
+                $since->addDays(7);
+                $counter++;
+            }
+
+            // Save balances
+            $this->saveBalances($balances["total"]);
+        });
+
+        return $this;
+    }
 }

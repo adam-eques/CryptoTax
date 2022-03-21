@@ -3,7 +3,7 @@
 namespace App\Cryptos\Drivers;
 
 use App\Blockchains\CCXTAPI;
-
+use Illuminate\Support\Arr;
 
 /**
  * Class HitBTC
@@ -24,9 +24,8 @@ class HitBTCDriver extends CcxtDriver
         $exchange_id = 'hitbtc';
         $credentials = $this->getCredentials();
         $this->connected = $this->api->loadExchange($exchange_id, [
-            'apiKey' => $credentials["apiKey"],
-            'secret' => $credentials["secret"]
-            
+            'apiKey' => Arr::get($credentials, "apiKey"),
+            'secret' => Arr::get($credentials, "secret"),
         ]);
         return $this;
     }

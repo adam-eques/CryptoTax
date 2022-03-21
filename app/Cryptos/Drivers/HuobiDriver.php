@@ -3,6 +3,7 @@
 namespace App\Cryptos\Drivers;
 
 use App\Blockchains\CCXTAPI;
+use Illuminate\Support\Arr;
 
 
 /**
@@ -22,8 +23,8 @@ class HuobiDriver extends CcxtDriver
         $exchange_id = 'huobi';
         $credentials = $this->getCredentials();
         $this->connected = $this->api->loadExchange($exchange_id, [
-            'apiKey' => $credentials["apiKey"],
-            'secret' => $credentials["secret"],
+            'apiKey' => Arr::get($credentials, "apiKey"),
+            'secret' => Arr::get($credentials, "secret"),
         ]);
         return $this;
     }
