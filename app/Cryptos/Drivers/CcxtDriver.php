@@ -36,7 +36,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     // abstract public function getRequiredCredentials(): array;
     public function getRequiredCredentials(): array {
-        return [];
+        return ['apiKey'];
     }
 
     /**
