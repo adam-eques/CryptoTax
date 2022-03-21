@@ -56,13 +56,13 @@
                 </svg>
             </button>
             <div
-                class="absolute right-0 w-40 p-4 origin-top-right bg-white rounded-md shadow-lg top-10 text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="absolute right-0 w-40 py-4 origin-top-right bg-white rounded-md shadow-lg top-10 text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
                 x-show="open" @click.away="open=false" x-cloak
                 x-transition:enter-start="transition ease-in duration-3000"
             >
-                <button class="w-full p-2 text-left bg-white hover:bg-gray-100">{{ __('Edit') }}</button>
-                <button class="w-full p-2 text-left bg-white hover:bg-gray-100">{{ __('Ignor') }}</button>
+                <button class="w-full py-2 px-5 text-left bg-white hover:bg-gray-100">{{ __('Edit') }}</button>
+                <button class="w-full py-2 px-5 text-left bg-white hover:bg-gray-100">{{ __('Ignor') }}</button>
             </div>
         </div>
     </div>

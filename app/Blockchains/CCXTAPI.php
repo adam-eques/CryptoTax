@@ -76,6 +76,10 @@ class CCXTAPI {
         return $this->exchange->fetchBalance();
     }
 
+    public function getBalanceAvailable() {
+        return $this->exchange->has['fetchBalance'];
+    }
+
     // $since -> timestamp in seconds
     public function getTrades($symbol, $since, $limit) {
         $all_trades = [];

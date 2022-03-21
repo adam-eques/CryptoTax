@@ -29,27 +29,29 @@ abstract class AbstractAddExchangeTest extends TestCase
             "fetching_scheduled_at" => now()
         ]);
 
-        echo "tested1\n";
-
         // Update the account
         $this->account->getApi()->update();
-        echo "tested2\n";
     }
 
 
     protected function tearDown(): void
     {
         parent::tearDown();
-        $this->user->delete();
+        #$this->user->delete();
     }
 
 
-    public function test_(): void
+    public function test_asset_and_transaction_count(): void
     {
         $account = $this->account;
+        $countBalance = $account->cryptoAssets()->count();
+        $countTransactions = $account->cryptoTransactions()->count();
+
+        // Output results
+        echo "\nCount transactions : " . $countTransactions. "\nCount balances: " . $countBalance . "\n";
 
         // Test if there are balances and transactions
-        $this->assertGreaterThan(0, $account->cryptoAssets()->count(), "no assets found");
-        $this->assertGreaterThan(0, $account->cryptoTransactions()->count(), "No transactions found");
+        $this->assertGreaterThan(0, $countBalance, "no assets found");
+        $this->assertGreaterThan(0, $countTransactions, "No transactions found");
     }
 }
