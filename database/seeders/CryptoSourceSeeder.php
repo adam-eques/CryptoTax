@@ -45,7 +45,7 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
                 'driver' => BinanceDriver::class,
-                'active' => false
+                'active' => true
             ],
             [
                 'id' => CryptoSource::SOURCE_BLOCKCHAIN_ETHEREUM,
@@ -62,7 +62,8 @@ class CryptoSourceSeeder extends Seeder
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
                 'driver' => CryptoapisDriver::class,
                 'active' => true
-            ], [
+            ],
+            [
                 'id' => CryptoSource::SOURCE_BLOCKCHAIN_BITCOIN,
                 'name' => "Bitcoin",
                 'icon' => '',
@@ -116,7 +117,7 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_BLOCKCHAIN,
                 'driver' => CronosDriver::class,
-                'active' => true
+                'active' => false /**Fee calculation error */
             ],
             [
                 'id' => CryptoSource::SOURCE_EXCHANGE_CRYPTOCOM,
@@ -124,7 +125,7 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
                 'driver' => CryptocomDriver::class,
-                'active' => true
+                'active' => false /**Unknown error -> ccxt library error */
             ],
             [
                 'id' => CryptoSource::SOURCE_EXCHANGE_HUOBI,
@@ -132,7 +133,7 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
                 'driver' => HuobiDriver::class,
-                'active' => true
+                'active' => false /**Credentials are expired */
             ],
         ])->each(function($data){
             CryptoSource::firstOrCreate([

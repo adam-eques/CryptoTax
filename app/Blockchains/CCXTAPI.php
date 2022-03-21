@@ -4,9 +4,11 @@ namespace App\Blockchains;
 date_default_timezone_set('UTC');
 use CCXT\Exchange;
 use CCXT;
+use Exception;
 
 class CCXTAPI {
     public $exchange;
+    protected $exchange_id;
 
     public function __construct() {
         $exchange = NULL;
@@ -66,6 +68,7 @@ class CCXTAPI {
         } catch (\Throwable $th) {
             throw $th;
         }
+        $this->exchange_id = $exchange_id;
         return $flag;
     }
 
@@ -73,15 +76,28 @@ class CCXTAPI {
         return $this->exchange->fetchBalance();
     }
 
+<<<<<<< HEAD
+=======
+    public function getBalanceAvailable() {
+        return $this->exchange->has['fetchBalance'];
+    }
+
+>>>>>>> feature/cryptoapis-test
     // $since -> timestamp in seconds
     public function getTrades($symbol, $since, $limit) {
         $all_trades = [];
         var_dump($since);
         var_dump($this->exchange->seconds());
+
         while ($since < $this->exchange->seconds()) {
-            // $symbol = null; // change for your symbol
             $trades = $this->exchange->fetchMyTrades($symbol, $since*1000, $limit);
+<<<<<<< HEAD
             // var_dump($symbol, $since, $limit);
+=======
+            echo "trade: ";
+            var_dump($trades);
+            echo "trade end";
+>>>>>>> feature/cryptoapis-test
 
             if (count($trades)) {
                 $since = $trades[count($trades) - 1]['timestamp'] + 1;
@@ -90,6 +106,7 @@ class CCXTAPI {
                 break;
             }
         }
+
         return $all_trades;
     }
 
@@ -102,7 +119,7 @@ class CCXTAPI {
         return $flag;
     }
 
-    public function getTransactions($since) : array {
+    public function getTransactions($since=NULL) : array {
         $code = NULL;
         $limit = NULL;
         $params = [
@@ -117,30 +134,64 @@ class CCXTAPI {
         return $transactions;
     }
 
+    public function getTransactionsAvailable() : bool {
+        $flag = false;
+        if ($this->exchange->has['fetchTransactions']) {
+            $flag = true;
+        }
+        return $flag;
+    }
+
     public function getDeposits($since) {
         $code = NULL;
         $limit = NULL;
         $params = [];
         $transactions = [];
         if ($this->exchange->has['fetchDeposits']) {
-            $deposits = $this->exchange->fetch_deposits ($code, $since, $limit, $params);
+            $transactions = $this->exchange->fetch_deposits ($code, $since, $limit, $params);
         } else {
             throw new Exception ($this->exchange->id . ' does not have the fetch_deposits method');
         }
         return $transactions;
     }
 
-    public function getWithdrawals($since) {
+    public function getDepositsAvailable() : bool {
+        return $this->exchange->has['fetchDeposits'];
+    }
+
+    public function getWithdrawals($since=NULL) {
+        $code = NULL;
+        $limit = NULL;
+        $params = NULL;
+        $transactions = [];
+        if ($this->exchange->has['fetchWithdrawals']) {
+            $transactions = $this->exchange->fetch_withdrawals ($code, $since, $limit, $params);
+        } else {
+            throw new Exception ($this->exchange->id . ' does not have the fetch_withdrawals method');
+        }
+        var_dump($transactions);
+        return $transactions;
+    }
+
+    public function getWithdrawalsAvailable() : bool {
+        return $this->exchange->has['fetchWithdrawals'];
+    }
+
+    public function getTransfers($since=NULL) {
         $code = NULL;
         $limit = NULL;
         $params = [];
         $transactions = [];
-        if ($this->exchange->has['fetchWithdrawals']) {
-            $withdrawals = $this->exchange->fetch_withdrawals ($code, $since, $limit, $params);
+        if ($this->exchange->has['fetchTransfers']) {
+            $transactions = $this->exchange->fetch_transfers ($code, $since, $limit, $params);
         } else {
-            throw new Exception ($this->exchange->id . ' does not have the fetch_withdrawals method');
+            throw new Exception ($this->exchange->id . ' does not have the fetch_transfers method');
         }
         return $transactions;
+    }
+
+    public function getTransfersAvailable() : bool {
+        return $this->exchange->has['fetchTransfers'];
     }
 
     public function genSymbol($fromSymbol, $toSymbol) {
@@ -149,6 +200,14 @@ class CCXTAPI {
 
     public static function supportedList() {
         return Exchange::$exchanges;
+    }
+
+    public function getExchangeId() {
+        return $this->exchange_id;
+    }
+
+    public function possibleMethods() {
+        return $this->exchange->has;
     }
 
 }
