@@ -34,7 +34,7 @@ class AddBinanceExchangeTest extends AbstractAddExchangeTest
         $this->account->getApi()->update();
         // $exchange = $this->account->getApi()->getApi();
         // $withdrawls = $exchange->getDeposits(1488851410000);
-        TestHelper::save2file('../binance_withdraws.php', $withdrawls);
+        // TestHelper::save2file('../binance_withdraws.php', $withdrawls);
 
         echo "tested2\n";
     }

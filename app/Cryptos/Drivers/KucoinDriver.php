@@ -50,13 +50,13 @@ class KucoinDriver extends CcxtDriver
         $this->saveBalances($balance);
 
         $account = $this->account;
-        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2021, 9, 15);
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2017, 1, 1);
         $counter = 0;
         $exchange = $this->api->exchange;
 
         while($since->isPast()) {
             $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
-            $this->saveTransactions($data);
+            $this->saveTrades($data);
 
             if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
                 sleep(3);

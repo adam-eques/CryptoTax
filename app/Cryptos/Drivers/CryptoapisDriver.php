@@ -125,7 +125,6 @@ class CryptoapisDriver implements ApiDriverInterface
      */
     public function fetchBalances() : array
     {
-        $balances;
         $credentials = $this->getCredentials();
         $blockchain = $this->getBlockchain();
         $network = 'mainnet';
