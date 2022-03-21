@@ -138,8 +138,8 @@ class BinanceDriver extends CcxtDriver
         $exchange_id = 'binance';
         $credentials = $this->getCredentials();
         $this->connected = $this->api->loadExchange($exchange_id, [
-            'apiKey' => \Arr::get($credentials, "apiKey"),
-            'secret' => \Arr::get($credentials, "secret"),
+            'apiKey' => $credentials["apiKey"],
+            'secret' => $credentials["secret"],
         ]);
         return $this;
     }

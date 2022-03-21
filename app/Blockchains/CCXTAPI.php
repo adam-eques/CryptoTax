@@ -155,7 +155,7 @@ class CCXTAPI {
     public function getWithdrawals($since=NULL) {
         $code = NULL;
         $limit = NULL;
-        $params = [];
+        $params = NULL;
         $transactions = [];
         if ($this->exchange->has['fetchWithdrawals']) {
             $transactions = $this->exchange->fetch_withdrawals ($code, $since, $limit, $params);

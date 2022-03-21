@@ -104,6 +104,7 @@ abstract class CcxtDriver implements ApiDriverInterface
             $pfrom = Carbon::create(2000, 1, 1);
         }
         $trades = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
+        TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
         return $trades;
     }
 
@@ -298,9 +299,9 @@ abstract class CcxtDriver implements ApiDriverInterface
             } else {
                 $feeCC = CryptoCurrency::findByShortName($transaction['fee']['currency']);
             }
-            if ( $curCC == NULL || $feeCC == NULL || $tradeType == 'N' || $curCC->id < 0 || $feeCC->id < 0)
+            if ( $curCC == NULL || $tradeType == 'N' || $curCC->id < 0 )
             {
-                array_push($transaction);
+                array_push($unsupported, $transaction);
             } else {
                 // var_dump($fromCC->id);
                 $currencyId = $curCC->id;
@@ -330,7 +331,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $trans->save();
             }
         }
-        // TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
+        TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
         return true;
     }
 

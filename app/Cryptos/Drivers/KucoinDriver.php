@@ -3,6 +3,7 @@
 namespace App\Cryptos\Drivers;
 
 use App\Blockchains\CCXTAPI;
+use App\Helpers\TestHelper;
 
 
 use Carbon\Carbon;
@@ -26,9 +27,9 @@ class KucoinDriver extends CcxtDriver
         $exchange_id = 'kucoin';
         $credentials = $this->getCredentials();
         $this->connected = $this->api->loadExchange($exchange_id, [
-            "apiKey" => \Arr::get($credentials, "apiKey"),
-            "secret" => \Arr::get($credentials, "secret"),
-            "password" => \Arr::get($credentials, "password"),
+            "apiKey" => $credentials["apiKey"],
+            "secret" => $credentials["secret"],
+            "password" => $credentials["password"],
         ]);
         return $this;
     }
@@ -45,6 +46,12 @@ class KucoinDriver extends CcxtDriver
      * @return $this
      */
     public function update() : self {
+        // $since = $this->account->fetched_at;
+        // $transactions = $this->fetchTransfers($since);
+        // $this->saveTransactions($transactions);
+        $transfers = $this->fetchDeposits($this->account->fetched_at);
+        TestHelper::save2file('../Kucoin_deposits.php', $transfers);
+
         var_dump('KucoinDriver update');
         $balance = $this->fetchBalances();
         $this->saveBalances($balance);
@@ -57,6 +64,7 @@ class KucoinDriver extends CcxtDriver
         while($since->isPast()) {
             $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
             $this->saveTrades($data);
+            
 
             if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
                 sleep(3);
