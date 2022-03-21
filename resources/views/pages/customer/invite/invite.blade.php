@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Invite">
     <div class="bg-white">
         <div class="px-3 py-6 mx-auto xl:max-w-screen-2xl xs:px-4 lg:px-5">
             <div class="grid grid-cols-1 gap-0 md:grid-cols-12 md:gap-5">

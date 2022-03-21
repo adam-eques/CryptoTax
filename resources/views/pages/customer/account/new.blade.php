@@ -6,7 +6,7 @@
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
 
-<x-app-layout>
+<x-app-layout title="New Account">
     <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xl:max-w-screen-2xl xs:px-4 lg:px-6">
 
         <x-customers.customer-header-bar icon="bx-add-to-queue" name="Add New Account">

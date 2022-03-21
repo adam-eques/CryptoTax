@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Pricing">
     <x-sub-page-hero icon="terms" subtitle="" title="Pricing and plans"></x-sub-page-hero>
     <div class="relative py-10 bg-white">
         <x-container>

@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Risk">
     <x-sub-page-hero icon="risk" subtitle="" title="Risk and Disclaimer"></x-sub-page-hero>
     <div class="relative py-12 bg-white">
         <x-container class="text-primary">

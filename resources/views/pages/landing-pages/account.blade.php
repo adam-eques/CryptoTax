@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Account">
     <div class="w-full bg-white">
         <div class="relative">
             <div class="absolute top-0 right-0 w-full h-full">
