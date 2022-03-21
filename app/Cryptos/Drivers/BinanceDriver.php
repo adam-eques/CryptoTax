@@ -103,19 +103,21 @@ class BinanceDriver extends CcxtDriver
 
         // ----------------------------------------------------------------------------
 
-        foreach ($unique_symbols as $symbol) {
+        TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
 
-            echo "=================================================================\n";
-            echo "Fetching all ", $symbol, " trades\n";
+        // foreach ($unique_symbols as $symbol) {
 
-            // fetch all trades for the $symbol, with pagination
-            $trades = fetch_all_my_trades($exchange, $symbol);
+        //     echo "=================================================================\n";
+        //     echo "Fetching all ", $symbol, " trades\n";
 
-            echo count($trades), ' ' , $symbol, " trades\n";
+        //     // fetch all trades for the $symbol, with pagination
+        //     $trades = fetch_all_my_trades($exchange, $symbol);
 
-            $all_trades_for_all_symbols = array_merge ($all_trades_for_all_symbols, $trades);
+        //     echo count($trades), ' ' , $symbol, " trades\n";
 
-        }
+        //     $all_trades_for_all_symbols = array_merge ($all_trades_for_all_symbols, $trades);
+
+        // }
 
 
         // var_dump($all_matching_symbols);

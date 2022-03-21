@@ -35,8 +35,9 @@ class CryptocomDriver extends CcxtDriver
         
         // testing
         $data = $exchange->fetchMarkets();
-        TestHelper::save2file('../test_markets.php', $exchange->markets);
+        // TestHelper::save2file('../test_markets.php', $exchange->markets);
         TestHelper::save2file('../test_fetchmarkets.php', $data);
+        
         $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
         // while($since->isPast()) {
         //     $this->saveTransactions($data);
