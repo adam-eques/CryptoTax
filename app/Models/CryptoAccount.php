@@ -37,6 +37,7 @@ class CryptoAccount extends Model
 
         static::deleting(function (self $item) {
             $item->cryptoAssets()->cascadeDelete();
+            $item->cryptoTransactions()->cascadeDelete();
         });
     }
 
