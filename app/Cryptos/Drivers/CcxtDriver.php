@@ -204,7 +204,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $flag = true;
             }
         }
-        TestHelper::save2file('..\CcxtDriver_balances.php', $balances);
+        TestHelper::save2file('..\CcxtDriver_balances.php', $balanceData);
         TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
         return $flag;
     }
