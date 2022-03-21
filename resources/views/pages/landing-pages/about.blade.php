@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="About">
     <div class="bg-primary">
         <x-landing-nav for="customer" logo="white" class="relative"/>
         <x-container>

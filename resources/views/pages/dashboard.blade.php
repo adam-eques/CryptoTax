@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Dashboard">
     @if(auth()->user()->isCustomerAccount())
         <div class="px-3 py-6 mx-auto xl:max-w-screen-2xl xs:px-4 lg:px-5">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-x-0 md:gap-x-6 gap-y-6 md:gap-y-0">

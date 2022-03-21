@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Blog">
     <div class="w-full bg-white">
         <x-sub-page-hero icon="blogs" subtitle="" title="Our Blog"></x-sub-page-hero>
         <x-container class="relative py-10 sm:py-20">

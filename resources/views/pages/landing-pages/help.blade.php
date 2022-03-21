@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Help">
     <x-sub-page-hero icon="help" subtitle="We're here to help" title="Help Center"></x-sub-page-hero>
     <div class="relative py-12 bg-white">
         <x-container>

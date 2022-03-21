@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Tax">
     <div class="relative w-full bg-white">
         <div class="relative">
             <div class="absolute top-0 right-0 w-3/4 h-full">

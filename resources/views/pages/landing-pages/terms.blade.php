@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Terms">
     <div class="w-full bg-white">
         <x-sub-page-hero icon="terms" subtitle="" title="Terms and Conditions"></x-sub-page-hero>
         <x-container class="py-14">

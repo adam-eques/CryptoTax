@@ -5,7 +5,7 @@
 ], [
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
-<x-app-layout>
+<x-app-layout title="Assets">
     <x-container class="px-3 py-5 my-5 bg-white rounded-sm shadow xs:px-4 lg:px-5">
         <x-customers.customer-header-bar icon="grommet-money" name="Assets">
             <x-button class="">
