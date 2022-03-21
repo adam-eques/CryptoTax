@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Portfolio">
     @if(auth()->user()->isCustomerAccount())
     <x-container class="my-5 bg-white rounded-sm shadow">
         <x-customers.customer-header-bar icon="carbon-portfolio" name="Portfolio">

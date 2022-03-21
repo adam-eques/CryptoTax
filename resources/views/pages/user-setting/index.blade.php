@@ -4,7 +4,7 @@
 ], [
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
-<x-app-layout>
+<x-app-layout title="Setting">
     <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xl:max-w-screen-2xl xs:px-4 lg:px-6">
         <div class="w-full py-5 border-b">
             <div class="flex items-center justify-between">

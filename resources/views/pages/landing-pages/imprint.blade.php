@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Imprint">
     <x-sub-page-hero icon="imprint" subtitle="" title="Imprint"></x-sub-page-hero>
     <div class="relative py-12 bg-white">
         <x-container class="text-primary">

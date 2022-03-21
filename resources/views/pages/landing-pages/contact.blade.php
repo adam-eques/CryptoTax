@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Contact">
     <x-sub-page-hero icon="contact" subtitle="We're here to help" title="Contact Us"></x-sub-page-hero>
     <div class="relative py-12 bg-white">
         <x-container>

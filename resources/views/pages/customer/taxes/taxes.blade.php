@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Taxes">
     <x-container class="bg-white rounded-sm shadow mt-7">
         <x-customers.customer-header-bar icon="tabler-tax" name="2021 Taxes">
             <x-button class="">

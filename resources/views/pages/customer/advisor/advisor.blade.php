@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Advisor">
     {{-- Hero section --}}
     <div class="w-full bg-primary">
         <x-container class="pt-8 text-white">

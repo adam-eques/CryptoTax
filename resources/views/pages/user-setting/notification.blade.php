@@ -4,7 +4,7 @@
 ], [
     ["label" => "Invite a Friend", "icon" => "go-person-add-16", "route" => "customer.invite", "color" => "text-white bg-primary"],
 ]))
-<x-app-layout>
+<x-app-layout title="Notification">
     <x-container class="p-8 my-5 bg-white border rounded-sm">
         <x-customers.customer-header-bar icon="iconoir-bell-notification" name="Notification">
         </x-customers.customer-header-bar>

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Service">
     <div class="py-16 bg-bgcolor1">
         <div class="px-3 mx-auto xs:px-4 xl:max-w-screen-2xl">
             <div class="grid grid-cols-1 gap-0 md:grid-cols-2 md:gap-5">
