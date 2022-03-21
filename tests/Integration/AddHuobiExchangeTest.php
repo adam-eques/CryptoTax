@@ -9,7 +9,7 @@ class AddHuobiExchangeTest extends AbstractAddExchangeTest
 {
     protected int $cryptoSourceId = CryptoSource::SOURCE_EXCHANGE_HUOBI;
     protected array $credentials = [
-        "apiKey" => "71d998dc-1ad8c118-c9e1d2b0-mjlpdje3ld",
-        "secret" => "5873bb35-4e28d50b-aa4b4c1d-9adc9"
+        "apiKey" => "37bb62cf-5bb54675-20451a74-ed2htwf5tf",
+        "secret" => "c5c993f0-d051315a-1ce0b748-99eb2"
     ];
 }

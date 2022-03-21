@@ -73,6 +73,8 @@ class CCXTAPI {
     }
 
     public function getBalance() {
+        // $this->exchange->verbose = true;
+        // $this->exchange->options['defaultType'] = 'future';
         return $this->exchange->fetchBalance();
     }
 
@@ -86,6 +88,7 @@ class CCXTAPI {
         var_dump($since);
         var_dump($this->exchange->seconds());
 
+        var_dump($since);
         while ($since < $this->exchange->seconds()) {
             $trades = $this->exchange->fetchMyTrades($symbol, $since*1000, $limit);
             // var_dump($symbol, $since, $limit);

@@ -51,20 +51,37 @@ class KucoinDriver extends CcxtDriver
         $this->saveBalances($balance);
 
         $account = $this->account;
-        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2021, 9, 15);
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
         $counter = 0;
         $exchange = $this->api->exchange;
 
         while($since->isPast()) {
-            $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
-            $this->saveTransactions($data);
-
-            if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
-                sleep(3);
+            var_dump($since->timestamp);
+            $count = 0;
+            do {
+                $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
+                $this->saveTrades($data);
+                $count = count($data);
+                var_dump($count);
+                if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
+                    sleep(3);
+                }
+                if ($count > 0 )
+                {
+                    $since->timestamp($data[$count-1]['timestamp'] * 0.001 + 1);
+                    // var_dump($data[$count-1]['timestamp'] + 1);
+                } else {
+                    $since->addDays(7);
+                    // var_dump('Since: ');
+                }
+                var_dump($since->toDateTimeString());
+                $counter++;
+            } while ($count > 0);
+            if ($since->isPast()) {
+                var_dump($since->toDateTimeString());
             }
 
-            $since->addDays(7);
-            $counter++;
+            // $counter++;
         }
 
         $this->account->update(['fetched_at' => now()]);
@@ -76,7 +93,7 @@ class KucoinDriver extends CcxtDriver
      * @return $this
      * @throws \ccxt\ExchangeError
      */
-    public function updateTransactions(): self
+    public function updateTrades(): self
     {
         // Kucoin API used: https://docs.kucoin.com/#list-fills
         // "The system allows you to retrieve data up to one week (start from the last day by default)"
@@ -93,8 +110,7 @@ class KucoinDriver extends CcxtDriver
             $counter = 0;
 
             while($since->isPast()) {
-                $data = $this->fetchTransactions(null, $since);
-                $this->saveTransactions($data, $now);
+
 
                 // Sleep because of Request Limit of 9 times/3s
                 if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure

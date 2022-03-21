@@ -88,6 +88,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function fetchBalances() : array
     {
+        var_dump("fetchBalance");
         $balances = $this->api->getBalance();
         return $balances;
     }
@@ -101,7 +102,7 @@ abstract class CcxtDriver implements ApiDriverInterface
         $pfrom = $from;
         if ($from == null)
         {
-            $pfrom = Carbon::create(2000, 1, 1);
+            $pfrom = Carbon::create(2017, 1, 1);
         }
         $trades = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
         TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
