@@ -82,9 +82,6 @@ class CCXTAPI {
             // $symbol = null; // change for your symbol
             $trades = $this->exchange->fetchMyTrades($symbol, $since*1000, $limit);
             // var_dump($symbol, $since, $limit);
-            echo "trade: ";
-            var_dump($trades);
-            echo "trade end";
 
             if (count($trades)) {
                 $since = $trades[count($trades) - 1]['timestamp'] + 1;
