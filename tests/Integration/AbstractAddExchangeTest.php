@@ -24,11 +24,8 @@ abstract class AbstractAddExchangeTest extends TestCase
             "fetching_scheduled_at" => now()
         ]);
 
-        echo "tested1\n";
-
         // Update the account
         $this->account->getApi()->update();
-        echo "tested2\n";
     }
 
 
@@ -39,7 +36,7 @@ abstract class AbstractAddExchangeTest extends TestCase
     }
 
 
-    public function test_(): void
+    public function test_asset_and_transaction_count(): void
     {
         $account = $this->account;
 
