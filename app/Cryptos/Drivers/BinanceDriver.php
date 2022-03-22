@@ -103,7 +103,7 @@ class BinanceDriver extends CcxtDriver
 
         // ----------------------------------------------------------------------------
 
-        TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
+  //      TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
 
         // foreach ($unique_symbols as $symbol) {
 

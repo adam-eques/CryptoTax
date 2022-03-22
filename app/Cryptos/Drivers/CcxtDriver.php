@@ -105,7 +105,7 @@ abstract class CcxtDriver implements ApiDriverInterface
             $pfrom = Carbon::create(2017, 1, 1);
         }
         $trades = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
-        TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
+  //      TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
         return $trades;
     }
 
@@ -221,8 +221,8 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $flag = true;
             }
         }
-        TestHelper::save2file('..\CcxtDriver_balances.php', $balanceData);
-        TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
+  //      TestHelper::save2file('..\CcxtDriver_balances.php', $balanceData);
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
         return $flag;
     }
 
@@ -348,7 +348,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $trans->save();
             }
         }
-        TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
         return true;
     }
 
@@ -409,7 +409,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $trans->save();
             }
         }
-        TestHelper::save2file('..\CcxtDriver_unsupported_withdrawals.php', $unsupported);
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_withdrawals.php', $unsupported);
         return true;
     }
 
@@ -466,7 +466,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $trans->save();
             }
         }
-        TestHelper::save2file('..\CcxtDriver_unsupported_deposits.php', $unsupported);
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_deposits.php', $unsupported);
         return true;
     }
 

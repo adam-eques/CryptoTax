@@ -53,7 +53,7 @@ class HuobiDriver extends CcxtDriver
         $exchange = $this->api->exchange;
         $exchange->verbose = True;
         $trades = $exchange->fetchMyTrades(null, 1647798132000, null);
-        TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
+  //      TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
         return $trades;
     }
 }

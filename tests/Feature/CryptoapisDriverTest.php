@@ -43,7 +43,7 @@ class CryptoapisDriverTest extends TestCase
         $transactions = $driver->fetchTransactions();
         $this->assertIsArray($transactions, 'Failed to get balance');
         $driver->saveTransactions($transactions, 1);
-        TestHelper::save2file('../litecoin_test_trades.php', $transactions);
+  //      TestHelper::save2file('../litecoin_test_trades.php', $transactions);
         // var_dump($transactions);
     }
 

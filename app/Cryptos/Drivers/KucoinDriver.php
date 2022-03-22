@@ -126,8 +126,8 @@ class KucoinDriver extends CcxtDriver
             }
         }
         sleep(3);
-        TestHelper::save2file('..\Kucoin_trade.php', $trades);
-        TestHelper::save2file('..\Kucoin_dates.php', $dates);
+  //      TestHelper::save2file('..\Kucoin_trade.php', $trades);
+  //      TestHelper::save2file('..\Kucoin_dates.php', $dates);
         return $trades;
     }
 
@@ -173,7 +173,7 @@ class KucoinDriver extends CcxtDriver
             }
         }
         sleep(3);
-        TestHelper::save2file('..\Kucoin_withdrawals.php', $withdrawals);
+  //      TestHelper::save2file('..\Kucoin_withdrawals.php', $withdrawals);
         return $withdrawals;
     }
 
@@ -218,7 +218,7 @@ class KucoinDriver extends CcxtDriver
             }
         }
         sleep(3);
-        TestHelper::save2file('..\Kucoin_deposites.php', $deposits);
+  //      TestHelper::save2file('..\Kucoin_deposites.php', $deposits);
         return $deposits;
     }
 }

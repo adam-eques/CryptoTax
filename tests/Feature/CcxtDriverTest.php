@@ -40,12 +40,12 @@ class CcxtDriverTest extends TestCase
         var_dump($driver->getApi()->exchange->has);
         $balance = $driver->fetchBalances();
         $this->assertTrue(count($balance) > 0, 'Failed to fetch balances for api');
-        TestHelper::save2file('../CcxtDriverTest_balances.php', $balance);
+  //      TestHelper::save2file('../CcxtDriverTest_balances.php', $balance);
 
         $since = Carbon::create(2000, 1, 1, 0, 0, 0);
         $transactions = $driver->fetchTransactions($since);
         $this->assertTrue(count($transactions) >= 0, 'Failed to fetch transactions for api');
-        TestHelper::save2file('../CcxtDriverTest_transactions.php', $transactions);
+  //      TestHelper::save2file('../CcxtDriverTest_transactions.php', $transactions);
 
         // $success = $driver->saveBalances($balance);
         // $this->assertTrue($success, 'Failed to save balances in the DB');
