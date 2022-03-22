@@ -1,13 +1,15 @@
 <?php
 namespace App\Helpers;
 
+
+use Illuminate\Support\Facades\Storage;
 class TestHelper {
     public static function save2file($path, $var) {
         $flag = env('APP_HELPER_TRACE', false);
+        $ret = false;
         if ($flag) {
-            $var_str = var_export($var, true);
-            $var = "<?php\n\n\$text = $var_str;\n\n?>";
-            file_put_contents($path, $var);
+            $ret = Storage::put('test/'.$path.'.json', json_encode($var));
         }
+        return $ret;
     }
 }

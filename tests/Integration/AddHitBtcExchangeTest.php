@@ -31,9 +31,9 @@ class AddHitBtcExchangeTest extends AbstractAddExchangeTest
     //     // $this->account->getApi()->update();
     //     $exchange = $this->account->getApi()->getApi();
     //     $transactions = $exchange->getTransactions();
-    //     TestHelper::save2file('../HitBtc_transactions.php', $transactions);
-    //     $withdrawls = $exchange->getTransfers();
-    //     TestHelper::save2file('../HitBtc_withdrawls.php', $withdrawls);
+    //     TestHelper::save2file('HitBtc_transactions', $transactions);
+    //     // $withdrawls = $exchange->getTransfers();
+    //     // TestHelper::save2file('HitBtc_withdrawls', $withdrawls);
     //     echo "tested2\n";
     // }
 }
