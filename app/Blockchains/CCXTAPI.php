@@ -73,6 +73,8 @@ class CCXTAPI {
     }
 
     public function getBalance() {
+        // $this->exchange->verbose = true;
+        // $this->exchange->options['defaultType'] = 'future';
         return $this->exchange->fetchBalance();
     }
 
@@ -86,6 +88,7 @@ class CCXTAPI {
         var_dump($since);
         var_dump($this->exchange->seconds());
 
+        var_dump($since);
         while ($since < $this->exchange->seconds()) {
             $trades = $this->exchange->fetchMyTrades($symbol, $since*1000, $limit);
             // var_dump($symbol, $since, $limit);
@@ -185,6 +188,25 @@ class CCXTAPI {
         return $this->exchange->has['fetchTransfers'];
     }
 
+    public function getLedger($since=null) : array
+    {
+        $code = null;
+        $limit = null;
+        $params = [];
+        $ledger = [];
+        if ($this->exchange->has['fetchLedger']) {
+            $ledger = $this->exchange->fetch_ledger ($code, $since, $limit, $params);
+        } else {
+            throw new Exception ($this->exchange->id . ' does not have the fetch_ledger method');
+        }
+        return $ledger;
+    }
+
+    public function getLedgerAvailable() : bool
+    {
+        return $this->exchange->has['fetchLedger'];
+    }
+
     public function genSymbol($fromSymbol, $toSymbol) {
         return $fromSymbol.'/'.$toSymbol;
     }
@@ -200,5 +222,6 @@ class CCXTAPI {
     public function possibleMethods() {
         return $this->exchange->has;
     }
+
 
 }

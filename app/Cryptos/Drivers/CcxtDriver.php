@@ -91,6 +91,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function fetchBalances() : array
     {
+        var_dump("fetchBalance");
         $balances = $this->api->getBalance();
         return $balances;
     }
@@ -104,10 +105,10 @@ abstract class CcxtDriver implements ApiDriverInterface
         $pfrom = $from;
         if ($from == null)
         {
-            $pfrom = Carbon::create(2000, 1, 1);
+            $pfrom = Carbon::create(2017, 1, 1);
         }
         $trades = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
-        TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
+  //      TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
         return $trades;
     }
 
@@ -172,6 +173,22 @@ abstract class CcxtDriver implements ApiDriverInterface
     }
 
     /**
+     * @param \Carbon\Carbon $from
+     * @return array
+     */
+    public function fetchLedger(Carbon $from = null): array
+    {
+        $pfrom = $from;
+        if ($from == null)
+        {
+            $pfrom = Carbon::create(2000, 1, 1);
+        }
+        $ledger = $this->api->getLedger($pfrom->timestamp);
+        return $ledger;
+    }
+
+
+    /**
      * @param array $balance
      * @return bool
      */
@@ -207,8 +224,8 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $flag = true;
             }
         }
-        TestHelper::save2file('..\CcxtDriver_balances.php', $balanceData);
-        TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
+  //      TestHelper::save2file('..\CcxtDriver_balances.php', $balanceData);
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_balances.php', $unsupported);
         return $flag;
     }
 
@@ -334,7 +351,125 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $trans->save();
             }
         }
-        TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_transactions.php', $unsupported);
+        return true;
+    }
+
+        /**
+     * @param array $transactions
+     * @return bool
+     */
+    protected function saveWithdrawals($withdrawals=[]) : bool
+    {
+        // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
+        $unsupported = [];
+        foreach($withdrawals as $withdrawal)
+        {
+            if ($withdrawal['status'] != 'ok') continue;
+            $currencyId = -1;
+            $costCurrencyId = -1;
+            $priceCurrencyId = -1;
+            $feeCurrencyId = -1;
+            $tradeType = 'W';
+            $executed_at = Carbon::createFromTimestampMsUTC($withdrawal['timestamp']);
+
+            $curCC = CryptoCurrency::findByShortName($withdrawal['currency']);
+            $feeCC = NULL;
+            if ($withdrawal['fee'] == NULL) {
+                $feeCC = $curCC;
+            } else {
+                $feeCC = CryptoCurrency::findByShortName($withdrawal['fee']['currency']);
+            }
+            if ( $curCC == NULL || $tradeType == 'N' || $curCC->id < 0 )
+            {
+                array_push($unsupported, $withdrawal);
+            } else {
+                // var_dump($fromCC->id);
+                $currencyId = $curCC->id;
+                $priceCurrencyId = $currencyId;
+                $costCurrencyId = $currencyId;
+                $feeCurrencyId = $feeCC->id;
+
+                // var_dump($currencyId);
+                $trans = new CryptoTransaction();
+                $trans->crypto_account_id = $this->account->id;
+                $trans->currency_id = $currencyId;
+                $trans->cost_currency_id = $costCurrencyId;
+                $trans->price_currency_id = $priceCurrencyId;
+                $trans->fee_currency_id = $feeCurrencyId;
+                $trans->trade_type = $tradeType;
+                $trans->from_addr = $this->account->addressFrom;
+                $trans->to_addr = $this->account->addressTo;
+                $trans->amount = $withdrawal['amount'];
+                $trans->price = 1;
+                $trans->cost = $trans->amount;
+                if ($withdrawal['fee'] == NULL) $trans->fee = 0;
+                else $trans->fee = $withdrawal['fee']['cost'];
+                $trans->raw_data = json_encode($withdrawal);
+                $trans->executed_at = $executed_at;
+                // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
+
+                $trans->save();
+            }
+        }
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_withdrawals.php', $unsupported);
+        return true;
+    }
+
+    protected function saveDeposits($deposits=[]) : bool
+    {
+        // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
+        $unsupported = [];
+        foreach($deposits as $deposit)
+        {
+            if ($deposit['status'] != 'ok') continue;
+            $currencyId = -1;
+            $costCurrencyId = -1;
+            $priceCurrencyId = -1;
+            $feeCurrencyId = -1;
+            $tradeType = 'D';
+            $executed_at = Carbon::createFromTimestampMsUTC($deposit['timestamp']);
+
+            $curCC = CryptoCurrency::findByShortName($deposit['currency']);
+            $feeCC = NULL;
+            if ($deposit['fee'] == NULL) {
+                $feeCC = $curCC;
+            } else {
+                $feeCC = CryptoCurrency::findByShortName($deposit['fee']['currency']);
+            }
+            if ( $curCC == NULL || $tradeType == 'N' || $curCC->id < 0 )
+            {
+                array_push($unsupported, $deposit);
+            } else {
+                // var_dump($fromCC->id);
+                $currencyId = $curCC->id;
+                $priceCurrencyId = $currencyId;
+                $costCurrencyId = $currencyId;
+                $feeCurrencyId = $feeCC->id;
+
+                // var_dump($currencyId);
+                $trans = new CryptoTransaction();
+                $trans->crypto_account_id = $this->account->id;
+                $trans->currency_id = $currencyId;
+                $trans->cost_currency_id = $costCurrencyId;
+                $trans->price_currency_id = $priceCurrencyId;
+                $trans->fee_currency_id = $feeCurrencyId;
+                $trans->trade_type = $tradeType;
+                $trans->from_addr = $this->account->addressFrom;
+                $trans->to_addr = $this->account->addressTo;
+                $trans->amount = $deposit['amount'];
+                $trans->price = 1;
+                $trans->cost = $trans->amount;
+                if ($deposit['fee'] == NULL) $trans->fee = 0;
+                else $trans->fee = $deposit['fee']['cost'];
+                $trans->raw_data = json_encode($deposit);
+                $trans->executed_at = $executed_at;
+                // TestHelper::save2file('..\CcxtDriver_transactions.php', $transactions);
+
+                $trans->save();
+            }
+        }
+  //      TestHelper::save2file('..\CcxtDriver_unsupported_deposits.php', $unsupported);
         return true;
     }
 

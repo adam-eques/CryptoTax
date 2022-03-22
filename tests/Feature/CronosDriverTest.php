@@ -25,7 +25,7 @@ class CronosDriverTest extends TestCase
         $driver = $account->getApi();
         $since = Carbon::create(2000, 1, 1, 0, 0, 0);
         $transactions = $driver->fetchTransactions($since);
-        TestHelper::save2file('../CronosDriverTest_transactions.php', $transactions);
+  //      TestHelper::save2file('../CronosDriverTest_transactions.php', $transactions);
         $balance = $driver->fetchBalance();
         var_dump($balance);
         $this->assertGreaterThan(0, count($transactions), "no transactions found");
