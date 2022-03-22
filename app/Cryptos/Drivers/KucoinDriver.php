@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use function now;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\TestHelper;
 /**
  * Class KucoinDriver
  *
@@ -47,20 +48,62 @@ class KucoinDriver extends CcxtDriver
      */
     public function update() : self {
         var_dump('KucoinDriver update');
-        $balance = $this->fetchBalances();
-        $this->saveBalances($balance);
-
         $account = $this->account;
+        $balance = $this->fetchBalances();
         $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
+        $trades = $this->fetchTrades($since);
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
+        $withdrawals = $this->fetchWithdrawals($since);
+        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
+        $deposits = $this->fetchDeposits($since);
+
+        // // $counter = 0;
+        // // $exchange = $this->api->exchange;
+
+        $this->saveBalances($balance);
+        $this->saveTrades($trades);
+        $this->saveWithdrawals($withdrawals);
+        $this->saveDeposits($deposits);
+
+        // $total_ledger = [];
+        // // var_dump($exchange->getTransfersAvailable());
+        // while($since->isPast()) {
+        //     var_dump($since->timestamp);
+        //     $ledger = $exchange->fetch_ledger(null, $since->getTimestampMs());
+        //     $total_ledger = array_merge($total_ledger, $ledger);
+        //     var_dump($ledger);
+        //     if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
+        //         sleep(3);
+        //     }
+        //     $counter++;
+        //     $since->addDays(1);
+        // }
+        // TestHelper::save2file('..\Kucoin_ledger.php', $total_ledger);
+
+        $this->account->update(['fetched_at' => now()]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Carbon\Carbon $from
+     * @return array
+     */
+    protected function fetchTrades(Carbon $from = null): array
+    {
+        $since = $from ? $from : Carbon::create(2019, 2, 18);
+        var_dump($since->toDateTimeString());
         $counter = 0;
         $exchange = $this->api->exchange;
 
+        $trades = [];
+        $dates = [];
         while($since->isPast()) {
             var_dump($since->timestamp);
             $count = 0;
             do {
                 $data = $exchange->fetchMyTrades(NULL, $since->timestamp*1000);
-                $this->saveTrades($data);
+                $trades = array_merge($trades, $data);
                 $count = count($data);
                 var_dump($count);
                 if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
@@ -74,58 +117,108 @@ class KucoinDriver extends CcxtDriver
                     $since->addDays(7);
                     // var_dump('Since: ');
                 }
+                array_push($dates, $since->toDateTimeString());
                 var_dump($since->toDateTimeString());
                 $counter++;
             } while ($count > 0);
             if ($since->isPast()) {
                 var_dump($since->toDateTimeString());
             }
-
-            // $counter++;
         }
+        sleep(3);
+        TestHelper::save2file('..\Kucoin_trade.php', $trades);
+        TestHelper::save2file('..\Kucoin_dates.php', $dates);
+        return $trades;
+    }
 
-        $this->account->update(['fetched_at' => now()]);
 
-        return $this;
+    /**
+     * @param \Carbon\Carbon $from
+     * @return array
+     */
+    protected function fetchWithdrawals(Carbon $from = null): array
+    {
+        $since = $from ? $from : Carbon::create(2019, 2, 18);
+        var_dump($since->toDateTimeString());
+        $counter = 0;
+        $exchange = $this->api->exchange;
+
+        $withdrawals = [];
+        $dates = [];
+        while($since->isPast()) {
+            var_dump($since->timestamp);
+            $count = 0;
+            do {
+                $data = $exchange->fetch_withdrawals(NULL, $since->timestamp*1000);
+                $withdrawals = array_merge($withdrawals, $data);
+                $count = count($data);
+                var_dump($count);
+                if($counter !== 0 && $counter % 5 === 0) { // Modulo 5 instead of 6, just to make sure
+                    sleep(3);
+                }
+                if ($count > 0 )
+                {
+                    $since->timestamp($data[$count-1]['timestamp'] * 0.001 + 1);
+                    // var_dump($data[$count-1]['timestamp'] + 1);
+                } else {
+                    $since->addDays(7);
+                    // var_dump('Since: ');
+                }
+                array_push($dates, $since->toDateTimeString());
+                var_dump($since->toDateTimeString());
+                $counter++;
+            } while ($count > 0);
+            if ($since->isPast()) {
+                var_dump($since->toDateTimeString());
+            }
+        }
+        sleep(3);
+        TestHelper::save2file('..\Kucoin_withdrawals.php', $withdrawals);
+        return $withdrawals;
     }
 
     /**
-     * @return $this
-     * @throws \ccxt\ExchangeError
+     * @param \Carbon\Carbon $from
+     * @return array
      */
-    public function updateTrades(): self
+    protected function fetchDeposits(Carbon $from = null): array
     {
-        // Kucoin API used: https://docs.kucoin.com/#list-fills
-        // "The system allows you to retrieve data up to one week (start from the last day by default)"
-        $account = $this->account;
+        $since = $from ? $from : Carbon::create(2019, 2, 18);
+        var_dump($since->toDateTimeString());
+        $counter = 0;
+        $exchange = $this->api->exchange;
 
-        // Get date: Kucoin max. prev date = 2019-02-18
-        $since = $account->fetched_at ? $account->fetched_at : Carbon::create(2019, 2, 18);
-        $now = now();
-
-        // Balance
-        $balances = $this->fetchBalances();
-
-        DB::transaction(function() use ($account, $since, $balances, $now) {
-            $counter = 0;
-
-            while($since->isPast()) {
-
-
-                // Sleep because of Request Limit of 9 times/3s
-                if($counter !== 0 && $counter % 7 === 0) { // Modulo 7 instead of 9, just to make sure
+        $deposits = [];
+        $dates = [];
+        while($since->isPast()) {
+            var_dump($since->timestamp);
+            $count = 0;
+            do {
+                $data = $exchange->fetch_deposits(NULL, $since->timestamp*1000);
+                $deposits = array_merge($deposits, $data);
+                $count = count($data);
+                var_dump($count);
+                if($counter !== 0 && $counter % 5 === 0) { // Modulo 5 instead of 6, just to make sure
                     sleep(3);
                 }
-
-                // Add a week aka 7 days and increment counter
-                $since->addDays(7);
+                if ($count > 0 )
+                {
+                    $since->timestamp($data[$count-1]['timestamp'] * 0.001 + 1);
+                    // var_dump($data[$count-1]['timestamp'] + 1);
+                } else {
+                    $since->addDays(7);
+                    // var_dump('Since: ');
+                }
+                array_push($dates, $since->toDateTimeString());
+                var_dump($since->toDateTimeString());
                 $counter++;
+            } while ($count > 0);
+            if ($since->isPast()) {
+                var_dump($since->toDateTimeString());
             }
-
-            // Save balances
-            $this->saveBalances($balances["total"]);
-        });
-
-        return $this;
+        }
+        sleep(3);
+        TestHelper::save2file('..\Kucoin_deposites.php', $deposits);
+        return $deposits;
     }
 }
