@@ -140,10 +140,10 @@
                     </div>
                 </div>
             </div>
-{{-- 
+
             <div wire:loading.block class="hidden lg:block">
                 <x-spiner/>
-            </div>  --}}
+            </div> 
         </div>    
     </div>
 </div>
