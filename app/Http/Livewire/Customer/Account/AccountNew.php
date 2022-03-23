@@ -115,6 +115,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $account->save();
         }
         $this->selected_account = $user->cryptoAccounts()->where("crypto_source_id", $this->selected_account_id)->first();
+        $this->form->fill($this->selected_account->credentials);
     }
 
     public function save()
