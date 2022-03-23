@@ -114,4 +114,32 @@ class CryptoAccount extends Model
 
         return $this;
     }
+
+    public function getLastSendTransactionId() : int
+    {
+        $id = 1;
+        $lastSendTransaction =  $this->hasMany(CryptoTransaction::class)
+        ->where('trade_type', CryptoTransaction::TRAN_TYPE_SEND)
+        ->orderBy('executed_at', 'DESC')
+        ->first();
+        if ($lastSendTransaction != null) {
+            $transaction = json_decode($lastSendTransaction->raw_data);
+            $id = $transaction->id;
+        }
+        return $id;
+    }
+
+    public function getLastReceiveTransactionId() : int
+    {
+        $id = 1;
+        $lastReceiveTransaction =  $this->hasMany(CryptoTransaction::class)
+        ->where('trade_type', CryptoTransaction::TRAN_TYPE_RECEIVE)
+        ->orderBy('executed_at', 'DESC')
+        ->first();
+        if ($lastReceiveTransaction != null) {
+            $transaction = json_decode($lastReceiveTransaction->raw_data);
+            $id = $transaction->id;
+        }
+        return $id;
+    }
 }

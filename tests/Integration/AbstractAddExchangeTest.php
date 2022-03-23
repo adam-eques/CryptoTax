@@ -5,6 +5,7 @@ namespace Tests\Integration;
 use App\Models\CryptoAccount;
 use App\Models\User;
 use Tests\TestCase;
+use App\Helpers\TestHelper;
 
 abstract class AbstractAddExchangeTest extends TestCase
 {
@@ -29,8 +30,31 @@ abstract class AbstractAddExchangeTest extends TestCase
             "fetching_scheduled_at" => now()
         ]);
 
+        echo "last fetch: " . $this->account->fetched_at . "\n";
         // Update the account
         $this->account->getApi()->update();
+
+        // balances log
+        // $exchange = $this->account->getApi()->getApi()->exchange;
+        // $exchange->verbose = true;
+        // $name = $exchange->name;
+        // var_dump($name);
+        // $types = [ 'trade', 'trading', 'spot', 'margin', 'main', 'funding', 'future', 'futures', 'contract', 'pool', 'pool-x' ];
+        // foreach($types as $type)
+        // {
+        //     try {
+        //         $balances = $exchange->fetchBalance([
+        //             'type'=> $type
+        //         ]);
+        //         $tosave = array_filter($balances['total'], function($balance) {
+        //             return $balance > 0;
+        //         });
+        //         TestHelper::save2file($name.'_balances_'.$type, $tosave);
+        //     } catch (\Throwable $th) {
+        //         //throw $th;
+        //         continue;
+        //     }
+        // }
     }
 
 
@@ -48,7 +72,8 @@ abstract class AbstractAddExchangeTest extends TestCase
         $countTransactions = $account->cryptoTransactions()->count();
 
         // Output results
-        echo "\nCount transactions : " . $countTransactions. "\nCount balances: " . $countBalance . "\n";
+        echo "\nAccount id: " . $account->id . "\nfetched_at: " . $account->fetched_at . "\nCount transactions : "
+        . $countTransactions. "\nCount balances: " . $countBalance . "\n";
 
         // Test if there are balances and transactions
         $this->assertGreaterThan(0, $countBalance, "no assets found");

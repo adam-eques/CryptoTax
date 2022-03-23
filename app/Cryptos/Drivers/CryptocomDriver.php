@@ -18,17 +18,14 @@ class CryptocomDriver extends CcxtDriver
      * @return $this
      */
     public function update() : self {
-        var_dump('CyptocomDriver update');
         $balance = $this->fetchBalances();
         $this->saveBalances($balance);
         $since = Carbon::create(2016, 1, 1);
         $account = $this->account;
-        var_dump($account->fetched_at);
         if ( $account->fetched_at != NULL && $account->fetched_at->timestamp > $since->timestamp )
         {
             $since = $account->fetched_at;
         }
-        var_dump($since);
         $exchange = $this->api->exchange;
 
         

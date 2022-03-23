@@ -219,8 +219,6 @@ class CryptoapisDriver implements ApiDriverInterface
             $tradeType = 'N';
             $executed_at = new \DateTime();
             $executed_at->setTimestamp($transaction->timestamp);
-            // var_dump($executed_at);
-            // var_dump($transaction->timestamp);
             $trans = new CryptoTransaction();
 
             foreach($transaction->senders as $sender)
@@ -253,7 +251,6 @@ class CryptoapisDriver implements ApiDriverInterface
                     break;
                 };
             }
-            // var_dump($currencyId);
             $trans->crypto_account_id = $this->account->id;
             $trans->currency_id = $currencyId;
             $trans->cost_currency_id = $costCurrencyId;

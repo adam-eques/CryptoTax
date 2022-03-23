@@ -52,19 +52,23 @@ abstract class CcxtDriver implements ApiDriverInterface
         TestHelper::save2file('ccxt_has', $exchange->has);
 
         $since = $this->account->fetched_at;
+        $balance = [];
         $balance = $this->fetchBalances();
+        $trades = [];
         $trades = $this->fetchTrades($since);
         $transactions = [];
         $withdrawals = [];
         $deposits = [];
-        if ($this->api->getTransactionsAvailable()) {
+        if ($this->api->getTransactionsAvailable())
+        {
             $transactions = $this->fetchTransactions($since);
-            // TestHelper::save2file('../HitBtc_transactions.php', $transactions);
         }
-        if ($this->api->getWithdrawalsAvailable()) {
+        if ($this->api->getWithdrawalsAvailable())
+        {
             $withdrawals = $this->fetchWithdrawals($since);
         }
-        if ($this->api->getDepositsAvailable()) {
+        if ($this->api->getDepositsAvailable())
+        {
             $deposits = $this->fetchDeposits($since);
         }
 
@@ -116,9 +120,20 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function fetchBalances() : array
     {
-        var_dump("fetchBalance");
-        $balances = $this->api->getBalance();
-        return $balances;
+        $main_balance = $this->api->getBalance(CCXTAPI::BALANCE_TYPE_MAIN);
+        $trade_balance = array_filter(
+            $this->api->getBalance(CCXTAPI::BALANCE_TYPE_TRADE),
+            function($balance) {
+                return $balance != 0;
+            }
+        );
+        TestHelper::save2file('ccxt_balance_main', $main_balance);
+        TestHelper::save2file('ccxt_balance_trade', $trade_balance);
+
+        foreach ($trade_balance as $key => $value) {
+            $main_balance[$key] += $value;
+        }
+        return $main_balance;
     }
 
     /**
@@ -130,7 +145,7 @@ abstract class CcxtDriver implements ApiDriverInterface
         $pfrom = $from;
         if ($from == null)
         {
-            $pfrom = Carbon::create(2017, 1, 1);
+            $pfrom = Carbon::create(2000, 1, 1);
         }
         $trades = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
   //      TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
@@ -220,14 +235,13 @@ abstract class CcxtDriver implements ApiDriverInterface
     protected function saveBalances($balanceData) : bool
     {
         $flag = false;
-        $balances = $balanceData['total'];
+        $balances = $balanceData;
         $unsupported = [];
         foreach($balances as $currency => $value)
         {
             $cc = CryptoCurrency::findByShortName($currency);
             if ($cc == NULL)
             {
-                // var_dump($currency);
                 array_push($unsupported, [
                     'currency' => $currency,
                     'value' => $value
@@ -273,8 +287,8 @@ abstract class CcxtDriver implements ApiDriverInterface
             // $executed_at = new \DateTime();
             // $executed_at->setTimestamp($transaction['timestamp']);
 
-            if ($transaction['side'] == 'sell') $tradeType = 'S';
-            elseif ($transaction['side'] == 'buy') $tradeType = 'B';
+            if ($transaction['side'] == 'sell') $tradeType = CryptoTransaction::TRAN_TYPE_SELL;
+            elseif ($transaction['side'] == 'buy') $tradeType = CryptoTransaction::TRAN_TYPE_BUY;
 
             [$fromCurrency, $toCurrency] = explode('/', $transaction['symbol']);
             $fromCC = CryptoCurrency::findByShortName($fromCurrency);
@@ -284,14 +298,12 @@ abstract class CcxtDriver implements ApiDriverInterface
             {
                 array_push($transaction);
             } else {
-                // var_dump($fromCC->id);
                 $currencyId = $fromCC->id;
                 $priceCurrencyId = $toCC->id;
                 $costCurrencyId = $priceCurrencyId;
                 if ($feeCC == null) $feeCurrencyId = $currencyId;
                 else $feeCurrencyId = $feeCC->id;
 
-                // var_dump($currencyId);
                 $trans = new CryptoTransaction();
                 $trans->crypto_account_id = $this->account->id;
                 $trans->currency_id = $currencyId;
@@ -335,8 +347,8 @@ abstract class CcxtDriver implements ApiDriverInterface
             $tradeType = 'N';
             $executed_at = Carbon::createFromTimestampMsUTC($transaction['timestamp']);
 
-            if ($transaction['type'] == 'withdrawal') $tradeType = 'W';
-            elseif ($transaction['type'] == 'deposit') $tradeType = 'D';
+            if ($transaction['type'] == 'withdrawal') $tradeType = CryptoTransaction::TRAN_TYPE_SEND;
+            elseif ($transaction['type'] == 'deposit') $tradeType = CryptoTransaction::TRAN_TYPE_RECEIVE;
 
             $curCC = CryptoCurrency::findByShortName($transaction['currency']);
             $feeCC = NULL;
@@ -349,13 +361,11 @@ abstract class CcxtDriver implements ApiDriverInterface
             {
                 array_push($unsupported, $transaction);
             } else {
-                // var_dump($fromCC->id);
                 $currencyId = $curCC->id;
                 $priceCurrencyId = $currencyId;
                 $costCurrencyId = $currencyId;
                 $feeCurrencyId = $feeCC->id;
 
-                // var_dump($currencyId);
                 $trans = new CryptoTransaction();
                 $trans->crypto_account_id = $this->account->id;
                 $trans->currency_id = $currencyId;
@@ -396,7 +406,7 @@ abstract class CcxtDriver implements ApiDriverInterface
             $costCurrencyId = -1;
             $priceCurrencyId = -1;
             $feeCurrencyId = -1;
-            $tradeType = 'W';
+            $tradeType = CryptoTransaction::TRAN_TYPE_SEND;
             $executed_at = Carbon::createFromTimestampMsUTC($withdrawal['timestamp']);
 
             $curCC = CryptoCurrency::findByShortName($withdrawal['currency']);
@@ -410,13 +420,11 @@ abstract class CcxtDriver implements ApiDriverInterface
             {
                 array_push($unsupported, $withdrawal);
             } else {
-                // var_dump($fromCC->id);
                 $currencyId = $curCC->id;
                 $priceCurrencyId = $currencyId;
                 $costCurrencyId = $currencyId;
                 $feeCurrencyId = $feeCC->id;
 
-                // var_dump($currencyId);
                 $trans = new CryptoTransaction();
                 $trans->crypto_account_id = $this->account->id;
                 $trans->currency_id = $currencyId;
@@ -453,7 +461,7 @@ abstract class CcxtDriver implements ApiDriverInterface
             $costCurrencyId = -1;
             $priceCurrencyId = -1;
             $feeCurrencyId = -1;
-            $tradeType = 'D';
+            $tradeType = CryptoTransaction::TRAN_TYPE_RECEIVE;
             $executed_at = Carbon::createFromTimestampMsUTC($deposit['timestamp']);
 
             $curCC = CryptoCurrency::findByShortName($deposit['currency']);
@@ -467,13 +475,11 @@ abstract class CcxtDriver implements ApiDriverInterface
             {
                 array_push($unsupported, $deposit);
             } else {
-                // var_dump($fromCC->id);
                 $currencyId = $curCC->id;
                 $priceCurrencyId = $currencyId;
                 $costCurrencyId = $currencyId;
                 $feeCurrencyId = $feeCC->id;
 
-                // var_dump($currencyId);
                 $trans = new CryptoTransaction();
                 $trans->crypto_account_id = $this->account->id;
                 $trans->currency_id = $currencyId;

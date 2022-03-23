@@ -29,7 +29,7 @@ class AddBinanceExchangeTest extends AbstractAddExchangeTest
 
         echo "tested1\n";
 
-        var_dump($this->account->fetched_at);
+        // var_dump($this->account->fetched_at);
         // Update the account
         $this->account->getApi()->update();
         // $exchange = $this->account->getApi()->getApi();

@@ -43,38 +43,42 @@ class HuobiDriver extends CcxtDriver
     }
 
     /**
+     * @return array
+     */
+    protected function fetchBalances() : array
+    {
+        $spot_balance = $this->api->getBalance(CCXTAPI::BALANCE_TYPE_SPOT);
+        return $spot_balance;
+    }
+
+    /**
      * @param \Carbon\Carbon $from
      * @return array
      */
     protected function fetchTrades(Carbon $from = null): array
     {
-        // $from = Carbon::create(2022, 2, 20, 0, 0, 0);
+        // https://huobiapi.github.io/docs/spot/v1/en/#search-match-results
         $exchange = $this->api->exchange;
         $exchange->verbose = false;
         $since_limit = Carbon::now()->addDays(-120)->addMinutes(10);
-        $since = $from != null || $since_limit->lessThanOrEqualTo($from) ? $from : $since_limit;
-        var_dump($since->toAtomString());
+        $since = $from != null && $since_limit->lessThanOrEqualTo($from) ? $from : $since_limit;
         $all_trades = [];
         $counter = 0;
+
         while($since->isPast()) {
             if ($counter != 0 && $counter % $this->rate_limit == 0) {
                 sleep(1);
             }
-            var_dump($since->getTimestampMs());
-            $trades = $exchange->fetchMyTrades(null, null, null, [
-                'start-time' => $since->getTimestampMs(),
-                'end-time' => $since->getTimestampMs() + 172800000
+            // $since = Carbon::create(2022, 2, 20, 0, 0, 0);
+            $trades = $exchange->fetchMyTrades(null, $since->getTimestampMs(), null, [
+                // 'start-time' => $since->getTimestampMs(),
+                // 'end-time' => $since->getTimestampMs() + 172800000
             ]);
             $all_trades = array_merge($all_trades, $trades);
             $since->addDays(2);
             $counter++;
         }
-        // var_dump($since->getTimestampMs());
-        // $all_trades = $exchange->fetchMyTrades(null, null, null, [
-        //     'start-time' => $since->getTimestampMs(),
-        //     'end-time' => $since->getTimestampMs() + 172800000
-        // ]);
-        // var_dump($all_trades);
+
         sleep(1);
         return $all_trades;
     }
@@ -85,25 +89,35 @@ class HuobiDriver extends CcxtDriver
      */
     protected function fetchWithdrawals(Carbon $from = null): array
     {
+        // https://huobiapi.github.io/docs/spot/v1/en/#search-for-existed-withdraws-and-deposits
         $exchange = $this->api->exchange;
-        $exchange->verbose = true;
-        $since = $from ? $from : $this->found_time;
-        $all_withdrawals = [];
+        // $exchange->verbose = true;
+        $withdrawals = [];
+
+        $from = $this->account->getLastSendTransactionId() + 1;
+        $size = 500;
+        $total_withdrawals = [];
+        $withdrawals = [];
+        $count = 0;
         $counter = 0;
-        while($since->isPast()) {
+        do {
             if ($counter != 0 && $counter % $this->rate_limit == 0) {
                 sleep(1);
             }
             $withdrawals = $exchange->fetch_withdrawals(null, null, null, [
-                'start-time' => $since->getTimestampMs(),
-                'end-time' => $since->getTimestampMs() + 86400000
+                'from' => $from,
+                'size' => $size,
+                'direct' => 'prev'
             ]);
-            $all_withdrawals = array_merge($all_withdrawals, $withdrawals);
-            $since->addDay();
+            $count = count($withdrawals);
+            $total_withdrawals = array_merge($total_withdrawals, $withdrawals);
+            if ($count > 0) {
+                $from = $withdrawals[$count-1]['id'] + 1;
+            }
             $counter++;
-        }
+        } while ($count >= $size);
         sleep(1);
-        return $all_withdrawals;
+        return $total_withdrawals;
     }
 
     /**
@@ -112,24 +126,34 @@ class HuobiDriver extends CcxtDriver
      */
     protected function fetchDeposits(Carbon $from = null): array
     {
+        // https://huobiapi.github.io/docs/spot/v1/en/#search-for-existed-withdraws-and-deposits
         $exchange = $this->api->exchange;
-        $exchange->verbose = true;
-        $since = $from ? $from : $this->found_time;
-        $all_deposits = [];
+        // $exchange->verbose = true;
+        $deposits = [];
+
+        $from = $this->account->getLastReceiveTransactionId() + 1;
+        $size = 500;
+        $total_deposits = [];
+        $deposits = [];
+        $count = 0;
         $counter = 0;
-        while($since->isPast()) {
+        do {
             if ($counter != 0 && $counter % $this->rate_limit == 0) {
                 sleep(1);
             }
             $deposits = $exchange->fetch_deposits(null, null, null, [
-                'start-time' => $since->getTimestampMs(),
-                'end-time' => $since->getTimestampMs() + 86400000
+                'from' => $from,
+                'size' => $size,
+                'direct' => 'prev'
             ]);
-            $all_deposits = array_merge($all_deposits, $deposits);
-            $since->addDay();
+            $count = count($deposits);
+            $total_deposits = array_merge($total_deposits, $deposits);
+            if ($count > 0) {
+                $from = $deposits[$count-1]['id'] + 1;
+            }
             $counter++;
-        }
+        } while ($count >= $size);
         sleep(1);
-        return $all_deposits;
+        return $total_deposits;
     }
 }

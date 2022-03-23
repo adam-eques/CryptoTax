@@ -192,14 +192,12 @@ class CronosDriver implements ApiDriverInterface
             $tradeType = 'N';
             $executed_at = new \DateTime();
             $executed_at->setTimestamp($transaction->timestamp);
-            // var_dump($executed_at);
-            // var_dump($transaction->timestamp);
             $trans = new CryptoTransaction();
 
             if ($credentials['address'] == $transaction->from) {
                 $tradeType = 'S';
             }
-            
+
             $trans->from_addr = $transaction->from;
             $trans->to_addr = $transaction->to;
             $trans->amount = $transaction->value * $this->UNIT;
