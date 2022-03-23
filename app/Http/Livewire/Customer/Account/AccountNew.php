@@ -62,7 +62,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         if ($this->selected_account) {
             $api = $this->selected_account->getApi();
             $requiredCredentials = $api->getRequiredCredentials();
-
+            // dd($requiredCredentials);
             return in_array($fieldName, $requiredCredentials);
         }
         return false;
@@ -116,7 +116,9 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
             $account->save();
         }
         $this->selected_account = $user->cryptoAccounts()->where("crypto_source_id", $this->selected_account_id)->first();
-        $this->form->fill($this->selected_account->credentials);
+        if($this->selected_account->credentials){
+            $this->form->fill($this->selected_account->credentials);
+        }
     }
 
     public function save()
