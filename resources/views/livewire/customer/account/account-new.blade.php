@@ -112,16 +112,18 @@
                                     <button aria-label="Close" x-on:click="isModalOpen=false" class="flex justify-end">✖</button>
                                 </div>
                                 @if($selected_account)
-                                    <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
-                                    <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account->getName() . ' API integration')}}</p>
-                                    <form wire:submit.prevent="save" autocomplete="off">
-                                        <div class="p-4">
-                                            {{ $this->form }}
-                                            <div class="mt-4 text-center">
-                                                <x-button type="submit">{{ __("Save") }}</x-button>
+                                    <div wire:key='{{$selected_account->id}}'>
+                                        <img src="{{ asset('assets/img/exchange_icon/' . $selected_account->cryptoSource->name . '.svg') }}"  class="flex w-auto h-10 m-auto"/>    
+                                        <p class="mt-3 text-xl font-bold text-center">{{ __($selected_account->getName() . ' API integration')}}</p>
+                                        <form wire:submit.prevent="save" autocomplete="off">
+                                            <div class="p-4">
+                                                {{ $this->form }}
+                                                <div class="mt-4 text-center">
+                                                    <x-button type="submit">{{ __("Save") }}</x-button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 @else
                                     <div class="flex items-center justify-center w-full h-full text-center">
                                         <div>
@@ -138,10 +140,10 @@
                     </div>
                 </div>
             </div>
-
+{{-- 
             <div wire:loading.block class="hidden lg:block">
                 <x-spiner/>
-            </div> 
+            </div>  --}}
         </div>    
     </div>
 </div>
