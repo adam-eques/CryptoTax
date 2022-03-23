@@ -29,7 +29,7 @@ class HuobiDriver extends CcxtDriver
             'apiKey' => Arr::get($credentials, "apiKey"),
             'secret' => Arr::get($credentials, "secret"),
         ]);
-        $this->found_time = Carbon::create(2021, 1, 1, 0, 0, 0);
+        $this->found_time = Carbon::create(2016, 1, 1, 0, 0, 0);
         $this->rate_limit = 10; // 10 times per second https://huobiapi.github.io/docs/spot/v1/en/#new-version-rate-limit-rule
         return $this;
     }
@@ -48,34 +48,33 @@ class HuobiDriver extends CcxtDriver
      */
     protected function fetchTrades(Carbon $from = null): array
     {
+        // $from = Carbon::create(2022, 2, 20, 0, 0, 0);
         $exchange = $this->api->exchange;
         $exchange->verbose = false;
-        $since_limit = Carbon::now()->addDays(-120);
-        $since = $from != null || $since_limit->lessThanOrEqualTo($from) ? $from : $this->found_time;
+        $since_limit = Carbon::now()->addDays(-120)->addMinutes(10);
+        $since = $from != null || $since_limit->lessThanOrEqualTo($from) ? $from : $since_limit;
         var_dump($since->toAtomString());
         $all_trades = [];
         $counter = 0;
-        // while($since->isPast()) {
-        //     if ($counter != 0 && $counter % $this->rate_limit == 0) {
-        //         sleep(1);
-        //     }
-        //     $trades = $exchange->fetchMyTrades(null, null, null, [
-        //         'start-time' => $since->getTimestampMs(),
-        //         'end-time' => $since->getTimestampMs() + 864000
-        //     ]);
-        //     $all_trades = array_merge($all_trades, $trades);
-        //     $since->addDay();
-        //     $counter++;
-        // }
-        var_dump($since->getTimestampMs());
+        while($since->isPast()) {
+            if ($counter != 0 && $counter % $this->rate_limit == 0) {
+                sleep(1);
+            }
+            var_dump($since->getTimestampMs());
+            $trades = $exchange->fetchMyTrades(null, null, null, [
+                'start-time' => $since->getTimestampMs(),
+                'end-time' => $since->getTimestampMs() + 172800000
+            ]);
+            $all_trades = array_merge($all_trades, $trades);
+            $since->addDays(2);
+            $counter++;
+        }
+        // var_dump($since->getTimestampMs());
         // $all_trades = $exchange->fetchMyTrades(null, null, null, [
         //     'start-time' => $since->getTimestampMs(),
-        //     'end-time' => $since->getTimestampMs() + 86400
+        //     'end-time' => $since->getTimestampMs() + 172800000
         // ]);
-        $all_trades = $exchange->fetchLedger(null, null, null, [
-            'start-time' => $since->getTimestampMs(),
-            'end-time' => ''
-        ]);
+        // var_dump($all_trades);
         sleep(1);
         return $all_trades;
     }

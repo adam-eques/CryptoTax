@@ -38,7 +38,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     // abstract public function getRequiredCredentials(): array;
     public function getRequiredCredentials(): array {
-        return [];
+        return ['test'];
     }
 
     /**
@@ -280,7 +280,7 @@ abstract class CcxtDriver implements ApiDriverInterface
             $fromCC = CryptoCurrency::findByShortName($fromCurrency);
             $toCC = CryptoCurrency::findByShortName($toCurrency);
             $feeCC = CryptoCurrency::findByShortName($transaction['fee']['currency']);
-            if ( $fromCC == NULL || $toCC == NULL || $tradeType == 'N' || $fromCC->id < 0 || $toCC->id < 0 || $feeCC->id < 0)
+            if ( $fromCC == NULL || $toCC == NULL || $tradeType == 'N' || $fromCC->id < 0 || $toCC->id < 0 )
             {
                 array_push($transaction);
             } else {
@@ -288,7 +288,8 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $currencyId = $fromCC->id;
                 $priceCurrencyId = $toCC->id;
                 $costCurrencyId = $priceCurrencyId;
-                $feeCurrencyId = $feeCC->id;
+                if ($feeCC == null) $feeCurrencyId = $currencyId;
+                else $feeCurrencyId = $feeCC->id;
 
                 // var_dump($currencyId);
                 $trans = new CryptoTransaction();

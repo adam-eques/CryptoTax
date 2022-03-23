@@ -104,7 +104,7 @@ class CCXTAPI {
         return $all_trades;
     }
 
-    public function getTradesAvailable($fromSymbol, $toSymbol) : bool {
+    public function getTradesAvailable($fromSymbol, $toSymbol) {
         $flag = false;
         $symbol = $this->genSymbol($fromSymbol, $toSymbol);
         if ($this->exchange->has['fetchMyTrades'] && array_search($symbol, $this->exchange->symbols) > -1) {
@@ -128,7 +128,7 @@ class CCXTAPI {
         return $transactions;
     }
 
-    public function getTransactionsAvailable() : bool {
+    public function getTransactionsAvailable() {
         $flag = false;
         if ($this->exchange->has['fetchTransactions']) {
             $flag = true;
@@ -149,11 +149,13 @@ class CCXTAPI {
         return $transactions;
     }
 
-    public function getDepositsAvailable() : bool {
+    public function getDepositsAvailable()
+    {
         return $this->exchange->has['fetchDeposits'];
     }
 
-    public function getWithdrawals($since=NULL) {
+    public function getWithdrawals($since=NULL)
+    {
         $code = NULL;
         $limit = NULL;
         $params = NULL;
@@ -167,11 +169,13 @@ class CCXTAPI {
         return $transactions;
     }
 
-    public function getWithdrawalsAvailable() : bool {
+    public function getWithdrawalsAvailable()
+    {
         return $this->exchange->has['fetchWithdrawals'];
     }
 
-    public function getTransfers($since=NULL) {
+    public function getTransfers($since=NULL)
+    {
         $code = NULL;
         $limit = NULL;
         $params = [];
@@ -184,7 +188,7 @@ class CCXTAPI {
         return $transactions;
     }
 
-    public function getTransfersAvailable() : bool {
+    public function getTransfersAvailable() {
         return $this->exchange->has['fetchTransfers'];
     }
 
@@ -202,7 +206,7 @@ class CCXTAPI {
         return $ledger;
     }
 
-    public function getLedgerAvailable() : bool
+    public function getLedgerAvailable()
     {
         return $this->exchange->has['fetchLedger'];
     }
