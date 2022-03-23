@@ -17,6 +17,8 @@ abstract class CcxtDriver implements ApiDriverInterface
     protected CryptoAccount $account;
     protected $api;
     protected $connected = false;
+    protected Carbon $found_time;   /**Datetime exchange found */
+    protected $rate_limit;   /**rate limit persecond => miliseconds per request */
 
     /**
      * @param CryptoAccount $account
@@ -36,7 +38,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     // abstract public function getRequiredCredentials(): array;
     public function getRequiredCredentials(): array {
-        return ['apiKey'];
+        return [];
     }
 
     /**
@@ -44,16 +46,39 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     public function update() : self
     {
-        $balance = $this->fetchBalances();
-        $this->saveBalances($balance);
+        $exchange = $this->api->exchange;
+
+        TestHelper::save2file('ccxt_api', $exchange);
+        TestHelper::save2file('ccxt_has', $exchange->has);
+
         $since = $this->account->fetched_at;
+        $balance = $this->fetchBalances();
         $trades = $this->fetchTrades($since);
-        $this->saveTrades($trades);
+        $transactions = [];
+        $withdrawals = [];
+        $deposits = [];
         if ($this->api->getTransactionsAvailable()) {
             $transactions = $this->fetchTransactions($since);
-            $this->saveTransactions($transactions);
             // TestHelper::save2file('../HitBtc_transactions.php', $transactions);
         }
+        if ($this->api->getWithdrawalsAvailable()) {
+            $withdrawals = $this->fetchWithdrawals($since);
+        }
+        if ($this->api->getDepositsAvailable()) {
+            $deposits = $this->fetchDeposits($since);
+        }
+
+        TestHelper::save2file('ccxt_balance', $balance);
+        TestHelper::save2file('ccxt_trades', $trades);
+        TestHelper::save2file('ccxt_transactions', $transactions);
+        TestHelper::save2file('ccxt_withdrawals', $withdrawals);
+        TestHelper::save2file('ccxt_deposits', $deposits);
+
+        $this->saveBalances($balance);
+        $this->saveTrades($trades);
+        $this->saveTransactions($transactions);
+        $this->saveWithdrawals($withdrawals);
+        $this->saveDeposits($deposits);
         $this->account->update(['fetched_at' => now()]);
         return $this;
     }

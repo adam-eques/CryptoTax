@@ -13,6 +13,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class CryptoTransaction extends Model
 {
+    // transaction types
+    const TRAN_TYPE_SEND =       'G';    // send (trade and blockchain transaction)
+    const TRAN_TYPE_RECEIVE =    'R';    // receive ((trade and blockchain transaction))
+    const TRAN_TYPE_SELL =       'S';    // sell (trade)
+    const TRAN_TYPE_BUY =        'B';    // buy (trade)
+
     public function cryptoAccount(): BelongsTo
     {
         return $this->belongsTo(CryptoAccount::class);

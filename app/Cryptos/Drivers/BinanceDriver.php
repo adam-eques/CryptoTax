@@ -19,6 +19,10 @@ class BinanceDriver extends CcxtDriver
     {
         $balance = $this->fetchBalances();
         $this->saveBalances($balance);
+        TestHelper::save2file('binance_credentials', $this->getApi()->exchange->requiredCredentials);
+        TestHelper::save2file('binance_balance', $this->getApi()->exchange->balance);
+        TestHelper::save2file('binance_apis', $this->getApi()->exchange);
+
         // TestHelper::save2file('../test_balances.php', $balance);
 
 
@@ -121,7 +125,7 @@ class BinanceDriver extends CcxtDriver
 
 
         // var_dump($all_matching_symbols);
-        // TestHelper::save2file('../binance_test_trades.php', $unique_symbols);
+        // TestHelper::save2file('binance_trades', $unique_symbols);
         $this->saveTransactions($all_trades_for_all_symbols);
 
         $this->account->update(['fetched_at' => now()]);
