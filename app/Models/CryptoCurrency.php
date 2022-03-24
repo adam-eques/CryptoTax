@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property string $name
@@ -12,12 +13,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $fetched_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $created_at
+ *
+ * @property \Illuminate\Database\Eloquent\Collection<CryptoAsset> $cryptoAssets
+ * @property \Illuminate\Database\Eloquent\Collection<CryptoCurrencyConversion> $cryptoCurrencyConversions
  */
 class CryptoCurrency extends Model
 {
-    public function cryptoAssets()
+    public function cryptoAssets(): HasMany
     {
         return $this->hasMany(CryptoAsset::class);
+    }
+
+
+    public function cryptoCurrencyConversions(): HasMany
+    {
+        return $this->hasMany(CryptoCurrencyConversion::class);
     }
 
 

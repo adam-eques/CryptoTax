@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CoingeckoHistoricalDataCommand;
 use App\Console\Commands\RemovePremiumAfterSubscriptionEndsCommand;
 use App\Console\Commands\UpdateAllCryptoCurrencyPricesCommand;
 use Illuminate\Console\Scheduling\Schedule;
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
         //
         RemovePremiumAfterSubscriptionEndsCommand::class,
         UpdateAllCryptoCurrencyPricesCommand::class,
+        CoingeckoHistoricalDataCommand::class,
     ];
 
     /**
