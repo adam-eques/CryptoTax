@@ -49,8 +49,8 @@ class TransactionList extends Component
             'type' => [
                 ['label' => 'Bought', 'value' => 'B'],
                 ['label' => 'Sold', 'value' => 'S'],
-                ['label' => 'Trade', 'value' => 'T'],
-                ['label' => 'Exchange', 'value' => 'E'],
+                ['label' => 'Received', 'value' => 'R'],
+                ['label' => 'Sent', 'value' => 'G'],
             ],
             'category' => CryptoSource::query()->get()->toArray(),
             'exchange' => [
