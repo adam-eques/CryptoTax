@@ -242,5 +242,9 @@ return [
             // Number of minutes, how long the coingecko prices are valid
             'prices_lifetime' => env("APP_CRYPTOS_COINGECKO_PRICES_LIFETIME", 35)
         ]
+    ],
+
+    'helper' => [
+        'trace' => env('APP_HELPER_TRACE', false)
     ]
 ];
