@@ -1,8 +1,7 @@
 @php
     $transaction_num = auth()->user()->cryptoTransactions()->where('currency_id', $asset->crypto_currency_id)->get()->count()  
 @endphp
-@if ($asset || $transaction_num)
-    
+@if ($asset->balance != 0 || $transaction_num != 0)  
     <div class="grid grid-cols-7 gap-5 items-center px-5 py-6 min-w-[720px]" wire:key='{{ $asset->id }}'>
         <div class="col-span-3">
             <div class="flex items-center space-x-3">

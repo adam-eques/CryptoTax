@@ -67,7 +67,7 @@
                     </div>
                     <div>
                         <div x-show="action == ''" class="overflow-auto">
-                            <div class="divide-y max-h-[810px] overflow-auto scrollbar">
+                            <div class="divide-y max-h-full overflow-auto scrollbar">
                                 @foreach ($selected_account->cryptoAssets as $asset)
                                     <x-account-assets-item :asset="$asset"/>
                                 @endforeach
