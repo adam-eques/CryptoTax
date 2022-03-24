@@ -53,9 +53,32 @@
         </div>
     </div>
     <div class="mt-10 overflow-auto rounded-sm scrollbar">
-        <div class="min-w-[1024px]">    
+        <div class="min-w-[1024px] border divide-y">    
             @foreach ($transactions as $transaction)
-                <x-transaction-list-item :transaction="$transaction"/>
+                <div wire:key='{{ $transaction->id }}' class="flex items-center justify-between px-5">                    
+                    <x-transaction-list-item :transaction="$transaction"/>
+                    <div x-data="{open:false}" class="relative py-2">
+                        <button class="flex items-center justify-center w-6 h-6 bg-gray-100 border rounded-full" @click="open = true">
+                            <svg class="w-4 transform trnstsn " fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute right-0 z-50 w-40 py-4 origin-top-right bg-white rounded-md shadow-lg top-10 text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                            x-show="open" @click.away="open=false" x-cloak
+                            x-transition:enter-start="transition ease-in duration-3000"
+                        >
+                            <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100">{{ __('Edit') }}</button>
+                            @if ($transaction->ignored)
+                                <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100" wire:click='mark_active({{ $transaction->id }})'>{{ __('Active') }}</button>
+                            @else                                
+                                <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100" wire:click='mark_ignore({{ $transaction->id }})'>{{ __('Ignor') }}</button>
+                            @endif
+                            <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100">{{ __('View') }}</button>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </div>
     </div>

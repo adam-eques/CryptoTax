@@ -39,6 +39,24 @@ class TransactionList extends Component
         $this->wallet = null;
     }
 
+    public function mark_ignore($id)
+    {
+        $selected_transaction = CryptoTransaction::query()
+            ->where('id', $id)
+            ->first();
+        $selected_transaction->ignored = true;
+        $selected_transaction->save();
+    }
+
+    public function mark_active($id)
+    {
+        $selected_transaction = CryptoTransaction::query()
+            ->where('id', $id)
+            ->first();
+        $selected_transaction->ignored = false;
+        $selected_transaction->save();
+    }
+
     public function render()
     {
         $filter = [
