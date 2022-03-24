@@ -10,6 +10,7 @@ use App\Models\CryptoTransaction;
 use App\Blockchains\CryptoAPI;
 use Carbon\Carbon;
 
+
 class CryptoapisDriver implements ApiDriverInterface
 {
     protected CryptoAccount $account;
@@ -225,7 +226,7 @@ class CryptoapisDriver implements ApiDriverInterface
             {
                 if ($credentials['address'] == $sender->address)
                 {
-                    $tradeType = 'S';
+                    $tradeType = CryptoTransaction::TRAN_TYPE_SEND;
                     $trans->from_addr = $sender->address;
                     if (count($transaction->recipients) == 1)
                     {
@@ -240,7 +241,7 @@ class CryptoapisDriver implements ApiDriverInterface
             {
                 if ($credentials['address'] == $recipient->address)
                 {
-                    $tradeType = 'B';
+                    $tradeType = CryptoTransaction::TRAN_TYPE_RECEIVE;
                     $trans->to_addr = $recipient->address;
                     if (count($transaction->senders) == 1)
                     {

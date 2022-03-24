@@ -29,12 +29,30 @@ class AddBinanceExchangeTest extends AbstractAddExchangeTest
 
         echo "tested1\n";
 
-        // var_dump($this->account->fetched_at);
-        // Update the account
         $this->account->getApi()->update();
-        // $exchange = $this->account->getApi()->getApi();
-        // $withdrawls = $exchange->getDeposits(1488851410000);
-        // TestHelper::save2file('../binance_withdraws.php', $withdrawls);
+
+        // // balances log
+        // $exchange = $this->account->getApi()->getApi()->exchange;
+        // $exchange->verbose = true;
+        // $name = $exchange->name;
+        // var_dump($name);
+        // $types = [ 'trade', 'trading', 'spot', 'margin', 'main', 'funding', 'future', 'futures', 'contract', 'pool', 'pool-x' ];
+        // foreach($types as $type)
+        // {
+        //     try {
+        //         $balances = $exchange->fetchBalance([
+        //             'type'=> $type
+        //         ]);
+        //         $tosave = array_filter($balances['total'], function($balance) {
+        //             return $balance > 0;
+        //         });
+        //         TestHelper::save2file($name.'_balances_'.$type, $tosave);
+        //     } catch (\Throwable $th) {
+        //         //throw $th;
+        //         continue;
+        //     }
+        // }
+
 
         echo "tested2\n";
     }
