@@ -26,9 +26,8 @@
             <div class="flex items-center justify-between">
                 <x-icon name="coins.{{strtolower($transaction->costCurrency->short_name)}}" class="w-18 h-18 ml-7"/>
                 <div class="w-full space-y-1 ml-7">
-                    -
                     <p class="text-lg font-semibold">
-                        @if($transaction->trade_type == 'S') + @elseif($transaction->trade_type == 'B') - @endif
+                        -
                         {{ $transaction->cost}}
                         {{ $transaction->costCurrency->short_name }}
                     </p>
