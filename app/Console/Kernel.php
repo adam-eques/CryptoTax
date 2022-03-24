@@ -33,6 +33,9 @@ class Kernel extends ConsoleKernel
         // Change premium users to free when no subscriptions is there
         $schedule->command(RemovePremiumAfterSubscriptionEndsCommand::class)->everySixHours();
 
+        // Once a day, get coingecko currency rates
+
+
         // Update every 15 Minutes
         $schedule->command(UpdateAllCryptoCurrencyPricesCommand::class)->everyFifteenMinutes();
 

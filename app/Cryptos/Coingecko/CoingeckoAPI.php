@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Cryptos;
+namespace App\Cryptos\Coingecko;
 
 use Codenixsv\CoinGeckoApi\CoinGeckoClient;
 

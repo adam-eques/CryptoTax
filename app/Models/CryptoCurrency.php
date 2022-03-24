@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $short_name
  * @property string $icon
  * @property string $coingecko_id
+ * @property string $fetched_history_date
  * @property \Carbon\Carbon $fetched_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $created_at
