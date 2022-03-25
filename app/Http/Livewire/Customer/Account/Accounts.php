@@ -160,12 +160,12 @@ class Accounts extends Component implements Forms\Contracts\HasForms
      */
     public function render()
     {
-
-        // $crypto_accounts = auth()->user()->cryptoAccounts;
-        $crypto_accounts = CryptoAccount::query()
-            ->where('user_id', auth()->user()->id)
+        $crypto_accounts = auth()->user()->cryptoAccounts()
             ->whereJsonDoesntContain('credentials', [])
-            ->get();
+            ->get()
+            ->sortByDesc(function($account){
+                return $account->getBalanceSum();
+            });
 
         $rows = [
             ["id" => 1, "label" => "Exchanges"],
