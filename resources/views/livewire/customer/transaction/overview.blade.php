@@ -39,7 +39,7 @@ $overview_data = [
     </x-customers.customer-header-bar>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 sm:gap-x-4 gap-y-4 sm:gap-y-0 my-9">
         @foreach ($overview_data as $item)
-            <div class="flex items-start justify-between w-full p-8 border rounded-lg">
+            <div class="flex items-start justify-between w-full p-8 border rounded-lg cursor-pointer">
                 <div>
                     <p> {{ $item['type'] }}</p>
                     <p class="mt-1 text-3xl font-bold">{{ $item['amount'] }}</p>

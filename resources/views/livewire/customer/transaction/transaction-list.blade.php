@@ -44,7 +44,7 @@
                     </select>
                     <select class="w-full h-full col-span-3 bg-white rounded-md">
                         <option value="0" selected>{{ __('All categories') }}</option>
-                        @foreach ($filter['exchange'] as $item)                                
+                        @foreach ($filter['tag'] as $item)                                
                             <option value="{{ $item['value'] }}">{{ __($item['label']) }}</option>
                         @endforeach
                     </select>
