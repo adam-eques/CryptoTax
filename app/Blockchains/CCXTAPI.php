@@ -69,6 +69,7 @@ class CCXTAPI {
         $all_trades = [];
         while ($since < $this->exchange->seconds())
         {
+            var_dump($since);
             $trades = $this->exchange->fetchMyTrades($symbol, $since*1000, $limit);
 
             if (count($trades))
@@ -99,7 +100,7 @@ class CCXTAPI {
         $code = NULL;
         $limit = NULL;
         $params = [
-            'type' => 'withdrawal'
+            // 'type' => 'withdrawal'
         ];
         $transactions = [];
         if ($this->exchange->has['fetchTransactions'])

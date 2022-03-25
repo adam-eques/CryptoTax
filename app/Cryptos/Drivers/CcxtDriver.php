@@ -142,11 +142,8 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function fetchTrades(Carbon $from = null): array
     {
-        $pfrom = $from;
-        if ($from == null)
-        {
-            $pfrom = Carbon::create(2000, 1, 1);
-        }
+        $pfrom = $from != null ? $from : Carbon::create(2000, 1, 1);
+        // var_dump($pfrom->timestamp);
         $trades = $this->api->getTrades(NULL, $pfrom->timestamp, NULL);
   //      TestHelper::save2file('..\CcxtDriver_trades.php', $trades);
         return $trades;
@@ -158,11 +155,7 @@ abstract class CcxtDriver implements ApiDriverInterface
      */
     protected function fetchTransactions(Carbon $from = null): array
     {
-        $pfrom = $from;
-        if ($from == null)
-        {
-            $pfrom = Carbon::create(2000, 1, 1);
-        }
+        $pfrom = $from != null ? $from : Carbon::create(2000, 1, 1);
         $transactions = $this->api->getTransactions($pfrom->timestamp);
         return $transactions;
     }
