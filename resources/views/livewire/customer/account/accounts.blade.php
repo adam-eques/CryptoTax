@@ -56,7 +56,7 @@
                             <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($crypto_account->getBalanceSum(), 2) }}</p>
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($selected_account->getBalanceSum(), 2) }}</p>
                             <x-button size="xs" wire:click="edit"  x-on:click="action='edit'">
                                 <x-icon name="feathericon-edit" class="w-4 md:w-6"/>
                             </x-button>
