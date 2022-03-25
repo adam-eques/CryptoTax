@@ -23,7 +23,7 @@ class AddBinanceExchangeTest extends AbstractAddExchangeTest
             "user_id" => $this->user->id,
             "crypto_source_id" => $this->cryptoSourceId,
             "credentials" => $this->credentials,
-            'fetched_at' => Carbon::create(2021, 1, 1, 0, 0, 0),
+            'fetched_at' => Carbon::create(2022, 3, 20, 0, 0, 0),
             "fetching_scheduled_at" => now()
         ]);
 
