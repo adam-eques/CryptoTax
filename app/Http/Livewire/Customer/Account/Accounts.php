@@ -23,7 +23,13 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function mount()
     {
-        $this->selected_account = auth()->user()->cryptoAccounts()->first();
+        $this->selected_account = auth()->user()->cryptoAccounts()
+            ->whereJsonDoesntContain('credentials', [])
+            ->get()
+            ->sortByDesc(function($account){
+                return $account->getBalanceSum();
+            })
+            ->first();
         $this->edit();
     }
 
