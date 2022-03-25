@@ -72,7 +72,7 @@ class KucoinDriver extends CcxtDriver
      */
     protected function fetchTrades(Carbon $from = null): array
     {
-        $since = $from ? $from : Carbon::create(2019, 2, 18);
+        $since = $from != null ? $from : Carbon::create(2019, 2, 18);
         $counter = 0;
         $exchange = $this->api->exchange;
 

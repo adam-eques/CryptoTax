@@ -42,7 +42,7 @@ class BinanceDriver extends CcxtDriver
             echo "-------------------------------------------------------------------\n";
             echo "Currency code: ", $currency_code, " value: ", $value, "\n";
 
-            // if ($value >= 0) {
+            if ($value > 0) {
 
                 // get all related markets with
                 //   either base currency === currency code from the balance structure
@@ -58,7 +58,7 @@ class BinanceDriver extends CcxtDriver
                 print_r($matching_symbols);
 
                 $all_matching_symbols = array_merge ($all_matching_symbols, $matching_symbols);
-            // }
+            }
         }
 
         echo "========================================================================\n";
@@ -66,7 +66,9 @@ class BinanceDriver extends CcxtDriver
         print_r($unique_symbols);
 
         $all_trades_for_all_symbols = array();
+        TestHelper::save2file('binance_matching_symbols', $all_matching_symbols);
         TestHelper::save2file('binance_unique_symbols', $unique_symbols);
+        TestHelper::save2file('binance_exchange_symbols', $exchange->symbols);
 
         // ----------------------------------------------------------------------------
 /*
@@ -111,8 +113,9 @@ class BinanceDriver extends CcxtDriver
 
         // ----------------------------------------------------------------------------
 
-  //      TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
+        // TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
 
+        // Fetch all trades
         foreach ($unique_symbols as $symbol) {
 
             echo "=================================================================\n";
@@ -127,11 +130,39 @@ class BinanceDriver extends CcxtDriver
 
         }
 
-
         // var_dump($all_matching_symbols);
         TestHelper::save2file('binance_trades', $all_trades_for_all_symbols);
 */
         // $this->saveTransactions($all_trades_for_all_symbols);
+
+        $since = $this->account->fetched_at;
+        $transactions = [];
+        $withdrawals = [];
+        $deposits = [];
+        if ($this->api->getTransactionsAvailable())
+        {
+            $transactions = $this->fetchTransactions($this->account->fetched_at);
+        }
+        if ($this->api->getWithdrawalsAvailable())
+        {
+            $withdrawals = $this->fetchWithdrawals($this->account->fetched_at);
+        }
+        if ($this->api->getDepositsAvailable())
+        {
+            $deposits = $this->fetchDeposits($this->account->fetched_at);
+        }
+
+        TestHelper::save2file('binance_balance', $balance);
+        // TestHelper::save2file('binance_trades', $trades);
+        TestHelper::save2file('binance_transactions', $transactions);
+        TestHelper::save2file('binance_withdrawals', $withdrawals);
+        TestHelper::save2file('binance_deposits', $deposits);
+
+        $this->saveBalances($balance);
+        $this->saveTrades($all_trades_for_all_symbols);
+        $this->saveTransactions($transactions);
+        $this->saveWithdrawals($withdrawals);
+        $this->saveDeposits($deposits);
 
         $this->account->update(['fetched_at' => now()]);
         return $this;
@@ -259,7 +290,7 @@ class BinanceDriver extends CcxtDriver
 
         // ----------------------------------------------------------------------------
 
-  //      TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
+        // TestHelper::save2file('../binance_unique_symbols.php', $unique_symbols);
 
         foreach ($unique_symbols as $symbol) {
 
@@ -277,5 +308,67 @@ class BinanceDriver extends CcxtDriver
         */
         return $all_trades;
 
+    }
+
+    /**
+     * @param \Carbon\Carbon $from
+     * @return array
+     */
+    protected function fetchDeposits(Carbon $from = null): array
+    {
+        $exchange = $this->api->exchange;
+        // $exchange->verbose = true;
+
+        // https://exchange-docs.crypto.com/spot/index.html#rate-limits
+        // https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data
+
+        $pfrom = $from != null ? $from : $this->found_time;
+
+        $all_deposits = [];
+        while ($pfrom->isPast()) {
+            $count = 0;
+            do {
+                $deposits = $exchange->fetch_deposits(null, null, null, [
+                    'startTime' => $pfrom->getTimestampMs(),
+                    'endTime' => $pfrom->getTimestampMs() + 90 * 24 * 3600 * 1000,
+                    'offset' => 0,
+                ]);
+                $all_deposits = array_merge($all_deposits, $deposits);
+                $count = count($deposits);
+            } while ($count == 1000);
+            $pfrom->addDays(90);
+        }
+        return $all_deposits;
+    }
+
+        /**
+     * @param \Carbon\Carbon $from
+     * @return array
+     */
+    protected function fetchWithdrawals(Carbon $from = null): array
+    {
+        $exchange = $this->api->exchange;
+        // $exchange->verbose = true;
+
+        // https://exchange-docs.crypto.com/spot/index.html#rate-limits
+        // https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data
+
+        $pfrom = $from != null ? $from : $this->found_time;
+
+        $all_withdrawals = [];
+        while ($pfrom->isPast()) {
+            $count = 0;
+            do {
+                $withdrawals = $exchange->fetch_withdrawals(null, null, null, [
+                    'startTime' => $pfrom->getTimestampMs(),
+                    'endTime' => $pfrom->getTimestampMs() + 90 * 24 * 3600 * 1000,
+                    'offset' => 0,
+                ]);
+                $all_withdrawals = array_merge($all_withdrawals, $withdrawals);
+                $count = count($withdrawals);
+            } while ($count == 1000);
+            $pfrom->addDays(90);
+        }
+        return $all_withdrawals;
     }
 }

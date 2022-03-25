@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2e636dae16338ec36acecde4f18abb3",
+    "content-hash": "19a93dd5f9b664ef5ba148a063864265",
     "packages": [
         {
             "name": "actb/blade-github-octicons",
@@ -758,16 +758,16 @@
         },
         {
             "name": "ccxt/ccxt",
-            "version": "1.76.55",
+            "version": "1.77.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ccxt/ccxt.git",
-                "reference": "7be45cd7efd4084bc9cd209edbf82f9226f61c6c"
+                "reference": "2fa34c77ff567ad19a50e4227856e7b918408918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/7be45cd7efd4084bc9cd209edbf82f9226f61c6c",
-                "reference": "7be45cd7efd4084bc9cd209edbf82f9226f61c6c",
+                "url": "https://api.github.com/repos/ccxt/ccxt/zipball/2fa34c77ff567ad19a50e4227856e7b918408918",
+                "reference": "2fa34c77ff567ad19a50e4227856e7b918408918",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1031,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ccxt/ccxt/issues",
-                "source": "https://github.com/ccxt/ccxt/tree/1.76.55"
+                "source": "https://github.com/ccxt/ccxt/tree/1.77.13"
             },
             "funding": [
                 {
@@ -1039,7 +1039,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-03-18T20:40:00+00:00"
+            "time": "2022-03-25T10:32:42+00:00"
         },
         {
             "name": "codeat3/blade-carbon-icons",
