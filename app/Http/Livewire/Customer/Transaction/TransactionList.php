@@ -71,9 +71,16 @@ class TransactionList extends Component
                 ['label' => 'Sent', 'value' => 'G'],
             ],
             'category' => CryptoSource::query()->get()->toArray(),
-            'exchange' => [
-                ['label' => 'Exchange', 'value' => 'E'],
-                ['label' => 'Blockchain', 'value' => 'B']
+            'tag' => [
+                ['label' => 'Gift', 'value' => 'E'],
+                ['label' => 'Lost', 'value' => 'B'],
+                ['label' => 'Mined', 'value' => 'E'],
+                ['label' => 'Airdrop', 'value' => 'B'],
+                ['label' => 'Payment', 'value' => 'E'],
+                ['label' => 'fork', 'value' => 'B'],
+                ['label' => 'Donation', 'value' => 'E'],
+                ['label' => 'Staked', 'value' => 'B'],
+                ['label' => 'Interest', 'value' => 'E'],
             ]
         ];
         $transactions = CryptoTransaction::query()
