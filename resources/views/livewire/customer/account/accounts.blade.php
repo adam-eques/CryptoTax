@@ -24,8 +24,8 @@
                                         :selected="$crypto_account->id == $selected_account->id"
                                         balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
                                     >
-                                        <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
-                                        <div wire:loading.remove class="text-gray-400">{{ $crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never' }}</div>
+                                        <div wire:loading wire:target="sync" x-transition class="text-gray-400">{{ __('Updating...') }}</div>
+                                        <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ $crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never' }}</div>
                                     </x-account-item-button>
                                 @elseif ($row['id'] == $crypto_account->cryptoSource->type)
                                     <x-account-item-button
@@ -34,8 +34,8 @@
                                         :selected="$crypto_account->id == $selected_account->id"
                                         balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
                                     >
-                                        <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
-                                        <div wire:loading.remove class="text-gray-400">{{$crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never'}}</div>
+                                        <div wire:loading wire:target="sync" x-transition class="text-gray-400">{{ __('Updating...') }}</div>
+                                        <div wire:loading.remove wire:target="sync" class="text-gray-400">{{$crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never'}}</div>
                                     </x-account-item-button>
                                 @endif
                             @endforeach
@@ -52,8 +52,8 @@
                     <div class="flex justify-between w-full px-3 py-3 bg-gray-100 rounded lg:py-6 md:px-8">
                         <div>
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ $selected_account->getName() }}</p>
-                            <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
-                            <div wire:loading.remove class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
+                            <div wire:loading wire:target="sync" class="text-gray-400">{{ __('Updating...') }}</div>
+                            <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
                         </div>
                         <div class="flex items-center space-x-3">
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($crypto_account->getBalanceSum(), 2) }}</p>
@@ -109,11 +109,9 @@
             </div>
         </div>
     </div>
-
-
     {{-- Delete Model --}}
     <div
-        class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
+        class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
         x-show="action == 'delete'"
         x-cloak
         x-transition
