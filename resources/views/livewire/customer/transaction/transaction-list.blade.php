@@ -55,7 +55,7 @@
     <div class="mt-10 overflow-auto rounded-sm scrollbar">
         <div class="min-w-[1024px] border divide-y">    
             @foreach ($transactions as $transaction)
-                <div wire:key='{{ $transaction->id }}' class="flex items-center justify-between px-5">                    
+                <div class="flex items-center justify-between px-5">                    
                     <x-transaction-list-item :transaction="$transaction"/>
                     <div x-data="{open:false}" class="relative py-2">
                         <button class="flex items-center justify-center w-6 h-6 bg-gray-100 border rounded-full" @click="open = true">
