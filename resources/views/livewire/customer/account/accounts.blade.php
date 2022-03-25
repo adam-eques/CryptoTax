@@ -14,7 +14,7 @@
         <div class="px-2 lg:px-5 md:w-2/5">
             <div class="flex flex-col gap-5 font-medium text-gray-900">
                 @foreach($rows as $index => $row)
-                    <x-account-toggle-block :label="$row['label']" :opened="$row['id'] == $selected_account->cryptoSource->type">
+                    <x-account-toggle-block :label="$row['label']" :opened="$selected_account ? ($row['id'] == $selected_account->cryptoSource->type):false">
                         <div class="flex flex-col overflow-auto divide-y divide-gray-300" x-on:click="category=`{{ $row['label'] }}`; action=''">
                             @foreach($crypto_accounts as $crypto_account)
                                 @if ( $row['id'] == $crypto_account->cryptoSource->type)
