@@ -1,32 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Erstellungszeit: 25. Mrz 2022 um 17:16
--- Server-Version: 10.3.32-MariaDB-0ubuntu0.20.04.1
--- PHP-Version: 8.0.15
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Datenbank: `cryptotax`
---
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `crypto_currencies`
---
-
 INSERT INTO `crypto_currencies` (`id`, `name`, `short_name`, `icon`, `coingecko_id`, `currency_eth`, `currency_btc`, `currency_gbp`, `currency_cny`, `currency_rub`, `currency_jpy`, `currency_cad`, `currency_aud`, `currency_chf`, `currency_eur`, `currency_usd`, `fetched_history_date`, `fetched_at`, `created_at`, `updated_at`) VALUES
 (1, '01coin', 'ZOC', NULL, '01coin', '0.000000171100', '0.000000012000', '0.000383420000', '0.003237880000', '0.053910000000', '0.061632000000', '0.000639800000', '0.000681290000', '0.000474650000', '0.000461170000', '0.000508590000', NULL, '2022-03-24 21:30:02', '2022-03-21 16:34:06', '2022-03-21 16:34:06'),
 (2, '0.5X Long Algorand Token', 'ALGOHALF', NULL, '0-5x-long-algorand-token', '5.074141000000', '0.358386490000', '11914.590000000000', '100019.000000000000', '1606041.000000000000', '1921673.000000000000', '19675.560000000000', '20914.000000000000', '14611.140000000000', '14283.110000000000', '15707.000000000000', NULL, '2022-03-24 21:30:02', '2022-03-21 16:34:06', '2022-03-21 16:34:06'),

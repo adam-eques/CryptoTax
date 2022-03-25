@@ -20,7 +20,6 @@ class CryptoCurrencySeeder extends Seeder
         CoingeckoSupportedVsCurrencies::updateFromApi();
 
         // Import from SQL
-        DB::unprepared(file_get_contents(__DIR__ . "/../sql/crypto_currencies.sql"));
-        DB::unprepared(file_get_contents(__DIR__ . "/../sql/crypto_currency_conversions.sql"));
+        DB::unprepared(file_get_contents(__DIR__ . "/../sql/crypto_currencies.sql") . file_get_contents(__DIR__ . "/../sql/crypto_currency_conversions.sql"));
     }
 }
