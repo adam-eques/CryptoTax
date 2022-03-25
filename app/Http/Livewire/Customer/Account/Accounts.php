@@ -174,10 +174,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             });
 
         $rows = [
-            ["id" => 1, "label" => "Exchanges"],
-            ["id" => 2, "label" => "Wallets"],
-            ["id" => 3, "label" => "Blockchain"],
-            ["id" => 4, "label" => "Others"],
+            ["id" => 'E', "label" => "Exchanges"],
+            ["id" => 'W', "label" => "Wallets"],
+            ["id" => 'B', "label" => "Blockchain"],
+            ["id" => 'O', "label" => "Others"],
         ];
 
         return view('livewire.customer.account.accounts', [
