@@ -14,33 +14,33 @@
         <div class="px-2 lg:px-5 md:w-2/5">
             <div class="flex flex-col gap-5 font-medium text-gray-900">
                 @foreach($rows as $index => $row)
-                    <x-toggle-block :label="$row['label']" :opened="true">
+                    <x-account-toggle-block :label="$row['label']" :opened="$selected_account ? ($row['id'] == $selected_account->cryptoSource->type):false">
                         <div class="flex flex-col overflow-auto divide-y divide-gray-300" x-on:click="category=`{{ $row['label'] }}`; action=''">
                             @foreach($crypto_accounts as $crypto_account)
-                                @if ( ($row['id'] == 1) && ($crypto_account->cryptoSource->type == "E"))
+                                @if ( $row['id'] == $crypto_account->cryptoSource->type)
                                     <x-account-item-button
                                         wire:click="get_selected_account_id({{ $crypto_account->id }})"
                                         :label="$crypto_account->getName()"
                                         :selected="$crypto_account->id == $selected_account->id"
                                         balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
                                     >
-                                        <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
-                                        <div wire:loading.remove class="text-gray-400">{{ $crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never' }}</div>
+                                        <div wire:loading wire:target="sync" x-transition class="text-gray-400">{{ __('Updating...') }}</div>
+                                        <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ $crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never' }}</div>
                                     </x-account-item-button>
-                                @elseif (($row['id'] == 3) && ($crypto_account->cryptoSource->type == "B"))
+                                @elseif ($row['id'] == $crypto_account->cryptoSource->type)
                                     <x-account-item-button
                                         wire:click="get_selected_account_id({{ $crypto_account->id }})"
                                         :label="$crypto_account->getName()"
                                         :selected="$crypto_account->id == $selected_account->id"
                                         balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
                                     >
-                                        <div wire:loading x-transition class="text-gray-400">{{ __('Updating...') }}</div>
-                                        <div wire:loading.remove class="text-gray-400">{{$crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never'}}</div>
+                                        <div wire:loading wire:target="sync" x-transition class="text-gray-400">{{ __('Updating...') }}</div>
+                                        <div wire:loading.remove wire:target="sync" class="text-gray-400">{{$crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never'}}</div>
                                     </x-account-item-button>
                                 @endif
                             @endforeach
                         </div>
-                    </x-toggle-block>
+                    </x-account-toggle-block>
                 @endforeach
             </div>
         </div>
@@ -52,11 +52,11 @@
                     <div class="flex justify-between w-full px-3 py-3 bg-gray-100 rounded lg:py-6 md:px-8">
                         <div>
                             <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{ $selected_account->getName() }}</p>
-                            <div wire:loading class="text-gray-400">{{ __('Updating...') }}</div>
-                            <div wire:loading.remove class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
+                            <div wire:loading wire:target="sync" class="text-gray-400">{{ __('Updating...') }}</div>
+                            <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($crypto_account->getBalanceSum(), 2) }}</p>
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($selected_account->getBalanceSum(), 2) }}</p>
                             <x-button size="xs" wire:click="edit"  x-on:click="action='edit'">
                                 <x-icon name="feathericon-edit" class="w-4 md:w-6"/>
                             </x-button>
@@ -67,8 +67,10 @@
                     </div>
                     <div>
                         <div x-show="action == ''" class="overflow-auto">
-                            <div class="divide-y max-h-full overflow-auto scrollbar">
-                                @foreach ($selected_account->cryptoAssets as $asset)
+                            <div class="max-h-full overflow-auto divide-y scrollbar">
+                                @foreach ($selected_account->cryptoAssets()->get()->sortByDesc(function($assest){
+                                    return $assest->convertTo();
+                                }) as $asset)
                                     <x-account-assets-item :asset="$asset"/>
                                 @endforeach
                             </div>
@@ -107,11 +109,9 @@
             </div>
         </div>
     </div>
-
-
     {{-- Delete Model --}}
     <div
-        class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
+        class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
         x-show="action == 'delete'"
         x-cloak
         x-transition
