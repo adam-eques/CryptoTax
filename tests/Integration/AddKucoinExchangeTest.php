@@ -29,6 +29,5 @@ class AddKucoinExchangeTest extends AbstractAddExchangeTest
     //     // Update the account
     //     $possibles = $this->account->getApi()->possibleMethods();
     //     TestHelper::save2file('../Kucoin_possibleMethods.php', $possibles);
-
     // }
 }

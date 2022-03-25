@@ -35,6 +35,7 @@ abstract class AbstractAddExchangeTest extends TestCase
         $this->account->getApi()->update();
 
         // balances log
+
         // $exchange = $this->account->getApi()->getApi()->exchange;
         // $exchange->verbose = true;
         // $name = $exchange->name;
