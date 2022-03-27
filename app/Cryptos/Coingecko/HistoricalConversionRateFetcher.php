@@ -43,7 +43,8 @@ class HistoricalConversionRateFetcher
                 $commit[] = $data;
             }
 
-            if ($commit && (count($commit) > 30 || $counter == $period->count())) {
+            if ($commit && (count($commit) > 40 || $counter == $period->count())) {
+                $this->log("Commiting " . count($commit) . " rows for " . $currency->short_name);
                 CryptoCurrencyConversion::upsert(
                     $commit,
                     ["crypto_currency_id", "price_date"]
