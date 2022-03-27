@@ -39,6 +39,9 @@ Route::get('logout', function() {
     return redirect(route("customer.dashboard"));
 });
 
+Route::get("test/coingecko", [\App\Http\Controllers\TestController::class, "coingeckoGetCoinMarkets"]);
+
+
 // Auth routes for socialize
 Route::get('auth/facebook', [SocialiteController::class, 'facebookRedirect'])->name("auth.facebook");
 Route::get('auth/facebook/callback', [SocialiteController::class, 'facebookCallback']);

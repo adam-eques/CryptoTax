@@ -37,16 +37,28 @@ class TestController extends Controller
     {
         $api = \App\Cryptos\Coingecko\CoingeckoAPI::make();
         $data = $api->client->coins()->getMarkets("usd", [
-            "per_page" => 250,
+            "per_page" => 300,
         ]);
 
         foreach ($data as $row) {
             $coin = CryptoCurrency::findByShortName($row["symbol"]);
-            $coin->update([
-                "market_cap" => $row["market_cap"],
-            ]);
-        }
 
-        dd($data);
+            // Check if we get price history
+            $coinHistoryData = $api->coinHistory($coin->coingecko_id, now()->subDay()->format("Y-m-d"));
+            if(!isset($coinHistoryData["market_data"]["current_price"]) || !$coinHistoryData["market_data"]["current_price"]) {
+                continue;
+            }
+
+            // Update
+            $update = [
+                "market_cap" => $row["market_cap"],
+            ];
+
+            if(!$coin->fetched_history_date) {
+                $update["fetched_history_date"] = "2019-12-31";
+            }
+
+            $coin->update($update);
+        }
     }
 }
