@@ -31,6 +31,7 @@ class CoingeckoHistoricalDataCommand extends Command
             $currencies = CryptoCurrency::query()
                 ->whereNotNull("fetched_history_date")
                 ->where("fetched_history_date", "<", $startDate)
+                ->orderBy("market_cap", "DESC")
                 ->get(["id", "short_name", "coingecko_id", "fetched_history_date"]);
 
             foreach ($currencies as $currency) {
