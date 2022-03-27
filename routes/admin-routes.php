@@ -36,4 +36,6 @@ Route::prefix("dev")->name("dev.")->group(function(){
     Route::get("test", function(){
        //dd(DateTimeZone::listIdentifiers(DateTimeZone::ALL));
     });
+
+    Route::get("coin-stats", [Controllers\TestController::class, "coinStats"]);
 });
