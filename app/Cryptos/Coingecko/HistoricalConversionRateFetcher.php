@@ -61,7 +61,14 @@ class HistoricalConversionRateFetcher
         try {
             $data = $this->api->coinHistory($currency->coingecko_id, $date);
         } catch (RequestException $exception) {
-            $retryAfter = $exception->getResponse()->getHeader("Retry-After")[0] + 1;
+            $header = $exception->getResponse()->getHeader("Retry-After");
+            if($header && isset($header[0])) {
+                $retryAfter = $header[0] + 1;
+            }
+            else {
+                $retryAfter = 66;
+            }
+
             $this->log("Getting API request limit for coin ".$currency->short_name." date $date. Will retry after $retryAfter seconds: ".now()->addSeconds($retryAfter)->format("H:i:s"));
             sleep($retryAfter);
             $data = $this->api->coinHistory($currency->coingecko_id, $date);
