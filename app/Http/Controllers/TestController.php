@@ -18,7 +18,7 @@ class TestController extends Controller
 
         echo "<style>tr:nth-child(even) {background-color: #f2f2f2;} tr:hover { background-color: #FFFF99}</style>";
         echo "<h1>Crypto Currency List</h1>";
-        echo "<p>Currently existing conversion rows: " . CryptoCurrencyConversion::query()->count() . "</p>";
+        echo "<p>Currently existing conversion rows: " . number_format(CryptoCurrencyConversion::query()->count()) . "</p>";
         echo "<table border='1' style='border-collapse: collapse' cellpadding='3'>";
         echo "<tr>
                 <th>#</th>
