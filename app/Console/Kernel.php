@@ -2,9 +2,9 @@
 
 namespace App\Console;
 
-use App\Console\Commands\CoingeckoHistoricalDataCommand;
+use App\Console\Commands\Coingecko\CoingeckoHistoricalDataCommand;
+use App\Console\Commands\Coingecko\CoingeckoUpdateAllRealtimePrices;
 use App\Console\Commands\RemovePremiumAfterSubscriptionEndsCommand;
-use App\Console\Commands\UpdateAllCryptoCurrencyPricesCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         RemovePremiumAfterSubscriptionEndsCommand::class,
-        UpdateAllCryptoCurrencyPricesCommand::class,
+        CoingeckoUpdateAllRealtimePrices::class,
         CoingeckoHistoricalDataCommand::class,
     ];
 
@@ -34,10 +34,11 @@ class Kernel extends ConsoleKernel
         $schedule->command(RemovePremiumAfterSubscriptionEndsCommand::class)->everySixHours();
 
         // Once a day, get coingecko currency rates
-
+        $schedule->command(CoingeckoHistoricalDataCommand::class)->dailyAt("03:00");
 
         // Update every 15 Minutes
-        $schedule->command(UpdateAllCryptoCurrencyPricesCommand::class)->everyFifteenMinutes();
+        // IMPORTANT: This command is currently not used to save the API Request limits of Coingecko, but prepared for later
+        //$schedule->command(UpdateAllCryptoCurrencyPricesCommand::class)->everyFifteenMinutes();
 
         // Prune telescope entries second daily
         $schedule->command('telescope:prune --hours=48')->daily();

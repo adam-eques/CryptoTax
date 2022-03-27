@@ -65,7 +65,8 @@
     },
     "autoload": {
         "files": [
-            "app/helpers.php"
+            "app/helpers.php",
+            "fixes/Codenixsv/CoinGeckoApi/Api.php"
         ],
         "psr-4": {
             "App\\": "app/",

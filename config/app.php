@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-    
+
     'name' => env('APP_NAME', 'myCrypto Tax'),
 
     /*
@@ -240,7 +240,8 @@ return [
     'cryptos' => [
         'coingecko' => [
             // Number of minutes, how long the coingecko prices are valid
-            'prices_lifetime' => env("APP_CRYPTOS_COINGECKO_PRICES_LIFETIME", 35)
+            'prices_lifetime' => env("APP_CRYPTOS_COINGECKO_PRICES_LIFETIME", 35),
+            'api_key' => env("APP_CRYPTOS_COINGECKO_API_KEY", null),
         ]
     ],
 

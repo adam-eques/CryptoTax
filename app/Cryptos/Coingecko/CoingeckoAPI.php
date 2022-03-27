@@ -3,6 +3,7 @@
 namespace App\Cryptos\Coingecko;
 
 use Codenixsv\CoinGeckoApi\CoinGeckoClient;
+use GuzzleHttp\Client;
 
 class CoingeckoAPI
 {
@@ -12,12 +13,28 @@ class CoingeckoAPI
     /**
      * Get the api interface
      *
-     * @return self $obj
+     * @return static $obj
      */
-    public static function make(): self
+    public static function make(): static
     {
+        // Free or premium:
+        if($apiKey = config("app.cryptos.coingecko.api_key")) { // Premium
+            $client = new CoinGeckoClient(
+                new Client([
+                    'base_uri' => 'https://pro-api.coingecko.com',
+                    'query' => [
+                        'x_cg_pro_api_key' => $apiKey
+                    ]
+                ])
+            );
+        }
+        else { // Free API
+            $client = new CoinGeckoClient();
+        }
+
+        // New object
         $obj = new static();
-        $obj->client = new CoinGeckoClient();
+        $obj->client = $client;
 
         return $obj;
     }
@@ -29,7 +46,7 @@ class CoingeckoAPI
      * @return array
      * @throws \Exception
      */
-    public function check(): array
+    public function ping(): array
     {
         return $this->client->ping() ?: [];
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Coingecko;
 
 use App\Cryptos\Coingecko\HistoricalConversionRateFetcher;
 use App\Models\CryptoCurrency;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Collection;
+use function now;
 
 class CoingeckoHistoricalDataCommand extends Command
 {
