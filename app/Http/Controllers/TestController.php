@@ -35,6 +35,7 @@ class TestController extends Controller
 
     public function coingeckoGetCoinMarkets()
     {
+        set_time_limit(5000);
         $api = \App\Cryptos\Coingecko\CoingeckoAPI::make();
         $data = $api->client->coins()->getMarkets("usd", [
             "per_page" => 300,
