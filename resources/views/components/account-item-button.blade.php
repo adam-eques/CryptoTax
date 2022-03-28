@@ -13,7 +13,7 @@
             {{ $slot }}
         </div>
     </div>
-    <p class="font-semibold text-gray-700 xl:text-xl">${{ $balance }}</p>
+    <p class="font-semibold text-gray-700 xl:text-xl">{{ $balance }}</p>
     @if ($selected)
         <div
             class="absolute right-0 w-2 h-full rounded-tr-sm rounded-br-sm bg-secondary-500"
