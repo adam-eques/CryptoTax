@@ -19,10 +19,17 @@ class Accounts extends Component implements Forms\Contracts\HasForms
     use Actions;
     use Forms\Concerns\InteractsWithForms;
 
-    public ?CryptoAccount $selected_account = null;
+    public?CryptoAccount $selected_account = null;
+    public?string $unit = null;
 
     public function mount()
     {
+        $this->unit = "$";
+        if (auth()->user()->taxCurrency->id == 1) {
+           $this->unit = "$";
+        }elseif(auth()->user()->taxCurrency->id == 2){
+            $this->unit = "€";
+        }
         $this->selected_account = auth()->user()->cryptoAccounts()
             ->whereJsonDoesntContain('credentials', [])
             ->get()
