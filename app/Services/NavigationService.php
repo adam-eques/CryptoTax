@@ -193,6 +193,7 @@ class NavigationService
                 ["label" => "Affiliate Settings", "icon" => "fas-ad", "route" => "admin.settings.affiliate"],
             ]],
             ["label" => __('Administration'), 'children' => [
+                ["label" => "Currency Stats", "icon" => "fas-binoculars", "route" => "admin.crypto.currency-stats"],
                 ["label" => "Telescope", "icon" => "fas-binoculars", "route" => "telescope", "target" => "_blank"],
             ]],
         ]);

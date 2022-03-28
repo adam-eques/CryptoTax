@@ -33,8 +33,6 @@ class CoingeckoHistoricalDataInitCommand extends Command
             ->orderBy("market_cap", "DESC")
             ->get(["id", "short_name", "coingecko_id", "fetched_history_date_from", "fetched_history_date_till"]);
 
-
-
         foreach ($currencies as $currency) {
             $this->info("Starting to fetch ".$currency->short_name." for dates $newestDate to $oldestDate at ".now()->format("H:i:s"));
             if(!$currency->fetched_history_date_till) {

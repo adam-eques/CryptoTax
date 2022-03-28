@@ -29,6 +29,11 @@ Route::get("settings/affiliate", \App\CaravelAdmin\Settings\AffiliateSettingForm
 // Specials
 Route::view('/todo', 'errors.todo')->name('todo');
 
+// Cryptos
+Route::prefix("crypto")->name("crypto.")->group(function(){
+    Route::get("currency-stats", [Controllers\CryptoController::class, "currency_stats"])->name("currency-stats");
+});
+
 // Just for testing/dev
 Route::prefix("dev")->name("dev.")->group(function(){
     Route::get("index", [Controllers\Admin\DevController::class, "index"])->name("index");
