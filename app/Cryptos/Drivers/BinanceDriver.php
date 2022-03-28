@@ -13,6 +13,7 @@ use Carbon\Carbon;
 class BinanceDriver extends CcxtDriver
 {
     protected array $balance;
+    protected int $iplimit = 20; /**20 requests per seconds */
     /**
      * @return $this
      */
@@ -132,8 +133,13 @@ class BinanceDriver extends CcxtDriver
      */
     protected function fetchTrades(Carbon $from = null): array
     {
+        // https://binance-docs.github.io/apidocs/spot/en/#account-trade-list-user_data
+        // https://binance-docs.github.io/apidocs/spot/en/#limits
+
         $pfrom = $from != null ? $from : $this->found_time;
-        //  https://binance-docs.github.io/apidocs/spot/en/#account-trade-list-user_data
+        var_dump($pfrom->toDateString());
+        // $all_trades_for_all_symbols = [];
+        // /*
         $exchange = $this->getApi()->exchange;
         // date_default_timezone_set ('UTC');
         $total = $this->balance;
@@ -163,23 +169,32 @@ class BinanceDriver extends CcxtDriver
             $exchange->verbose = true;
 
             $since = $startTime;
-            $from_id = '0';
+            // $from_id = '0';
             $limit = 1000;
-            $params = [
-                'fromId' => $from_id,
-                'limit' => $limit
-            ];
 
             $all_trades = [];
+            var_dump($startTime);
             $count = 0;
             do {
-                $trades = $exchange->fetch_my_trades($symbol, $since, null, $params);
+                $params = [
+                    'startTime' => $since,
+                    // 'endTime' => 1592915650000 + 24 * 3600 * 1000,
+                    // 'fromId' => $from_id,
+                    'limit' => $limit
+                ];
+                // $params = [
+                //     'startTime' => $since,
+                //     'endTime' => $endTime,
+                //     // 'fromId' => $from_id,
+                //     'limit' => $limit
+                // ];
+                $trades = $exchange->fetch_my_trades($symbol, null, null, $params);
                 $count = count($trades);
                 if ($count > 0) {
                     $since = $trades[$count-1]['timestamp'];
                     $all_trades = array_merge($all_trades, $trades);
                 }
-            } while ($count == $limit);
+            } while ($count > $limit);
             return $all_trades;
         }
 
@@ -189,11 +204,17 @@ class BinanceDriver extends CcxtDriver
             $trades = fetch_all_my_trades($exchange, $symbol, $pfrom->getTimestampMs());
             $all_trades_for_all_symbols = array_merge ($all_trades_for_all_symbols, $trades);
         }
+        $trades = fetch_all_my_trades($exchange, $unique_symbols[0], $pfrom->getTimestampMs());
+        // $trades = fetch_all_my_trades($exchange, $unique_symbols[0], $pfrom->getTimestampMs());
+        $all_trades_for_all_symbols = array_merge ($all_trades_for_all_symbols, $trades);
+
+        TestHelper::save2file('binance_unique_symbols', $unique_symbols);
         // $symbol = 'USDT/';
         // $all_trades_for_all_symbols = fetch_all_my_trades($exchange, $symbol, $pfrom->getTimestampMs());
 
         // var_dump($all_matching_symbols);
         TestHelper::save2file('binance_trades', $all_trades_for_all_symbols);
+        // */
         return $all_trades_for_all_symbols;
     }
 

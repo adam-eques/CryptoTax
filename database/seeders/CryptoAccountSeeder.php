@@ -152,6 +152,18 @@ class CryptoAccountSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now
             ],
+            [
+                'crypto_source_id' => CryptoSource::SOURCE_EXCHANGE_HUOBI,
+                'user_id' => 2,
+                'credentials' => '{
+                    "apiKey" : "37bb62cf-5bb54675-20451a74-ed2htwf5tf",
+                    "secret" : "c5c993f0-d051315a-1ce0b748-99eb2"
+                }',
+                'fetched_at' => $fetched_at,
+                'fetching_scheduled_at' => $now,
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ])->each(function($data){
             // var_dump($data);
             DB::table(CryptoAccount::make()->getTable())->insert($data);
