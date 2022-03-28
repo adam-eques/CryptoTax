@@ -29,13 +29,14 @@ class CoingeckoHistoricalDataCommand extends Command
         if($this->option("all")) {
             // Prepare queries
             $currencies = CryptoCurrency::query()
-                ->whereNotNull("fetched_history_date")
-                ->where("fetched_history_date", "<", $startDate)
+                ->where("fetch_history", true)
+                ->whereNotNull("fetched_history_date_till")
+                ->where("fetched_history_date_till", "<", $startDate)
                 ->orderBy("market_cap", "DESC")
-                ->get(["id", "short_name", "coingecko_id", "fetched_history_date"]);
+                ->get(["id", "short_name", "coingecko_id", "fetched_history_date_till"]);
 
             foreach ($currencies as $currency) {
-                $newStartDate = Carbon::make($currency->fetched_history_date)->addDays(1)->format("Y-m-d");
+                $newStartDate = Carbon::make($currency->fetched_history_date_till)->addDays(1)->format("Y-m-d");
                 $this->fetchCoin($currency, $newStartDate, $endDate);
             }
         }
