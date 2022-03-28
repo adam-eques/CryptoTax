@@ -37,7 +37,9 @@ class CryptoAsset extends Model
         return $this->cryptoCurrency?->convertTo($this->balance, $currency);
     }
 
-    public static function findByCurrency_Account(int $accountId, int $currencyId) {
+
+    public static function findByCurrency_Account(int $accountId, int $currencyId)
+    {
         return static::query()
             ->where("crypto_account_id", $accountId)
             ->where("crypto_currency_id", $currencyId)
