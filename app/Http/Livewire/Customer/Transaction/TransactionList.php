@@ -32,6 +32,16 @@ class TransactionList extends Component
         $this->order = 'DESC';
     }
 
+    public function searchByItem($type)
+    {
+        $this->type = $type;
+    }
+
+    public function fileExport() 
+    {
+        return Excel::download(new TransactionExport, 'transactions.xlsx');
+    }   
+
     public function refresh_filter()
     {
         $this->type = null;
@@ -83,8 +93,7 @@ class TransactionList extends Component
                 ['label' => 'Interest', 'value' => 'E'],
             ]
         ];
-        $transactions = CryptoTransaction::query()
-            ->whereIn("crypto_account_id", auth()->user()->cryptoAccounts->pluck("id"))
+        $transactions = auth()->user()->cryptoTransactions()
             ->orderBy('executed_at', $this->order);
         
         $transactions = $transactions
@@ -99,15 +108,31 @@ class TransactionList extends Component
         }
 
         if ($this->type) {
-            $transactions = $transactions->where('trade_type', $this->type);
+            if($this->type == "T"){
+                $transactions = $transactions->where('trade_type', 'B')
+                    ->orWhere('trade_type', 'S');
+            } else {
+                $transactions = $transactions->where('trade_type', $this->type);
+            }
         }
 
 
         $transactions = $transactions ->paginate(10);
 
+        $trades_num = auth()->user()->cryptoTransactions()->where('trade_type', 'B')->orWhere('trade_type', 'S')->get()->count();
+        $deposits_num = auth()->user()->cryptoTransactions()->where('trade_type', 'R')->get()->count();
+        $withdrawal_num = auth()->user()->cryptoTransactions()->where('trade_type', 'G')->get()->count();
+        $reviews_num = auth()->user()->cryptoTransactions()->where('trade_type', 'C')->get()->count();
+        $exchange_num = auth()->user()->cryptoTransactions()->where('trade_type', 'E')->get()->count();
+
         return view('livewire.customer.transaction.transaction-list', [
             "transactions" => $transactions,
-            'filter' => $filter
+            'filter' => $filter,
+            'trades_num' => $trades_num,
+            'deposits_num' => $deposits_num,
+            'withdrawal_num' => $withdrawal_num,
+            'reviews_num' => $reviews_num,
+            'exchange_num' => $exchange_num
         ]);
     }
 }

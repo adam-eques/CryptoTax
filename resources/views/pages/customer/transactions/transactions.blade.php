@@ -8,7 +8,6 @@
 
 <x-app-layout title="Transactions">
     <div class="px-3 py-5 mx-auto my-5 bg-white rounded-sm shadow xs:px-4 xl:max-w-screen-2xl lg:px-5">
-        @livewire('customer.transaction.overview')
         @livewire('customer.transaction.transaction-list')
     </div>
 </x-app-layout>
