@@ -32,9 +32,9 @@ class CryptoAsset extends Model
     }
 
 
-    public function convertTo(string $currency = "USD"): float
+    public function convertTo(string $currency = "USD"): float|null
     {
-        return $this->cryptoCurrency ? $this->cryptoCurrency->convertTo($this->balance, $currency) : 0;
+        return $this->cryptoCurrency?->convertTo($this->balance, $currency);
     }
 
     public static function findByCurrency_Account(int $accountId, int $currencyId) {
