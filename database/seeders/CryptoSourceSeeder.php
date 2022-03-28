@@ -9,6 +9,7 @@ use App\Cryptos\Drivers\HitBTCDriver;
 use App\Cryptos\Drivers\KucoinDriver;
 use App\Cryptos\Drivers\CryptocomDriver;
 use App\Cryptos\Drivers\HuobiDriver;
+use App\Cryptos\Drivers\KrakenDriver;
 
 // Blockchain drivers
 use App\Cryptos\Drivers\CryptoapisDriver;
@@ -133,6 +134,14 @@ class CryptoSourceSeeder extends Seeder
                 'icon' => '',
                 'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
                 'driver' => HuobiDriver::class,
+                'active' => true
+            ],
+            [
+                'id' => CryptoSource::SOURCE_EXCHANGE_KRAKEN,
+                'name' => "Kraken",
+                'icon' => '',
+                'type' => CryptoSource::SOURCE_TYPE_EXCHANGE,
+                'driver' => KrakenDriver::class,
                 'active' => false /**Credentials are expired */
             ],
         ])->each(function($data){
