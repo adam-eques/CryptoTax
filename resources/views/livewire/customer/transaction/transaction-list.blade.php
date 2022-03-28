@@ -33,7 +33,7 @@ $overview_data = [
 ]    
 @endphp
 
-<div>
+<div x-data="{isModalOpen: false}" class="z-30">
     <div>
         <x-customers.customer-header-bar icon="grommet-transaction" name="Transactions">
             <x-button variant="white" class="my-2 border-primary" wire:click='fileExport'>{{ __('Download CSV') }}</x-button>
@@ -99,7 +99,7 @@ $overview_data = [
                         @endforeach
                     </select>
                     <select class="w-full h-full col-span-3 bg-white rounded-md">
-                        <option value="0" selected>{{ __('All categories') }}</option>
+                        <option value="0" selected>{{ __('All tags') }}</option>
                         @foreach ($filter['tag'] as $item)                                
                             <option value="{{ $item['value'] }}">{{ __($item['label']) }}</option>
                         @endforeach
@@ -108,7 +108,7 @@ $overview_data = [
             </div>
         </div>
     </div>
-    <div class="mt-10 overflow-auto rounded-sm scrollbar">
+    <div class="mt-10 overflow-x-auto overflow-y-hidden rounded-sm scrollbar">
         <div class="min-w-[1024px] border divide-y">    
             @foreach ($transactions as $transaction)
                 <div class="flex items-center justify-between px-5">                    
@@ -120,18 +120,30 @@ $overview_data = [
                             </svg>
                         </button>
                         <div
-                            class="absolute right-0 z-50 w-40 py-4 origin-top-right bg-white rounded-md shadow-lg top-10 text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            class="absolute right-0 z-40 w-40 py-4 origin-top-right bg-white rounded-md shadow-lg top-10 text-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
                             x-show="open" @click.away="open=false" x-cloak
                             x-transition:enter-start="transition ease-in duration-3000"
                         >
-                            <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100">{{ __('Edit') }}</button>
+                            <button 
+                                class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100" 
+                                wire:click="setSelectedTrans(1, {{$transaction->id}})"
+                                x-on:click="isModalOpen=true"
+                            >
+                                {{ __('Edit') }}
+                            </button>
                             @if ($transaction->ignored)
                                 <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100" wire:click='mark_active({{ $transaction->id }})'>{{ __('Active') }}</button>
                             @else                                
                                 <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100" wire:click='mark_ignore({{ $transaction->id }})'>{{ __('Ignor') }}</button>
                             @endif
-                            <button class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100">{{ __('View') }}</button>
+                            <button 
+                                class="w-full px-5 py-2 text-left bg-white hover:bg-gray-100" 
+                                wire:click="setSelectedTrans(2, {{$transaction->id}})"
+                                x-on:click="isModalOpen=true"
+                            >
+                                {{ __('View') }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -140,6 +152,63 @@ $overview_data = [
     </div>
     <div class="mt-16 mb-8">
         {{$transactions->links()}}
+    </div>
+    <div 
+        class="fixed inset-0 z-50 overflow-y-auto" 
+        aria-labelledby="modal-title" 
+        role="dialog" 
+        aria-modal="true"
+        x-show="isModalOpen"
+        x-cloak
+        x-transition
+    >
+        <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div class="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full sm:p-6">
+                    <div class="flex justify-end">
+                        <button aria-label="Close" x-on:click="isModalOpen=false" class="flex justify-end">✖</button>
+                    </div>
+                    <div>
+                        @if ($selectedTransaction)                            
+                            @if ($method == 1)
+                                <div>
+                                    <p>{{ $selectedTransaction->id }} Edit</p>
+                                </div>
+                            @else
+                                <div>
+                                    <p class="font-semibold">Date of Transaction: {{ date("M d, Y H:i:s", strtotime($selectedTransaction->executed_at)) }}</p>
+                                    <div class="grid grid-cols-1 gap-4 mt-5 md:grid-cols-2">
+                                        <div>
+                                            <p>{{ __('FROM') }}</p>
+                                            <div class="flex items-end mt-2 space-x-3">
+                                                <x-icon name="coins.{{ strtolower($selectedTransaction->cryptoCurrency->short_name) }}" class="w-8 h-8"/>
+                                                <p>{{ $selectedTransaction->cryptoCurrency->short_name }}</p>
+                                            </div>
+                                            <div class="flex items-end mt-2 space-x-3">
+                                                <p>{{ $selectedTransaction->amount }}</p>
+                                                <p>{{ $selectedTransaction->cryptoCurrency->short_name }}</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p>{{ __('TO') }}</p>
+                                            <div class="flex items-end mt-2 space-x-3">
+                                                <x-icon name="coins.{{strtolower($selectedTransaction->costCurrency->short_name)}}" class="w-8 h-8"/>
+                                                <p>{{ $selectedTransaction->costCurrency->short_name }}</p>
+                                            </div>
+                                            <div class="flex items-end mt-2 space-x-3">
+                                                <p>{{ $selectedTransaction->cost }}</p>
+                                                <p>{{ $selectedTransaction->costCurrency->short_name }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
