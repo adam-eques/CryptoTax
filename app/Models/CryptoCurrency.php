@@ -65,7 +65,7 @@ class CryptoCurrency extends Model
             $query->orderBy("price_date", "DESC");
         }
 
-        return $query->first($otherCurrency)?->$otherCurrency;
+        return $query->first($otherCurrency)?->$otherCurrency * $value;
     }
 
 
