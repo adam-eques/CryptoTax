@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col-span-2 text-right">
-            <p class="font-semibold">{{$unit}}{{ moneyFormat($asset->convertTo(), 2) }}</p>
+            <p class="font-semibold">{{$unit}}{{ moneyFormat($asset->convertTo(auth()->user()->taxCurrency->symbol), 2) }}</p>
             <p class="text-gray-400">{{ moneyFormat($asset->balance, 10) }} {{$asset->cryptoCurrency->short_name}}</p>
         </div>
         <div class="flex justify-end col-span-2">
