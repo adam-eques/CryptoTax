@@ -21,6 +21,9 @@ class TransactionList extends Component
     public?string $type = null;
     public?string $wallet = null;
 
+    public?CryptoTransaction $selectedTransaction = null;
+    public?int $method = null;
+
     protected $queryString = [
         'search' => ['except' => '0'],
         'order' => ['except' => '0'],
@@ -30,6 +33,13 @@ class TransactionList extends Component
 
     public function mount(){
         $this->order = 'DESC';
+    }
+
+    public function setSelectedTrans($method, $transaction)
+    {
+        $this->selectedTransaction = CryptoTransaction::query()
+            ->where('id', $transaction)->first();
+        $this->method = $method;
     }
 
     public function searchByItem($type)
