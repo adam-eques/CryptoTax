@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(RemovePremiumAfterSubscriptionEndsCommand::class)->everySixHours();
 
         // Once a day, get coingecko currency rates
-        $schedule->command(CoingeckoHistoricalDataCommand::class)->dailyAt("03:00");
+        $schedule->command(CoingeckoHistoricalDataCommand::class)->dailyAt("06:00");
 
         // Update every 15 Minutes
         // IMPORTANT: This command is currently not used to save the API Request limits of Coingecko, but prepared for later
