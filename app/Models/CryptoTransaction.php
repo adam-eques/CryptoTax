@@ -73,7 +73,7 @@ class CryptoTransaction extends Model
             $proceeds = $this->cryptoCurrency->convertTo($this->cost, $fiat, $this->executed_at);
         }
 
-        echo "\n " . $this->cryptoCurrency->short_name . " : " . $this->cost . " = " . $proceeds . " " . $fiat . "\n" . $this->executed_at . "\n";
+        // echo "\n " . $this->cryptoCurrency->short_name . " : " . $this->cost . " = " . $proceeds . " " . $fiat . "\n" . $this->executed_at . "\n";
         if ($proceeds == null) {
             CryptoTransaction::unsupported_CC($this->cryptoCurrency->short_name);
             $proceeds = 0;
@@ -113,7 +113,7 @@ class CryptoTransaction extends Model
                     if (array_key_exists($symbol, $holding)) {
                         $holding[$symbol] = bcsub($holding[$symbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
-                        $holding[$symbol] = -$transaction->amount;
+                        $holding[$symbol] = number_format(-$transaction->amount , $decimal_number, ".", '');
                     }
                     break;
                 case CryptoTransaction::TRAN_TYPE_RECEIVE :
@@ -121,7 +121,7 @@ class CryptoTransaction extends Model
                     if (array_key_exists($symbol, $holding)) {
                         $holding[$symbol] = bcadd($holding[$symbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
-                        $holding[$symbol] = $transaction->amount;
+                        $holding[$symbol] = number_format($transaction->amount , $decimal_number, ".", '');
                     }
                     break;
                 case CryptoTransaction::TRAN_TYPE_SELL :
@@ -130,12 +130,12 @@ class CryptoTransaction extends Model
                     if (array_key_exists($fromSymbol, $holding)) {
                         $holding[$fromSymbol] = bcsub($holding[$fromSymbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
-                        $holding[$fromSymbol] = -$transaction->amount;
+                        $holding[$fromSymbol] = number_format(-$transaction->amount , $decimal_number, ".", '');
                     }
                     if (array_key_exists($toSymbol, $holding)) {
                         $holding[$toSymbol] = bcadd($holding[$toSymbol], number_format($transaction->cost, $decimal_number, ".", ''));
                     } else {
-                        $holding[$toSymbol] = $transaction->cost;
+                        $holding[$toSymbol] = number_format($transaction->cost, $decimal_number, ".", '');
                     }
                     break;
                 case CryptoTransaction::TRAN_TYPE_BUY :
@@ -144,12 +144,12 @@ class CryptoTransaction extends Model
                     if (array_key_exists($fromSymbol, $holding)) {
                         $holding[$fromSymbol] = bcadd($holding[$fromSymbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
-                        $holding[$fromSymbol] = $transaction->amount;
+                        $holding[$fromSymbol] = number_format($transaction->amount, $decimal_number, ".", '');
                     }
                     if (array_key_exists($toSymbol, $holding)) {
                         $holding[$toSymbol] = bcsub($holding[$toSymbol], number_format($transaction->cost, $decimal_number, ".", ''));
                     } else {
-                        $holding[$toSymbol] = -$transaction->cost;
+                        $holding[$toSymbol] = number_format(-$transaction->cost, $decimal_number, ".", '');
                     }
                     break;
                 default:
@@ -160,7 +160,7 @@ class CryptoTransaction extends Model
                 $holding[$feeSymbol] = bcsub($holding[$feeSymbol], number_format($transaction->fee, $decimal_number, ".", ''));
             } else {
 
-                $holding[$feeSymbol] = $transaction->fee == 0 ? 0 : -$transaction->fee;
+                $holding[$feeSymbol] = $transaction->fee == '0' ? '0' : number_format(-$transaction->fee, $decimal_number, ".", '');
             }
             $deposits = $transaction->deposits($fiat);
             $proceeds = $transaction->proceeds($fiat);
@@ -200,7 +200,10 @@ class CryptoTransaction extends Model
     }
 
     public static function getCurrentTotal($fiat='USD') : array {
+        $start_t = microtime(true);
         $current_total = CryptoTransaction::getTotal(Carbon::now(), $fiat);
+        $end_t = microtime(true);
+        // var_dump($end_t - $start_t);
         $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday(), $fiat);
         return [
             "total_return" => $current_total["total_return"],

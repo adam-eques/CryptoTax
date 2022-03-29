@@ -46,7 +46,7 @@ class PortfolioTest extends TestCase
         $fiat = 'USD';
         $result = CryptoTransaction::getCurrentTotal();
         $this->assertIsArray($result, 'getTotalDeposits Failed');
-        echo "\ntotal transactions" . count($result);
-        var_dump($result);
+        // echo "\ntotal transactions" . count($result);
+        // var_dump($result);
     }
 }
