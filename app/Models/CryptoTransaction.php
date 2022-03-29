@@ -20,12 +20,12 @@ class CryptoTransaction extends Model
     const TRAN_TYPE_SELL =       'S';    // sell (trade)
     const TRAN_TYPE_BUY =        'B';    // buy (trade)
 
-    public static float $total_deposits = 0;
-    public static float $total_proceeds = 0;
-    public static float $net_deposits = 0;
-    public static float $net_proceeds = 0;
-    public static float $fiat_reinvested = 0;
-    public static array $holding = [];
+    // public static float $total_deposits = 0;
+    // public static float $total_proceeds = 0;
+    // public static float $net_deposits = 0;
+    // public static float $net_proceeds = 0;
+    // public static float $fiat_reinvested = 0;
+    // public static array $holding = [];
 
     public function cryptoAccount(): BelongsTo
     {
@@ -82,7 +82,7 @@ class CryptoTransaction extends Model
         return $proceeds;
     }
 
-    public static function getTotalDeposits(int|Carbon $since, string $fiat="USD") {
+    public static function getTotal(int|Carbon $since, string $fiat="USD") : array {
         $decimal_number = 12;
         bcscale($decimal_number);
         // https://support.cointracker.io/hc/en-us/articles/4413049704593-Cryptocurrency-Performance-and-Return#:~:text=Definitions,made%20on%20your%20cryptocurrency%20investing.
@@ -104,6 +104,8 @@ class CryptoTransaction extends Model
         $fiat_reinvested = 0;
         $market_value = 0;
         $total_return = 0;
+        $net_proceeds = 0;
+        $net_deposits = 0;
         foreach($transactions as $transaction) {
             switch ($transaction->trade_type) {
                 case CryptoTransaction::TRAN_TYPE_SEND :
@@ -139,9 +141,6 @@ class CryptoTransaction extends Model
                 case CryptoTransaction::TRAN_TYPE_BUY :
                     $fromSymbol = $transaction->cryptoCurrency->short_name;
                     $toSymbol = $transaction->priceCurrency->short_name;
-                    if ($fromSymbol == 'ATOM') {
-                        var_dump($transaction->amount);
-                    }
                     if (array_key_exists($fromSymbol, $holding)) {
                         $holding[$fromSymbol] = bcadd($holding[$fromSymbol], $transaction->amount);
                     } else {
@@ -158,7 +157,6 @@ class CryptoTransaction extends Model
             }
             $feeSymbol = $transaction->feeCurrency->short_name;
             if (array_key_exists($feeSymbol, $holding)) {
-                var_dump($holding[$feeSymbol]);
                 $holding[$feeSymbol] = bcsub($holding[$feeSymbol], $transaction->fee);
             } else {
 
@@ -177,30 +175,49 @@ class CryptoTransaction extends Model
         $market_value = 0;
         foreach ($holding as $symbol => $value) {
             $currency = CryptoCurrency::findByShortName($symbol);
-            $fiat_value = $currency->convertTo($value, $fiat, $since);
-            var_dump($symbol);
+            $fiat_value = $currency->convertTo(0.2849596, $fiat, $endDate);
+            var_dump($value);
             var_dump($fiat_value);
             $market_value = bcadd($market_value, $fiat_value);
         }
-        CryptoTransaction::$holding = $holding;
-        CryptoTransaction::$total_deposits = $total_deposits;
-        CryptoTransaction::$total_proceeds = $total_proceeds;
-        CryptoTransaction::$fiat_reinvested = $fiat_reinvested;
-        $total_return = $market_value + $total_proceeds - $fiat_reinvested;
+        // CryptoTransaction::$holding = $holding;
+        // CryptoTransaction::$total_deposits = $total_deposits;
+        // CryptoTransaction::$total_proceeds = $total_proceeds;
+        // CryptoTransaction::$fiat_reinvested = $fiat_reinvested;
+        $net_deposits = bcsub($total_deposits, $fiat_reinvested);
+        $net_proceeds = bcsub($total_proceeds, $fiat_reinvested);
+        $total_return = bcadd($market_value, $net_proceeds);
+        $mwr = bcmul(bcsub(bcdiv($total_return, $net_deposits), "1"), "100");
         return [
-            'Holding' => $holding,
-            'Total Deposits' => $total_deposits,
-            'Total Proceeds' => $total_proceeds,
-            'Fiat Reinvested' => $fiat_reinvested,
-            'Market value' => $market_value,
-            'Total return' => $total_return
+            'holding' => $holding,
+            'total_deposits' => $total_deposits,
+            'total_proceeds' => $total_proceeds,
+            'reinvested_fiat' => $fiat_reinvested,
+            'market_value' => $market_value,
+            'net_deposits' => $net_deposits,
+            'net_proceeds' => $net_proceeds,
+            'total_return' => $total_return,
+            'mwr' => $mwr
         ];
+    }
+
+    public static function getCurrentTotal($fiat='USD') : array {
+        $current_total = CryptoTransaction::getTotal(Carbon::now());
+        $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday());
+        return [
+            "total_return" => $current_total["total_return"],
+            "mwr" => $current_total["total_return"],
+            "past_day" => $yesterday_total["total_return"],
+            "past_mwr" => $yesterday_total["mwr"],
+            "net_deposits" => $current_total["net_deposits"],
+            "net_proceeds" => $current_total["net_proceeds"],
+        ];
+        // return $total;
     }
 
     public static $unsupported = [];
     public static function unsupported_CC(string $cc) {
         $symbol = $cc;
-        // var_dump($symbol);
         if(!in_array($symbol, CryptoTransaction::$unsupported)) {
             array_push(CryptoTransaction::$unsupported, $cc);
         }
