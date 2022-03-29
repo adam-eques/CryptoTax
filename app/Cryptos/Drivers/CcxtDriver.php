@@ -294,6 +294,7 @@ abstract class CcxtDriver implements ApiDriverInterface
                 $currencyId = $fromCC->id;
                 $priceCurrencyId = $toCC->id;
                 $costCurrencyId = $priceCurrencyId;
+
                 if ($feeCC == null) $feeCurrencyId = $currencyId;
                 else $feeCurrencyId = $feeCC->id;
 

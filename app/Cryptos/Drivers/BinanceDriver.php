@@ -13,7 +13,8 @@ use Carbon\Carbon;
 class BinanceDriver extends CcxtDriver
 {
     protected array $balance;
-    protected int $iplimit = 20; /**20 requests per seconds */
+    protected int $api_counter = 0;
+    protected int $delay_ip = 50; /**1200 weights per minutes, => 50ms per weight */
     /**
      * @return $this
      */
@@ -26,35 +27,16 @@ class BinanceDriver extends CcxtDriver
         TestHelper::save2file('binance_balance', $balance);
         TestHelper::save2file('binance_apis', $this->getApi()->exchange);
 
-        // TestHelper::save2file('../test_balances.php', $balance);
-
-
-        // $transactions = $this->fetchTransactions($this->account->fetched_at);
-        // $this->saveTransactions($transactions);
-
-// */
-        // $this->saveTransactions($all_trades_for_all_symbols);
-
-        $since = $this->account->fetched_at;
         $transactions = [];
         $withdrawals = [];
         $deposits = [];
+        $trades = [];
         $trades = $this->fetchTrades($this->account->fetched_at);
-        // if ($this->api->getTransactionsAvailable())
-        // {
-        //     $transactions = $this->fetchTransactions($this->account->fetched_at);
-        // }
-        // if ($this->api->getWithdrawalsAvailable())
-        // {
-        //     $withdrawals = $this->fetchWithdrawals($this->account->fetched_at);
-        // }
-        // if ($this->api->getDepositsAvailable())
-        // {
-        //     $deposits = $this->fetchDeposits($this->account->fetched_at);
-        // }
+        $withdrawals = $this->fetchWithdrawals($this->account->fetched_at);
+        $deposits = $this->fetchDeposits($this->account->fetched_at);
 
         TestHelper::save2file('binance_balance', $balance);
-        // TestHelper::save2file('binance_trades', $trades);
+        TestHelper::save2file('binance_trades', $trades);
         TestHelper::save2file('binance_transactions', $transactions);
         TestHelper::save2file('binance_withdrawals', $withdrawals);
         TestHelper::save2file('binance_deposits', $deposits);
@@ -91,6 +73,20 @@ class BinanceDriver extends CcxtDriver
     public function getRequiredCredentials(): array
     {
         return ["apiKey", "secret"];
+    }
+
+    protected function safeCall(int $weight, $call, $paras=null) {
+        $start_t = microtime(true);
+        $ret = $call($paras);
+        $end_t = microtime(true);
+        $delay = $this->delay_ip * $weight - ($end_t - $start_t) * 1000;
+        echo 'delay: ';
+        var_dump($delay);
+        if ($delay > 0) {
+            usleep($delay);
+        }
+        $this->api_counter += $weight;
+        return $ret;
     }
 
     /**
@@ -166,10 +162,9 @@ class BinanceDriver extends CcxtDriver
         TestHelper::save2file('binance_exchange_symbols', $exchange->symbols);
 
         function fetch_all_my_trades($exchange, $symbol, $startTime) {
-            $exchange->verbose = true;
+            // $exchange->verbose = true;
 
             $since = $startTime;
-            // $from_id = '0';
             $limit = 1000;
 
             $all_trades = [];
@@ -178,16 +173,9 @@ class BinanceDriver extends CcxtDriver
             do {
                 $params = [
                     'startTime' => $since,
-                    // 'endTime' => 1592915650000 + 24 * 3600 * 1000,
-                    // 'fromId' => $from_id,
-                    'limit' => $limit
+                    'limit' => $limit,
+                    'recvWindow' => 59999
                 ];
-                // $params = [
-                //     'startTime' => $since,
-                //     'endTime' => $endTime,
-                //     // 'fromId' => $from_id,
-                //     'limit' => $limit
-                // ];
                 $trades = $exchange->fetch_my_trades($symbol, null, null, $params);
                 $count = count($trades);
                 if ($count > 0) {
@@ -198,21 +186,18 @@ class BinanceDriver extends CcxtDriver
             return $all_trades;
         }
 
+        $callback = function ( $para ) {
+            [$exchange, $symbol, $pfrom] = $para;
+            return fetch_all_my_trades($exchange, $symbol, $pfrom->getTimestampMs());
+        };
+
         // Fetch all trades
         foreach ($unique_symbols as $symbol) {
-            // fetch all trades for the $symbol, with pagination
-            $trades = fetch_all_my_trades($exchange, $symbol, $pfrom->getTimestampMs());
+            $trades = $this->safeCall(10, $callback, [$exchange, $symbol, $pfrom]);
             $all_trades_for_all_symbols = array_merge ($all_trades_for_all_symbols, $trades);
         }
-        $trades = fetch_all_my_trades($exchange, $unique_symbols[0], $pfrom->getTimestampMs());
-        // $trades = fetch_all_my_trades($exchange, $unique_symbols[0], $pfrom->getTimestampMs());
-        $all_trades_for_all_symbols = array_merge ($all_trades_for_all_symbols, $trades);
 
         TestHelper::save2file('binance_unique_symbols', $unique_symbols);
-        // $symbol = 'USDT/';
-        // $all_trades_for_all_symbols = fetch_all_my_trades($exchange, $symbol, $pfrom->getTimestampMs());
-
-        // var_dump($all_matching_symbols);
         TestHelper::save2file('binance_trades', $all_trades_for_all_symbols);
         // */
         return $all_trades_for_all_symbols;
@@ -233,14 +218,22 @@ class BinanceDriver extends CcxtDriver
         $pfrom = $from != null ? $from : $this->found_time;
 
         $all_deposits = [];
+
+        $callback = function ( $para ) {
+            [$exchange, $pfrom, $offset] = $para;
+            $ret = $exchange->fetch_deposits(null, null, null, [
+                'startTime' => $pfrom->getTimestampMs(),
+                'endTime' => $pfrom->getTimestampMs() + 90 * 24 * 3600 * 1000,
+                'offset' => $offset,
+            ]);
+            return $ret;
+        };
+
         while ($pfrom->isPast()) {
             $count = 0;
+            $offset = 0;
             do {
-                $deposits = $exchange->fetch_deposits(null, null, null, [
-                    'startTime' => $pfrom->getTimestampMs(),
-                    'endTime' => $pfrom->getTimestampMs() + 90 * 24 * 3600 * 1000,
-                    'offset' => 0,
-                ]);
+                $deposits = $this->safeCall(1, $callback, [$exchange, $pfrom, $offset]);
                 $all_deposits = array_merge($all_deposits, $deposits);
                 $count = count($deposits);
             } while ($count == 1000);
@@ -258,22 +251,30 @@ class BinanceDriver extends CcxtDriver
         $exchange = $this->api->exchange;
         // $exchange->verbose = true;
 
-        // https://exchange-docs.crypto.com/spot/index.html#rate-limits
         // https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data
 
         $pfrom = $from != null ? $from : $this->found_time;
 
         $all_withdrawals = [];
+
+        $callback = function ( $para ) {
+            [$exchange, $pfrom, $offset] = $para;
+            $ret = $exchange->fetch_withdrawals(null, null, null, [
+                'startTime' => $pfrom->getTimestampMs(),
+                'endTime' => $pfrom->getTimestampMs() + 90 * 24 * 3600 * 1000,
+                'offset' => $offset,
+            ]);
+            return $ret;
+        };
+
         while ($pfrom->isPast()) {
             $count = 0;
+            $offset = 0;
             do {
-                $withdrawals = $exchange->fetch_withdrawals(null, null, null, [
-                    'startTime' => $pfrom->getTimestampMs(),
-                    'endTime' => $pfrom->getTimestampMs() + 90 * 24 * 3600 * 1000,
-                    'offset' => 0,
-                ]);
+                $withdrawals = $this->safeCall(1, $callback, [$exchange, $pfrom, $offset]);
                 $all_withdrawals = array_merge($all_withdrawals, $withdrawals);
                 $count = count($withdrawals);
+                $offset += $count;
             } while ($count == 1000);
             $pfrom->addDays(90);
         }
