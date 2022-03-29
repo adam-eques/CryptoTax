@@ -34,17 +34,18 @@ class TestController extends Controller
 
 
     /**
-     * Call : (new \App\Http\Controllers\TestController())->coingeckoGetCoinMarkets(10, 1);
+     * Call : (new \App\Http\Controllers\TestController())->coingeckoGetCoinMarkets(10, 1, true);
      *
      * Latest Call on PROD:
-     * 2022-03-29 10:50 Vienna (new \App\Http\Controllers\TestController())->coingeckoGetCoinMarkets(50, 11);
+     * 2022-03-29 10:50 Vienna (new \App\Http\Controllers\TestController())->coingeckoGetCoinMarkets(50, 11, true);
      *
      * @param int $perPage
      * @param int $page
+     * @param bool $settingFetchHistory
      * @return void
      * @throws \Exception
      */
-    public function coingeckoGetCoinMarkets(int $perPage = 300, int $page = 1)
+    public function coingeckoGetCoinMarkets(int $perPage = 300, int $page = 1, bool $settingFetchHistory = true)
     {
         set_time_limit(5000);
         $api = \App\Cryptos\Coingecko\CoingeckoAPI::make();
@@ -61,9 +62,11 @@ class TestController extends Controller
             ];
 
             // Check if we get price history
-            $coinHistoryData = $api->coinHistory($coin->coingecko_id, now()->subDay()->format("Y-m-d"));
-            if(isset($coinHistoryData["market_data"]["current_price"]) && $coinHistoryData["market_data"]["current_price"]) {
-                $update["fetch_history"] = true;
+            if($settingFetchHistory) {
+                $coinHistoryData = $api->coinHistory($coin->coingecko_id, now()->subDay()->format("Y-m-d"));
+                if(isset($coinHistoryData["market_data"]["current_price"]) && $coinHistoryData["market_data"]["current_price"]) {
+                    $update["fetch_history"] = true;
+                }
             }
 
             // Update
