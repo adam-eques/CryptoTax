@@ -104,10 +104,10 @@ class KrakenDriver extends CcxtDriver
     }
 
     protected function safeCall(int $increase, $call, $paras=null) {
-        $start_t = time();
+        $start_t = microtime(true);
         $ret = $call($paras);
-        $end_t = time();
-        $delay = $this->api_delay[$this->userLevel] * $increase - ($end_t - $start_t);
+        $end_t = microtime(true);
+        $delay = $this->api_delay[$this->userLevel] * $increase - ($end_t - $start_t) * 1000;
         // echo 'delay: ';
         // var_dump($delay);
         if ($delay > 0) {
