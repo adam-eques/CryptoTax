@@ -176,9 +176,7 @@ class CryptoTransaction extends Model
         foreach ($holding as $symbol => $value) {
             $currency = CryptoCurrency::findByShortName($symbol);
             $fiat_value = $currency->convertTo(0.2849596, $fiat, $endDate);
-            var_dump($value);
-            var_dump($fiat_value);
-            $market_value = bcadd($market_value, $fiat_value);
+            $market_value = bcadd($market_value, number_format($fiat_value, $decimal_number, ".", ''));
         }
         // CryptoTransaction::$holding = $holding;
         // CryptoTransaction::$total_deposits = $total_deposits;
@@ -212,7 +210,7 @@ class CryptoTransaction extends Model
             "net_deposits" => $current_total["net_deposits"],
             "net_proceeds" => $current_total["net_proceeds"],
         ];
-        // return $total;
+        // return $current_total;
     }
 
     public static $unsupported = [];
