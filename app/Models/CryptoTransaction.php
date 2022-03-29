@@ -175,7 +175,7 @@ class CryptoTransaction extends Model
         $market_value = 0;
         foreach ($holding as $symbol => $value) {
             $currency = CryptoCurrency::findByShortName($symbol);
-            $fiat_value = $currency->convertTo(0.2849596, $fiat, $endDate);
+            $fiat_value = $currency->convertTo(floatval($value), $fiat, $endDate);
             $market_value = bcadd($market_value, number_format($fiat_value, $decimal_number, ".", ''));
         }
         // CryptoTransaction::$holding = $holding;
@@ -204,7 +204,7 @@ class CryptoTransaction extends Model
         $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday());
         return [
             "total_return" => $current_total["total_return"],
-            "mwr" => $current_total["total_return"],
+            "mwr" => $current_total["mwr"],
             "past_day" => $yesterday_total["total_return"],
             "past_mwr" => $yesterday_total["mwr"],
             "net_deposits" => $current_total["net_deposits"],
