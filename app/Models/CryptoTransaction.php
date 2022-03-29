@@ -111,7 +111,7 @@ class CryptoTransaction extends Model
                 case CryptoTransaction::TRAN_TYPE_SEND :
                     $symbol = $transaction->cryptoCurrency->short_name;
                     if (array_key_exists($symbol, $holding)) {
-                        $holding[$symbol] = bcsub($holding[$symbol], $transaction->amount);
+                        $holding[$symbol] = bcsub($holding[$symbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
                         $holding[$symbol] = -$transaction->amount;
                     }
@@ -119,7 +119,7 @@ class CryptoTransaction extends Model
                 case CryptoTransaction::TRAN_TYPE_RECEIVE :
                     $symbol = $transaction->cryptoCurrency->short_name;
                     if (array_key_exists($symbol, $holding)) {
-                        $holding[$symbol] = bcadd($holding[$symbol], $transaction->amount);
+                        $holding[$symbol] = bcadd($holding[$symbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
                         $holding[$symbol] = $transaction->amount;
                     }
@@ -128,12 +128,12 @@ class CryptoTransaction extends Model
                     $fromSymbol = $transaction->cryptoCurrency->short_name;
                     $toSymbol = $transaction->priceCurrency->short_name;
                     if (array_key_exists($fromSymbol, $holding)) {
-                        $holding[$fromSymbol] = bcsub($holding[$fromSymbol], $transaction->amount);
+                        $holding[$fromSymbol] = bcsub($holding[$fromSymbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
                         $holding[$fromSymbol] = -$transaction->amount;
                     }
                     if (array_key_exists($toSymbol, $holding)) {
-                        $holding[$toSymbol] = bcadd($holding[$toSymbol], $transaction->cost);
+                        $holding[$toSymbol] = bcadd($holding[$toSymbol], number_format($transaction->cost, $decimal_number, ".", ''));
                     } else {
                         $holding[$toSymbol] = $transaction->cost;
                     }
@@ -142,12 +142,12 @@ class CryptoTransaction extends Model
                     $fromSymbol = $transaction->cryptoCurrency->short_name;
                     $toSymbol = $transaction->priceCurrency->short_name;
                     if (array_key_exists($fromSymbol, $holding)) {
-                        $holding[$fromSymbol] = bcadd($holding[$fromSymbol], $transaction->amount);
+                        $holding[$fromSymbol] = bcadd($holding[$fromSymbol], number_format($transaction->amount, $decimal_number, ".", ''));
                     } else {
                         $holding[$fromSymbol] = $transaction->amount;
                     }
                     if (array_key_exists($toSymbol, $holding)) {
-                        $holding[$toSymbol] = bcsub($holding[$toSymbol], $transaction->cost);
+                        $holding[$toSymbol] = bcsub($holding[$toSymbol], number_format($transaction->cost, $decimal_number, ".", ''));
                     } else {
                         $holding[$toSymbol] = -$transaction->cost;
                     }
@@ -157,7 +157,7 @@ class CryptoTransaction extends Model
             }
             $feeSymbol = $transaction->feeCurrency->short_name;
             if (array_key_exists($feeSymbol, $holding)) {
-                $holding[$feeSymbol] = bcsub($holding[$feeSymbol], $transaction->fee);
+                $holding[$feeSymbol] = bcsub($holding[$feeSymbol], number_format($transaction->fee, $decimal_number, ".", ''));
             } else {
 
                 $holding[$feeSymbol] = $transaction->fee == 0 ? 0 : -$transaction->fee;
