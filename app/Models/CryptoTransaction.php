@@ -200,8 +200,8 @@ class CryptoTransaction extends Model
     }
 
     public static function getCurrentTotal($fiat='USD') : array {
-        $current_total = CryptoTransaction::getTotal(Carbon::now());
-        $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday());
+        $current_total = CryptoTransaction::getTotal(Carbon::now(), $fiat);
+        $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday(), $fiat);
         return [
             "total_return" => $current_total["total_return"],
             "mwr" => $current_total["mwr"],
