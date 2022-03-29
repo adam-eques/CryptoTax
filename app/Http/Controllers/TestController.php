@@ -33,33 +33,42 @@ class TestController extends Controller
     }
 
 
-    public function coingeckoGetCoinMarkets()
+    /**
+     * Call : (new \App\Http\Controllers\TestController())->coingeckoGetCoinMarkets(10, 1);
+     *
+     * @param int $perPage
+     * @param int $page
+     * @return void
+     * @throws \Exception
+     */
+    public function coingeckoGetCoinMarkets(int $perPage = 300, int $page = 1)
     {
         set_time_limit(5000);
         $api = \App\Cryptos\Coingecko\CoingeckoAPI::make();
         $data = $api->client->coins()->getMarkets("usd", [
-            "per_page" => 300,
+            "per_page" => $perPage,
+            "page" => $page,
         ]);
 
         foreach ($data as $row) {
-            $coin = CryptoCurrency::findByShortName($row["symbol"]);
-
-            // Check if we get price history
-            $coinHistoryData = $api->coinHistory($coin->coingecko_id, now()->subDay()->format("Y-m-d"));
-            if(!isset($coinHistoryData["market_data"]["current_price"]) || !$coinHistoryData["market_data"]["current_price"]) {
-                continue;
-            }
-
-            // Update
+            $symbol = $row["symbol"];
+            $coin = CryptoCurrency::findByShortName($symbol);
             $update = [
                 "market_cap" => $row["market_cap"],
             ];
 
-            if(!$coin->fetched_history_date_till) {
-                $update["fetched_history_date_till"] = "2019-12-31";
+            // Check if we get price history
+            $coinHistoryData = $api->coinHistory($coin->coingecko_id, now()->subDay()->format("Y-m-d"));
+            if(isset($coinHistoryData["market_data"]["current_price"]) && $coinHistoryData["market_data"]["current_price"]) {
+                $update["fetch_history"] = true;
             }
 
+            // Update
             $coin->update($update);
+            dump(
+                "Updating $symbol setting market_cap to " . number_format($row["market_cap"], 0, ".", ",") .
+                (isset($update["fetch_history"]) ? " and setting fetch_history" : "")
+            );
         }
     }
 }
