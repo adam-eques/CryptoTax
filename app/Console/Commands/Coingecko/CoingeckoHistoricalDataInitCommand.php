@@ -10,7 +10,7 @@ use function now;
 
 class CoingeckoHistoricalDataInitCommand extends Command
 {
-    protected $signature = 'coingecko:historical-data-init';
+    protected $signature = 'coingecko:historical-data-init {--new-only}';
     protected $description = 'Fetches the coingecko api for historical price data for inital setup.';
     private HistoricalConversionRateFetcher $fetcher;
 
@@ -24,13 +24,17 @@ class CoingeckoHistoricalDataInitCommand extends Command
         $this->fetcher->setLogger([$this, "line"]);
 
         // Prepare queries
-        $currencies = CryptoCurrency::query()
+        $query = CryptoCurrency::query()
             ->where("fetch_history", true)
             ->where(function($q) use ($oldestDate){
                 $q->where("fetched_history_date_from", ">", $oldestDate)
                     ->orWhereNull("fetched_history_date_from");
             })
-            ->orderBy("market_cap", "DESC")
+            ->orderBy("market_cap", "DESC");
+        if($this->option("new-only")) {
+            $query->whereNull("fetched_history_date_till");
+        }
+        $currencies = $query
             ->get(["id", "short_name", "coingecko_id", "fetched_history_date_from", "fetched_history_date_till"]);
 
         foreach ($currencies as $currency) {
