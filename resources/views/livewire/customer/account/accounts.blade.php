@@ -22,7 +22,7 @@
                                         wire:click="get_selected_account_id({{ $crypto_account->id }})"
                                         :label="$crypto_account->getName()"
                                         :selected="$crypto_account->id == $selected_account->id"
-                                        balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
+                                        balance="{{$unit}} {{moneyFormat($crypto_account->getBalanceSum(auth()->user()->taxCurrency->symbol), 2)}}"
                                     >
                                         <div wire:loading wire:target="sync" x-transition class="text-gray-400">{{ __('Updating...') }}</div>
                                         <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ $crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never' }}</div>
@@ -32,7 +32,7 @@
                                         wire:click="get_selected_account_id({{ $crypto_account->id }})"
                                         :label="$crypto_account->getName()"
                                         :selected="$crypto_account->id == $selected_account->id"
-                                        balance="{{moneyFormat($crypto_account->getBalanceSum(), 2)}}"
+                                        balance="{{$unit}} {{moneyFormat($crypto_account->getBalanceSum(auth()->user()->taxCurrency->symbol), 2)}}"
                                     >
                                         <div wire:loading wire:target="sync" x-transition class="text-gray-400">{{ __('Updating...') }}</div>
                                         <div wire:loading.remove wire:target="sync" class="text-gray-400">{{$crypto_account->fetched_at ? date("M d, Y, H:i", strtotime($crypto_account->fetched_at)) :'Never'}}</div>
@@ -56,7 +56,7 @@
                             <div wire:loading.remove wire:target="sync" class="text-gray-400">{{ __( $selected_account->fetched_at ? date("M d, Y, H:i", strtotime($selected_account->fetched_at)) : "Never" ) }}</div>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">${{ moneyFormat($selected_account->getBalanceSum(), 2) }}</p>
+                            <p class="font-bold sm:text-xl md:text-base lg:text-lg xl:text-xl">{{$unit}}{{ moneyFormat($selected_account->getBalanceSum(auth()->user()->taxCurrency->symbol), 2) }}</p>
                             <x-button size="xs" wire:click="edit"  x-on:click="action='edit'">
                                 <x-icon name="feathericon-edit" class="w-4 md:w-6"/>
                             </x-button>
@@ -71,7 +71,7 @@
                                 @foreach ($selected_account->cryptoAssets()->get()->sortByDesc(function($assest){
                                     return $assest->convertTo();
                                 }) as $asset)
-                                    <x-account-assets-item :asset="$asset"/>
+                                    <x-account-assets-item :asset="$asset" :unit="$unit"/>
                                 @endforeach
                             </div>
                         </div>
