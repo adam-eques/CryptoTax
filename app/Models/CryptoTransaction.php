@@ -206,7 +206,6 @@ class CryptoTransaction extends Model
         $start_t = microtime(true);
         $current_total = CryptoTransaction::getTotal(Carbon::now(), $fiat);
         $end_t = microtime(true);
-        // var_dump($end_t - $start_t);
         $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday(), $fiat);
         return [
             "total_return" => $current_total["total_return"],
@@ -237,7 +236,6 @@ class CryptoTransaction extends Model
                         ->orderBy("executed_at", "ASC");
                     $transactions = $query->get();
                     $step_transactions[$endDate->getTimestampMs()] = $transactions;
-                    // array_push($step_transactions, $transactions);
                     $startDate = new Carbon($endDate);
                     $endDate->addMonth();
                 } while ($endDate->isPast());
