@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Cryptos\Drivers\ApiDriverInterface;
 use App\Jobs\CryptoAccountFetchJob;
 use App\Models\Traits\BelongsToUserTrait;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -86,6 +87,18 @@ class CryptoAccount extends Model
         }
 
         return $this->cachedSum;
+    }
+
+
+    public function getSortedCryptoAssetRows(): Collection
+    {
+        return $this
+            ->cryptoAssets()
+            ->withCount("cryptoTransactions")
+            ->get()
+            ->sortByDesc(function($assest){
+                return $assest->convertTo();
+            });
     }
 
 

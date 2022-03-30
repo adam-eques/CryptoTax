@@ -1,20 +1,13 @@
-@php
-    $transaction_num = auth()->user()->cryptoTransactions()
-        ->where('currency_id', $asset->crypto_currency_id)
-        ->where('crypto_account_id', $asset->crypto_account_id)
-        ->get()
-        ->count()  
-@endphp
-@if ($asset->balance != 0 || $transaction_num != 0)  
+@if ($asset->balance != 0 || $asset->crypto_transactions_count != 0)
     <div class="grid grid-cols-7 gap-5 items-center px-5 py-6 min-w-[720px]" wire:key='{{ $asset->id }}'>
         <div class="col-span-3">
             <div class="flex items-center space-x-3">
                 <div class="w-14">
                     <x-icon name="{{ 'coins.' . strtolower($asset->cryptoCurrency->short_name) }}" class="w-10 h-10"/>
                 </div>
-                <div>                                                    
+                <div>
                     <p class="font-semibold truncate">{{$asset->cryptoCurrency->getName()}} Wallet</p>
-                    <p class="text-gray-400">{{ $transaction_num }} {{__('Transactions')}}</p>
+                    <p class="text-gray-400">{{ $asset->crypto_transactions_count }} {{__('Transactions')}}</p>
                 </div>
             </div>
         </div>
