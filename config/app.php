@@ -247,5 +247,7 @@ return [
 
     'helper' => [
         'trace' => env('APP_HELPER_TRACE', false)
-    ]
+    ],
+
+    'admin_mail' => env('APP_ADMIN_MAIL', 'admin@mycrypto.tax')
 ];
