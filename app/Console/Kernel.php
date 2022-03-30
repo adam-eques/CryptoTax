@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CleanupDeletedAccountCommand;
 use App\Console\Commands\Coingecko\CoingeckoHistoricalDataCommand;
 use App\Console\Commands\Coingecko\CoingeckoUpdateAllRealtimePrices;
 use App\Console\Commands\RemovePremiumAfterSubscriptionEndsCommand;
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
         RemovePremiumAfterSubscriptionEndsCommand::class,
         CoingeckoUpdateAllRealtimePrices::class,
         CoingeckoHistoricalDataCommand::class,
+        CleanupDeletedAccountCommand::class,
     ];
 
     /**

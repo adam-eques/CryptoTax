@@ -29,6 +29,10 @@ class CryptoAccount extends Model
         'fetched_at' => 'datetime',
         'fetching_scheduled_at' => 'datetime',
     ];
+    /**
+     * @var null|float
+     */
+    protected $cachedSum = null;
 
 
     public static function boot()
@@ -68,15 +72,20 @@ class CryptoAccount extends Model
 
     public function getBalanceSum(string $currency = "USD"): float
     {
-        $sum = 0;
+        if($this->cachedSum === null) {
+            $sum = 0;
+            $assets = $this->cryptoAssets()
+                ->with("cryptoCurrency")
+                ->where("balance", ">", 0)
+                ->get(["balance", "crypto_currency_id"]);
 
-        $this->cryptoAssets->each(function (CryptoAsset $asset) use (&$sum, $currency) {
-            if ($asset->balance) {
+            $assets->each(function (CryptoAsset $asset) use (&$sum, $currency) {
                 $sum += $asset->convertTo($currency);
-            }
-        });
+            });
+            $this->cachedSum = $sum;
+        }
 
-        return $sum;
+        return $this->cachedSum;
     }
 
 

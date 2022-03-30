@@ -13,6 +13,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CryptoAsset extends Model
 {
+    protected $casts = [
+        "balance" => "float"
+    ];
+
+    protected array $cachedConvertTo = [];
+
 
     public function cryptoAccount(): BelongsTo
     {
@@ -34,7 +40,15 @@ class CryptoAsset extends Model
 
     public function convertTo(string $currency = "USD"): float|null
     {
-        return $this->cryptoCurrency?->convertTo($this->balance, $currency);
+        if(!$this->balance) {
+            return 0;
+        }
+
+        if(!isset($this->cachedConvertTo[$currency])) {
+            $this->cachedConvertTo[$currency] = $this->cryptoCurrency?->convertTo($this->balance, $currency);
+        }
+
+        return $this->cachedConvertTo[$currency];
     }
 
 
