@@ -462,7 +462,7 @@ class CryptoTransaction extends Model
             $transaction->to_cost_basis = $toCostBasis;
             $transaction->save();
         }
-        var_dump($enabled);
+        // var_dump($enabled);
         return $query->get();
     }
 }
