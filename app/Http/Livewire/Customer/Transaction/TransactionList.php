@@ -129,11 +129,11 @@ class TransactionList extends Component
 
         $transactions = $transactions ->paginate(10);
 
-        $trades_num = auth()->user()->cryptoTransactions()->where('trade_type', 'B')->orWhere('trade_type', 'S')->get()->count();
-        $deposits_num = auth()->user()->cryptoTransactions()->where('trade_type', 'R')->get()->count();
-        $withdrawal_num = auth()->user()->cryptoTransactions()->where('trade_type', 'G')->get()->count();
-        $reviews_num = auth()->user()->cryptoTransactions()->where('trade_type', 'C')->get()->count();
-        $exchange_num = auth()->user()->cryptoTransactions()->where('trade_type', 'E')->get()->count();
+        $trades_num = auth()->user()->cryptoTransactions()->where('trade_type', 'B')->orWhere('trade_type', 'S')->count();
+        $deposits_num = auth()->user()->cryptoTransactions()->where('trade_type', 'R')->count();
+        $withdrawal_num = auth()->user()->cryptoTransactions()->where('trade_type', 'G')->count();
+        $reviews_num = auth()->user()->cryptoTransactions()->where('trade_type', 'C')->count();
+        $exchange_num = auth()->user()->cryptoTransactions()->where('trade_type', 'E')->count();
 
         return view('livewire.customer.transaction.transaction-list', [
             "transactions" => $transactions,
