@@ -51,7 +51,7 @@
                         <x-icon name="bx-add-to-queue" class="w-12 h-12"/>
                         <div>
                             <p class="text-gray-400">{{ __('You have Currently') }}</p>
-                            <h3 class="text-2xl font-bold">{{ __('8654.0 Credits') }}</h3>
+                            <h3 class="text-2xl font-bold">{{ __(auth()->user()->credits . ' Credits') }}</h3>
                         </div>
                     </div>
                     <p class="py-8 text-lg font-semibold">{{ __('Buy Additional Credits') }}</p>
