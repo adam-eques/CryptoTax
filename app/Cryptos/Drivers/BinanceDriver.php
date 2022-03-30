@@ -80,7 +80,7 @@ class BinanceDriver extends CcxtDriver
         $ret = $call($paras);
         $end_t = microtime(true);
         $delay = $this->delay_ip * $weight - ($end_t - $start_t) * 1000;
-        echo 'delay: ';
+        // echo 'delay: ';
         // var_dump($delay);
         if ($delay > 0) {
             usleep($delay);

@@ -63,11 +63,11 @@ class CryptoTransaction extends Model
         if ($this->trade_type == CryptoTransaction::TRAN_TYPE_RECEIVE) {
             $deposits = $this->cryptoCurrency->convertTo($this->cost, $fiat, $this->executed_at);
         }
-        echo "\ntime: " . $this->executed_at;
-        echo "\ntype: " . $this->trade_type;
-        echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
+        // echo "\ntime: " . $this->executed_at;
+        // echo "\ntype: " . $this->trade_type;
+        // echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
         if ($deposits === null) {
-            echo "unsupported\n";
+            // echo "unsupported\n";
             CryptoTransaction::unsupported_CC($this->cryptoCurrency->short_name);
             $deposits = 0;
         }
@@ -425,21 +425,25 @@ class CryptoTransaction extends Model
                 case CryptoTransaction::TRAN_TYPE_RECEIVE:
                     $transaction->from_cost_basis = 0;
                     $transaction->gain = 0;
-                    $price = $transaction->cryptoCurrency->cosnvertTo(1, $fiat, $transaction->executed_at);
+                    $price = $transaction->cryptoCurrency->convertTo(1, $fiat, $transaction->executed_at);
                     if ($price === null) {
                         $price = 0;
                     }
-                    // testing acentior
 
                     $currency = $transaction->cryptoCurrency->short_name;
-                    // if (array_key_exists($currency, $enabled)) {
-
-                    // }
-                    // array_push($enabled, [
-                    //     'amount' => $transaction->cost,
-                    //     'price' => $price,
-                    //     'currency' => $transaction->cryptoCurrency->short_name
-                    // ]);
+                    if (array_key_exists($currency, $enabled)) {
+                        array_push($enabled[$currency] ,[
+                            'amount' => $transaction->cost,
+                            'price' => $price,
+                        ]);
+                    } else {
+                        $enabled[$currency] = [
+                            [
+                                'amount' => $transaction->cost,
+                                'price' => $price,
+                            ]
+                        ];
+                    }
                     break;
                 case CryptoTransaction::TRAN_TYPE_SEND:
                     # code...
@@ -462,7 +466,7 @@ class CryptoTransaction extends Model
             $transaction->to_cost_basis = $toCostBasis;
             $transaction->save();
         }
-        // var_dump($enabled);
+        var_dump($enabled);
         return $query->get();
     }
 }

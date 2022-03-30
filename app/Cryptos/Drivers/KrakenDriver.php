@@ -49,22 +49,22 @@ class KrakenDriver extends CcxtDriver
         $ledgers = $this->fetchLedgers($since);
 
         TestHelper::save2file('ccxt_balance', $balance);
-        echo "balance: ";
+        // echo "balance: ";
         // var_dump(count($balance));
         TestHelper::save2file('ccxt_trades', $trades);
-        echo "trades: ";
+        // echo "trades: ";
         // var_dump(count($trades));
         TestHelper::save2file('ccxt_transactions', $transactions);
-        echo "transactions: ";
+        // echo "transactions: ";
         // var_dump(count($transactions));
         TestHelper::save2file('ccxt_withdrawals', $withdrawals);
-        echo "withdrawals: ";
+        // echo "withdrawals: ";
         // var_dump(count($withdrawals));
         TestHelper::save2file('ccxt_deposits', $deposits);
-        echo "deposits: ";
+        // echo "deposits: ";
         // var_dump(count($deposits));
         TestHelper::save2file('ccxt_ledgers', $ledgers);
-        echo "ledgers: ";
+        // echo "ledgers: ";
         // var_dump(count($ledgers));
 
         $this->saveBalances($balance);
