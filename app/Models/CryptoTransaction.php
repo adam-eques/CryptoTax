@@ -306,7 +306,7 @@ class CryptoTransaction extends Model
         $net_proceeds = 0;
         $net_deposits = 0;
         foreach ($step_transactions as $timestamp => $transactions) {
-            echo "\ntransactions number: " . count($transactions) . "\n";
+            // echo "\ntransactions number: " . count($transactions) . "\n";
             foreach($transactions as $transaction) {
                 switch ($transaction->trade_type) {
                     case CryptoTransaction::TRAN_TYPE_SEND :
@@ -466,7 +466,7 @@ class CryptoTransaction extends Model
             $transaction->to_cost_basis = $toCostBasis;
             $transaction->save();
         }
-        var_dump($enabled);
+        // var_dump($enabled);
         return $query->get();
     }
 }
