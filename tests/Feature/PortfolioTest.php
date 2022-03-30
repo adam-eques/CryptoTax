@@ -42,25 +42,26 @@ class PortfolioTest extends TestCase
     //     var_dump($result);
     // }
 
-    // public function test_getCurrentTotal() {
+    public function test_getCurrentTotal() {
+        $fiat = 'EUR';
+        $result = CryptoTransaction::getTotal(Carbon::createFromDate(2020, 4, 8), $fiat);
+        $this->assertIsArray($result, 'getTotalDeposits Failed');
+        // echo "\ntotal transactions" . count($result);
+        var_dump($result);
+        var_dump(CryptoTransaction::$unsupported);
+    }
+
+    // public function test_getLineChartData() {
     //     $fiat = 'USD';
-    //     $result = CryptoTransaction::getCurrentTotal();
-    //     $this->assertIsArray($result, 'getTotalDeposits Failed');
-    //     // echo "\ntotal transactions" . count($result);
+    //     $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_YEAR);
+    //     echo "\ntotal transactions: " . count($result) . "\n";
+    //     // $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_MONTH);
+    //     // echo "\ntotal transactions: " . count($result) . "\n";
+    //     // $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_WEEK);
+    //     // echo "\ntotal transactions: " . count($result) . "\n";
+    //     // $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_DAY);
+    //     // echo "\ntotal transactions: " . count($result) . "\n";
+
     //     var_dump($result);
     // }
-
-    public function test_getLineChartData() {
-        $fiat = 'USD';
-        $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_YEAR);
-        echo "\ntotal transactions: " . count($result) . "\n";
-        // $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_MONTH);
-        // echo "\ntotal transactions: " . count($result) . "\n";
-        // $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_WEEK);
-        // echo "\ntotal transactions: " . count($result) . "\n";
-        // $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_DAY);
-        // echo "\ntotal transactions: " . count($result) . "\n";
-
-        var_dump($result);
-    }
 }

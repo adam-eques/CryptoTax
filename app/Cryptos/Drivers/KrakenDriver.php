@@ -50,22 +50,22 @@ class KrakenDriver extends CcxtDriver
 
         TestHelper::save2file('ccxt_balance', $balance);
         echo "balance: ";
-        var_dump(count($balance));
+        // var_dump(count($balance));
         TestHelper::save2file('ccxt_trades', $trades);
         echo "trades: ";
-        var_dump(count($trades));
+        // var_dump(count($trades));
         TestHelper::save2file('ccxt_transactions', $transactions);
         echo "transactions: ";
-        var_dump(count($transactions));
+        // var_dump(count($transactions));
         TestHelper::save2file('ccxt_withdrawals', $withdrawals);
         echo "withdrawals: ";
-        var_dump(count($withdrawals));
+        // var_dump(count($withdrawals));
         TestHelper::save2file('ccxt_deposits', $deposits);
         echo "deposits: ";
-        var_dump(count($deposits));
+        // var_dump(count($deposits));
         TestHelper::save2file('ccxt_ledgers', $ledgers);
         echo "ledgers: ";
-        var_dump(count($ledgers));
+        // var_dump(count($ledgers));
 
         $this->saveBalances($balance);
         $this->saveTrades($trades);
@@ -164,7 +164,7 @@ class KrakenDriver extends CcxtDriver
         do {
             $trades = $this->safeCall(2, $callback, [$exchange, $pfrom, $ofs]);
             $count = count($trades);
-            var_dump($count);
+            // var_dump($count);
             if ($count > 0) {
                 $all_trades = array_merge($all_trades, $trades);
             }
@@ -183,7 +183,7 @@ class KrakenDriver extends CcxtDriver
         // https://docs.kraken.com/rest/#operation/getStatusRecentDeposits
 
         $pfrom = $from != null ? $from : $this->found_time;
-        var_dump($pfrom->toDateString());
+        // var_dump($pfrom->toDateString());
         $exchange = $this->api->exchange;
         // $exchange->verbose = true;
         $all_deposits = [];
@@ -196,7 +196,7 @@ class KrakenDriver extends CcxtDriver
         foreach ($this->balances as $key => $value) {
             $code = $key;
             if (preg_match('/.HOLD/', $code) > 0) {
-                var_dump($code);
+                // var_dump($code);
                 continue;
             }
             $deposits = $this->safeCall(1, $callback, [$exchange, $code, $pfrom]);
@@ -229,7 +229,7 @@ class KrakenDriver extends CcxtDriver
         foreach ($this->balances as $key => $value) {
             $code = $key;
             if (preg_match('/.HOLD/', $code) > 0) {
-                var_dump($code);
+                // var_dump($code);
                 continue;
             }
             $withdrawals = $this->safeCall(1, $callback, [$exchange, $code, $pfrom]);
@@ -266,7 +266,7 @@ class KrakenDriver extends CcxtDriver
         do {
             $ledgers = $this->safeCall(2, $callback, [$exchange, $pfrom, $ofs]);
             $count = count($ledgers);
-            var_dump($count);
+            // var_dump($count);
             if ($count > 0) {
                 $all_ledgers = array_merge($all_ledgers, $ledgers);
             }

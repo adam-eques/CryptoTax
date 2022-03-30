@@ -62,7 +62,7 @@ class HitBTCDriver extends CcxtDriver
                 'offset' => $offset,
             ]);
             $count = count($trades);
-            var_dump($count);
+            // var_dump($count);
             $all_trades = array_merge($all_trades, $trades);
             if ($count == $limit && $offset >= 100000) {
                 $offset = 0;

@@ -36,6 +36,5 @@ class CryptoapisSupportedTokensSeeder extends Seeder
             $total = $result['data']['total'];
             $offset += $limit;
         } while ($offset < $total);
-        var_dump($result);
     }
 }

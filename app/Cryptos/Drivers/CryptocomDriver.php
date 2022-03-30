@@ -66,7 +66,7 @@ class CryptocomDriver extends CcxtDriver
         $spot_error_dates = [];
 
         while($pfrom->isPast()){
-            var_dump($pfrom->toDateString());
+            // var_dump($pfrom->toDateString());
             $count = 0;
             $page = 0;
             do {
@@ -92,7 +92,7 @@ class CryptocomDriver extends CcxtDriver
                 $end_t = microtime(true);
                 if ($end_t - $start_t < 1)
                 {
-                    var_dump((1 - $end_t + $start_t) * 1000);
+                    // var_dump((1 - $end_t + $start_t) * 1000);
                     usleep((1 - $end_t + $start_t) * 1000);
                 }
             } while ($count == $page_size);
@@ -145,14 +145,14 @@ class CryptocomDriver extends CcxtDriver
                 ]);
                 $req_counter++;
                 $count = count($deposits);
-                var_dump($count);
+                // var_dump($count);
                 $page++;
                 $all_deposits = array_merge($all_deposits, $deposits);
 
                 if ($req_counter % 3 == 0) {
                     $end_t = microtime(true);
                     if ($end_t - $start_t < 0.1) {
-                        var_dump((1 - $end_t + $start_t) * 1000);
+                        // var_dump((1 - $end_t + $start_t) * 1000);
                         usleep((1 - $end_t + $start_t) * 1000);
                     }
                     $start_t = microtime(true);
@@ -210,7 +210,7 @@ class CryptocomDriver extends CcxtDriver
                 if ($req_counter % 3 == 0) {
                     $end_t = microtime(true);
                     if ($end_t - $start_t < 0.1) {
-                        var_dump((1 - $end_t + $start_t) * 1000);
+                        // var_dump((1 - $end_t + $start_t) * 1000);
                         usleep((1 - $end_t + $start_t) * 1000);
                     }
                     $start_t = microtime(true);

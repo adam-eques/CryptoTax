@@ -27,6 +27,10 @@ class CryptoTransaction extends Model
     // public static float $fiat_reinvested = 0;
     // public static array $holding = [];
 
+    protected float $gain = 0;
+    protected float $fromCostBasis = 0;
+    protected float $toCostBasis = 0;
+
     public function cryptoAccount(): BelongsTo
     {
         return $this->belongsTo(CryptoAccount::class);
@@ -59,7 +63,11 @@ class CryptoTransaction extends Model
         if ($this->trade_type == CryptoTransaction::TRAN_TYPE_RECEIVE) {
             $deposits = $this->cryptoCurrency->convertTo($this->cost, $fiat, $this->executed_at);
         }
-        if ($deposits == null) {
+        echo "\ntime: " . $this->executed_at;
+        echo "\ntype: " . $this->trade_type;
+        echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
+        if ($deposits === null) {
+            echo "unsupported\n";
             CryptoTransaction::unsupported_CC($this->cryptoCurrency->short_name);
             $deposits = 0;
         }
@@ -74,7 +82,7 @@ class CryptoTransaction extends Model
         }
 
         // echo "\n " . $this->cryptoCurrency->short_name . " : " . $this->cost . " = " . $proceeds . " " . $fiat . "\n" . $this->executed_at . "\n";
-        if ($proceeds == null) {
+        if ($proceeds === null) {
             CryptoTransaction::unsupported_CC($this->cryptoCurrency->short_name);
             $proceeds = 0;
         }
@@ -404,5 +412,59 @@ class CryptoTransaction extends Model
         if(!in_array($symbol, CryptoTransaction::$unsupported)) {
             array_push(CryptoTransaction::$unsupported, $cc);
         }
+    }
+
+
+    // FIFO model
+    public static function processFIFO($account_id, $fiat="USD") {
+        $query = CryptoTransaction::query()
+            ->where('crypto_account_id', $account_id)
+            ->orderBy("executed_at", "ASC");
+        $transactions = $query->get();
+        $enabled = [];
+        foreach ($transactions as $key => $transaction) {
+            switch ($transaction->trade_type) {
+                case CryptoTransaction::TRAN_TYPE_RECEIVE:
+                    $transaction->from_cost_basis = 0;
+                    $transaction->gain = 0;
+                    $price = $transaction->cryptoCurrency->cosnvertTo(1, $fiat, $transaction->executed_at);
+                    if ($price === null) {
+                        $price = 0;
+                    }
+                    // testing acentior
+
+                    $currency = $transaction->cryptoCurrency->short_name;
+                    // if (array_key_exists($currency, $enabled)) {
+
+                    // }
+                    // array_push($enabled, [
+                    //     'amount' => $transaction->cost,
+                    //     'price' => $price,
+                    //     'currency' => $transaction->cryptoCurrency->short_name
+                    // ]);
+                    break;
+                case CryptoTransaction::TRAN_TYPE_SEND:
+                    # code...
+                    break;
+                case CryptoTransaction::TRAN_TYPE_SELL:
+                    # code...
+                    break;
+                case CryptoTransaction::TRAN_TYPE_BUY:
+                    # code...
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+            $transaction->fiat = $fiat;
+            $toCostBasis = $transaction->cryptoCurrency->convertTo($transaction->cost, $fiat, $transaction->executed_at);
+            if ($toCostBasis === null) {
+                $toCostBasis = 0;
+            }
+            $transaction->to_cost_basis = $toCostBasis;
+            $transaction->save();
+        }
+        var_dump($enabled);
+        return $query->get();
     }
 }

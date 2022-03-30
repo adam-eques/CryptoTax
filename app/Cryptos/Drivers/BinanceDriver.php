@@ -81,7 +81,7 @@ class BinanceDriver extends CcxtDriver
         $end_t = microtime(true);
         $delay = $this->delay_ip * $weight - ($end_t - $start_t) * 1000;
         echo 'delay: ';
-        var_dump($delay);
+        // var_dump($delay);
         if ($delay > 0) {
             usleep($delay);
         }
@@ -133,7 +133,7 @@ class BinanceDriver extends CcxtDriver
         // https://binance-docs.github.io/apidocs/spot/en/#limits
 
         $pfrom = $from != null ? $from : $this->found_time;
-        var_dump($pfrom->toDateString());
+        // var_dump($pfrom->toDateString());
         // $all_trades_for_all_symbols = [];
         // /*
         $exchange = $this->getApi()->exchange;
@@ -144,7 +144,7 @@ class BinanceDriver extends CcxtDriver
 
         foreach ($total as $currency_code => $value) {
             if ($value > 0) {
-                var_dump($currency_code);
+                // var_dump($currency_code);
                 $matching_markets = array_filter(array_values($exchange->markets), function ($market) use ($currency_code) {
                     return ($market['base'] === $currency_code) || ($market['quote'] === $currency_code);
                 });
@@ -153,7 +153,7 @@ class BinanceDriver extends CcxtDriver
             }
         }
 
-        var_dump($all_matching_symbols);
+        // var_dump($all_matching_symbols);
         $unique_symbols = $exchange->unique ($all_matching_symbols);
 
         $all_trades_for_all_symbols = [];
@@ -168,7 +168,7 @@ class BinanceDriver extends CcxtDriver
             $limit = 1000;
 
             $all_trades = [];
-            var_dump($startTime);
+            // var_dump($startTime);
             $count = 0;
             do {
                 $params = [
