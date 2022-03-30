@@ -95,6 +95,10 @@ class CryptoAccount extends Model
         return $this
             ->cryptoAssets()
             ->withCount("cryptoTransactions")
+            ->where(function($q){
+                $q->where("balance", ">", 0)
+                    ->orHas("cryptoTransactions");
+            })
             ->get()
             ->sortByDesc(function($assest){
                 return $assest->convertTo();
