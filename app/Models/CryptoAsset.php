@@ -35,7 +35,7 @@ class CryptoAsset extends Model
     public function cryptoTransactions(): HasMany
     {
         return $this->hasMany(CryptoTransaction::class, "currency_id", "crypto_currency_id")
-            ->where("crypto_account_id", $this->crypto_account_id);
+            ->where("crypto_account_id", \DB::raw("crypto_assets.crypto_account_id"));
     }
 
 
