@@ -43,6 +43,10 @@ class CryptoCurrency extends Model
 
     public function convertTo(float $value, string $otherCurrency = "USD", string|int|null|Carbon $dateOrTimestamp = null): float|null
     {
+        if(!$value) {
+            return 0;
+        }
+
         $otherCurrency = "currency_" . strtolower($otherCurrency);
         $query = CryptoCurrencyConversion::query()
             ->where("crypto_currency_id", $this->id);
