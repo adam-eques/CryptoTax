@@ -20,7 +20,7 @@
         </div>
         <div class="col-span-2 text-right">
             <p class="font-semibold">{{$unit}}{{ moneyFormat($asset->convertTo(auth()->user()->taxCurrency->symbol), 2) }}</p>
-            <p class="text-gray-400">{{ moneyFormat($asset->balance, 10) }} {{$asset->cryptoCurrency->short_name}}</p>
+            <p class="text-gray-400">{{ $asset->balance != 0 ? moneyFormat($asset->balance, 10): 0 }} {{$asset->cryptoCurrency->short_name}}</p>
         </div>
         <div class="flex justify-end col-span-2">
             <x-button tag="a" href="{{route('customer.transactions', ['wallet' => $asset->cryptoAccount->crypto_source_id, 'search' => $asset->cryptoCurrency->short_name])}}" variant="white" class="justify-center text-center border-primary">{{ __('View Transaction') }}</x-button>
