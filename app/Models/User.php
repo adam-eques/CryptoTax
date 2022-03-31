@@ -433,6 +433,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $total_balance = '0';
         $decnum = CryptoTransaction::DECIMAL_NUMBER;
         $date = Carbon::now();
+        $date = Carbon::create(2022, 3, 18);
         bcscale($decnum);
         $accounts = $this->cryptoAccounts()->get();
         foreach ($accounts as $account) {
