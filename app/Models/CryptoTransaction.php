@@ -551,6 +551,10 @@ class CryptoTransaction extends Model
                 'fiat' => $transaction->fiat,
             ]);
         }
+
+        // var_dump($account_id);
+        // $cryptoAccount = CryptoAccount::find($account_id)->get();
+        // var_dump($cryptoAccount->id);
         return $enabled;
     }
 }

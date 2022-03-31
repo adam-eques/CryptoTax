@@ -170,6 +170,6 @@ class CryptoAccount extends Model
     }
 
     public function processFIFO($fiat="USD") {
-        CryptoTransaction::processFIFO($this->account_id, $fiat);
+        CryptoTransaction::processFIFO($this->id, $fiat);
     }
 }

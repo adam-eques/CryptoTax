@@ -425,7 +425,7 @@ class User extends Authenticatable implements MustVerifyEmail
             // $ret['last7'] = $last7;
             array_push($ret, $tmp);
         }
-        var_dump($total_balance);
+        // var_dump($total_balance);
         return $ret;
     }
 
