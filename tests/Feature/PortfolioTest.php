@@ -67,7 +67,7 @@ class PortfolioTest extends TestCase
         $userId = 664;
         $user = User::find($userId);
         $result = $user->getPortfolioLineChart(CryptoTransaction::LINE_CHART_YEAR, "EUR");
-        // var_dump($result);
+        var_dump($result);
 
         // $fiat = 'EUR';
         // $result = CryptoTransaction::getTotal(Carbon::createFromDate(2020, 4, 8), $fiat);
@@ -81,7 +81,7 @@ class PortfolioTest extends TestCase
         $userId = 664;
         $user = User::find($userId);
         $result = $user->myCryptoPortfolio("USD");
-        var_dump($result);
+        // var_dump($result);
         $result = $user->getTotalBalance("USD");
         // var_dump($result);
 

@@ -260,21 +260,22 @@ class CryptoTransaction extends Model
         $step_transactions = [];
         switch($type) {
             case CryptoTransaction::LINE_CHART_YEAR:
-                $endDate = Carbon::now()->addMonths(-12);
+                $endDate = Carbon::now()->addMonths(-12)->addDays(-1);
                 break;
             case CryptoTransaction::LINE_CHART_MONTH:
-                $endDate = Carbon::now()->addMonths(-1);
+                $endDate = Carbon::now()->addDays(-31);
                 break;
             case CryptoTransaction::LINE_CHART_WEEK:
-                $endDate = Carbon::now()->addWeek(-1);
+                $endDate = Carbon::now()->addDays(-7);
                 break;
             case CryptoTransaction::LINE_CHART_DAY:
-                $endDate = Carbon::now()->addDay(-1);
+                $endDate = Carbon::now()->addHours(-24);
                 break;
             default:
                 break;
         }
         do {
+            $endDate->addDays(1);
             $query = CryptoTransaction::query();
             foreach ($accountIds as $accountId) {
                 $query->orWhere('crypto_account_id', $accountId);
@@ -301,6 +302,7 @@ class CryptoTransaction extends Model
                 default:
                     break;
             }
+            $endDate->addDays(-1);
         } while ($endDate->isPast());
         // https://support.cointracker.io/hc/en-us/articles/4413049704593-Cryptocurrency-Performance-and-Return#:~:text=Definitions,made%20on%20your%20cryptocurrency%20investing.
         // some important values
@@ -407,8 +409,8 @@ class CryptoTransaction extends Model
             //     'total_return' => $total_return,
             //     // 'mwr' => $mwr
             // ];
-            // $ret[$timestamp] = $market_value + $net_proceeds;
-            $ret[$timestamp] = $market_value;
+            $ret[$timestamp] = $market_value + $net_proceeds;
+            // $ret[$timestamp] = $market_value;
         }
         return $ret;
         // return $ret;
