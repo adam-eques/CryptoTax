@@ -56,13 +56,13 @@ class CustomerForm extends ResourceForm
                 Forms\Components\Placeholder::make("account_type_id")->label(__("Account type"))
                     ->content(fn (User $record): string => $record->userAccountType->getName()),
                 ButtonField::make(__("Affiliate Url"))
-                    ->href(fn (User $record): string => $record->getAffiliateUrl())
+                    ->href(fn (User $record): ?string => $record->getAffiliateUrl())
                     ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail())
                     ->targetBlank(),
                 ButtonField::make(__("Recruited by"))
                     ->href(fn (User $record): string => CustomerResource::make()->getRoute("show", $record->userAffiliate->recruitedBy))
-                    ->content(fn (User $record): string => $record->userAffiliate->recruitedBy->email)
-                    ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail() || !$record->userAffiliate->recruitedBy),
+                    ->content(fn (User $record): string => optional($record->userAffiliate)->recruitedBy->email)
+                    ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail() || !optional($record->userAffiliate)->recruitedBy),
             ])
             ->toArray();
     }

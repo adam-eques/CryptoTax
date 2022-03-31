@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Cryptos\Drivers\ApiDriverInterface;
 use App\Jobs\CryptoAccountFetchJob;
 use App\Models\Traits\BelongsToUserTrait;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -29,6 +30,10 @@ class CryptoAccount extends Model
         'fetched_at' => 'datetime',
         'fetching_scheduled_at' => 'datetime',
     ];
+    /**
+     * @var null|float
+     */
+    protected $cachedSum = null;
 
 
     public static function boot()
@@ -68,15 +73,36 @@ class CryptoAccount extends Model
 
     public function getBalanceSum(string $currency = "USD"): float
     {
-        $sum = 0;
+        if($this->cachedSum === null) {
+            $sum = 0;
+            $assets = $this->cryptoAssets()
+                ->with("cryptoCurrency")
+                ->where("balance", ">", 0)
+                ->get(["balance", "crypto_currency_id"]);
 
-        $this->cryptoAssets->each(function (CryptoAsset $asset) use (&$sum, $currency) {
-            if ($asset->balance) {
+            $assets->each(function (CryptoAsset $asset) use (&$sum, $currency) {
                 $sum += $asset->convertTo($currency);
-            }
-        });
+            });
+            $this->cachedSum = $sum;
+        }
 
-        return $sum;
+        return $this->cachedSum;
+    }
+
+
+    public function getSortedCryptoAssetRows(): Collection
+    {
+        return $this
+            ->cryptoAssets()
+            ->withCount("cryptoTransactions")
+            ->where(function($q){
+                $q->where("balance", ">", 0)
+                    ->orHas("cryptoTransactions");
+            })
+            ->get()
+            ->sortByDesc(function($assest){
+                return $assest->convertTo();
+            });
     }
 
 

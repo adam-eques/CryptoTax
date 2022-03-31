@@ -65,7 +65,7 @@ class CryptoAccountPolicy
      */
     public function delete(User $user, CryptoAccount $cryptoAccount)
     {
-
+        return $user->isAdminAccount();
     }
 
     /**

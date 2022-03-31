@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\CryptoExchange;
+use App\Models\CryptoSource;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class CryptoSourcePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchange  $cryptoExchange
+     * @param  \App\Models\CryptoSource  $cryptoSource
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, CryptoExchange $cryptoExchange)
+    public function view(User $user, CryptoSource $cryptoSource)
     {
         return $user->isAdminPanelAccount();
     }
@@ -48,10 +48,10 @@ class CryptoSourcePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchange  $cryptoExchange
+     * @param  \App\Models\CryptoSource  $cryptoSource
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, CryptoExchange $cryptoExchange)
+    public function update(User $user, CryptoSource $cryptoSource)
     {
         return $user->isAdminPanelAccount();
     }
@@ -60,10 +60,10 @@ class CryptoSourcePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchange  $cryptoExchange
+     * @param  \App\Models\CryptoSource  $cryptoSource
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, CryptoExchange $cryptoExchange)
+    public function delete(User $user, CryptoSource $cryptoSource)
     {
         return false;
     }
@@ -72,10 +72,10 @@ class CryptoSourcePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchange  $cryptoExchange
+     * @param  \App\Models\CryptoSource  $cryptoSource
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, CryptoExchange $cryptoExchange)
+    public function restore(User $user, CryptoSource $cryptoSource)
     {
         //
     }
@@ -84,10 +84,10 @@ class CryptoSourcePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CryptoExchange  $cryptoExchange
+     * @param  \App\Models\CryptoSource  $cryptoSource
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, CryptoExchange $cryptoExchange)
+    public function forceDelete(User $user, CryptoSource $cryptoSource)
     {
         //
     }
