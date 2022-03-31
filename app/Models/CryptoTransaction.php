@@ -228,6 +228,7 @@ class CryptoTransaction extends Model
         $total_mwr = bcmul(bcdiv(number_format($total_return, $decimal_number, '.', ''), $net_deposits), "100");
         $day_mwr = bcmul(bcdiv(number_format($day_return, $decimal_number, '.', ''), $net_deposits), "100");
 
+        $total_income = 0;
         return [
             'holding' => $holding,
             'total_deposits' => $total_deposits,
@@ -240,6 +241,7 @@ class CryptoTransaction extends Model
             'total_mwr' => $total_mwr,
             'day_return' => $day_return,
             'day_mwr' => $day_mwr,
+            'total_income' => $total_income,
         ];
     }
 
