@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\CryptoTransaction;
+use App\Models\User;
 use Carbon\Carbon;
 
 use function Ramsey\Uuid\v1;
@@ -42,15 +43,39 @@ class PortfolioTest extends TestCase
     //     var_dump($result);
     // }
 
-    public function test_getCurrentTotal() {
-        $fiat = 'EUR';
-        $result = CryptoTransaction::getTotal(Carbon::createFromDate(2020, 4, 8), $fiat);
-        $this->assertIsArray($result, 'getTotalDeposits Failed');
-        // echo "\ntotal transactions" . count($result);
-        var_dump($result);
-        var_dump(CryptoTransaction::$unsupported);
+    public function test_FIFO_model() {
+        $userId = 664;
+        $user = User::find($userId);
+        $result = $user->processFIFO("EUR");
     }
 
+    public function test_getCurrentTotal() {
+        $userId = 664;
+        $user = User::find($userId);
+        $result = $user->getPortfolioData();
+        var_dump($result);
+
+        // $fiat = 'EUR';
+        // $result = CryptoTransaction::getTotal(Carbon::createFromDate(2020, 4, 8), $fiat);
+        // $this->assertIsArray($result, 'getTotalDeposits Failed');
+        // // echo "\ntotal transactions" . count($result);
+        // var_dump($result);
+        // var_dump(CryptoTransaction::$unsupported);
+    }
+
+    public function test_getLineChartData() {
+        $userId = 664;
+        $user = User::find($userId);
+        $result = $user->getPortfolioLineChart(CryptoTransaction::LINE_CHART_YEAR, "EUR");
+        var_dump($result);
+
+        // $fiat = 'EUR';
+        // $result = CryptoTransaction::getTotal(Carbon::createFromDate(2020, 4, 8), $fiat);
+        // $this->assertIsArray($result, 'getTotalDeposits Failed');
+        // // echo "\ntotal transactions" . count($result);
+        // var_dump($result);
+        // var_dump(CryptoTransaction::$unsupported);
+    }
     // public function test_getLineChartData() {
     //     $fiat = 'USD';
     //     $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_YEAR);

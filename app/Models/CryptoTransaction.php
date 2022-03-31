@@ -14,6 +14,9 @@ use Carbon\Carbon;
  */
 class CryptoTransaction extends Model
 {
+    // Decimal number
+    const DECIMAL_NUMBER = 12;
+
     // transaction types
     const TRAN_TYPE_SEND =       'G';    // send (trade and blockchain transaction)
     const TRAN_TYPE_RECEIVE =    'R';    // receive ((trade and blockchain transaction))
@@ -65,7 +68,7 @@ class CryptoTransaction extends Model
         }
         // echo "\ntime: " . $this->executed_at;
         // echo "\ntype: " . $this->trade_type;
-        // echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
+        echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
         if ($deposits === null) {
             // echo "unsupported\n";
             CryptoTransaction::unsupported_CC($this->cryptoCurrency->short_name);
@@ -90,21 +93,7 @@ class CryptoTransaction extends Model
         return $proceeds;
     }
 
-    public static function getTotal(int|Carbon $since, string $fiat="USD") : array {
-        $decimal_number = 12;
-        bcscale($decimal_number);
-        // https://support.cointracker.io/hc/en-us/articles/4413049704593-Cryptocurrency-Performance-and-Return#:~:text=Definitions,made%20on%20your%20cryptocurrency%20investing.
-        $endDate = null;
-        if ($since instanceof Carbon) {
-            $endDate = $since;
-        } else if(is_int($since)) {
-            $endDate = Carbon::createFromTimestampMsUTC($since);
-        }
-        $query = CryptoTransaction::query()
-            ->where('executed_at', '<', $endDate)
-            ->orderBy("executed_at", "ASC");
-        $transactions = $query->get();
-
+    public static function getTotal(array $accountIds, int|Carbon $since, string $fiat="USD") : array {
         // some important values
         $holding = [];  /**Holding assets */
         $total_deposits = 0;
@@ -114,6 +103,39 @@ class CryptoTransaction extends Model
         $total_return = 0;
         $net_proceeds = 0;
         $net_deposits = 0;
+        $mwr = 0;
+
+        if (count($accountIds) === 0) {
+            return [
+                'holding' => $holding,
+                'total_deposits' => $total_deposits,
+                'total_proceeds' => $total_proceeds,
+                'reinvested_fiat' => $fiat_reinvested,
+                'market_value' => $market_value,
+                'net_deposits' => $net_deposits,
+                'net_proceeds' => $net_proceeds,
+                'total_return' => $total_return,
+                'mwr' => $mwr
+            ];
+        }
+
+        $decimal_number = CryptoTransaction::DECIMAL_NUMBER;
+        bcscale($decimal_number);
+        // https://support.cointracker.io/hc/en-us/articles/4413049704593-Cryptocurrency-Performance-and-Return#:~:text=Definitions,made%20on%20your%20cryptocurrency%20investing.
+        $endDate = null;
+        if ($since instanceof Carbon) {
+            $endDate = $since;
+        } else if(is_int($since)) {
+            $endDate = Carbon::createFromTimestampMsUTC($since);
+        }
+        $query = CryptoTransaction::query();
+        foreach ($accountIds as $accountId) {
+            $query->orWhere('crypto_account_id', $accountId);
+        }
+        $query->where('executed_at', '<', $endDate)
+            ->orderBy("executed_at", "ASC");
+        $transactions = $query->get();
+
         foreach($transactions as $transaction) {
             switch ($transaction->trade_type) {
                 case CryptoTransaction::TRAN_TYPE_SEND :
@@ -188,15 +210,24 @@ class CryptoTransaction extends Model
             // echo "\n" . $symbol . " : " . $fiat_value . "\n";
             $market_value = bcadd($market_value, number_format($fiat_value, $decimal_number, ".", ''));
         }
-        // echo "\n" . "market value : " . $market_value . "\n";
-        // CryptoTransaction::$holding = $holding;
-        // CryptoTransaction::$total_deposits = $total_deposits;
-        // CryptoTransaction::$total_proceeds = $total_proceeds;
-        // CryptoTransaction::$fiat_reinvested = $fiat_reinvested;
+
         $net_deposits = bcsub($total_deposits, $fiat_reinvested);
         $net_proceeds = bcsub($total_proceeds, $fiat_reinvested);
-        $total_return = bcadd($market_value, $net_proceeds);
-        $mwr = bcmul(bcsub(bcdiv($total_return, $net_deposits), "1"), "100");
+        $total_return = $query->sum('gain');
+
+        $startDate = null;
+        if ($since instanceof Carbon) {
+            $startDate = Carbon::createFromTimestampMsUTC($since->getTimestampMs())->addDays(-1);
+        } else if(is_int($since)) {
+            $startDate = Carbon::createFromTimestampMsUTC($since - 24 * 3600000);
+        }
+        $query->where('executed_at', '>', $startDate);
+
+        $day_return = $query->sum('gain');
+
+        $total_mwr = bcmul(bcdiv(number_format($total_return, $decimal_number, '.', ''), $net_deposits), "100");
+        $day_mwr = bcmul(bcdiv(number_format($day_return, $decimal_number, '.', ''), $net_deposits), "100");
+
         return [
             'holding' => $holding,
             'total_deposits' => $total_deposits,
@@ -206,93 +237,69 @@ class CryptoTransaction extends Model
             'net_deposits' => $net_deposits,
             'net_proceeds' => $net_proceeds,
             'total_return' => $total_return,
-            'mwr' => $mwr
+            'total_mwr' => $total_mwr,
+            'day_return' => $day_return,
+            'day_mwr' => $day_mwr,
         ];
     }
 
-    public static function getCurrentTotal($fiat='USD') : array {
-        $start_t = microtime(true);
-        $current_total = CryptoTransaction::getTotal(Carbon::now(), $fiat);
-        $end_t = microtime(true);
-        $yesterday_total = CryptoTransaction::getTotal(Carbon::now()->yesterday(), $fiat);
-        return [
-            "total_return" => $current_total["total_return"],
-            "mwr" => $current_total["mwr"],
-            "past_day" => $yesterday_total["total_return"],
-            "past_mwr" => $yesterday_total["mwr"],
-            "net_deposits" => $current_total["net_deposits"],
-            "net_proceeds" => $current_total["net_proceeds"],
-        ];
-        // return $current_total;
-    }
+    // public static function getCurrentTotal($accountIds, $fiat='USD') : array {
+    //     return CryptoTransaction::getTotal($accountIds, Carbon::now(), $fiat);
+    // }
 
     const LINE_CHART_YEAR =     'LINE_CHART_YEAR';
     const LINE_CHART_MONTH =    'LINE_CHART_MONTH';
     const LINE_CHART_WEEK =     'LINE_CHART_WEEK';
     const LINE_CHART_DAY =      'LINE_CHART_DAY';
-    public static function getLineChartData($type = CryptoTransaction::LINE_CHART_YEAR, $fiat='USD') {
+    public static function getLineChartData(array $accountIds, $type = CryptoTransaction::LINE_CHART_YEAR, $fiat='USD') {
         $ret = [];
         $startDate = Carbon::create(2000, 1, 1);
+        $endDate = null;
         $step_transactions = [];
         switch($type) {
             case CryptoTransaction::LINE_CHART_YEAR:
                 $endDate = Carbon::now()->addMonths(-12);
-                do {
-                    $query = CryptoTransaction::query()
-                        ->where('executed_at', '<', $endDate)
-                        ->where('executed_at', '>=', $startDate)
-                        ->orderBy("executed_at", "ASC");
-                    $transactions = $query->get();
-                    $step_transactions[$endDate->getTimestampMs()] = $transactions;
-                    $startDate = new Carbon($endDate);
-                    $endDate->addMonth();
-                } while ($endDate->isPast());
                 break;
             case CryptoTransaction::LINE_CHART_MONTH:
                 $endDate = Carbon::now()->addMonths(-1);
-                do {
-                    $query = CryptoTransaction::query()
-                        ->where('executed_at', '<', $endDate)
-                        ->where('executed_at', '>=', $startDate)
-                        ->orderBy("executed_at", "ASC");
-                    $transactions = $query->get();
-                    $step_transactions[$endDate->getTimestampMs()] = $transactions;
-                    // array_push($step_transactions, $transactions);
-                    $startDate = new Carbon($endDate);
-                    $endDate->addDay();
-                } while ($endDate->isPast());
                 break;
             case CryptoTransaction::LINE_CHART_WEEK:
                 $endDate = Carbon::now()->addWeek(-1);
-                do {
-                    $query = CryptoTransaction::query()
-                        ->where('executed_at', '<', $endDate)
-                        ->where('executed_at', '>=', $startDate)
-                        ->orderBy("executed_at", "ASC");
-                    $transactions = $query->get();
-                    $step_transactions[$endDate->getTimestampMs()] = $transactions;
-                    // array_push($step_transactions, $transactions);
-                    $startDate = new Carbon($endDate);
-                    $endDate->addDay();
-                } while ($endDate->isPast());
                 break;
             case CryptoTransaction::LINE_CHART_DAY:
                 $endDate = Carbon::now()->addDay(-1);
-                do {
-                    $query = CryptoTransaction::query()
-                        ->where('executed_at', '<', $endDate)
-                        ->where('executed_at', '>=', $startDate)
-                        ->orderBy("executed_at", "ASC");
-                    $transactions = $query->get();
-                    $step_transactions[$endDate->getTimestampMs()] = $transactions;
-                    // array_push($step_transactions, $transactions);
-                    $startDate = new Carbon($endDate);
-                    $endDate->addHour();
-                } while ($endDate->isPast());
                 break;
             default:
                 break;
         }
+        do {
+            $query = CryptoTransaction::query();
+            foreach ($accountIds as $accountId) {
+                $query->orWhere('crypto_account_id', $accountId);
+            }
+            $query->where('executed_at', '<', $endDate)
+                ->where('executed_at', '>=', $startDate)
+                ->orderBy("executed_at", "ASC");
+            $transactions = $query->get();
+            $step_transactions[$endDate->getTimestampMs()] = $transactions;
+            $startDate = new Carbon($endDate);
+            switch($type) {
+                case CryptoTransaction::LINE_CHART_YEAR:
+                    $endDate->addMonths(1);
+                    break;
+                case CryptoTransaction::LINE_CHART_MONTH:
+                    $endDate->addDays(1);
+                    break;
+                case CryptoTransaction::LINE_CHART_WEEK:
+                    $endDate->addDays(1);
+                    break;
+                case CryptoTransaction::LINE_CHART_DAY:
+                    $endDate->addHours(1);
+                    break;
+                default:
+                    break;
+            }
+        } while ($endDate->isPast());
         // https://support.cointracker.io/hc/en-us/articles/4413049704593-Cryptocurrency-Performance-and-Return#:~:text=Definitions,made%20on%20your%20cryptocurrency%20investing.
         // some important values
         $decimal_number = 12;
@@ -376,7 +383,7 @@ class CryptoTransaction extends Model
             $market_value = 0;
             foreach ($holding as $symbol => $value) {
                 $currency = CryptoCurrency::findByShortName($symbol);
-                $fiat_value = $currency->convertTo(floatval($value), $fiat, $endDate);
+                $fiat_value = $currency->convertTo(floatval($value), $fiat, Carbon::createFromTimestampMsUTC($timestamp));
                 $market_value = bcadd($market_value, number_format($fiat_value, $decimal_number, ".", ''));
             }
             // CryptoTransaction::$holding = $holding;
@@ -385,8 +392,8 @@ class CryptoTransaction extends Model
             // CryptoTransaction::$fiat_reinvested = $fiat_reinvested;
             $net_deposits = bcsub($total_deposits, $fiat_reinvested);
             $net_proceeds = bcsub($total_proceeds, $fiat_reinvested);
-            $total_return = bcadd($market_value, $net_proceeds);
-            $mwr = bcmul(bcsub(bcdiv($total_return, $net_deposits), "1"), "100");
+            // $total_return = bcadd($market_value, $net_proceeds);
+            // $mwr = bcmul(bcsub(bcdiv($total_return, $net_deposits), "1"), "100");
             // $ret[$timestamp] = [
             //     // 'holding' => $holding,
             //     'total_deposits' => $total_deposits,
@@ -398,7 +405,8 @@ class CryptoTransaction extends Model
             //     'total_return' => $total_return,
             //     // 'mwr' => $mwr
             // ];
-            $ret[$timestamp] = $market_value + $net_proceeds;
+            // $ret[$timestamp] = $market_value + $net_proceeds;
+            $ret[$timestamp] = $market_value;
         }
         return $ret;
         // return $ret;
@@ -415,12 +423,75 @@ class CryptoTransaction extends Model
 
     // FIFO model
     public static function processFIFO($account_id, $fiat="USD") {
+        bcscale(CryptoTransaction::DECIMAL_NUMBER);
+
         $query = CryptoTransaction::query()
             ->where('crypto_account_id', $account_id)
             ->orderBy("executed_at", "ASC");
         $transactions = $query->get();
         $enabled = [];
+
+        function addToEnabled($symbol, $amount, $cost, $executed_at, $fiat, &$enabled, $decimal_number=CryptoTransaction::DECIMAL_NUMBER) {
+            if (array_key_exists($symbol, $enabled)) {
+                array_push($enabled[$symbol] ,[
+                    'amount' => number_format($amount, $decimal_number, ".", ''),
+                    'cost' => number_format($cost, $decimal_number, ".", ''),
+                    'executed_at' => $executed_at,
+                    'fiat' => $fiat,
+                ]);
+            } else {
+                $enabled[$symbol] = [
+                    [
+                        'amount' => number_format($amount, $decimal_number, ".", ''),
+                        'cost' => number_format($cost, $decimal_number, ".", ''),
+                        'executed_at' => $executed_at,
+                        'fiat' => $fiat,
+                    ]
+                ];
+            }
+        }
+
+        function removeFromEnabled($symbol, $amount, &$enabled, $decimal_number=CryptoTransaction::DECIMAL_NUMBER) {
+            // $amount_str = number_format($amount, $decimal_number, ".", '');
+            $total_cost = '0';
+            $rest_amount = number_format($amount, $decimal_number, ".", '');
+            $assets = &$enabled[$symbol];
+            foreach ($assets as $key => $asset) {
+                if (bccomp($rest_amount, $asset['amount']) === 1) {
+                    $rest_amount = bcsub($rest_amount, $asset['amount']);
+                    $total_cost = bcadd($total_cost, $asset['cost']);
+                    unset($assets[$key]);
+                    // array_splice($assets, $key, 1);
+                } else {
+                    // $rest_cost = bcmul($asset['price'], $rest_amount);
+
+                    $fiat_value = CryptoCurrency::findByShortName($symbol)->convertTo($rest_amount, $asset['fiat'], $asset['executed_at']);
+                    $rest_cost = number_format($fiat_value, $decimal_number, ".", '');
+                    $assets[$key]['amount'] = bcsub($asset['amount'], $rest_amount);
+                    $assets[$key]['cost'] = bcsub($asset['cost'], $rest_cost);
+                    // $assets[$key]['cost'] = bcmul($asset['cost'], $rest_cost);
+                    $total_cost = bcadd($total_cost, $rest_cost);
+                    $rest_amount = '0';
+                    break;
+                }
+            }
+            $assets = array_values($assets);
+            return $total_cost;
+        }
+
+        $total_gain = 0;
         foreach ($transactions as $key => $transaction) {
+            // toCostbasis
+            $transaction->fiat = $fiat;
+            $toCostBasis = $transaction->costCurrency->convertTo($transaction->cost, $fiat, $transaction->executed_at);
+            if ($toCostBasis === null) {
+                $toCostBasis = 0;
+            }
+            $fee = $transaction->feeCurrency->convertTo($transaction->fee, $fiat, $transaction->executed_at);
+            $transaction->to_cost_basis = bcsub(
+                number_format($toCostBasis, CryptoTransaction::DECIMAL_NUMBER, ".", ''),
+                number_format($fee, CryptoTransaction::DECIMAL_NUMBER, ".", '')
+            );
             switch ($transaction->trade_type) {
                 case CryptoTransaction::TRAN_TYPE_RECEIVE:
                     $transaction->from_cost_basis = 0;
@@ -430,43 +501,56 @@ class CryptoTransaction extends Model
                         $price = 0;
                     }
 
-                    $currency = $transaction->cryptoCurrency->short_name;
-                    if (array_key_exists($currency, $enabled)) {
-                        array_push($enabled[$currency] ,[
-                            'amount' => $transaction->cost,
-                            'price' => $price,
-                        ]);
-                    } else {
-                        $enabled[$currency] = [
-                            [
-                                'amount' => $transaction->cost,
-                                'price' => $price,
-                            ]
-                        ];
+                    if ($price > 0) {
+                        $currency = $transaction->cryptoCurrency->short_name;
+                        addToEnabled($currency, $transaction->cost, $toCostBasis, $transaction->executed_at, $fiat, $enabled);
                     }
+
                     break;
                 case CryptoTransaction::TRAN_TYPE_SEND:
-                    # code...
+                    $symbol = $transaction->cryptoCurrency->short_name;
+                    $amount = $transaction->amount;
+                    $transaction->from_cost_basis = removeFromEnabled($symbol, $amount, $enabled);
                     break;
                 case CryptoTransaction::TRAN_TYPE_SELL:
-                    # code...
+                    $fromSymbol = $transaction->cryptoCurrency->short_name;
+                    $fromAmount = $transaction->amount;
+                    $toSymbol = $transaction->priceCurrency->short_name;
+                    $toAmount = $transaction->cost;
+                    $transaction->from_cost_basis = removeFromEnabled($fromSymbol, $fromAmount, $enabled);
+                    $toCost = $transaction->priceCurrency->convertTo($toAmount, $fiat, $transaction->executed_at);
+                    addToEnabled($toSymbol, $toAmount, $toCost, $transaction->executed_at, $fiat, $enabled);
                     break;
                 case CryptoTransaction::TRAN_TYPE_BUY:
-                    # code...
+                    $fromSymbol = $transaction->priceCurrency->short_name;
+                    $fromAmount = $transaction->cost;
+                    $toSymbol = $transaction->cryptoCurrency->short_name;
+                    $toAmount = $transaction->amount;
+                    $transaction->from_cost_basis = removeFromEnabled($fromSymbol, $fromAmount, $enabled);
+                    $toCost = $transaction->cryptoCurrency->convertTo($toAmount, $fiat, $transaction->executed_at);
+                    addToEnabled($toSymbol, $toAmount, $toCost, $transaction->executed_at, $fiat, $enabled);
                     break;
                 default:
                     # code...
                     break;
             }
-            $transaction->fiat = $fiat;
-            $toCostBasis = $transaction->cryptoCurrency->convertTo($transaction->cost, $fiat, $transaction->executed_at);
-            if ($toCostBasis === null) {
-                $toCostBasis = 0;
+            removeFromEnabled(
+                $transaction->feeCurrency->short_name,
+                $transaction->fee,
+                $enabled
+            );
+            // $transaction->gain = 0;
+            if ($transaction->trade_type != CryptoTransaction::TRAN_TYPE_RECEIVE) {
+                $transaction->gain = bcsub($transaction->to_cost_basis, $transaction->from_cost_basis);
+                $total_gain = bcadd($total_gain, number_format($transaction->gain, CryptoTransaction::DECIMAL_NUMBER, '.', ''));
             }
-            $transaction->to_cost_basis = $toCostBasis;
-            $transaction->save();
+            $transaction->update([
+                'to_cost_basis' => $transaction->to_cost_basis,
+                'from_cost_basis' => $transaction->from_cost_basis,
+                'gain' => $transaction->gain,
+                'fiat' => $transaction->fiat,
+            ]);
         }
-        // var_dump($enabled);
         return $query->get();
     }
 }

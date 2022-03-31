@@ -19,6 +19,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spark\Billable;
+use Carbon\Carbon;
 use Str;
 
 /**
@@ -333,5 +334,30 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
 
         return $log;
+    }
+
+    public function getPortfolioData($fiat="USD") {
+        $accounts = $this->cryptoAccounts()->get(["id"]);
+        $accountIds = [];
+        foreach ($accounts as $account) {
+            array_push($accountIds, $account->id);
+        }
+        return CryptoTransaction::getTotal($accountIds, Carbon::now(), $fiat);
+    }
+
+    public function getPortfolioLineChart($type=CryptoTransaction::LINE_CHART_YEAR, $fiat="EUR") {
+        $accounts = $this->cryptoAccounts()->get(["id"]);
+        $accountIds = [];
+        foreach ($accounts as $account) {
+            array_push($accountIds, $account->id);
+        }
+        return CryptoTransaction::getLineChartData($accountIds, $type, $fiat);
+    }
+
+    public function processFIFO($fiat="USD") {
+        $accounts = $this->cryptoAccounts()->get(["id"]);
+        foreach ($accounts as $account) {
+            $account->processFIFO($fiat);
+        }
     }
 }
