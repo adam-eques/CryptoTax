@@ -15,8 +15,9 @@ class TaxModelTest extends TestCase
      * @return void
      */
     public function test_fifo() {
-        $accountId = 660;
-        $transactions = CryptoTransaction::processFIFO($accountId);
+        $accountId = 669;
+        $fiat = 'EUR';
+        $transactions = CryptoTransaction::processFIFO($accountId, $fiat);
         var_dump(count($transactions));
         // var_dump($transactions[0]);
         $this->assertNotEquals(count($transactions), 0, 'Failed to get transaction by account id');

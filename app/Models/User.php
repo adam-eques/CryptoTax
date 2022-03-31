@@ -19,6 +19,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spark\Billable;
+use Carbon\Carbon;
 use Str;
 
 /**
@@ -333,5 +334,122 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
 
         return $log;
+    }
+
+    public function getPortfolioData($fiat="USD") {
+        $accounts = $this->cryptoAccounts()->get(["id"]);
+        $accountIds = [];
+        foreach ($accounts as $account) {
+            array_push($accountIds, $account->id);
+        }
+        return CryptoTransaction::getTotal($accountIds, Carbon::now(), $fiat);
+    }
+
+    public function getPortfolioLineChart($type=CryptoTransaction::LINE_CHART_YEAR, $fiat="EUR") {
+        $accounts = $this->cryptoAccounts()->get(["id"]);
+        $accountIds = [];
+        foreach ($accounts as $account) {
+            array_push($accountIds, $account->id);
+        }
+        return CryptoTransaction::getLineChartData($accountIds, $type, $fiat);
+    }
+
+    public function processFIFO($fiat="USD") {
+        $accounts = $this->cryptoAccounts()->get(["id"]);
+        foreach ($accounts as $account) {
+            $account->processFIFO($fiat);
+        }
+    }
+
+    public function myCryptoPortfolio($fiat="USD") {
+        $decnum = CryptoTransaction::DECIMAL_NUMBER;
+        $date = Carbon::now();
+        // $date = Carbon::create(2022, 3, 18);
+        bcscale($decnum);
+        $holding = [];
+        $accounts = $this->cryptoAccounts()->get();
+        foreach ($accounts as $account) {
+            $assets = $account->cryptoAssets;
+            foreach ($assets as $asset) {
+                $balance = $asset->balance;
+                if ($balance <= 0) {
+                    continue;
+                }
+                $symbol = $asset->cryptoCurrency->short_name;
+                if (array_key_exists($symbol, $holding)) {
+                    $holding[$symbol]['balance'] = bcadd(
+                        $holding[$symbol]['balance'],
+                        number_format($balance, $decnum, '.', '')
+                    );
+                } else {
+                    $holding[$symbol] = [
+                        'balance' => number_format($balance, $decnum, '.', ''),
+                        'cryptoCurrency' => $asset->cryptoCurrency
+                    ];
+                }
+            }
+        }
+        $total_balance = '0';
+        foreach ($holding as $symbol => $data) {
+            $total_balance = bcadd(
+                $total_balance,
+                number_format($data['cryptoCurrency']->convertTo($data['balance'], $fiat, $date), $decnum, '.', '')
+            );
+        }
+
+        // var_dump($holding);
+        $ret = [];
+        foreach ($holding as $symbol => $data) {
+            $tmp['name'] = $data['cryptoCurrency']->name;
+            $tmp['symbol'] = $symbol;
+            $tmp['price'] = $data['cryptoCurrency']->convertTo(1, $fiat, $date);
+            $tmp['last7'] = [];
+            $startDate = Carbon::createFromTimestamp($date->timestamp);
+            $startDate->addDays(-7);
+            while($startDate < $date) {
+                array_push($tmp['last7'], $data['cryptoCurrency']->convertTo(1, $fiat, $startDate));
+                $startDate->addDays(1);
+            }
+            $tmp['holding_cc'] = $data['balance'];
+            $tmp['holding_fiat'] = $data['cryptoCurrency']->convertTo($data['balance'], $fiat, $date);
+            $tmp['percent'] = bcmul(bcdiv(
+                number_format($tmp['holding_fiat'], $decnum, '.', ''),
+                $total_balance
+            ), '100');
+            $yesterday_fiat = number_format($data['cryptoCurrency']->convertTo($data['balance'], $fiat, $date->addDays(-1)), $decnum, '.', ',');
+            $tmp['pnl'] = bcsub($tmp['holding_fiat'], $yesterday_fiat);
+            try {
+                $tmp['pnl_percent'] = bcmul(bcdiv(
+                    number_format($tmp['pnl'], $decnum, '.', ''),
+                    $yesterday_fiat
+                ), '100');
+            } catch (\Throwable $th) {
+                $tmp['pnl_percent'] = '0';
+            }
+            // $ret['last7'] = $last7;
+            array_push($ret, $tmp);
+        }
+        // var_dump($total_balance);
+        return $ret;
+    }
+
+    public function getTotalBalance($fiat) {
+        $total_balance = '0';
+        $decnum = CryptoTransaction::DECIMAL_NUMBER;
+        $date = Carbon::now();
+        // $date = Carbon::create(2022, 3, 18);
+        bcscale($decnum);
+        $accounts = $this->cryptoAccounts()->get();
+        foreach ($accounts as $account) {
+            $assets = $account->cryptoAssets;
+            foreach ($assets as $asset) {
+                $balance = $asset->balance;
+                $total_balance = bcadd(
+                    $total_balance,
+                    number_format($asset->cryptoCurrency->convertTo($balance, $fiat, $date), $decnum, '.', '')
+                );
+            }
+        }
+        return $total_balance;
     }
 }
