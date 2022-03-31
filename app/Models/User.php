@@ -372,6 +372,7 @@ class User extends Authenticatable implements MustVerifyEmail
             $assets = $account->cryptoAssets;
             foreach ($assets as $asset) {
                 $balance = $asset->balance;
+                $cost_basis = $asset->cost_basis;
                 if ($balance <= 0) {
                     continue;
                 }
@@ -384,6 +385,7 @@ class User extends Authenticatable implements MustVerifyEmail
                 } else {
                     $holding[$symbol] = [
                         'balance' => number_format($balance, $decnum, '.', ''),
+                        'cost_basis' => number_format($cost_basis, $decnum, '.', ''),
                         'cryptoCurrency' => $asset->cryptoCurrency
                     ];
                 }
@@ -418,13 +420,16 @@ class User extends Authenticatable implements MustVerifyEmail
             ), '100');
             $yesterday_fiat = number_format($data['cryptoCurrency']->convertTo($data['balance'], $fiat, $date->addDays(-1)), $decnum, '.', ',');
             $tmp['pnl'] = bcsub($tmp['holding_fiat'], $yesterday_fiat);
+            $tmp['unrealized'] = bcsub($tmp['holding_fiat'], $data['cost_basis']);
+            var_dump($tmp['holding_fiat']);
+            var_dump($data['cost_basis']);
             try {
-                $tmp['pnl_percent'] = bcmul(bcdiv(
-                    number_format($tmp['pnl'], $decnum, '.', ''),
-                    $yesterday_fiat
+                $tmp['unrealized_percent'] = bcmul(bcdiv(
+                    number_format($tmp['unrealized'], $decnum, '.', ''),
+                    $data['cost_basis']
                 ), '100');
             } catch (\Throwable $th) {
-                $tmp['pnl_percent'] = '0';
+                $tmp['unrealized_percent'] = '0';
             }
             // $ret['last7'] = $last7;
             array_push($ret, $tmp);

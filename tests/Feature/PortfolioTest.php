@@ -81,7 +81,7 @@ class PortfolioTest extends TestCase
         $userId = 664;
         $user = User::find($userId);
         $result = $user->myCryptoPortfolio("USD");
-        // var_dump($result);
+        var_dump($result);
         $result = $user->getTotalBalance("USD");
         // var_dump($result);
 

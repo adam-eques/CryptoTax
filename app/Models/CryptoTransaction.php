@@ -558,10 +558,20 @@ class CryptoTransaction extends Model
         foreach ($assets as $asset) {
             $symbol = $asset->cryptoCurrency->short_name;
             if (array_key_exists($symbol, $enabled)) {
-                var_dump($symbol);
+                $cost_basis = '0';
+                foreach ($enabled[$symbol] as $cost) {
+                    var_dump($cost['cost']);
+                    var_dump($cost['amount']);
+                    $cost_basis = bcadd(
+                        $cost_basis,
+                        $asset->cryptoCurrency->convertTo($cost['amount'], $fiat, floatval($cost['executed_at']) * 0.001)
+                    );
+                }
+                $asset->update([
+                    'cost_basis' => $cost_basis
+                ]);
             }
             // var_dump($asset->cryptoCurrency->short_name);
-            
         }
         // var_dump($cryptoAccount->cryptoAssets);
         return $enabled;
