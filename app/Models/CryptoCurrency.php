@@ -69,7 +69,16 @@ class CryptoCurrency extends Model
             $query->orderBy("price_date", "DESC");
         }
 
-        return $query->first($otherCurrency)?->$otherCurrency * $value;
+        $fiat_value = $query->first($otherCurrency)?->$otherCurrency * $value;
+
+        if ($fiat_value <= 0) {
+            $query1 = CryptoCurrencyConversion::query()
+                ->where("crypto_currency_id", $this->id)
+                ->orderBy("price_date", "DESC");
+            $fiat_value = $query1->first($otherCurrency)?->$otherCurrency * $value;
+        }
+
+        return $fiat_value;
     }
 
 
