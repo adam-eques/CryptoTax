@@ -553,8 +553,17 @@ class CryptoTransaction extends Model
         }
 
         // var_dump($account_id);
-        // $cryptoAccount = CryptoAccount::find($account_id)->get();
-        // var_dump($cryptoAccount->id);
+        $cryptoAccount = CryptoAccount::find($account_id);
+        $assets = $cryptoAccount->cryptoAssets;
+        foreach ($assets as $asset) {
+            $symbol = $asset->cryptoCurrency->short_name;
+            if (array_key_exists($symbol, $enabled)) {
+                var_dump($symbol);
+            }
+            // var_dump($asset->cryptoCurrency->short_name);
+            
+        }
+        // var_dump($cryptoAccount->cryptoAssets);
         return $enabled;
     }
 }
