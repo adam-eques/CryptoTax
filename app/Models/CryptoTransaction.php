@@ -303,7 +303,7 @@ class CryptoTransaction extends Model
             }
         } while ($endDate->isPast());
         // https://support.cointracker.io/hc/en-us/articles/4413049704593-Cryptocurrency-Performance-and-Return#:~:text=Definitions,made%20on%20your%20cryptocurrency%20investing.
-        // some important values
+        // some important values.
         $decimal_number = 12;
         bcscale($decimal_number);
         $holding = [];  /**Holding assets */
