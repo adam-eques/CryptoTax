@@ -10,9 +10,6 @@ return new class extends Migration{
         Schema::table('crypto_sources', function (Blueprint $table) {
             $table->boolean("active")->default(0)->after("driver");
         });
-
-        $seeder = new \Database\Seeders\CryptoSourceSeeder();
-        $seeder->run();
     }
 
 
