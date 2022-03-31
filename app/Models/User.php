@@ -418,10 +418,14 @@ class User extends Authenticatable implements MustVerifyEmail
             ), '100');
             $yesterday_fiat = number_format($data['cryptoCurrency']->convertTo($data['balance'], $fiat, $date->addDays(-1)), $decnum, '.', ',');
             $tmp['pnl'] = bcsub($tmp['holding_fiat'], $yesterday_fiat);
-            $tmp['pnl_percent'] = bcmul(bcdiv(
-                number_format($tmp['pnl'], $decnum, '.', ''),
-                $yesterday_fiat
-            ), '100');
+            try {
+                $tmp['pnl_percent'] = bcmul(bcdiv(
+                    number_format($tmp['pnl'], $decnum, '.', ''),
+                    $yesterday_fiat
+                ), '100');
+            } catch (\Throwable $th) {
+                $tmp['pnl_percent'] = '0';
+            }
             // $ret['last7'] = $last7;
             array_push($ret, $tmp);
         }
