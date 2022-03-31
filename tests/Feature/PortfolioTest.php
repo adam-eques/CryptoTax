@@ -76,6 +76,17 @@ class PortfolioTest extends TestCase
         // var_dump($result);
         // var_dump(CryptoTransaction::$unsupported);
     }
+
+    public function test_myCryptoPortfolio() {
+        $userId = 664;
+        $user = User::find($userId);
+        // $result = $user->myCryptoPortfolio("USD");
+        $result = $user->myCryptoPortfolio("USD");
+        var_dump($result);
+    }
+
+
+
     // public function test_getLineChartData() {
     //     $fiat = 'USD';
     //     $result = CryptoTransaction::getLineChartData(CryptoTransaction::LINE_CHART_YEAR);

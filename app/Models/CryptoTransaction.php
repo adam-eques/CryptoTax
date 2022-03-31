@@ -68,7 +68,7 @@ class CryptoTransaction extends Model
         }
         // echo "\ntime: " . $this->executed_at;
         // echo "\ntype: " . $this->trade_type;
-        echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
+        // echo "\ndeposits: " . $this->cost . " " . $this->cryptoCurrency->short_name . " = " . $deposits . " " . $fiat . "\n";
         if ($deposits === null) {
             // echo "unsupported\n";
             CryptoTransaction::unsupported_CC($this->cryptoCurrency->short_name);
