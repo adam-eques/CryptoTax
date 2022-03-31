@@ -36,6 +36,10 @@ class CryptoAccountFetchJob implements ShouldQueue
         $api = $account->getApi();
         $api->update();
 
+        // update tax related parameters in transaction table
+        $symbol = $account->user->taxCurrency->symbol;
+        $account->processFIFO($symbol);
+
         // Set fetching_scheduled_at to null
         $account->update(['fetching_scheduled_at' => null]);
     }
