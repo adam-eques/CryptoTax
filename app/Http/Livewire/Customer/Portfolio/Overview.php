@@ -11,6 +11,7 @@ class Overview extends Component
     public function render()
     {
         $data = auth()->user()->getPortfolioData();
+        // dd($data);
 
         $total_return = [ 'total_return_percent' => 112.12, 'total_return_amount' => number_format($data['total_return'], 2, '.', ','), 'line' => [30,50,35,50,49,20,70,30,50] ];
         $past_day = [ 'past_day_percent' => 98.34, 'past_day_amount' => number_format($data['day_return'], 2, '.', ','), 'line' => [30,50,12,50,42,31,12,70,11] ];
