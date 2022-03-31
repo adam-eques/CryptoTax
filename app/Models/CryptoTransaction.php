@@ -551,6 +551,6 @@ class CryptoTransaction extends Model
                 'fiat' => $transaction->fiat,
             ]);
         }
-        return $query->get();
+        return $enabled;
     }
 }
