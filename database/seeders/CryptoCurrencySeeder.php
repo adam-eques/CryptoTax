@@ -12,14 +12,26 @@ class CryptoCurrencySeeder extends Seeder
 {
     public function run()
     {
+        ini_set('memory_limit', '-1');
+
         // Clear data
         CryptoCurrency::query()->truncate();
         CryptoCurrencyConversion::query()->truncate();
+        CoingeckoSupportedVsCurrencies::query()->truncate();
 
-        // Get all vs currencies
-        CoingeckoSupportedVsCurrencies::updateFromApi();
+        // Import from SQL files
+        $path = base_path('/database/sql/');
+        $db = [
+            'username' => config("database.connections.mysql.username"),
+            'password' => config("database.connections.mysql.password"),
+            'host' => config("database.connections.mysql.host"),
+            'database' => config("database.connections.mysql.database")
+        ];
+        $files = ["coingecko_supported_vs_currencies.sql", "crypto_currency_conversions.sql", "crypto_currencies.sql"];
 
-        // Import from SQL
-        DB::unprepared(file_get_contents(__DIR__ . "/../sql/crypto_currencies.sql") . file_get_contents(__DIR__ . "/../sql/crypto_currency_conversions.sql"));
+        // Run queries
+        foreach($files AS $file) {
+            exec("mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < " . $path . $file);
+        }
     }
 }
