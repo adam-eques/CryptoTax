@@ -50,7 +50,7 @@
         "ryangjchandler/blade-tabler-icons": "*",
         "spatie/laravel-settings": "^2.3",
         "troccoli/blade-health-icons": "^0.3.0",
-        "webcaravel/admin": "^0.1",
+        "webcaravel/admin": "^0.2",
         "wireui/wireui": "^0"
     },
     "require-dev": {

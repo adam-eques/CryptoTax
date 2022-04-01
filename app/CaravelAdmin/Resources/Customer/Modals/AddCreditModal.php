@@ -40,7 +40,7 @@ class AddCreditModal extends FormModal
     }
 
 
-    public function submit(): void
+    public function submit()
     {
         /**
          * @var \App\Models\User $user
@@ -50,6 +50,7 @@ class AddCreditModal extends FormModal
         $action = UserCreditAction::find($data["user_credit_action_id"]);
         $user->creditAction($action, null, $data["value"]);
         $this->notification()->success(__("Credits added"));
-        $this->closeModal();
+
+        return $this->reloadPage();
     }
 }
