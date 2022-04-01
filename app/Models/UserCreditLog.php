@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\BelongsToUserTrait;
 use App\Models\Traits\CreditActionMorphTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -37,8 +38,9 @@ class UserCreditLog extends Model
     }
 
 
-    public static function log(int $userId, float $value, string $actionCode, ?int $actionId, ?Model $reference): self
+    public static function log(int $userId, float $value, string $actionCode, ?int $actionId, ?Model $reference, Carbon|null $createdAt = null): self
     {
+        $createdAt = $createdAt ?: now();
         $obj = self::make([
             'user_id' => $userId,
             'user_credit_action_id' => $actionId,
@@ -46,6 +48,7 @@ class UserCreditLog extends Model
             'value' => $value,
             'reference_id' => optional($reference)->id,
             'reference_type' => optional($reference)->getMorphClass(),
+            'created_at' => $createdAt
         ]);
         $obj->save();
 

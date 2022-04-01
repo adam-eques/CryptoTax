@@ -313,7 +313,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function creditAction(string|UserCreditAction $actionOrActionCode, ?Model $reference = null, ?float $value = null): UserCreditLog
+    public function creditAction(string|UserCreditAction $actionOrActionCode, ?Model $reference = null, ?float $value = null, Carbon|null $createdAt = null): UserCreditLog
     {
         // Get action and value
         if(is_string($actionOrActionCode)) {
@@ -327,7 +327,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $value = !is_null($value) ? $value : $action->value;
 
         // Log it and add it to user table
-        $log = UserCreditLog::log($this->id, $value, $action->action_code, $action->id, $reference);
+        $log = UserCreditLog::log($this->id, $value, $action->action_code, $action->id, $reference, $createdAt);
 
         // Add credits and save
         $this->credits += $value;
