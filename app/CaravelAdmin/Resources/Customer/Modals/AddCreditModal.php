@@ -15,6 +15,12 @@ class AddCreditModal extends FormModal
     ];
 
 
+    public function getTextBefore(): ?string
+    {
+        return __("Here you can add credits. Think twice before you do this!");
+    }
+
+
     protected function getFormSchema(): array
     {
         $actions = UserCreditAction::active()->get()->pluck("name", "id");
@@ -38,6 +44,7 @@ class AddCreditModal extends FormModal
                 ->label(__("Amount of credits")),
             Forms\Components\DateTimePicker::make("created_at")
                 ->label("Date")
+                ->hint("Default = now")
                 ->placeholder(__("Default = now"))
         ];
     }

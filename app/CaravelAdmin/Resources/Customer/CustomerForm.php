@@ -3,10 +3,10 @@
 namespace App\CaravelAdmin\Resources\Customer;
 
 use App\CaravelAdmin\Resources\Customer\Modals\AddCreditModal;
-use App\Forms\Components\ButtonField;
 use App\Models\CryptoAccount;
 use App\Models\User;
 use App\Models\UserCreditLog;
+use WebCaravel\Admin\Forms\Components\ButtonField;
 use WebCaravel\Admin\Forms\Components\ModalButtonField;
 use WebCaravel\Admin\Forms\Components\RelatedTableField;
 use WebCaravel\Admin\Resources\ResourceForm;
@@ -58,6 +58,10 @@ class CustomerForm extends ResourceForm
                     ->content(fn ($record): string => $record && $record->email_verified_at ? $record->email_verified_at : __("unverified")),
                 Forms\Components\Placeholder::make("account_type_id")->label(__("Account type"))
                     ->content(fn (User $record): string => $record->userAccountType->getName()),
+            ])
+
+            // Button Card
+            ->addCard([
                 ButtonField::make(__("Affiliate Url"))
                     ->href(fn (User $record): ?string => $record->getAffiliateUrl())
                     ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail())
@@ -66,9 +70,9 @@ class CustomerForm extends ResourceForm
                     ->href(fn (User $record): string => CustomerResource::make()->getRoute("show", $record->userAffiliate->recruitedBy))
                     ->content(fn (User $record): string => optional($record->userAffiliate)->recruitedBy->email)
                     ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail() || !optional($record->userAffiliate)->recruitedBy),
-                ModalButtonField::make(__("Add Credits"))
-                    ->modal(AddCreditModal::class)
-                    ->title(__("Add Credits"))
+                ModalButtonField::make(__("Add credits"))
+                    ->modalFormClass(AddCreditModal::class)
+                    ->title(__("Add credits")),
             ])
             ->toArray();
     }
