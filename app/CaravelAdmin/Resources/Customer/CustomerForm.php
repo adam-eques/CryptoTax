@@ -22,6 +22,7 @@ class CustomerForm extends ResourceForm
         return array_merge([
             ButtonModalField::make("add credits")
                 ->modalFormClass(AddCreditModal::class)
+                ->title(__("Add Credits"))
                 ->visible(fn(): bool => auth()->user()->isAdminAccount())
                 ->buttonLabel(__("Add credits"))
         ], parent::getActionButtons());
