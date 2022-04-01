@@ -2,15 +2,18 @@
 
 namespace App\CaravelAdmin\Resources\Customer;
 
+use App\CaravelAdmin\Resources\Customer\Modals\AddCreditModal;
 use App\Forms\Components\ButtonField;
 use App\Models\CryptoAccount;
 use App\Models\User;
 use App\Models\UserCreditLog;
+use WebCaravel\Admin\Forms\Components\ModalButtonField;
 use WebCaravel\Admin\Forms\Components\RelatedTableField;
 use WebCaravel\Admin\Resources\ResourceForm;
 use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms;
 
+use WebCaravel\Admin\View\Components\FormActionButton;
 use function moneyFormat;
 
 class CustomerForm extends ResourceForm
@@ -63,6 +66,9 @@ class CustomerForm extends ResourceForm
                     ->href(fn (User $record): string => CustomerResource::make()->getRoute("show", $record->userAffiliate->recruitedBy))
                     ->content(fn (User $record): string => optional($record->userAffiliate)->recruitedBy->email)
                     ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail() || !optional($record->userAffiliate)->recruitedBy),
+                ModalButtonField::make(__("Add Credits"))
+                    ->modal(AddCreditModal::class)
+                    ->title(__("Add Credits"))
             ])
             ->toArray();
     }
