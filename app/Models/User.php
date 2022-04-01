@@ -364,7 +364,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function myCryptoPortfolio($fiat="USD") {
         $decnum = CryptoTransaction::DECIMAL_NUMBER;
         $date = Carbon::now();
-        // $date = Carbon::create(2022, 3, 18);
         bcscale($decnum);
         $holding = [];
         $accounts = $this->cryptoAccounts()->get();
