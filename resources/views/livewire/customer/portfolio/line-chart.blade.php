@@ -8,7 +8,7 @@
                 <h2 class="text-3xl font-bold md:text-5xl">{{ $total_income }}</h2>
             </div>
         </div>
-        <div wire:loading.block>loading</div>
+        <div wire:loading.block>loading...</div>
         <div class="flex items-center space-x-2">
             @foreach ($buttons as $button)                
                 <button 
