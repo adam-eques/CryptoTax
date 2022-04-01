@@ -33,6 +33,7 @@ class CreditCodeService
         array_walk($array, function(&$val, $key) {
             $val = str_replace("_", " ", \Str::title(substr($val, 7)));
         });
+        asort($array);
 
         return $array;
     }
