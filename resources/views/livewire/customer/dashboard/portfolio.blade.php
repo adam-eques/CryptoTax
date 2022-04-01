@@ -40,44 +40,24 @@
         </div>
         @foreach ($portfolio ?? [] as $item)  
             <div class="mt-2" 
-                x-bind:class="selected == {{ $item['id'] }} ? 'rounded-l border-l-5 border-primary' : ''" 
-                @click="selected !== {{ $item['id'] }} ? selected = {{ $item['id'] }} : selected = null"
-                x-transition
+                {{-- x-bind:class="selected == {{ $item['symbol'] }} ? 'rounded-l border-l-5 border-primary' : ''" 
+                @click="selected !== {{ $item['symbol'] }} ? selected = {{ $item['symbol'] }} : selected = null"
+                x-transition --}}
             >
                 <x-portfolio-list-item 
-                    :id="$item['id']" 
-                    :icon="$item['icon']"
-                    :name="$item['name']"
-                    :type="$item['type']"
-                    :line="$item['line']"
-                    lineColor="{{ $item['lineColor'] }}"
-                    :price="$item['price']"
-                    holdingBtc="{{ $item['holding']['btc'] }}"
-                    holdingUsd="{{ $item['holding']['usd'] }}"
-                    :percent="$item['percentage']"
-                    pnlPrice="{{ $item['pnl']['price'] }}"
-                    pnlPercent="{{ $item['pnl']['percent'] }}"
+                    id="{{$item['name']}}" 
+                    icon="{{'coins.' . strtolower($item['symbol'])}}"
+                    name="{{$item['name']}}"
+                    type="{{$item['symbol']}}"
+                    lineColor="#00C928"
+                    price="{{number_format($item['price'], 4)}}"
+                    holdingBtc="{{ number_format($item['holding_cc'], 6) }}"
+                    holdingUsd="{{ number_format($item['holding_fiat'], 6) }}"
+                    percent="{{ number_format( $item['percent'], 2)}}"
+                    pnlPrice="{{ number_format($item['pnl'], 6) }}"
+                    pnlPercent="{{ number_format( $item['percent'], 6) }}"
                     node="parent"
                 />
-                <div x-show="selected == {{ $item['id'] }}" x-transition.duration.500ms>
-                    @foreach ($item['child'] ?? [] as $child)
-                        <x-portfolio-list-item 
-                            :id="$child['id']" 
-                            :icon="$child['icon']"
-                            :name="$child['name']"
-                            :type="$child['type']"
-                            :line="$child['line']"
-                            lineColor="{{ $child['lineColor'] }}"
-                            :price="$child['price']"
-                            holdingBtc="{{ $child['holding']['btc'] }}"
-                            holdingUsd="{{ $child['holding']['usd'] }}"
-                            percent="{{ $child['percentage'] }}"
-                            pnlPrice="{{ $child['pnl']['price'] }}"
-                            pnlPercent="{{ $child['pnl']['percent'] }}"
-                            node="child"
-                        />
-                    @endforeach
-                </div>
             </div>          
         @endforeach
     </div>

@@ -24,6 +24,12 @@
                                 @case('S')
                                     <x-badge type="square" variant="danger" class="mt-2">{{ __("Sold") }}</x-badge>
                                     @break
+                                @case('G')
+                                    <x-badge type="square" class="mt-2">{{ __("Sent") }}</x-badge>
+                                    @break
+                                @case('R')
+                                    <x-badge type="square" variant="danger" class="mt-2">{{ __("Received") }}</x-badge>
+                                    @break
                                 @default
                                     
                             @endswitch
