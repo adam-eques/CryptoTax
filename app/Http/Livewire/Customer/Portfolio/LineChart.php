@@ -41,6 +41,7 @@ class LineChart extends Component
         ]);
 
         return view('livewire.customer.portfolio.line-chart', [
+            'total_income' => number_format(auth()->user()->getPortfolioData()['total_income'], 2, '.', ','),
             'buttons' => $buttons,
             'line_data' =>  [
                 'label' => array_keys($this->lineData),

@@ -5,7 +5,7 @@
             <p class="py-2">Total Income</p>
             <div class="flex items-start space-x-2">
                 <p class="text-lg font-bold">$</p>
-                <h2 class="text-3xl font-bold md:text-5xl">36,806</h2>
+                <h2 class="text-3xl font-bold md:text-5xl">{{ $total_income }}</h2>
             </div>
         </div>
         <div wire:loading.block>loading</div>

@@ -421,8 +421,6 @@ class User extends Authenticatable implements MustVerifyEmail
             $yesterday_fiat = number_format($data['cryptoCurrency']->convertTo($data['balance'], $fiat, $date->addDays(-1)), $decnum, '.', ',');
             $tmp['pnl'] = bcsub($tmp['holding_fiat'], $yesterday_fiat);
             $tmp['unrealized'] = bcsub($tmp['holding_fiat'], $data['cost_basis']);
-            var_dump($tmp['holding_fiat']);
-            var_dump($data['cost_basis']);
             try {
                 $tmp['unrealized_percent'] = bcmul(bcdiv(
                     number_format($tmp['unrealized'], $decnum, '.', ''),

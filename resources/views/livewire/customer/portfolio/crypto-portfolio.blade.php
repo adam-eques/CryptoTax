@@ -6,7 +6,7 @@
         </div>
         <x-button tag="a" href="{{ route('customer.asset') }}">{{ __('See all assets') }}</x-button>
     </div>
-    <div class="overflow-auto scrollbar">
+    <div class="h-full overflow-auto scrollbar">
         <table class="min-w-[720px] w-full border rounded">
             <thead class="bg-white border shadow-md">
                 <tr class="py-5">
@@ -20,23 +20,23 @@
                 @foreach ($portfolios as $portfolio)                    
                     <tr class="px-5">
                         <td class="flex items-center px-3 py-5 space-x-4">
-                            <x-icon name="{{ 'coins.' . strtolower($portfolio['short_name']) }}" class="w-14 h-14"/>
+                            <x-icon name="{{ 'coins.' . strtolower($portfolio['symbol']) }}" class="w-14 h-14"/>
                             <div class="text-left">
                                 <p class="font-semibold text-black ">{{ $portfolio['name'] }}</p>
-                                <p class="text-gray-400">{{ $portfolio['short_name'] }}</p>
+                                <p class="text-gray-400">{{ $portfolio['symbol'] }}</p>
                             </div>
                         </td>
                         <td class="py-5 text-right">
-                            <p>{{ $portfolio['holding_price'] }}</p>
-                            <p class="text-gray-400">{{ $portfolio['holding_amount'] }}</p>
-                            <p>{{ $portfolio['short_name'] }}</p>
+                            <p>{{ $portfolio['holding_cc'] }}</p>
+                            <p class="text-gray-400">{{ $portfolio['holding_fiat'] }}</p>
+                            <p>{{ $portfolio['symbol'] }}</p>
                         </td>
                         <td class="py-5 text-right">
                             <p>{{ $portfolio['price'] }}</p>
                         </td>
                         <td class="py-5 text-center">
                             <p>{{ $portfolio['unrealized'] }}</p>
-                        <x-badge variant="danger" type="square">{{ $portfolio['unrealized_percent'] }}</x-badge>
+                            <x-badge variant="danger" type="square">{{ $portfolio['unrealized_percent'] }}%</x-badge>
                         </td>
                     </tr>             
                 @endforeach
