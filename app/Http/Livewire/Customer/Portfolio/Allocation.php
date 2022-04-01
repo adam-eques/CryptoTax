@@ -8,9 +8,13 @@ class Allocation extends Component
 {
     public function render()
     {
+        $portfolio = auth()->user()->myCryptoPortfolio();
+        $data_name = array_column($portfolio, 'name');
+        $data_percent = array_column($portfolio, 'percent');
+        // dd(array_map(function($val) { return intval($val); }, $data_percent) );
         $chart_data = [
-            'label' => [ 'Bitcoin', 'Ethereum ', 'Ripple', 'Litecoin', 'Ethereum', 'Ripple' ],
-            'value' => [ 44, 12, 13, 24, 32, 45 ]
+            'label' => $data_name,
+            'value' => array_map(function($val) { return intval($val); }, $data_percent)
         ];
 
         return view('livewire.customer.portfolio.allocation', [
