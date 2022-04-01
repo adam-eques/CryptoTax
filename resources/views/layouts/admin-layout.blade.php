@@ -129,7 +129,7 @@
                 </header>
             @endif
 
-            <div class="px-10 py-8">
+            <div class="md:px-10 px-2 py-8">
                 {{ $slot }}
             </div>
         </div>

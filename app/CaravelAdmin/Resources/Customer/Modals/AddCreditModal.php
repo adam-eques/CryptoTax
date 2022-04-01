@@ -3,18 +3,12 @@
 namespace App\CaravelAdmin\Resources\Customer\Modals;
 
 use App\Models\UserCreditAction;
-use Carbon\Carbon;
 use Closure;
 use Filament\Forms;
 use WebCaravel\Admin\Resources\FormModal;
 
 class AddCreditModal extends FormModal
 {
-    public array $data = [
-        "created_at" => ""
-    ];
-
-
     public function getTextBefore(): ?string
     {
         return __("Here you can add credits. Think twice before you do this!");
@@ -41,11 +35,7 @@ class AddCreditModal extends FormModal
                 ->postfix("Credits")
                 ->required()
                 ->hidden(fn($get): bool => !$get("user_credit_action_id"))
-                ->label(__("Amount of credits")),
-            Forms\Components\DateTimePicker::make("created_at")
-                ->label("Date")
-                ->hint("Default = now")
-                ->placeholder(__("Default = now"))
+                ->label(__("Amount of credits"))
         ];
     }
 
@@ -58,7 +48,7 @@ class AddCreditModal extends FormModal
         $user = $this->parentRecord;
         $data = $this->form->getState();
         $action = UserCreditAction::find($data["user_credit_action_id"]);
-        $user->creditAction($action, null, $data["value"], $data["created_at"] ? Carbon::make($data["created_at"]) : now());
+        $user->creditAction($action, null, $data["value"]);
         $this->notification()->success(__("Credits added"));
         $this->closeModal();
     }
