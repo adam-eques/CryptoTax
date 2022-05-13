@@ -5,6 +5,7 @@ namespace App\CaravelAdmin\Resources\Customer;
 use App\CaravelAdmin\Resources\Customer\Modals\AddCreditModal;
 use App\Models\CryptoAccount;
 use App\Models\User;
+use App\Models\UserAccountType;
 use App\Models\UserCreditLog;
 use WebCaravel\Admin\Forms\Components\ButtonField;
 use WebCaravel\Admin\Forms\Components\ButtonModalField;
@@ -13,6 +14,7 @@ use WebCaravel\Admin\Resources\ResourceForm;
 use WebCaravel\Admin\Forms\SidebarLayout;
 use Filament\Forms;
 
+use WebCaravel\Admin\View\Components\FormActionButton;
 use function moneyFormat;
 
 class CustomerForm extends ResourceForm
@@ -73,11 +75,24 @@ class CustomerForm extends ResourceForm
                     ->href(fn (User $record): ?string => $record->getAffiliateUrl())
                     ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail())
                     ->targetBlank(),
+                ButtonField::make(__("Change to Demo User"))
+                    ->onClickJs('$wire.makeDemoUser()')
+                    ->visible(fn(User $record): bool => !$record->isDemoAccount() && $record->isCustomerPanelAccount()),
                 ButtonField::make(__("Recruited by"))
                     ->href(fn (User $record): string => CustomerResource::make()->getRoute("show", $record->userAffiliate->recruitedBy))
                     ->content(fn (User $record): string => optional($record->userAffiliate)->recruitedBy->email)
                     ->hidden(fn(User $record): bool => !$record->hasVerifiedEmail() || !optional($record->userAffiliate)->recruitedBy),
             ])
             ->toArray();
+    }
+
+
+    public function makeDemoUser()
+    {
+        $user = $this->model;
+        $user->user_account_type_id = UserAccountType::TYPE_CUSTOMER_DEMO;
+        $user->save();
+
+        return $this->redirect($this->resource->getRoute("edit", $this->model));
     }
 }
