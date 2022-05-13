@@ -9,7 +9,7 @@ use App\Models\User;
 class TaxAdvisorResource extends Resource
 {
     protected string $model = User::class;
-    protected string $icon = "advisor";
+    protected string $icon = "uni-user-md-o";
 
 
     public function label(): string
