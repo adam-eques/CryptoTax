@@ -2,16 +2,15 @@
 
 namespace App\Http\Livewire\Blockchain;
 
+use App\Http\Livewire\Traits\DemoUserTrait;
 use App\Jobs\CryptoAccountFetchJob;
-use App\Models\BlockchainAccount;
-use App\Models\Blockchain;
 use App\Models\CryptoAccount;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
 class BlockchainForm extends Component
 {
-    use Actions;
+    use Actions, DemoUserTrait;
 
     public ?CryptoAccount $blockchainAccount = null;
     public ?string $newBlockchainAddress = null;
@@ -29,6 +28,8 @@ class BlockchainForm extends Component
 
     public function delete(CryptoAccount $blockchainAccount)
     {
+        if($this->preventDemoUser()) return;
+
         if ($this->blockchainAccount && $this->blockchainAccount->id == $blockchainAccount->id) {
             $this->blockchainAccount = null;
         }
@@ -47,6 +48,8 @@ class BlockchainForm extends Component
 
     public function fetch(CryptoAccount $blockchainAccount)
     {
+        if($this->preventDemoUser()) return;
+
         try {
             $blockchainAccount->fetching_scheduled_at = now();
             $blockchainAccount->save();
@@ -64,6 +67,7 @@ class BlockchainForm extends Component
 
     public function add()
     {
+        if($this->preventDemoUser()) return;
         $user = auth()->user();
 
         if (! $this->newBlockchainId) {

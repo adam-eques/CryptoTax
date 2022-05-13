@@ -15,15 +15,12 @@ class TransactionList extends Component
     use WithPagination;
 
     protected $paginationTheme = 'tailwind';
-
-    public?string $search = null;
-    public?string $order = null;
-    public?string $type = null;
-    public?string $wallet = null;
-
-    public?CryptoTransaction $selectedTransaction = null;
-    public?int $method = null;
-
+    public ?string $search = null;
+    public ?string $order = null;
+    public ?string $type = null;
+    public ?string $wallet = null;
+    public ?CryptoTransaction $selectedTransaction = null;
+    public ?int $method = null;
     protected $queryString = [
         'search' => ['except' => '0'],
         'order' => ['except' => '0'],
@@ -31,9 +28,12 @@ class TransactionList extends Component
         'wallet' => ['except' => '0'],
     ];
 
-    public function mount(){
+
+    public function mount()
+    {
         $this->order = 'DESC';
     }
+
 
     public function setSelectedTrans($method, $transaction)
     {
@@ -42,15 +42,18 @@ class TransactionList extends Component
         $this->method = $method;
     }
 
+
     public function searchByItem($type)
     {
         $this->type = $type;
     }
 
+
     public function fileExport()
     {
         return Excel::download(new TransactionExport, 'transactions.xlsx');
     }
+
 
     public function refresh_filter()
     {
@@ -58,6 +61,7 @@ class TransactionList extends Component
         $this->search = null;
         $this->wallet = null;
     }
+
 
     public function mark_ignore($id)
     {
@@ -68,6 +72,7 @@ class TransactionList extends Component
         $selected_transaction->save();
     }
 
+
     public function mark_active($id)
     {
         $selected_transaction = CryptoTransaction::query()
@@ -77,12 +82,13 @@ class TransactionList extends Component
         $selected_transaction->save();
     }
 
+
     public function render()
     {
         $filter = [
             'order' => [
-                ['label' =>'Newest', 'value' => 'DESC'],
-                ['label' => 'Oldest', 'value' => 'ASC']
+                ['label' => 'Newest', 'value' => 'DESC'],
+                ['label' => 'Oldest', 'value' => 'ASC'],
             ],
             'type' => [
                 ['label' => 'Bought', 'value' => 'B'],
@@ -101,24 +107,24 @@ class TransactionList extends Component
                 ['label' => 'Donation', 'value' => 'E'],
                 ['label' => 'Staked', 'value' => 'B'],
                 ['label' => 'Interest', 'value' => 'E'],
-            ]
+            ],
         ];
         $transactions = auth()->user()->cryptoTransactions()
             ->orderBy('executed_at', $this->order);
 
         $transactions = $transactions
-            ->whereHas( 'cryptoCurrency', function($q){
-                $q->where('short_name', 'like', '%'. $this->search .'%');
+            ->whereHas('cryptoCurrency', function ($q) {
+                $q->where('short_name', 'like', '%'.$this->search.'%');
             });
 
         if ($this->wallet) {
-            $transactions = $transactions->whereHas('cryptoAccount', function($q){
+            $transactions = $transactions->whereHas('cryptoAccount', function ($q) {
                 $q->where('crypto_source_id', $this->wallet);
             });
         }
 
         if ($this->type) {
-            if($this->type == "T"){
+            if ($this->type == "T") {
                 $transactions = $transactions->where('trade_type', 'B')
                     ->orWhere('trade_type', 'S');
             } else {
@@ -126,8 +132,7 @@ class TransactionList extends Component
             }
         }
 
-
-        $transactions = $transactions ->paginate(10);
+        $transactions = $transactions->paginate(10);
 
         $trades_num = auth()->user()->cryptoTransactions()->where('trade_type', 'B')->orWhere('trade_type', 'S')->count();
         $deposits_num = auth()->user()->cryptoTransactions()->where('trade_type', 'R')->count();
@@ -142,7 +147,7 @@ class TransactionList extends Component
             'deposits_num' => $deposits_num,
             'withdrawal_num' => $withdrawal_num,
             'reviews_num' => $reviews_num,
-            'exchange_num' => $exchange_num
+            'exchange_num' => $exchange_num,
         ]);
     }
 }

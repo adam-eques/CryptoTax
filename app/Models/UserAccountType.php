@@ -17,6 +17,7 @@ class UserAccountType extends Model
     const TYPE_EDITOR = 5;
     const TYPE_CUSTOMER_PREMIUM = 6;
     const TYPE_AFFILIATE = 7;
+    const TYPE_CUSTOMER_DEMO = 8;
 
 
     /**
@@ -36,6 +37,7 @@ class UserAccountType extends Model
         return [
             self::TYPE_CUSTOMER_FREE,
             self::TYPE_CUSTOMER_PREMIUM,
+            self::TYPE_CUSTOMER_DEMO,
         ];
     }
 
@@ -61,6 +63,7 @@ class UserAccountType extends Model
         return [
             self::TYPE_CUSTOMER_FREE,
             self::TYPE_CUSTOMER_PREMIUM,
+            self::TYPE_CUSTOMER_DEMO,
             self::TYPE_TAX_ADVISOR,
             self::TYPE_AFFILIATE,
         ];

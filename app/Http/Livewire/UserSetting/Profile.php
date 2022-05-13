@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\UserSetting;
 
+use App\Http\Livewire\Traits\DemoUserTrait;
 use Livewire\Component;
-use App\Models\Models\User;
 
 class Profile extends Component
 {
+    use DemoUserTrait;
+
     public?string $name = null;
     public?string $phone = null;
 
@@ -20,6 +22,7 @@ class Profile extends Component
 
     public function update_userprofile()
     {
+        if($this->preventDemoUser()) return;
         $user = auth()->user();
 
         if($user)

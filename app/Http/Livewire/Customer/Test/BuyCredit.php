@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer\Test;
 
+use App\Http\Livewire\Traits\DemoUserTrait;
 use App\Models\UserCreditAction;
 use App\Services\CreditCodeService;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BuyCredit extends Component
 {
+    use DemoUserTrait;
     public float $credits;
     public float $addedCredits = 0;
     public bool $showForm;
@@ -32,6 +34,7 @@ class BuyCredit extends Component
 
     public function pay(string $paymentId, int $priceId)
     {
+        if($this->preventDemoUser()) return;
         $user = auth()->user();
 
         // First get price

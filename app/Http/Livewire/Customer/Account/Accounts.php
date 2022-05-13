@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer\Account;
 
+use App\Http\Livewire\Traits\DemoUserTrait;
 use Livewire\Component;
 
 use App\Cryptos\Drivers\CryptoapisDriver;
@@ -12,28 +13,26 @@ use App\Models\BlockchainAccount;
 use Filament\Forms;
 use WireUi\Traits\Actions;
 
-use Carbon\Carbon;
-
 class Accounts extends Component implements Forms\Contracts\HasForms
 {
-    use Actions;
-    use Forms\Concerns\InteractsWithForms;
+    use Actions, DemoUserTrait, Forms\Concerns\InteractsWithForms;
 
-    public?CryptoAccount $selected_account = null;
-    public?string $unit = null;
+    public ?CryptoAccount $selected_account = null;
+    public ?string $unit = null;
+
 
     public function mount()
     {
         $this->unit = "$";
         if (auth()->user()->taxCurrency->id == 1) {
-           $this->unit = "$";
-        }elseif(auth()->user()->taxCurrency->id == 2){
+            $this->unit = "$";
+        } elseif (auth()->user()->taxCurrency->id == 2) {
             $this->unit = "€";
         }
         $this->selected_account = auth()->user()->cryptoAccounts()
             ->whereJsonDoesntContain('credentials', [])
             ->get()
-            ->sortByDesc(function($account){
+            ->sortByDesc(function ($account) {
                 return $account->getBalanceSum();
             })
             ->first();
@@ -82,6 +81,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         return false;
     }
 
+
     /**
      * Get Selected Account ID
      */
@@ -91,19 +91,21 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $this->selected_account = auth()->user()->cryptoAccounts()->where('id', $id)->first();
     }
 
+
     /**
      * Edit Account
      */
 
     public function edit()
     {
-        if(!$this->selected_account)
-        {
+        if (! $this->selected_account) {
             $this->notification()->info(__("Please select an account"));
+
             return;
         }
         $this->form->fill($this->selected_account->credentials);
     }
+
 
     /**
      * Save Account
@@ -111,9 +113,10 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function save()
     {
-        if(!$this->selected_account)
-        {
+        if($this->preventDemoUser()) return;
+        if (! $this->selected_account) {
             $this->notification()->info(__("Please select an account"));
+
             return;
         }
         $data = $this->form->getState();
@@ -121,15 +124,18 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $this->selected_account->save();
     }
 
+
     /**
      * Delete Account
      */
 
     public function delete()
     {
-        if(!$this->selected_account)
-        {
+        if($this->preventDemoUser()) return;
+
+        if (! $this->selected_account) {
             $this->notification()->info(__("Please select an account"));
+
             return;
         }
 
@@ -143,8 +149,8 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             $title = __('Successfully deleted'),
             $description = ''
         );
-        
     }
+
 
     /**
      * Fetch Transaction Account
@@ -152,12 +158,12 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
     public function sync()
     {
-        if(!$this->selected_account)
-        {
+        if (! $this->selected_account) {
             $this->notification()->info(__("Please select an account"));
+
             return;
         }
-        try{
+        try {
             $this->selected_account->requestUpdate();
             $this->notification()->info(
                 __("Fetch is now queued"),
@@ -165,8 +171,9 @@ class Accounts extends Component implements Forms\Contracts\HasForms
             );
         } catch (\Exception $e) {
             $this->notification()->error(__("An error occured"), $e->getMessage());
-        }        
+        }
     }
+
 
     /**
      * Rendering
@@ -176,7 +183,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
         $crypto_accounts = auth()->user()->cryptoAccounts()
             ->whereJsonDoesntContain('credentials', [])
             ->get()
-            ->sortByDesc(function($account){
+            ->sortByDesc(function ($account) {
                 return $account->getBalanceSum();
             });
 
@@ -189,7 +196,7 @@ class Accounts extends Component implements Forms\Contracts\HasForms
 
         return view('livewire.customer.account.accounts', [
             "rows" => $rows,
-            "crypto_accounts" => $crypto_accounts
+            "crypto_accounts" => $crypto_accounts,
         ]);
     }
 }

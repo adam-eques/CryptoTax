@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\HasName;
+use App\Models\Traits\PreventDemoUserTrait;
 use App\Services\CreditCodeService;
 use App\Settings\AffiliateSetting;
 use Illuminate\Database\Eloquent\Builder;
@@ -219,6 +220,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isCustomerAccount(): bool
     {
         return $this->userAccountType->is_customer;
+    }
+
+
+    public function isDemoAccount(): bool
+    {
+        return $this->user_account_type_id === UserAccountType::TYPE_CUSTOMER_DEMO;
     }
 
 

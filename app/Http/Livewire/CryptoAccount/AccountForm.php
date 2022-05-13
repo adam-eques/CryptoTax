@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\CryptoAccount;
 
+use App\Http\Livewire\Traits\DemoUserTrait;
 use App\Models\CryptoAccount;
 use App\Models\CryptoSource;
 use Filament\Forms;
@@ -11,6 +12,7 @@ use WireUi\Traits\Actions;
 class AccountForm extends Component implements Forms\Contracts\HasForms
 {
     use Actions;
+    use DemoUserTrait;
     use Forms\Concerns\InteractsWithForms;
 
     public ?CryptoAccount $account = null;
@@ -62,6 +64,8 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
 
     public function delete(CryptoAccount $account)
     {
+        if($this->preventDemoUser()) return;
+
         if ($this->account && $this->account->id == $account->id) {
             $this->account = null;
         }
@@ -80,6 +84,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
 
     public function save()
     {
+        if($this->preventDemoUser()) return;
         $data = $this->form->getState();
         $this->account->credentials = $data;
         $this->account->save();
@@ -109,6 +114,8 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
 
     public function fetch(CryptoAccount $account)
     {
+        if($this->preventDemoUser()) return;
+
         try {
             $account->requestUpdate();
             $this->notification()->info(
@@ -124,6 +131,7 @@ class AccountForm extends Component implements Forms\Contracts\HasForms
 
     public function add()
     {
+        if($this->preventDemoUser()) return;
         $user = auth()->user();
 
         if (! $this->newAccountId) {

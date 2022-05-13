@@ -9,6 +9,7 @@ class LineChart extends Component
 {
     public?array $lineData = null;
     public?string $selected = null;
+
     public function mount()
     {
         $this->lineData = auth()->user()->getPortfolioLineChart(CryptoTransaction::LINE_CHART_YEAR);
@@ -18,7 +19,7 @@ class LineChart extends Component
     public function get_selected($id)
     {
         $this->selected = $id;
-    } 
+    }
 
     public function sec_to_date($miliSec, $type): string
     {
@@ -58,12 +59,12 @@ class LineChart extends Component
         $this->lineData = auth()->user()->getPortfolioLineChart($buttons[$this->selected]['line']);
 
 
-        $this->emit("refresh-line-chart", [ 
+        $this->emit("refresh-line-chart", [
             'line_data' => [
                 'label' => array_map(
-                    function($val) use($buttons) 
-                    { 
-                        return $this->sec_to_date(intVal($val), $buttons[$this->selected]['line']) - 1; 
+                    function($val) use($buttons)
+                    {
+                        return $this->sec_to_date(intVal($val), $buttons[$this->selected]['line']) - 1;
                     }, array_keys($this->lineData)
                 ),
                 'value' => array_values($this->lineData)
@@ -75,9 +76,9 @@ class LineChart extends Component
             'buttons' => $buttons,
             'line_data' =>  [
                 'label' => array_map(
-                    function($val) use($buttons) 
-                    { 
-                        return $this->sec_to_date(intVal($val), $buttons[$this->selected]['line']) - 1; 
+                    function($val) use($buttons)
+                    {
+                        return $this->sec_to_date(intVal($val), $buttons[$this->selected]['line']) - 1;
                     }, array_keys($this->lineData)
                 ),
                 'value' =>  array_values($this->lineData)

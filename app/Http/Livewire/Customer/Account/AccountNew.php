@@ -2,22 +2,18 @@
 
 namespace App\Http\Livewire\Customer\Account;
 
+use App\Http\Livewire\Traits\DemoUserTrait;
 use WireUi\Traits\Actions;
 use Filament\Forms;
-
-use App\Jobs\CryptoAccountFetchJob;
-use App\Cryptos\Drivers\CryptoapisDriver;
-use App\Cryptos\Drivers\CcxtDriver;
 use App\Models\CryptoAccount;
 use App\Models\CryptoSource;
-
 use Livewire\Component;
-use Carbon\Carbon;
 
 class AccountNew extends Component implements Forms\Contracts\HasForms
 {
 
     use Actions;
+    use DemoUserTrait;
     use Forms\Concerns\InteractsWithForms;
 
     public ?CryptoAccount $selected_account = null;
@@ -75,10 +71,10 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $this->selected_category = $id;
         $this->selected_account_id = null;
         $this->selected_account = null;
-    }   
-    
+    }
+
     /*
-    * add default Query for new accounts list 
+    * add default Query for new accounts list
     */
     protected function default_query($query)
     {
@@ -98,6 +94,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
      */
     public function add($id)
     {
+        if($this->preventDemoUser()) return;
         $this->selected_account_id = $id;
 
         $user = auth()->user();
@@ -120,6 +117,7 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
 
     public function save()
     {
+        if($this->preventDemoUser()) return;
         try {
             //code...
             $data = $this->form->getState();
@@ -134,7 +132,6 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         }
     }
 
-     
 
     /**
      * Rendering
@@ -153,23 +150,13 @@ class AccountNew extends Component implements Forms\Contracts\HasForms
         $cryptoAccounts = auth()->user()->cryptoAccounts;
 
         //All actived Crypto Resources
-        switch ($this->selected_category) {
-            case '1':
-                $crypto_resources = $this->default_query(CryptoSource::activeExchanges());
-                break;
-            case '2':
-                $crypto_resources = [];
-                break;
-            case '3':
-                $crypto_resources = $this->default_query(CryptoSource::activeBlockchains());
-                break;
-            case '4':
-                $crypto_resources = [];
-                break;
-            default:
-                $crypto_resources = $this->default_query(CryptoSource::query());
-                break;
-        }
+        $crypto_resources = match ($this->selected_category) {
+            '1' => $this->default_query(CryptoSource::activeExchanges()),
+            '2' => [],
+            '3' => $this->default_query(CryptoSource::activeBlockchains()),
+            '4' => [],
+            default => $this->default_query(CryptoSource::query()),
+        };
 
         return view('livewire.customer.account.account-new', [
             'categories' => $categories,
